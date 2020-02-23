@@ -12,18 +12,18 @@ process.env.SECRET_KEY = 'secret'
 //Inscription
 users.post('/register', (req, res) => {
     const userData = {
-        pseudo: req.query.pseudo,
-        email: req.query.email,
-        mdp: req.query.mdp,
-        mdp2: req.query.mdp2,
-        admin: req.query.admin,
-        abonneNews: req.query.abonneNews,
+        pseudo: req.body.pseudo,
+        email: req.body.email,
+        mdp: req.body.mdp,
+        mdp2: req.body.mdp2,
+        admin: req.body.admin,
+        abonneNews: req.body.abonneNews,
 
     }
 
     User.findOne({
         where: {
-            pseudo: req.query.pseudo
+            pseudo: req.body.pseudo
         }
     })
         .then(user => {
@@ -53,11 +53,11 @@ users.post('/register', (req, res) => {
 users.post('/login', (req, res) => {
     User.findOne({
         where: {
-            pseudo: req.query.pseudo
+            pseudo: req.body.pseudo
         }
     })
         .then(user => {
-            if(bcrypt.compareSync(req.query.mdp, user.mdp)) {
+            if(bcrypt.compareSync(req.body.mdp, user.mdp)) {
                 let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                     expiresIn: 1440
                 })
