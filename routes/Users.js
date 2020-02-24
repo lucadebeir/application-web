@@ -15,7 +15,7 @@ users.post('/register', (req, res) => {
         pseudo: req.body.pseudo,
         email: req.body.email,
         mdp: req.body.mdp,
-        mdp2: req.body.mdp2, //??????? 
+        mdp2: req.body.mdp2, 
         admin: req.body.admin,
         abonneNews: req.body.abonneNews,
 
@@ -28,9 +28,10 @@ users.post('/register', (req, res) => {
     })
         .then(user => {
             if(!user) {
-                const hash = bcrypt.hashSync(userData.mdp, 10)
-                userData.mdp = hash
-                User.create(userData)
+                if(req.body.mdp === req.body.mdp2){
+                    const hash = bcrypt.hashSync(userData.mdp, 10)
+                    userData.mdp = hash
+                    User.create(userData)
                     .then(user => {
                         let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                             expiresIn: 1440
@@ -40,6 +41,10 @@ users.post('/register', (req, res) => {
                     .catch(err => {
                         res.send('error: ' + err)
                     })
+                }else{
+                    res.json("Les mots de passe ne sont pas identiques.")
+                }
+                
             } else {
                 res.json({ error: "L'utilisateur existe déjà" })
             }
@@ -95,7 +100,7 @@ users.get('/profile', (req, res) => {
 //changement mdp (put pour modifier)
 users.put('/update-password', (req, res) => { 
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
-    
+
     User.findOne({
         where: {
             pseudo: req.body.pseudo
