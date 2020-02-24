@@ -26,12 +26,14 @@
                 </div>
 
                 <!--METTRE Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ? oui/non 
-                    SI CA MARCHE COLLER DANS MON PROFILE -> A TESTER
+                    SI CA MARCHE COLLER DANS MON PROFILE -> A TESTER CA MARCHE PAS TUTUTU
                 -->
                 <div class="form-group">
                     <label>Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ?</label>
-                    <input type="radio" name="abonneNew" value="true" checked>Oui
-                    <input type="radio" name="abonneNew" value="false">Non
+                    <input type="radio" name="abonneNews" value="true" checked
+                        [(ngModel)]="credentials.abonneNews"> Oui
+                    <input type="radio" name="abonneNews" value="false"
+                        [(ngModel)]="credentials.abonneNews"> Non
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Créer mon compte</button>
             </form>

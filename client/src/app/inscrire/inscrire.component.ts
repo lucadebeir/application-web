@@ -15,7 +15,7 @@ export class InscrireComponent implements OnInit {
     mdp: '',
     mdp2: '',
     admin: false,
-    abonneNews: false
+    abonneNews: false //comment faire pour pas mettre de valeur ici?
   }
 
   constructor(private auth: AuthentificationService, private router: Router) { }

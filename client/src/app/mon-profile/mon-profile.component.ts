@@ -11,8 +11,7 @@ export class MonProfileComponent implements OnInit {
   credentials: UserProfile = {
     pseudo: '',
     email: '',
-    //abonneNews: '', rajouter après
-   
+    abonneNews: true, //changer pour que ce soit la valeur du formulaire
     
   }
 
@@ -24,7 +23,7 @@ export class MonProfileComponent implements OnInit {
         this.credentials = user
       },
       err => {
-        console.log(err)
+        console.error(err)
       }
     )
   }

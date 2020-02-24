@@ -8,11 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./update-password.component.css']
 })
 export class UpdatePasswordComponent implements OnInit {
+
   credentials: UserMdp = {
+    pseudo: this.auth.getUserDetails().pseudo,
     mdp: '',
     newmdp: '',
     mdp2: '',
-    
   }
   constructor(private auth: AuthentificationService, private router: Router) { }
 
@@ -20,13 +21,11 @@ export class UpdatePasswordComponent implements OnInit {
   }
 
   updatePassword(){
-      this.auth.updatePassword(this.credentials).subscribe(
-        () => {
-          this.router.navigateByUrl('/profile')
-        },
-        err => {
-          console.error(err)
+      this.auth.updatePassword(this.credentials).subscribe((res: any) => {
+          this.router.navigateByUrl('/profile');
+        }, (err: any) => {
+          console.log(err);
         }
-      )
+      );
   }
 }

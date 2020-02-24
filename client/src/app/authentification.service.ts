@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {Observable, of} from 'rxjs'
-import { map } from 'rxjs/operators'
+import { map, tap, catchError } from 'rxjs/operators'
 import { Router } from '@angular/router'
 
 //login
@@ -31,6 +31,7 @@ export interface TokenPayload {
 
 //changement mdp
 export interface UserMdp{
+    pseudo: string
     mdp: string
     newmdp: string
     mdp2: string
@@ -40,7 +41,7 @@ export interface UserMdp{
 export interface UserProfile{
     pseudo: string
     email: string
-    //abonneNews: boolean
+    abonneNews: boolean
 }
 
 @Injectable()
@@ -126,18 +127,24 @@ export class AuthentificationService {
         this.router.navigateByUrl('/')
     }
 
-    public updatePassword(user: UserMdp) : Observable<any> {
-        const base = this.http.post('/users/update-password', user) //c'est pas update-password marine....
+    private handleError<T>(operation = 'operation', result?: T) {
+        return (error: any): Observable<T> => {
+    
+          // TODO: send the error to remote logging infrastructure
+          console.error(error); // log to console instead
+    
+          // Let the app keep running by returning an empty result.
+          return of(result as T);
+        };
+      }
 
-        const request = base.pipe(
-            map((data: UserMdp) => {
-                if (data.newmdp) {
-                    this.saveToken(data.newmdp)
-                }
-                return data
-            })
-        )
-        return request
+    public updatePassword(user: UserMdp) : Observable<any> {
+        const base = this.http.put(`/users/update-password/${user.pseudo}`, user)
+
+        return base.pipe(
+            tap(_ => console.log(`updated ${user.pseudo}`)),
+            catchError(this.handleError<any>('updateCases'))
+          );
     }
 
     updateProfile(user: UserProfile) : Observable<any> {

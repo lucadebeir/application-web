@@ -98,46 +98,46 @@ users.get('/profile', (req, res) => {
 })
 
 //changement mdp (put pour modifier) MARCHE PAS !!!!!!!!!!!!!!!!!!!!
-users.put('/update-password', (req, res) => { 
-    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+users.put('/update-password/:pseudo', (req, res) => { 
+
+    //var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
     
-     const userData = {
-       
+    const userData = {
+        pseudo: req.params.pseudo,
         mdp: req.body.mdp,
         newmdp: req.body.newmdp,
         mdp2: req.body.mdp2, 
-        
-
     }
+
     User.findOne({
         where: {
-            pseudo: req.body.pseudo
+            pseudo: req.params.pseudo
         }
     })
     .then(user => {
-        if(bcrypt.compareSync(req.body.mdp, user.mdp)) {
-           
-            if(req.body.newmdp === req.body.mdp2){
-                req.body.mdp = req.body.newmdp
-                const hash = bcrypt.hashSync(userData.mdp, 10)
-                userData.mdp = hash
-                User.save(userData)
-                .then(user => {
-                    let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                        expiresIn: 1440
-                    })
-                    res.json({ token: token})
-                })
-                .catch(err => {
-                    res.send('error: ' + err)
-                })
-            }else{
-                res.send("Les deux mots de passe ne sont pas identiques.")
-            }
-            
+        if (!req.body.newmdp || !req.body.mdp || !req.body.mdp2) {
+            res.status(400)
+            res.send('Champ(s) manquant(s)')
         } else {
-            res.send("Mot de passe incorrect!")
+            if(bcrypt.compareSync(req.body.mdp, user.mdp)) {
+                if(req.body.newmdp === req.body.mdp2){
+                    const hash = bcrypt.hashSync(userData.newmdp, 10)
+                    User.update(
+                        { mdp: hash },
+                        { where: { pseudo: req.params.pseudo } }
+                    )
+                    .then(() => {
+                        res.send('Profil Updated!')
+                    })
+                    .error(err => handleError(err))
+                }else{
+                    res.send("Les deux mots de passe ne sont pas identiques.")
+                }
+            
+            } else {
+                res.send("Mot de passe incorrect!")
+            }
         }
     })
     .catch(err => {
@@ -151,14 +151,14 @@ users.put('/mon-profile', (req, res) => {
 
     const userData = {
         email: req.body.email,
-       // abonneNews: req.body.abonneNews,
+        abonneNews: req.body.abonneNews,
     }
     User.findOne({
         where: {
             pseudo: req.body.pseudo
         }
     })
-    User.save(userData)
+    User.update(userData)
     .then(user => {
         let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                expiresIn: 1440
@@ -169,5 +169,26 @@ users.put('/mon-profile', (req, res) => {
         res.send('error: ' + err)
     })
 })
+
+// Update Task
+users.put('/update-password2/:pseudo', (req, res, next) => {
+    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+    if (!req.query.newmdp || !req.query.mdp || !req.query.mdp2) {
+      res.status(400)
+      res.json({
+        error: 'Bad Data'
+      })
+    } else {
+      User.update(
+        { mdp: req.query.newmdp },
+        { where: { pseudo: req.params.pseudo } }
+      )
+        .then(() => {
+          res.send('Profil Updated!')
+        })
+        .error(err => handleError(err))
+    }
+  })
 
 module.exports = users
