@@ -16,7 +16,7 @@ import { GererLesRecettesComponent } from './gerer-les-recettes/gerer-les-recett
 import { MaListeDeCoursesComponent } from './ma-liste-de-courses/ma-liste-de-courses.component';
 import { MesCommentairesComponent } from './mes-commentaires/mes-commentaires.component';
 import { MesRecettesComponent } from './mes-recettes/mes-recettes.component';
-import { MonProfilComponent } from './mon-profil/mon-profil.component';
+import { MonProfileComponent } from './mon-profile/mon-profile.component';
 import { RecettesComponent } from './recettes/recettes.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 
@@ -24,15 +24,16 @@ const routes: Routes = [
   {path: '', component: AccueilComponent},
   {path: 'login', component: SeConnecterComponent},
   {path: 'register', component: InscrireComponent},
-  {path: 'profile', component: MonProfilComponent, canActivate: [AuthGuardService]},
+  {path: 'profile', component: MonProfileComponent, canActivate: [AuthGuardService]},
   {path: 'update-password', component: UpdatePasswordComponent, canActivate: [AuthGuardService]},
+  
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
-    MonProfilComponent,
+    MonProfileComponent,
     InscrireComponent,
     SeConnecterComponent,
     ContactComponent,

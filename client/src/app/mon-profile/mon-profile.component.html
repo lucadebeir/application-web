@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="jumbotron mt-5">
+        <div class="col-sm-10 mx-auto">
+            <form (submit)="updateProfile()">
+            <h1 class="text-center">Mes informations personnelles</h1>
+
+            <table class="table col-md-8 mx-auto">
+                <tr>
+                    <td>Pseudo</td>
+                    <td>{{credentials?.pseudo}}</td>
+                </tr>
+        
+                <tr>
+                    <td><label>Email </label></td>
+                    <td><input type="email" class="form-control" name="email" value= {{credentials?.email}}
+                        [(ngModel)]="credentials.email"></td>
+                </tr>
+                <tr>
+                    <td>Mot de passe</td>
+                    <td><button class="btn btn-lg btn-primary btn-block" routerLink='/update-password'>Modifier</button></td> <!--mettre le lien de redirection vers la page changement de mdp-->
+                </tr>
+            </table>
+            <button class="btn btn-lg btn-primary btn-block col-sm-8 mx-auto" type="submit">Enregistrer les modifications</button>
+            </form>
+        </div>
+    </div>
+</div>

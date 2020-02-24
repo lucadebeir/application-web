@@ -13,6 +13,7 @@ export class InscrireComponent implements OnInit {
     pseudo: '',
     email: '',
     mdp: '',
+    mdp2: '',
     admin: false,
     abonneNews: false
   }

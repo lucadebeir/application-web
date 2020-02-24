@@ -24,6 +24,7 @@ export interface TokenPayload {
     pseudo: string
     email: string
     mdp: string
+    mdp2: string
     admin: boolean
     abonneNews: boolean
 }
@@ -33,6 +34,13 @@ export interface UserMdp{
     mdp: string
     newmdp: string
     mdp2: string
+}
+
+//modif profile
+export interface UserProfile{
+    pseudo: string
+    email: string
+    //abonneNews: boolean
 }
 
 @Injectable()
@@ -118,16 +126,32 @@ export class AuthentificationService {
         this.router.navigateByUrl('/')
     }
 
-    updatePassword(user: UserMdp) : Observable<any> {
-        const base = this.http.post('/users/update-password', user)
+    public updatePassword(user: UserMdp) : Observable<any> {
+        const base = this.http.post('/users/update-password', user) //c'est pas update-password marine....
 
         const request = base.pipe(
             map((data: UserMdp) => {
-                if (data.token) {
-                    this.saveToken(data.token)
+                if (data.newmdp) {
+                    this.saveToken(data.newmdp)
                 }
                 return data
             })
         )
+        return request
     }
+
+    updateProfile(user: UserProfile) : Observable<any> {
+        const base = this.http.post('/users/mon-profile', user)
+        
+        const request = base.pipe(
+            map((data: UserProfile) => {
+                if (data.email) {
+                    this.saveToken(data.email)
+                }
+                return data
+            })
+        )
+        return request
+    }
+   
 }

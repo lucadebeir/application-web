@@ -9,7 +9,7 @@ users.use(cors())
 
 process.env.SECRET_KEY = 'secret'
 
-//Inscription (post pour ajouter)    COMPARER LES DEUX MDP !!!!!!!!!!!!!!!!!!!!!!
+//Inscription (post pour ajouter)    
 users.post('/register', (req, res) => {
     const userData = {
         pseudo: req.body.pseudo,
@@ -97,10 +97,19 @@ users.get('/profile', (req, res) => {
         })
 })
 
-//changement mdp (put pour modifier)
+//changement mdp (put pour modifier) MARCHE PAS !!!!!!!!!!!!!!!!!!!!
 users.put('/update-password', (req, res) => { 
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
+    
+     const userData = {
+       
+        mdp: req.body.mdp,
+        newmdp: req.body.newmdp,
+        mdp2: req.body.mdp2, 
+        
+
+    }
     User.findOne({
         where: {
             pseudo: req.body.pseudo
@@ -108,7 +117,7 @@ users.put('/update-password', (req, res) => {
     })
     .then(user => {
         if(bcrypt.compareSync(req.body.mdp, user.mdp)) {
-            //comparer newmdp et mdp2 puis cripter newmdp et enregistrer de mdp
+           
             if(req.body.newmdp === req.body.mdp2){
                 req.body.mdp = req.body.newmdp
                 const hash = bcrypt.hashSync(userData.mdp, 10)
@@ -136,5 +145,29 @@ users.put('/update-password', (req, res) => {
     })
 })
 
+//modifier info profile MARCJHE PAS!!!!!!!!!!!!!!!!!!!!!!!!!!
+users.put('/mon-profile', (req, res) => { 
+    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+    const userData = {
+        email: req.body.email,
+       // abonneNews: req.body.abonneNews,
+    }
+    User.findOne({
+        where: {
+            pseudo: req.body.pseudo
+        }
+    })
+    User.save(userData)
+    .then(user => {
+        let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+               expiresIn: 1440
+           })
+          res.json({ token: token})
+    })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
+})
 
 module.exports = users

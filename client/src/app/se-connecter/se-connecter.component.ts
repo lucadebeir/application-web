@@ -13,6 +13,7 @@ export class SeConnecterComponent implements OnInit {
     pseudo: '',
     email: '',
     mdp: '',
+    mdp2: '',
     admin: false,
     abonneNews: false
   }

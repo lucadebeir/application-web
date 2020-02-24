@@ -25,9 +25,17 @@
                         [(ngModel)]="credentials.mdp2">
                 </div>
 
-                <!--METTRE Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ? oui/non -->
+                <!--METTRE Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ? oui/non 
+                    SI CA MARCHE COLLER DANS MON PROFILE -> A TESTER
+                -->
+                <div class="form-group">
+                    <label>Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ?</label>
+                    <input type="radio" name="abonneNew" value="true" checked>Oui
+                    <input type="radio" name="abonneNew" value="false">Non
+                </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Créer mon compte</button>
             </form>
         </div>
     </div>
 </div>
+
