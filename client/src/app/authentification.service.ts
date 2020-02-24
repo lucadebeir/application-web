@@ -4,6 +4,7 @@ import {Observable, of} from 'rxjs'
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
 
+//login
 export interface UserDetails {
     pseudo: string
     email: string
@@ -18,12 +19,20 @@ interface TokenResponse {
     token: string
 }
 
+//inscription
 export interface TokenPayload {
     pseudo: string
     email: string
     mdp: string
     admin: boolean
     abonneNews: boolean
+}
+
+//changement mdp
+export interface UserMdp{
+    mdp: string
+    newmdp: string
+    mdp2: string
 }
 
 @Injectable()
@@ -107,5 +116,18 @@ export class AuthentificationService {
         this.token = ''
         window.localStorage.removeItem('userToken')
         this.router.navigateByUrl('/')
+    }
+
+    updatePassword(user: UserMdp) : Observable<any> {
+        const base = this.http.post('/users/update-password', user)
+
+        const request = base.pipe(
+            map((data: UserMdp) => {
+                if (data.token) {
+                    this.saveToken(data.token)
+                }
+                return data
+            })
+        )
     }
 }

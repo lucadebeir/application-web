@@ -1,3 +1,4 @@
+//sequelize remplace les requêtes sql
 const Sequelize = require('sequelize')
 const db = require("../database/db.js")
 
