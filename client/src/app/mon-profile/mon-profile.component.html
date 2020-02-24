@@ -1,6 +1,8 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
 <div class="container">
     <div class="jumbotron mt-5">
-        <div class="col-sm-10 mx-auto">
+        <div class="col-sm-10 mx-auto" ng-controller="formCtrl" ng-app="myApp">
             <form (submit)="updateProfile()">
             <h1 class="text-center">Mes informations personnelles</h1>
 
@@ -17,20 +19,24 @@
                 </tr>
                 <tr>
                     <td>Mot de passe</td>
-                    <td><button class="btn btn-lg btn-primary btn-block" routerLink='/update-password'>Modifier</button></td> 
+                    <td><button class="btn btn-lg btn-warning btn-block" routerLink='/update-password'>Modifier</button></td> 
                 </tr>
                 <tr>
-                    <div class="form-group">
-                        <td><label>Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ?</label></td> 
-                        <td><input type="radio" name="abonneNews" value="true" checked
-                                [(ngModel)]="credentials.abonneNews">Oui</td>
-                            <td><input type="radio" name="abonneNews" value="false"
-                                [(ngModel)]="credentials.abonneNews">Non
-                        </td>
-                    </div>
+                        <div>
+                            <div class="form-group">
+                                <td><label>Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ?</label></td> 
+                                <td><input type="radio" name="abonneNews" value="true"
+                                        [(ngModel)]="credentials.abonneNews">Oui</td>
+                                <td><input type="radio" name="abonneNews" value="false" 
+                                        [(ngModel)]="credentials.abonneNews">Non</td>
+                            </div>
+                        </div>
+                    
                 </tr>
             </table>
             <button class="btn btn-lg btn-primary btn-block col-sm-8 mx-auto" type="submit">Enregistrer les modifications</button>
+            <button class="btn btn-lg btn-danger btn-block col-sm-8 mx-auto" (click)="deleteProfile(credentials?.pseudo)" 
+                type="submit">Supprimer mon compte</button>
             </form>
         </div>
     </div>

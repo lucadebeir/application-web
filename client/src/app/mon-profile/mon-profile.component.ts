@@ -11,8 +11,7 @@ export class MonProfileComponent implements OnInit {
   credentials: UserProfile = {
     pseudo: '',
     email: '',
-    abonneNews: true, //changer pour que ce soit la valeur du formulaire
-    
+    abonneNews: true
   }
 
   constructor(private auth: AuthentificationService, private router: Router) { }
@@ -37,5 +36,17 @@ export class MonProfileComponent implements OnInit {
         console.error(err)
       }
     )
-}
+  }
+
+  deleteProfile(pseudo: any) {
+    this.auth.logout();
+    this.auth.deleteProfile(pseudo)
+      .subscribe(res => {
+          this.router.navigate(['/']);
+        }, (err) => {
+          console.log(err);
+        }
+      );
+  }
+
 }

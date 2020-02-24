@@ -80,7 +80,7 @@ users.post('/login', (req, res) => {
 users.get('/profile', (req, res) => {
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
-    users.findOne({
+    User.findOne({
         where: {
             pseudo: decoded.pseudo
         }
@@ -143,6 +143,20 @@ users.put('/update-password/:pseudo', (req, res) => {
     .catch(err => {
         res.send('error: ' + err)
     })
+})
+
+users.delete('/delete-profile/:pseudo', (req, res) => {
+    User.destroy({
+      where: {
+        pseudo: req.params.pseudo
+      }
+    })
+      .then(() => {
+        res.send('User deleted!')
+      })
+      .catch(err => {
+        res.send('error: ' + err)
+      })
 })
 
 //modifier info profile MARCJHE PAS!!!!!!!!!!!!!!!!!!!!!!!!!!

@@ -147,6 +147,14 @@ export class AuthentificationService {
           );
     }
 
+    public deleteProfile(pseudo: string): Observable<any> {
+        const url = `/users/delete-profile/${pseudo}`;
+        return this.http.delete<any>(url).pipe(
+          tap(_ => console.log(`deleted ${pseudo}`)),
+          catchError(this.handleError<any>('deleteProfile'))
+        );
+      }
+
     updateProfile(user: UserProfile) : Observable<any> {
         const base = this.http.post('/users/mon-profile', user)
         
