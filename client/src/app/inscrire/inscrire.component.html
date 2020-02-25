@@ -1,24 +1,13 @@
-<!--
-<script type="text/javascript">
-    /*function validateEmail(email){
-    var emailReg = new RegExp(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i);
-    return emailReg.test(email);
-    }*/
-    function ValiderMail(formulaire) {
-      if (formulaire.mail.value.indexOf("@",0)<0) {alert("Adresse mail saisie invalide.\nLe formulaire ne sera pas validé.")}
-      else {
-         alert("formulaire validé.\nPour valider un formulaire : formulaire.submit()");
-         // Pour valider le formulaire en javascript :
-         // formulaire.submit()
-      }
-   }
-</script> -->
+
 
 <div class="container">
     <div class="row">
         <div class="col-md-6 mt-5 mx-auto">
             <form (submit)="register()">
                 <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
+                <div *ngIf="credentials.error" class="alert alert-danger" role="alert">
+                    <label>{{credentials.error}}</label>
+                </div>
                 <div class="form-group">
                     <label>Pseudo *</label>
                     <input type="text" #pseudo="ngModel" class="form-control" name="pseudo" placeholder="pseudo"

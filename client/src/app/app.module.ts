@@ -19,6 +19,7 @@ import { MesRecettesComponent } from './mes-recettes/mes-recettes.component';
 import { MonProfileComponent } from './mon-profile/mon-profile.component';
 import { RecettesComponent } from './recettes/recettes.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
+import { AProposComponent } from './apropos/apropos.component';
 
 const routes: Routes = [
   {path: '', component: AccueilComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path: 'register', component: InscrireComponent},
   {path: 'profile', component: MonProfileComponent, canActivate: [AuthGuardService]},
   {path: 'update-password', component: UpdatePasswordComponent, canActivate: [AuthGuardService]},
-  
+  {path: 'aboutMe', component: AProposComponent}
 ]
 
 @NgModule({

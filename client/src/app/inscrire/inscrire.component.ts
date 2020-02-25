@@ -15,21 +15,29 @@ export class InscrireComponent implements OnInit {
     mdp: '',
     mdp2: '',
     admin: false,
-    abonneNews: false 
+    abonneNews: false,
+    error: ''
   }
 
   constructor(private auth: AuthentificationService, private router: Router) { }
 
   ngOnInit() {
-
   }
 
   register() {
     
     this.auth.register(this.credentials).subscribe(
-      () => {
-        console.log(this.auth.register(this.credentials).operator)
-        this.router.navigateByUrl('/profile')
+      (res) => {
+        if (res.error) {
+          this.credentials.pseudo = ''
+          this.credentials.email = ''
+          this.credentials.mdp = ''
+          this.credentials.mdp2 = ''
+          this.credentials.error = res.error
+          this.router.navigateByUrl('/register')
+        } else {
+          this.router.navigateByUrl('/profile')
+        }
       },
       err => {
         console.error(err)

@@ -15,7 +15,8 @@ export class SeConnecterComponent implements OnInit {
     mdp: '',
     mdp2: '',
     admin: false,
-    abonneNews: false
+    abonneNews: false,
+    error: ''
   }
 
   constructor(private auth: AuthentificationService, private router: Router) { }

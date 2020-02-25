@@ -10,9 +10,7 @@ users.use(cors())
 process.env.SECRET_KEY = 'secret'
 
 //Inscription (post pour ajouter)    
-users.post('/register', (req, res) => {
-
-
+users.post('/register', (req, res) => { //req = info user
 
     const userData = {
         pseudo: req.body.pseudo,
@@ -24,7 +22,7 @@ users.post('/register', (req, res) => {
 
     }
 
-    User.findOne({
+    User.findOne({ //un peu comme ma requete SQL
         where: {
             pseudo: req.body.pseudo
         }
@@ -34,7 +32,7 @@ users.post('/register', (req, res) => {
                 if(req.body.mdp === req.body.mdp2){
                     const hash = bcrypt.hashSync(userData.mdp, 10)
                     userData.mdp = hash
-                    User.create(userData)
+                    User.create(userData) //equivalent de INSERT INTO en sql
                     .then(user => {
                         let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                             expiresIn: 1440
@@ -42,7 +40,7 @@ users.post('/register', (req, res) => {
                         res.json({ token: token})
                     })
                     .catch(err => {
-                        res.send('error: ' + err)
+                        res.json({error: err})
                     })
                 }else{
                     res.json({error: "Les mots de passe ne sont pas identiques."})
@@ -53,7 +51,7 @@ users.post('/register', (req, res) => {
             }
         })
         .catch(err => {
-            res.send('error: ' + err)
+            res.json({error:  err})
         })
 })
 

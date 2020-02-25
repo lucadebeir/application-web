@@ -28,6 +28,7 @@ export interface TokenPayload {
     mdp2: string
     admin: boolean
     abonneNews: boolean
+    error: string
 }
 
 //changement mdp
@@ -48,6 +49,7 @@ export interface UserProfile{
 @Injectable()
 export class AuthentificationService {
     private token: string
+    private error: string
 
     constructor(private http: HttpClient, private router: Router) {
 
@@ -97,7 +99,6 @@ export class AuthentificationService {
                 return data
             })
         )
-
         return request
     }
 
