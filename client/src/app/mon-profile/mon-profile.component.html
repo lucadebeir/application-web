@@ -11,12 +11,22 @@
                     <td>Pseudo</td>
                     <td>{{credentials?.pseudo}}</td>
                 </tr>
-        
-                <tr>
-                    <td><label>Email </label></td>
-                    <td><input type="email" class="form-control" name="email" value= {{credentials?.email}}
+    
+               
+                
+                <tr>  
+                    <td><label>Email </label>
+                        <div *ngIf="email.errors && (email.invalid || email.touched)">
+                        <small class="text-danger" *ngIf="email.errors.pattern">Entrez une adresse mail valide !</small>
+                    </div>
+                    </td>
+                    <td><input type="email" #email="ngModel" class="form-control" name="email" value= {{credentials?.email}}
+                        [class.is-invalid]="email.invalid && email.touched" required
+                        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
                         [(ngModel)]="credentials.email"></td>
+                       
                 </tr>
+            
                 <tr>
                     <td>Mot de passe</td>
                     <td><button class="btn btn-lg btn-warning btn-block" routerLink='/update-password'>Modifier</button></td> 
@@ -34,7 +44,9 @@
                     
                 </tr>
             </table>
-            <button class="btn btn-lg btn-primary btn-block col-sm-8 mx-auto" type="submit">Enregistrer les modifications</button>
+            <button class="btn btn-lg btn-primary btn-block col-sm-8 mx-auto" *ngIf="!email.errors" type="submit">Enregistrer les modifications</button>
+            <button class="btn btn-lg btn-primary btn-block col-sm-8 mx-auto"  *ngIf="email.errors" type="submit" disabled>Enregistrer les modifications</button>
+            
             <button class="btn btn-lg btn-danger btn-block col-sm-8 mx-auto" (click)="deleteProfile(credentials?.pseudo)" 
                 type="submit">Supprimer mon compte</button>
             </form>
