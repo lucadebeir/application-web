@@ -1,33 +1,51 @@
+<!--
+<script type="text/javascript">
+    /*function validateEmail(email){
+    var emailReg = new RegExp(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i);
+    return emailReg.test(email);
+    }*/
+    function ValiderMail(formulaire) {
+      if (formulaire.mail.value.indexOf("@",0)<0) {alert("Adresse mail saisie invalide.\nLe formulaire ne sera pas validé.")}
+      else {
+         alert("formulaire validé.\nPour valider un formulaire : formulaire.submit()");
+         // Pour valider le formulaire en javascript :
+         // formulaire.submit()
+      }
+   }
+</script> -->
+
 <div class="container">
     <div class="row">
         <div class="col-md-6 mt-5 mx-auto">
             <form (submit)="register()">
                 <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
                 <div class="form-group">
-                    <label>Pseudo</label>
-                    <input type="text" class="form-control" name="pseudo" placeholder="pseudo"
-                        [(ngModel)]="credentials.pseudo">
+                    <label>Pseudo *</label>
+                    <input type="text" #pseudo="ngModel" class="form-control" name="pseudo" placeholder="pseudo"
+                        required [(ngModel)]="credentials.pseudo" >
+                </div>
+                <div *ngIf="email.errors && (email.invalid || email.touched)">
+                    <small class="text-danger" *ngIf="email.errors.pattern">Please provide a valid email address</small>
                 </div>
                 <div class="form-group">
-                    <label>Email </label>
-                    <input type="email" class="form-control" name="email" placeholder="nom.prenom@exemple.com"
-                        [(ngModel)]="credentials.email">
+                    <label>Email *</label>
+                    <input type="email" #email="ngModel" class="form-control" name="email" 
+                        placeholder="nom.prenom@exemple.com" [class.is-invalid]="email.invalid && email.touched" required
+                        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="credentials.email">
                 </div>
                 <div class="form-group">
-                    <label>Mot de passe</label>
-                    <input type="password" class="form-control" name="mdp" placeholder="****"
-                        [(ngModel)]="credentials.mdp">
+                    <label>Mot de passe *</label>
+                    <input type="password" #mdp="ngModel" class="form-control" name="mdp" placeholder="****"
+                        [(ngModel)]="credentials.mdp" required>
                 </div>
                 
                 <div class="form-group">
-                    <label>Confirmer le mot de passe</label>
-                    <input type="password" class="form-control" name="mdp2" placeholder="****"
-                        [(ngModel)]="credentials.mdp2">
+                    <label>Confirmer le mot de passe *</label>
+                    <input type="password" #mdp2="ngModel" class="form-control" name="mdp2" placeholder="****"
+                        [(ngModel)]="credentials.mdp2" required>
                 </div>
 
-                <!--METTRE Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ? oui/non 
-                    SI CA MARCHE COLLER DANS MON PROFILE -> A TESTER CA MARCHE PAS TUTUTU
-                -->
+            
                 <div class="form-group">
                     <label>Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ?</label>
                     <input type="radio" name="abonneNews" value="true" checked
@@ -35,9 +53,14 @@
                     <input type="radio" name="abonneNews" value="false"
                         [(ngModel)]="credentials.abonneNews"> Non
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Créer mon compte</button>
+                <button class="btn btn-lg btn-primary btn-block" *ngIf="!email.errors && !pseudo.errors && !mdp.errors && !mdp2.errors" type="submit">Créer mon compte</button>
+                <button class="btn btn-lg btn-primary btn-block" *ngIf="email.errors || pseudo.errors || mdp.errors || mdp2.errors" type="submit" disabled>Créer mon compte</button>
+                <br>
+                <p>* Champs obligatoires.</p>
+               
             </form>
         </div>
     </div>
 </div>
+
 

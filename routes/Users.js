@@ -11,6 +11,9 @@ process.env.SECRET_KEY = 'secret'
 
 //Inscription (post pour ajouter)    
 users.post('/register', (req, res) => {
+
+
+
     const userData = {
         pseudo: req.body.pseudo,
         email: req.body.email,
@@ -42,7 +45,7 @@ users.post('/register', (req, res) => {
                         res.send('error: ' + err)
                     })
                 }else{
-                    res.json("Les mots de passe ne sont pas identiques.")
+                    res.json({error: "Les mots de passe ne sont pas identiques."})
                 }
                 
             } else {
@@ -97,7 +100,7 @@ users.get('/profile', (req, res) => {
         })
 })
 
-//changement mdp (put pour modifier) MARCHE PAS !!!!!!!!!!!!!!!!!!!!
+//changement mdp (put pour modifier)
 users.put('/update-password/:pseudo', (req, res) => { 
 
     //var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
@@ -145,6 +148,38 @@ users.put('/update-password/:pseudo', (req, res) => {
     })
 })
 
+
+//modifier info profile MARCJHE PAS!!!!!!!!!!!!!!!!!!!!!!!!!!
+users.put('/mon-profile/:pseudo', (req, res) => { 
+   // var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+
+    const userData = {
+        pseudo: req.params.pseudo,
+        email: req.body.email,
+        abonneNews: req.body.abonneNews,
+    }
+
+    User.findOne({
+        where: {
+            pseudo: req.params.pseudo
+        }
+    })
+  
+        User.update(
+            { email: req.body.email, 
+            abonneNews: req.body.abonneNews,
+            },
+            { where: { pseudo: req.params.pseudo } }
+            )
+            .then(() => {
+                res.send('Profil Updated!')
+            })
+            .error(err => handleError(err))
+})
+
+
+    
+//supprimer compte
 users.delete('/delete-profile/:pseudo', (req, res) => {
     User.destroy({
       where: {
@@ -158,51 +193,4 @@ users.delete('/delete-profile/:pseudo', (req, res) => {
         res.send('error: ' + err)
       })
 })
-
-//modifier info profile MARCJHE PAS!!!!!!!!!!!!!!!!!!!!!!!!!!
-users.put('/mon-profile', (req, res) => { 
-    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
-
-    const userData = {
-        email: req.body.email,
-        abonneNews: req.body.abonneNews,
-    }
-    User.findOne({
-        where: {
-            pseudo: req.body.pseudo
-        }
-    })
-    User.update(userData)
-    .then(user => {
-        let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-               expiresIn: 1440
-           })
-          res.json({ token: token})
-    })
-    .catch(err => {
-        res.send('error: ' + err)
-    })
-})
-
-// Update Task
-users.put('/update-password2/:pseudo', (req, res, next) => {
-    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
-
-    if (!req.query.newmdp || !req.query.mdp || !req.query.mdp2) {
-      res.status(400)
-      res.json({
-        error: 'Bad Data'
-      })
-    } else {
-      User.update(
-        { mdp: req.query.newmdp },
-        { where: { pseudo: req.params.pseudo } }
-      )
-        .then(() => {
-          res.send('Profil Updated!')
-        })
-        .error(err => handleError(err))
-    }
-  })
-
 module.exports = users

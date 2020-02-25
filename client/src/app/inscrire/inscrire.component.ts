@@ -15,17 +15,20 @@ export class InscrireComponent implements OnInit {
     mdp: '',
     mdp2: '',
     admin: false,
-    abonneNews: false //comment faire pour pas mettre de valeur ici?
+    abonneNews: false 
   }
 
   constructor(private auth: AuthentificationService, private router: Router) { }
 
   ngOnInit() {
+
   }
 
   register() {
+    
     this.auth.register(this.credentials).subscribe(
       () => {
+        console.log(this.auth.register(this.credentials).operator)
         this.router.navigateByUrl('/profile')
       },
       err => {

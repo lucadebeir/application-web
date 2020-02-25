@@ -28,15 +28,14 @@ export class MonProfileComponent implements OnInit {
   }
 
   updateProfile(){
-    this.auth.updateProfile(this.credentials).subscribe(
-      () => {
+    this.auth.updateProfile(this.credentials).subscribe((res: any) => {
         this.router.navigateByUrl('/profile')
-      },
-      err => {
+      },(err: any) => {
         console.error(err)
       }
-    )
+    );
   }
+
 
   deleteProfile(pseudo: any) {
     this.auth.logout();

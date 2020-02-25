@@ -17,6 +17,7 @@ export interface UserDetails {
 
 interface TokenResponse {
     token: string
+    error: string
 }
 
 //inscription
@@ -143,7 +144,7 @@ export class AuthentificationService {
 
         return base.pipe(
             tap(_ => console.log(`updated ${user.pseudo}`)),
-            catchError(this.handleError<any>('updateCases'))
+            catchError(this.handleError<any>('updateMdp'))
           );
     }
 
@@ -155,18 +156,13 @@ export class AuthentificationService {
         );
       }
 
-    updateProfile(user: UserProfile) : Observable<any> {
-        const base = this.http.post('/users/mon-profile', user)
+    public updateProfile(user: UserProfile) : Observable<any> {
+        const base = this.http.put(`/users/mon-profile/${user.pseudo}`, user)
         
-        const request = base.pipe(
-            map((data: UserProfile) => {
-                if (data.email) {
-                    this.saveToken(data.email)
-                }
-                return data
-            })
-        )
-        return request
+        return base.pipe(
+            tap(_ => console.log(`updated ${user.pseudo}`)),
+            catchError(this.handleError<any>('updateProfile'))
+          );
     }
    
 }
