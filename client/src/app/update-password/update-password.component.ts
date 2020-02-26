@@ -14,6 +14,7 @@ export class UpdatePasswordComponent implements OnInit {
     mdp: '',
     newmdp: '',
     mdp2: '',
+    error: ''
   }
   constructor(private auth: AuthentificationService, private router: Router) { }
 
@@ -22,8 +23,15 @@ export class UpdatePasswordComponent implements OnInit {
 
   updatePassword(){
       this.auth.updatePassword(this.credentials).subscribe((res: any) => {
+        if (res.error) {
+          this.credentials.pseudo = ''
+          this.credentials.mdp = ''
+          this.credentials.mdp2 = ''
+          this.credentials.error = res.error
+          this.router.navigateByUrl('/update-password')
+        } else {
           this.router.navigateByUrl('/profile');
-        }, (err: any) => {
+        }}, (err: any) => {
           console.log(err);
         }
       );

@@ -101,7 +101,6 @@ users.get('/profile', (req, res) => {
 //changement mdp (put pour modifier)
 users.put('/update-password/:pseudo', (req, res) => { 
 
-    //var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
     
     const userData = {
@@ -119,7 +118,7 @@ users.put('/update-password/:pseudo', (req, res) => {
     .then(user => {
         if (!req.body.newmdp || !req.body.mdp || !req.body.mdp2) {
             res.status(400)
-            res.send('Champ(s) manquant(s)')
+            res.json({error:'Champ(s) manquant(s)'})
         } else {
             if(bcrypt.compareSync(req.body.mdp, user.mdp)) {
                 if(req.body.newmdp === req.body.mdp2){
@@ -133,11 +132,12 @@ users.put('/update-password/:pseudo', (req, res) => {
                     })
                     .error(err => handleError(err))
                 }else{
-                    res.send("Les deux mots de passe ne sont pas identiques.")
+                    res.json({error: "Les deux mots de passe ne sont pas identiques."}) /*json permet de renvoyer uniquement ce qu'il y a entre {}
+                    alors que si on met send on recuperera toute la requete http*/
                 }
             
             } else {
-                res.send("Mot de passe incorrect!")
+                res.json({error: "Mot de passe incorrect!"})
             }
         }
     })
@@ -149,7 +149,7 @@ users.put('/update-password/:pseudo', (req, res) => {
 
 //modifier info profile MARCJHE PAS!!!!!!!!!!!!!!!!!!!!!!!!!!
 users.put('/mon-profile/:pseudo', (req, res) => { 
-   // var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+  
 
     const userData = {
         pseudo: req.params.pseudo,

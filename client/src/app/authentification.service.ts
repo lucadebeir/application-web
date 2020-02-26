@@ -20,6 +20,10 @@ interface TokenResponse {
     error: string
 }
 
+interface Response {
+    error: string
+}
+
 //inscription
 export interface TokenPayload {
     pseudo: string
@@ -37,6 +41,7 @@ export interface UserMdp{
     mdp: string
     newmdp: string
     mdp2: string
+    error: string
 }
 
 //modif profile
@@ -144,8 +149,9 @@ export class AuthentificationService {
         const base = this.http.put(`/users/update-password/${user.pseudo}`, user)
 
         return base.pipe(
-            tap(_ => console.log(`updated ${user.pseudo}`)),
-            catchError(this.handleError<any>('updateMdp'))
+            map((data: Response) => {
+                return data
+            })
           );
     }
 
