@@ -88,6 +88,7 @@ export class AuthentificationService {
 
     public isLoggedIn(): boolean {
         const user = this.getUserDetails()
+        console.log(user)
         if (user) {
             return user.exp > Date.now() / 1000
         } else {
@@ -110,8 +111,10 @@ export class AuthentificationService {
     }
 
     public login(user: TokenPayload) : Observable<any> {
+        console.log("cc")
+        console.log(user)
         const base = this.http.post('/users/login', user)
-
+        console.log(base)
         const request = base.pipe(
             map((data: TokenResponse) => {
                 if (data.token) {

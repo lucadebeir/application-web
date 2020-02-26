@@ -25,6 +25,7 @@ export class SeConnecterComponent implements OnInit {
   }
 
   login() {
+    console.log(this.credentials)
     this.auth.login(this.credentials).subscribe(
       () => {
         this.router.navigateByUrl('/profile')

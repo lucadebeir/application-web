@@ -29,6 +29,7 @@ export class UpdatePasswordComponent implements OnInit {
           this.credentials.pseudo = ''
           this.credentials.mdp = ''
           this.credentials.mdp2 = ''
+          this.credentials.newmdp = ''
           this.credentials.error = res.error
           this.router.navigateByUrl('/update-password')
         } else {

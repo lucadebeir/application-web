@@ -13,23 +13,23 @@ process.env.SECRET_KEY = 'secret'
 users.post('/register', (req, res) => { //req = info user
 
     const userData = {
-        pseudo: req.body.pseudo,
-        email: req.body.email,
-        mdp: req.body.mdp,
-        mdp2: req.body.mdp2, 
-        admin: req.body.admin,
-        abonneNews: req.body.abonneNews,
+        pseudo: req.sanitize(req.body.pseudo),
+        email: req.sanitize(req.body.email),
+        mdp: req.sanitize(req.body.mdp),
+        mdp2: req.sanitize(req.body.mdp2), 
+        admin: req.sanitize(req.body.admin),
+        abonneNews: req.sanitize(req.body.abonneNews),
 
     }
 
     User.findOne({ //un peu comme ma requete SQL
         where: {
-            pseudo: req.body.pseudo
+            pseudo: req.sanitize(req.body.pseudo)
         }
     })
         .then(user => {
             if(!user) {
-                if(req.body.mdp === req.body.mdp2){
+                if(req.sanitize(req.body.mdp )=== req.sanitize(req.body.mdp2)){
                     const hash = bcrypt.hashSync(userData.mdp, 10)
                     userData.mdp = hash
                     User.create(userData) //equivalent de INSERT INTO en sql
@@ -57,13 +57,17 @@ users.post('/register', (req, res) => { //req = info user
 
 //Connexion
 users.post('/login', (req, res) => {
+    console.log(req.body.pseudo)
+    console.log(req.sanitize(req.body.pseudo))
     User.findOne({
         where: {
-            pseudo: req.body.pseudo
+            pseudo: req.sanitize(req.body.pseudo)
         }
     })
         .then(user => {
-            if(bcrypt.compareSync(req.body.mdp, user.mdp)) {
+            console.log(req.sanitize(req.body.mdp))
+            console.log(user.mdp)
+            if(bcrypt.compareSync(req.sanitize(req.body.mdp), user.mdp)) {
                 let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                     expiresIn: 1440
                 })
@@ -79,7 +83,7 @@ users.post('/login', (req, res) => {
 
 //Profile (get pour recuperer)
 users.get('/profile', (req, res) => {
-    var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+    var decoded = jwt.verify(req.sanitize(req.headers['authorization']), process.env.SECRET_KEY)
 
     User.findOne({
         where: {
@@ -104,28 +108,28 @@ users.put('/update-password/:pseudo', (req, res) => {
 
     
     const userData = {
-        pseudo: req.params.pseudo,
-        mdp: req.body.mdp,
-        newmdp: req.body.newmdp,
-        mdp2: req.body.mdp2, 
+        pseudo: req.sanitize(req.params.pseudo),
+        mdp: req.sanitize(req.body.mdp),
+        newmdp: req.sanitize(req.body.newmdp),
+        mdp2: req.sanitize(req.body.mdp2),
     }
 
     User.findOne({
         where: {
-            pseudo: req.params.pseudo
+            pseudo: req.sanitize(req.params.pseudo)
         }
     })
     .then(user => {
-        if (!req.body.newmdp || !req.body.mdp || !req.body.mdp2) {
+        if (!req.sanitize(req.body.newmdp) || !req.sanitize(req.body.mdp) || !req.sanitize(req.body.mdp2)) {
             res.status(400)
             res.json({error:'Champ(s) manquant(s)'})
         } else {
-            if(bcrypt.compareSync(req.body.mdp, user.mdp)) {
-                if(req.body.newmdp === req.body.mdp2){
+            if(bcrypt.compareSync(req.sanitize(req.body.mdp), user.mdp)) {
+                if(req.sanitize(req.body.newmdp) === req.sanitize(req.body.mdp2)){
                     const hash = bcrypt.hashSync(userData.newmdp, 10)
                     User.update(
                         { mdp: hash },
-                        { where: { pseudo: req.params.pseudo } }
+                        { where: { pseudo: req.sanitize(req.params.pseudo) } }
                     )
                     .then(() => {
                         res.json({success : 'Mot de passe modifié !'})
@@ -144,30 +148,30 @@ users.put('/update-password/:pseudo', (req, res) => {
     .catch(err => {
         res.send('error: ' + err)
     })
-})
+}) 
 
 
-//modifier info profile MARCJHE PAS!!!!!!!!!!!!!!!!!!!!!!!!!!
+//modifier info profile 
 users.put('/mon-profile/:pseudo', (req, res) => { 
   
 
     const userData = {
-        pseudo: req.params.pseudo,
-        email: req.body.email,
-        abonneNews: req.body.abonneNews,
+        pseudo: req.sanitize(req.params.pseudo),
+        email: req.sanitize(req.body.email),
+        abonneNews: req.sanitize(req.body.abonneNews),
     }
 
     User.findOne({
         where: {
-            pseudo: req.params.pseudo
+            pseudo: req.sanitize(req.params.pseudo)
         }
     })
   
         User.update(
-            { email: req.body.email, 
-            abonneNews: req.body.abonneNews,
+            { email: req.sanitize(req.body.email), 
+            abonneNews: req.sanitize(req.body.abonneNews),
             },
-            { where: { pseudo: req.params.pseudo } }
+            { where: { pseudo: req.sanitize(req.params.pseudo) } }
             )
             .then(() => {
                 res.json({success : 'Informations personnelles modifiées avec succès !'})
@@ -181,7 +185,7 @@ users.put('/mon-profile/:pseudo', (req, res) => {
 users.delete('/delete-profile/:pseudo', (req, res) => {
     User.destroy({
       where: {
-        pseudo: req.params.pseudo
+        pseudo: req.sanitize(req.params.pseudo)
       }
     })
       .then(() => {
