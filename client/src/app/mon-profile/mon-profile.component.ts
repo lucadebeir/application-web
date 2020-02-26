@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthentificationService, UserProfile } from '../authentification.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { __param } from 'tslib';
 @Component({
   selector: 'app-mon-profile',
   templateUrl: './mon-profile.component.html',
@@ -11,10 +12,11 @@ export class MonProfileComponent implements OnInit {
   credentials: UserProfile = {
     pseudo: '',
     email: '',
-    abonneNews: true
+    abonneNews: true,
+    success: ''
   }
 
-  constructor(private auth: AuthentificationService, private router: Router) { }
+  constructor(private auth: AuthentificationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.auth.profile().subscribe(
@@ -25,10 +27,17 @@ export class MonProfileComponent implements OnInit {
         console.error(err)
       }
     )
+    if(this.route.queryParams) {
+      this.route.queryParams
+      .subscribe(params => {
+        this.credentials.success = params.success;
+      })
+    }   
   }
 
   updateProfile(){
     this.auth.updateProfile(this.credentials).subscribe((res: any) => {
+      this.credentials.success = res.success
         this.router.navigateByUrl('/profile')
       },(err: any) => {
         console.error(err)

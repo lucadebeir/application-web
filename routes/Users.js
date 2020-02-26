@@ -128,7 +128,7 @@ users.put('/update-password/:pseudo', (req, res) => {
                         { where: { pseudo: req.params.pseudo } }
                     )
                     .then(() => {
-                        res.send('Profil Updated!')
+                        res.json({success : 'Mot de passe modifié !'})
                     })
                     .error(err => handleError(err))
                 }else{
@@ -170,7 +170,7 @@ users.put('/mon-profile/:pseudo', (req, res) => {
             { where: { pseudo: req.params.pseudo } }
             )
             .then(() => {
-                res.send('Profil Updated!')
+                res.json({success : 'Informations personnelles modifiées avec succès !'})
             })
             .error(err => handleError(err))
 })

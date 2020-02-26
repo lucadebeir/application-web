@@ -42,6 +42,7 @@ export interface UserMdp{
     newmdp: string
     mdp2: string
     error: string
+    success: string
 }
 
 //modif profile
@@ -49,6 +50,7 @@ export interface UserProfile{
     pseudo: string
     email: string
     abonneNews: boolean
+    success: string
 }
 
 @Injectable()

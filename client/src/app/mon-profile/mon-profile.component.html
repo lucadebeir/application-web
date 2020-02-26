@@ -1,10 +1,13 @@
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-<body>
+
 <div class="container">
     <div class="jumbotron mt-5">
         <div class="col-sm-10 mx-auto" ng-controller="formCtrl" ng-app="myApp">
             <form (submit)="updateProfile()">
             <h1 class="text-center">Mes informations personnelles</h1>
+
+            <div *ngIf="credentials.success" class="alert alert-success" role="alert">
+                <label>{{credentials.success}}</label>
+            </div>
 
             <table class="table col-md-8 mx-auto">
                 <tr>
@@ -32,13 +35,23 @@
                     <td><button class="btn btn-lg btn-warning btn-block" routerLink='/update-password'>Modifier</button></td> 
                 </tr>
                 <tr>
-                
-                        <td><label>Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ?</label></td> 
-                        <td><input type="radio" name="abonneNews" value="true"
-                        [(ngModel)]="credentials.abonneNews"> Oui
-                        <input type="radio" name="abonneNews" value="false" 
-                        [(ngModel)]="credentials.abonneNews"> Non</td>
-                 
+                    <td><label>Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ?</label></td> 
+                    <div *ngIf="credentials?.abonneNews">
+                        <td>
+                            <input type="radio" name="abonneNews" [value]="true"
+                                checked [(ngModel)]="credentials.abonneNews"> Oui
+                            <input type="radio" name="abonneNews" [value]="false" 
+                                [(ngModel)]="credentials.abonneNews"> Non
+                        </td>
+                    </div>
+                    <div *ngIf="!credentials?.abonneNews">
+                        <td>
+                            <input type="radio" name="abonneNews" [value]="true"
+                                [(ngModel)]="credentials.abonneNews"> Oui
+                            <input type="radio" name="abonneNews" [value]="false" 
+                                checked [(ngModel)]="credentials.abonneNews"> Non
+                        </td>
+                    </div>
                     
                     
                 </tr>
