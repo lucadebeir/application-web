@@ -24,7 +24,6 @@ export class UpdatePasswordComponent implements OnInit {
 
   updatePassword(){
       this.auth.updatePassword(this.credentials).subscribe((res: any) => {
-        console.log(res)
         if (res.error) {
           this.credentials.pseudo = ''
           this.credentials.mdp = ''

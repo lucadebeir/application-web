@@ -12,7 +12,7 @@ module.exports = db.sequelize.define(
         nomRecette : {
             type: Sequelize.STRING
         },
-        //finir à partir d'ici
+      
         datePublication : {
             type: Sequelize.DATE,
             defaultValue: Sequelize.NOW
@@ -23,7 +23,7 @@ module.exports = db.sequelize.define(
             defaultValue : 0 
         },
         nbVues : {
-            type: Sequelize.INT,
+            type: Sequelize.INTEGER,
             defaultValue : 0 
         },
         etapes : {

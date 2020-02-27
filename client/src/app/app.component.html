@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" 
   type="button"
   data-toggle="collapse"
@@ -37,9 +37,16 @@
         <a class="nav-link" routerLink="/register">S'inscrire</a>
       </li>
 
-      <li class="nav-item" *ngIf="auth.isLoggedIn()">
-        <a class="nav-link">{{auth.getUserDetails()?.pseudo}}</a>
-      </li>
+      <!--<li class="nav-item dropdown" *ngIf="auth.isLoggedIn()">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{auth.getUserDetails()?.pseudo}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>-->
 
       <!--changer les redirections -->
       <li class="nav-item" *ngIf="auth.isLoggedIn()">
@@ -54,8 +61,7 @@
         <a class="nav-link" routerLink="/register">Ma liste de course</a>
       </li>
 
-      <!--la suivante pour l'admin uniquement!!!!!-->
-      <li class="nav-item" *ngIf="auth.isLoggedIn()">
+      <li class="nav-item" *ngIf="auth.isAdmin()">
         <a class="nav-link" routerLink="/register">Gerer les recettes</a>
       </li>
 

@@ -22,7 +22,7 @@ export class InscrireComponent implements OnInit {
   constructor(private auth: AuthentificationService, private router: Router) { }
 
   ngOnInit() {
-  }
+  } 
 
   register() {
     

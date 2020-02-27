@@ -20,6 +20,7 @@ import { MonProfileComponent } from './mon-profile/mon-profile.component';
 import { RecettesComponent } from './recettes/recettes.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { AProposComponent } from './apropos/apropos.component';
+import { RecettesService } from './recettes.service';
 
 const routes: Routes = [
   {path: '', component: AccueilComponent},
@@ -52,7 +53,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthGuardService, AuthentificationService],
+  providers: [AuthGuardService, AuthentificationService, RecettesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
