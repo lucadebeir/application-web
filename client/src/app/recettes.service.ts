@@ -27,4 +27,11 @@ export class RecettesService {
             }))
     }
 
+    public getRecipeById(id: any) : Observable<RecipeDetails> {
+        const base = this.http.get('http://localhost:3000/recipe/' + id)
+        return base.pipe(map((data: RecipeDetails) => {
+            return data
+        }))
+    }
+
 }    

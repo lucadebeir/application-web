@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RecipeDetails, RecettesService } from '../recettes.service';
-import {HttpClient, HttpParams, HttpErrorResponse} from '@angular/common/http'
-import {Router} from '@angular/router'
+import {HttpErrorResponse} from '@angular/common/http'
  
 
 @Component({
@@ -14,19 +13,17 @@ export class RecettesComponent implements OnInit {
 
   public recettes: RecipeDetails[]
 
-  constructor(private recetteService: RecettesService, private http: HttpClient) { } 
+  constructor(private recetteService: RecettesService) { } 
 
   //dans ngOnInit on récupère les données à afficher au chargement de la page
   ngOnInit(): void {
     this.getAllRecipes()
-    console.log(this.recettes)
   }
 
   getAllRecipes() {
 
     this.recetteService.getAllRecipes().subscribe(
       (recettes: RecipeDetails[]) => {
-        console.log(recettes)
         this.recettes = recettes
     },err => {
       if(err instanceof HttpErrorResponse){

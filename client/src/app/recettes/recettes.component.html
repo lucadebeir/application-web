@@ -10,7 +10,7 @@
                         <span class="badge badge-light">{{recette.nbVues}} 👁</span>
                     </div>
                     <div class="card-footer text-center bg-white">
-                        <a class="btn btn-outline-secondary" href="#">Voir la recette</a> <!--rajouter le chemin -->
+                        <button class="btn btn-outline-secondary" [routerLink]="['/recipe', recette.idRecette]">Voir la recette</button> <!--rajouter le chemin -->
                     </div>
                 </div>
             </div>

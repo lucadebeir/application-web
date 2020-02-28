@@ -24,4 +24,22 @@ recipe.get('/allRecipes', (req, res) => {
         })
 })
 
+recipe.get('/recipe/:id', (req, res) => {
+    Recipe.findOne({
+        where: {
+            idRecette: req.params.id
+        }
+    })
+        .then(recipe => {
+            if(recipe) {
+                res.json(recipe)
+            } else {
+                res.send("Mauvais identifiant")
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 module.exports = recipe

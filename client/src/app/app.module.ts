@@ -21,6 +21,7 @@ import { RecettesComponent } from './recettes/recettes.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { AProposComponent } from './apropos/apropos.component';
 import { RecettesService } from './recettes.service';
+import { RecetteComponent } from './recette/recette.component';
 
 const routes: Routes = [
   {path: '', component: AccueilComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'profile', component: MonProfileComponent, canActivate: [AuthGuardService]},
   {path: 'update-password', component: UpdatePasswordComponent, canActivate: [AuthGuardService]},
   {path: 'aboutMe', component: AProposComponent},
-  {path: 'allRecipes', component: RecettesComponent}
+  {path: 'allRecipes', component: RecettesComponent},
+  {path: 'recipe/:id', component: RecetteComponent}
 ]
 
 @NgModule({
@@ -45,7 +47,8 @@ const routes: Routes = [
     MesCommentairesComponent,
     MesRecettesComponent,
     RecettesComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    RecetteComponent
   ],
   imports: [
     BrowserModule,
