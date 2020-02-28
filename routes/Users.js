@@ -57,23 +57,19 @@ users.post('/register', (req, res) => { //req = info user
 
 //Connexion
 users.post('/login', (req, res) => {
-    console.log(req.body.pseudo)
-    console.log(req.sanitize(req.body.pseudo))
     User.findOne({
         where: {
             pseudo: req.sanitize(req.body.pseudo)
         }
     })
         .then(user => {
-            console.log(req.sanitize(req.body.mdp))
-            console.log(user.mdp)
             if(bcrypt.compareSync(req.sanitize(req.body.mdp), user.mdp)) {
                 let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                     expiresIn: 1440
                 })
                 res.json({ token: token})
             } else {
-                res.send("L'utilisateur n'existe pas")
+                res.send("Mot de passe incorrecte")
             }
         })
         .catch(err => {

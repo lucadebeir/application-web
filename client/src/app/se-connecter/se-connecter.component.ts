@@ -15,7 +15,7 @@ export class SeConnecterComponent implements OnInit {
     mdp: '',
     mdp2: '',
     admin: false,
-    abonneNews: false,
+    abonneNews: true,
     error: ''
   }
 
@@ -25,7 +25,6 @@ export class SeConnecterComponent implements OnInit {
   }
 
   login() {
-    console.log(this.credentials)
     this.auth.login(this.credentials).subscribe(
       () => {
         this.router.navigateByUrl('/profile')

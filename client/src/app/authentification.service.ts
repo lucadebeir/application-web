@@ -121,14 +121,13 @@ export class AuthentificationService {
     public login(user: TokenPayload) : Observable<any> {
         const base = this.http.post('/users/login', user)
         const request = base.pipe(
-            map((data: TokenResponse) => {
+            map((data: TokenResponse) => { //map permet de récupérer des données
                 if (data.token) {
                     this.saveToken(data.token)
                 }
                 return data
             })
         )
-
         return request
     }
 

@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core'
 import {HttpClient, HttpParams} from '@angular/common/http'
 import {Observable, of} from 'rxjs'
-import { Router } from '@angular/router'
+import { map, tap, catchError } from 'rxjs/operators'
+ 
 
 
 export interface RecipeDetails {
@@ -18,8 +19,12 @@ export class RecettesService {
 
     constructor(private http: HttpClient){ }
 
-    public getAllRecipes(): Observable<any> {
-        return this.http.get<any>('/recipes/allRecipes')
+    public getAllRecipes(): Observable<RecipeDetails[]> {
+        const base = this.http.get(`/allRecipes`)
+        return base.pipe(map((data: RecipeDetails[]) => {
+                console.log(data)
+                return data
+            }))
     }
 
 }    

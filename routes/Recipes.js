@@ -1,22 +1,19 @@
 const express = require("express")
-const recipes = express.Router()
+const recipe = express.Router()
 const cors = require("cors")
 
 const Recipe = require("../models/Recipe")
-recipes.use(cors())
-
-process.env.SECRET_KEY = 'secret'
+recipe.use(cors())
 
 //Récupérer toutes les recettes
-recipes.get('/allRecipes', (req, res) => {
-   
-
-    User.findAll({
+recipe.get('/allRecipes', (req, res) => {
+    Recipe.findAll({
 
     })
-        .then(recipe => {
+        .then(recipes => {
             if(recipes){
-                res.json(recipe)
+                console.log(recipes)
+                res.json(recipes)
             }else{
                 res.send("Il n'y a pas de recettes")
             }
@@ -27,4 +24,4 @@ recipes.get('/allRecipes', (req, res) => {
         })
 })
 
-module.exports = recipes
+module.exports = recipe

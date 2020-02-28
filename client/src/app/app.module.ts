@@ -28,7 +28,8 @@ const routes: Routes = [
   {path: 'register', component: InscrireComponent},
   {path: 'profile', component: MonProfileComponent, canActivate: [AuthGuardService]},
   {path: 'update-password', component: UpdatePasswordComponent, canActivate: [AuthGuardService]},
-  {path: 'aboutMe', component: AProposComponent}
+  {path: 'aboutMe', component: AProposComponent},
+  {path: 'allRecipes', component: RecettesComponent}
 ]
 
 @NgModule({
