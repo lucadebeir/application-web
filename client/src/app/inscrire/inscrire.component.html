@@ -37,10 +37,11 @@
             
                 <div class="form-group">
                     <label>Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ?</label>
+                    <br>
                     <input type="radio" name="abonneNews" value="true" checked
-                        [(ngModel)]="credentials.abonneNews"> Oui
+                        [(ngModel)]="credentials.abonneNews">  Oui
                     <input type="radio" name="abonneNews" value="false"
-                        [(ngModel)]="credentials.abonneNews"> Non
+                        [(ngModel)]="credentials.abonneNews">  Non
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" *ngIf="!email.errors && !pseudo.errors && !mdp.errors && !mdp2.errors" type="submit">Créer mon compte</button>
                 <button class="btn btn-lg btn-primary btn-block" *ngIf="email.errors || pseudo.errors || mdp.errors || mdp2.errors" type="submit" disabled>Créer mon compte</button>

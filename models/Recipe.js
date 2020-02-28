@@ -19,7 +19,7 @@ module.exports = db.sequelize.define(
 
         },
         nbFavoris : {
-            type: Sequelize.BOOLEAN,
+            type: Sequelize.INTEGER,
             defaultValue : 0 
         },
         nbVues : {

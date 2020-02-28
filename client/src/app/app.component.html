@@ -1,8 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<script>
+$(document).on('click','.navbar-collapse.in',function(e) {
+    if( $(e.target).is('a:not(".dropdown-toggle")') ) {
+        $(this).collapse('hide');
+    }
+});
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light"  role="navigation">
   <button class="navbar-toggler" 
   type="button"
   data-toggle="collapse"
   data-target="#navbarNavDropdown"
+  data-target=".navbar-collapse"
   aria-controls="navbarNavDropdown"
   aria-expanded="false"
   aria-label="Toogle navigation">
@@ -14,40 +23,39 @@
     id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/">Accueil </a>
+        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/">Accueil </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/allRecipes">Recettes</a>
+        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/allRecipes">Recettes</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/aboutMe">A propos</a>
+        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/aboutMe">A propos</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" routerLink="/">Contact</a>
+        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/">Contact</a>
       </li>
 
       <li class="nav-item" *ngIf="!auth.isLoggedIn()">
-        <a class="nav-link" routerLink="/login">Se connecter</a>
+        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/login">Se connecter</a>
       </li>
 
       <li class="nav-item" *ngIf="!auth.isLoggedIn()">
-        <a class="nav-link" routerLink="/register">S'inscrire</a>
+        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/register">S'inscrire</a>
       </li>
 
       <li class="nav-item dropdown" *ngIf="auth.isLoggedIn()">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{auth.getUserDetails()?.pseudo}} 
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" routerLink="/profile">Mon profil</a>
-            <a class="dropdown-item" routerLink="/register">Mes recettes</a>
-            <a class="dropdown-item" routerLink="/register">Ma liste de course</a>
-            <a class="dropdown-item" routerLink="/register">Mes recettes</a>
-            <a class="dropdown-item" routerLink="/register">Ma liste de course</a>
-            <a class="dropdown-item" routerLink="/register "routerLink="/register">Gerer les recettes</a>
+            <a class="dropdown-item" routerLink="/">Mes recettes</a>
+            <a class="dropdown-item" routerLink="/">Ma liste de course</a>
+            <a class="dropdown-item" routerLink="/">Mes commentaires</a>
+            <a class="dropdown-item" *ngIf="auth.isAdmin()" routerLink="/" >Gerer les recettes</a>
             <a class="dropdown-item" routerLink="" (click)="auth.logout()">Deconnexion</a>
           </div>
       </li>

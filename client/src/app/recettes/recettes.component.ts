@@ -19,6 +19,7 @@ export class RecettesComponent implements OnInit {
   //dans ngOnInit on récupère les données à afficher au chargement de la page
   ngOnInit(): void {
     this.getAllRecipes()
+    console.log(this.recettes)
   }
 
   getAllRecipes() {

@@ -20,7 +20,7 @@ export class RecettesService {
     constructor(private http: HttpClient){ }
 
     public getAllRecipes(): Observable<RecipeDetails[]> {
-        const base = this.http.get(`/allRecipes`)
+        const base = this.http.get(`http://localhost:3000/allRecipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
                 console.log(data)
                 return data

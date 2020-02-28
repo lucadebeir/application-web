@@ -2,8 +2,12 @@ pre {
     text-align: center;
     white-space:pre-wrap;
     overflow-x:auto;
+    margin-right: 1em;
+    margin-top: 15%;
 }
-
+h1 {
+    text-align: center;
+}
 code {
     display: block;
     padding: 12px;
