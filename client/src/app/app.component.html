@@ -1,8 +1,7 @@
 <script>
-$(document).on('click','.navbar-collapse.in',function(e) {
-    if( $(e.target).is('a:not(".dropdown-toggle")') ) {
-        $(this).collapse('hide');
-    }
+//pour que la navbar responsive se referme lorsqu'on sélectionne un ongle
+$(document).on('click','.navbar-collapse.show',function(e) {
+  $(this).collapse('hide');
 });
 </script>
 
@@ -11,7 +10,6 @@ $(document).on('click','.navbar-collapse.in',function(e) {
   type="button"
   data-toggle="collapse"
   data-target="#navbarNavDropdown"
-  data-target=".navbar-collapse"
   aria-controls="navbarNavDropdown"
   aria-expanded="false"
   aria-label="Toogle navigation">
