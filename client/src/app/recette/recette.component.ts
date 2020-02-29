@@ -16,7 +16,8 @@ export class RecetteComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.route.snapshot.paramMap.get('id')) {
-      this.recette = this.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))) 
+      this.recette = this.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))) /*parseInt transforme un string en int
+      route.snapshot.paramMap.get('id') pour récupérer l'id dans l'url */
     }
   }
 

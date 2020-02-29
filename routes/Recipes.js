@@ -24,6 +24,7 @@ recipe.get('/allRecipes', (req, res) => {
         })
 })
 
+//Récupérer la recette depuis son identifiant
 recipe.get('/recipe/:id', (req, res) => {
     Recipe.findOne({
         where: {
