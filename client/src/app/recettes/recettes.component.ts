@@ -24,7 +24,6 @@ export class RecettesComponent implements OnInit {
 
     this.recetteService.getAllRecipes().subscribe(
       (recettes: RecipeDetails[]) => {
-        console.log(recettes)
         this.recettes = recettes
     },err => {
       if(err instanceof HttpErrorResponse){
@@ -34,5 +33,17 @@ export class RecettesComponent implements OnInit {
       }
     })
   }
-  
+
+  getRecipeByCategory(idCategorie: any){
+    this.recetteService.getRecipeByCategory(idCategorie).subscribe(
+      (recettes: RecipeDetails[]) => {
+        this.recettes = recettes
+      },err => {
+        if(err instanceof HttpErrorResponse){
+          if(err.status === 402) {
+          console.log("Il n'y a pas encore de recettes dans cette catégorie.")
+        }
+      }
+    })
+  }
 }

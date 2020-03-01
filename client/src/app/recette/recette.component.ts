@@ -11,14 +11,9 @@ import {Observable, of} from 'rxjs'
 })
 export class RecetteComponent implements OnInit {
 
-  @Input()
   public recette: RecipeDetails
-  @Input()
   public ingredients: Observable<IngredientDetails[]>
-
-  @Input()
   public unite: UniteDetails
-  @Input()
   public qtes: QuantiteDetails[]
 
   constructor(private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {

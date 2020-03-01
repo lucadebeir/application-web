@@ -179,6 +179,23 @@ recipe.get('/mostPopularRecipes', (req, res) => {
     })
 })
 
+//Récupérer les recettes d'une catégorie
+recipe.get('/recipe/:idCategorie', (req, res) => {
+
+    let query = db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN categorie INNER JOIN classerDans WHERE classerDans.idCategories = categorie.idcategorie AND classerDans.idRecette = recettes.idRecette AND categorie.libelleCategorie = ?",
+    {
+      replacements: [req.params.idCategorie],
+      type: sequelize.QueryTypes.SELECT
+    })
+    query.then(resultats => {
+            res.json(resultats)
+        }) 
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+    }
+
+)
 
 
 //supprimer recette

@@ -43,3 +43,16 @@
         box-sizing: border-box;
     }
    
+#ing {
+    text-align: left;
+}
+
+#resp{
+    max-width: 100%;
+    height: auto;
+}
+
+.center {
+    text-align:center;
+    margin: auto; /* pour centrer l'élément */
+  }

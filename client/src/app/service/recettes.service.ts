@@ -17,7 +17,7 @@ export interface RecipeDetails {
 export interface IngredientDetails {
     nomIngredient: string
     qte: number
-    unite: string
+    libelleUnite: string
 }
 
 export interface UniteDetails {
@@ -96,6 +96,13 @@ export class RecettesService {
         return this.http.delete<any>(url).pipe(
           tap(_ => console.log(`deleted ${id}`)),
         );
-      }
+    }
+
+    public getRecipeByCategory(idCategorie: any):Observable<RecipeDetails[]> {
+        const base = this.http.get(`http://localhost:3000/recipe/:idCategorie`)
+        return base.pipe(map((data: RecipeDetails[]) => {
+            return data
+        }))
+    }
 
 }    

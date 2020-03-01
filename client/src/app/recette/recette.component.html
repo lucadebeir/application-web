@@ -2,7 +2,7 @@
     <h2>{{recette?.nomRecette}}</h2>
   
     <figure class="figure">
-        <img src="//via.placeholder.com/782x250" class="rounded mx-auto d-block"  alt="Responsive image" >
+        <img src="//via.placeholder.com/782x250" class="rounded mx-auto d-block"  alt="Responsive image" id="resp">
        <figcaption class="figure-caption">
             <span class="badge badge-light" id="vew">{{recette?.nbVues}} 👁</span>
             
@@ -11,25 +11,15 @@
       
     </figure>
 </div>
-<div class="col-xs-6 col-md-4 thumbnail thumbHome" *ngFor="let ingredient of ingredients; index as i">
-    {{ingredient.nomIngredient}}
-</div>
-<ul>
-    <li *ngFor="let ingredient of ingredients; index as i">
-        {{ingredients[i].qte}}
-        {{ingredients[i].unite}}
-        {{ingredients[i].nomIngredient}}
-    </li>
-</ul>
 
 <div id="conteneur">
     <div class="element 1 card border-secondary mb-3 col-lg-4 col-md-4 col-sm-4 p-3">
         <div class="card-header">Ingrédients</div>
         <ul> <!--liste points-->
-            <div class="card-body text-secondary">
+            <div class="card-body text-secondary" id="ing">
                 <li *ngFor="let ingredient of ingredients" class="card-text">
                     {{ingredient.qte}}
-                    {{ingredient.unite}}
+                    {{ingredient.libelleUnite}}
                     {{ingredient.nomIngredient}}
                 </li>
             </div>
@@ -40,8 +30,8 @@
     </div>
     <div class="element 2 card border-secondary mb-3 col-lg-8 col-md-8 col-sm-8">
         <div class="card-header">Préparation</div>
-        <div class="card-body text-secondary">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="card-body text-secondary center">
+            <pre style="line-height: 2.5" class="card-text"> {{recette.etapes}}</pre>
         </div>
     </div>
 </div>

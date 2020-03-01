@@ -51,8 +51,8 @@ const routes: Routes = [
     MesRecettesComponent,
     RecettesComponent,
     UpdatePasswordComponent,
-    CreerRecetteComponent
-    
+    CreerRecetteComponent,
+    RecetteComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +60,6 @@ const routes: Routes = [
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes)
-   
   ],
   providers: [AuthGuardService, AuthentificationService, RecettesService],
   bootstrap: [AppComponent]
