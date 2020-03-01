@@ -1,7 +1,8 @@
 const express = require("express")
 const recipe = express.Router()
 const cors = require("cors")
-
+const db = require("../database/db.js")
+const sequelize = require("sequelize")
 const Recipe = require("../models/Recipe")
 const UtiliserIngredients = require("../models/UtiliserIngredients")
 const Ingredient = require("../models/Ingredient")
