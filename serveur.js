@@ -16,8 +16,8 @@ app.use(
 var Users = require("./routes/Users")
 var Recipes = require("./routes/Recipes")
 
-app.use("/users", Users)
-app.use("", Recipes)
+app.use("/server", Users)
+app.use("/server", Recipes)
 
 app.listen(port, function () {
     console.log("Server is running on port " + port)

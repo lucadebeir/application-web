@@ -105,7 +105,7 @@ export class AuthentificationService {
     }
 
     public register(user: TokenPayload) : Observable<any> {
-        const base = this.http.post('/users/register', user)
+        const base = this.http.post('/server/users/register', user)
 
         const request = base.pipe(
             map((data: TokenResponse) => {
@@ -119,7 +119,7 @@ export class AuthentificationService {
     }
 
     public login(user: TokenPayload) : Observable<any> {
-        const base = this.http.post('/users/login', user)
+        const base = this.http.post('/server/users/login', user)
         const request = base.pipe(
             map((data: TokenResponse) => { //map permet de récupérer des données
                 if (data.token) {
@@ -132,7 +132,7 @@ export class AuthentificationService {
     }
 
     public profile() : Observable<any> {
-        return this.http.get('/users/profile', {
+        return this.http.get('/server/users/profile', {
             headers: { Authorization: `${this.getToken()}` }
         })
     }
@@ -155,7 +155,7 @@ export class AuthentificationService {
       }
 
     public updatePassword(user: UserMdp) : Observable<any> {
-        const base = this.http.put(`/users/update-password/${user.pseudo}`, user)
+        const base = this.http.put(`/server/users/update-password/${user.pseudo}`, user)
 
         return base.pipe(
             map((data: Response) => {
@@ -165,7 +165,7 @@ export class AuthentificationService {
     }
 
     public deleteProfile(pseudo: string): Observable<any> {
-        const url = `/users/delete-profile/${pseudo}`;
+        const url = `/server/users/delete-profile/${pseudo}`;
         return this.http.delete<any>(url).pipe(
           tap(_ => console.log(`deleted ${pseudo}`)),
           catchError(this.handleError<any>('deleteProfile'))

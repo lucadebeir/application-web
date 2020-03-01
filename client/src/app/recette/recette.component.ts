@@ -23,38 +23,15 @@ export class RecetteComponent implements OnInit {
     this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       recette => {
         this.recette = recette
-        console.log(this.recette)
       }
     );
 
     this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       ingredient => {
-        console.log(ingredient)
         this.ingredients = ingredient
       }
     );
-    console.log(this.ingredients)
-
-    //console.log(this.recette)
-    //console.log(parseInt(this.route.snapshot.paramMap.get('id')))
-    //this.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))) /*parseInt transforme un string en int*/
   }
-
-  /*getRecipeById(id: any) : Observable<RecipeDetails> {
-    this.recetteService.getRecipeById(id).subscribe(
-      recette => {
-        this.recette = recette
-        console.log(this.recette)
-      }
-    )
-    this.recetteService.getIngredientsByIdRecette(id).subscribe(
-      ingredient => {
-        this.recette.ingredients = ingredient
-        console.log(this.recette)
-      }
-    )
-    console.log(this.recette)
-  }*/
 
   getUtiliserIngredientsByIdRecette(id: any) : QuantiteDetails[] {
     this.recetteService.getUtiliserIngredientsByIdRecette(id).subscribe(

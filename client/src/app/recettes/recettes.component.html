@@ -1,18 +1,9 @@
 <ul id="menu" class="nav justify-content-center">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Toutes les recettes</a>
+      <a class="nav-link active" routerLink="/allRecipes" (click)="getAllRecipes()">Toutes les recettes</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Petits déjeuners</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Repas healthy</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Douceurs</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Boissons</a>
+    <li class="nav-item" *ngFor="let categ of categories">
+      <a class="nav-link" routerLink="/allRecipes" (click)="getRecipeByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
     </li>
   </ul>
 
@@ -27,7 +18,7 @@
                         <span class="badge badge-light">{{recette.nbVues}} 👁</span>
                     </div>
                     <div class="card-footer text-center bg-white">
-                        <button class="btn btn-outline-secondary" [routerLink]="['/recipe', recette.idRecette]">Voir la recette</button> 
+                        <button class="btn btn-outline-secondary" (click)="updateNbView(recette.idRecette)" [routerLink]="['/recipe', recette.idRecette]">Voir la recette</button> 
                         
                 </div>
             </div>

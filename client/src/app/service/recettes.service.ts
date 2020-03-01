@@ -32,13 +32,18 @@ export interface QuantiteDetails {
     idUnite: number
 }
 
+export interface CategoryDetails {
+    idCategorie: number
+    libelleCategorie: string
+}
+
 @Injectable()
 export class RecettesService {
 
     constructor(private http: HttpClient){ }
 
     public getAllRecipes(): Observable<RecipeDetails[]> {
-        const base = this.http.get(`http://localhost:3000/allRecipes`)
+        const base = this.http.get(`/server/allRecipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
                 console.log(data)
                 return data
@@ -46,15 +51,15 @@ export class RecettesService {
     }
 
     public getRecipeById(id: any) : Observable<any> {
-        return this.http.get<any>('http://localhost:3000/recipe/' + id)
+        return this.http.get<any>('/server/recipe/' + id)
     }
 
     public getIngredientsByIdRecette(id: any) : any {
-        return this.http.get<any>('http://localhost:3000/recipe/' + id + '/ingredients')
+        return this.http.get<any>('/server/recipe/' + id + '/ingredients')
     }
 
     public getUtiliserIngredientsByIdRecette(id: any) : Observable<QuantiteDetails[]> {
-        const base = this.http.get('http://localhost:3000/recipe/' + id + '/utiliserIngredients')
+        const base = this.http.get('/server/recipe/' + id + '/utiliserIngredients')
         const utiliserIngredients = base.pipe(map((data: QuantiteDetails[]) => {
             return data
         }))
@@ -64,45 +69,53 @@ export class RecettesService {
     }
 
     public getIngredientById(idIngredient: any) : Observable<IngredientDetails> {
-        const base = this.http.get('http://localhost:3000/recipe/ingredient/' + idIngredient)
+        const base = this.http.get('/server/recipe/ingredient/' + idIngredient)
         return base.pipe(map((data: IngredientDetails) => {
             return data
         }))
     }
 
     public getUniteById(idUnite: any) : Observable<UniteDetails> {
-        const base = this.http.get('http://localhost:3000/recipe/unite/' + idUnite)
+        const base = this.http.get('/server/recipe/unite/' + idUnite)
         return base.pipe(map((data: UniteDetails) => {
             return data
         }))
     }
 
     public getLatestReceipes(): Observable<RecipeDetails[]> {
-        const base = this.http.get(`http://localhost:3000/latestReceipes`)
+        const base = this.http.get(`/server/latestReceipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
             return data
         }))
     }
 
     public getMostPopularRecipes():Observable<RecipeDetails[]> {
-        const base = this.http.get(`http://localhost:3000/mostPopularRecipes`)
+        const base = this.http.get(`/server/mostPopularRecipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
             return data
         }))
     }
 
     public deleteRecipe(id: any): Observable<any> {
-        const url = `http://localhost:3000/delete-recipe/${id}`;
+        const url = `/server/delete-recipe/${id}`;
         return this.http.delete<any>(url).pipe(
           tap(_ => console.log(`deleted ${id}`)),
         );
     }
 
     public getRecipeByCategory(idCategorie: any):Observable<RecipeDetails[]> {
-        const base = this.http.get(`http://localhost:3000/recipe/:idCategorie`)
+        const base = this.http.get(`/server/recipe/category/${idCategorie}`)
         return base.pipe(map((data: RecipeDetails[]) => {
             return data
         }))
+    }
+
+    public getAllCategory(): any {
+        return this.http.get<any>(`/server/category`)
+    }
+
+    public updateNbView(idRecette: number): Observable<any> {
+        return this.http.put(`/server/recipe/update-nbView/${idRecette}`, idRecette)
     }
 
 }    
