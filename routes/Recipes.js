@@ -47,6 +47,25 @@ recipe.get('/recipe/:id', (req, res) => {
 })
 
 //recupérer ingrédients de la recette avec l'id de la recette
+recipe.get('/recipe/:id/ingredients', (req, res) => {
+
+    let query = db.sequelize.query("SELECT ingredient.nomIngredient, utiliserIngredients.qte, unites.libelleUnite FROM ingredient INNER JOIN recettes INNER JOIN utiliserIngredients INNER JOIN unites WHERE ingredient.idIngredient = utiliserIngredients.idIngredient AND utiliserIngredients.idRecette = ? AND utiliserIngredients.idRecette = recettes.idRecette AND unites.idUnite = utiliserIngredients.idUnite",
+    {
+      replacements: [req.params.id],
+      type: sequelize.QueryTypes.SELECT
+    })
+    query.then(resultats => {
+            console.log(resultats)
+            res.json(resultats)
+        }) 
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+    }
+
+)
+
+//recupérer ingrédients de la recette avec l'id de la recette
 recipe.get('/recipe/:id/utiliserIngredients', (req, res) => {
     UtiliserIngredients.findAll({
         attributes: ['qte', 'idRecette', 'idIngredient', 'idUnite'],
@@ -158,6 +177,8 @@ recipe.get('/mostPopularRecipes', (req, res) => {
         res.send('error: ' + err)
     })
 })
+
+
 
 //supprimer recette
 recipe.delete('/delete-recipe/:id', (req, res) => {

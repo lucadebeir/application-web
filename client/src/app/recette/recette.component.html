@@ -1,23 +1,37 @@
 <div id="header">
-    <h2>{{recette.nomRecette}}</h2>
+    <h2>{{recette?.nomRecette}}</h2>
   
     <figure class="figure">
         <img src="//via.placeholder.com/782x250" class="rounded mx-auto d-block"  alt="Responsive image" >
        <figcaption class="figure-caption">
-            <span class="badge badge-light" id="vew">{{recette.nbVues}} 👁</span>
+            <span class="badge badge-light" id="vew">{{recette?.nbVues}} 👁</span>
             
-            <span class="badge badge-light" id="fav">{{recette.nbFavoris}} ♥</span>
+            <span class="badge badge-light" id="fav">{{recette?.nbFavoris}} ♥</span>
         </figcaption>
       
     </figure>
 </div>
+<div class="col-xs-6 col-md-4 thumbnail thumbHome" *ngFor="let ingredient of ingredients; index as i">
+    {{ingredient.nomIngredient}}
+</div>
+<ul>
+    <li *ngFor="let ingredient of ingredients; index as i">
+        {{ingredients[i].qte}}
+        {{ingredients[i].unite}}
+        {{ingredients[i].nomIngredient}}
+    </li>
+</ul>
 
 <div id="conteneur">
     <div class="element 1 card border-secondary mb-3 col-lg-4 col-md-4 col-sm-4 p-3">
         <div class="card-header">Ingrédients</div>
         <ul> <!--liste points-->
-            <div class="card-body text-secondary" *ngFor="let ingredient of recette.ingredients">
-                <li class="card-text">{{ingredient.nomIngredient}}</li>
+            <div class="card-body text-secondary">
+                <li *ngFor="let ingredient of ingredients" class="card-text">
+                    {{ingredient.qte}}
+                    {{ingredient.unite}}
+                    {{ingredient.nomIngredient}}
+                </li>
             </div>
         </ul>
         <!--si on est pas connecté lorsqu'on clique sur ses boutons on accède à la page inscription-->

@@ -12,13 +12,12 @@ export interface RecipeDetails {
     nbFavoris: number
     nbVues: number
     etapes: Text
-    ingredients: IngredientDetails[]
 }
 
 export interface IngredientDetails {
-    idIngredient: number
     nomIngredient: string
-    unite: UniteDetails["libelleUnite"]
+    qte: number
+    unite: string
 }
 
 export interface UniteDetails {
@@ -46,11 +45,12 @@ export class RecettesService {
             }))
     }
 
-    public getRecipeById(id: any) : Observable<RecipeDetails> {
-        const base = this.http.get('http://localhost:3000/recipe/' + id)
-        return base.pipe(map((data: RecipeDetails) => {
-            return data
-        }))
+    public getRecipeById(id: any) : Observable<any> {
+        return this.http.get<any>('http://localhost:3000/recipe/' + id)
+    }
+
+    public getIngredientsByIdRecette(id: any) : any {
+        return this.http.get<any>('http://localhost:3000/recipe/' + id + '/ingredients')
     }
 
     public getUtiliserIngredientsByIdRecette(id: any) : Observable<QuantiteDetails[]> {
