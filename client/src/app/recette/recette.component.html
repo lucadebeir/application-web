@@ -1,20 +1,33 @@
-
-<div class="header">
-    <h2 id="header">{{recette.nomRecette}}</h2>
-    <img src="//via.placeholder.com/350x150" class="mx-auto d-block" alt="Responsive image" >
+<div id="header">
+    <h2>{{recette.nomRecette}}</h2>
+  
+    <figure class="figure">
+        <img src="//via.placeholder.com/782x250" class="rounded mx-auto d-block"  alt="Responsive image" >
+       <figcaption class="figure-caption">
+            <span class="badge badge-light" id="vew">{{recette.nbVues}} 👁</span>
+            
+            <span class="badge badge-light" id="fav">{{recette.nbFavoris}} ♥</span>
+        </figcaption>
+      
+    </figure>
 </div>
 
-
-
-
 <div id="conteneur">
-    <div class="element 1 card border-secondary mb-3">
+    <div class="element 1 card border-secondary mb-3 col-lg-4 col-md-4 col-sm-4 p-3">
         <div class="card-header">Ingrédients</div>
+        <ul> <!--liste points-->
+            <div class="card-body text-secondary" *ngFor="let ingredient of recette.ingredients">
+                <li class="card-text">{{ingredient.nomIngredient}}</li>
+            </div>
+        </ul>
+        <!--si on est pas connecté lorsqu'on clique sur ses boutons on accède à la page inscription-->
+        <button type="button" class="btn btn-outline-info">Ajouter les ingrédients à ma liste de course</button>
+        <button type="button" class="btn btn-outline-danger">♥ Ajouter le recettes à mes favoris</button>
+    </div>
+    <div class="element 2 card border-secondary mb-3 col-lg-8 col-md-8 col-sm-8">
+        <div class="card-header">Préparation</div>
         <div class="card-body text-secondary">
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         </div>
-    </div>
-    <div class="element 2">
-        Préparation
     </div>
 </div>

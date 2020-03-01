@@ -24,6 +24,7 @@ export class RecettesComponent implements OnInit {
 
     this.recetteService.getAllRecipes().subscribe(
       (recettes: RecipeDetails[]) => {
+        console.log(recettes)
         this.recettes = recettes
     },err => {
       if(err instanceof HttpErrorResponse){
