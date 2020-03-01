@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService, UserProfile } from '../authentification.service';
+import { AuthentificationService, UserProfile } from '../service/authentification.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { __param } from 'tslib';
 @Component({

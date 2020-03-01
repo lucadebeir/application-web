@@ -48,7 +48,7 @@ recipe.get('/recipe/:id', (req, res) => {
 
 //recupérer ingrédients de la recette avec l'id de la recette
 recipe.get('/recipe/:id/utiliserIngredients', (req, res) => {
-    await UtiliserIngredients.findAll({
+    UtiliserIngredients.findAll({
         attributes: ['qte', 'idRecette', 'idIngredient', 'idUnite'],
         where: {
             idRecette: req.params.id
@@ -159,6 +159,20 @@ recipe.get('/mostPopularRecipes', (req, res) => {
     })
 })
 
-
+//supprimer recette
+recipe.delete('/delete-recipe/:id', (req, res) => {
+    Recipe.destroy({
+      where: {
+        idRecette: req.params.id
+      }
+    })
+      .then(() => {
+          console.log('recipe deleted')
+        res.send('Recipe deleted!')
+      })
+      .catch(err => {
+        res.send('error: ' + err)
+      })
+})
 
 module.exports = recipe

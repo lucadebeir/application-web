@@ -91,4 +91,11 @@ export class RecettesService {
         }))
     }
 
+    public deleteRecipe(id: any): Observable<any> {
+        const url = `http://localhost:3000/delete-recipe/${id}`;
+        return this.http.delete<any>(url).pipe(
+          tap(_ => console.log(`deleted ${id}`)),
+        );
+      }
+
 }    

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, QuantiteDetails } from '../recettes.service';
+import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, QuantiteDetails } from '../service/recettes.service';
 import { HttpErrorResponse, HttpResponse} from '@angular/common/http'
 import {Router, ActivatedRoute} from '@angular/router'
 

@@ -1,1 +1,41 @@
-<p>gerer-les-recettes works!</p>
+<div id="header">
+    <h1>Gerer les recettes</h1>
+</div>  
+<div>
+ <button  type="button" class="btn btn-outline-success">Gérer les ingrédients</button>
+</div>
+<div>      
+<button type="button" class="btn btn-outline-info">Créer une nouvelle recette</button>
+</div> 
+<br>
+<div>
+    <h3>Recettes publiées</h3>
+</div>
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+<section class="container mt-4 mb-4">
+<div class="container">
+	<div class="row mb-3" *ngFor="let recette of this.recettes">
+		<div class="col-md-6">
+			<div class="d-flex flex-row border rounded">
+	  			<div class="p-0 w-25">
+	  			    <img src="https://c1.staticflickr.com/3/2862/12328317524_18e52b5972_k.jpg" class="img-thumbnail border-0" alt="photo de la recette"/>
+	  				
+	  			</div>
+	  			<div class="pl-3 pt-2 pr-2 pb-2 w-75 border-left">
+	  					
+	  					<h5 class="text">{{recette.nomRecette}}r</h5>
+	  					<ul class="m-0 float-left" style="list-style: none; margin:0; padding: 0">
+                              <li><i class="badge badge-light"></i>{{recette.nbFavoris}} ♥</li>
+	  						<li><i class="badge badge-light"></i> {{recette.nbVues}} 👁</li>
+	  					</ul>
+                          <button id="bouttr" type="button" class="btn btn-outline-warning">Modifier   </button>
+                          <button id="bouttr" type="submit" class="btn btn-outline-danger" (click)="deleteRecipe(recette.idRecette)" >Supprimer</button>
+                          </div>
+			</div>
+		</div>
+	</div>
+
+</div>
+</section>

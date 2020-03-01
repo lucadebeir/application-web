@@ -9,8 +9,8 @@ import { AppComponent } from './app.component';
 import { InscrireComponent } from './inscrire/inscrire.component'
 import { SeConnecterComponent } from './se-connecter/se-connecter.component'
 import { AccueilComponent } from './accueil/accueil.component'
-import { AuthentificationService } from './authentification.service'
-import { AuthGuardService } from './auth-guard.service';
+import { AuthentificationService } from './service/authentification.service'
+import { AuthGuardService } from './service/auth-guard.service';
 import { ContactComponent } from './contact/contact.component';
 import { GererLesRecettesComponent } from './gerer-les-recettes/gerer-les-recettes.component';
 import { MaListeDeCoursesComponent } from './ma-liste-de-courses/ma-liste-de-courses.component';
@@ -20,7 +20,7 @@ import { MonProfileComponent } from './mon-profile/mon-profile.component';
 import { RecettesComponent } from './recettes/recettes.component';
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { AProposComponent } from './apropos/apropos.component';
-import { RecettesService } from './recettes.service';
+import { RecettesService } from './service/recettes.service';
 import { RecetteComponent } from './recette/recette.component';
 import { CreerRecetteComponent } from './creer-recette/creer-recette.component';
 
@@ -33,8 +33,8 @@ const routes: Routes = [
   {path: 'update-password', component: UpdatePasswordComponent, canActivate: [AuthGuardService]},
   {path: 'aboutMe', component: AProposComponent},
   {path: 'allRecipes', component: RecettesComponent},
-  {path: 'recipe/:id', component: RecetteComponent}
- 
+  {path: 'recipe/:id', component: RecetteComponent},
+  {path: 'handleRecipes', component: GererLesRecettesComponent},
 ]
 
 @NgModule({

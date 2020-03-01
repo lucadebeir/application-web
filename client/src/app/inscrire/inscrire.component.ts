@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService, TokenPayload } from '../authentification.service';
+import { AuthentificationService, TokenPayload } from '../service/authentification.service';
 import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 

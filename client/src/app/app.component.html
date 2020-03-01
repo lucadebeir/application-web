@@ -53,7 +53,7 @@ $(document).on('click','.navbar-collapse.show',function(e) {
             <a class="dropdown-item" routerLink="/">Mes recettes</a>
             <a class="dropdown-item" routerLink="/">Ma liste de course</a>
             <a class="dropdown-item" routerLink="/">Mes commentaires</a>
-            <a class="dropdown-item" *ngIf="auth.isAdmin()" routerLink="/" >Gerer les recettes</a>
+            <a class="dropdown-item" *ngIf="auth.isAdmin()" routerLink="/handleRecipes" >Gerer les recettes</a>
             <a class="dropdown-item" routerLink="" (click)="auth.logout()">Deconnexion</a>
           </div>
       </li>

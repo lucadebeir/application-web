@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RecipeDetails, RecettesService } from '../recettes.service';
+import { RecipeDetails, RecettesService } from '../service/recettes.service';
 import {HttpErrorResponse} from '@angular/common/http'
 
 @Component({
