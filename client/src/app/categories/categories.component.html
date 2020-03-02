@@ -1,0 +1,38 @@
+
+<div id="header">
+    <h1>Catégories</h1>
+</div>  
+
+<!--ajouter barre de recherche +++ essayer de mettre les bouttons à côté du champs-->
+<div class='flex-container'>
+  <div>
+    <table class="table col-md-8 mx-auto" *ngFor="let categorie of categories">
+    
+        <tr>
+            <td>
+              <form (submit)="updateCategory(categorie)">
+              <input type="text" class="form-control" name="libelleCategorie"  value= {{categorie.libelleCategorie}}
+                  [(ngModel)]="categorie.libelleCategorie">
+            
+            <td>
+  
+              <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
+            </td>
+            <td>
+              <button id="btn" class="btn btn-outline-danger " (click)="deleteCategory(categorie.idCategorie)" >Supprimer</button>
+              </form>
+            </td>
+          </tr> 
+    </table>
+  </div>
+  <div >
+    <h6 id="question" > Ajouter une nouvelle catégorie </h6>
+    <form (submit)="addCategory()">
+      <input type="text" class="form-control" name="libelleCategorie"  placeholder="nom catégorie"
+                        [(ngModel)]="categorie.libelleCategorie">
+
+      <button id="btn" class="btn btn-outline-info" type="submit">Valider</button>
+      
+      </form>
+  </div>
+</div>

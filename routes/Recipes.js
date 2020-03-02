@@ -208,4 +208,94 @@ recipe.delete('/delete-recipe/:id', (req, res) => {
       })
 })
 
+//supprimer categorie
+recipe.delete('/category/delete/:id', (req, res) => {
+    Categorie.destroy({
+        where: {
+            idCategorie: req.params.id
+        }
+    })
+    .then(() => {
+      res.send('Category deleted!')
+    })
+    .catch(err => {
+      res.send('error: ' + err)
+    })
+})
+
+//modifier catégorie
+recipe.put('/category/update', (req, res) => {
+    Categorie.findOne({
+        where: {
+            libelleCategorie: req.body.libelleCategorie
+        }
+    }).then((categorie) => {
+        console.log(categorie)
+        if(!categorie) {
+            Categorie.update(
+                { libelleCategorie: req.sanitize(req.body.libelleCategorie) },
+                { where: { idCategorie: req.body.idCategorie } }
+            )
+            .then(() => {
+                res.json({success : 'Libellé categorie modifié !'})
+            })
+            .error(err => 
+                res.json({error : err}))
+        }
+    })
+    .error(err =>
+        res.json({error: err}))
+})
+
+//Ajouter catégorie  
+recipe.post('/category/add', (req, res) => { 
+    console.log(req)
+    const categorieData = {
+       libelleCategorie: req.sanitize(req.body.libelleCategorie),
+
+    }
+    Categorie.findOne({ 
+        where: {
+            libelleCategorie: req.sanitize(req.body.libelleCategorie)
+        }
+    })
+        .then(categorie => {
+            if(!categorie) {
+                console.log("gros con")
+                    Categorie.create(categorieData) 
+                    .then(success => {
+                        res.json({success : "Catégorie ajoutée avec succès !"})
+                    })
+                    .catch(err => {
+                        res.json({error: err})
+                    })
+                
+            } else {
+                res.json({ error: "Cette categorie existe déjà" })
+            }
+        })
+        .catch(err => {
+            res.json({error:  err})
+        })
+})
+
+//Récupérer tous les ingrédients
+recipe.get('/ingredient', (req, res) => {
+    Ingredient.findAll({
+
+    })
+        .then(ingredient => {
+            if(ingredient){
+              
+                res.json(ingredient)
+            }else{
+                res.send("Il n'y a pas d'ingrédient'.")
+            }
+           
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 module.exports = recipe

@@ -180,5 +180,6 @@ export class AuthentificationService {
             catchError(this.handleError<any>('updateProfile'))
           );
     }
+    
    
 }

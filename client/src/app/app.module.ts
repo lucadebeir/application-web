@@ -23,6 +23,8 @@ import { AProposComponent } from './apropos/apropos.component';
 import { RecettesService } from './service/recettes.service';
 import { RecetteComponent } from './recette/recette.component';
 import { CreerRecetteComponent } from './creer-recette/creer-recette.component';
+import { IngredientsComponent } from './ingredients/ingredients.component';
+import { CategoriesComponent } from './categories/categories.component';
 
 
 const routes: Routes = [
@@ -35,6 +37,8 @@ const routes: Routes = [
   {path: 'allRecipes', component: RecettesComponent},
   {path: 'recipe/:id', component: RecetteComponent},
   {path: 'handleRecipes', component: GererLesRecettesComponent},
+  {path: 'category', component: CategoriesComponent},
+  {path: 'ingredient', component: IngredientsComponent}
 ]
 
 @NgModule({
@@ -52,7 +56,9 @@ const routes: Routes = [
     RecettesComponent,
     UpdatePasswordComponent,
     CreerRecetteComponent,
-    RecetteComponent
+    RecetteComponent,
+    IngredientsComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,

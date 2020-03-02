@@ -2,6 +2,17 @@
     text-align: center;
 }
 
+
+input{
+    width: 10 em;
+}
+
+#question{
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
 .flex-container {
     margin-top: 3em;
     display: flex;
@@ -9,10 +20,7 @@
     margin-bottom: 2em;
 }
 
-#titre {
-    text-align: center;
+#btn{
     margin-top: 1em;
-    margin-bottom: 2em;
+    float: right;
 }
-
-

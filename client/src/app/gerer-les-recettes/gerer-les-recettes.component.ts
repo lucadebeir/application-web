@@ -24,6 +24,7 @@ export class GererLesRecettesComponent implements OnInit {
       }
     )
   }
+  
   deleteRecipe(idRecette: any) {
     this.recettesService.deleteRecipe(idRecette)
       .subscribe(res => {

@@ -1,22 +1,27 @@
 <div id="header">
     <h1>Gerer les recettes</h1>
 </div>  
+<div class='flex-container'>
 <div>
- <button  type="button" class="btn btn-outline-success">Gérer les ingrédients</button>
+ <button  type="button" class="btn btn-outline-success" [routerLink]="['/ingredient']">Gérer les ingrédients</button>
+</div>
+<div>
+	<button type="button" class="btn btn-outline-warning" [routerLink]="['/category']" >Gérer les catégories</button>
 </div>
 <div>      
 <button type="button" class="btn btn-outline-info">Créer une nouvelle recette</button>
 </div> 
-<br>
-<div>
-    <h3>Recettes publiées</h3>
+</div>
+
+<div id="titre">
+    <h3 >Recettes publiées</h3>
 </div>
 
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
-<section class="container mt-4 mb-4">
+
+<section class="container mt-4 mb-4" >
 <div class="container">
-	<div class="row mb-3" *ngFor="let recette of this.recettes">
+	<div class="row mb-3"  *ngFor="let recette of this.recettes">
 		<div class="col-md-6">
 			<div class="d-flex flex-row border rounded">
 	  			<div class="p-0 w-25">
@@ -30,8 +35,8 @@
                               <li><i class="badge badge-light"></i>{{recette.nbFavoris}} ♥</li>
 	  						<li><i class="badge badge-light"></i> {{recette.nbVues}} 👁</li>
 	  					</ul>
-                          <button id="bouttr" type="button" class="btn btn-outline-warning">Modifier   </button>
-                          <button id="bouttr" type="submit" class="btn btn-outline-danger" (click)="deleteRecipe(recette.idRecette)" >Supprimer</button>
+                          <button  type="button" class="btn btn-outline-warning">Modifier   </button>
+                          <button  type="submit" class="btn btn-outline-danger" (click)="deleteRecipe(recette.idRecette)" >Supprimer</button>
                           </div>
 			</div>
 		</div>

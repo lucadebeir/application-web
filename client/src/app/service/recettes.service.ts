@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core'
 import {HttpClient, HttpParams} from '@angular/common/http'
 import {Observable, of} from 'rxjs'
 import { map, tap, catchError } from 'rxjs/operators'
+import { CategoriesComponent } from '../categories/categories.component'
  
 
 
@@ -117,5 +118,34 @@ export class RecettesService {
     public updateNbView(idRecette: number): Observable<any> {
         return this.http.put<any>(`/server/recipe/update-nbView/${idRecette}`, idRecette)
     }
+
+    public deleteCategory(id: any): Observable<any> {
+        const url = `/server/category/delete/${id}`;
+        return this.http.delete<any>(url).pipe(
+          tap(_ => console.log(`deleted ${id}`)),
+        );
+    }
+
+    public updateCategory(categorie: CategoryDetails) : Observable<any> {
+        return this.http.put(`/server/category/update`, categorie)
+
+       
+    }
+
+    public addCategory(categorie: CategoryDetails) : any {
+        console.log(categorie)
+        this.http.post('/server/category/add', categorie).subscribe(res =>  {
+            {
+                return res
+            }
+        })
+        
+    }
+
+    public getAllIngredients(): any {
+        return this.http.get<any>(`/server/ingredient`)
+    }
+
+  
 
 }    
