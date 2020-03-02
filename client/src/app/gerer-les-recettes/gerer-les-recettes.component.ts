@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, from } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { FormControl, Form } from '@angular/forms';
 import { RecipeDetails, RecettesService } from '../service/recettes.service';
 import {HttpErrorResponse} from '@angular/common/http'
 import { Router } from '@angular/router';
@@ -12,17 +14,24 @@ import { ResourceLoader } from '@angular/compiler';
 })
 export class GererLesRecettesComponent implements OnInit {
 
-  public recettes: RecipeDetails[]
   public recette: RecipeDetails
 
-  constructor(private recettesService: RecettesService, private router: Router) { }
+  public recettes$: Observable<RecipeDetails[]>
+  public filteredRecipe$: Observable<RecipeDetails[]>
+  public filter: FormControl
+  public filter$: Observable<string>
+
+  constructor(private recettesService: RecettesService, private router: Router) { 
+    //pour la recherche dynamique
+    this.recettes$ = this.recettesService.getAllRecipes()
+    this.filter = new FormControl('')
+    this.filter$ = this.filter.valueChanges.pipe(startWith(''))
+    this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)
+      .pipe(map(([recipes, filterString]) =>
+        recipes.filter(recipe => recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
+  }
 
   ngOnInit(): void {
-    this.recettesService.getAllRecipes().subscribe(
-      recettes => {
-        this.recettes = recettes
-      }
-    )
   }
   
   deleteRecipe(idRecette: any) {

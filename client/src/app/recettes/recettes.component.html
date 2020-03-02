@@ -5,9 +5,11 @@
     <li class="nav-item" *ngFor="let categ of categories">
       <a class="nav-link" routerLink="/allRecipes" (click)="getRecipeByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
     </li>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" [formControl]="filter">
-    </form>
+    <li>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" [formControl]="filter">
+      </form>
+    </li>
   </ul>
 
     <div class="container">
