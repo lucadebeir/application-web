@@ -175,20 +175,15 @@ recipe.get('/recipe/category/:idCategorie', (req, res) => {
 
 //incrémenter le nbre de vue
 recipe.put('/recipe/update-nbView/:idRecette', (req, res) => {
-    Recipe.findOne(
-        { where: {idRecette: req.params.idRecette}}
+    Recipe.update(
+        { nbVues: req.body.nbVues + 1 },
+        { where: { idRecette: req.params.idRecette } }
     )
-    .then(recipe => {
-        Recipe.update(
-            { nbVues: recipe.nbVues + 1 },
-            { where: { idRecette: req.params.idRecette } }
-        )
         .then(() => {
             res.json({success : 'Nombre de vues incrémenté !'})
         })
         .error(err => 
             res.json({error : err}))
-    })
 })
 
 

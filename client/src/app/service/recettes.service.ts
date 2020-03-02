@@ -113,10 +113,13 @@ export class RecettesService {
 
     public getAllCategory(): any {
         return this.http.get<any>(`/server/category`)
+            .pipe(map((data: CategoryDetails[]) => {
+                return data
+            }))
     }
 
-    public updateNbView(idRecette: number): Observable<any> {
-        return this.http.put<any>(`/server/recipe/update-nbView/${idRecette}`, idRecette)
+    public updateNbView(recette: RecipeDetails): Observable<any> {
+        return this.http.put<any>(`/server/recipe/update-nbView/${recette.idRecette}`, recette)
     }
 
     public deleteCategory(id: any): Observable<any> {
@@ -128,6 +131,9 @@ export class RecettesService {
 
     public updateCategory(categorie: CategoryDetails) : Observable<any> {
         return this.http.put(`/server/category/update`, categorie)
+            .pipe(map((data: CategoryDetails[]) => {
+                return data
+            }))
 
        
     }
@@ -144,6 +150,9 @@ export class RecettesService {
 
     public getAllIngredients(): any {
         return this.http.get<any>(`/server/ingredient`)
+            .pipe(map((data: CategoryDetails[]) => {
+                return data
+            }))
     }
 
   

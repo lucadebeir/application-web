@@ -5,11 +5,14 @@
     <li class="nav-item" *ngFor="let categ of categories">
       <a class="nav-link" routerLink="/allRecipes" (click)="getRecipeByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
     </li>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" [formControl]="filter">
+    </form>
   </ul>
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-12 p-3"  *ngFor="let recette of this.recettes"> <!--Pour chaque recette on représente sa carte-->
+            <div class="col-lg-4 col-md-6 col-sm-12 p-3"  *ngFor="let recette of filteredRecipe$ | async"> <!--Pour chaque recette on représente sa carte-->
                 <div class="card h-100">
                     <img class="card-img-top img-fluid" src="//via.placeholder.com/350x150" alt="Photo de la recette"> 
                     <div class="card-body">
@@ -18,7 +21,7 @@
                         <span class="badge badge-light">{{recette.nbVues}} 👁</span>
                     </div>
                     <div class="card-footer text-center bg-white">
-                        <button class="btn btn-outline-secondary" (click)="updateNbView(recette.idRecette)" [routerLink]="['/recipe', recette.idRecette]">Voir la recette</button> 
+                        <button class="btn btn-outline-secondary" (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">Voir la recette</button> 
                         
                 </div>
             </div>

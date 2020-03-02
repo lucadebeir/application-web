@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest, from } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { FormControl, Form } from '@angular/forms';
 import { RecipeDetails, RecettesService, CategoryDetails } from '../service/recettes.service';
 import {HttpErrorResponse} from '@angular/common/http'
 import { Router } from '@angular/router';
@@ -12,29 +14,36 @@ import { Router } from '@angular/router';
 })
 export class RecettesComponent implements OnInit {
 
-  public recettes: RecipeDetails[]
+  public recettes$: Observable<RecipeDetails[]>
   public categories: CategoryDetails[]
+  public filteredRecipe$: Observable<RecipeDetails[]>
+  public filter: FormControl
+  public filter$: Observable<string>
 
-  constructor(private recetteService: RecettesService, private router: Router) { } 
+  constructor(private recetteService: RecettesService, private router: Router) {
+    //pour la recherche dynamique
+    this.recettes$ = this.recetteService.getAllRecipes()
+    this.filter = new FormControl('')
+    this.filter$ = this.filter.valueChanges.pipe(startWith(''))
+    this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)
+      .pipe(map(([recipes, filterString]) =>
+        recipes.filter(recipe => recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
+  } 
 
-  //dans ngOnInit on récupère les données à afficher au chargement de la page
+  //dans ngOnInit on récupère les données à afficher au lancement de la page
   ngOnInit(): void {
-    this.getAllRecipes()
     this.getAllCategory()
   }
 
   getAllRecipes() {
 
-    this.recetteService.getAllRecipes().subscribe(
-      (recettes: RecipeDetails[]) => {
-        this.recettes = recettes
-    },err => {
-      if(err instanceof HttpErrorResponse){
-        if(err.status === 402) {
-          console.log("Il n'y a pas encore de recettes.")
-        }
-      }
-    })
+    this.recettes$ = this.recetteService.getAllRecipes()
+    this.filter = new FormControl('')
+    this.filter$ = this.filter.valueChanges.pipe(startWith(''))
+    this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)
+      .pipe(map(([recipes, filterString]) =>
+        recipes.filter(recipe => recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
+
   }
 
   getAllCategory(){
@@ -55,24 +64,19 @@ export class RecettesComponent implements OnInit {
 
   getRecipeByCategory(idCategorie: any){
     //console.log(idCategorie)
-    this.recetteService.getRecipeByCategory(idCategorie).subscribe(
-      (recettes: RecipeDetails[]) => {
-        this.recettes = recettes
-       
-      },err => {
-        if(err instanceof HttpErrorResponse){
-          if(err.status === 402) {
-          console.log("Il n'y a pas encore de recettes dans cette catégorie.")
-        }
-      }
-    })
+    this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie)
+    this.filter = new FormControl('')
+    this.filter$ = this.filter.valueChanges.pipe(startWith(''))
+    this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)
+      .pipe(map(([recipes, filterString]) =>
+        recipes.filter(recipe => recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
   }
 
-  updateNbView(idRecette: number) {
-    this.recetteService.updateNbView(idRecette).subscribe(
+  updateNbView(recette: any) {
+    this.recetteService.updateNbView(recette).subscribe(
       (res) => {
         console.log(res)
-        this.router.navigate(['/recipe', idRecette])
+        this.router.navigate(['/recipe', recette.idRecette])
       }, err => {
         if(err instanceof HttpErrorResponse){
           if(err.status === 402) {
