@@ -115,7 +115,7 @@ export class RecettesService {
     }
 
     public updateNbView(idRecette: number): Observable<any> {
-        return this.http.put(`/server/recipe/update-nbView/${idRecette}`, idRecette)
+        return this.http.put<any>(`/server/recipe/update-nbView/${idRecette}`, idRecette)
     }
 
 }    

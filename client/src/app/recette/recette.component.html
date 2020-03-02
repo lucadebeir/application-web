@@ -13,20 +13,22 @@
 </div>
 
 <div id="conteneur">
-    <div class="element 1 card border-secondary mb-3 col-lg-4 col-md-4 col-sm-4 p-3">
-        <div class="card-header">Ingrédients</div>
-        <ul> <!--liste points-->
-            <div class="card-body text-secondary" id="ing">
-                <li *ngFor="let ingredient of ingredients" class="card-text">
-                    {{ingredient.qte}}
-                    {{ingredient.libelleUnite}}
-                    {{ingredient.nomIngredient}}
-                </li>
-            </div>
-        </ul>
+    <div class="element 1">
+        <div id="card" class="element 1 card border-secondary mb-3 col-lg-4 col-md-4 col-sm-4 p-3">
+            <div class="card-header">Ingrédients</div>
+            <ul> <!--liste points-->
+                <div class="card-body text-secondary" id="ing">
+                    <li *ngFor="let ingredient of ingredients" class="card-text">
+                        {{ingredient.qte}}
+                        {{ingredient.libelleUnite}}
+                        {{ingredient.nomIngredient}}
+                    </li>
+                </div>
+            </ul>
+        </div>
         <!--si on est pas connecté lorsqu'on clique sur ses boutons on accède à la page inscription-->
-        <button type="button" class="btn btn-outline-info">Ajouter les ingrédients à ma liste de course</button>
-        <button type="button" class="btn btn-outline-danger">♥ Ajouter le recettes à mes favoris</button>
+        <button id="btn" type="button" class="btn btn-outline-info">Ajouter les ingrédients à ma liste de course</button>
+        <button id="btn" type="button" class="btn btn-outline-danger">♥ Ajouter le recettes à mes favoris</button>
     </div>
     <div class="element 2 card border-secondary mb-3 col-lg-8 col-md-8 col-sm-8">
         <div class="card-header">Préparation</div>
