@@ -1,24 +1,33 @@
 <div id="header">
 	<h1>Gerer les recettes</h1>
 </div>
-<div class='flex-container'>
-	<div>
-		<button type="button" class="btn btn-outline-success" [routerLink]="['/ingredient']">Gérer les
-			ingrédients</button>
-	</div>
-	<div>
-		<button type="button" class="btn btn-outline-warning" [routerLink]="['/category']">Gérer les catégories</button>
-	</div>
-	<div>
-		<button type="button" class="btn btn-outline-info">Créer une nouvelle recette</button>
-	</div>
-	<div>
+
+
+<ul id="menu" class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/ingredient']">Gérer les ingrédients</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" [routerLink]="['/category']">Gérer les catégories</a>
+	</li>
+
+	<li class="nav-item">
+		<a class="nav-link" [routerLink]="['/']">Gérer les unités</a>
+	</li>
+
+	<li class="nav-item">
+		<a class="nav-link" [routerLink]="['/']">Créer une nouvelle recette</a>
+	</li>
+
+    <li>
 		<form class="form-inline my-2 my-lg-0">
 			<input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search"
 				[formControl]="filter">
 		</form>
-	</div>
-</div>
+    </li>
+  </ul>
+
+  
 <div id="titre">
 	<h3>Recettes publiées</h3>
 </div>
@@ -37,14 +46,16 @@
 				</div>
 				<div class="pl-3 pt-2 pr-2 pb-2 w-75 border-left">
 
-					<h5 class="text">{{recette.nomRecette}}r</h5>
+					<h5 class="text">{{recette.nomRecette}}</h5>
 					<ul class="m-0 float-left" style="list-style: none; margin:0; padding: 0">
 						<li><i class="badge badge-light"></i>{{recette.nbFavoris}} ♥</li>
 						<li><i class="badge badge-light"></i> {{recette.nbVues}} 👁</li>
 					</ul>
-					<button type="button" class="btn btn-outline-warning">Modifier </button>
+					<button type="button" class="btn btn-outline-warning" >Modifier </button> 
 					<button type="submit" class="btn btn-outline-danger"
 						(click)="deleteRecipe(recette.idRecette)">Supprimer</button>
+
+						
 				</div>
 			</div>
 		</div>
