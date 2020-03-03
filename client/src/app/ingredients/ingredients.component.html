@@ -18,7 +18,7 @@
             <td>
               <form (submit)="updateIngredient(ingredient)">
               <input id="zone" type="text" class="form-control" name="nomIngredient"  value= {{ingredient.nomIngredient}}
-                  #nomIngredient="ngModel" [(ngModel)]="ingredient.nomIngredient">
+                  [(ngModel)]="ingredient.nomIngredient">
             <td>
               <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
             </td>

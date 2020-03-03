@@ -24,6 +24,7 @@ import { RecetteComponent } from './recette/recette.component';
 import { CreerRecetteComponent } from './creer-recette/creer-recette.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { UniteComponent } from './unite/unite.component';
 
 
 const routes: Routes = [
@@ -57,7 +58,8 @@ const routes: Routes = [
     CreerRecetteComponent,
     RecetteComponent,
     IngredientsComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    UniteComponent
   ],
   imports: [
     BrowserModule,

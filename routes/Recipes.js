@@ -273,10 +273,10 @@ recipe.post('/category/add', (req, res) => {
         })
 })
 
-//Récupérer tous les ingrédients
+//Récupérer tous les ingrédients dans l'ordre alphabétique
 recipe.get('/ingredient', (req, res) => {
     Ingredient.findAll({
-
+        order: [["nomIngredient", "ASC"]],
     })
         .then(ingredient => {
             if(ingredient){
