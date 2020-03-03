@@ -256,7 +256,6 @@ recipe.post('/category/add', (req, res) => {
     })
         .then(categorie => {
             if(!categorie) {
-                console.log("gros con")
                     Categorie.create(categorieData) 
                     .then(success => {
                         res.json({success : "Catégorie ajoutée avec succès !"})
@@ -290,6 +289,77 @@ recipe.get('/ingredient', (req, res) => {
         })
         .catch(err => {
             res.send('error: ' + err)
+        })
+})
+
+//supprimer ingredient
+recipe.delete('/ingredient/delete/:id', (req, res) => {
+    Ingredient.destroy({
+        where: {
+            idIngredient: req.params.id
+        }
+    })
+    .then(() => {
+      res.send('Ingredient deleted!')
+    })
+    .catch(err => {
+      res.send('error: ' + err)
+    })
+})
+
+//modifier ingredient
+recipe.put('/ingredient/update', (req, res) => {
+    Ingredient.findOne({
+        where: {
+            nomIngredient: req.body.nomIngredient
+        }
+    }).then((ingredient) => {
+    
+        if(!ingredient) {
+            Ingredient.update(
+                { nomIngredient: req.sanitize(req.body.nomIngredient) },
+                { where: { idIngredient: req.body.idIngredient } }
+            )
+            .then(() => {
+                res.json({success : 'Ingrédient modifié !'})
+            })
+            .error(err => 
+                res.json({error : err}))
+        }
+    })
+    .error(err =>
+        res.json({error: err}))
+})
+
+//Ajouter ingredient 
+recipe.post('/ingredient/add', (req, res) => { 
+   
+    const ingredientData = {
+       nomIngredient: req.sanitize(req.body.nomIngredient),
+
+    }
+   Ingredient.findOne({ 
+        where: {
+            nomIngredient: req.sanitize(req.body.nomIngredient)
+        }
+    })
+        .then(ingredient => {
+            if(!ingredient) {
+             
+                    Ingredient.create(ingredientData) 
+                    .then(success => {
+                        res.json({success : "Ingredient ajoutée avec succès !"})
+                    })
+                    .catch(err => {
+                        res.json({error: err})
+                    })
+                
+            } else {
+                res.json({ error: "Cet ingrédient existe déjà" })
+            }
+        })
+        .catch(err => {
+            res.json({error:  err})
         })
 })
 

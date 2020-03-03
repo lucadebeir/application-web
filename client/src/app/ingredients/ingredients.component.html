@@ -1,3 +1,42 @@
 <div id="header">
   <h1>Ingrédients</h1>
+  
 </div>  
+
+
+
+
+<div class='flex-container'>
+  
+  <div>
+    <form class="form-inline my-2 my-lg-0">
+      <input id="rech" class="form-control mr-sm-" type="search" placeholder="Rechercher un ingrédient" aria-label="Search" [formControl]="filter">
+      </form>
+    <table class="table col-md-8 mx-auto" *ngFor="let ingredient of filteredIngredient$ | async">
+    
+        <tr>
+            <td>
+              <form (submit)="updateIngredient(ingredient)">
+              <input id="zone" type="text" class="form-control" name="nomIngredient"  value= {{ingredient.nomIngredient}}
+                  #nomIngredient="ngModel" [(ngModel)]="ingredient.nomIngredient">
+            <td>
+              <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
+            </td>
+            <td>
+              <button id="btn" class="btn btn-outline-danger " (click)="deleteIngredient(ingredient.idIngredient)" >Supprimer</button>
+              </form>
+            </td>
+          </tr> 
+    </table>
+  </div>
+  <div >
+    <h6 id="question" > Ajouter un nouvel ingredient </h6>
+    <form (submit)="addIngredient()">
+      <input type="text" class="form-control" name="nomIngredient"  placeholder="nom ingredient"
+                        [(ngModel)]="ingredient.nomIngredient">
+
+      <button id="btn" class="btn btn-outline-info" type="submit">Valider</button>
+      
+      </form>
+  </div>
+</div>

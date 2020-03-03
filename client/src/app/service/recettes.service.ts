@@ -16,6 +16,7 @@ export interface RecipeDetails {
 }
 
 export interface IngredientDetails {
+    idIngredient: string
     nomIngredient: string
     qte: number
     libelleUnite: string
@@ -150,11 +151,33 @@ export class RecettesService {
 
     public getAllIngredients(): any {
         return this.http.get<any>(`/server/ingredient`)
-            .pipe(map((data: CategoryDetails[]) => {
+            .pipe(map((data: IngredientDetails[]) => {
                 return data
             }))
     }
 
-  
+    public deleteIngredient(id: any): Observable<any> {
+        const url = `/server/ingredient/delete/${id}`;
+        return this.http.delete<any>(url).pipe(
+          tap(_ => console.log(`deleted ${id}`)),
+        );
+    }
+
+    public updateIngredient(ingredient: IngredientDetails) : Observable<any> {
+        return this.http.put(`/server/ingredient/update`, ingredient)
+            .pipe(map((data: IngredientDetails[]) => {
+                return data
+            }))
+    }
+    
+    public addIngredient(ingredient: IngredientDetails) : any {
+        console.log(ingredient)
+        this.http.post('/server/ingredient/add', ingredient).subscribe(res =>  {
+            {
+                return res
+            }
+        })
+        
+    }
 
 }    
