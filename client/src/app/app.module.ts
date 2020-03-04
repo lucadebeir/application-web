@@ -21,10 +21,11 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { AProposComponent } from './apropos/apropos.component';
 import { RecettesService } from './service/recettes.service';
 import { RecetteComponent } from './recette/recette.component';
-import { CreerRecetteComponent } from './creer-recette/creer-recette.component';
 import { IngredientsComponent } from './ingredients/ingredients.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { UniteComponent } from './unite/unite.component';
+import { AjoutRecetteComponent } from './ajout-recette/ajout-recette.component';
+import { ModalAddIngredientComponent } from './modal-add-ingredient/modal-add-ingredient.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,9 @@ const routes: Routes = [
   {path: 'recipe/:id', component: RecetteComponent},
   {path: 'handleRecipes', component: GererLesRecettesComponent},
   {path: 'category', component: CategoriesComponent},
-  {path: 'ingredient', component: IngredientsComponent}
+  {path: 'ingredient', component: IngredientsComponent},
+  {path: 'add-recipe', component: AjoutRecetteComponent}
+
 ]
 
 @NgModule({
@@ -55,11 +58,12 @@ const routes: Routes = [
     MesRecettesComponent,
     RecettesComponent,
     UpdatePasswordComponent,
-    CreerRecetteComponent,
     RecetteComponent,
     IngredientsComponent,
     CategoriesComponent,
-    UniteComponent
+    UniteComponent,
+    AjoutRecetteComponent,
+    ModalAddIngredientComponent
   ],
   imports: [
     BrowserModule,

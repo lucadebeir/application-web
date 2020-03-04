@@ -1,9 +1,11 @@
-import {Injectable} from '@angular/core'
-import {HttpClient, HttpParams} from '@angular/common/http'
-import {Observable, of} from 'rxjs'
+import { Injectable } from '@angular/core'
+import { HttpClient, HttpParams } from '@angular/common/http'
+import { Observable, of } from 'rxjs'
 import { map, tap, catchError } from 'rxjs/operators'
 import { CategoriesComponent } from '../categories/categories.component'
- 
+import { CreateRecipe } from '../ajout-recette/ajout-recette.component'
+import { NewIngredient } from '../modal-add-ingredient/modal-add-ingredient.component'
+
 
 
 export interface RecipeDetails {
@@ -42,42 +44,40 @@ export interface CategoryDetails {
 @Injectable()
 export class RecettesService {
 
-    constructor(private http: HttpClient){ }
+    constructor(private http: HttpClient) { }
 
     public getAllRecipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/allRecipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
-                console.log(data)
-                return data
-            }))
+
+            return data
+        }))
     }
 
-    public getRecipeById(id: any) : Observable<any> {
+    public getRecipeById(id: any): Observable<any> {
         return this.http.get<any>('/server/recipe/' + id)
     }
 
-    public getIngredientsByIdRecette(id: any) : any {
+    public getIngredientsByIdRecette(id: any): any {
         return this.http.get<any>('/server/recipe/' + id + '/ingredients')
     }
 
-    public getUtiliserIngredientsByIdRecette(id: any) : Observable<QuantiteDetails[]> {
+    public getUtiliserIngredientsByIdRecette(id: any): Observable<QuantiteDetails[]> {
         const base = this.http.get('/server/recipe/' + id + '/utiliserIngredients')
         const utiliserIngredients = base.pipe(map((data: QuantiteDetails[]) => {
             return data
         }))
-        console.log("ohohoho")
-        console.log(utiliserIngredients)
         return utiliserIngredients
     }
 
-    public getIngredientById(idIngredient: any) : Observable<IngredientDetails> {
+    public getIngredientById(idIngredient: any): Observable<IngredientDetails> {
         const base = this.http.get('/server/recipe/ingredient/' + idIngredient)
         return base.pipe(map((data: IngredientDetails) => {
             return data
         }))
     }
 
-    public getUniteById(idUnite: any) : Observable<UniteDetails> {
+    public getUniteById(idUnite: any): Observable<UniteDetails> {
         const base = this.http.get('/server/recipe/unite/' + idUnite)
         return base.pipe(map((data: UniteDetails) => {
             return data
@@ -91,7 +91,7 @@ export class RecettesService {
         }))
     }
 
-    public getMostPopularRecipes():Observable<RecipeDetails[]> {
+    public getMostPopularRecipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/mostPopularRecipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
             return data
@@ -101,11 +101,11 @@ export class RecettesService {
     public deleteRecipe(id: any): Observable<any> {
         const url = `/server/delete-recipe/${id}`;
         return this.http.delete<any>(url).pipe(
-          tap(_ => console.log(`deleted ${id}`)),
+            tap(_ => console.log(`deleted ${id}`)),
         );
     }
 
-    public getRecipeByCategory(idCategorie: any):Observable<RecipeDetails[]> {
+    public getRecipeByCategory(idCategorie: any): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/recipe/category/${idCategorie}`)
         return base.pipe(map((data: RecipeDetails[]) => {
             return data
@@ -126,27 +126,27 @@ export class RecettesService {
     public deleteCategory(id: any): Observable<any> {
         const url = `/server/category/delete/${id}`;
         return this.http.delete<any>(url).pipe(
-          tap(_ => console.log(`deleted ${id}`)),
+            tap(_ => console.log(`deleted ${id}`)),
         );
     }
 
-    public updateCategory(categorie: CategoryDetails) : Observable<any> {
+    public updateCategory(categorie: CategoryDetails): Observable<any> {
         return this.http.put(`/server/category/update`, categorie)
             .pipe(map((data: CategoryDetails[]) => {
                 return data
             }))
 
-       
+
     }
 
-    public addCategory(categorie: CategoryDetails) : any {
+    public addCategory(categorie: CategoryDetails): any {
         console.log(categorie)
-        this.http.post('/server/category/add', categorie).subscribe(res =>  {
+        this.http.post('/server/category/add', categorie).subscribe(res => {
             {
                 return res
             }
         })
-        
+
     }
 
     public getAllIngredients(): any {
@@ -159,25 +159,46 @@ export class RecettesService {
     public deleteIngredient(id: any): Observable<any> {
         const url = `/server/ingredient/delete/${id}`;
         return this.http.delete<any>(url).pipe(
-          tap(_ => console.log(`deleted ${id}`)),
+            tap(_ => console.log(`deleted ${id}`)),
         );
     }
 
-    public updateIngredient(ingredient: IngredientDetails) : Observable<any> {
+    public updateIngredient(ingredient: IngredientDetails): Observable<any> {
         return this.http.put(`/server/ingredient/update`, ingredient)
             .pipe(map((data: IngredientDetails[]) => {
                 return data
             }))
     }
-    
-    public addIngredient(ingredient: IngredientDetails) : any {
-        console.log(ingredient)
-        this.http.post('/server/ingredient/add', ingredient).subscribe(res =>  {
+
+    public addIngredient(ingredient: any): any {
+        this.http.post('/server/ingredient/add', ingredient).subscribe(res => {
             {
                 return res
             }
         })
-        
+
     }
+
+    public createRecipe(recipe: CreateRecipe): Observable<any> {
+        const res = this.http.post('/serveur/recipe/add', recipe)
+        return res.pipe(map((res) => {
+            return res
+        }))
+    }
+
+    public addIngredientsAndCategoryToNewRecipe(recipe: CreateRecipe): Observable<any> {
+        const res = this.http.post('/server/recipe/addIngredientAndCategorie', recipe)
+        return res.pipe(map((res) => {
+            return res
+        }))
+    }
+
+    public getAllUnite(): any {
+        return this.http.get<any>('/server/unite')
+            .pipe(map((data: UniteDetails[]) => {
+                return data
+            }))
+    }
+
 
 }    

@@ -4,8 +4,8 @@
 
 
 <ul id="menu" class="nav justify-content-center">
-    <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/ingredient']">Gérer les ingrédients</a>
+	<li class="nav-item">
+		<a class="nav-link" [routerLink]="['/ingredient']">Gérer les ingrédients</a>
 	</li>
 	<li class="nav-item">
 		<a class="nav-link" [routerLink]="['/category']">Gérer les catégories</a>
@@ -16,18 +16,18 @@
 	</li>
 
 	<li class="nav-item">
-		<a class="nav-link" [routerLink]="['/']">Créer une nouvelle recette</a>
+		<a class="nav-link" [routerLink]="['/add-recipe']">Créer une nouvelle recette</a>
 	</li>
 
-    <li>
+	<li>
 		<form class="form-inline my-2 my-lg-0">
 			<input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search"
 				[formControl]="filter">
 		</form>
-    </li>
-  </ul>
+	</li>
+</ul>
 
-  
+
 <div id="titre">
 	<h3>Recettes publiées</h3>
 </div>
@@ -51,11 +51,11 @@
 						<li><i class="badge badge-light"></i>{{recette.nbFavoris}} ♥</li>
 						<li><i class="badge badge-light"></i> {{recette.nbVues}} 👁</li>
 					</ul>
-					<button type="button" class="btn btn-outline-warning" >Modifier </button> 
+					<button type="button" class="btn btn-outline-warning">Modifier </button>
 					<button type="submit" class="btn btn-outline-danger"
 						(click)="deleteRecipe(recette.idRecette)">Supprimer</button>
 
-						
+
 				</div>
 			</div>
 		</div>
