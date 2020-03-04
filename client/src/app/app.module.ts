@@ -29,19 +29,19 @@ import { ModalAddIngredientComponent } from './modal-add-ingredient/modal-add-in
 
 
 const routes: Routes = [
-  {path: '', component: AccueilComponent},
-  {path: 'login', component: SeConnecterComponent},
-  {path: 'register', component: InscrireComponent},
-  {path: 'profile', component: MonProfileComponent, canActivate: [AuthGuardService]},
-  {path: 'update-password', component: UpdatePasswordComponent, canActivate: [AuthGuardService]},
-  {path: 'aboutMe', component: AProposComponent},
-  {path: 'allRecipes', component: RecettesComponent},
-  {path: 'recipe/:id', component: RecetteComponent},
-  {path: 'handleRecipes', component: GererLesRecettesComponent},
-  {path: 'category', component: CategoriesComponent},
-  {path: 'ingredient', component: IngredientsComponent},
-  {path: 'add-recipe', component: AjoutRecetteComponent}
-
+  { path: '', component: AccueilComponent },
+  { path: 'login', component: SeConnecterComponent },
+  { path: 'register', component: InscrireComponent },
+  { path: 'profile', component: MonProfileComponent, canActivate: [AuthGuardService] },
+  { path: 'update-password', component: UpdatePasswordComponent, canActivate: [AuthGuardService] },
+  { path: 'aboutMe', component: AProposComponent },
+  { path: 'allRecipes', component: RecettesComponent },
+  { path: 'recipe/:id', component: RecetteComponent },
+  { path: 'handleRecipes', component: GererLesRecettesComponent },
+  { path: 'category', component: CategoriesComponent },
+  { path: 'ingredient', component: IngredientsComponent },
+  { path: 'add-recipe', component: AjoutRecetteComponent },
+  { path: 'unite', component: UniteComponent }
 ]
 
 @NgModule({

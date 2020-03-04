@@ -25,7 +25,7 @@
             <br>
             <form>
                 <div id="ingrForm" class="form-row">
-                    <div class="col-md-3 mb-3"> <!--Changer pour pourvoir sélectionner plusieurs catégories-->
+                    <div class="col-md-4 mb-4"> <!--Changer pour pourvoir sélectionner plusieurs catégories-->
                         <select class="custom-select" #idCategorie="ngModel" id="validationTooltip04"
                             [(ngModel)]="recipe.idCategorie" [ngModelOptions]="{standalone: true}" required>
                             <option *ngFor="let categorie of categories" [ngValue]="categorie.idCategorie">

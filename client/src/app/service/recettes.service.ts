@@ -200,5 +200,28 @@ export class RecettesService {
             }))
     }
 
+    public deleteUnite(id: any): Observable<any> {
+        const url = `/server/unite/delete/${id}`;
+        return this.http.delete<any>(url).pipe(
+            tap(_ => console.log(`deleted ${id}`)),
+        );
+    }
+
+    public updateUnite(unite: UniteDetails): Observable<any> {
+        return this.http.put(`/server/unite/update`, unite)
+            .pipe(map((data: UniteDetails[]) => {
+                return data
+            }))
+    }
+
+    public addUnite(unite: any): any {
+        this.http.post('/server/unite/add', unite).subscribe(res => {
+            {
+                return res
+            }
+        })
+
+    }
+
 
 }    

@@ -396,15 +396,87 @@ recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
     }
 })
 
-//récupérer toutes les unités
+//récupérer toutes les unités dans l'ordre alphabetique
 recipe.get('/unite', (req, res) => {
     Unite.findAll({
+        order: [["libelleUnite", "ASC"]],
     })
         .then(unite => {
             if (unite) {
                 res.json(unite)
             } else {
                 res.send("Il n'y a pas d'unité !")
+            }
+        })
+        .catch(err => {
+            res.json({ error: err })
+        })
+})
+
+//supprimer unité
+recipe.delete('/unite/delete/:id', (req, res) => {
+    Unite.destroy({
+        where: {
+            idUnite: req.params.id
+        }
+    })
+        .then(() => {
+            res.send('Unite deleted!')
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//modifier unité
+recipe.put('/unite/update', (req, res) => {
+   Unite.findOne({
+        where: {
+            libelleUnite: req.body.libelleUnite
+        }
+    }).then((unite) => {
+
+        if (!unite) {
+            Unite.update(
+                { libelleUnite: req.sanitize(req.body.libelleUnite) },
+                { where: { idUnite: req.body.idUnite } }
+            )
+                .then(() => {
+                    res.json({ success: 'Unité modifié !' })
+                })
+                .error(err =>
+                    res.json({ error: err }))
+        }
+    })
+        .error(err =>
+            res.json({ error: err }))
+})
+
+//Ajouter unite
+recipe.post('/unite/add', (req, res) => {
+
+    const uniteData = {
+        libelleUnite: req.sanitize(req.body.libelleUnite),
+
+    }
+   Unite.findOne({
+        where: {
+           libelleUnite: req.sanitize(req.body.libelleUnite)
+        }
+    })
+        .then(unite => {
+            if (!unite) {
+
+                Unite.create(uniteData)
+                    .then(success => {
+                        res.json({ success: "Unité ajoutée avec succès !" })
+                    })
+                    .catch(err => {
+                        res.json({ error: err })
+                    })
+
+            } else {
+                res.json({ error: "Cet unité existe déjà" })
             }
         })
         .catch(err => {
