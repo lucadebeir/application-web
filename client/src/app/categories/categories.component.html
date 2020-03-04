@@ -6,21 +6,23 @@
 
 <div class='flex-container'>
   <div>
-    <table class="table col-md-8 mx-auto" *ngFor="let categorie of categories">
+    <table class="table col-md-12 mx-auto" *ngFor="let categorie of categories">
     
         <tr>
             <td>
               <form (submit)="updateCategory(categorie)">
+                <div class="form-row align-items-center">
+                  <div class="col-auto">
               <input type="text" class="form-control" name="libelleCategorie"  value= {{categorie.libelleCategorie}}
                   [(ngModel)]="categorie.libelleCategorie">
-            
-            
-            <td>
-  
+            </div>
+            <div class="col-auto">
               <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
-            </td>
-            <td>
+            </div>
+            <div class="col-auto">
               <button id="btn" type="submit" class="btn btn-outline-danger " (click)="deleteCategory(categorie.idCategorie)" >Supprimer</button>
+              </div>
+              </div>
               </form>
             </td>
           </tr> 
