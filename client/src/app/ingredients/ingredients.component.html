@@ -9,20 +9,22 @@
 <div class='flex-container'>
   
   <div>
-    <form class="form-inline my-2 my-lg-0">
+    <form>
       <input id="rech" class="form-control mr-sm-" type="search" placeholder="Rechercher un ingrédient" aria-label="Search" [formControl]="filter">
       </form>
     <table class="table col-md-8 mx-auto" *ngFor="let ingredient of filteredIngredient$ | async">
     
         <tr>
             <td>
+             
               <form (submit)="updateIngredient(ingredient)">
+                <div class="form-row align-items-center">
               <input id="zone" type="text" class="form-control" name="nomIngredient"  value= {{ingredient.nomIngredient}}
                   [(ngModel)]="ingredient.nomIngredient">
-            <td>
+              </div>
+              
               <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
-            </td>
-            <td>
+           
               <button id="btn" class="btn btn-outline-danger " (click)="deleteIngredient(ingredient.idIngredient)" >Supprimer</button>
               </form>
             </td>

@@ -180,7 +180,7 @@ export class RecettesService {
     }
 
     public createRecipe(recipe: CreateRecipe): Observable<any> {
-        const res = this.http.post('/serveur/recipe/add', recipe)
+        const res = this.http.post('/server/add-recipe', recipe)
         return res.pipe(map((res) => {
             return res
         }))

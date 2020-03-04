@@ -364,7 +364,7 @@ recipe.post('/ingredient/add', (req, res) => {
 })
 
 //creer recette
-recipe.post('/recipe/add', (req, res) => {
+recipe.post('/add-recipe', (req, res) => {
     db.sequelize.query("INSERT INTO recettes (idRecette, nomRecette, datePublication, nbFavoris, nbVues, etapes) VALUES (NULL, ?, ?, 0, 0, ?) ",
         {
             replacements: [req.sanitize(req.body.nomRecette), new Date(), req.sanitize(req.body.etapes)]
@@ -377,14 +377,14 @@ recipe.post('/recipe/add', (req, res) => {
 
 //ajouter ingrédients et catégorie de la recette
 recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
-    db.sequelize.query("INSERT INTO classerDans (idRecette, idCategorie) VALUES (?,?", {
+    db.sequelize.query("INSERT INTO classerDans (idRecette, idCategorie) VALUES (?,?)", {
         replacements: [req.body.idRecette, req.body.idCategorie]
-    }).then(success => {
+    })/*.then(success => {
         res.json({ success: "catégorie ajoutée avec succès." })
     }).catch(err => {
         res.json({ error: err })
-    })
-    for (let i = 0; i < req.body.idRecette.ingredients.ingredients.length; i++) {
+    })*/
+    for (let i = 0; i < req.body.ingredients.ingredients.length; i++) {
         db.sequelize.query("INSERT INTO UtiliserIngredients (qte, idRecette, idIngredient, idUnite) VALUES (?,?,?,?)",
             {
                 replacements: [req.body.ingredients.ingredients[i].quantite, req.body.idRecette, req.body.ingredients.ingredients[i].idIngredient, req.body.ingredients.ingredients[i].idUnite]
