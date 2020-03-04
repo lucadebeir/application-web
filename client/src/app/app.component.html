@@ -16,7 +16,7 @@ $(document).on('click','.navbar-collapse.show',function(e) {
     <span class="navbar-toggler-icon"></span>
 
   </button>
-
+  <img src="../assets/img/logo.jpeg" class="rounded float-left" alt="logo" id="logo">
   <div class="collapse navbar-collapse justify-content-md-center"
     id="navbarNavDropdown">
     <ul class="navbar-nav">
@@ -33,7 +33,7 @@ $(document).on('click','.navbar-collapse.show',function(e) {
       </li>
 
       <li class="nav-item">
-        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/">Contact</a>
+        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/contact">Contact</a>
       </li>
 
       <li class="nav-item" *ngIf="!auth.isLoggedIn()">

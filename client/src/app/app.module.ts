@@ -41,7 +41,8 @@ const routes: Routes = [
   { path: 'category', component: CategoriesComponent },
   { path: 'ingredient', component: IngredientsComponent },
   { path: 'add-recipe', component: AjoutRecetteComponent },
-  { path: 'unite', component: UniteComponent }
+  { path: 'unite', component: UniteComponent },
+  {path: 'contact', component: ContactComponent}
 ]
 
 @NgModule({
