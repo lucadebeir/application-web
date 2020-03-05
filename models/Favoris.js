@@ -7,11 +7,13 @@ var Favoris = db.sequelize.define(
     'favori',
     {
         pseudo : {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            primaryKey: true
 
         },
         idRecette : {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            primaryKey: true
 
         }
     },

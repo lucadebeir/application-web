@@ -20,10 +20,10 @@ export class RecetteComponent implements OnInit {
     pseudo : this.auth.getUserDetails().pseudo,
     idRecette : parseInt(this.route.snapshot.paramMap.get('id'))
   }
-
-  /*public newListeCourses: ListeCoursesDetails = {
+/*
+  public newListeCourses: ListeCoursesDetails = {
     pseudo: this.auth.getUserDetails().pseudo,
-    idIngredients : this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id')))
+    idIngredients : this.ingredients
   }*/
 
   constructor(public auth: AuthentificationService ,private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {

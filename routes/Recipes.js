@@ -487,27 +487,34 @@ recipe.post('/favorites/add', (req, res) => {
         pseudo: req.body.pseudo,
         idRecette: req.body.idRecette
     }
-
-    Recipe.findOne({
+    
+        
+    /*db.sequelize.query("SELECT * FROM favoris WHERE favoris.idRecette = ? AND favoris.pseudo = ? ", {
+        replacements: [req.body.idRecette,req.body.pseudo],
+    })*/ 
+    Favoris.findOne({
         where: {
-            idRecette: favData.idRecette
+            idRecette: favData.idRecette,
+            pseudo: favData.pseudo
         }
     })
-        .then(recipe => {
-            console.log(recipe)
-            Recipe.update(
-                { nbFavoris: recipe.nbFavoris + 1 },
-                { where: { idRecette: favData.idRecette } }
-        )
-    })
-        
-    db.sequelize.query("SELECT * FROM favoris WHERE favoris.idRecette = ? AND favoris.pseudo = ? ", {
-        replacements: [req.body.idRecette,req.body.pseudo],
-        type: sequelize.QueryTypes.SELECT
-    })
         .then(favoris => {
-            if (favoris) {
-                console.log("cc")
+            console.log(favoris)
+            if (!favoris) {
+
+                Recipe.findOne({
+                    where: {
+                        idRecette: favData.idRecette
+                    }
+                })
+                    .then(recipe => {
+                        console.log(recipe)
+                        Recipe.update(
+                            { nbFavoris: recipe.nbFavoris + 1 },
+                            { where: { idRecette: favData.idRecette } }
+                    )
+                })
+
                 db.sequelize.query("INSERT INTO `favoris`(`pseudo`, `idRecette`) VALUES (?, ?)", {
                     replacements: [favData.pseudo, favData.idRecette],
                     type: sequelize.QueryTypes.INSERT
@@ -602,6 +609,20 @@ recipe.delete('/favorites/:pseudo/delete/:id', (req, res) => {
     })
         .then(() => {
             res.send('Favoris deleted!')
+            Recipe.findOne({
+                where: {
+                    idRecette: req.params.id
+                }
+            })
+                .then(recipe => {
+                    Recipe.update({
+                        nbFavoris: recipe.nbFavoris - 1
+                    },{
+                        where: {
+                            idRecette: req.params.id
+                        }
+                    })
+                })
         })
         .catch(err => {
             res.send('error: ' + err)
