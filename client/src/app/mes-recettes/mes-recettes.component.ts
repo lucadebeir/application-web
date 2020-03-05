@@ -56,7 +56,7 @@ export class MesRecettesComponent implements OnInit {
       .pipe(map(([recipes, filterString]) =>
         recipes.filter(recipe => recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
   }
-
+  //voir si on peut la récupérer au lieu de la recopier!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   updateNbView(recette: any) {
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
@@ -70,4 +70,18 @@ export class MesRecettesComponent implements OnInit {
       }
     })
   }
+
+  delateFavoris(idRecette: any) {
+    this.recetteService.deleteFavoris(idRecette)
+      .subscribe(res => {
+        this.router.navigate(['/favorites'], {
+          queryParams: {refresh: new Date().getTime()}
+       })
+        }, (err) => {
+          console.log(err);
+        }
+      );
+      window.location.reload() /* rafraichit la page */
+  }
+
 }

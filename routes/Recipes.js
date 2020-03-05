@@ -592,4 +592,19 @@ recipe.get('/recipe/favorites/:pseudo/:idCategorie', (req, res) => {
     })
 })
 
+//supprimer un favoris
+recipe.delete('/favorites/:pseudo/delete/:id', (req, res) => {
+    Favoris.destroy({
+        where: {
+            idRecette: req.params.id,
+            pseudo: req.params.pseudo
+        }
+    })
+        .then(() => {
+            res.send('Favoris deleted!')
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 module.exports = recipe

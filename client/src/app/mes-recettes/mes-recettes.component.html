@@ -1,3 +1,7 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<!--lien pour avoir le petit logo de poubelle-->
+
 <div id="titre">
     <h1>Mes recettes ♥</h1>  
 </div>
@@ -26,10 +30,12 @@
                   <h4 class="card-title">{{recette.nomRecette}}</h4>
                   <span class="badge badge-light">{{recette.nbFavoris}} ♥</span>
                   <span class="badge badge-light">{{recette.nbVues}} 👁</span>
+                  <button id="poubelle" class="btn btn-sm btn-danger" (click)=delateFavoris(recette.idRecette)><i class="fa fa-trash"></i></button> 
+                  <!--ajouter bouton supprimer fav -->
               </div>
               <div class="card-footer text-center bg-white">
                   <button class="btn btn-outline-secondary" (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">Voir la recette</button> 
-                  <!--ajouter bouton supprimer fav -->
+                 
           </div>
       </div>
   </div>

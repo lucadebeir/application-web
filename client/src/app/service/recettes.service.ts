@@ -240,7 +240,7 @@ export class RecettesService {
         })
     }
 
-
+    ///pas finie
     public addIngredientsToList(ingredients: IngredientDetails[]) {
         const pseudo = this.auth.getUserDetails().pseudo;
         this.http.post(`/server/shoppingList/${pseudo}/add`, ingredients).subscribe(res => {
@@ -267,5 +267,14 @@ export class RecettesService {
             return data
         }))
     }
+
+    public deleteFavoris(id: any): Observable<any> {
+        const pseudo = this.auth.getUserDetails().pseudo;
+        const url = `/server/favorites/${pseudo}/delete/${id}`;
+        return this.http.delete<any>(url).pipe(
+            tap(_ => console.log(`deleted ${id}`)),
+        );
+    }
+
 
 }    
