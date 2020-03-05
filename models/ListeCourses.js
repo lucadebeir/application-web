@@ -7,11 +7,13 @@ var ListeCourses = db.sequelize.define(
     'liste_de_course',
     {
         idIngredient : {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            primaryKey: true
 
         },
         pseudo: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            primaryKey: true
         }
         
     },

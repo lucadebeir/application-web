@@ -11,12 +11,14 @@ var UtiliserIngredients = db.sequelize.define(
           
         },
         idRecette : {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            primaryKey: true
 
         },
       
         idIngredient : {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            primaryKey: true
 
         },
         idUnite : {

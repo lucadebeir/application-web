@@ -8,9 +8,11 @@ var ClasserDans = db.sequelize.define(
     {
         idRecette: {
             type: Sequelize.INTEGER,
+            primaryKey: true
         },
         idCategorie : {
-            type: Sequelize.INTEGER
+            type: Sequelize.INTEGER,
+            primaryKey: true
         }
     },
     

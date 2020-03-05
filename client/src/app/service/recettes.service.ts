@@ -47,6 +47,11 @@ export interface FavorisDetails {
     idRecette: number
 }
 
+export interface ListeCoursesDetails {
+    pseudo: string
+    listIngredients: any
+}
+
 @Injectable()
 export class RecettesService {
 
@@ -241,9 +246,8 @@ export class RecettesService {
     }
 
     ///pas finie
-    public addIngredientsToList(ingredients: IngredientDetails[]) {
-        const pseudo = this.auth.getUserDetails().pseudo;
-        this.http.post(`/server/shoppingList/${pseudo}/add`, ingredients).subscribe(res => {
+    public addListeCourses(newListeCourses: ListeCoursesDetails) {
+        this.http.post(`/server/shoppingList/add`, newListeCourses).subscribe(res => {
             {
                 return res
             }

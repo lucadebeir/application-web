@@ -27,8 +27,7 @@
             </ul>
         </div>
         <!--bouttons visibles que si on est inscrit-->
-   <!--<button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-info" (click)="addListeCourses()">Ajouter les ingrédients à ma liste de course</button>
-   -->
+    <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-info" (click)="addListeCourses()">Ajouter les ingrédients à ma liste de course</button>
     <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris()">♥ Ajouter le recettes à mes favoris</button>
     </div>
     <div class="element 2 card border-secondary mb-3 col-lg-8 col-md-8 col-sm-8">

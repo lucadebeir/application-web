@@ -52,7 +52,7 @@ recipe.get('/recipe/:id', (req, res) => {
 //recupérer ingrédients de la recette avec l'id de la recette
 recipe.get('/recipe/:id/ingredients', (req, res) => {
 
-    let query = db.sequelize.query("SELECT ingredient.nomIngredient, utiliserIngredients.qte, unites.libelleUnite FROM ingredient INNER JOIN recettes INNER JOIN utiliserIngredients INNER JOIN unites WHERE ingredient.idIngredient = utiliserIngredients.idIngredient AND utiliserIngredients.idRecette = ? AND utiliserIngredients.idRecette = recettes.idRecette AND unites.idUnite = utiliserIngredients.idUnite",
+    let query = db.sequelize.query("SELECT ingredient.idIngredient, ingredient.nomIngredient, utiliserIngredients.qte, unites.libelleUnite FROM ingredient INNER JOIN recettes INNER JOIN utiliserIngredients INNER JOIN unites WHERE ingredient.idIngredient = utiliserIngredients.idIngredient AND utiliserIngredients.idRecette = ? AND utiliserIngredients.idRecette = recettes.idRecette AND unites.idUnite = utiliserIngredients.idUnite",
         {
             replacements: [req.params.id],
             type: sequelize.QueryTypes.SELECT
@@ -378,9 +378,12 @@ recipe.post('/add-recipe', (req, res) => {
 
 //ajouter ingrédients et catégorie de la recette
 recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
-    db.sequelize.query("INSERT INTO classerDans (idRecette, idCategorie) VALUES (?,?)", {
-        replacements: [req.body.idRecette, req.body.idCategorie]
-    })
+    for (let i = 0; i < req.body.categories.length; i++) {
+        db.sequelize.query("INSERT INTO classerDans (idRecette, idCategorie) VALUES (?,?)",
+            {
+                replacements: [req.body.idRecette, req.body.categories[i].idCategorie]
+            })
+    }
     for (let i = 0; i < req.body.ingredients.ingredients.length; i++) {
         db.sequelize.query("INSERT INTO UtiliserIngredients (qte, idRecette, idIngredient, idUnite) VALUES (?,?,?,?)",
             {
@@ -539,40 +542,28 @@ recipe.post('/favorites/add', (req, res) => {
 
 
 //ajouter à la liste de course
-recipe.post('/shoppingList/${pseudo}/add', (req, res) => {
+recipe.post('/shoppingList/add', (req, res) => {
 
-    for (let i = 0; i < req.body.ingredients.ingredients.length; i++) {
+    console.log(req.body.listIngredients[0])
+
+    for (let i = 0; i < req.body.listIngredients.length; i++) {
 
 
         const listeCourseData = {
-            pseudo: req.params.pseudo,
-            idIngredient: req.body.ingredients.ingredients[i].idIngredient
+            pseudo: req.body.pseudo,
+            idIngredient: req.body.listIngredients[i].idIngredient
         }
         ListeCourse.findOne({
             where: {
-                pseudo: req.params.pseudo,
-                idIngredient: req.body.ingredients.ingredients[i].idIngredient
+                pseudo: req.body.pseudo,
+                idIngredient: req.body.listIngredients[i].idIngredient
             }
         })
             .then(listeCourse => {
                 if (!listeCourse) {
-                    Favoris.create(listeCourseData)
-                        .then(success => {
-                            res.json({ success: "Ajouté à la liste de course !" })
-                        })
-                        .catch(err => {
-                            res.json({ error: err })
-                        })
-
-                } else {
-                    res.json({ error: "Cet ingrédient est déjà dans la liste de course" })
-                }
-            })
-            .catch(err => {
-                res.json({ error: err })
-            })
-    }
-})
+                    ListeCourse.create(listeCourseData)
+    }})
+}})
 
 
 //récupérer les favoris de l'utilisateur

@@ -26,6 +26,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { UniteComponent } from './unite/unite.component';
 import { AjoutRecetteComponent } from './ajout-recette/ajout-recette.component';
 import { ModalAddIngredientComponent } from './modal-add-ingredient/modal-add-ingredient.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 const routes: Routes = [
@@ -70,6 +71,7 @@ const routes: Routes = [
     ModalAddIngredientComponent
   ],
   imports: [
+    NgMultiSelectDropDownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryDetails, IngredientDetails, UniteDetails, RecettesService } from '../service/recettes.service';
 import { FormGroup, FormArray, Validator, FormBuilder } from '@angular/forms';
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ajout-recette',
@@ -12,7 +14,7 @@ export class AjoutRecetteComponent implements OnInit {
   recipe: CreateRecipe = {
     idRecette: null,
     nomRecette: '',
-    idCategorie: null,
+    categories: null,
     ingredients: null,
     etapes: ''
 
@@ -25,7 +27,12 @@ export class AjoutRecetteComponent implements OnInit {
   public recipeForm: FormGroup
   public ingredientForm: FormGroup
 
-  constructor(private recetteService: RecettesService, private formBuilder: FormBuilder) { }
+  //pour multiple select
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings : IDropdownSettings;
+
+  constructor(private recetteService: RecettesService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     //on récupère tous les ingrédients, unités, catégories pour les réponses possibles à notre formulaire
@@ -47,21 +54,32 @@ export class AjoutRecetteComponent implements OnInit {
       }
     )
 
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'idCategorie',
+      textField: 'libelleCategorie',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
+
     this.createIngredientForm()
 
     this.addIngredient()
   }
 
-
   createRecipe() {
     this.recipe.ingredients = this.ingredientForm.value //je récupère les info sur l'ingrédient
+    this.recipe.categories = this.selectedItems
     this.recetteService.createRecipe(this.recipe).subscribe(res => {
       this.recipe.idRecette = res[0] // je récupère l'id de l'adresse que je viens de créer
       this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
         console.log(res)
       })
     })
-    console.log(this.recipe)
+    //this.router.navigate(['/recipe/'], { queryParams: { id: this.recipe.idRecette } })
+    this.router.navigateByUrl('allRecipes')
   }
 
 
@@ -101,7 +119,7 @@ export class Ingredient {
 export interface CreateRecipe{
   idRecette: number
   nomRecette: string
-  idCategorie: number
-  ingredients: number
+  categories: any[]
+  ingredients: any[]
   etapes : string
 }
