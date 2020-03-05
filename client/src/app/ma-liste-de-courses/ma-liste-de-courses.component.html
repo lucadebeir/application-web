@@ -19,7 +19,8 @@
                            
                             <th scope="col"><form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" [formControl]="filter">
-                              </form></th>
+                              </form>
+                            </th>
 
                         </tr>
                     </thead>
@@ -28,10 +29,10 @@
                             <td><img id="image" src="../../assets/img/shoppingList.jpeg" /> </td>
                             <td> {{ingredient.nomIngredient}}</td> 
                            
-                            
                             <td class="text-right"> 
-                                <button class="btn btn-sm btn-danger" (click)=deleteListeCourse(ingredient.idIngredient)><i class="fa fa-trash"></i>
-                                </button> </td>
+                              
+                                <button class="btn btn-sm btn-danger" (click)=deleteListeCourse(ingredient.idIngredient)><i class="fa fa-trash"></i></button>
+                             </td>
                         </tr>
 
                     </tbody>

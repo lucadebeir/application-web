@@ -276,14 +276,7 @@ export class RecettesService {
         );
     }
 
-    public deleteListeCourse(id: any): Observable<any> {
-        const pseudo = this.auth.getUserDetails().pseudo;
-        const url = `/server/shoppingList/${pseudo}/delete/${id}`;
-        return this.http.delete<any>(url).pipe(
-            tap(_ => console.log(`deleted ${id}`)),
-        );
-    }
-
+    
     public getListeCourses(): Observable<IngredientDetails[]> {
         const pseudo = this.auth.getUserDetails().pseudo;
         const base = this.http.get(`/server/shoppingList/${pseudo}`);
@@ -291,6 +284,14 @@ export class RecettesService {
             return data
         }))
 
+    }
+
+    public deleteListeCourse(id: any): Observable<any> {
+        const pseudo = this.auth.getUserDetails().pseudo;
+        const url = `/server/shoppingList/delete/${id}/${pseudo}`;
+        return this.http.delete<any>(url).pipe(
+            tap(_ => console.log(`deleted ${id}`)),
+        );
     }
 
 }    

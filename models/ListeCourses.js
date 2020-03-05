@@ -4,7 +4,7 @@ const Ingredient = require("../models/Ingredient")
 const User = require("../models/User")
 
 var ListeCourses = db.sequelize.define(
-    'listeCourses',
+    'liste_de_course',
     {
         idIngredient : {
             type: Sequelize.INTEGER

@@ -3,8 +3,9 @@ import { Observable, combineLatest, from } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FormControl, Form } from '@angular/forms';
 import { RecettesService, IngredientDetails } from '../service/recettes.service';
-import { HttpErrorResponse, HttpResponse} from '@angular/common/http'
-import {Router, ActivatedRoute} from '@angular/router'
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http'
+import { Router, ActivatedRoute } from '@angular/router'
+import { AuthentificationService } from '../service/authentification.service';
 
 
 @Component({
@@ -17,23 +18,29 @@ export class MaListeDeCoursesComponent implements OnInit {
   public ingredients: IngredientDetails[]
 
   public ingredient: IngredientDetails
-  
+
   public filteredIngredient$: Observable<IngredientDetails[]>
   public filter: FormControl
   public filter$: Observable<string>
 
+  public ingredientToDelete: IngredientToDelete = {
+    pseudo: this.auth.getUserDetails().pseudo,
+    idIngredient: null
+  }
 
-  constructor(private recetteService: RecettesService, private router: Router) { 
-    this.ingredients$ = this.recetteService.getAllIngredients()
-     this.filter = new FormControl('')
-     this.filter$ = this.filter.valueChanges.pipe(startWith(''))
-     this.filteredIngredient$ = combineLatest(this.ingredients$, this.filter$)
-       .pipe(map(([ingredients, filterString]) =>
-         ingredients.filter(ingredient => ingredient.nomIngredient.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
+
+  constructor(private recetteService: RecettesService, private router: Router, private auth: AuthentificationService) {
+    this.ingredients$ = this.recetteService.getListeCourses()
+    this.filter = new FormControl('')
+    this.filter$ = this.filter.valueChanges.pipe(startWith(''))
+    this.filteredIngredient$ = combineLatest(this.ingredients$, this.filter$)
+      .pipe(map(([ingredients, filterString]) =>
+        ingredients.filter(ingredient => ingredient.nomIngredient.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
+
   }
 
   ngOnInit(): void {
-    
+
   }
 
   getListeCourses() {
@@ -45,17 +52,24 @@ export class MaListeDeCoursesComponent implements OnInit {
         ingredients.filter(ingredient => ingredient.nomIngredient.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
 
   }
-//tester si ça marche
-  deleteListeCourse(idIngrdient: any) {
-    this.recetteService.deleteListeCourse(idIngrdient)
+  
+  deleteListeCourse(idIngredient: any) {
+    this.ingredientToDelete.idIngredient = idIngredient
+    console.log(this.ingredientToDelete)
+    this.recetteService.deleteListeCourse(idIngredient)
       .subscribe(res => {
         this.router.navigate(['/shoppingList'], {
-          queryParams: {refresh: new Date().getTime()}
-       })
-        }, (err) => {
-          console.log(err);
-        }
+          queryParams: { refresh: new Date().getTime() }
+        })
+      }, (err) => {
+        console.log(err);
+      }
       );
-      window.location.reload() /* rafraichit la page */
+    window.location.reload() /* rafraichit la page */
   }
+}
+
+export interface IngredientToDelete {
+  pseudo: string
+  idIngredient: number
 }

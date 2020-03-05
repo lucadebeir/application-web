@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, QuantiteDetails, FavorisDetails } from '../service/recettes.service';
+import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, QuantiteDetails, FavorisDetails, /*ListeCoursesDetails*/ } from '../service/recettes.service';
 import { HttpErrorResponse, HttpResponse} from '@angular/common/http'
 import {Router, ActivatedRoute} from '@angular/router'
 import {Observable, of} from 'rxjs'
@@ -20,6 +20,11 @@ export class RecetteComponent implements OnInit {
     pseudo : this.auth.getUserDetails().pseudo,
     idRecette : parseInt(this.route.snapshot.paramMap.get('id'))
   }
+
+  /*public newListeCourses: ListeCoursesDetails = {
+    pseudo: this.auth.getUserDetails().pseudo,
+    idIngredients : this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id')))
+  }*/
 
   constructor(public auth: AuthentificationService ,private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {
   }
@@ -73,5 +78,10 @@ export class RecetteComponent implements OnInit {
     this.recetteService.addFavoris(this.newFavori)
     this.router.navigateByUrl('/favorites')
   }
+/*
+  addListeCourses(){
+    this.recetteService.addListeCourses(this.newListeCourses)
+    this.router.navigateByUrl('/shoppingList')
+  }*/
 
 }
