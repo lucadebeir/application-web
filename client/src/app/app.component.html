@@ -50,9 +50,9 @@ $(document).on('click','.navbar-collapse.show',function(e) {
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" routerLink="/profile">Mon profil</a>
-            <a class="dropdown-item" routerLink="/">Mes recettes ♥</a>
-            <a class="dropdown-item" routerLink="/">Ma liste de course</a>
-            <a class="dropdown-item" routerLink="/">Mes commentaires</a>
+            <a class="dropdown-item" routerLink="/favorites">Mes recettes ♥</a>
+            <a class="dropdown-item" routerLink="/shoppingList">Ma liste de course</a>
+            <a class="dropdown-item" routerLink="/comment">Mes commentaires</a>
             <a class="dropdown-item" *ngIf="auth.isAdmin()" routerLink="/handleRecipes" >Gerer les recettes</a>
             <a class="dropdown-item" routerLink="" (click)="auth.logout()">Deconnexion</a>
           </div>
@@ -62,3 +62,18 @@ $(document).on('click','.navbar-collapse.show',function(e) {
 </nav>
 
 <router-outlet></router-outlet>
+
+
+
+
+<!--footer
+<footer>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+
+
+    
+    <div class="instagram"><a href="https://www.instagram.com/marineteroitin/?hl=fr"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></div>
+  </footer>
+  -->

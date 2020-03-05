@@ -1,4 +1,4 @@
-<div id="header">
+<div id="titre">
     <h2>{{recette?.nomRecette}}</h2>
   
     <figure class="figure">
@@ -27,8 +27,8 @@
             </ul>
         </div>
         <!--si on est pas connecté lorsqu'on clique sur ses boutons on accède à la page inscription-->
-        <button id="btn" type="button" class="btn btn-outline-info">Ajouter les ingrédients à ma liste de course</button>
-        <button id="btn" type="button" class="btn btn-outline-danger">♥ Ajouter le recettes à mes favoris</button>
+        <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-info">Ajouter les ingrédients à ma liste de course</button>
+        <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris()">♥ Ajouter le recettes à mes favoris</button>
     </div>
     <div class="element 2 card border-secondary mb-3 col-lg-8 col-md-8 col-sm-8">
         <div class="card-header">Préparation</div>

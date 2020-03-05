@@ -1,3 +1,21 @@
+<script>
+    $(document).ready(function() {
+    // $('select').val([1]);
+    $('select').formSelect();
+    $('select.select_all').siblings('ul').prepend('<li id=sm_select_all><span>Select All</span></li>');
+    $('li#sm_select_all').on('click', function () {
+      var jq_elem = $(this), 
+          jq_elem_span = jq_elem.find('span'),
+          select_all = jq_elem_span.text() == 'Select All',
+          set_text = select_all ? 'Select None' : 'Select All';
+      jq_elem_span.text(set_text);
+      jq_elem.siblings('li').filter(function() {
+        return $(this).find('input').prop('checked') != select_all;
+      }).click();
+    });
+})
+</script>
+
 <div id="header">
     <h2>Ajout d'une nouvelle recette</h2>
 </div>
@@ -26,11 +44,12 @@
             <form>
                 <div id="ingrForm" class="form-row">
                     <div class="col-md-4 mb-4"> <!--Changer pour pourvoir sélectionner plusieurs catégories-->
-                        <select  class="custom-select" #idCategorie="ngModel" id="validationTooltip04"
+                        <select multiple class="select_all" #idCategorie="ngModel" id="validationTooltip04"
                             [(ngModel)]="recipe.idCategorie" [ngModelOptions]="{standalone: true}" required >
                             <option *ngFor="let categorie of categories" [ngValue]="categorie.idCategorie">
                                 {{categorie.libelleCategorie}}</option>
                         </select>
+                        <button class="btn-save btn btn-primary btn-sm">Enregistrer</button>
                         <div class="invalid-tooltip">
                             Selectionnez une catégorie. 
                         </div>

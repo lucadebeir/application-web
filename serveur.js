@@ -5,6 +5,7 @@ var app = express()
 var port = process.env.PORT || 3000
 var sanitizer  = require("express-sanitizer") //pour proteger les injection 
 const date = require('date-and-time')
+const multer = require('multer')
 
 app.use(sanitizer())
 app.use(bodyParser.json())

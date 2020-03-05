@@ -5,7 +5,7 @@
     float: left;
 }
 
-#header { /* #si j'ai utilisé un id pour repérer ma balise */
+#titre { /* #si j'ai utilisé un id pour repérer ma balise */
     text-align: center;
     margin-top: 2.5em;
 }

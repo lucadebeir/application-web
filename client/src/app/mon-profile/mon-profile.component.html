@@ -32,7 +32,7 @@
             
                 <tr>
                     <td>Mot de passe</td>
-                    <td><button class="btn btn-lg btn-warning btn-block" routerLink='/update-password'>Modifier</button></td> 
+                    <td><button class="btn btn-outline-dark" routerLink='/update-password'>Modifier</button></td> 
                 </tr>
                 <tr>
                     <td><label>Voulez vous recevoir un email lorsqu'une nouvelle recette est publiée ?</label></td> 
@@ -56,10 +56,10 @@
                     
                 </tr>
             </table>
-            <button class="btn btn-lg btn-primary btn-block col-sm-8 mx-auto" *ngIf="!email.errors" type="submit">Enregistrer les modifications</button>
-            <button class="btn btn-lg btn-primary btn-block col-sm-8 mx-auto"  *ngIf="email.errors" type="submit" disabled>Enregistrer les modifications</button>
+            <button class="btn btn-outline-info btn-block col-sm-8 mx-auto" *ngIf="!email.errors" type="submit">Enregistrer les modifications</button>
+            <button class="btn btn-outline-info btn-block col-sm-8 mx-auto"  *ngIf="email.errors" type="submit" disabled>Enregistrer les modifications</button>
             
-            <button class="btn btn-lg btn-danger btn-block col-sm-8 mx-auto" (click)="deleteProfile(credentials?.pseudo)" 
+            <button class="btn btn-outline-danger btn-block col-sm-8 mx-auto" (click)="deleteProfile(credentials?.pseudo)" 
                 type="submit">Supprimer mon compte</button>
             </form>
         </div>

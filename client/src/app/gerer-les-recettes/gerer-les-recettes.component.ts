@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, combineLatest, from } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FormControl, Form } from '@angular/forms';
-import { RecipeDetails, RecettesService } from '../service/recettes.service';
+import { RecipeDetails, RecettesService, CategoryDetails } from '../service/recettes.service';
 import {HttpErrorResponse} from '@angular/common/http'
 import { Router } from '@angular/router';
 import { ResourceLoader } from '@angular/compiler';
@@ -15,7 +15,6 @@ import { ResourceLoader } from '@angular/compiler';
 export class GererLesRecettesComponent implements OnInit {
 
   public recette: RecipeDetails
-
   public recettes$: Observable<RecipeDetails[]>
   public filteredRecipe$: Observable<RecipeDetails[]>
   public filter: FormControl
@@ -32,6 +31,7 @@ export class GererLesRecettesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
   
   deleteRecipe(idRecette: any) {

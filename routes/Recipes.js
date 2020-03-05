@@ -8,6 +8,8 @@ const UtiliserIngredients = require("../models/UtiliserIngredients")
 const Ingredient = require("../models/Ingredient")
 const Unite = require("../models/Unite")
 const Categorie = require("../models/Categorie")
+const Favoris = require("../models/Favoris")
+const ListeCourse = require("../models/ListeCourses")
 recipe.use(cors())
 
 //Récupérer toutes les recettes
@@ -56,7 +58,6 @@ recipe.get('/recipe/:id/ingredients', (req, res) => {
             type: sequelize.QueryTypes.SELECT
         })
     query.then(resultats => {
-        console.log(resultats)
         res.json(resultats)
     })
         .catch(err => {
@@ -195,7 +196,7 @@ recipe.delete('/delete-recipe/:id', (req, res) => {
         }
     })
         .then(() => {
-            console.log('recipe deleted')
+
             res.send('Recipe deleted!')
         })
         .catch(err => {
@@ -225,7 +226,7 @@ recipe.put('/category/update', (req, res) => {
             libelleCategorie: req.body.libelleCategorie
         }
     }).then((categorie) => {
-        console.log(categorie)
+
         if (!categorie) {
             Categorie.update(
                 { libelleCategorie: req.sanitize(req.body.libelleCategorie) },
@@ -244,7 +245,7 @@ recipe.put('/category/update', (req, res) => {
 
 //Ajouter catégorie  
 recipe.post('/category/add', (req, res) => {
-    console.log(req)
+
     const categorieData = {
         libelleCategorie: req.sanitize(req.body.libelleCategorie),
 
@@ -379,11 +380,7 @@ recipe.post('/add-recipe', (req, res) => {
 recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
     db.sequelize.query("INSERT INTO classerDans (idRecette, idCategorie) VALUES (?,?)", {
         replacements: [req.body.idRecette, req.body.idCategorie]
-    })/*.then(success => {
-        res.json({ success: "catégorie ajoutée avec succès." })
-    }).catch(err => {
-        res.json({ error: err })
-    })*/
+    })
     for (let i = 0; i < req.body.ingredients.ingredients.length; i++) {
         db.sequelize.query("INSERT INTO UtiliserIngredients (qte, idRecette, idIngredient, idUnite) VALUES (?,?,?,?)",
             {
@@ -430,7 +427,7 @@ recipe.delete('/unite/delete/:id', (req, res) => {
 
 //modifier unité
 recipe.put('/unite/update', (req, res) => {
-   Unite.findOne({
+    Unite.findOne({
         where: {
             libelleUnite: req.body.libelleUnite
         }
@@ -459,9 +456,9 @@ recipe.post('/unite/add', (req, res) => {
         libelleUnite: req.sanitize(req.body.libelleUnite),
 
     }
-   Unite.findOne({
+    Unite.findOne({
         where: {
-           libelleUnite: req.sanitize(req.body.libelleUnite)
+            libelleUnite: req.sanitize(req.body.libelleUnite)
         }
     })
         .then(unite => {
@@ -482,6 +479,117 @@ recipe.post('/unite/add', (req, res) => {
         .catch(err => {
             res.json({ error: err })
         })
+})
+
+//ajouter aux favoris
+recipe.post('/favorites/add', (req, res) => {
+    const favData = {
+        pseudo: req.body.pseudo,
+        idRecette: req.body.idRecette
+    }
+
+    Recipe.findOne({
+        where: {
+            idRecette: favData.idRecette
+        }
+    })
+        .then(recipe => {
+            console.log(recipe)
+            Recipe.update(
+                { nbFavoris: recipe.nbFavoris + 1 },
+                { where: { idRecette: favData.idRecette } }
+        )
+    })
+        
+    db.sequelize.query("SELECT * FROM favoris WHERE favoris.idRecette = ? AND favoris.pseudo = ? ", {
+        replacements: [req.body.idRecette,req.body.pseudo],
+        type: sequelize.QueryTypes.SELECT
+    })
+        .then(favoris => {
+            if (favoris) {
+                console.log("cc")
+                db.sequelize.query("INSERT INTO `favoris`(`pseudo`, `idRecette`) VALUES (?, ?)", {
+                    replacements: [favData.pseudo, favData.idRecette],
+                    type: sequelize.QueryTypes.INSERT
+                })
+                    .then(success => {
+                        console.log(success)
+                        res.json({ success: "Ajouté aux favoris !" })
+                    })
+                    .catch(err => {
+                        res.json({ error: err })
+                    })
+                
+            } else {
+                res.json({ error: "Cette recette est déjà dans les favoris." })
+            }
+        })
+        .catch(err => {
+            res.json({ error: err })
+        })
+})
+
+
+
+//ajouter à la liste de course
+recipe.post('/shoppingList/${pseudo}/add', (req, res) => {
+
+    for (let i = 0; i < req.body.ingredients.ingredients.length; i++) {
+
+
+        const listeCourseData = {
+            pseudo: req.params.pseudo,
+            idIngredient: req.body.ingredients.ingredients[i].idIngredient
+        }
+        ListeCourse.findOne({
+            where: {
+                pseudo: req.params.pseudo,
+                idIngredient: req.body.ingredients.ingredients[i].idIngredient
+            }
+        })
+            .then(listeCourse => {
+                if (!listeCourse) {
+                    Favoris.create(listeCourseData)
+                        .then(success => {
+                            res.json({ success: "Ajouté à la liste de course !" })
+                        })
+                        .catch(err => {
+                            res.json({ error: err })
+                        })
+
+                } else {
+                    res.json({ error: "Cet ingrédient est déjà dans la liste de course" })
+                }
+            })
+            .catch(err => {
+                res.json({ error: err })
+            })
+    }
+})
+
+
+//récupérer les favoris de l'utilisateur
+recipe.get('/recipe/favorites/:pseudo', (req, res) => {
+    db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN favoris WHERE recettes.idRecette = favoris.idRecette AND favoris.pseudo = ? ", {
+        replacements: [req.params.pseudo],
+        type: sequelize.QueryTypes.SELECT
+    }).then(resultats => {
+        res.json(resultats)
+    }).catch(err => {
+        res.json({ error: err })
+    })
+})
+
+//récupérer les favoris de l'utilisateur selon une catégorie
+recipe.get('/recipe/favorites/:pseudo/:idCategorie', (req, res) => {
+    db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN favoris INNER JOIN classerDans WHERE recettes.idRecette = favoris.idRecette AND recettes.idRecette = classerDans.idRecette AND classerDans.idCategorie = ? AND favoris.pseudo = ?", {
+        replacements: [req.params.idCategorie, req.params.pseudo],
+        type: sequelize.QueryTypes.SELECT
+    }).then(resultats => {
+        res.json(resultats)
+    }).catch(err => {
+        res.json({ error: err })
+    })
 })
 
 module.exports = recipe

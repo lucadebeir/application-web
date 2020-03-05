@@ -31,6 +31,6 @@ var UtiliserIngredients = db.sequelize.define(
 
 UtiliserIngredients.hasOne(Ingredient, {foreignKey: 'idIngredient'})
 UtiliserIngredients.hasOne(Unite, {foreignKey: 'idUnite'})
-//UtiliserIngredients.belongsTo()
+
 
 module.exports = UtiliserIngredients

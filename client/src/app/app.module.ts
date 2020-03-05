@@ -42,7 +42,10 @@ const routes: Routes = [
   { path: 'ingredient', component: IngredientsComponent },
   { path: 'add-recipe', component: AjoutRecetteComponent },
   { path: 'unite', component: UniteComponent },
-  {path: 'contact', component: ContactComponent}
+  {path: 'contact', component: ContactComponent},
+  {path: 'shoppingList', component: MaListeDeCoursesComponent},
+  {path: 'comment', component: MesCommentairesComponent},
+  {path: 'favorites', component: MesRecettesComponent}
 ]
 
 @NgModule({

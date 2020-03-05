@@ -5,6 +5,7 @@ import { map, tap, catchError } from 'rxjs/operators'
 import { CategoriesComponent } from '../categories/categories.component'
 import { CreateRecipe } from '../ajout-recette/ajout-recette.component'
 import { NewIngredient } from '../modal-add-ingredient/modal-add-ingredient.component'
+import { AuthentificationService } from './authentification.service'
 
 
 
@@ -41,10 +42,15 @@ export interface CategoryDetails {
     libelleCategorie: string
 }
 
+export interface FavorisDetails {
+    pseudo: string
+    idRecette: number
+}
+
 @Injectable()
 export class RecettesService {
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private auth: AuthentificationService) { }
 
     public getAllRecipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/allRecipes`)
@@ -140,7 +146,7 @@ export class RecettesService {
     }
 
     public addCategory(categorie: CategoryDetails): any {
-        console.log(categorie)
+
         this.http.post('/server/category/add', categorie).subscribe(res => {
             {
                 return res
@@ -223,5 +229,43 @@ export class RecettesService {
 
     }
 
+
+    public addFavoris(newFavori: FavorisDetails): any {
+        return this.http.post(`/server/favorites/add`, newFavori).subscribe(res => {
+            {
+                console.log(res)
+                return res
+            }
+
+        })
+    }
+
+
+    public addIngredientsToList(ingredients: IngredientDetails[]) {
+        const pseudo = this.auth.getUserDetails().pseudo;
+        this.http.post(`/server/shoppingList/${pseudo}/add`, ingredients).subscribe(res => {
+            {
+                return res
+            }
+
+        })
+    }
+
+
+    public getFavoris(): Observable<RecipeDetails[]> {
+        const pseudo = this.auth.getUserDetails().pseudo;
+        const base = this.http.get(`/server/recipe/favorites/${pseudo}`)
+        return base.pipe(map((data: RecipeDetails[]) => {
+            return data
+        }))
+    }
+
+    public getFavorisByCategory(idCategorie: number) : Observable<RecipeDetails[]> {
+        const pseudo = this.auth.getUserDetails().pseudo;
+        const base = this.http.get(`/server/recipe/favorites/${pseudo}/${idCategorie}`)
+        return base.pipe(map((data: RecipeDetails[]) => {
+            return data
+        }))
+    }
 
 }    

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, QuantiteDetails } from '../service/recettes.service';
+import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, QuantiteDetails, FavorisDetails } from '../service/recettes.service';
 import { HttpErrorResponse, HttpResponse} from '@angular/common/http'
 import {Router, ActivatedRoute} from '@angular/router'
 import {Observable, of} from 'rxjs'
+import { AuthentificationService } from '../service/authentification.service';
 
 @Component({
   selector: 'app-recette',
@@ -15,8 +16,12 @@ export class RecetteComponent implements OnInit {
   public ingredients: Observable<IngredientDetails[]>
   public unite: UniteDetails
   public qtes: QuantiteDetails[]
+  public newFavori: FavorisDetails = {
+    pseudo : this.auth.getUserDetails().pseudo,
+    idRecette : parseInt(this.route.snapshot.paramMap.get('id'))
+  }
 
-  constructor(private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {
+  constructor(public auth: AuthentificationService ,private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -62,6 +67,11 @@ export class RecetteComponent implements OnInit {
       }
     )
     return this.unite
+  }
+
+  addFavoris() {
+    this.recetteService.addFavoris(this.newFavori)
+    this.router.navigateByUrl('/favorites')
   }
 
 }

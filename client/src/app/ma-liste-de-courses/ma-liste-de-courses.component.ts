@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { RecettesService, IngredientDetails } from '../service/recettes.service';
+import { HttpErrorResponse, HttpResponse} from '@angular/common/http'
+import {Router, ActivatedRoute} from '@angular/router'
+import {Observable, of} from 'rxjs'
 
 @Component({
   selector: 'app-ma-liste-de-courses',
@@ -7,7 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaListeDeCoursesComponent implements OnInit {
 
-  constructor() { }
+  public ingredients: Observable<IngredientDetails[]>
+
+  constructor(private recetteService: RecettesService, private router: Router) { }
 
   ngOnInit(): void {
   }

@@ -55,6 +55,8 @@ export class RecettesComponent implements OnInit {
         if(err instanceof HttpErrorResponse) {
           if(err.status === 402){
             console.log("Il n'y a pas de catégorie.")
+
+          
           }
 
         }
@@ -63,7 +65,7 @@ export class RecettesComponent implements OnInit {
   }
 
   getRecipeByCategory(idCategorie: any){
-    //console.log(idCategorie)
+   
     this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie)
     this.filter = new FormControl('')
     this.filter$ = this.filter.valueChanges.pipe(startWith(''))
