@@ -607,4 +607,33 @@ recipe.delete('/favorites/:pseudo/delete/:id', (req, res) => {
             res.send('error: ' + err)
         })
 })
+
+//supprimer un ingredient de la liste de course
+recipe.delete('/shoppingList/:pseudo/delete/:id', (req, res) => {
+    ListeCourse.destroy({
+        where: {
+            idIngredient: req.params.id,
+            pseudo: req.params.pseudo
+        }
+    })
+        .then(() => {
+            res.send('Ingredient deleted!')
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//récupérer la liste de courses de l'utilisateur
+recipe.get('/recipe/shoppingList/:pseudo', (req, res) => {
+    db.sequelize.query("SELECT ingredient.* FROM ingredient INNER JOIN liste_de_course WHERE liste_de_course.idIngredient = ingredient.idIngredient AND liste_de_course.pseudo = ? ", {
+        replacements: [req.params.pseudo],
+        type: sequelize.QueryTypes.SELECT
+    }).then(resultats => {
+        res.json(resultats)
+    }).catch(err => {
+        res.json({ error: err })
+    })
+})
+
 module.exports = recipe

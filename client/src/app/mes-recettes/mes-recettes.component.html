@@ -30,7 +30,7 @@
                   <h4 class="card-title">{{recette.nomRecette}}</h4>
                   <span class="badge badge-light">{{recette.nbFavoris}} ♥</span>
                   <span class="badge badge-light">{{recette.nbVues}} 👁</span>
-                  <button id="poubelle" class="btn btn-sm btn-danger" (click)=delateFavoris(recette.idRecette)><i class="fa fa-trash"></i></button> 
+                  <button id="poubelle" class="btn btn-sm btn-danger" (click)=deleteFavoris(recette.idRecette)><i class="fa fa-trash"></i></button> 
                   <!--ajouter bouton supprimer fav -->
               </div>
               <div class="card-footer text-center bg-white">

@@ -71,7 +71,8 @@ export class MesRecettesComponent implements OnInit {
     })
   }
 
-  delateFavoris(idRecette: any) {
+  
+  deleteFavoris(idRecette: any) {
     this.recetteService.deleteFavoris(idRecette)
       .subscribe(res => {
         this.router.navigate(['/favorites'], {
