@@ -33,7 +33,7 @@
         display: block;
         padding: 12px;
         margin: 15px;
-        max-width: 18rem;
+        max-width: 40em;
         width: auto;
     }
     .element:nth-child(2)
@@ -41,7 +41,7 @@
         display: block;
         padding: 12px;
         margin: 15px;
-        width: 80%;
+        width: 60%;
     }
 
     .card {
@@ -64,4 +64,12 @@
 .center {
     text-align:center;
     margin: auto; /* pour centrer l'élément */
+}
+#poubelle{
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+#b1{
+    margin-right: 2em;
 }

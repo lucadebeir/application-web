@@ -3,6 +3,7 @@ import { CategoryDetails, IngredientDetails, UniteDetails, RecettesService } fro
 import { FormGroup, FormArray, Validator, FormBuilder } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
 
 @Component({
   selector: 'app-ajout-recette',
@@ -27,12 +28,16 @@ export class AjoutRecetteComponent implements OnInit {
   public recipeForm: FormGroup
   public ingredientForm: FormGroup
 
+  public newIngredient: IngredientDetails = {
+    nomIngredient: ''
+  }
+
   //pour multiple select
   dropdownList = [];
   selectedItems = [];
-  dropdownSettings : IDropdownSettings;
+  dropdownSettings: IDropdownSettings;
 
-  constructor(private recetteService: RecettesService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private recetteService: RecettesService, private formBuilder: FormBuilder, private router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     //on récupère tous les ingrédients, unités, catégories pour les réponses possibles à notre formulaire
@@ -61,12 +66,25 @@ export class AjoutRecetteComponent implements OnInit {
       enableCheckAll: false,
       itemsShowLimit: 3,
       allowSearchFilter: true,
-      searchPlaceholderText:"Rechercher"
+      searchPlaceholderText: "Rechercher"
     };
 
     this.createIngredientForm()
 
     this.addIngredient()
+
+    this.refreshIngredients()
+  }
+
+  //on rafraitchit la liste des ingrédients et pas la page grâce à un timer toutes les 2 secondes
+  refreshIngredients(): void {
+    setInterval(() => {
+      this.recetteService.getAllIngredients().subscribe(
+        ingredients => {
+          this.ingredients = ingredients
+        }
+      )
+    }, 2000)
   }
 
   createRecipe() {
@@ -91,35 +109,45 @@ export class AjoutRecetteComponent implements OnInit {
 
   /******  création formulaire pour ajouter autant de lignes ingrédient (qté, nom, unite) qu'on veut *****/
   //création initiale formulaire ingredients
-  createIngredientForm(){
+  createIngredientForm() {
     this.ingredientForm = this.formBuilder.group({
       ingredients: this.formBuilder.array([])
     })
   }
 
-  get ingFormArray(): FormArray{
+  get ingFormArray(): FormArray {
     return this.ingredientForm.get("ingredients") as FormArray
   }
 
   //pour ajouter un ingrédient
-  addIngredient(){
+  addIngredient() {
     let fg = this.formBuilder.group(new Ingredient())
     this.ingFormArray.push(fg)
   }
-/*****************************/
+  /*****************************/
 
-} 
+  //récupérer le nom du new ingrédient et l'enregistrer dans la bd
+  open(content) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result
+      .then((result) => {
+        this.newIngredient.nomIngredient = result
+        this.recetteService.addIngredient(this.newIngredient)
+        //window.location.reload() ?????? voir car si on fait ça on perd tout les champs du questionnaire et sinon on a pas le new ingredient dans les choix -> utiliser cookie?
+      })
+  }
+
+}
 export class Ingredient {
   idIngredient = '';
-  quantite= '';
-  idUnite='';
+  quantite = '';
+  idUnite = '';
 }
 
 
-export interface CreateRecipe{
+export interface CreateRecipe {
   idRecette: number
   nomRecette: string
   categories: any[]
   ingredients: any[]
-  etapes : string
+  etapes: string
 }

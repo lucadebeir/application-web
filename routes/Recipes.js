@@ -709,4 +709,15 @@ recipe.delete('/recipe/:idRecette/ingredient/:idIngredient/delete', (req, res) =
         })
 })
 
+recipe.post(`/recipe/:idRecette/add/ingredient/:idIngredient`, (req, res) => {
+    console.log(req)
+    UtiliserIngredients.create(req.body)
+        .then((res) => {
+            res.json(res)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 module.exports = recipe

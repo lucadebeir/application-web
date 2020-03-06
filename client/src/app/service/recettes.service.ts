@@ -19,10 +19,12 @@ export interface RecipeDetails {
 }
 
 export interface IngredientDetails {
-    idIngredient: string
-    nomIngredient: string
-    qte: number
-    libelleUnite: string
+    idRecette?: number
+    idIngredient?: string
+    nomIngredient?: string
+    qte?: number
+    libelleUnite?: string
+    idUnite?: number
 }
 
 export interface UniteDetails {
@@ -330,6 +332,17 @@ export class RecettesService {
         return this.http.delete<any>(url).pipe(
             tap(_ => console.log(`deleted ${ingredient.idIngredient} from recipe ${recette.idRecette}`)),
         );
+    }
+
+    public addIngredientRecette(newIngredient: IngredientDetails): any {
+        console.log("ahaahah")
+        console.log(newIngredient)
+        this.http.post(`/server/recipe/${newIngredient.idRecette}/add/ingredient/${newIngredient.idIngredient}`,newIngredient).subscribe(res => {
+            {
+                return res
+            }
+        })
+
     }
 
 }    

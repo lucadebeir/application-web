@@ -101,10 +101,30 @@
                     </div>
                 </div>
                 <div id="buttonIngredient" class="form-row">
-                    <button type="button" class="btn btn-outline-info" (click)="addIngredient()">Ajouter un nouvel
-                        ingrédient</button>
-                    <app-modal-add-ingredient></app-modal-add-ingredient>
-                    <!--on appelle le modal-->
+                    <button type="button" class="btn btn-outline-info" (click)="addIngredient()">Ajouter un nouvel ingrédient</button>
+                        <ng-template #content let-modal> <!--ce qui s'ouvre quand on clique sur créer un nouvel ingrédient-->
+                            <div class = "modal-header">
+                                <h4 class="modal-title"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="nomIngredient"> Nom de l'ingrédient </label>
+                                        <div class="input-group">
+                                            <input id="nomIngredient" class="form-control" placeholder="Cacahuète" 
+                                            #nomIngredient="ngModel" [(ngModel)]="newIngredient.nomIngredient"
+                                            [ngModelOptions]="{standalone: true}">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button tyoe="button" class="btn btn-outline-dark" (click)="modal.close(newIngredient.nomIngredient)">Ajouter</button>
+                            </div>
+                        </ng-template>
+                        
+                        <button class="btn btn-outline-primary" (click)="open(content)">Créer un nouvel ingrédient</button>
+                        <!--on appelle le modal-->
                 </div>
 
             </form>
