@@ -1,3 +1,7 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<!--lien pour avoir le petit logo de poubelle-->
+
 <form (submit)="updateNomRecette(recette)">
     <div class="container">
         <div class="row align-items-center">
@@ -25,9 +29,9 @@
 
     <!--afficher la/ les catégorie-->
     <div id="categ">
-        catégories
-        <li *ngFor="let categ of categories">
-            {{categ.libelleCategorie}}
+        catégories:
+        <li *ngFor="let categorie of categories">
+            {{categorie.libelleCategorie}}
         </li>
     </div>
     <div id="conteneur">
@@ -40,6 +44,7 @@
                             {{ingredient.qte}}
                             {{ingredient.libelleUnite}}
                             {{ingredient.nomIngredient}}
+                            <button id="poubelle" class="btn btn-sm btn-danger" (click)=deleteIngredientRececipe(ingredient,recette)><i class="fa fa-trash"></i></button> 
                         </li>
                     </div>
                 </ul>

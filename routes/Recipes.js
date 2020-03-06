@@ -693,5 +693,20 @@ recipe.put('/recipe/step/update', (req, res) => {
 
 })
 
+//supprimer un ingrédient d'une recette
+recipe.delete('/recipe/:idRecette/ingredient/:idIngredient/delete', (req, res) => {
+    UtiliserIngredients.destroy({
+        where: {
+            idRecette: req.params.idRecette,
+            idIngredient: req.params.idIngredient
+        }
+    })
+        .then(() => {
+            res.send('Ingredient deleted!')
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 
 module.exports = recipe

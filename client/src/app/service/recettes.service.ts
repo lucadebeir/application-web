@@ -325,4 +325,11 @@ export class RecettesService {
 
     }
 
+    public deleteIngredientRececipe(ingredient: IngredientDetails, recette: RecipeDetails): Observable<any> {
+        const url = `/server/recipe/${recette.idRecette}/ingredient/${ingredient.idIngredient}/delete`;
+        return this.http.delete<any>(url).pipe(
+            tap(_ => console.log(`deleted ${ingredient.idIngredient} from recipe ${recette.idRecette}`)),
+        );
+    }
+
 }    

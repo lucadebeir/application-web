@@ -69,4 +69,17 @@ export class ModifierRecetteComponent implements OnInit {
       }
     );
   }
+
+  deleteIngredientRececipe(ingredient: IngredientDetails, recette: RecipeDetails, ) {
+    this.recetteService.deleteIngredientRececipe(ingredient,recette)
+      .subscribe(res => {
+        this.router.navigate(['updateRecipe/:id'], {
+          queryParams: {refresh: new Date().getTime()}
+       })
+        }, (err) => {
+          console.log(err);
+        }
+      );
+      window.location.reload() /* rafraichit la page */
+  }
 }

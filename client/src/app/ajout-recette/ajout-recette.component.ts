@@ -58,10 +58,10 @@ export class AjoutRecetteComponent implements OnInit {
       singleSelection: false,
       idField: 'idCategorie',
       textField: 'libelleCategorie',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
+      enableCheckAll: false,
       itemsShowLimit: 3,
-      allowSearchFilter: true
+      allowSearchFilter: true,
+      searchPlaceholderText:"Rechercher"
     };
 
     this.createIngredientForm()

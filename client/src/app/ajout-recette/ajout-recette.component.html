@@ -1,6 +1,5 @@
 <script>
     $(document).ready(function () {
-        // $('select').val([1]);
         $('select').formSelect();
         $('select.select_all').siblings('ul').prepend('<li id=sm_select_all><span>Select All</span></li>');
         $('li#sm_select_all').on('click', function () {
@@ -45,14 +44,7 @@
             <form>
                 <div id="ingrForm" class="form-row">
                     <div class="col-md-4 mb-4">
-                        <!--Changer pour pourvoir sélectionner plusieurs catégories-->
-                        <!--<select multiple class="select_all" #idCategorie="ngModel" id="validationTooltip04"
-                            [(ngModel)]="recipe.idCategorie" [ngModelOptions]="{standalone: true}" required >
-                            <option *ngFor="let categorie of categories" [ngValue]="categorie.idCategorie">
-                                {{categorie.libelleCategorie}}</option>
-                        </select>
-                        <button class="btn-save btn btn-primary btn-sm">Enregistrer</button>-->
-                        <ng-multiselect-dropdown [data]="categories"
+                        <ng-multiselect-dropdown [data]="categories" placeholder="sélectionner" 
                             [(ngModel)]="selectedItems" [settings]="dropdownSettings" [ngModelOptions]="{standalone: true}">
                         </ng-multiselect-dropdown>
                         <div class="invalid-tooltip">
