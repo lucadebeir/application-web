@@ -1,14 +1,13 @@
-
-<form (submit)="updateNomRecette(recette)" >
-    <div class="form-row align-items-center">
-        <div class="col-auto">
-
-            <input id="zone" type="text" class="form-control" name="nomRecette" value="{{recette.nomRecette}}" #nomRecette="ngModel"
-                [(ngModel)]="recette.nomRecette">
-        </div>
-        <div class="col-auto">
-            <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
-
+<form (submit)="updateNomRecette(recette)">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col">
+                <input id="zone" type="text" class="form-control" name="nomRecette" value="{{recette.nomRecette}}"
+                    #nomRecette="ngModel" [(ngModel)]="recette.nomRecette">
+            </div>
+            <div class="col">
+                <button class="btn btn-outline-warning" type="submit">Modifier</button>
+            </div>
         </div>
     </div>
 </form>
@@ -24,35 +23,37 @@
 
     </figure>
 
-<!--afficher la/ les catégorie-->
-<div id="categ">
-    catégories
-    <li *ngFor="let categ of categories">
-        {{categ.libelleCategorie}}
-
-    </li>
-</div>
-<div id="conteneur">
-    <div class="element 1">
-        <div id="card" class="element 1 card border-secondary mb-3 col-lg-4 col-md-4 col-sm-4 p-3">
-            <div class="card-header">Ingrédients</div>
-            <ul>
-                <div class="card-body text-secondary" id="ing">
-                    <li *ngFor="let ingredient of ingredients" class="card-text">
-                        {{ingredient.qte}}
-                        {{ingredient.libelleUnite}}
-                        {{ingredient.nomIngredient}}
-                    </li>
-                </div>
-            </ul>
-        </div>
-
-
+    <!--afficher la/ les catégorie-->
+    <div id="categ">
+        catégories
+        <li *ngFor="let categ of categories">
+            {{categ.libelleCategorie}}
+        </li>
     </div>
-    <div class="element 2 card border-secondary mb-3 col-lg-8 col-md-8 col-sm-8">
-        <div class="card-header">Préparation</div>
-        <div class="card-body text-secondary center">
-            <pre style="line-height: 2.5" class="card-text"> {{recette?.etapes}}</pre>
+    <div id="conteneur">
+        <div class="element 1">
+            <div id="card" class="element 1 card border-secondary mb-3 col-lg-4 col-md-4 col-sm-4 p-3">
+                <div class="card-header">Ingrédients</div>
+                <ul>
+                    <div class="card-body text-secondary" id="ing">
+                        <li *ngFor="let ingredient of ingredients" class="card-text">
+                            {{ingredient.qte}}
+                            {{ingredient.libelleUnite}}
+                            {{ingredient.nomIngredient}}
+                        </li>
+                    </div>
+                </ul>
+            </div>
+
+
         </div>
-    </div>
-</div>
+        <div class="element 2 card border-secondary mb-3 col-lg-8 col-md-8 col-sm-8">
+            <div class="card-header">Préparation</div>
+            <div class="card-body text-secondary center">
+              
+                    <form (submit)="updateEtapes(recette)">
+                    <textarea class="form-control" #etapes="ngModel" rows="15em"  name="etapes"
+                    [(ngModel)]="recette.etapes"  value=" {{recette?.etapes}}"></textarea>
+                
+                    <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
+                    </form>

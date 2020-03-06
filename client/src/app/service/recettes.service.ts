@@ -306,8 +306,18 @@ export class RecettesService {
     }
 
     public updateNomRecette(recette: RecipeDetails): Observable<any> {
-        console.log(recette)
+       
         return this.http.put(`/server/recipe/name/update`, recette)
+            .pipe(map((data: RecipeDetails) => {
+                return data
+            }))
+
+
+    }
+
+    public updateEtapes(recette: RecipeDetails): Observable<any> {
+   
+        return this.http.put(`/server/recipe/step/update`, recette)
             .pipe(map((data: RecipeDetails) => {
                 return data
             }))

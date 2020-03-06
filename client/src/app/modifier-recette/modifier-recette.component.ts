@@ -61,5 +61,12 @@ export class ModifierRecetteComponent implements OnInit {
       }
     );
   }
-
+  updateEtapes(recette: RecipeDetails){
+    this.recetteService.updateEtapes(recette).subscribe((res: any) => {
+        window.location.reload()
+      },(err: any) => {
+        console.error(err)
+      }
+    );
+  }
 }

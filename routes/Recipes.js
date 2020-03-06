@@ -679,6 +679,19 @@ recipe.put('/recipe/name/update', (req, res) => {
 
 })
 
+//modifier étapes recette
+recipe.put('/recipe/step/update', (req, res) => {
+    Recipe.update(
+        { etapes: req.sanitize(req.body.etapes) },
+        { where: { idRecette: req.body.idRecette } }
+    )
+        .then(() => {
+            res.json({ success: 'Etapes modifié !' })
+        })
+        .error(err =>
+            res.json({ error: err }))
+
+})
 
 
 module.exports = recipe
