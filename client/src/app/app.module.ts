@@ -27,6 +27,7 @@ import { UniteComponent } from './unite/unite.component';
 import { AjoutRecetteComponent } from './ajout-recette/ajout-recette.component';
 import { ModalAddIngredientComponent } from './modal-add-ingredient/modal-add-ingredient.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ModifierRecetteComponent } from './modifier-recette/modifier-recette.component';
 
 
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'shoppingList', component: MaListeDeCoursesComponent},
   {path: 'comment', component: MesCommentairesComponent},
-  {path: 'favorites', component: MesRecettesComponent}
+  {path: 'favorites', component: MesRecettesComponent},
+  {path: 'updateRecipe/:id', component: ModifierRecetteComponent}
 ]
 
 @NgModule({
@@ -68,7 +70,8 @@ const routes: Routes = [
     CategoriesComponent,
     UniteComponent,
     AjoutRecetteComponent,
-    ModalAddIngredientComponent
+    ModalAddIngredientComponent,
+    ModifierRecetteComponent
   ],
   imports: [
     NgMultiSelectDropDownModule.forRoot(),

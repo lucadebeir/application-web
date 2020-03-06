@@ -19,7 +19,7 @@ export class MonProfileComponent implements OnInit {
   constructor(private auth: AuthentificationService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    console.log(this.auth.profile())
+    
     this.auth.profile().subscribe(
       user => {
         this.credentials = user

@@ -51,7 +51,7 @@
 						<li><i class="badge badge-light"></i>{{recette.nbFavoris}} ♥</li>
 						<li><i class="badge badge-light"></i> {{recette.nbVues}} 👁</li>
 					</ul>
-					<button type="button" class="btn btn-outline-warning">Modifier </button>
+					<button type="button" class="btn btn-outline-warning" [routerLink]="['/updateRecipe', recette.idRecette]">Modifier </button>
 					<button type="submit" class="btn btn-outline-danger"
 						(click)="deleteRecipe(recette.idRecette)">Supprimer</button>
 

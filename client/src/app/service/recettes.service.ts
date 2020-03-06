@@ -245,7 +245,7 @@ export class RecettesService {
         })
     }
 
-    ///pas finie
+  
     public addListeCourses(newListeCourses: ListeCoursesDetails) {
         this.http.post(`/server/shoppingList/add`, newListeCourses).subscribe(res => {
             {
@@ -296,6 +296,23 @@ export class RecettesService {
         return this.http.delete<any>(url).pipe(
             tap(_ => console.log(`deleted ${id}`)),
         );
+    }
+
+    public getCategorie(id:any): any {
+        return this.http.get<any>(`/server/recipe/${id}/category`)
+            .pipe(map((data: any) => {
+                return data
+            }))
+    }
+
+    public updateNomRecette(recette: RecipeDetails): Observable<any> {
+        console.log(recette)
+        return this.http.put(`/server/recipe/name/update`, recette)
+            .pipe(map((data: RecipeDetails) => {
+                return data
+            }))
+
+
     }
 
 }    

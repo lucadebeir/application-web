@@ -39,7 +39,7 @@ export class RecetteComponent implements OnInit {
     this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       ingredient => {
         this.ingredients = ingredient
-        console.log(ingredient)
+       
       }
     );
   }

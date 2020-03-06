@@ -170,9 +170,23 @@ recipe.get('/recipe/category/:idCategorie', (req, res) => {
         .catch(err => {
             res.send('error: ' + err)
         })
-}
+})
 
-)
+//récupérer la/les catégorie(s) d'une recette
+recipe.get('/recipe/:idRecette/category', (req, res) => {
+    console.log(req)
+    let query = db.sequelize.query("SELECT categories.libelleCategorie FROM recettes INNER JOIN classerDans INNER JOIN categories WHERE recettes.idRecette = classerDans.idRecette AND classerDans.idCategorie = categories.idCategorie AND recettes.idRecette = ?",
+        {
+            replacements: [req.params.idRecette],
+            type: sequelize.QueryTypes.SELECT
+        })
+    query.then(resultats => {
+        res.json(resultats)
+    })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 
 //incrémenter le nbre de vue
 recipe.put('/recipe/update-nbView/:idRecette', (req, res) => {
@@ -490,11 +504,9 @@ recipe.post('/favorites/add', (req, res) => {
         pseudo: req.body.pseudo,
         idRecette: req.body.idRecette
     }
-    
-        
-    /*db.sequelize.query("SELECT * FROM favoris WHERE favoris.idRecette = ? AND favoris.pseudo = ? ", {
-        replacements: [req.body.idRecette,req.body.pseudo],
-    })*/ 
+
+
+
     Favoris.findOne({
         where: {
             idRecette: favData.idRecette,
@@ -515,8 +527,8 @@ recipe.post('/favorites/add', (req, res) => {
                         Recipe.update(
                             { nbFavoris: recipe.nbFavoris + 1 },
                             { where: { idRecette: favData.idRecette } }
-                    )
-                })
+                        )
+                    })
 
                 db.sequelize.query("INSERT INTO `favoris`(`pseudo`, `idRecette`) VALUES (?, ?)", {
                     replacements: [favData.pseudo, favData.idRecette],
@@ -529,7 +541,7 @@ recipe.post('/favorites/add', (req, res) => {
                     .catch(err => {
                         res.json({ error: err })
                     })
-                
+
             } else {
                 res.json({ error: "Cette recette est déjà dans les favoris." })
             }
@@ -562,8 +574,10 @@ recipe.post('/shoppingList/add', (req, res) => {
             .then(listeCourse => {
                 if (!listeCourse) {
                     ListeCourse.create(listeCourseData)
-    }})
-}})
+                }
+            })
+    }
+})
 
 
 //récupérer les favoris de l'utilisateur
@@ -608,7 +622,7 @@ recipe.delete('/favorites/:pseudo/delete/:id', (req, res) => {
                 .then(recipe => {
                     Recipe.update({
                         nbFavoris: recipe.nbFavoris - 1
-                    },{
+                    }, {
                         where: {
                             idRecette: req.params.id
                         }
@@ -650,5 +664,21 @@ recipe.delete('/shoppingList/delete/:id/:pseudo', (req, res) => {
             res.send('error: ' + err)
         })
 })
+
+//modifier nom recette
+recipe.put('/recipe/name/update', (req, res) => {
+    Recipe.update(
+        { nomRecette: req.sanitize(req.body.nomRecette) },
+        { where: { idRecette: req.body.idRecette } }
+    )
+        .then(() => {
+            res.json({ success: 'Nom modifié !' })
+        })
+        .error(err =>
+            res.json({ error: err }))
+
+})
+
+
 
 module.exports = recipe
