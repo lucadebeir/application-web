@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server/serveur.js --proxy-config proxy-conf.json",
+    "start": "node ./server/serveur.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
