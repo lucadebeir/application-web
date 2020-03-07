@@ -26,10 +26,11 @@ export class ModifierRecetteComponent implements OnInit {
   public ingredients: IngredientDetails
   public unite: UniteDetails
   public qtes: QuantiteDetails[]
+  
 
-  public allIngredients: IngredientDetails[]
+  public allIngredients: IngredientDetails[] //ingredients disponibles
   public allUnites: UniteDetails[]
-  public allCategories: CategoryDetails[]
+  public allCategories: CategoryDetails[] //catégories disponibles
 
   public recipeForm: FormGroup
   public ingredientForm: FormGroup
@@ -53,7 +54,7 @@ export class ModifierRecetteComponent implements OnInit {
       }
     );
 
-    this.recetteService.getAllIngredients().subscribe(
+    this.recetteService.getRestIngredients(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       ingredients => {
         this.allIngredients = ingredients
       }
@@ -65,7 +66,7 @@ export class ModifierRecetteComponent implements OnInit {
       }
     )
 
-    this.recetteService.getAllCategory().subscribe(
+    this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       categories => {
         this.allCategories = categories
       }
@@ -76,19 +77,21 @@ export class ModifierRecetteComponent implements OnInit {
       idField: 'idCategorie',
       textField: 'libelleCategorie',
       enableCheckAll: false,
-      itemsShowLimit: 3,
+      itemsShowLimit: 4,
       allowSearchFilter: true,
       searchPlaceholderText: "Rechercher"
     };
+    this.getCategory(parseInt(this.route.snapshot.paramMap.get('id')))
 
-    this.getCategorie(parseInt(this.route.snapshot.paramMap.get('id')))
 
     this.refreshIngredients()
 
+    this.refreshCategory()
+
   }
 
-  getCategorie(id: any): any {
-    this.recetteService.getCategorie(id).subscribe(
+  getCategory(id: any): any {
+    this.recetteService.getCategory(id).subscribe(
       (categories: CategoryDetails[]) => {
         this.selectedItems = categories
       }, err => {
@@ -102,16 +105,27 @@ export class ModifierRecetteComponent implements OnInit {
     return this.selectedItems
   }
 
-  updateNomRecette(recette: RecipeDetails) {
-    this.recetteService.updateNomRecette(recette).subscribe((res: any) => {
+
+
+  updateRecipeName(recette: RecipeDetails) {
+    this.recetteService. updateRecipeName(recette).subscribe((res: any) => {
       window.location.reload()
     }, (err: any) => {
       console.error(err)
     }
     );
   }
-  updateEtapes(recette: RecipeDetails) {
-    this.recetteService.updateEtapes(recette).subscribe((res: any) => {
+  updateSteps(recette: RecipeDetails) {
+    this.recetteService.updateSteps(recette).subscribe((res: any) => {
+      window.location.reload()
+    }, (err: any) => {
+      console.error(err)
+    }
+    );
+  }
+
+  updateRecipeCategory(recette: RecipeDetails){
+    this.recetteService.updateRecipeCategory(recette).subscribe((res: any) => {
       window.location.reload()
     }, (err: any) => {
       console.error(err)
@@ -129,7 +143,7 @@ export class ModifierRecetteComponent implements OnInit {
         console.log(err);
       }
       );
-    //window.location.reload() /* rafraichit la page */
+  
   }
 
   open(content) {
@@ -149,6 +163,16 @@ export class ModifierRecetteComponent implements OnInit {
           this.ingredients = ingredient
         }
       );
+    }, 2000)
+  }
+
+  refreshCategory(): void {
+    setInterval(() => {
+      this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+        categories => {
+          this.allCategories = categories
+        }
+      )
     }, 2000)
   }
 

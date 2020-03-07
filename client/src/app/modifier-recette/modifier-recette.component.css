@@ -1,9 +1,3 @@
-#fav {
-    float: right
-}
-#vew {
-    float: left;
-}
 
 #photo { /* #si j'ai utilisé un id pour repérer ma balise */
     text-align: center;
@@ -17,9 +11,7 @@
 #btn{
     margin-top: 2em;
 }
-#categ{
-    text-align: center;
-}
+
 #conteneur
 {
     display: flex;

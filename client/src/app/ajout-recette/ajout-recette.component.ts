@@ -93,7 +93,7 @@ export class AjoutRecetteComponent implements OnInit {
     this.recetteService.createRecipe(this.recipe).subscribe(res => {
       this.recipe.idRecette = res[0] // je récupère l'id de l'adresse que je viens de créer
       this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
-        console.log(res)
+       
       })
     })
     //this.router.navigate(['/recipe/'], { queryParams: { id: this.recipe.idRecette } })

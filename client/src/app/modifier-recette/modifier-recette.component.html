@@ -2,7 +2,7 @@
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <!--lien pour avoir le petit logo de poubelle-->
 
-<form (submit)="updateNomRecette(recette)">
+<form (submit)="updateRecipeName(recette)">
     <div class="container">
         <div class="row align-items-center">
             <div class="col">
@@ -28,13 +28,13 @@
     </figure>
 
     <!--afficher la/ les catégorie-->
-    <div class="element 3 card border-secondary col-md-6">
+    
         <div class="card-header">Catégorie</div>
         <br>
-        <form>
-            <div id="ingrForm" class="form-row">
-                <div class="col-md-4 mb-4">
-                    <ng-multiselect-dropdown [data]="allCategories" placeholder="Sélectionner" 
+        <form (submit)="updateRecipeCategory(recette)">
+            <div id="categ" class="form-row">
+                <div class="col-md-3 mb-3">
+                    <ng-multiselect-dropdown [data]="allCategories" placeholder="Sélectionner" #libelleCategorie="ngModel"
                         [(ngModel)]="selectedItems" [settings]="dropdownSettings" [ngModelOptions]="{standalone: true}">
                     </ng-multiselect-dropdown>
                     <div class="invalid-tooltip">
@@ -42,8 +42,10 @@
                     </div>
                 </div>
             </div>
+            <button class="btn btn-outline-primary" type="submit">Modifier</button>
         </form>
-    </div>
+ 
+        <!--ingrédients-->
     <div id="conteneur">
         <div class="element 1">
             <div id="card" class="element 1 card border-secondary mb-3 col-lg-6 col-md-6 col-sm-6 p-3">
@@ -131,7 +133,7 @@
             <div class="card-header">Préparation</div>
             <div class="card-body text-secondary center">
 
-                <form (submit)="updateEtapes(recette)">
+                <form (submit)="updateSteps(recette)">
                     <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes"
                         [(ngModel)]="recette.etapes" value=" {{recette?.etapes}}"></textarea>
 

@@ -174,7 +174,7 @@ recipe.get('/recipe/category/:idCategorie', (req, res) => {
 
 //récupérer la/les catégorie(s) d'une recette
 recipe.get('/recipe/:idRecette/category', (req, res) => {
-    console.log(req)
+
     let query = db.sequelize.query("SELECT categories.libelleCategorie FROM recettes INNER JOIN classerDans INNER JOIN categories WHERE recettes.idRecette = classerDans.idRecette AND classerDans.idCategorie = categories.idCategorie AND recettes.idRecette = ?",
         {
             replacements: [req.params.idRecette],
@@ -306,6 +306,10 @@ recipe.get('/ingredient', (req, res) => {
             res.send('error: ' + err)
         })
 })
+
+
+
+
 
 //supprimer ingredient
 recipe.delete('/ingredient/delete/:id', (req, res) => {
@@ -708,9 +712,9 @@ recipe.delete('/recipe/:idRecette/ingredient/:idIngredient/delete', (req, res) =
             res.send('error: ' + err)
         })
 })
-
+//ajouter un ingrédient à une recette
 recipe.post(`/recipe/:idRecette/add/ingredient/:idIngredient`, (req, res) => {
-    console.log(req)
+
     UtiliserIngredients.create(req.body)
         .then((res) => {
             res.json(res)
@@ -719,5 +723,38 @@ recipe.post(`/recipe/:idRecette/add/ingredient/:idIngredient`, (req, res) => {
             res.send('error: ' + err)
         })
 })
+
+//selectionner que les catégories dont une recette ne fait pas partie
+
+recipe.get('/recipe/:idRecette/category/rest', (req, res) => {
+    db.sequelize.query("SELECT * FROM categories WHERE categories.idCategorie NOT IN (SELECT categories.idCategorie FROM recettes INNER JOIN classerDans INNER JOIN categories WHERE recettes.idRecette = classerDans.idRecette AND classerDans.idCategorie = categories.idCategorie AND recettes.idRecette = ?)",
+        {
+            replacements: [req.params.idRecette],
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(resultats => {
+            res.json(resultats)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+
+//Récupérer les ingrédients qui ne sont pas utilisés dans une recette
+recipe.get('/recipe/:idRecette/ingredient/rest', (req, res) => {
+    db.sequelize.query("SELECT * FROM ingredient WHERE ingredient.idIngredient NOT IN (SELECT ingredient.idIngredient FROM ingredient INNER JOIN recettes INNER JOIN utiliserIngredients INNER JOIN unites WHERE ingredient.idIngredient = utiliserIngredients.idIngredient AND utiliserIngredients.idRecette = ? AND utiliserIngredients.idRecette = recettes.idRecette AND unites.idUnite = utiliserIngredients.idUnite)",
+        {
+            replacements: [req.params.idRecette],
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(resultats => {
+            res.json(resultats)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 
 module.exports = recipe

@@ -132,10 +132,14 @@ export class RecettesService {
             }))
     }
 
-    public updateNbView(recette: RecipeDetails): Observable<any> {
-        return this.http.put<any>(`/server/recipe/update-nbView/${recette.idRecette}`, recette)
-    }
+    
 
+    public updateNbView(recette: RecipeDetails): Observable<any> {
+        return this.http.get<any>(`/server/recipe/${recette.idRecette}/category/rest`)
+        .pipe(map((data: CategoryDetails[]) => {
+            return data
+        }))
+}
     public deleteCategory(id: any): Observable<any> {
         const url = `/server/category/delete/${id}`;
         return this.http.delete<any>(url).pipe(
@@ -167,6 +171,20 @@ export class RecettesService {
             .pipe(map((data: IngredientDetails[]) => {
                 return data
             }))
+    }
+
+    public getRestIngredients(idRecette: any): any {
+        return this.http.get<any>(`/server/recipe/${idRecette}/ingredient/rest`)
+        .pipe(map((data: IngredientDetails[]) => {
+            return data
+        }))
+    }
+
+    public getRestCategory(idRecette:any): any {
+        return this.http.get<any>(`/server/recipe/${idRecette}/category/rest`)
+        .pipe(map((data: CategoryDetails[]) => {
+            return data
+        }))
     }
 
     public deleteIngredient(id: any): Observable<any> {
@@ -300,14 +318,14 @@ export class RecettesService {
         );
     }
 
-    public getCategorie(id:any): any {
+    public getCategory(id:any): any {
         return this.http.get<any>(`/server/recipe/${id}/category`)
             .pipe(map((data: any) => {
                 return data
             }))
     }
 
-    public updateNomRecette(recette: RecipeDetails): Observable<any> {
+    public  updateRecipeName(recette: RecipeDetails): Observable<any> {
        
         return this.http.put(`/server/recipe/name/update`, recette)
             .pipe(map((data: RecipeDetails) => {
@@ -317,7 +335,7 @@ export class RecettesService {
 
     }
 
-    public updateEtapes(recette: RecipeDetails): Observable<any> {
+    public updateSteps(recette: RecipeDetails): Observable<any> {
    
         return this.http.put(`/server/recipe/step/update`, recette)
             .pipe(map((data: RecipeDetails) => {
