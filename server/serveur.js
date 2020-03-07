@@ -18,7 +18,7 @@ app.use(sanitizer())
 app.use(bodyParser.json())
 app.use(cors())
 app.use(
-    bodyParser.urlencoded({ extended: false })
+  bodyParser.urlencoded({ extended: false })
 )
 
 var Users = require("./routes/Users")
@@ -30,40 +30,40 @@ app.use("/server", Recipes)
 // Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/<name-of-app>'));
 
-app.get('/*', function(req,res) {
-    
-res.sendFile(path.join(__dirname+'/dist/<name-of-app>/index.html'));
+app.get('/*', function (req, res) {
+
+  res.sendFile(path.join(__dirname + '/dist/<name-of-app>/index.html'));
 });
 
 app.listen(port, function () {
-    console.log("Server is running on port " + port)
+  console.log("Server is running on port " + port)
 })
 
 const multerMid = multer({
-    storage: multer.memoryStorage(),
-    limits: {
-        fileSize: 5 * 1024 * 1024,
-    },
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024,
+  },
 })
 app.disable('x-powered-by')
 app.use(multerMid.single('file'))
 
 app.post('/uploads', async (req, res, next) => {
-    try {
-      const myFile = req.file
-      console.log(req)
-      const imageUrl = await uploadImage(myFile)
-  
-      res
-        .status(200)
-        .json({
-          message: "Upload was successful",
-          data: imageUrl
-        })
-    } catch (error) {
-      next(error)
-    }
-  })
+  try {
+    const myFile = req.file
+    console.log(req)
+    const imageUrl = await uploadImage(myFile)
+
+    res
+      .status(200)
+      .json({
+        message: "Upload was successful",
+        data: imageUrl
+      })
+  } catch (error) {
+    next(error)
+  }
+})
 
 
 app.use(methodOverride('_method'));
