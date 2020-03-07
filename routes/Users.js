@@ -63,13 +63,17 @@ users.post('/login', (req, res) => {
         }
     })
         .then(user => {
-            if(bcrypt.compareSync(req.sanitize(req.body.mdp), user.mdp)) {
-                let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                    expiresIn: 1440
-                })
-                res.json({ token: token})
+            if(!user){
+                res.json({error: "Mot de passe et/ou pseudo incorrect"})
             } else {
-                res.send("Mot de passe incorrecte")
+                if(bcrypt.compareSync(req.sanitize(req.body.mdp), user.mdp)) {
+                    let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
+                        expiresIn: 1440
+                    })
+                    res.json({ token: token})
+                } else {
+                    res.json({error: "Mot de passe et/ou pseudo incorrect"})
+                }
             }
         })
         .catch(err => {

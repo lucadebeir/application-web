@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthentificationService, TokenPayload } from '../service/authentification.service';
 import { Router } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-inscrire',
@@ -20,30 +20,56 @@ export class InscrireComponent implements OnInit {
     error: ''
   }
 
-  constructor(private auth: AuthentificationService, private router: Router) { }
+  userForm: FormGroup;
+
+  constructor(private auth: AuthentificationService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-  } 
+    this.initForm()
+  }
+  
+  // We Init the form with the validators
+  initForm() {
+    this.userForm = this.formBuilder.group({
+      pseudo: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mdp: ['', Validators.required],
+      mdp2: ['', Validators.required],
+      abonneNews: ['', Validators.required]
+
+    });
+  }
 
   register() {
+
+    const formValue = this.userForm.value;
+
+    if (formValue.mdp != formValue.mdp2) {
+      alert("Les mots de passe ne sont pas identiques.");
+      return;
+    }
+
+    this.credentials.pseudo = formValue.pseudo;
+    this.credentials.email = formValue.email;
+    this.credentials.mdp = formValue.mdp;
+    this.credentials.mdp2 = formValue.mdp2;
+    this.credentials.abonneNews = formValue.abonneNews;
+
+    console.log(this.credentials)
     
     this.auth.register(this.credentials).subscribe(
       (res) => {
-        if (res.error) {
-          this.credentials.pseudo = ''
-          this.credentials.email = ''
-          this.credentials.mdp = ''
-          this.credentials.mdp2 = ''
-          this.credentials.error = res.error
-          this.router.navigateByUrl('/register')
+        console.log(res);
+        if (res.error == "L'utilisateur existe déjà") {
+          alert("L'utilisateur existe déjà");
         } else {
-          this.router.navigateByUrl('/profile')
+          this.router.navigate(['profile']);
         }
       },
       err => {
-        console.error(err)
+        console.error(err);
       }
-    )
+    );
   }
 
 }
