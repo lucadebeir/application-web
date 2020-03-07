@@ -10,6 +10,7 @@ const Unite = require("../models/Unite")
 const Categorie = require("../models/Categorie")
 const Favoris = require("../models/Favoris")
 const ListeCourse = require("../models/ListeCourses")
+const ClasserDans = require("../models/ClasserDans")
 recipe.use(cors())
 
 //Récupérer toutes les recettes
@@ -175,7 +176,7 @@ recipe.get('/recipe/category/:idCategorie', (req, res) => {
 //récupérer la/les catégorie(s) d'une recette
 recipe.get('/recipe/:idRecette/category', (req, res) => {
 
-    let query = db.sequelize.query("SELECT categories.libelleCategorie FROM recettes INNER JOIN classerDans INNER JOIN categories WHERE recettes.idRecette = classerDans.idRecette AND classerDans.idCategorie = categories.idCategorie AND recettes.idRecette = ?",
+    let query = db.sequelize.query("SELECT categories.* FROM recettes INNER JOIN classerDans INNER JOIN categories WHERE recettes.idRecette = classerDans.idRecette AND classerDans.idCategorie = categories.idCategorie AND recettes.idRecette = ?",
         {
             replacements: [req.params.idRecette],
             type: sequelize.QueryTypes.SELECT
@@ -413,7 +414,26 @@ recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
             })
     }
 })
-
+//modifier qte et unite d'un ingredient dans une recette
+recipe.put('/recipe/:idRecette/ingredient/update', (req, res) => {
+    UtiliserIngredients.update(
+        {
+            qte: req.body.qte,
+            idUnite: req.body.idUnite
+        },
+        {
+            where: {
+                idRecette: req.params.idRecette,
+                idIngredient: req.body.idIngredient
+            }
+        }
+    )
+        .then(() => {
+            res.json({ success: 'Unité modifié !' })
+        })
+        .error(err =>
+            res.json({ error: err }))
+})
 //récupérer toutes les unités dans l'ordre alphabetique
 recipe.get('/unite', (req, res) => {
     Unite.findAll({
@@ -712,6 +732,22 @@ recipe.delete('/recipe/:idRecette/ingredient/:idIngredient/delete', (req, res) =
             res.send('error: ' + err)
         })
 })
+
+//supprimer une recette d'une catégorie
+recipe.delete('/recipe/:idRecette/category/:idCategorie/delete', (req, res) => {
+    ClasserDans.destroy({
+        where: {
+            idRecette: req.params.idRecette,
+            idCategorie: req.params.idCategorie
+        }
+    })
+        .then(() => {
+            res.send('Category deleted!')
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 //ajouter un ingrédient à une recette
 recipe.post(`/recipe/:idRecette/add/ingredient/:idIngredient`, (req, res) => {
 
@@ -723,6 +759,25 @@ recipe.post(`/recipe/:idRecette/add/ingredient/:idIngredient`, (req, res) => {
             res.send('error: ' + err)
         })
 })
+
+//ajouter une catégorie à une recette
+recipe.post(`/recipe/:idRecette/category/add`, (req, res) => {
+    const CategData = {
+        idRecette: req.params.idRecette,
+        idCategorie: req.body.idCategorie
+    }
+    ClasserDans.create(CategData)
+        .then((res) => {
+            res.json(res)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+
+
+
 
 //selectionner que les catégories dont une recette ne fait pas partie
 

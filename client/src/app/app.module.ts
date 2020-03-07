@@ -28,6 +28,7 @@ import { AjoutRecetteComponent } from './ajout-recette/ajout-recette.component';
 import { ModalAddIngredientComponent } from './modal-add-ingredient/modal-add-ingredient.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ModifierRecetteComponent } from './modifier-recette/modifier-recette.component';
+import { AdminAuthService } from './service/admin-auth.service';
 
 
 const routes: Routes = [
@@ -39,16 +40,16 @@ const routes: Routes = [
   { path: 'aboutMe', component: AProposComponent },
   { path: 'allRecipes', component: RecettesComponent },
   { path: 'recipe/:id', component: RecetteComponent },
-  { path: 'handleRecipes', component: GererLesRecettesComponent },
-  { path: 'category', component: CategoriesComponent },
-  { path: 'ingredient', component: IngredientsComponent },
-  { path: 'add-recipe', component: AjoutRecetteComponent },
-  { path: 'unite', component: UniteComponent },
-  {path: 'contact', component: ContactComponent},
-  {path: 'shoppingList', component: MaListeDeCoursesComponent},
-  {path: 'comment', component: MesCommentairesComponent},
-  {path: 'favorites', component: MesRecettesComponent},
-  {path: 'updateRecipe/:id', component: ModifierRecetteComponent}
+  { path: 'handleRecipes', component: GererLesRecettesComponent, canActivate: [AdminAuthService, AuthGuardService]  },
+  { path: 'category', component: CategoriesComponent, canActivate: [AdminAuthService, AuthGuardService]  },
+  { path: 'ingredient', component: IngredientsComponent, canActivate: [AdminAuthService, AuthGuardService]  },
+  { path: 'add-recipe', component: AjoutRecetteComponent, canActivate: [AdminAuthService, AuthGuardService]  },
+  { path: 'unite', component: UniteComponent, canActivate: [AdminAuthService, AuthGuardService]  },
+  { path: 'contact', component: ContactComponent},
+  { path: 'shoppingList', component: MaListeDeCoursesComponent, canActivate: [AuthGuardService] },
+  { path: 'comment', component: MesCommentairesComponent, canActivate: [AuthGuardService] },
+  { path: 'favorites', component: MesRecettesComponent, canActivate: [AuthGuardService] },
+  { path: 'updateRecipe/:id', component: ModifierRecetteComponent, canActivate: [AdminAuthService, AuthGuardService] }
 ]
 
 @NgModule({
@@ -82,7 +83,7 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthGuardService, AuthentificationService, RecettesService],
+  providers: [AuthGuardService, AuthentificationService, RecettesService, AdminAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -156,6 +156,15 @@ export class RecettesService {
 
     }
 
+    public updateRecipeIng(recette: RecipeDetails, ingredient: IngredientDetails):Observable<any> {
+        return this.http.put(`/server/recipe/${recette.idRecette}/ingredient/update`, ingredient)
+            .pipe(map((res) => {
+                return res
+            }))
+
+
+    }
+
     public addCategory(categorie: CategoryDetails): any {
 
         this.http.post('/server/category/add', categorie).subscribe(res => {
@@ -224,6 +233,13 @@ export class RecettesService {
         }))
     }
 
+    public addRecipeCategory(categorie : CategoryDetails, recette: RecipeDetails): Observable<any>{
+        return this.http.post(`/server/recipe/${recette.idRecette}/category/add`,categorie)
+        .pipe(map((res)=> {
+            return res
+        }))
+    }
+
     public getAllUnite(): any {
         return this.http.get<any>('/server/unite')
             .pipe(map((data: UniteDetails[]) => {
@@ -274,7 +290,7 @@ export class RecettesService {
 
         })
     }
-
+    
 
     public getFavoris(): Observable<RecipeDetails[]> {
         const pseudo = this.auth.getUserDetails().pseudo;
@@ -361,6 +377,17 @@ export class RecettesService {
             }
         })
 
+    }
+
+    
+
+    public deleteRecipeCategory(categorie: CategoryDetails, recette: RecipeDetails): Observable<any> {
+        console.log(recette)
+        console.log(categorie)
+        const url = `/server/recipe/${recette.idRecette}/category/${categorie.idCategorie}/delete`;
+        return this.http.delete<any>(url).pipe(
+            tap(_ => console.log(`deleted ${categorie.idCategorie} from recipe ${recette.idRecette}`)),
+        );
     }
 
 }    

@@ -12,6 +12,7 @@
     margin-top: 2em;
 }
 
+
 #conteneur
 {
     display: flex;
@@ -42,6 +43,8 @@
         color: rgb(0, 0, 0);
         background:#f5f5f5;
         text-align: center;
+        border: none;
+      
     }
    
 #ing {
@@ -57,11 +60,18 @@
     text-align:center;
     margin: auto; /* pour centrer l'élément */
 }
-#poubelle{
+#poubelle, #add, #crayon{
     margin-right: 1em;
     margin-bottom: 1em;
 }
 
 #b1{
     margin-right: 2em;
+}
+
+#qte{
+    width: 4em;
+}
+#unit{
+    width: 9em;
 }

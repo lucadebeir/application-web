@@ -26,17 +26,14 @@ export class ModifierRecetteComponent implements OnInit {
   public ingredients: IngredientDetails
   public unite: UniteDetails
   public qtes: QuantiteDetails[]
+  public categories: CategoryDetails[]
   
 
   public allIngredients: IngredientDetails[] //ingredients disponibles
   public allUnites: UniteDetails[]
   public allCategories: CategoryDetails[] //catégories disponibles
 
-  public recipeForm: FormGroup
-  public ingredientForm: FormGroup
-
-  public selectedItems = []
-  public dropdownSettings : IDropdownSettings
+ 
 
   constructor(private recetteService: RecettesService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private modalService: NgbModal) {
   }
@@ -72,28 +69,21 @@ export class ModifierRecetteComponent implements OnInit {
       }
     )
 
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'idCategorie',
-      textField: 'libelleCategorie',
-      enableCheckAll: false,
-      itemsShowLimit: 4,
-      allowSearchFilter: true,
-      searchPlaceholderText: "Rechercher"
-    };
+   
     this.getCategory(parseInt(this.route.snapshot.paramMap.get('id')))
 
 
     this.refreshIngredients()
-
     this.refreshCategory()
+    this.refreshCategory2()
+   
 
   }
 
   getCategory(id: any): any {
     this.recetteService.getCategory(id).subscribe(
       (categories: CategoryDetails[]) => {
-        this.selectedItems = categories
+        this.categories = categories
       }, err => {
         if (err instanceof HttpResponse) {
           if (err.status === 402) {
@@ -102,7 +92,7 @@ export class ModifierRecetteComponent implements OnInit {
         }
       }
     )
-    return this.selectedItems
+    return this.categories
   }
 
 
@@ -124,8 +114,8 @@ export class ModifierRecetteComponent implements OnInit {
     );
   }
 
-  updateRecipeCategory(recette: RecipeDetails){
-    this.recetteService.updateRecipeCategory(recette).subscribe((res: any) => {
+  updateRecipeIng(recette: RecipeDetails,ingredient: IngredientDetails) {
+    this.recetteService.updateRecipeIng(recette, ingredient).subscribe((res: any) => {
       window.location.reload()
     }, (err: any) => {
       console.error(err)
@@ -146,6 +136,32 @@ export class ModifierRecetteComponent implements OnInit {
   
   }
 
+  deleteRecipeCategory(categorie: CategoryDetails,recette: RecipeDetails){
+  
+    this.recetteService.deleteRecipeCategory(categorie, recette)
+    .subscribe(res => {
+      this.router.navigate(['updateRecipe/:id'], {
+        queryParams: { refresh: new Date().getTime() }
+      })
+    }, (err) => {
+      console.log(err);
+    }
+    );
+  }
+
+  addRecipeCategory(categorie: CategoryDetails,recette: RecipeDetails){
+    this.recetteService.addRecipeCategory(categorie,recette)
+    .subscribe(res => {
+      this.router.navigate(['updateRecipe/:id'], {
+        queryParams: { refresh: new Date().getTime() }
+      })
+    }, (err) => {
+      console.log(err);
+    }
+    );
+  }
+
+
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result
       .then((result) => {
@@ -163,7 +179,7 @@ export class ModifierRecetteComponent implements OnInit {
           this.ingredients = ingredient
         }
       );
-    }, 2000)
+    }, 5000)
   }
 
   refreshCategory(): void {
@@ -171,6 +187,15 @@ export class ModifierRecetteComponent implements OnInit {
       this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
         categories => {
           this.allCategories = categories
+        }
+      )
+    }, 2000)
+  }
+  refreshCategory2(): void {
+    setInterval(() => {
+      this.recetteService.getCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+        categories => {
+          this.categories = categories
         }
       )
     }, 2000)
