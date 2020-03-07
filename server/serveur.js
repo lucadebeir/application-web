@@ -27,6 +27,14 @@ var Recipes = require("./routes/Recipes")
 app.use("/server", Users)
 app.use("/server", Recipes)
 
+// Serve only the static files form the dist directory
+app.use(express.static(__dirname + '/dist/<name-of-app>'));
+
+app.get('/*', function(req,res) {
+    
+res.sendFile(path.join(__dirname+'/dist/<name-of-app>/index.html'));
+});
+
 app.listen(port, function () {
     console.log("Server is running on port " + port)
 })

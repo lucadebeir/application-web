@@ -1,0 +1,93 @@
+#fav {
+    float: right
+}
+#vew {
+    float: left;
+}
+
+#header { /* #si j'ai utilisé un id pour repérer ma balise */
+    text-align: center;
+    margin-top: 2.5em;
+}
+#conteneur
+{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-right: 1em; /* espace sur la droite */ 
+}
+    .element:nth-child(1)
+    {
+        display: block;
+        padding: 12px;
+        margin: 15px;
+        width: 80%;
+    }
+    .element:nth-child(2)
+    {
+        display: block;
+        padding: 12px;
+        margin: 15px;
+        width: 80%;
+    }
+    .element:nth-child(3)
+    {
+        display: block;
+        padding: 12px;
+        margin: 15px;
+        width: 80%;
+    }
+    .element:nth-child(4)
+    {
+        display: block;
+        padding: 12px;
+        margin: 15px;
+        width: 80%;
+    }
+    .element:nth-child(5)
+    {
+        display: block;
+        padding: 12px;
+        margin: 15px;
+        width: 80%;
+    }
+    .card {
+        padding: 10px;
+        box-sizing: border-box;
+        color: rgb(0, 0, 0);
+        background:#f5f5f5;
+        text-align: center;
+    }
+   
+#ing {
+    text-align: left;
+}
+
+#resp{
+    max-width: 100%;
+    height: auto;
+}
+
+.center {
+    text-align:center;
+    margin: auto; /* pour centrer l'élément */
+}
+
+#btn {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+#ingrForm {
+    justify-content: center;
+    align-items: center;
+}
+
+#validateButton {
+    text-align: center;
+}
+
+#buttonIngredient {
+    justify-content: space-evenly;
+}

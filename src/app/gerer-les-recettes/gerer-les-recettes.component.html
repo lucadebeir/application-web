@@ -1,0 +1,65 @@
+<div id="titre">
+	<h1>Gerer les recettes</h1>
+</div>
+
+
+<ul id="menu" class="nav justify-content-center">
+	<li class="nav-item">
+		<a class="nav-link" [routerLink]="['/ingredient']">Gérer les ingrédients</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" [routerLink]="['/category']">Gérer les catégories</a>
+	</li>
+
+	<li class="nav-item">
+		<a class="nav-link" [routerLink]="['/unite']">Gérer les unités</a>
+	</li>
+
+	<li class="nav-item">
+		<a class="nav-link" [routerLink]="['/add-recipe']">Créer une nouvelle recette</a>
+	</li>
+
+	<li>
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search"
+				[formControl]="filter">
+		</form>
+	</li>
+</ul>
+
+
+<div id="titre">
+	<h3>Recettes publiées</h3>
+</div>
+
+
+
+<div id="container" class="container">
+	<div class="row mb-3" *ngFor="let recette of filteredRecipe$ | async">
+		<div class="col-sm-3"></div>
+		<div class="col-md-6 col-sm-6">
+			<div class="d-flex flex-row border rounded">
+				<div class="p-0 w-25">
+					<img src="https://c1.staticflickr.com/3/2862/12328317524_18e52b5972_k.jpg"
+						class="img-thumbnail border-0" alt="photo de la recette" />
+
+				</div>
+				<div class="pl-3 pt-2 pr-2 pb-2 w-75 border-left">
+
+					<h5 class="text">{{recette.nomRecette}}</h5>
+					<ul class="m-0 float-left" style="list-style: none; margin:0; padding: 0">
+						<li><i class="badge badge-light"></i>{{recette.nbFavoris}} ♥</li>
+						<li><i class="badge badge-light"></i> {{recette.nbVues}} 👁</li>
+					</ul>
+					<button type="button" class="btn btn-outline-warning" [routerLink]="['/updateRecipe', recette.idRecette]">Modifier </button>
+					<button type="submit" class="btn btn-outline-danger"
+						(click)="deleteRecipe(recette.idRecette)">Supprimer</button>
+
+
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3"></div>
+	</div>
+
+</div>
