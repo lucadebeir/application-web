@@ -1,8 +1,7 @@
 const Sequelize = require("sequelize")
 const db = {}
-const sequelize = new Sequelize("marinesrecipe", "marinesrecipe", "marine10", {
-    host: "db4free.net",
-    port: 3306,
+const sequelize = new Sequelize("marinesrecipes_bd", "201428", "Luka-12021996", {
+    host: "mysql-marinesrecipes.alwaysdata.net",
     dialect: "mysql",
     operatorsAliases: false,
 
