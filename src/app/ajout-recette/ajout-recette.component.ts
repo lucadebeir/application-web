@@ -186,6 +186,10 @@ export class AjoutRecetteComponent implements OnInit {
     console.log(this.recipe)
     this.recetteService.createRecipe(this.recipe).subscribe(res => {
       this.recipe.idRecette = res[0] // je récupère l'id de la recette que je viens de créer
+      console.log("res[0")
+      console.log(res[0])
+      console.log("this.recipe.idRecette")
+      console.log(this.recipe.idRecette)
       this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
        
       })

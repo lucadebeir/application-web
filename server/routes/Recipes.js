@@ -398,6 +398,8 @@ recipe.post('/add-recipe', (req, res) => {
 
 //ajouter ingrédients et catégorie de la recette
 recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
+    console.log("req")
+    console.log(req)
     for (let i = 0; i < req.body.categories.length; i++) {
         db.sequelize.query("INSERT INTO classerDans (idRecette, idCategorie) VALUES (?,?)",
             {
