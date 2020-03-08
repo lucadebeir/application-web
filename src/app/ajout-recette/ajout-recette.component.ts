@@ -76,19 +76,6 @@ export class AjoutRecetteComponent implements OnInit {
     this.createIngredientsForm()
 
     this.addIngredient()
-
-    //this.refreshIngredients()
-  }
-
-  //on rafraitchit la liste des ingrédients et pas la page grâce à un timer toutes les 2 secondes
-  refreshIngredients(): void {
-    setInterval(() => {
-      this.recetteService.getAllIngredients().subscribe(
-        ingredients => {
-          this.ingredients = ingredients
-        }
-      )
-    }, 5000)
   }
 
   createRecipe() {
@@ -190,9 +177,7 @@ export class AjoutRecetteComponent implements OnInit {
       console.log(res[0])
       console.log("this.recipe.idRecette")
       console.log(this.recipe.idRecette)
-      this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
-       
-      })
+      this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe)
     })
     //this.router.navigate(['/recipe/'], { queryParams: { id: this.recipe.idRecette } })
     this.router.navigateByUrl('allRecipes')
