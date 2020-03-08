@@ -406,10 +406,10 @@ recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
                 replacements: [req.body.idRecette, req.body.categories[i].idCategorie]
             })
     }
-    for (let i = 0; i < req.body.ingredients.ingredient.length; i++) {
+    for (let i = 0; i < req.body.ingredients.ingredients.length; i++) {
         db.sequelize.query("INSERT INTO UtiliserIngredients (qte, idRecette, idIngredient, idUnite) VALUES (?,?,?,?)",
             {
-                replacements: [req.body.ingredients.ingredient[i].qte, req.body.idRecette, req.body.ingredients.ingredient[i].idIngredient, req.body.ingredients.ingredient[i].idUnite]
+                replacements: [req.body.ingredients.ingredients[i].qte, req.body.idRecette, req.body.ingredients.ingredients[i].idIngredient, req.body.ingredients.ingredients[i].idUnite]
             })
     }
 })
