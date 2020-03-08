@@ -92,3 +92,6 @@ typings/
 .dynamodb/
 
 molten-calling-270223-7d6d4b3665fa.json
+
+#Db local
+server/database/db.js
