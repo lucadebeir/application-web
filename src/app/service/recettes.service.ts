@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpParams } from '@angular/common/http'
-import { Observable, of } from 'rxjs'
-import { map, tap, catchError } from 'rxjs/operators'
-import { CategoriesComponent } from '../categories/categories.component'
-import { CreateRecipe } from '../ajout-recette/ajout-recette.component'
-import { NewIngredient } from '../modal-add-ingredient/modal-add-ingredient.component'
+import { HttpClient } from '@angular/common/http'
+import { Observable } from 'rxjs'
+import { map, tap } from 'rxjs/operators'
+import { CreateRecipe } from '../views/ajout-recette/ajout-recette.component'
 import { AuthentificationService } from './authentification.service'
 
 
@@ -234,7 +232,6 @@ export class RecettesService {
     public addRecipeCategory(categorie : CategoryDetails, recette: RecipeDetails): Observable<any>{
         return this.http.post(`/server/recipe/${recette.idRecette}/category/add`,categorie)
         .pipe(map((res)=> {
-            console.log(res)
             return res
         }))
     }
@@ -273,7 +270,6 @@ export class RecettesService {
     public addFavoris(newFavori: FavorisDetails): any {
         return this.http.post(`/server/favorites/add`, newFavori).subscribe(res => {
             {
-                console.log(res)
                 return res
             }
 
@@ -368,8 +364,6 @@ export class RecettesService {
     }
 
     public addIngredientRecette(newIngredient: IngredientDetails): any {
-        console.log("ahaahah")
-        console.log(newIngredient)
         this.http.post(`/server/recipe/${newIngredient.idRecette}/add/ingredient/${newIngredient.idIngredient}`,newIngredient).subscribe(res => {
             {
                 return res
@@ -381,8 +375,6 @@ export class RecettesService {
     
 
     public deleteRecipeCategory(categorie: CategoryDetails, recette: RecipeDetails): Observable<any> {
-        console.log(recette)
-        console.log(categorie)
         const url = `/server/recipe/${recette.idRecette}/category/${categorie.idCategorie}/delete`;
         return this.http.delete<any>(url).pipe(
             tap(_ => console.log(`deleted ${categorie.idCategorie} from recipe ${recette.idRecette}`)),

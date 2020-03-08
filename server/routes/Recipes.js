@@ -398,7 +398,6 @@ recipe.post('/add-recipe', (req, res) => {
 
 //ajouter ingrédients et catégorie de la recette
 recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
-    console.log("req")
     console.log(req)
     for (let i = 0; i < req.body.categories.length; i++) {
         db.sequelize.query("INSERT INTO classerDans (idRecette, idCategorie) VALUES (?,?)",
@@ -406,10 +405,10 @@ recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
                 replacements: [req.body.idRecette, req.body.categories[i].idCategorie]
             })
     }
-    for (let i = 0; i < req.body.ingredients.ingredient.length; i++) {
+    for (let i = 0; i < req.body.ingredients.length; i++) {
         db.sequelize.query("INSERT INTO utiliserIngredients (qte, idRecette, idIngredient, idUnite) VALUES (?,?,?,?)",
             {
-                replacements: [req.body.ingredients.ingredient[i].qte, req.body.idRecette, req.body.ingredients.ingredient[i].idIngredient, req.body.ingredients.ingredient[i].idUnite]
+                replacements: [req.body.ingredients[i].qte, req.body.idRecette, req.body.ingredients[i].idIngredient, req.body.ingredients[i].idUnite]
             })
     }
 })

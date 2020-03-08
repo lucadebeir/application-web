@@ -5,30 +5,26 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InscrireComponent } from './inscrire/inscrire.component'
-import { SeConnecterComponent } from './se-connecter/se-connecter.component'
-import { AccueilComponent } from './accueil/accueil.component'
-import { AuthentificationService } from './service/authentification.service'
-import { AuthGuardService } from './service/auth-guard.service';
-import { ContactComponent } from './contact/contact.component';
-import { GererLesRecettesComponent } from './gerer-les-recettes/gerer-les-recettes.component';
-import { MaListeDeCoursesComponent } from './ma-liste-de-courses/ma-liste-de-courses.component';
-import { MesCommentairesComponent } from './mes-commentaires/mes-commentaires.component';
-import { MesRecettesComponent } from './mes-recettes/mes-recettes.component';
-import { MonProfileComponent } from './mon-profile/mon-profile.component';
-import { RecettesComponent } from './recettes/recettes.component';
-import { UpdatePasswordComponent } from './update-password/update-password.component';
-import { AProposComponent } from './apropos/apropos.component';
-import { RecettesService } from './service/recettes.service';
-import { RecetteComponent } from './recette/recette.component';
-import { IngredientsComponent } from './ingredients/ingredients.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { UniteComponent } from './unite/unite.component';
-import { AjoutRecetteComponent } from './ajout-recette/ajout-recette.component';
-import { ModalAddIngredientComponent } from './modal-add-ingredient/modal-add-ingredient.component';
+import { InscrireComponent } from './views/inscrire/inscrire.component'
+import { SeConnecterComponent } from './views/se-connecter/se-connecter.component'
+import { AccueilComponent } from './views/accueil/accueil.component'
+import { AuthentificationService, AuthGuardService, AdminAuthService, RecettesService } from './service'
+import { ContactComponent } from './views/contact/contact.component';
+import { GererLesRecettesComponent } from './views/gerer-les-recettes/gerer-les-recettes.component';
+import { MaListeDeCoursesComponent } from './views/ma-liste-de-courses/ma-liste-de-courses.component';
+import { MesCommentairesComponent } from './views/mes-commentaires/mes-commentaires.component';
+import { MesRecettesComponent } from './views/mes-recettes/mes-recettes.component';
+import { MonProfileComponent } from './views/mon-profile/mon-profile.component';
+import { RecettesComponent } from './views/recettes/recettes.component';
+import { UpdatePasswordComponent } from './views/update-password/update-password.component';
+import { AProposComponent } from './views/apropos/apropos.component';
+import { RecetteComponent } from './views/recette/recette.component';
+import { IngredientsComponent } from './views/ingredients/ingredients.component';
+import { CategoriesComponent } from './views/categories/categories.component';
+import { UniteComponent } from './views/unite/unite.component';
+import { AjoutRecetteComponent } from './views/ajout-recette/ajout-recette.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { ModifierRecetteComponent } from './modifier-recette/modifier-recette.component';
-import { AdminAuthService } from './service/admin-auth.service';
+import { ModifierRecetteComponent } from './views/modifier-recette/modifier-recette.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -72,7 +68,6 @@ const routes: Routes = [
     CategoriesComponent,
     UniteComponent,
     AjoutRecetteComponent,
-    ModalAddIngredientComponent,
     ModifierRecetteComponent
   ],
   imports: [
