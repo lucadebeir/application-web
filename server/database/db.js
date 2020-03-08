@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize")
 const db = {}
-const sequelize = new Sequelize("marine'srecipes", "root", "root", {
-    host: "localhost",
-    port: 8889,
+const sequelize = new Sequelize("marinesrecipe", "marinesrecipe", "marine10", {
+    host: "db4free.net",
+    port: 3306,
     dialect: "mysql",
     operatorsAliases: false,
 
