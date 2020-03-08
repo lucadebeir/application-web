@@ -191,6 +191,7 @@ recipe.get('/recipe/:idRecette/category', (req, res) => {
 
 //incrémenter le nbre de vue
 recipe.put('/recipe/update-nbView/:idRecette', (req, res) => {
+    console.log("cc")
     Recipe.update(
         { nbVues: req.body.nbVues + 1 },
         { where: { idRecette: req.params.idRecette } }
@@ -403,14 +404,10 @@ recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
                 replacements: [req.body.idRecette, req.body.categories[i].idCategorie]
             })
     }
-    for (let i = 0; i < req.body.ingredients.ingredients.length; i++) {
+    for (let i = 0; i < req.body.ingredients.ingredient.length; i++) {
         db.sequelize.query("INSERT INTO UtiliserIngredients (qte, idRecette, idIngredient, idUnite) VALUES (?,?,?,?)",
             {
-                replacements: [req.body.ingredients.ingredients[i].quantite, req.body.idRecette, req.body.ingredients.ingredients[i].idIngredient, req.body.ingredients.ingredients[i].idUnite]
-            }).then(resultats => {
-                res.json(resultats)
-            }).catch(err => {
-                res.json({ error: err })
+                replacements: [req.body.ingredients.ingredient[i].qte, req.body.idRecette, req.body.ingredients.ingredient[i].idIngredient, req.body.ingredients.ingredient[i].idUnite]
             })
     }
 })

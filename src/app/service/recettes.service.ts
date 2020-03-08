@@ -135,11 +135,9 @@ export class RecettesService {
     
 
     public updateNbView(recette: RecipeDetails): Observable<any> {
-        return this.http.get<any>(`/server/recipe/${recette.idRecette}/category/rest`)
-        .pipe(map((data: CategoryDetails[]) => {
-            return data
-        }))
-}
+        return this.http.put<any>(`/server/recipe/update-nbView/${recette.idRecette}`, recette)
+    }
+    
     public deleteCategory(id: any): Observable<any> {
         const url = `/server/category/delete/${id}`;
         return this.http.delete<any>(url).pipe(

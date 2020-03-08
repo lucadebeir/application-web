@@ -177,10 +177,13 @@ export class AjoutRecetteComponent implements OnInit {
         }
     }))
 
+    console.log(this.ingredientForm.value.ingredient)
     this.recipe.ingredients = this.ingredientForm.value //je récupère les info sur l'ingrédient
+    console.log(this.recipe.ingredients)
     this.recipe.categories = this.selectedItems
     this.recipe.nomRecette = formValue.nomRecette
     this.recipe.etapes = formValue.etapes
+    console.log(this.recipe)
     this.recetteService.createRecipe(this.recipe).subscribe(res => {
       this.recipe.idRecette = res[0] // je récupère l'id de la recette que je viens de créer
       this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
