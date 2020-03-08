@@ -39,7 +39,9 @@ export class MonProfileComponent implements OnInit {
   updateProfile(){
     this.auth.updateProfile(this.credentials).subscribe((res: any) => {
       this.credentials.success = res.success
-        this.router.navigateByUrl('/profile')
+        this.router.navigateByUrl('/profile').then(() => {
+          setTimeout(window.location.reload.bind(window.location), 2500);
+        })
       },(err: any) => {
         console.error(err)
       }

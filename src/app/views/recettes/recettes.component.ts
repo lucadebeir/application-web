@@ -77,7 +77,9 @@ export class RecettesComponent implements OnInit {
   updateNbView(recette: any) {
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
-        this.router.navigate(['/recipe', recette.idRecette])
+        this.router.navigate(['/recipe', recette.idRecette]).then(() => {
+          window.location.reload()
+        })
       }, err => {
         if(err instanceof HttpErrorResponse){
           if(err.status === 402) {

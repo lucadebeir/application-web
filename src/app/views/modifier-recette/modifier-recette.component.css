@@ -12,6 +12,23 @@
     margin-top: 2em;
 }
 
+#btnTitre{
+border:none;
+}
+#conteneur1 {
+    display: flex;
+    flex-direction: column;
+    margin-left: 45%;
+}
+
+#titre{
+    margin-left: 40%;
+}
+#cat{
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-weight: bolder;
+}
 
 #conteneur
 {
@@ -34,7 +51,7 @@
         display: block;
         padding: 12px;
         margin: 15px;
-        width: 60%;
+        width: auto;
     }
 
     .card {
@@ -49,6 +66,7 @@
    
 #ing {
     text-align: left;
+    display: block;
 }
 
 #resp{

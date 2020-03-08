@@ -124,8 +124,8 @@ export class ModifierRecetteComponent implements OnInit {
   deleteIngredientRececipe(ingredient: IngredientDetails, recette: RecipeDetails) {
     this.recetteService.deleteIngredientRececipe(ingredient, recette)
       .subscribe(res => {
-        this.router.navigate(['updateRecipe/:id'], {
-          queryParams: { refresh: new Date().getTime() }
+        this.router.navigate(['updateRecipe/:id']).then(() => {
+          window.location.reload()
         })
       }, (err) => {
         console.log(err);
