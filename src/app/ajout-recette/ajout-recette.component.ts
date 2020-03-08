@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryDetails, IngredientDetails, UniteDetails, RecettesService } from '../service/recettes.service';
-import { FormGroup, FormArray, Validator, FormBuilder } from '@angular/forms';
+import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
@@ -20,13 +20,15 @@ export class AjoutRecetteComponent implements OnInit {
     etapes: ''
 
   }
-
+  
   public ingredients: IngredientDetails[]
   public unites: UniteDetails[]
   public categories: CategoryDetails[]
 
   public recipeForm: FormGroup
+  public newIngredientForm: FormGroup
   public ingredientForm: FormGroup
+  public ingredient: FormArray
 
   public newIngredient: IngredientDetails = {
     nomIngredient: ''
@@ -69,7 +71,9 @@ export class AjoutRecetteComponent implements OnInit {
       searchPlaceholderText: "Rechercher"
     };
 
-    this.createIngredientForm()
+    this.initRecipeForm()
+
+    this.createIngredientsForm()
 
     this.addIngredient()
 
@@ -84,14 +88,101 @@ export class AjoutRecetteComponent implements OnInit {
           this.ingredients = ingredients
         }
       )
-    }, 2000)
+    }, 5000)
   }
 
   createRecipe() {
+
+    const formValue = this.recipeForm.value;
+
+    if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.etapes == '' && formValue.nomRecette == '' && this.selectedItems.length == 0) {
+      alert("Vous devez remplir le champ du nom de la recette, au moins une catégorie de la recette, au moins rajouter un ingrédient, et remplir le champ de la Préparation.");
+      return;
+    }
+
+    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.etapes == '' && formValue.nomRecette == '') {
+      alert("Vous devez remplir le champ du nom de la recette, au moins rajouter un ingrédient, et remplir le champ de la Préparation.");
+      return;
+    }
+
+    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.etapes == '' && this.selectedItems.length == 0) {
+      alert("Vous devez remplir au moins une catégorie de la recette, au moins rajouter un ingrédient, et remplir le champ de la Préparation.");
+      return;
+    }
+
+    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.nomRecette == '' && this.selectedItems.length == 0) {
+      alert("Vous devez remplir le champ du nom de la recette, au moins une catégorie de la recette, et au moins rajouter un ingrédient.");
+      return;
+    }
+
+    else if (formValue.etapes == '' && formValue.nomRecette == '' && this.selectedItems.length == 0) {
+      alert("Vous devez remplir le champ du nom de la recette, au moins une catégorie de la recette et le champ de la Préparation.");
+      return;
+    }
+
+    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.nomRecette == '') {
+      alert("Vous devez remplir le champ du nom de la recette, et celui de la préparation.");
+      return;
+    }
+
+    else if (formValue.etapes == '' && this.ingredientForm.value.ingredient[0].idIngredient == "") {
+      alert("Vous devez remplir le champ du nom de la recette, et celui de la préparation.");
+      return;
+    }
+
+    else if (this.ingredientForm.value.ingredient[0].idIngredient == ""  && this.selectedItems.length == 0) {
+      alert("Vous devez remplir le champ du nom de la recette, et celui de la préparation.");
+      return;
+    }
+
+    else if (formValue.etapes == '' && formValue.nomRecette == '') {
+      alert("Vous devez remplir le champ du nom de la recette, et celui de la préparation.");
+      return;
+    }
+
+    else if (formValue.nomRecette == '' && this.selectedItems.length == 0) {
+      alert("Vous devez remplir le champ du nom de la recette, et sélectionner au moins une catégorie.");
+      return;
+    }
+
+    else if (formValue.etapes == '' && this.selectedItems.length == 0) {
+      alert("Vous devez remplir le champ de la préparation, et sélectionner au moins une catégorie.");
+      return;
+    }
+
+    else if (this.ingredientForm.value.ingredient[0].idIngredient == "") {
+      alert("Vous devez choisir au moins un ingrédient pour votre recette.");
+      return;
+    }
+
+    else if (this.selectedItems.length == 0) {
+      alert("Vous devez choisir au moins une catégorie pour votre recette.");
+      return;
+    }
+
+    else if (formValue.etapes == '') {
+      alert("Vous devez choisir le champ de la préparation.");
+      return;
+    }
+
+    else if (formValue.nomRecette == '') {
+      alert("Vous devez remplir le champ du nom de la recette.");
+      return;
+    }
+
+    else if (this.ingredientForm.value.ingredient.forEach(element => {
+        if (element.qte <= 0) {
+          alert("Il faut une quantité positive pour l'ingrédient.");
+          return;
+        }
+    }))
+
     this.recipe.ingredients = this.ingredientForm.value //je récupère les info sur l'ingrédient
     this.recipe.categories = this.selectedItems
+    this.recipe.nomRecette = formValue.nomRecette
+    this.recipe.etapes = formValue.etapes
     this.recetteService.createRecipe(this.recipe).subscribe(res => {
-      this.recipe.idRecette = res[0] // je récupère l'id de l'adresse que je viens de créer
+      this.recipe.idRecette = res[0] // je récupère l'id de la recette que je viens de créer
       this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
        
       })
@@ -101,28 +192,37 @@ export class AjoutRecetteComponent implements OnInit {
   }
 
 
-  createRecipeForm() {
+  initRecipeForm() {
     this.recipeForm = this.formBuilder.group({
-
-    })
+      nomRecette: ['', Validators.required],
+      categories: ['', [Validators.required]],
+      ingredients: ['', Validators.required],
+      etapes: ['', Validators.required]
+    });
   }
 
   /******  création formulaire pour ajouter autant de lignes ingrédient (qté, nom, unite) qu'on veut *****/
   //création initiale formulaire ingredients
-  createIngredientForm() {
-    this.ingredientForm = this.formBuilder.group({
-      ingredients: this.formBuilder.array([])
+  createIngredientsForm() : FormGroup {
+    return this.ingredientForm = this.formBuilder.group({
+      ingredient: this.formBuilder.array([ this.createIngredientForm() ])
     })
   }
 
-  get ingFormArray(): FormArray {
-    return this.ingredientForm.get("ingredients") as FormArray
+  createIngredientForm() : FormGroup {
+    return this.formBuilder.group({
+      idIngredient: ['', Validators.required],
+      qte: ['', [Validators.required, Validators.min(0)]],
+      idUnite: ['', Validators.required]
+    });
   }
 
+  get formData() { return this.ingredientForm.get('ingredient'); }
+
   //pour ajouter un ingrédient
-  addIngredient() {
-    let fg = this.formBuilder.group(new Ingredient())
-    this.ingFormArray.push(fg)
+  addIngredient() : void {
+    this.ingredient = this.ingredientForm.get('ingredient') as FormArray;
+    this.ingredient.push(this.createIngredientForm());
   }
   /*****************************/
 
@@ -132,17 +232,10 @@ export class AjoutRecetteComponent implements OnInit {
       .then((result) => {
         this.newIngredient.nomIngredient = result
         this.recetteService.addIngredient(this.newIngredient)
-        //window.location.reload() ?????? voir car si on fait ça on perd tout les champs du questionnaire et sinon on a pas le new ingredient dans les choix -> utiliser cookie?
       })
   }
 
 }
-export class Ingredient {
-  idIngredient = '';
-  quantite = '';
-  idUnite = '';
-}
-
 
 export interface CreateRecipe {
   idRecette: number
