@@ -29,6 +29,7 @@ import { ModalAddIngredientComponent } from './modal-add-ingredient/modal-add-in
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ModifierRecetteComponent } from './modifier-recette/modifier-recette.component';
 import { AdminAuthService } from './service/admin-auth.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const routes: Routes = [
@@ -75,6 +76,7 @@ const routes: Routes = [
     ModifierRecetteComponent
   ],
   imports: [
+    NgbModule,
     NgMultiSelectDropDownModule.forRoot(),
     BrowserModule,
     AppRoutingModule,

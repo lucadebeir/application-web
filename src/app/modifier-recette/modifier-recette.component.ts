@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, combineLatest, from } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { FormGroup, FormArray, Validator, FormBuilder } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { RecipeDetails, RecettesService, CategoryDetails, IngredientDetails, QuantiteDetails, UniteDetails } from '../service/recettes.service';
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http'
+import { HttpResponse } from '@angular/common/http'
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
-import {IDropdownSettings } from 'ng-multiselect-dropdown'
 
 @Component({
   selector: 'app-modifier-recette',
@@ -22,7 +19,14 @@ export class ModifierRecetteComponent implements OnInit {
     idUnite: null
   }
 
-  public recette: RecipeDetails
+  public recette: RecipeDetails = {
+    idRecette: null,
+    nomRecette: 'string',
+    datePublication: null,
+    nbFavoris: null,
+    nbVues: null,
+    etapes: null
+  }
   public ingredients: IngredientDetails
   public unite: UniteDetails
   public qtes: QuantiteDetails[]
@@ -71,12 +75,6 @@ export class ModifierRecetteComponent implements OnInit {
 
    
     this.getCategory(parseInt(this.route.snapshot.paramMap.get('id')))
-
-
-    this.refreshIngredients()
-    this.refreshCategory()
-    this.refreshCategory2()
-   
 
   }
 
@@ -140,9 +138,19 @@ export class ModifierRecetteComponent implements OnInit {
   
     this.recetteService.deleteRecipeCategory(categorie, recette)
     .subscribe(res => {
-      this.router.navigate(['updateRecipe/:id'], {
-        queryParams: { refresh: new Date().getTime() }
-      })
+      console.log(res)
+      setTimeout(() => {
+        this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+          categories => {
+            this.allCategories = categories
+          }
+        )
+        this.recetteService.getCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+          categories => {
+            this.categories = categories
+          }
+        )
+      }, 1000)
     }, (err) => {
       console.log(err);
     }
@@ -152,9 +160,20 @@ export class ModifierRecetteComponent implements OnInit {
   addRecipeCategory(categorie: CategoryDetails,recette: RecipeDetails){
     this.recetteService.addRecipeCategory(categorie,recette)
     .subscribe(res => {
-      this.router.navigate(['updateRecipe/:id'], {
-        queryParams: { refresh: new Date().getTime() }
-      })
+      console.log(res)
+      setTimeout(() => {
+        this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+          categories => {
+            this.allCategories = categories
+          }
+        )
+        this.recetteService.getCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+          categories => {
+            this.categories = categories
+          }
+        )
+      }, 1000)
+
     }, (err) => {
       console.log(err);
     }
@@ -169,36 +188,14 @@ export class ModifierRecetteComponent implements OnInit {
         this.newIngredient.qte = result.qte
         this.newIngredient.idUnite = result.idUnite
         this.recetteService.addIngredientRecette(this.newIngredient)
+        setTimeout (() => {
+          this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+            ingredient => {
+              this.ingredients = ingredient
+            }
+          )
+       }, 1000);
       })
-  }
-
-  refreshIngredients(): void {
-    setInterval(() => {
-      this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-        ingredient => {
-          this.ingredients = ingredient
-        }
-      );
-    }, 5000)
-  }
-
-  refreshCategory(): void {
-    setInterval(() => {
-      this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-        categories => {
-          this.allCategories = categories
-        }
-      )
-    }, 2000)
-  }
-  refreshCategory2(): void {
-    setInterval(() => {
-      this.recetteService.getCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-        categories => {
-          this.categories = categories
-        }
-      )
-    }, 2000)
   }
 
 }

@@ -1,9 +1,6 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <!--lien pour avoir le petit logo de poubelle-->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-<!--lien pour avoir le petit crayon-->
-
 
 <form (submit)="updateRecipeName(recette)">
     <div class="container">
@@ -65,18 +62,17 @@
                                     class="fa fa-trash"></i></button>
 
                             <form (submit)="updateRecipeIng(recette,ingredient)">
-                                <button id="crayon" class="btn btn-sm btn-warning"><span
-                                        class="glyphicon glyphicon-pencil" type="submit"></span></button>
+                                <button id="crayon" class="btn btn-sm btn-warning">Modifier</button>
 
 
                                 <input id="qte" type="text" class="form-control" name="qte" value="{{ingredient.qte}}"
                                     #qte="ngModel" [(ngModel)]="ingredient.qte">
 
-                                <select class="custom-select" id="unit"
-                                    required>
-                                    <option value="{{ingredient.libelleUnite}}" selected>{{ingredient.libelleUnite}}</option>
+                                <select class="custom-select" id="unit" required>
+                                    <option value="{{ingredient.libelleUnite}}" selected>{{ingredient.libelleUnite}}
+                                    </option>
                                     <option *ngFor="let unite of allUnites" [ngValue]="unite.idUnite">
-                                            {{unite.libelleUnite}}
+                                        {{unite.libelleUnite}}
                                     </option>
                                 </select>
                                 {{ingredient.nomIngredient}}
@@ -139,8 +135,7 @@
                         </div>
                     </ng-template>
 
-                    <button class="btn btn-outline-primary" (click)="open(content)">Ajouter un nouvel
-                        ingrédient</button>
+                    <button class="btn btn-outline-primary" (click)="open(content)">Ajouter un nouvel ingrédient</button>
 
 
                     <!--on appelle le modal-->

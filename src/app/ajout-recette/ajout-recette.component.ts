@@ -77,7 +77,7 @@ export class AjoutRecetteComponent implements OnInit {
 
     this.addIngredient()
 
-    this.refreshIngredients()
+    //this.refreshIngredients()
   }
 
   //on rafraitchit la liste des ingrédients et pas la page grâce à un timer toutes les 2 secondes
@@ -239,6 +239,13 @@ export class AjoutRecetteComponent implements OnInit {
       .then((result) => {
         this.newIngredient.nomIngredient = result
         this.recetteService.addIngredient(this.newIngredient)
+        setTimeout (() => {
+          this.recetteService.getAllIngredients().subscribe(
+            ingredients => {
+              this.ingredients = ingredients
+            }
+          )
+       }, 1000);
       })
   }
 

@@ -234,6 +234,7 @@ export class RecettesService {
     public addRecipeCategory(categorie : CategoryDetails, recette: RecipeDetails): Observable<any>{
         return this.http.post(`/server/recipe/${recette.idRecette}/category/add`,categorie)
         .pipe(map((res)=> {
+            console.log(res)
             return res
         }))
     }
