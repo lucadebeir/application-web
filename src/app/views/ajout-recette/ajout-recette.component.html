@@ -31,34 +31,18 @@
             </div>
         </div>
 
-        <div style="text-align: center">
-            <form>      
-              <div>
-                <input type="file" name="image" (change)="selectImage($event)" />
-              </div>
-              <br>
-              <div>
-                <button type="submit" (click)="onSubmit()">Upload</button>
-              </div>
-            </form>
+        <div class="element 2 text-center col-md-6">
+            <div style="text-align: center">
+                <form>      
+                  <div>
+                    <input type="file" name="image" (change)="selectImage($event)" />
+                  </div>
+                  <br>
+                </form>
+            </div>
         </div>
 
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-        </div>
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="file" name="file" enctype="multipart/form-data"
-                aria-describedby="inputGroupFileAddon01" (change)="onFileChange($event.target.files)">
-            <label class="custom-file-label" for="file">Choose file</label>
-        </div>
-    </div>
-
-    <div class="element 2 custom-file col-md-6">
-        <input type="file" class="custom-file-input" id="file" aria-describedby="inputGroupFileAddon01"
-            (change)="onFileChange($event.target.files)">
-        <label class="custom-file-label" for="file">Choisir une image...</label>
-    </div>
+        
 
     <div class="element 3 card border-secondary col-md-6">
         <div class="card-header">Catégorie</div>

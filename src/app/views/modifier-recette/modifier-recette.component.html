@@ -16,46 +16,61 @@
 
 <form>
     <div id="photo">
-        <figure class="figure" *ngFor="let img of image">
-            <img src="{{img.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
-            <hr>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
-                Modifier l'image de la recette
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modification de l'image de la recette</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <figcaption class="figure-caption">
-                                <!--bouton modifier photo à faire-->
-                                <div style="text-align: center">
-                                    <form>
-                                        <div>
-                                            <input type="file" name="image" (change)="selectImage($event)" />
-                                        </div>
-                                    </form>
-                                </div>
-                            </figcaption>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Modifier</button>
+        <div *ngIf="!image">
+            <div style="text-align: center">
+                <form>      
+                  <div>
+                    <input type="file" name="image" (change)="selectImage($event)" />
+                  </div>
+                  <br>
+                  <div>
+                    <button type="submit" class="btn btn-warning" (click)="onSubmit()">Modifier</button>
+                  </div>
+                </form>
+            </div>
+        </div>
+        <div *ngIf="image">
+            <figure class="figure" *ngFor="let img of image">
+                <img src="{{img.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
+                <hr>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                    Modifier l'image de la recette
+                </button>
+    
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Modification de l'image de la recette</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <figcaption class="figure-caption">
+                                    <!--bouton modifier photo à faire-->
+                                    <div style="text-align: center">
+                                        <form>
+                                            <div>
+                                                <input type="file" name="image" (change)="selectImage($event)" />
+                                            </div>
+                                        </form>
+                                    </div>
+                                </figcaption>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary" (click)="onSubmit()">Modifier</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <hr>
-        </figure>
+                <hr>
+            </figure>
+        </div>
     </div>
 </form>
 
