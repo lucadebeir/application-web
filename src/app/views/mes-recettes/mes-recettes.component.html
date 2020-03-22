@@ -25,7 +25,7 @@
   <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-12 p-3"  *ngFor="let recette of filteredRecipe$ | async"> 
           <div class="card h-100">
-              <img class="card-img-top img-fluid" src="//via.placeholder.com/350x150" alt="Photo de la recette"> 
+              <img class="card-img-top img-fluid" src="{{recette.lienImage}}" alt="Photo de la recette"> 
               <div class="card-body">
                   <h4 class="card-title">{{recette.nomRecette}}</h4>
                   <span class="badge badge-light">{{recette.nbFavoris}} ♥</span>

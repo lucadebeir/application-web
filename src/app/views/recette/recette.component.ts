@@ -11,6 +11,7 @@ import {Observable} from 'rxjs'
 })
 export class RecetteComponent implements OnInit {
 
+  public image
   public recette: RecipeDetails
   public ingredients: Observable<IngredientDetails[]>
   public unite: UniteDetails
@@ -32,6 +33,13 @@ export class RecetteComponent implements OnInit {
     this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       recette => {
         this.recette = recette
+      }
+    );
+
+    this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+      res => {
+        console.log(res)
+        this.image = res
       }
     );
 

@@ -5,6 +5,7 @@ import { FormControl } from '@angular/forms';
 import { RecipeDetails, RecettesService, CategoryDetails } from '../../service';
 import {HttpErrorResponse} from '@angular/common/http'
 import { Router } from '@angular/router';
+import { async } from '@angular/core/testing';
  
 
 @Component({
@@ -44,6 +45,14 @@ export class RecettesComponent implements OnInit {
       .pipe(map(([recipes, filterString]) =>
         recipes.filter(recipe => recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
 
+  }
+
+  getImageByIdRecipe(id: number) : any {
+    this.recetteService.getImage(id).subscribe(
+      res => {
+        console.log(res)
+        return res.lienImage
+      })
   }
 
   getAllCategory(){

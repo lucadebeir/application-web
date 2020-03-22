@@ -1,8 +1,8 @@
 <div id="titre">
     <h2>{{recette?.nomRecette}}</h2>
   
-    <figure class="figure">
-        <img src="//via.placeholder.com/782x250" class="rounded mx-auto d-block"  alt="Responsive image" id="resp">
+    <figure class="figure" *ngFor="let img of image">
+        <img src="{{img.lienImage}}" class="rounded mx-auto d-block"  alt="Responsive image" id="resp">
        <figcaption class="figure-caption">
             <span class="badge badge-light" id="vew">{{recette?.nbVues}} 👁</span>
             

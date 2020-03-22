@@ -4,6 +4,7 @@ import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-ajout-recette',
@@ -12,13 +13,17 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour
 })
 export class AjoutRecetteComponent implements OnInit {
 
+
+  images;
+
+
   recipe: CreateRecipe = {
     idRecette: null,
     nomRecette: '',
     categories: null,
     ingredients: null,
+    idImage: null,
     etapes: ''
-
   }
   
   public ingredients: IngredientDetails[]
@@ -38,8 +43,10 @@ export class AjoutRecetteComponent implements OnInit {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings: IDropdownSettings;
+  fileToUpload: File = null;
 
-  constructor(private recetteService: RecettesService, private formBuilder: FormBuilder, private router: Router, private modalService: NgbModal) { }
+  constructor(private recetteService: RecettesService, private formBuilder: FormBuilder, private router: Router, private modalService: NgbModal,
+    private http: HttpClient) { }
 
   ngOnInit(): void {
     //on récupère tous les ingrédients, unités, catégories pour les réponses possibles à notre formulaire
@@ -78,10 +85,62 @@ export class AjoutRecetteComponent implements OnInit {
     this.addIngredient()
   }
 
+  selectImage(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.images = file;
+    }
+  }
+
+  onSubmit(){
+    const formData = new FormData();
+    formData.append('file', this.images);
+
+    this.http.post<any>('/server/uploads', formData).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
+
+  onFileChange(file: any) {
+
+    console.log(file)
+
+    var reader = new FileReader();
+    var dataURL;
+    reader.onload = function() {
+        dataURL = reader.result;
+        console.log(dataURL)
+    };
+    
+    const fileMetaData = {
+      originalname: file[0].name,
+      type: file[0].type,
+      buffer: file[0]
+    }
+    console.log(fileMetaData)
+    this.recetteService.addImage(fileMetaData).subscribe(data => {
+        console.log(data)
+        this.recipe.idImage = data[0]
+      }, error => {
+        console.log(error);
+      });
+  }
+
+  uploadFileToActivity() {
+    this.recetteService.addImage(this.fileToUpload).subscribe(data => {
+      // do something, if upload success
+      }, error => {
+        console.log(error);
+      });
+  }
+
   createRecipe() {
 
     const formValue = this.recipeForm.value;
     const ingredientFormValue = this.ingredientForm.value;
+    const formData = new FormData();
+    formData.append('file', this.images);
 
     if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.etapes == '' && formValue.nomRecette == '' && this.selectedItems.length == 0) {
       alert("Vous devez remplir le champ du nom de la recette, au moins une catégorie de la recette, au moins rajouter un ingrédient, et remplir le champ de la Préparation.");
@@ -165,16 +224,21 @@ export class AjoutRecetteComponent implements OnInit {
         }
     }))
 
+
     console.log(ingredientFormValue.ingredient)
     this.recipe.ingredients = ingredientFormValue.ingredient //je récupère les info sur l'ingrédient
     this.recipe.categories = this.selectedItems
     this.recipe.nomRecette = formValue.nomRecette
     this.recipe.etapes = formValue.etapes
-    this.recetteService.createRecipe(this.recipe).subscribe(res => {
-      this.recipe.idRecette = res[0] // je récupère l'id de la recette que je viens de créer
-
-      this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
-        console.log("succès !!!!")
+    this.recetteService.addImage(formData).subscribe(res => {
+      this.recipe.idImage = res[0]
+      console.log(res[0])
+      this.recetteService.createRecipe(this.recipe).subscribe(res => {
+        this.recipe.idRecette = res[0] // je récupère l'id de la recette que je viens de créer
+  
+        this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
+          console.log("succès !!!!")
+        });
       })
     })
     //this.router.navigate(['/recipe/'], { queryParams: { id: this.recipe.idRecette } })
@@ -235,9 +299,10 @@ export class AjoutRecetteComponent implements OnInit {
 }
 
 export interface CreateRecipe {
-  idRecette: number
-  nomRecette: string
-  categories: any[]
-  ingredients: any[]
-  etapes: string
+  idRecette?: number
+  nomRecette?: string
+  categories?: any[]
+  ingredients?: any[]
+  idImage?: File
+  etapes?: string
 }

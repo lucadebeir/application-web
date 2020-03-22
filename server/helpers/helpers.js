@@ -16,8 +16,11 @@ const { format } = util
 const uploadImage = (file) => new Promise((resolve, reject) => {
   const { originalname, buffer } = file
 
-  const blob = bucket.file(originalname.replace(/ /g, "_"))
+  const blob = bucket.file(originalname)
   const blobStream = blob.createWriteStream({
+    metadata: {
+      contentType: file.mimetype
+    },
     resumable: false
   })
 

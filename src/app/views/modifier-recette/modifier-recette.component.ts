@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { RecipeDetails, RecettesService, CategoryDetails, IngredientDetails, QuantiteDetails, UniteDetails } from '../../service';
-import { HttpResponse } from '@angular/common/http'
+import { HttpResponse, HttpClient } from '@angular/common/http'
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
 
@@ -25,6 +25,8 @@ export class ModifierRecetteComponent implements OnInit {
     datePublication: null,
     nbFavoris: null,
     nbVues: null,
+    idImage: null,
+    lienImage: null,
     etapes: null
   }
   public ingredients: IngredientDetails
@@ -32,14 +34,15 @@ export class ModifierRecetteComponent implements OnInit {
   public qtes: QuantiteDetails[]
   public categories: CategoryDetails[]
   
-
+  public image
   public allIngredients: IngredientDetails[] //ingredients disponibles
   public allUnites: UniteDetails[]
   public allCategories: CategoryDetails[] //catégories disponibles
 
  
 
-  constructor(private recetteService: RecettesService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private modalService: NgbModal) {
+  constructor(private recetteService: RecettesService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private modalService: NgbModal,
+    private http: HttpClient) {
   }
 
   ngOnInit(): void {
@@ -52,6 +55,15 @@ export class ModifierRecetteComponent implements OnInit {
     this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       ingredient => {
         this.ingredients = ingredient
+      }
+    );
+
+    this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+      res => {
+        console.log(res)
+        this.recette.idImage = res[0].idImage
+        console.log(this.recette)
+        this.image = res
       }
     );
 
@@ -76,6 +88,30 @@ export class ModifierRecetteComponent implements OnInit {
    
     this.getCategory(parseInt(this.route.snapshot.paramMap.get('id')))
 
+  }
+
+  selectImage(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.image = file;
+    }
+  }
+
+  onSubmit(){
+    const formData = new FormData();
+    formData.append('file', this.image);
+    console.log(this.recette)
+
+    this.http.post<any>(`/server/update/${this.recette.idImage}/${this.recette.idRecette}`, formData).subscribe(
+      (res) => {
+        console.log("ok")
+        window.location.reload()
+      }
+    );
+
+
+
+    
   }
 
   getCategory(id: any): any {

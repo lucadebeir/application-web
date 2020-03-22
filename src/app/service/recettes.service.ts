@@ -4,6 +4,7 @@ import { Observable } from 'rxjs'
 import { map, tap } from 'rxjs/operators'
 import { CreateRecipe } from '../views/ajout-recette/ajout-recette.component'
 import { AuthentificationService } from './authentification.service'
+import { element } from 'protractor'
 
 
 
@@ -14,6 +15,8 @@ export interface RecipeDetails {
     nbFavoris: number
     nbVues: number
     etapes: Text
+    lienImage?: any
+    idImage?: number
 }
 
 export interface IngredientDetails {
@@ -52,6 +55,11 @@ export interface ListeCoursesDetails {
     listIngredients: any
 }
 
+export interface ImageDetails {
+    idImage: number
+    lienImage: string
+}
+
 @Injectable()
 export class RecettesService {
 
@@ -60,7 +68,17 @@ export class RecettesService {
     public getAllRecipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/allRecipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
-
+            console.log(data)
+            data.forEach(element => {
+                console.log(element)
+                console.log(element.idRecette)
+                this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    element.lienImage = data[0]?.lienImage
+                    console.log(data[0])
+                })
+                console.log(element)
+            });
+            
             return data
         }))
     }
@@ -98,6 +116,16 @@ export class RecettesService {
     public getLatestReceipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/latestReceipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
+            console.log(data)
+            data.forEach(element => {
+                console.log(element)
+                console.log(element.idRecette)
+                this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    element.lienImage = data[0]?.lienImage
+                    console.log(data[0])
+                })
+                console.log(element)
+            });
             return data
         }))
     }
@@ -105,6 +133,16 @@ export class RecettesService {
     public getMostPopularRecipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/mostPopularRecipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
+            console.log(data)
+            data.forEach(element => {
+                console.log(element)
+                console.log(element.idRecette)
+                this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    element.lienImage = data[0]?.lienImage
+                    console.log(data[0])
+                })
+                console.log(element)
+            });
             return data
         }))
     }
@@ -119,6 +157,15 @@ export class RecettesService {
     public getRecipeByCategory(idCategorie: any): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/recipe/category/${idCategorie}`)
         return base.pipe(map((data: RecipeDetails[]) => {
+            data.forEach(element => {
+                console.log(element)
+                console.log(element.idRecette)
+                this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    element.lienImage = data[0]?.lienImage
+                    console.log(data[0])
+                })
+                console.log(element)
+            });
             return data
         }))
     }
@@ -291,6 +338,15 @@ export class RecettesService {
         const pseudo = this.auth.getUserDetails().pseudo;
         const base = this.http.get(`/server/recipe/favorites/${pseudo}`)
         return base.pipe(map((data: RecipeDetails[]) => {
+            data.forEach(element => {
+                console.log(element)
+                console.log(element.idRecette)
+                this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    element.lienImage = data[0]?.lienImage
+                    console.log(data[0])
+                })
+                console.log(element)
+            });
             return data
         }))
     }
@@ -299,6 +355,15 @@ export class RecettesService {
         const pseudo = this.auth.getUserDetails().pseudo;
         const base = this.http.get(`/server/recipe/favorites/${pseudo}/${idCategorie}`)
         return base.pipe(map((data: RecipeDetails[]) => {
+            data.forEach(element => {
+                console.log(element)
+                console.log(element.idRecette)
+                this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    element.lienImage = data[0]?.lienImage
+                    console.log(data[0])
+                })
+                console.log(element)
+            });
             return data
         }))
     }
@@ -372,13 +437,25 @@ export class RecettesService {
 
     }
 
-    
-
     public deleteRecipeCategory(categorie: CategoryDetails, recette: RecipeDetails): Observable<any> {
         const url = `/server/recipe/${recette.idRecette}/category/${categorie.idCategorie}/delete`;
         return this.http.delete<any>(url).pipe(
             tap(_ => console.log(`deleted ${categorie.idCategorie} from recipe ${recette.idRecette}`)),
         );
+    }
+
+    public addImage(file: any) : Observable<any> {
+        console.log(file)
+        return this.http.post(`/server/uploads`, file).pipe(map((data: any) => {
+            return data
+        }))
+    }
+
+    public getImage(id: number) : any {
+        return this.http.get(`/server/image/${id}`).pipe(map((data: any) => {
+            console.log(data[0])
+            return data
+        }))
     }
 
 }    

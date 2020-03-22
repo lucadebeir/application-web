@@ -11,7 +11,11 @@ const Categorie = require("../models/Categorie")
 const Favoris = require("../models/Favoris")
 const ListeCourse = require("../models/ListeCourses")
 const ClasserDans = require("../models/ClasserDans")
+const IllustrerRecettes = require("../models/IllustrerRecette")
+const Image = require("../models/Image")
 recipe.use(cors())
+const uploadImage = require('../helpers/helpers')
+let multer = require('multer');
 
 //Récupérer toutes les recettes
 recipe.get('/allRecipes', (req, res) => {
@@ -389,7 +393,8 @@ recipe.post('/add-recipe', (req, res) => {
     db.sequelize.query("INSERT INTO recettes (idRecette, nomRecette, datePublication, nbFavoris, nbVues, etapes) VALUES (NULL, ?, ?, 0, 0, ?) ",
         {
             replacements: [req.sanitize(req.body.nomRecette), new Date(), req.sanitize(req.body.etapes)]
-        }).then(result => {
+        })
+        .then(result => {
             res.json(result)
         }).catch(err => {
             res.json({ error: err })
@@ -411,6 +416,10 @@ recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
                 replacements: [req.body.ingredients[i].qte, req.body.idRecette, req.body.ingredients[i].idIngredient, req.body.ingredients[i].idUnite]
             })
     }
+    db.sequelize.query("INSERT INTO `illustrerRecettes` (`idRecette`, `idImage`) VALUES (?, ?)",
+        {
+            replacements: [req.body.idRecette, req.body.idImage]
+        })
 })
 //modifier qte et unite d'un ingredient dans une recette
 recipe.put('/recipe/:idRecette/ingredient/update', (req, res) => {
@@ -808,6 +817,84 @@ recipe.get('/recipe/:idRecette/ingredient/rest', (req, res) => {
         .catch(err => {
             res.send('error: ' + err)
         })
+})
+
+const multerMid = multer({
+    storage: multer.memoryStorage(),
+    limits: {
+        fileSize: 5 * 1024 * 1024,
+    },
+})
+recipe.use(multerMid.single('file'))
+
+const storage = multer.diskStorage({
+    destination: (req, file, callBack) => {
+        callBack(null, 'uploads')
+    },
+    filename: (req, file, callBack) => {
+        callBack(null, `FunOfHeuristic_${file.originalname}`)
+    }
+  })
+  
+const upload = multer({ storage: storage })
+
+//upload image
+recipe.post('/uploads', upload.single('file'), async (req, res, next) => {
+    console.log(req.file)
+    try {
+        const myFile = req.file
+        //myFile.originalname = myFile.filename
+        const imageUrl = await uploadImage(myFile)
+        db.sequelize.query("INSERT INTO `images`(`idImage`, `lienImage`) VALUES (NULL,?)", {
+            replacements: [imageUrl],
+            type: sequelize.QueryTypes.INSERT
+        }).then(resultats => {
+            console.log(resultats)
+            res.json(resultats)
+        }).catch(err => {
+            res.json({ error: err })
+        })
+    } catch (error) {
+        next(error)
+    }
+})
+
+//Récupérer les ingrédients qui ne sont pas utilisés dans une recette
+recipe.get('/image/:idRecette', (req, res) => {
+    db.sequelize.query("SELECT images.* FROM images, illustrerRecettes, recettes WHERE recettes.idRecette = illustrerRecettes.idRecette AND illustrerRecettes.idImage = images.idImage AND recettes.idRecette=?",
+        {
+            replacements: [req.params.idRecette],
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(resultats => {
+            res.json(resultats)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//Récupérer les ingrédients qui ne sont pas utilisés dans une recette
+recipe.post('/update/:idImage/:idRecette', async (req, res) => {
+    console.log(req)
+    try {
+        const myFile = req.file
+        //myFile.originalname = myFile.filename
+        const imageUrl = await uploadImage(myFile)
+        db.sequelize.query("INSERT INTO `images`(`idImage`, `lienImage`) VALUES (NULL,?)", {
+            replacements: [imageUrl],
+            type: sequelize.QueryTypes.INSERT
+        }).then(resultats => {
+            const idImage = resultats[0]
+            db.sequelize.query("UPDATE illustrerRecettes SET idRecette = ?, idImage= ? WHERE idRecette=?",
+            {
+                replacements: [req.params.idRecette, idImage, req.params.idRecette],
+                type: sequelize.QueryTypes.SELECT
+            })})
+    } catch (error) {
+        next(error)
+    }
+    
 })
 
 

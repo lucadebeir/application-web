@@ -14,17 +14,50 @@
 
 </form>
 
-<div id="photo">
-    <figure class="figure">
-        <img src="//via.placeholder.com/782x250" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
-        <figcaption class="figure-caption">
-            <!--bouton modifier photo à faire-->
-        </figcaption>
+<form>
+    <div id="photo">
+        <figure class="figure" *ngFor="let img of image">
+            <img src="{{img.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
+            <hr>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                Modifier l'image de la recette
+            </button>
 
-
-
-    </figure>
-</div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modification de l'image de la recette</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <figcaption class="figure-caption">
+                                <!--bouton modifier photo à faire-->
+                                <div style="text-align: center">
+                                    <form>
+                                        <div>
+                                            <input type="file" name="image" (change)="selectImage($event)" />
+                                        </div>
+                                    </form>
+                                </div>
+                            </figcaption>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Modifier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </figure>
+    </div>
+</form>
 
 <!--afficher la/ les catégorie-->
 <div id="conteneur1">
@@ -61,10 +94,10 @@
 
                             <h3>{{ingredient.nomIngredient}}</h3>
 
-                            
+
 
                             <div class="form-row">
-                                
+
                                 <div class="col-md-3 mb-3">
                                     <input id="qte" type="text" class="form-control" name="qte"
                                         value="{{ingredient.qte}}" #qte="ngModel" [(ngModel)]="ingredient.qte">
@@ -82,11 +115,11 @@
                                 </div>
                             </div>
 
-                                <button id="crayon" class="btn btn-sm btn-warning">Modifier</button>
+                            <button id="crayon" class="btn btn-sm btn-warning">Modifier</button>
 
-                                <button id="poubelle" class="btn btn-sm btn-danger"
-                                        (click)=deleteIngredientRececipe(ingredient,recette)><i
-                                            class="fa fa-trash"></i></button>
+                            <button id="poubelle" class="btn btn-sm btn-danger"
+                                (click)=deleteIngredientRececipe(ingredient,recette)><i
+                                    class="fa fa-trash"></i></button>
 
 
 

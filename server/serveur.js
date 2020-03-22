@@ -69,6 +69,9 @@ app.post('/uploads', async (req, res, next) => {
 app.use(methodOverride('_method'));
 app.use(fileUpload());
 
+console.log(__dirname)
+
+
 //pour google cloud
 
 //app.use('/public', express.static(__dirname + '/public'));

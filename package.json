@@ -21,7 +21,7 @@
     "@angular/platform-browser": "~9.0.1",
     "@angular/platform-browser-dynamic": "~9.0.1",
     "@angular/router": "~9.0.1",
-    "@google-cloud/storage": "^4.5.0",
+    "@google-cloud/storage": "^4.6.0",
     "@ng-bootstrap/ng-bootstrap": "^6.0.0",
     "angular-bootstrap-multiselect": "^1.1.11",
     "bcrypt": "^4.0.1",
