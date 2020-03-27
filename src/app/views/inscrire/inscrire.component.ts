@@ -62,7 +62,8 @@ export class InscrireComponent implements OnInit {
           alert("L'utilisateur existe déjà");
           return;
         } else {
-          this.router.navigate(['profile']);
+          this.auth.logout()
+          this.router.navigate(['login']);
         }
       },
       err => {

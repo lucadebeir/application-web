@@ -8,25 +8,43 @@ const Recipe = require("../models/Recipe")
 const passwordResetToken = require("../models/ResetToken")
 const crypto = require('crypto');
 users.use(cors())
-var xoauth2 = require('xoauth2');
+//var xoauth2 = require('xoauth2');
+
+const { google } = require("googleapis");
+const OAuth2 = google.auth.OAuth2;
+const oauth2Client = new OAuth2(
+    '680726405067-3gam69kea82fcsu8al0ff3kuqcaengtl.apps.googleusercontent.com',
+    'TGmXKDruFmLuwgVlyZtQ7S7O', // Client Secret
+    "https://developers.google.com/oauthplayground" // Redirect URL
+)
+oauth2Client.setCredentials({
+    refresh_token: '1//04t2shx-VeLgTCgYIARAAGAQSNwF-L9IrqZDYg_g7bXC7buHl7ur6Tf3FJ0rpLUGoevGQU31Mg5nZZVcOqAN4A8FzawA-n-K3OdQ'
+});
+const accessToken = oauth2Client.getAccessToken()
 
 process.env.SECRET_KEY = 'secret'
 
-var nodemailer = require("nodemailer");
+const nodemailer = require("nodemailer");
 /*
 	Here we are configuring our SMTP Server details.
 	STMP is mail server which is responsible for sending and recieving email.
 */
-var smtpTransport = nodemailer.createTransport({
+const smtpTransport = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 465,
+    port: 587,
     secure: true,
+    service: 'gmail',
+    from: `"Marine's Recipes" <marinesrecipes@gmail.com>`,
+    /*tls: {
+        rejectUnauthorized: false
+    },*/
     auth: {  
         type: 'OAuth2',
         user: 'marinesrecipes@gmail.com',  
         clientId: '680726405067-3gam69kea82fcsu8al0ff3kuqcaengtl.apps.googleusercontent.com',            
         clientSecret: 'TGmXKDruFmLuwgVlyZtQ7S7O',  
-        refreshToken: '1//04HuvzUjoLvQ6CgYIARAAGAQSNwF-L9IrBaRAKJBNFIOZ1FmirGp4V60wZBjlLDQGb7AbkrEkYDgCp-o4ulYnsBOUyu0DEsK7e_Y'  
+        refreshToken: '1//04t2shx-VeLgTCgYIARAAGAQSNwF-L9IrqZDYg_g7bXC7buHl7ur6Tf3FJ0rpLUGoevGQU31Mg5nZZVcOqAN4A8FzawA-n-K3OdQ',
+        //accessToken: accessToken  
     }  
 });
 var rand, mailOptions, host, link;
@@ -49,8 +67,10 @@ users.get('/newRecipe/:pseudo/:idRecette', function (req, res) {
                 .then(recette => {
                     if (user && recette) {
                         mailOptions = {
+                            from: 'marinesrecipes@gmail.com',
                             to: user.email,
                             subject: "Notification de Marine's recipes",
+                            generateTextFromHTML: true,
                             html: "<div class='card text-center'>"
                                 + "<div class='card-header'>"
                                 + "<h1>Marine Téroitin a écrit un nouveau post</h1></div>"
@@ -68,15 +88,10 @@ users.get('/newRecipe/:pseudo/:idRecette', function (req, res) {
                                 + "</div>"
                         }
                         console.log(mailOptions);
-                        smtpTransport.sendMail(mailOptions, function (error, response) {
-                            if (error) {
-                                console.log(error);
-                                res.end("error");
-                            } else {
-                                console.log("Message sent: " + response.message);
-                                res.end("sent");
-                            }
-                        })
+                        smtpTransport.sendMail(mailOptions, (error, response) => {
+                            error ? console.log(error) : console.log(response);
+                            smtpTransport.close();
+                       })
                     }
                 })
         })
@@ -143,15 +158,15 @@ users.post('/register', async (req, res, { transporter, EMAIL_SECRET }) => { //r
                                 html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
                             }
                             console.log(mailOptions);
-                            smtpTransport.sendMail(mailOptions, function (error, response) {
+                            smtpTransport.sendMail(mailOptions, (error, response) => {
                                 if (error) {
                                     console.log(error);
                                     res.end("error");
                                 } else {
-                                    console.log("Message sent: " + response.message);
+                                    console.log("Message sent: " + response.success);
                                     res.end("sent");
                                 }
-                            });
+                            })
                             res.json({ token: token })
                         })
                         .catch(err => {
