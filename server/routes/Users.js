@@ -160,7 +160,7 @@ users.post('/register', async (req, res, { transporter, EMAIL_SECRET }) => { //r
                             rand = Math.floor((Math.random() * 100) + 54);
                             host = req.get('host');
                             console.log(host)
-                            link = "http://" + req.get('host') + "/server/verify?id=" + rand + "&pseudo=" + req.body.pseudo;
+                            link = "http://marine-s-recipe.herokuapp.com/server/verify?id=" + rand + "&pseudo=" + req.body.pseudo;
                             mailOptions = {
                                 to: req.body.email,
                                 subject: "Please confirm your Email account",
