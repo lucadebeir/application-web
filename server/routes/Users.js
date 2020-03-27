@@ -37,9 +37,9 @@ const smtpTransport = nodemailer.createTransport({
     secure: true,
     service: 'gmail',
     from: `"Marine's Recipes" <marinesrecipes@gmail.com>`,
-    /*tls: {
+    tls: {
         rejectUnauthorized: false
-    },*/
+    },
     auth: {  
         type: 'OAuth2',
         user: 'marinesrecipes@gmail.com',  
@@ -130,7 +130,7 @@ users.get('/verify', function (req, res) {
 });
 
 //Inscription (post pour ajouter)    
-users.post('/register', async (req, res, { transporter, EMAIL_SECRET }) => { //req = info user
+users.post('/register', (req, res) => { //req = info user
 
     const userData = {
         pseudo: req.sanitize(req.body.pseudo),
@@ -356,7 +356,7 @@ users.delete('/delete-profile/:pseudo', (req, res) => {
         })
 })
 
-users.post('/req-reset-password', async function (req, res) {
+users.post('/req-reset-password', async (req, res) => {
     if (!req.body.email) {
         return res
             .status(500)
