@@ -35,6 +35,7 @@ const smtpTransport = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
     secure: true,
+    direct : true,
     service: 'gmail',
     from: `"Marine's Recipes" <marinesrecipes@gmail.com>`,
     tls: {

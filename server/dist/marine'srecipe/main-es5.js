@@ -1208,7 +1208,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/service/index.ts ***!
     \**********************************/
 
-  /*! exports provided: AuthentificationService, AdminAuthService, AuthGuardService, RecettesService */
+  /*! exports provided: AdminAuthService, AuthGuardService, AuthentificationService, RecettesService */
 
   /***/
   function srcAppServiceIndexTs(module, __webpack_exports__, __webpack_require__) {

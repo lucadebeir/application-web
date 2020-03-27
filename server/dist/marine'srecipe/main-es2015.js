@@ -631,7 +631,7 @@ AuthentificationService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ�
 /*!**********************************!*\
   !*** ./src/app/service/index.ts ***!
   \**********************************/
-/*! exports provided: AuthentificationService, AdminAuthService, AuthGuardService, RecettesService */
+/*! exports provided: AdminAuthService, AuthGuardService, AuthentificationService, RecettesService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
