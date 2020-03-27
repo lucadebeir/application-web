@@ -72,7 +72,7 @@
                             <label for="validationTooltip04">Ingrédient</label>
                             <select class="custom-select" id="validationTooltip04" formControlName="idIngredient"
                                 required>
-                                <option *ngFor="let ingredient of ingredients" [ngValue]="ingredient.idIngredient">
+                                <option *ngFor="let ingredient of ingredients" [ngValue]="ingredient.idIngredient" [disabled]="ingredient.disabled">
                                     {{ingredient.nomIngredient}}</option>
                             </select>
                             <div class="invalid-tooltip">

@@ -4,6 +4,9 @@ import { AuthentificationService } from './authentification.service'
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
+
+    private token: string
+
     constructor(private auth: AuthentificationService, private router: Router) { }
 
     canActivate () {

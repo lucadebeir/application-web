@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryDetails, IngredientDetails, UniteDetails, RecettesService } from '../../service';
-import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
+import { CategoryDetails, IngredientDetails, UniteDetails, RecettesService, UserDetails, AuthentificationService } from '../../service';
+import { FormGroup, FormArray, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-ajout-recette',
@@ -25,7 +26,7 @@ export class AjoutRecetteComponent implements OnInit {
     idImage: null,
     etapes: ''
   }
-  
+
   public ingredients: IngredientDetails[]
   public unites: UniteDetails[]
   public categories: CategoryDetails[]
@@ -34,6 +35,8 @@ export class AjoutRecetteComponent implements OnInit {
   public newIngredientForm: FormGroup
   public ingredientForm: FormGroup
   public ingredient: FormArray
+  public selectIngredient: number[] = []
+  private listAbonneNews$: Observable<UserDetails[]>
 
   public newIngredient: IngredientDetails = {
     nomIngredient: ''
@@ -46,13 +49,17 @@ export class AjoutRecetteComponent implements OnInit {
   fileToUpload: File = null;
 
   constructor(private recetteService: RecettesService, private formBuilder: FormBuilder, private router: Router, private modalService: NgbModal,
-    private http: HttpClient) { }
+    private http: HttpClient, private auth: AuthentificationService) { }
 
   ngOnInit(): void {
     //on récupère tous les ingrédients, unités, catégories pour les réponses possibles à notre formulaire
     this.recetteService.getAllIngredients().subscribe(
       ingredients => {
+        ingredients.forEach(element => {
+          element.disabled = false
+        })
         this.ingredients = ingredients
+        console.log(this.ingredients)
       }
     )
 
@@ -82,7 +89,7 @@ export class AjoutRecetteComponent implements OnInit {
 
     this.createIngredientsForm()
 
-    this.addIngredient()
+    this.onChanges()
   }
 
   selectImage(event) {
@@ -92,7 +99,7 @@ export class AjoutRecetteComponent implements OnInit {
     }
   }
 
-  onSubmit(){
+  onSubmit() {
     const formData = new FormData();
     formData.append('file', this.images);
 
@@ -108,11 +115,11 @@ export class AjoutRecetteComponent implements OnInit {
 
     var reader = new FileReader();
     var dataURL;
-    reader.onload = function() {
-        dataURL = reader.result;
-        console.log(dataURL)
+    reader.onload = function () {
+      dataURL = reader.result;
+      console.log(dataURL)
     };
-    
+
     const fileMetaData = {
       originalname: file[0].name,
       type: file[0].type,
@@ -120,19 +127,19 @@ export class AjoutRecetteComponent implements OnInit {
     }
     console.log(fileMetaData)
     this.recetteService.addImage(fileMetaData).subscribe(data => {
-        console.log(data)
-        this.recipe.idImage = data[0]
-      }, error => {
-        console.log(error);
-      });
+      console.log(data)
+      this.recipe.idImage = data[0]
+    }, error => {
+      console.log(error);
+    });
   }
 
   uploadFileToActivity() {
     this.recetteService.addImage(this.fileToUpload).subscribe(data => {
       // do something, if upload success
-      }, error => {
-        console.log(error);
-      });
+    }, error => {
+      console.log(error);
+    });
   }
 
   createRecipe() {
@@ -177,7 +184,7 @@ export class AjoutRecetteComponent implements OnInit {
       return;
     }
 
-    else if (this.ingredientForm.value.ingredient[0].idIngredient == ""  && this.selectedItems.length == 0) {
+    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && this.selectedItems.length == 0) {
       alert("Vous devez remplir le champ du nom de la recette, et celui de la préparation.");
       return;
     }
@@ -218,14 +225,14 @@ export class AjoutRecetteComponent implements OnInit {
     }
 
     else if (this.ingredientForm.value.ingredient.forEach(element => {
-        if (element.qte <= 0) {
-          alert("Il faut une quantité positive pour l'ingrédient.");
-          return;
-        }
+      if (element.qte <= 0) {
+        alert("Il faut une quantité positive pour l'ingrédient.");
+        return;
+      }
     }))
 
 
-    console.log(ingredientFormValue.ingredient)
+      console.log(ingredientFormValue.ingredient)
     this.recipe.ingredients = ingredientFormValue.ingredient //je récupère les info sur l'ingrédient
     this.recipe.categories = this.selectedItems
     this.recipe.nomRecette = formValue.nomRecette
@@ -235,21 +242,32 @@ export class AjoutRecetteComponent implements OnInit {
       console.log(res[0])
       this.recetteService.createRecipe(this.recipe).subscribe(res => {
         this.recipe.idRecette = res[0] // je récupère l'id de la recette que je viens de créer
-  
+
         this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
           console.log("succès !!!!")
-        });
+          this.listAbonneNews$ = this.auth.getAbonneNews()
+          console.log(this.listAbonneNews$)
+          this.listAbonneNews$.subscribe(res => {
+            res.forEach(element => {
+              console.log(element)
+              this.auth.sentEmailToNewRecipe(element, this.recipe.idRecette).subscribe(res => {
+                console.log(res)
+                console.log("bg")
+              })
+            });
+          });
+        })
       })
-    })
-    //this.router.navigate(['/recipe/'], { queryParams: { id: this.recipe.idRecette } })
-    this.router.navigateByUrl('allRecipes')
-  }
 
+      //this.router.navigate(['/recipe/'], { queryParams: { id: this.recipe.idRecette } })
+      this.router.navigateByUrl('allRecipes')
+    })
+  }
 
   initRecipeForm() {
     this.recipeForm = this.formBuilder.group({
       nomRecette: ['', Validators.required],
-      categories: ['', [Validators.required]],
+      categories: ['', Validators.required],
       ingredients: ['', Validators.required],
       etapes: ['', Validators.required]
     });
@@ -257,24 +275,58 @@ export class AjoutRecetteComponent implements OnInit {
 
   /******  création formulaire pour ajouter autant de lignes ingrédient (qté, nom, unite) qu'on veut *****/
   //création initiale formulaire ingredients
-  createIngredientsForm() : FormGroup {
+  createIngredientsForm(): FormGroup {
     return this.ingredientForm = this.formBuilder.group({
-      ingredient: this.formBuilder.array([ this.createIngredientForm() ])
+      ingredient: this.formBuilder.array([this.createIngredientForm()])
     })
   }
 
-  createIngredientForm() : FormGroup {
+  createIngredientForm(): FormGroup {
     return this.formBuilder.group({
-      idIngredient: ['', Validators.required],
-      qte: ['', [Validators.required, Validators.min(0)]],
-      idUnite: ['', Validators.required]
+      idIngredient: new FormControl({
+        value: '',
+        disabled: false
+      },
+        Validators.compose([Validators.required])),
+      qte: new FormControl({
+        value: '',
+        disabled: false
+      },
+        Validators.compose([Validators.required, Validators.min(0)])),
+      idUnite: new FormControl({
+        value: '',
+        disabled: false
+      },
+        Validators.compose([Validators.required]))
     });
+  }
+
+  onChanges(): void {
+    this.ingredientForm.valueChanges.subscribe(val => {
+      console.log(val.ingredient)
+      //this.selectIngredient = []
+      this.ingredients.forEach(ingredient => {
+        ingredient.disabled = false
+      })
+      this.ingredients.forEach(ingredient => {
+        val.ingredient.forEach(element => {
+          if (element.idIngredient != '') {
+            console.log(ingredient)
+            console.log(element)
+            if (ingredient.idIngredient == element.idIngredient) {
+              ingredient.disabled = true
+            }
+            //this.selectIngredient.push(element.idIngredient)
+          }
+        })
+      })
+    })
   }
 
   get formData() { return this.ingredientForm.get('ingredient'); }
 
   //pour ajouter un ingrédient
-  addIngredient() : void {
+  addIngredient(): void {
     this.ingredient = this.ingredientForm.get('ingredient') as FormArray;
     this.ingredient.push(this.createIngredientForm());
   }
@@ -286,13 +338,13 @@ export class AjoutRecetteComponent implements OnInit {
       .then((result) => {
         this.newIngredient.nomIngredient = result
         this.recetteService.addIngredient(this.newIngredient)
-        setTimeout (() => {
+        setTimeout(() => {
           this.recetteService.getAllIngredients().subscribe(
             ingredients => {
               this.ingredients = ingredients
             }
           )
-       }, 1000);
+        }, 1000);
       })
   }
 

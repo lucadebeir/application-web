@@ -26,6 +26,8 @@ import { AjoutRecetteComponent } from './views/ajout-recette/ajout-recette.compo
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ModifierRecetteComponent } from './views/modifier-recette/modifier-recette.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RequestResetComponent } from './views/request-reset/request-reset.component';
+import { ResponseResetComponent } from './views/response-reset/response-reset.component';
 
 
 const routes: Routes = [
@@ -46,7 +48,9 @@ const routes: Routes = [
   { path: 'shoppingList', component: MaListeDeCoursesComponent, canActivate: [AuthGuardService] },
   { path: 'comment', component: MesCommentairesComponent, canActivate: [AuthGuardService] },
   { path: 'favorites', component: MesRecettesComponent, canActivate: [AuthGuardService] },
-  { path: 'updateRecipe/:id', component: ModifierRecetteComponent, canActivate: [AdminAuthService, AuthGuardService] }
+  { path: 'updateRecipe/:id', component: ModifierRecetteComponent, canActivate: [AdminAuthService, AuthGuardService] },
+  { path: 'request-reset-password', component: RequestResetComponent },
+  { path: 'response-reset-password/:token', component: ResponseResetComponent }
 ]
 
 @NgModule({
@@ -68,7 +72,9 @@ const routes: Routes = [
     CategoriesComponent,
     UniteComponent,
     AjoutRecetteComponent,
-    ModifierRecetteComponent
+    ModifierRecetteComponent,
+    RequestResetComponent,
+    ResponseResetComponent
   ],
   imports: [
     NgbModule,

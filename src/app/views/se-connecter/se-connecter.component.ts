@@ -46,8 +46,15 @@ export class SeConnecterComponent implements OnInit {
         if (res.error == "Mot de passe et/ou pseudo incorrect") {
           alert(res.error);
         } else {
-          this.router.navigateByUrl('/profile')
-          alert("Bienvenue sur Marine's Recipe")
+          if (this.auth.emailConfirmed()) {
+            this.router.navigateByUrl('/profile')
+            alert("Bienvenue sur Marine's Recipe")
+          } else {
+            this.auth.logout()
+            window.location.reload()
+            alert("Vous devez vérifier votre adresse mail avant de pouvoir vous connecter ! :)")
+          }
+          
         }
       },
       err => {

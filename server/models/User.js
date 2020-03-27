@@ -13,6 +13,10 @@ module.exports = db.sequelize.define(
         email : {
             type: Sequelize.STRING
         },
+        emailConfirmed : {
+            type: Sequelize.BOOLEAN,
+            defaultValue : Sequelize.FALSE
+        },
         mdp : {
             type: Sequelize.STRING
         },

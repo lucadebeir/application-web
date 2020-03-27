@@ -1,17 +1,38 @@
-<h1> Cette fonctionnalité n'est pas encore disponible</h1>
-<!-- test ajout photo
-<div class="container col-lg-4 col-md-4 col-sm-12 col-xs-12">
-    <form method="post" [routerLink]="['/recipe', recette.idRecette]"action="/upload" enctype="multipart/form-data">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mt-5 mx-auto">
+            <form class="example-form" [formGroup]="contactForm" (ngSubmit)="sendEmail()" data-toggle="validator" role="form">
+                <!-- Submitting will start this method -->
+                <div class="form-group">
+                    <label>Nom *</label>
+                    <input id="name" type="text" class="form-control" formControlName="nameUser" placeholder="Nom" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="control-label">Email *</label>
+                    <input id="to" type="email" class="form-control" formControlName="email"
+                        placeholder="nom.prenom@exemple.com" id="inputEmail"
+                        required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                        data-error="Bruh, that email address is invalid">
+                    <div class="help-block with-errors"></div>
+                </div>
+                <div class="form-group">
+                    <label>Objet *</label>
+                    <input type="text" class="form-control" formControlName="subject" placeholder="" required>
+                </div>
 
-        <div class="form-group">
-            <label for="photo_produit">Photo</label> :
-            <input type="file" name="photo_produit" multiple>
-        </div>
+                <div class="form-group">
+                    <label>Message *</label>
+                    <textarea type="textarea" class="form-control" rows="8" formControlName="message" placeholder="" required></textarea>
+                </div>
+                <br>
+                <div class="text-center">
+                    <button id="send_email" class="btn btn-lg btn-primary" type="submit" [disabled]="contactForm.invalid">Envoyer</button>
+                    <br>
+                    <br>
+                    <p>* Champs obligatoires.</p>
+                </div>
 
-        <div class="form-group text-center">
-            <input type="submit" class="btn btn-primary btn-dr" value="Créer le produit">
+            </form>
         </div>
-    </form>
+    </div>
 </div>
-<br>
--->

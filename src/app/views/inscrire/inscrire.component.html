@@ -1,3 +1,22 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	var from,to,subject,text;
+	$("#send_email").click(function(){	
+        pseudo=$("#pseudo").val();	
+		to=$("#to").val();		
+		$("#message").text("Sending E-mail...Please wait");
+		$.get("http://localhost:3000/server/sendEmail",{to:to, pseudo:pseudo},function(data){
+		if(data=="sent")
+		{
+			$("#message").empty().html("<p>Email is been sent at "+to+" . Please check inbox !</p>");
+		}
+
+});
+	});
+});
+</script>
+
 <div class="container">
     <div class="row">
         <div class="col-md-6 mt-5 mx-auto">
@@ -5,11 +24,11 @@
                 <!-- Submitting will start this method -->
                 <div class="form-group">
                     <label>Pseudo *</label>
-                    <input type="text" class="form-control" formControlName="pseudo" placeholder="pseudo" required>
+                    <input id="pseudo" type="text" class="form-control" formControlName="pseudo" placeholder="pseudo" required>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail" class="control-label">Email *</label>
-                    <input type="email" class="form-control" formControlName="email"
+                    <input id="to" type="email" class="form-control" formControlName="email"
                         placeholder="nom.prenom@exemple.com" id="inputEmail"
                         required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                         data-error="Bruh, that email address is invalid">
@@ -32,7 +51,7 @@
                     <input type="radio" formControlName="abonneNews" value="true" checked> Oui
                     <input type="radio" formControlName="abonneNews" value="false"> Non
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="userForm.invalid">Créer mon compte</button>
+                <button id="send_email" class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="userForm.invalid">Créer mon compte</button>
                 <br>
                 <p>* Champs obligatoires.</p>
 

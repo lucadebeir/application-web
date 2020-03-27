@@ -313,6 +313,46 @@ recipe.get('/ingredient', (req, res) => {
         })
 })
 
+//Récupérer tous les infos de l'ingrédient
+recipe.get('/ingredient/:idIngredient', (req, res) => {
+    Ingredient.findOne({
+        where: {
+            idIngredient: req.params.idIngredient
+        },
+    })
+        .then(ingredient => {
+            if (ingredient) {
+
+                res.json(ingredient)
+            } else {
+                res.send("Il n'y a pas d'ingrédient'.")
+            }
+
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//Récupérer tous les ingrédients restants dans l'ordre alphabétique
+recipe.get('/ingredient/rest', (req, res) => {
+    db.sequelize.query("SELECT * FROM ingredient WHERE idIngredient NOT IN (" + req.sanitize(req.query.ingredients) + ")",
+        {
+            order: ["nomIngredient", "ASC"]
+        })
+        .then(ingredient => {
+            if (ingredient) {
+                console.log(ingredient[0])
+                res.json(ingredient[0])
+            } else {
+                res.send("Il n'y a pas d'ingrédient'.")
+            }
+
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 
 
 
@@ -403,7 +443,6 @@ recipe.post('/add-recipe', (req, res) => {
 
 //ajouter ingrédients et catégorie de la recette
 recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
-    console.log(req)
     for (let i = 0; i < req.body.categories.length; i++) {
         db.sequelize.query("INSERT INTO classerDans (idRecette, idCategorie) VALUES (?,?)",
             {
@@ -419,6 +458,11 @@ recipe.post('/recipe/addIngredientAndCategorie', (req, res) => {
     db.sequelize.query("INSERT INTO `illustrerRecettes` (`idRecette`, `idImage`) VALUES (?, ?)",
         {
             replacements: [req.body.idRecette, req.body.idImage]
+        })
+        .then(result => {
+            res.json(result)
+        }).catch(err => {
+            res.json({ error: err })
         })
 })
 //modifier qte et unite d'un ingredient dans une recette
@@ -876,7 +920,7 @@ recipe.get('/image/:idRecette', (req, res) => {
 
 //Récupérer les ingrédients qui ne sont pas utilisés dans une recette
 recipe.post('/update/:idImage/:idRecette', async (req, res) => {
-    console.log(req)
+    //console.log(req)
     try {
         const myFile = req.file
         //myFile.originalname = myFile.filename

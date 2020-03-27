@@ -1,8 +1,9 @@
-import {Injectable} from '@angular/core'
-import {HttpClient} from '@angular/common/http'
-import {Observable, of} from 'rxjs'
+import { Injectable } from '@angular/core'
+import { HttpClient, HttpParams } from '@angular/common/http'
+import { Observable, of } from 'rxjs'
 import { map, tap, catchError } from 'rxjs/operators'
 import { Router } from '@angular/router'
+import { ContactDetail } from '../views/contact/contact.component'
 
 //login
 export interface UserDetails {
@@ -10,6 +11,7 @@ export interface UserDetails {
     email: string
     mdp: string
     admin: boolean
+    emailConfirmed?: boolean
     abonneNews: boolean
     exp: number
     iat: number
@@ -36,7 +38,7 @@ export interface TokenPayload {
 }
 
 //changement mdp
-export interface UserMdp{
+export interface UserMdp {
     pseudo: string
     mdp: string
     newmdp: string
@@ -46,7 +48,7 @@ export interface UserMdp{
 }
 
 //modif profile
-export interface UserProfile{
+export interface UserProfile {
     pseudo: string
     email: string
     abonneNews: boolean
@@ -62,12 +64,12 @@ export class AuthentificationService {
 
     }
 
-    private saveToken (token: string): void {
+    private saveToken(token: string): void {
         localStorage.setItem('userToken', token)
         this.token = token
     }
 
-    private getToken (): string {
+    private getToken(): string {
         if (!this.token) {
             this.token = localStorage.getItem('userToken')
         }
@@ -77,7 +79,7 @@ export class AuthentificationService {
     public getUserDetails(): UserDetails {
         const token = this.getToken()
         let payload
-        if(token) {
+        if (token) {
             payload = token.split('.')[1]
             payload = window.atob(payload)
             return JSON.parse(payload)
@@ -95,16 +97,25 @@ export class AuthentificationService {
         }
     }
 
-    public isAdmin(): boolean {
+    public emailConfirmed(): boolean {
         const user = this.getUserDetails()
-        if(user){
-            return user.admin 
-        }else {
+        if (user) {
+            return user.emailConfirmed
+        } else {
             return false
         }
     }
 
-    public register(user: TokenPayload) : Observable<any> {
+    public isAdmin(): boolean {
+        const user = this.getUserDetails()
+        if (user) {
+            return user.admin
+        } else {
+            return false
+        }
+    }
+
+    public register(user: TokenPayload): Observable<any> {
         const base = this.http.post('/server/register', user)
 
         const request = base.pipe(
@@ -118,7 +129,7 @@ export class AuthentificationService {
         return request
     }
 
-    public login(user: TokenPayload) : Observable<any> {
+    public login(user: TokenPayload): Observable<any> {
         const base = this.http.post('/server/login', user)
         const request = base.pipe(
             map((data: TokenResponse) => { //map permet de récupérer des données
@@ -131,7 +142,7 @@ export class AuthentificationService {
         return request
     }
 
-    public profile() : Observable<any> {
+    public profile(): Observable<any> {
         return this.http.get('/server/profile', {
             headers: { Authorization: `${this.getToken()}` }
         })
@@ -145,41 +156,70 @@ export class AuthentificationService {
 
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {
-    
-          // TODO: send the error to remote logging infrastructure
-          console.error(error); // log to console instead
-    
-          // Let the app keep running by returning an empty result.
-          return of(result as T);
-        };
-      }
 
-    public updatePassword(user: UserMdp) : Observable<any> {
+            // TODO: send the error to remote logging infrastructure
+            console.error(error); // log to console instead
+
+            // Let the app keep running by returning an empty result.
+            return of(result as T);
+        };
+    }
+
+    public updatePassword(user: UserMdp): Observable<any> {
         const base = this.http.put(`/server/update-password/${user.pseudo}`, user)
 
         return base.pipe(
             map((data: Response) => {
                 return data
             })
-          );
+        );
     }
 
     public deleteProfile(pseudo: string): Observable<any> {
         const url = `/server/delete-profile/${pseudo}`;
         return this.http.delete<any>(url).pipe(
-          tap(_ => console.log(`deleted ${pseudo}`)),
-          catchError(this.handleError<any>('deleteProfile'))
+            tap(_ => console.log(`deleted ${pseudo}`)),
+            catchError(this.handleError<any>('deleteProfile'))
         );
-      }
+    }
 
-    public updateProfile(user: UserProfile) : Observable<any> {
+    public updateProfile(user: UserProfile): Observable<any> {
         const base = this.http.put(`/server/mon-profile/${user.pseudo}`, user)
-        
+
         return base.pipe(
             tap(_ => console.log(`updated ${user.pseudo}`)),
             catchError(this.handleError<any>('updateProfile'))
-          );
+        );
     }
-    
-   
+
+    public getAbonneNews(): any {
+        return this.http.get(`/server/abonneNews`)
+    }
+
+    public sentEmailToNewRecipe(to: any, idRecette: number): any {
+        return this.http.get(`/server/newRecipe/${to.pseudo}/${idRecette}`)
+    }
+
+    public requestReset(body): Observable<any> {
+        return this.http.post(`/server/req-reset-password`, body);
+    }
+
+    public newPassword(body): Observable<any> {
+        return this.http.post(`/server/new-password`, body);
+    }
+
+    public ValidPasswordToken(body): Observable<any> {
+        return this.http.post(`/server/valid-password-token`, body);
+    }
+
+    public sendEmailContact(infos: ContactDetail): any {
+        let params = new HttpParams();
+
+        params = params.append(`name`, infos.nameUser);
+        params = params.append(`email`, infos.emailUser);
+        params = params.append(`subject`, infos.subject);
+        params = params.append(`message`, infos.message);
+
+        return this.http.get(`/server/contact/send`, { params: params})
+    }
 }
