@@ -1208,7 +1208,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/service/index.ts ***!
     \**********************************/
 
-  /*! exports provided: AdminAuthService, AuthGuardService, AuthentificationService, RecettesService */
+  /*! exports provided: AuthentificationService, AdminAuthService, AuthGuardService, RecettesService */
 
   /***/
   function srcAppServiceIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -4533,7 +4533,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             } else {
               _this21.auth.logout();
 
-              _this21.router.navigate(['login']);
+              setTimeout(function () {
+                return _this21.router.navigate(['login']);
+              }, 5);
             }
           }, function (err) {
             console.error(err);

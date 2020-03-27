@@ -8,6 +8,7 @@ const Recipe = require("../models/Recipe")
 const passwordResetToken = require("../models/ResetToken")
 const crypto = require('crypto');
 users.use(cors())
+//require ('dotenv').config()
 //var xoauth2 = require('xoauth2');
 
 const { google } = require("googleapis");
@@ -18,20 +19,21 @@ const oauth2Client = new OAuth2(
     "https://developers.google.com/oauthplayground" // Redirect URL
 )
 oauth2Client.setCredentials({
-    refresh_token: '1//04t2shx-VeLgTCgYIARAAGAQSNwF-L9IrqZDYg_g7bXC7buHl7ur6Tf3FJ0rpLUGoevGQU31Mg5nZZVcOqAN4A8FzawA-n-K3OdQ'
+    refresh_token: '1//04BWvnOqpAFjgCgYIARAAGAQSNwF-L9IrXjtjL9QBYGwV5XEf1wECPN7rc_2jz17s8bBRPeJlxrv7YS4UxiJxHHyXbcVhYj0misA'
 });
 const accessToken = oauth2Client.getAccessToken()
 
 process.env.SECRET_KEY = 'secret'
 
 const nodemailer = require("nodemailer");
+
 /*
 	Here we are configuring our SMTP Server details.
 	STMP is mail server which is responsible for sending and recieving email.
 */
 const smtpTransport = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,
+    port: 465,
     secure: true,
     service: 'gmail',
     from: `"Marine's Recipes" <marinesrecipes@gmail.com>`,
@@ -43,10 +45,15 @@ const smtpTransport = nodemailer.createTransport({
         user: 'marinesrecipes@gmail.com',  
         clientId: '680726405067-3gam69kea82fcsu8al0ff3kuqcaengtl.apps.googleusercontent.com',            
         clientSecret: 'TGmXKDruFmLuwgVlyZtQ7S7O',  
-        refreshToken: '1//04t2shx-VeLgTCgYIARAAGAQSNwF-L9IrqZDYg_g7bXC7buHl7ur6Tf3FJ0rpLUGoevGQU31Mg5nZZVcOqAN4A8FzawA-n-K3OdQ',
-        //accessToken: accessToken  
+        refreshToken: '1//04BWvnOqpAFjgCgYIARAAGAQSNwF-L9IrXjtjL9QBYGwV5XEf1wECPN7rc_2jz17s8bBRPeJlxrv7YS4UxiJxHHyXbcVhYj0misA',
+        accessToken: accessToken 
+        
+       /*user: process.env.USER_MAIL,
+       pass: process.env.PASS_MAIL*/
     }  
 });
+
+
 var rand, mailOptions, host, link;
 
 
@@ -67,7 +74,7 @@ users.get('/newRecipe/:pseudo/:idRecette', function (req, res) {
                 .then(recette => {
                     if (user && recette) {
                         mailOptions = {
-                            from: 'marinesrecipes@gmail.com',
+                            //from: 'marinesrecipes@gmail.com',
                             to: user.email,
                             subject: "Notification de Marine's recipes",
                             generateTextFromHTML: true,
@@ -109,7 +116,8 @@ users.get('/verify', function (req, res) {
         if (req.query.id == rand) {
             console.log("email is verified");
             User.update({ emailConfirmed: true }, { where: { pseudo: req.query.pseudo } })
-            res.end("<h1>Email " + mailOptions.to + " is been Successfully verified");
+            //res.end("<h1>Email " + mailOptions.to + " is been Successfully verified");
+            res.redirect("http://" + req.get('host') + "/login")
         }
         else {
             console.log("email is not verified");
@@ -151,11 +159,13 @@ users.post('/register', async (req, res, { transporter, EMAIL_SECRET }) => { //r
                             })
                             rand = Math.floor((Math.random() * 100) + 54);
                             host = req.get('host');
+                            console.log(host)
                             link = "http://" + req.get('host') + "/server/verify?id=" + rand + "&pseudo=" + req.body.pseudo;
                             mailOptions = {
                                 to: req.body.email,
                                 subject: "Please confirm your Email account",
-                                html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+                                text: "Hello,\n\nPlease Click on the link to verify your email."
+                                +"\n\n" + link
                             }
                             console.log(mailOptions);
                             smtpTransport.sendMail(mailOptions, (error, response) => {
@@ -163,7 +173,7 @@ users.post('/register', async (req, res, { transporter, EMAIL_SECRET }) => { //r
                                     console.log(error);
                                     res.end("error");
                                 } else {
-                                    console.log("Message sent: " + response.success);
+                                    console.log("Message sent: " + response.message);
                                     res.end("sent");
                                 }
                             })
@@ -375,9 +385,10 @@ users.post('/req-reset-password', async function (req, res) {
                 subject: "Mot de passe oublié sur Marine's recipes",
                 text: "Vous recevez cet email car vous (ou une autre personne) avez demandé à réinitialiser le mot de passe de votre compte sur Marine's recipes .\n\n" +
                     "Cliquer sur le lien suivant ou coller le dans la barre URL de votre navigateur:\n\n" +
-                    'http://http://marine-s-recipe.herokuapp.com/response-reset-password/' + resettoken.resettoken + '\n\n' +
+                    'http://marine-s-recipe.herokuapp.com/response-reset-password/' + resettoken.resettoken + '\n\n' +
                     "Si vous n'avez pas demandé à changer votre mot de passe, ignorer cet email et votre mot de passe restera inchangé.\nBonne journée ! \n Marine."
             }
+            console.log(mailOptions)
             smtpTransport.sendMail(mailOptions, (error, response) => {
                 if (error) {
                     console.log(error);

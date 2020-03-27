@@ -63,7 +63,8 @@ export class InscrireComponent implements OnInit {
           return;
         } else {
           this.auth.logout()
-          this.router.navigate(['login']);
+          setTimeout(() => this.router.navigate(['login'])
+          , 5) 
         }
       },
       err => {

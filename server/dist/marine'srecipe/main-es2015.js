@@ -631,7 +631,7 @@ AuthentificationService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ�
 /*!**********************************!*\
   !*** ./src/app/service/index.ts ***!
   \**********************************/
-/*! exports provided: AdminAuthService, AuthGuardService, AuthentificationService, RecettesService */
+/*! exports provided: AuthentificationService, AdminAuthService, AuthGuardService, RecettesService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2420,7 +2420,7 @@ class InscrireComponent {
             }
             else {
                 this.auth.logout();
-                this.router.navigate(['login']);
+                setTimeout(() => this.router.navigate(['login']), 5);
             }
         }, err => {
             console.error(err);

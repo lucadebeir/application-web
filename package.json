@@ -41,6 +41,7 @@
     "mysql2": "^2.1.0",
     "ng-multiselect-dropdown": "^0.2.10",
     "nodemailer": "^6.4.6",
+    "nodemailer-smtp-transport": "^2.7.4",
     "path": "^0.12.7",
     "popper.js": "^1.16.1",
     "rxjs": "^6.5.4",
