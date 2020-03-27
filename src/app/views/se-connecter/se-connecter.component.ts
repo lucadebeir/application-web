@@ -63,4 +63,9 @@ export class SeConnecterComponent implements OnInit {
     )
   }
 
+  //Fonction appelée lors du clic
+  clicSurBouton(){
+    alert("Si vous n'avez pas reçu de mail pour la confirmation de votre adresse mail, veuillez consulter vos mails indésirables. Si le problème persiste, veuillez nous contacter via l'onglet Contact.");
+  }
+
 }

@@ -2,18 +2,28 @@
     <div class="row">
         <div class="col-md-6 mt-5 mx-auto">
             <form [formGroup]="loginForm" (ngSubmit)="login()">
-                <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+                <h1 id="lien" class="h3 mb-3 font-weight-normal">Se connecter</h1>
+                <hr>
                 <div class="form-group">
                     <label>Pseudo</label>
                     <input type="text" class="form-control" required name="pseudo" placeholder="pseudo" formControlName="pseudo">
                 </div>
+                <hr>
                 <div class="form-group">
                     <label>Mot de passe</label>
                     <input type="password" class="form-control" required name="mdp" placeholder="****" formControlName="mdp">
                 </div>
+                <hr>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Se connecter</button>
             </form>
-            <a href="request-reset-password">Mot de passe oublié</a>
+            <hr>
+            <div id="lien">
+                <a href="request-reset-password">Mot de passe oublié</a>
+            </div>
+            <hr>
+            <div id="lien">
+                <button type="button" class="btn btn-outline-primary" (click)="clicSurBouton()">Je n'ai pas reçu de mail pour la confirmation de mon adresse mail</button>
+            </div>
         </div>
     </div>
 </div>
