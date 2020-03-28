@@ -26,13 +26,23 @@ export class ContactComponent implements OnInit {
   }
 
   initContactForm() : FormGroup {
-    const emailUser = this.auth.getUserDetails().email
-    return this.contactForm = this.formBuilder.group({
-      nameUser: ['', Validators.required],
-      email: [emailUser, [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required]
-    });
+    if(this.auth.isLoggedIn()) {
+      const emailUser = this.auth.getUserDetails().email
+      return this.contactForm = this.formBuilder.group({
+        nameUser: ['', Validators.required],
+        email: [emailUser, [Validators.required, Validators.email]],
+        subject: ['', Validators.required],
+        message: ['', Validators.required]
+      });
+    } else {
+      return this.contactForm = this.formBuilder.group({
+        nameUser: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        subject: ['', Validators.required],
+        message: ['', Validators.required]
+      });
+    }
+    
   }
 
   sendEmail() {

@@ -17,6 +17,7 @@ export interface RecipeDetails {
     etapes: Text
     lienImage?: any
     idImage?: number
+    ingredients?: IngredientDetails[]
 }
 
 export interface IngredientDetails {
@@ -69,17 +70,28 @@ export class RecettesService {
     public getAllRecipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/allRecipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
-            console.log(data)
             data.forEach(element => {
-                console.log(element)
-                console.log(element.idRecette)
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
-                    console.log(data[0])
                 })
-                console.log(element)
             });
+            return data
+        }))
+    }
 
+    public getAllRecipesAndIngredients(): Observable<RecipeDetails[]> {
+        const base = this.http.get(`/server/allRecipes`)
+        return base.pipe(map((data: RecipeDetails[]) => {
+            data.forEach(element => {
+                this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    element.lienImage = data[0]?.lienImage
+                })
+                element.ingredients = []
+                this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
+                    console.log(data)
+                    element.ingredients.push(data[0])
+                })
+            });
             return data
         }))
     }
@@ -385,6 +397,23 @@ export class RecettesService {
         return base.pipe(map((data: IngredientDetails[]) => {
             return data
         }))
+
+    }
+
+    public getRestListeCourses(): Observable<IngredientDetails[]> {
+        const pseudo = this.auth.getUserDetails().pseudo;
+        const base = this.http.get(`/server/shoppingList/rest/${pseudo}`);
+        return base.pipe(map((data: IngredientDetails[]) => {
+            return data
+        }))
+    }
+
+    public addIngredientShoppingList(ingredient: any): any {
+        return this.http.post(`/server/shoppingList/add/ingredient`, ingredient).subscribe(res => {
+            {
+                return res
+            }
+        })
 
     }
 

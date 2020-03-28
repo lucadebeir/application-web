@@ -13,7 +13,8 @@ export class AccueilComponent implements OnInit {
   public latestRecipes: RecipeDetails[]
   public mostPopularRecipes: RecipeDetails[]
 
-  constructor(private recetteService: RecettesService, private router: Router) { }
+  constructor(private recetteService: RecettesService, private router: Router) { 
+  }
 
   ngOnInit(): void {
     this.getLatestReceipes()

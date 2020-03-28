@@ -104,7 +104,6 @@ export class ModifierRecetteComponent implements OnInit {
 
     this.http.post<any>(`/server/update/${this.recette.idImage}/${this.recette.idRecette}`, formData).subscribe(
       (res) => {
-        console.log("ok")
         window.location.reload()
       }
     );

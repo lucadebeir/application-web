@@ -19,6 +19,38 @@
                            
                             <th scope="col"><form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" [formControl]="filter">
+                                <ng-template #content let-modal>
+                                    <!--ce qui s'ouvre quand on clique sur créer un nouvel ingrédient-->
+                                    <div class="modal-header">
+                                        <h4 class="modal-title"></h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <label for="validationTooltip04">Ingrédient</label>
+                                                    <select class="custom-select" id="validationTooltip04" #idIngredient="ngModel"
+                                                        [(ngModel)]="ingredientToAdd.idIngredient" [ngModelOptions]="{standalone: true}"
+                                                        required>
+                                                        <option *ngFor="let ingredient of restIngredients$ | async"
+                                                            [ngValue]="ingredient.idIngredient">
+                                                            {{ingredient.nomIngredient}}</option>
+                                                    </select>
+                                                    <div class="invalid-tooltip">
+                                                        Selectionnez un ingrédient.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button tyoe="button" class="btn btn-outline-dark"
+                                            (click)="modal.close(ingredientToAdd)">Ajouter</button>
+                                    </div>
+                                </ng-template>
+                                <div class="text-right">
+                                    <button class="btn btn-outline-primary" (click)="open(content)">Ajouter un nouvel ingrédient</button>
+                                </div>
                               </form>
                             </th>
 
@@ -34,9 +66,9 @@
                                 <button class="btn btn-sm btn-danger" (click)=deleteListeCourse(ingredient.idIngredient)><i class="fa fa-trash"></i></button>
                              </td>
                         </tr>
-
                     </tbody>
                 </table>
+
             </div>
         </div>
     </div>

@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, tap } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
 import { RecipeDetails, RecettesService, CategoryDetails } from '../../service';
-import {HttpErrorResponse} from '@angular/common/http'
+import { HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router';
-import { async } from '@angular/core/testing';
- 
 
 @Component({
   selector: 'app-recettes',
@@ -23,13 +21,30 @@ export class RecettesComponent implements OnInit {
 
   constructor(private recetteService: RecettesService, private router: Router) {
     //pour la recherche dynamique
-    this.recettes$ = this.recetteService.getAllRecipes()
+    this.recettes$ = this.recetteService.getAllRecipesAndIngredients()
+    this.recettes$.subscribe(data => {
+      console.log(data)
+    })
+
     this.filter = new FormControl('')
     this.filter$ = this.filter.valueChanges.pipe(startWith(''))
     this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)
-      .pipe(map(([recipes, filterString]) =>
-        recipes.filter(recipe => recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
-  } 
+      .pipe(map(([recipes, filterString]) => {
+        return recipes.filter(recipe => 
+          
+          recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1 ||
+          recipe.ingredients.forEach(element =>
+              element.nomIngredient.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)
+          
+      )}))
+    
+    this.filteredRecipe$.subscribe(data => {
+      console.log(data)
+    })
+    this.filter$.subscribe(data => {
+      console.log(data)
+    })
+  }
 
   //dans ngOnInit on récupère les données à afficher au lancement de la page
   ngOnInit(): void {
@@ -38,16 +53,16 @@ export class RecettesComponent implements OnInit {
 
   getAllRecipes() {
 
-    this.recettes$ = this.recetteService.getAllRecipes()
+    this.recettes$ = this.recetteService.getAllRecipesAndIngredients()
     this.filter = new FormControl('')
     this.filter$ = this.filter.valueChanges.pipe(startWith(''))
     this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)
       .pipe(map(([recipes, filterString]) =>
-        recipes.filter(recipe => recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
-
+        recipes.filter(recipe =>
+          recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)))
   }
 
-  getImageByIdRecipe(id: number) : any {
+  getImageByIdRecipe(id: number): any {
     this.recetteService.getImage(id).subscribe(
       res => {
         console.log(res)
@@ -55,17 +70,17 @@ export class RecettesComponent implements OnInit {
       })
   }
 
-  getAllCategory(){
+  getAllCategory() {
     this.recetteService.getAllCategory().subscribe(
       (categorie: CategoryDetails[]) => {
-        
+
         this.categories = categorie
       }, err => {
-        if(err instanceof HttpErrorResponse) {
-          if(err.status === 402){
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 402) {
             console.log("Il n'y a pas de catégorie.")
 
-          
+
           }
 
         }
@@ -73,8 +88,8 @@ export class RecettesComponent implements OnInit {
     )
   }
 
-  getRecipeByCategory(idCategorie: any){
-   
+  getRecipeByCategory(idCategorie: any) {
+
     this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie)
     this.filter = new FormControl('')
     this.filter$ = this.filter.valueChanges.pipe(startWith(''))
@@ -90,12 +105,12 @@ export class RecettesComponent implements OnInit {
           window.location.reload()
         })
       }, err => {
-        if(err instanceof HttpErrorResponse){
-          if(err.status === 402) {
-          console.log("Cette recette n'existe pas !")
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 402) {
+            console.log("Cette recette n'existe pas !")
+          }
         }
-      }
-    })
+      })
     console.log("cocuouc")
   }
 }

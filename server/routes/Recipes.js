@@ -57,12 +57,13 @@ recipe.get('/recipe/:id', (req, res) => {
 //recupérer ingrédients de la recette avec l'id de la recette
 recipe.get('/recipe/:id/ingredients', (req, res) => {
 
-    let query = db.sequelize.query("SELECT ingredient.idIngredient, ingredient.nomIngredient, utiliserIngredients.qte, unites.libelleUnite FROM ingredient INNER JOIN recettes INNER JOIN utiliserIngredients INNER JOIN unites WHERE ingredient.idIngredient = utiliserIngredients.idIngredient AND utiliserIngredients.idRecette = ? AND utiliserIngredients.idRecette = recettes.idRecette AND unites.idUnite = utiliserIngredients.idUnite",
+    let query = db.sequelize.query("SELECT ingredient.idIngredient, ingredient.nomIngredient, utiliserIngredients.qte, unites.libelleUnite FROM ingredient INNER JOIN recettes INNER JOIN utiliserIngredients INNER JOIN unites WHERE ingredient.idIngredient = utiliserIngredients.idIngredient AND utiliserIngredients.idRecette = ? AND utiliserIngredients.idRecette = recettes.idRecette AND unites.idUnite = utiliserIngredients.idUnite ORDER BY ingredient.nomIngredient",
         {
             replacements: [req.params.id],
             type: sequelize.QueryTypes.SELECT
         })
     query.then(resultats => {
+        console.log(resultats)
         res.json(resultats)
     })
         .catch(err => {
@@ -713,7 +714,7 @@ recipe.delete('/favorites/:pseudo/delete/:id', (req, res) => {
 
 //récupérer la liste de courses de l'utilisateur
 recipe.get('/shoppingList/:pseudo', (req, res) => {
-    db.sequelize.query("SELECT ingredient.* FROM ingredient INNER JOIN liste_de_courses WHERE liste_de_courses.idIngredient = ingredient.idIngredient AND liste_de_courses.pseudo = ? ", {
+    db.sequelize.query("SELECT ingredient.* FROM ingredient INNER JOIN liste_de_courses WHERE liste_de_courses.idIngredient = ingredient.idIngredient AND liste_de_courses.pseudo = ? ORDER BY ingredient.nomIngredient", {
         replacements: [req.params.pseudo],
         type: sequelize.QueryTypes.SELECT
     }).then(resultats => {
@@ -721,6 +722,32 @@ recipe.get('/shoppingList/:pseudo', (req, res) => {
     }).catch(err => {
         res.json({ error: err })
     })
+})
+
+//récupérer les ingrédients non présents dans la liste de courses de l'utilisateur
+recipe.get('/shoppingList/rest/:pseudo', (req, res) => {
+    db.sequelize.query("SELECT ingredient.* FROM ingredient WHERE ingredient.idIngredient NOT IN (SELECT ingredient.idIngredient FROM ingredient INNER JOIN liste_de_courses WHERE liste_de_courses.idIngredient = ingredient.idIngredient AND liste_de_courses.pseudo = ?) ORDER BY ingredient.nomIngredient", {
+        replacements: [req.params.pseudo],
+        type: sequelize.QueryTypes.SELECT
+    }).then(resultats => {
+        res.json(resultats)
+    }).catch(err => {
+        res.json({ error: err })
+    })
+})
+
+recipe.post('/shoppingList/add/ingredient', (req, res) => {
+    const listeCourseData = {
+        pseudo: req.body.pseudo,
+        idIngredient: req.body.idIngredient
+    }
+    ListeCourse.create(listeCourseData)
+        .then(() => {
+            res.send('Ingredient added!')
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
 })
 
 
@@ -850,7 +877,7 @@ recipe.get('/recipe/:idRecette/category/rest', (req, res) => {
 
 //Récupérer les ingrédients qui ne sont pas utilisés dans une recette
 recipe.get('/recipe/:idRecette/ingredient/rest', (req, res) => {
-    db.sequelize.query("SELECT * FROM ingredient WHERE ingredient.idIngredient NOT IN (SELECT ingredient.idIngredient FROM ingredient INNER JOIN recettes INNER JOIN utiliserIngredients INNER JOIN unites WHERE ingredient.idIngredient = utiliserIngredients.idIngredient AND utiliserIngredients.idRecette = ? AND utiliserIngredients.idRecette = recettes.idRecette AND unites.idUnite = utiliserIngredients.idUnite)",
+    db.sequelize.query("SELECT * FROM ingredient WHERE ingredient.idIngredient NOT IN (SELECT ingredient.idIngredient FROM ingredient INNER JOIN recettes INNER JOIN utiliserIngredients INNER JOIN unites WHERE ingredient.idIngredient = utiliserIngredients.idIngredient AND utiliserIngredients.idRecette = ? AND utiliserIngredients.idRecette = recettes.idRecette AND unites.idUnite = utiliserIngredients.idUnite) ORDER BY nomIngredient",
         {
             replacements: [req.params.idRecette],
             type: sequelize.QueryTypes.SELECT
