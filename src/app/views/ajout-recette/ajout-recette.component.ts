@@ -268,7 +268,7 @@ export class AjoutRecetteComponent implements OnInit {
     this.recipeForm = this.formBuilder.group({
       nomRecette: ['', Validators.required],
       categories: ['', Validators.required],
-      ingredients: ['', Validators.required],
+      ingredients: [''],
       etapes: ['', Validators.required]
     });
   }
