@@ -1,38 +1,44 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 mt-5 mx-auto">
-            <form class="example-form" [formGroup]="contactForm" (ngSubmit)="sendEmail()" data-toggle="validator" role="form">
-                <!-- Submitting will start this method -->
-                <div class="form-group">
-                    <label>Nom *</label>
-                    <input id="name" type="text" class="form-control" formControlName="nameUser" placeholder="Nom" required>
-                </div>
-                <div class="form-group">
-                    <label for="inputEmail" class="control-label">Email *</label>
-                    <input id="to" type="email" class="form-control" formControlName="email"
-                        placeholder="nom.prenom@exemple.com" id="inputEmail"
-                        required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                        data-error="Bruh, that email address is invalid">
-                    <div class="help-block with-errors"></div>
-                </div>
-                <div class="form-group">
-                    <label>Objet *</label>
-                    <input type="text" class="form-control" formControlName="subject" placeholder="" required>
-                </div>
 
-                <div class="form-group">
-                    <label>Message *</label>
-                    <textarea type="textarea" class="form-control" rows="8" formControlName="message" placeholder="" required></textarea>
-                </div>
-                <br>
-                <div class="text-center">
-                    <button id="send_email" class="btn btn-lg btn-primary" type="submit" [disabled]="contactForm.invalid">Envoyer</button>
-                    <br>
-                    <br>
-                    <p>* Champs obligatoires.</p>
-                </div>
 
-            </form>
-        </div>
-    </div>
-</div>
+
+    <section class="contact pt-100 pb-100" id="contact">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-6 mx-auto text-center">
+                  <div class="section-title mb-100">
+                     <p>une question, une suggestion .. ?</p>
+                     <h4>contactez moi</h4>
+                  </div>
+               </div>
+            </div>
+            <div class="row text-center">
+                  <div class="col-md-12">
+                     <form [formGroup]="contactForm" (ngSubmit)="sendEmail()" data-toggle="validator" role="form" class="contact-form">
+                        <div class="row">
+                           <div class="col-xl-6">
+                              <input id="name" type="text" class="form-control" placeholder="Nom" formControlName="nameUser" required>
+                           </div>
+                          
+                           
+                           <div class="col-xl-6">
+                              <input id="to" type="email" class="form-control" formControlName="email"
+                              placeholder="nom.prenom@exemple.com" id="inputEmail"
+                              required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                              data-error="Bruh, that email address is invalid">
+                           </div>
+                           <div class="help-block with-errors"></div>
+                           <div class="col-xl-12">
+                              <input type="text" class="form-control"  placeholder="Objet" formControlName="subject" required>
+                           </div>
+                          
+                           <div class="col-xl-12">
+                              <textarea placeholder="message" cols="30" rows="10" formControlName="message" required></textarea>
+                              <input id="send_email" class="btn btn-lg btn-primary" type="submit" [disabled]="contactForm.invalid" value = "Envoyer">
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+                
+            </div>
+         </div>
+      </section>
