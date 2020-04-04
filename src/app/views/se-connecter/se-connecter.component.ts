@@ -47,7 +47,7 @@ export class SeConnecterComponent implements OnInit {
           alert(res.error);
         } else {
           if (this.auth.emailConfirmed()) {
-            this.router.navigateByUrl('/profile')
+            this.router.navigateByUrl('/')
             alert("Bienvenue sur Marine's Recipe")
           } else {
             this.auth.logout()
