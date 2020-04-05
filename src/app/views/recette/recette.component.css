@@ -5,10 +5,19 @@
     float: left;
 }
 
+img{
+    margin-top: 2em;
+}
+
 #titre { /* #si j'ai utilisé un id pour repérer ma balise */
     text-align: center;
     margin-top: 2.5em;
 }
+
+.card-header,p{
+    color:#2F4EB8;
+}
+
 #conteneur
 {
     display: flex;
