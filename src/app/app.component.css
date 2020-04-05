@@ -9,6 +9,13 @@
     background: #375989;
    
 }
+.social .fa-envelope:hover {
+    background: #FF5733;
+ 
+}
+#message{
+    padding-left: 1em;
+}
 .social i {
     width: 40px;
     height: 40px;
@@ -26,7 +33,6 @@
     -webkit-transition: all ease 0.3s;
     -o-transition: all ease 0.3s;
     -ms-transition: all ease 0.3s;
-
     margin-bottom: 2em; /*espace insta et copyright */
 }
 .dark-line {
