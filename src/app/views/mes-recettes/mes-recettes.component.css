@@ -9,3 +9,7 @@
 #poubelle{
     float: right;
 }
+
+view,fav{
+    font-size: 1em;
+}

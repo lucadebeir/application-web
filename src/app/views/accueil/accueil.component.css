@@ -3,3 +3,7 @@ h5 {
     margin-top: 10%;
     text-decoration : underline;
 }
+
+view,fav{
+    font-size: 1em;
+}

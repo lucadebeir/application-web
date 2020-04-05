@@ -1,8 +1,10 @@
 #fav {
-    float: right
+    float: right;
+    font-size : 1em;
 }
-#vew {
+#view {
     float: left;
+    font-size: 1em;
 }
 
 img{
