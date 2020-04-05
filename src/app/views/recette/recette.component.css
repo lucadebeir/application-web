@@ -16,6 +16,10 @@ img{
     margin-top: 2.5em;
 }
 
+#timer{
+    margin-left: 1em;
+}
+
 .card-header,p{
     color:#2F4EB8;
 }
