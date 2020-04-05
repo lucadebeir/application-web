@@ -259,8 +259,8 @@ export class AjoutRecetteComponent implements OnInit {
         })
       })
 
-      //this.router.navigate(['/recipe/'], { queryParams: { id: this.recipe.idRecette } })
-      this.router.navigateByUrl('allRecipes')
+      
+      this.router.navigateByUrl('handleRecipes')
     })
   }
 

@@ -155,7 +155,7 @@ users.post('/register', (req, res) => { //req = info user
                     User.create(userData) //equivalent de INSERT INTO en sql
                         .then(user => {
                             let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                                expiresIn: 1440
+                                expiresIn: 3600
                             })
                             rand = Math.floor((Math.random() * 100) + 54);
                             host = req.get('host');
@@ -208,7 +208,7 @@ users.post('/login', (req, res) => {
             } else {
                 if (bcrypt.compareSync(req.sanitize(req.body.mdp), user.mdp)) {
                     let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                        expiresIn: 1440
+                        expiresIn: 3600
                     })
                     res.json({ token: token })
                 } else {
