@@ -56,11 +56,15 @@
                         
                     </tr>
                 </table>
-                <button class="btn btn-outline-info btn-block col-sm-8 mx-auto" *ngIf="!email.errors" type="submit">Enregistrer les modifications</button>
-                <button class="btn btn-outline-info btn-block col-sm-8 mx-auto"  *ngIf="email.errors" type="submit" disabled>Enregistrer les modifications</button>
-                
-                <button class="btn btn-outline-danger btn-block col-sm-8 mx-auto" (click)="deleteProfile(credentials?.pseudo)" 
+                <div class="text-center">
+                <button class="btn btn-light" *ngIf="!email.errors" type="submit">Enregistrer les modifications</button>
+                <button class="btn btn-light"  *ngIf="email.errors" type="submit" disabled>Enregistrer les modifications</button>
+            </div>
+            <br>
+            <div class="text-center">
+                <button class="btn btn-outline-danger " (click)="deleteProfile(credentials?.pseudo)" 
                     type="submit">Supprimer mon compte</button>
+                </div>
                 </form>
             
         </div>
