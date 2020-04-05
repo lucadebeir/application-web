@@ -5,6 +5,7 @@ import { map, tap } from 'rxjs/operators'
 import { CreateRecipe } from '../views/ajout-recette/ajout-recette.component'
 import { AuthentificationService } from './authentification.service'
 import { element } from 'protractor'
+import { Time } from '@angular/common'
 
 
 
@@ -15,6 +16,11 @@ export interface RecipeDetails {
     nbFavoris: number
     nbVues: number
     etapes: Text
+    nbrePart?: number
+    libellePart?: string
+    tempsPreparation?: Time
+    tempsCuisson?: Time
+    astuce?: string
     lienImage?: any
     idImage?: number
     ingredients?: IngredientDetails[]
@@ -452,6 +458,36 @@ export class RecettesService {
 
     }
 
+    public updateAstuce(recette: RecipeDetails): Observable<any> {
+
+        return this.http.put(`/server/recipe/astuce/update`, recette)
+            .pipe(map((data: RecipeDetails) => {
+                return data
+            }))
+
+
+    }
+
+    public updatePart(recette: RecipeDetails): Observable<any> {
+
+        return this.http.put(`/server/recipe/part/update`, recette)
+            .pipe(map((data: RecipeDetails) => {
+                return data
+            }))
+
+
+    }
+
+    public updateTemps(recette: RecipeDetails): Observable<any> {
+
+        return this.http.put(`/server/recipe/temps/update`, recette)
+            .pipe(map((data: RecipeDetails) => {
+                return data
+            }))
+
+
+    }
+
     public deleteIngredientRececipe(ingredient: IngredientDetails, recette: RecipeDetails): Observable<any> {
         const url = `/server/recipe/${recette.idRecette}/ingredient/${ingredient.idIngredient}/delete`;
         return this.http.delete<any>(url).pipe(
@@ -484,7 +520,7 @@ export class RecettesService {
 
     public getImage(id: number): any {
         return this.http.get(`/server/image/${id}`).pipe(map((data: any) => {
-            console.log(data[0])
+            console.log(data)
             return data
         }))
     }

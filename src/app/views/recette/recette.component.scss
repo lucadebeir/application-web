@@ -1,0 +1,234 @@
+/*
+#fav {
+    float: right;
+    font-size : 1em;
+}
+#view {
+    float: left;
+    font-size: 1em;
+}
+
+img{
+    margin-top: 2em;
+}
+
+#titre { 
+    text-align: center;
+    margin-top: 2.5em;
+}
+
+#timer{
+    margin-left: 1em;
+}
+
+.card-header,p, #TitleAstuces{
+    color:#2F4EB8;
+}
+
+
+#cadreAstuce{
+border:1px solid#2F4EB8;
+border-radius: 10px;
+padding:2em;
+
+}
+
+#conteneur
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-right: 1em; /* espace sur la droite */ /*
+    margin-top: 5%; /* espace entre la photo et les cartes */ /*
+}
+    .element:nth-child(1)
+    {
+        display: block;
+        padding: 12px;
+        margin: 15px;
+        max-width: 18rem;
+        width: auto;
+    }
+    .element:nth-child(2)
+    {
+        display: block;
+        padding: 12px;
+        margin: 15px;
+        width: 80%;
+    }
+
+    .card {
+        padding: 10px;
+        box-sizing: border-box;
+        color: rgb(0, 0, 0);
+        background:#f5f5f5;
+        text-align: center;
+        border: none;
+    }
+   
+#ing {
+    text-align: left;
+}
+
+#resp{
+    max-width: 50%;
+    height: auto;
+}
+
+.center {
+    text-align:center;
+    margin: auto; /* pour centrer l'élément */ /*
+}
+
+#btn {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+*/
+
+
+pre {
+    white-space : pre-wrap;
+}
+
+
+
+/*test*/
+@import url(https://fonts.googleapis.com/css?family=Oswald|Nunito:400,700);
+
+
+/* Layout */
+body, html {
+  height: 100%;
+  background: #eee;
+  overflow-x: hidden;
+}
+
+.main-content {
+  max-width: 600px;
+  padding: 1rem;
+  margin: 5rem auto 2rem;
+  > article {
+    margin: 0 0 10rem 0;
+  }
+}
+
+
+/* Header */
+.site-header {
+  display: flex;
+  height: 100%;
+  background: white;
+  @media (max-width: 700px) {
+    height: auto;
+    display: block;
+    .header-content,
+    .hero-graphic {
+      width: 100%;
+    }
+    .hero-graphic {
+      height: 200px;
+    }
+    .title-area {
+      order: 1;
+    }
+    .toc {
+      order: 2;
+      background: #eee;
+      margin: 1rem -2rem 0;
+      padding: 1rem 2rem;
+    }
+  }
+}
+.header-content {
+  width: 50%;
+}
+.hero-graphic {
+  width: 50%;
+  /*this should default to a small graphic (or nothing)*/
+  background: url(../../../assets/img/Connexion.png);
+  background-size: cover;
+  @media (min-width: 900px) {
+    /* use a HUGE one!*/
+  }
+  @media (min-width: 600px) {
+    /* use a MEDIUM one!
+    // you get it.*/
+  }
+}
+.header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+}
+.title-area {
+  order: 2;
+  > p {
+    color: red;
+  }
+}
+.byline {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  > span {
+    color: #999;
+  }
+}
+
+/* Nav */
+.toc {
+  > ul {
+    list-style: none;
+    padding: 0;
+    line-height: 1.6;
+    > li {
+      display: inline-block;
+      counter-increment: nav;
+      > a {
+        text-decoration: none;
+        color: #333;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        &::before {
+          content: "/";
+          margin: 0 0.5rem;
+          color: red;
+        }
+        &::after {
+          content: counter(nav);
+          font-weight: bold;
+          margin: 0 0.5rem;
+        }
+        &:hover,
+        &:focus {
+          color: red;
+        }
+      }
+      &:first-child {
+        a::before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+/* Type */
+body {
+  font-family: 'Nunito', sans-serif;
+}
+h1, h2 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  font-size: 3.2rem;
+  border-bottom: 4px solid black;
+  margin: 0 0 0.5rem;
+}
+h2 {
+  font-size: 2rem;
+  border-width: 3px;
+  color: #555;
+}

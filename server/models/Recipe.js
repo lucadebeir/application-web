@@ -29,6 +29,21 @@ module.exports = db.sequelize.define(
         etapes : {
             type: Sequelize.TEXT
            
+        },
+        nbrePart : {
+            type: Sequelize.INTEGER
+        },
+        libellePart : {
+            type: Sequelize.STRING
+        },
+        tempsPreparation : {
+            type: Sequelize.TIME
+        },
+        tempsCuisson : {
+            type: Sequelize.TIME
+        },
+        astuce : {
+            type: Sequelize.TEXT
         }
     },
     {

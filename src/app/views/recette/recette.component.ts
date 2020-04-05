@@ -7,7 +7,7 @@ import {Observable} from 'rxjs'
 @Component({
   selector: 'app-recette',
   templateUrl: './recette.component.html',
-  styleUrls: ['./recette.component.css']
+  styleUrls: ['./recette.component.scss']
 })
 export class RecetteComponent implements OnInit {
 

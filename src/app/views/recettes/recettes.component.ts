@@ -111,6 +111,5 @@ export class RecettesComponent implements OnInit {
           }
         }
       })
-    console.log("cocuouc")
   }
 }

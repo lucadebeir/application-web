@@ -27,7 +27,12 @@ export class ModifierRecetteComponent implements OnInit {
     nbVues: null,
     idImage: null,
     lienImage: null,
-    etapes: null
+    etapes: null,
+    nbrePart: null,
+    libellePart: '',
+    tempsPreparation: null,
+    tempsCuisson: null,
+    astuce: ''
   }
   public ingredients: IngredientDetails
   public unite: UniteDetails
@@ -140,6 +145,33 @@ export class ModifierRecetteComponent implements OnInit {
   }
   updateSteps(recette: RecipeDetails) {
     this.recetteService.updateSteps(recette).subscribe((res: any) => {
+      window.location.reload()
+    }, (err: any) => {
+      console.error(err)
+    }
+    );
+  }
+
+  updateAstuce(recette: RecipeDetails) {
+    this.recetteService.updateAstuce(recette).subscribe((res: any) => {
+      window.location.reload()
+    }, (err: any) => {
+      console.error(err)
+    }
+    );
+  }
+
+  updatePart(recette: RecipeDetails) {
+    this.recetteService.updatePart(recette).subscribe((res: any) => {
+      window.location.reload()
+    }, (err: any) => {
+      console.error(err)
+    }
+    );
+  }
+
+  updateTemps(recette: RecipeDetails) {
+    this.recetteService.updateTemps(recette).subscribe((res: any) => {
       window.location.reload()
     }, (err: any) => {
       console.error(err)

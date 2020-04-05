@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-ajout-recette',
@@ -24,7 +25,12 @@ export class AjoutRecetteComponent implements OnInit {
     categories: null,
     ingredients: null,
     idImage: null,
-    etapes: ''
+    etapes: '',
+    nbrePart: null,
+    libellePart: '',
+    tempsPreparation: null,
+    tempsCuisson: null,
+    astuce: ''
   }
 
   public ingredients: IngredientDetails[]
@@ -231,12 +237,18 @@ export class AjoutRecetteComponent implements OnInit {
       }
     }))
 
-
-      console.log(ingredientFormValue.ingredient)
+    console.log(ingredientFormValue.ingredient)
     this.recipe.ingredients = ingredientFormValue.ingredient //je récupère les info sur l'ingrédient
+    
     this.recipe.categories = this.selectedItems
     this.recipe.nomRecette = formValue.nomRecette
     this.recipe.etapes = formValue.etapes
+    this.recipe.nbrePart = formValue.nbrePart
+    this.recipe.libellePart = formValue.libellePart
+    this.recipe.tempsPreparation = formValue.tempsPreparation
+    this.recipe.tempsCuisson = formValue.tempsCuisson
+    this.recipe.astuce = formValue.astuce
+    console.log(this.recipe)
     this.recetteService.addImage(formData).subscribe(res => {
       this.recipe.idImage = res[0]
       console.log(res[0])
@@ -259,7 +271,7 @@ export class AjoutRecetteComponent implements OnInit {
         })
       })
 
-      
+
       this.router.navigateByUrl('handleRecipes')
     })
   }
@@ -269,7 +281,12 @@ export class AjoutRecetteComponent implements OnInit {
       nomRecette: ['', Validators.required],
       categories: ['', Validators.required],
       ingredients: [''],
-      etapes: ['', Validators.required]
+      etapes: ['', Validators.required],
+      nbrePart: ['', Validators.required],
+      libellePart: ['', Validators.required],
+      tempsPreparation: ['', Validators.required],
+      tempsCuisson: ['', Validators.required],
+      astuce: ['', Validators.required]
     });
   }
 
@@ -357,4 +374,9 @@ export interface CreateRecipe {
   ingredients?: any[]
   idImage?: File
   etapes?: string
+  nbrePart?: number
+  libellePart?: string
+  tempsPreparation?: Time
+  tempsCuisson?: Time
+  astuce?: string
 }

@@ -1,9 +1,16 @@
 #header { 
     text-align: center;
+    margin-top: 2em;
+}
+
+#back {
+    float: left;
+    margin-left: 5em;
 }
 
 
 #zone{
+    margin-top: 5em;
     width: 10 em;
 }
 
