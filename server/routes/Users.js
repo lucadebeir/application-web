@@ -59,7 +59,7 @@ var rand, mailOptions, host, link;
 
 users.get('/newRecipe/:pseudo/:idRecette', function (req, res) {
     host = req.get('host');
-    link = "http://http://marine-s-recipe.herokuapp.com/recipe/" + req.params.idRecette;
+    link = "http://marinesrecipes.fr/recipe/" + req.params.idRecette;
     User.findOne({
         where: {
             pseudo: req.sanitize(req.params.pseudo)
@@ -76,23 +76,21 @@ users.get('/newRecipe/:pseudo/:idRecette', function (req, res) {
                         mailOptions = {
                             //from: 'marinesrecipes@gmail.com',
                             to: user.email,
-                            subject: "Notification de Marine's recipes",
+                            subject: "Nouvelle recette sur de Marine's recipes",
                             generateTextFromHTML: true,
                             html: "<div class='card text-center'>"
-                                + "<div class='card-header'>"
-                                + "<h1>Marine Téroitin a écrit un nouveau post</h1></div>"
-                                + "<div class='card-body'>"
-                                + "<hr>"
                                 + "Bonjour " + user.pseudo + ", "
                                 + "<br>"
-                                + "Marine Téroitin a écrit un nouveau post sur Marine's recipes."
+                                + "Une nouvelle recette est disponible sur Marine's recipes : "
                                 + "<br>"
-                                + "<div class='card text-center>"
-                                + "<div class='card-body'>"
                                 + "<h3>" + recette.nomRecette + "</h3>"
-                                + "<br>" + recette.etapes + "<br>"
-                                + "<a href=" + link + " class='btn btn-primary'>Découvrir</a>"
+                                + "<a href=" + link + " class='btn btn-primary'>Découvrir la recette </a>"
+                                + "<br>"
+                                + "Bonne journée,"
+                                +"<br>"
+                                +"Marine."
                                 + "</div>"
+                            
                         }
                         console.log(mailOptions);
                         smtpTransport.sendMail(mailOptions, (error, response) => {
@@ -163,9 +161,13 @@ users.post('/register', (req, res) => { //req = info user
                             link = "http://" + req.get('host') + "/server/verify?id=" + rand + "&pseudo=" + req.body.pseudo;
                             mailOptions = {
                                 to: req.body.email,
-                                subject: "Please confirm your Email account",
-                                text: "Hello,\n\nPlease Click on the link to verify your email."
-                                +"\n\n" + link
+                                subject: "Confirmation compte marine's recipes",
+                                text: "Bonjour" + user.pseudo + ",  Vous vous êtes résement inscrit sur marine's recipe, cliquez sur le lien suivant pour vérifier vôtre email."
+                                +"\n\n" + link 
+                                +"<br>"
+                                +"Bonne journée,"
+                                +"<br>"
+                                +"Marine."
                             }
                             console.log(mailOptions);
                             smtpTransport.sendMail(mailOptions, (error, response) => {
@@ -383,9 +385,9 @@ users.post('/req-reset-password', async (req, res) => {
             mailOptions = {
                 to: user.email,
                 subject: "Mot de passe oublié sur Marine's recipes",
-                text: "Vous recevez cet email car vous (ou une autre personne) avez demandé à réinitialiser le mot de passe de votre compte sur Marine's recipes .\n\n" +
+                text: "Bonjour" + user.pseudo + ",  Vous recevez cet email car vous (ou une autre personne) avez demandé à réinitialiser le mot de passe de votre compte sur Marine's recipes .\n\n" +
                     "Cliquer sur le lien suivant ou coller le dans la barre URL de votre navigateur:\n\n" +
-                    'http://marine-s-recipe.herokuapp.com/response-reset-password/' + resettoken.resettoken + '\n\n' +
+                    'http://marinesrecipes.fr/response-reset-password/' + resettoken.resettoken + '\n\n' +
                     "Si vous n'avez pas demandé à changer votre mot de passe, ignorer cet email et votre mot de passe restera inchangé.\nBonne journée ! \n Marine."
             }
             console.log(mailOptions)
