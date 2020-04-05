@@ -38,13 +38,14 @@ export class ModifierRecetteComponent implements OnInit {
   public unite: UniteDetails
   public qtes: QuantiteDetails[]
   public categories: CategoryDetails[]
-  
+
   public image
+  public image2
   public allIngredients: IngredientDetails[] //ingredients disponibles
   public allUnites: UniteDetails[]
   public allCategories: CategoryDetails[] //catégories disponibles
 
- 
+
 
   constructor(private recetteService: RecettesService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private modalService: NgbModal,
     private http: HttpClient) {
@@ -65,10 +66,12 @@ export class ModifierRecetteComponent implements OnInit {
 
     this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       res => {
-        console.log(res)
-        this.recette.idImage = res[0].idImage
-        console.log(this.recette)
-        this.image = res
+        if (res != []) {
+          console.log(res)
+          this.recette.idImage = res[0].idImage
+          console.log(this.recette)
+          this.image = res[0]
+        }
       }
     );
 
@@ -90,7 +93,7 @@ export class ModifierRecetteComponent implements OnInit {
       }
     )
 
-   
+
     this.getCategory(parseInt(this.route.snapshot.paramMap.get('id')))
 
   }
@@ -98,24 +101,25 @@ export class ModifierRecetteComponent implements OnInit {
   selectImage(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.image = file;
+      this.image2 = file;
     }
   }
 
-  onSubmit(){
+  onSubmit() {
     const formData = new FormData();
-    formData.append('file', this.image);
-    console.log(this.recette)
-
+    formData.append('file', this.image2);
+    console.log("cc")
     this.http.post<any>(`/server/update/${this.recette.idImage}/${this.recette.idRecette}`, formData).subscribe(
       (res) => {
+        console.log(res)
+        this.image = res[0]
         window.location.reload()
       }
     );
 
 
 
-    
+
   }
 
   getCategory(id: any): any {
@@ -136,7 +140,7 @@ export class ModifierRecetteComponent implements OnInit {
 
 
   updateRecipeName(recette: RecipeDetails) {
-    this.recetteService. updateRecipeName(recette).subscribe((res: any) => {
+    this.recetteService.updateRecipeName(recette).subscribe((res: any) => {
       window.location.reload()
     }, (err: any) => {
       console.error(err)
@@ -179,7 +183,7 @@ export class ModifierRecetteComponent implements OnInit {
     );
   }
 
-  updateRecipeIng(recette: RecipeDetails,ingredient: IngredientDetails) {
+  updateRecipeIng(recette: RecipeDetails, ingredient: IngredientDetails) {
     this.recetteService.updateRecipeIng(recette, ingredient).subscribe((res: any) => {
       window.location.reload()
     }, (err: any) => {
@@ -198,51 +202,51 @@ export class ModifierRecetteComponent implements OnInit {
         console.log(err);
       }
       );
-  
+
   }
 
-  deleteRecipeCategory(categorie: CategoryDetails,recette: RecipeDetails){
-  
+  deleteRecipeCategory(categorie: CategoryDetails, recette: RecipeDetails) {
+
     this.recetteService.deleteRecipeCategory(categorie, recette)
-    .subscribe(res => {
-      setTimeout(() => {
-        this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-          categories => {
-            this.allCategories = categories
-          }
-        )
-        this.recetteService.getCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-          categories => {
-            this.categories = categories
-          }
-        )
-      }, 1000)
-    }, (err) => {
-      console.log(err);
-    }
-    );
+      .subscribe(res => {
+        setTimeout(() => {
+          this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+            categories => {
+              this.allCategories = categories
+            }
+          )
+          this.recetteService.getCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+            categories => {
+              this.categories = categories
+            }
+          )
+        }, 1000)
+      }, (err) => {
+        console.log(err);
+      }
+      );
   }
 
-  addRecipeCategory(categorie: CategoryDetails,recette: RecipeDetails){
-    this.recetteService.addRecipeCategory(categorie,recette)
-    .subscribe(res => {
-      setTimeout(() => {
-        this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-          categories => {
-            this.allCategories = categories
-          }
-        )
-        this.recetteService.getCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-          categories => {
-            this.categories = categories
-          }
-        )
-      }, 1000)
+  addRecipeCategory(categorie: CategoryDetails, recette: RecipeDetails) {
+    this.recetteService.addRecipeCategory(categorie, recette)
+      .subscribe(res => {
+        setTimeout(() => {
+          this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+            categories => {
+              this.allCategories = categories
+            }
+          )
+          this.recetteService.getCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+            categories => {
+              this.categories = categories
+            }
+          )
+        }, 1000)
 
-    }, (err) => {
-      console.log(err);
-    }
-    );
+      }, (err) => {
+        console.log(err);
+      }
+      );
   }
 
 
@@ -253,13 +257,13 @@ export class ModifierRecetteComponent implements OnInit {
         this.newIngredient.qte = result.qte
         this.newIngredient.idUnite = result.idUnite
         this.recetteService.addIngredientRecette(this.newIngredient)
-        setTimeout (() => {
+        setTimeout(() => {
           this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
             ingredient => {
               this.ingredients = ingredient
             }
           )
-       }, 1000);
+        }, 1000);
       })
   }
 

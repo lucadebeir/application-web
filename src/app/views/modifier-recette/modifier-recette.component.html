@@ -28,8 +28,8 @@
             </div>
         </div>
         <div *ngIf="image">
-            <figure class="figure" *ngFor="let img of image">
-                <img src="{{img.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
+            <figure class="figure">
+                <img src="{{image.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
                 <hr>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
@@ -98,7 +98,7 @@
             <div class="form-row">
                 <div class="col-md-4 mb-4">
                     <label>Nombre</label>
-                    <input type="number" class="form-control" [(ngModel)]="recette.nbrePart" value="{{recette.nbrePart}}" required>
+                    <input type="number" class="form-control" [(ngModel)]="recette.nbrePart" [ngModelOptions]="{standalone: true}" value="{{recette.nbrePart}}" required>
                     <div class="invalid-tooltip">
                         Rentrez une quantité correcte.
                         <!--Vérifier que c'est pas négatif ou nulle-->
@@ -106,7 +106,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <label>Libellé</label>
-                    <input type="text" class="form-control" [(ngModel)]="recette.libellePart" value="{{recette.libellePart}}" required>
+                    <input type="text" class="form-control" [(ngModel)]="recette.libellePart" [ngModelOptions]="{standalone: true}" value="{{recette.libellePart}}" required>
                     <div class="invalid-tooltip">
                         Rentrez une quantité correcte.
                         <!--Vérifier que c'est pas négatif ou nulle-->
@@ -128,7 +128,7 @@
             <div class="form-row">
                 <div class="col-md-4 mb-4">
                     <label>Préparation</label>
-                    <input type="time" class="form-control" [(ngModel)]="recette.tempsPreparation" value="{{recette.tempsPreparation}}" required>
+                    <input type="time" class="form-control" [(ngModel)]="recette.tempsPreparation" [ngModelOptions]="{standalone: true}" value="{{recette.tempsPreparation}}" required>
                     <div class="invalid-tooltip">
                         Rentrez une quantité correcte.
                         <!--Vérifier que c'est pas négatif ou nulle-->
@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <label>Cuisson</label>
-                    <input type="time" class="form-control" [(ngModel)]="recette.tempsCuisson" value="{{recette.tempsCuisson}}" required>
+                    <input type="time" class="form-control" [(ngModel)]="recette.tempsCuisson" [ngModelOptions]="{standalone: true}" value="{{recette.tempsCuisson}}" required>
                     <div class="invalid-tooltip">
                         Rentrez une quantité correcte.
                         <!--Vérifier que c'est pas négatif ou nulle-->
@@ -261,7 +261,7 @@
             <div class="card-body text-secondary center text-md-center">
 
                 <form (submit)="updateSteps(recette)">
-                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes" [(ngModel)]="recette.etapes" value=" {{recette?.etapes}}"></textarea>
+                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes" [(ngModel)]="recette.etapes" [ngModelOptions]="{standalone: true}" value=" {{recette?.etapes}}"></textarea>
 
                     <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
                 </form>
@@ -273,7 +273,7 @@
             <div class="card-body text-secondary center text-md-center">
 
                 <form (submit)="updateAstuce(recette)">
-                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="astuce" [(ngModel)]="recette.astuce" value=" {{recette?.astuce}}"></textarea>
+                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="astuce" [(ngModel)]="recette.astuce" [ngModelOptions]="{standalone: true}" value=" {{recette?.astuce}}"></textarea>
 
                     <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
                 </form>
