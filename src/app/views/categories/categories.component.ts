@@ -22,7 +22,9 @@ export class CategoriesComponent implements OnInit {
 
     this.recettesService.getAllCategory().subscribe(
       categories => {
+        
         this.categories = categories
+        console.log(this.categories)
       }
     )
   }

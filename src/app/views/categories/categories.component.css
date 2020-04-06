@@ -1,4 +1,4 @@
-#header { 
+#titre {
     text-align: center;
     margin-top: 2em;
 }
@@ -8,12 +8,11 @@
     margin-left: 5em;
 }
 
-
-input{
+input {
     width: 10 em;
 }
 
-#question{
+#question {
     text-align: center;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -26,7 +25,6 @@ input{
     margin-bottom: 2em;
 }
 
-#btn{
-  
+#btn {
     float: right;
 }
