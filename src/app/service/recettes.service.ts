@@ -6,6 +6,7 @@ import { CreateRecipe } from '../views/ajout-recette/ajout-recette.component'
 import { AuthentificationService } from './authentification.service'
 import { element } from 'protractor'
 import { Time } from '@angular/common'
+import { addTimes } from './../utils/Utils'
 
 
 
@@ -24,6 +25,7 @@ export interface RecipeDetails {
     lienImage?: any
     idImage?: number
     ingredients?: IngredientDetails[]
+    globalTime?: string
 }
 
 export interface IngredientDetails {
@@ -97,6 +99,7 @@ export class RecettesService {
                     console.log(data)
                     element.ingredients.push(data[0])
                 })
+                element.globalTime = addTimes(element.tempsPreparation, element.tempsCuisson)
             });
             return data
         }))
@@ -183,6 +186,7 @@ export class RecettesService {
                     element.lienImage = data[0]?.lienImage
                     console.log(data[0])
                 })
+                element.globalTime = addTimes(element.tempsCuisson, element.tempsPreparation)
                 console.log(element)
             });
             return data

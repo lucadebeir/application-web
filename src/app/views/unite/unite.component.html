@@ -1,56 +1,58 @@
-<div id="header">
-  <h1>Unités</h1>
+<div id="titre">
+    <h1>Unités</h1>
 
 </div>
 
 <div id="back">
-  <a routerLink='/handleRecipes'>
-    <svg class="bi bi-arrow-90deg-left" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <a routerLink='/handleRecipes'>
+        <svg class="bi bi-arrow-90deg-left" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M6.104 2.396a.5.5 0 010 .708L3.457 5.75l2.647 2.646a.5.5 0 11-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/>
       <path fill-rule="evenodd" d="M2.75 5.75a.5.5 0 01.5-.5h6.5a2.5 2.5 0 012.5 2.5v5.5a.5.5 0 01-1 0v-5.5a1.5 1.5 0 00-1.5-1.5h-6.5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
     </svg>
-  </a>
+    </a>
 </div>
 
 
 <div class='flex-container'>
 
-  <div>
-    <form class="form-inline my-2 my-lg-0">
-      <input id="rech" class="form-control mr-sm-" type="search" placeholder="Rechercher une unité" aria-label="Search"
-        [formControl]="filter">
-    </form>
-    <table class="table col-md-12 mx-auto" *ngFor="let unite of filteredUnite$ | async">
+    <div>
+        <form class="form-inline my-2 my-lg-0">
+            <input id="rech" class="form-control mr-sm-" type="search" placeholder="Rechercher une unité" aria-label="Search" [formControl]="filter">
+        </form>
+        <table class="table col-md-12 mx-auto" *ngFor="let unite of filteredUnite$ | async">
 
-      <tr>
-        <td>
+            <tr>
+                <td>
 
-          <form (submit)="updateUnite(unite)">
-            <div class="form-row align-items-center">
-              <div class="col-auto">
-                <input id="zone" type="text" class="form-control" name="libelleUnite" value={{unite.libelleUnite}}
-                  [(ngModel)]="unite.libelleUnite">
-              </div>
-              <div class="col-auto">
-                <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
-              </div>
-              <div class="col-auto">
-                <button id="btn" class="btn btn-outline-danger " (click)="deleteUnite(unite.idUnite)">Supprimer</button>
-              </div>
-            </div>
-          </form>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <div>
-    <h6 id="question"> Ajouter une nouvelle unité </h6>
-    <form (submit)="addUnite()">
-      <input type="text" class="form-control" name="libelleUnite" placeholder="libelle unité"
-        [(ngModel)]="unite.libelleUnite">
+                    <form (submit)="updateUnite(unite)">
+                        <div class="form-row align-items-center">
+                            <div class="col-auto">
+                                <input id="zone" type="text" class="form-control" name="libelleUnite" value={{unite.libelleUnite}} [(ngModel)]="unite.libelleUnite">
+                            </div>
 
-      <button id="btn" class="btn btn-outline-info" type="submit">Valider</button>
+                            <div class="col-auto">
+                                <button id="btn" type="submit" class="btn btn-sm btn-warning"><i class="fa fa-pencil" ></i></button>
 
-    </form>
-  </div>
+
+                            </div>
+                            <div class="col-auto">
+
+                                <button id="btn" class="btn btn-sm btn-danger" (click)="deleteUnite(unite.idUnite)"><i class=" fa fa-trash "></i></button>
+
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h6 id="question "> Ajouter une nouvelle unité </h6>
+        <form (submit)="addUnite() ">
+            <input type="text " class="form-control " name="libelleUnite " placeholder="libelle unité " [(ngModel)]="unite.libelleUnite ">
+
+            <button id="btn" class="btn btn-outline-info " type="submit ">Valider</button>
+
+        </form>
+    </div>
 </div>

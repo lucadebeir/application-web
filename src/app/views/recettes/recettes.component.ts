@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { RecipeDetails, RecettesService, CategoryDetails } from '../../service';
+import { RecipeDetails, RecettesService, CategoryDetails, AuthentificationService, FavorisDetails } from '../../service';
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recettes',
   templateUrl: './recettes.component.html',
-  styleUrls: ['./recettes.component.css']
+  styleUrls: ['./recettes.component.scss']
 })
 export class RecettesComponent implements OnInit {
 
@@ -19,7 +19,12 @@ export class RecettesComponent implements OnInit {
   public filter: FormControl
   public filter$: Observable<string>
 
-  constructor(private recetteService: RecettesService, private router: Router) {
+  public newFavori: FavorisDetails = {
+    pseudo : this.auth.getUserDetails().pseudo,
+    idRecette : null 
+  }
+
+  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService) {
     //pour la recherche dynamique
     this.recettes$ = this.recetteService.getAllRecipesAndIngredients()
     this.recettes$.subscribe(data => {
@@ -111,5 +116,50 @@ export class RecettesComponent implements OnInit {
           }
         }
       })
+  }
+
+  addFavoris(id: number) {
+    this.newFavori.idRecette = id
+    this.recetteService.addFavoris(this.newFavori)
+    this.router.navigateByUrl('/favorites').then(() => {
+      window.location.reload()
+    })
+  }
+
+  addTimes (startTime, endTime) {
+    var times = [ 0, 0, 0 ]
+    var max = times.length
+  
+    var a = (startTime || '').split(':')
+    var b = (endTime || '').split(':')
+  
+    // normalize time values
+    for (var i = 0; i < max; i++) {
+      a[i] = isNaN(parseInt(a[i])) ? 0 : parseInt(a[i])
+      b[i] = isNaN(parseInt(b[i])) ? 0 : parseInt(b[i])
+    }
+  
+    // store time values
+    for (var i = 0; i < max; i++) {
+      times[i] = a[i] + b[i]
+    }
+  
+    var hours = times[0]
+    var minutes = times[1]
+    var seconds = times[2]
+  
+    if (seconds >= 60) {
+      var m = (seconds / 60) << 0
+      minutes += m
+      seconds -= 60 * m
+    }
+  
+    if (minutes >= 60) {
+      var h = (minutes / 60) << 0
+      hours += h
+      minutes -= 60 * h
+    }
+  
+    return ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2)
   }
 }

@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-mes-recettes',
   templateUrl: './mes-recettes.component.html',
-  styleUrls: ['./mes-recettes.component.css']
+  styleUrls: ['./mes-recettes.component.scss']
 })
 export class MesRecettesComponent implements OnInit {
 

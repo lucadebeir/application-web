@@ -3,45 +3,56 @@
 </div>
 
 <h5>Les plus vues</h5>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 p-3"  *ngFor="let recette of this.mostPopularRecipes"> <!--Pour chaque recette on représente sa carte-->
-            <div class="card h-100">
-                <img class="card-img-top img-fluid" src="{{recette.lienImage}}" alt="Photo de la recette"><!--mettre image ici-->
-                <div class="card-body">
-                    <h4 class="card-title">{{recette.nomRecette}}</h4>
-               
-                    <span class="badge badge-light" id="fav">{{recette?.nbFavoris}} 
-                        <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg">
-                       <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" clip-rule="evenodd"/>
-                     </svg>
-                   </span>
-                    <span class="badge badge-light" id="view">{{recette.nbVues}} 👁</span>
+
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of this.mostPopularRecipes">
+        <!--Pour chaque recette on représente sa carte-->
+        <div class="card">
+            <div class="header">
+                <img id="photo" src="{{recette.lienImage}}" alt="Photo de la recette">
+                <div class="icon">
+                    <a *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris(recette?.idRecette)"> <i class="fa fa-heart-o"></i></a>
                 </div>
-                <div class="card-footer text-center bg-white">
-                    <button class="btn btn-outline-secondary" (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">Voir la recette</button> 
-                    
             </div>
+            <div class="text">
+                <h3 class="food">
+                    {{recette.nomRecette}}
+                </h3>
+                <i class="fa fa-clock-o"> {{recette.globalTime}}</i>
+                <i class="fa fa-users"> {{recette.nbrePart}} {{recette.libellePart}}</i>
+                <i id="coeur"> {{recette.nbFavoris}} ♥  </i>
+                <i id="vue">{{recette.nbVues}} 👁</i>
+                <br>
+            </div>
+            <a (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]" class="btn">Voir la recette!</a>
         </div>
     </div>
 </div>
 
 
 <h5>Les Nouveautés</h5>
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 p-3"  *ngFor="let recette of this.latestRecipes"> <!--Pour chaque recette on représente sa carte-->
-            <div class="card h-100">
-                <img class="card-img-top img-fluid" src="{{recette.lienImage}}" alt="Photo de la recette"><!--mettre image ici-->
-                <div class="card-body">
-                    <h4 class="card-title">{{recette.nomRecette}}</h4>
-                    <span class="badge badge-light">{{recette.nbFavoris}} ♥</span>
-                    <span class="badge badge-light">{{recette.nbVues}} 👁</span>
+
+<div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of this.latestRecipes">
+        <!--Pour chaque recette on représente sa carte-->
+        <div class="card">
+            <div class="header">
+                <img id="photo" src="{{recette.lienImage}}" alt="Photo de la recette">
+                <div class="icon">
+                    <a *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris(recette?.idRecette)"> <i class="fa fa-heart-o"></i></a>
                 </div>
-                <div class="card-footer text-center bg-white">
-                    <button class="btn btn-outline-secondary" (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">Voir la recette</button> 
-                    
             </div>
+            <div class="text">
+                <h3 class="food">
+                    {{recette.nomRecette}}
+                </h3>
+                <i class="fa fa-clock-o"> {{recette.globalTime}}</i>
+                <i class="fa fa-users"> {{recette.nbrePart}} {{recette.libellePart}}</i>
+                <i id="coeur"> {{recette?.nbFavoris}} ♥  </i>
+                <i id="vue">{{recette?.nbVues}} 👁</i>
+                <br>
+            </div>
+            <a (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]" class="btn">Voir la recette!</a>
         </div>
     </div>
 </div>
