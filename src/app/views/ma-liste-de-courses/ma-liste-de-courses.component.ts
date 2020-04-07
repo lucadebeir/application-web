@@ -10,7 +10,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-ma-liste-de-courses',
   templateUrl: './ma-liste-de-courses.component.html',
-  styleUrls: ['./ma-liste-de-courses.component.css']
+  styleUrls: ['./ma-liste-de-courses.component.scss']
 })
 export class MaListeDeCoursesComponent implements OnInit {
   public ingredients$: Observable<IngredientDetails[]>
@@ -75,14 +75,9 @@ export class MaListeDeCoursesComponent implements OnInit {
         this.ingredientToAdd.idIngredient = result.idIngredient
         console.log(this.ingredientToAdd)
         this.recetteService.addIngredientShoppingList(this.ingredientToAdd)
-          .subscribe(res => {
-          this.router.navigate(['/refresh'], {
-            queryParams: {url:'shoppingList'}
-          })
-        }, (err) => {
-          console.log(err);
-        }
-        );
+        this.router.navigate(['/refresh'], {
+          queryParams: {url:'shoppingList'}
+        })
       })
   }
 }

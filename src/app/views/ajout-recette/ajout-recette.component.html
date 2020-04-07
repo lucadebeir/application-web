@@ -1,14 +1,14 @@
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('select').formSelect();
         $('select.select_all').siblings('ul').prepend('<li id=sm_select_all><span>Select All</span></li>');
-        $('li#sm_select_all').on('click', function () {
+        $('li#sm_select_all').on('click', function() {
             var jq_elem = $(this),
                 jq_elem_span = jq_elem.find('span'),
                 select_all = jq_elem_span.text() == 'Select All',
                 set_text = select_all ? 'Select None' : 'Select All';
             jq_elem_span.text(set_text);
-            jq_elem.siblings('li').filter(function () {
+            jq_elem.siblings('li').filter(function() {
                 return $(this).find('input').prop('checked') != select_all;
             }).click();
         });
@@ -50,9 +50,7 @@
             <form>
                 <div id="ingrForm" class="form-row">
                     <div class="col-md-4 mb-4">
-                        <ng-multiselect-dropdown [data]="categories" placeholder="sélectionner"
-                            [settings]="dropdownSettings" [(ngModel)]="selectedItems"
-                            [ngModelOptions]="{standalone: true}">
+                        <ng-multiselect-dropdown [data]="categories" placeholder="sélectionner" [settings]="dropdownSettings" [(ngModel)]="selectedItems" [ngModelOptions]="{standalone: true}">
                         </ng-multiselect-dropdown>
                         <div class="invalid-tooltip">
                             Selectionnez une catégorie.
@@ -65,26 +63,24 @@
         <div class="element 4 card border-secondary col-md-6">
             <div class="card-header">Nombre de parts</div>
             <br>
-                <div id="ingrForm" class="form-row">
-                    <div class="col-md-4 mb-4">
-                        <label>Nombre</label>
-                        <input type="number" class="form-control" formControlName="nbrePart"
-                            required>
-                        <div class="invalid-tooltip">
-                            Rentrez une quantité correcte.
-                            <!--Vérifier que c'est pas négatif ou nulle-->
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <label>Libellé</label>
-                        <input type="text" class="form-control" formControlName="libellePart"
-                            required>
-                        <div class="invalid-tooltip">
-                            Rentrez une quantité correcte.
-                            <!--Vérifier que c'est pas négatif ou nulle-->
-                        </div>
+            <div id="ingrForm" class="form-row">
+                <div class="col-md-4 mb-4">
+                    <label>Nombre</label>
+                    <input type="number" class="form-control" formControlName="nbrePart" required>
+                    <div class="invalid-tooltip">
+                        Rentrez une quantité correcte.
+                        <!--Vérifier que c'est pas négatif ou nulle-->
                     </div>
                 </div>
+                <div class="col-md-4 mb-4">
+                    <label>Libellé</label>
+                    <input type="text" class="form-control" formControlName="libellePart" required>
+                    <div class="invalid-tooltip">
+                        Rentrez une quantité correcte.
+                        <!--Vérifier que c'est pas négatif ou nulle-->
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="element 5 card border-secondary col-md-6">
@@ -92,14 +88,12 @@
             <form [formGroup]="ingredientForm">
                 <!--formulaire ingrédients-->
                 <div formArrayName="ingredient">
-                    <div *ngFor="let ing of formData['controls']; let idx = index" [formGroupName]="idx"
-                        class="ingredient">
+                    <div *ngFor="let ing of formData['controls']; let idx = index" [formGroupName]="idx" class="ingredient">
                         <!--idx = indexe d'une ligne ingrédient du formulaire-->
                         <div id="ingrForm" class="form-row">
                             <div class="col-md-3 mb-3">
                                 <label for="validationTooltip04">Ingrédient</label>
-                                <select class="custom-select" id="validationTooltip04" formControlName="idIngredient"
-                                    required>
+                                <select class="custom-select" id="validationTooltip04" formControlName="idIngredient" required>
                                     <option *ngFor="let ingredient of ingredients" [ngValue]="ingredient.idIngredient"
                                         [disabled]="ingredient.disabled">
                                         {{ingredient.nomIngredient}}</option>
@@ -111,8 +105,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationTooltip05">Quantité</label>
-                                <input type="number" class="form-control" id="validationTooltip05" formControlName="qte"
-                                    required>
+                                <input type="number" class="form-control" id="validationTooltip05" formControlName="qte" required>
                                 <div class="invalid-tooltip">
                                     Rentrez une quantité correcte.
                                     <!--Vérifier que c'est pas négatif ou nulle-->
@@ -121,8 +114,7 @@
 
                             <div class="col-md-3 mb-3">
                                 <label for="validationTooltip04">Unité</label>
-                                <select class="custom-select" id="validationTooltip04" formControlName="idUnite"
-                                    required>
+                                <select class="custom-select" id="validationTooltip04" formControlName="idUnite" required>
                                     <option *ngFor="let unite of unites" [ngValue]="unite.idUnite">
                                         {{unite.libelleUnite}}
                                     </option>
@@ -147,16 +139,13 @@
                                 <div class="form-group">
                                     <label for="nomIngredient"> Nom de l'ingrédient </label>
                                     <div class="input-group">
-                                        <input id="nomIngredient" class="form-control" placeholder="Cacahuète"
-                                            #nomIngredient="ngModel" [(ngModel)]="newIngredient.nomIngredient"
-                                            [ngModelOptions]="{standalone: true}">
+                                        <input id="nomIngredient" class="form-control" placeholder="Cacahuète" #nomIngredient="ngModel" [(ngModel)]="newIngredient.nomIngredient" [ngModelOptions]="{standalone: true}">
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button tyoe="button" class="btn btn-outline-dark"
-                                (click)="modal.close(newIngredient.nomIngredient)">Ajouter</button>
+                            <button tyoe="button" class="btn btn-outline-dark" (click)="modal.close(newIngredient.nomIngredient)">Ajouter</button>
                         </div>
                     </ng-template>
 
@@ -172,41 +161,37 @@
         <div class="element 6 card border-secondary col-md-6">
             <div class="card-header">Temps</div>
             <br>
-                <div id="ingrForm" class="form-row">
-                    <div class="col-md-4 mb-4">
-                        <label>Préparation</label>
-                        <input type="time" class="form-control" formControlName="tempsPreparation"
-                            required>
-                        <div class="invalid-tooltip">
-                            Rentrez une quantité correcte.
-                            <!--Vérifier que c'est pas négatif ou nulle-->
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-4">
-                        <label>Cuisson</label>
-                        <input type="time" class="form-control" formControlName="tempsCuisson"
-                            required>
-                        <div class="invalid-tooltip">
-                            Rentrez une quantité correcte.
-                            <!--Vérifier que c'est pas négatif ou nulle-->
-                        </div>
+            <div id="ingrForm" class="form-row">
+                <div class="col-md-4 mb-4">
+                    <label>Préparation</label>
+                    <input type="time" class="form-control" formControlName="tempsPreparation" required>
+                    <div class="invalid-tooltip">
+                        Rentrez une quantité correcte.
+                        <!--Vérifier que c'est pas négatif ou nulle-->
                     </div>
                 </div>
+                <div class="col-md-4 mb-4">
+                    <label>Cuisson</label>
+                    <input type="time" class="form-control" formControlName="tempsCuisson" required>
+                    <div class="invalid-tooltip">
+                        Rentrez une quantité correcte.
+                        <!--Vérifier que c'est pas négatif ou nulle-->
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="element 7 card border-secondary col-md-6">
             <div class="card-header">Préparation</div>
             <div class="card-body">
-                <textarea class="form-control" formControlName="etapes" id="exampleFormControlTextarea1" rows="8"
-                    required></textarea>
+                <textarea class="form-control" formControlName="etapes" id="exampleFormControlTextarea1" rows="8" required></textarea>
             </div>
         </div>
 
         <div class="element 8 card border-secondary col-md-6">
             <div class="card-header">Astuce</div>
             <div class="card-body">
-                <textarea class="form-control" formControlName="astuce" id="exampleFormControlTextarea1" rows="8"
-                    required></textarea>
+                <textarea class="form-control" formControlName="astuce" id="exampleFormControlTextarea1" rows="8" required></textarea>
             </div>
         </div>
 

@@ -12,13 +12,13 @@
             <h2></h2>
 
             <p id="timer">
-                <img src="../../../assets/img/préparation.png" width="50em" height="50em"> {{recette?.tempsPreparation}}
+                <img src="../../../assets/img/preparation.png" width="50em" height="50em"> {{recette?.tempsPreparation}}
 
                 <img src="../../../assets/img/cuisson.png" width="50em" height="50em"> {{recette?.tempsCuisson}}
 
             </p>
             <p>
-                <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris()">♥ Ajouter le recettes à mes favoris</button> </p>
+                <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris()">♥ Ajouter la recettes à mes favoris</button> </p>
 
 
 

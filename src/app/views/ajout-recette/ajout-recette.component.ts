@@ -11,7 +11,7 @@ import { Time } from '@angular/common';
 @Component({
   selector: 'app-ajout-recette',
   templateUrl: './ajout-recette.component.html',
-  styleUrls: ['./ajout-recette.component.css']
+  styleUrls: ['./ajout-recette.component.scss']
 })
 export class AjoutRecetteComponent implements OnInit {
 
