@@ -1,282 +1,287 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<!--lien pour avoir le petit logo de poubelle-->
-
-<form class="form-inline" id="titre" (submit)="updateRecipeName(recette)">
-
-
-    <div class="form-group mb-2">
-        <input id="zone" type="text" class="form-control" name="nomRecette" value="{{recette?.nomRecette}}" #nomRecette="ngModel" [(ngModel)]="recette.nomRecette">
-    </div>
-
-    <button id="btnTitre" class="btn btn-outline-warning" type="submit">Modifier</button>
-
-</form>
-
-<form>
-    <div id="photo">
-        <div *ngIf="!image">
-            <div style="text-align: center">
-                <form>
-                    <div>
-                        <input type="file" name="image" (change)="selectImage($event)" />
-                    </div>
-                    <br>
-                    <div>
-                        <button type="submit" class="btn btn-warning" (click)="onSubmit()">Modifier</button>
-                    </div>
-                </form>
-            </div>
+<section class="contact pt-100 pb-100" id="contact">
+    <div class="container">
+        <div class="text-center">
+            <h1>Modifier la recette</h1>
         </div>
-        <div *ngIf="image">
-            <figure class="figure">
-                <img src="{{image.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
-                <hr>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+
+        <table class="table col-md-8 mx-auto">
+            <form class="form-inline" id="titre" (submit)="updateRecipeName(recette)">
+
+
+                <tr>
+                    <td>
+                        <input id="zone" type="text" class="form-control" name="nomRecette" value="{{recette?.nomRecette}}" #nomRecette="ngModel" [(ngModel)]="recette.nomRecette">
+                    </td>>
+                    <td>
+                        <button id="btnTitre" class="btn btn-outline-warning" type="submit">Modifier</button>
+                    </td>
+            </form>
+
+            <form>
+                <div id="photo">
+                    <div *ngIf="!image">
+                        <div style="text-align: center">
+                            <form>
+                                <div>
+                                    <input type="file" name="image" (change)="selectImage($event)" />
+                                </div>
+                                <br>
+                                <div>
+                                    <button type="submit" class="btn btn-warning" (click)="onSubmit()">Modifier</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div *ngIf="image">
+                        <figure class="figure">
+                            <img src="{{image.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
+                            <hr>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                     Modifier l'image de la recette
                 </button>
 
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modification de l'image de la recette
-                                </h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modification de l'image de la recette
+                                            </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-                            </div>
-                            <div class="modal-body">
-                                <figcaption class="figure-caption">
-                                    <!--bouton modifier photo à faire-->
-                                    <div style="text-align: center">
-                                        <form>
-                                            <div>
-                                                <input type="file" name="image" (change)="selectImage($event)" />
-                                            </div>
-                                        </form>
+                                        </div>
+                                        <div class="modal-body">
+                                            <figcaption class="figure-caption">
+                                                <!--bouton modifier photo à faire-->
+                                                <div style="text-align: center">
+                                                    <form>
+                                                        <div>
+                                                            <input type="file" name="image" (change)="selectImage($event)" />
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </figcaption>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" (click)="onSubmit()">Modifier</button>
+                                        </div>
                                     </div>
-                                </figcaption>
+                                </div>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary" (click)="onSubmit()">Modifier</button>
+                            <hr>
+                        </figure>
+                    </div>
+                </div>
+            </form>
+
+            <!--afficher la/ les catégorie-->
+            <div id="conteneur1">
+                <!--afficher la/ les catégorie-->
+                <div id="cat">Catégories</div>
+                <!--catégories de la recette-->
+                <div *ngFor="let categ of categories">
+                    <button id="poubelle" class="btn btn-sm btn-danger" (click)="deleteRecipeCategory(categ,recette)"><i
+                class="fa fa-trash"></i></button> {{categ.libelleCategorie}}
+                </div>
+                <!--catégorie dont la recette ne fait pas partie-->
+                <div *ngFor="let cat of allCategories">
+                    <button id="add" class="btn btn-sm btn-success" (click)="addRecipeCategory(cat,recette)"><i
+                class="fa fa-plus-circle"></i></button> {{cat.libelleCategorie}}
+                </div>
+            </div>
+
+            <br>
+
+            <div id="conteneur2">
+                <div class="card border-secondary col-md-4">
+                    <div class="card-header">Nombre de parts</div>
+                    <br>
+                    <form (submit)="updatePart(recette)">
+                        <div class="form-row">
+                            <div class="col-md-4 mb-4">
+                                <label>Nombre</label>
+                                <input type="number" class="form-control" [(ngModel)]="recette.nbrePart" [ngModelOptions]="{standalone: true}" value="{{recette.nbrePart}}" required>
+                                <div class="invalid-tooltip">
+                                    Rentrez une quantité correcte.
+                                    <!--Vérifier que c'est pas négatif ou nulle-->
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label>Libellé</label>
+                                <input type="text" class="form-control" [(ngModel)]="recette.libellePart" [ngModelOptions]="{standalone: true}" value="{{recette.libellePart}}" required>
+                                <div class="invalid-tooltip">
+                                    Rentrez une quantité correcte.
+                                    <!--Vérifier que c'est pas négatif ou nulle-->
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                        <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
+                    </form>
+
                 </div>
-                <hr>
-            </figure>
-        </div>
-    </div>
-</form>
 
-<!--afficher la/ les catégorie-->
-<div id="conteneur1">
-    <!--afficher la/ les catégorie-->
-    <div id="cat">Catégories</div>
-    <!--catégories de la recette-->
-    <div *ngFor="let categ of categories">
-        <button id="poubelle" class="btn btn-sm btn-danger" (click)="deleteRecipeCategory(categ,recette)"><i
-                class="fa fa-trash"></i></button> {{categ.libelleCategorie}}
-    </div>
-    <!--catégorie dont la recette ne fait pas partie-->
-    <div *ngFor="let cat of allCategories">
-        <button id="add" class="btn btn-sm btn-success" (click)="addRecipeCategory(cat,recette)"><i
-                class="fa fa-plus-circle"></i></button> {{cat.libelleCategorie}}
-    </div>
-</div>
+                <br>
 
-<br>
-
-<div id="conteneur2">
-    <div class="card border-secondary col-md-4">
-        <div class="card-header">Nombre de parts</div>
-        <br>
-        <form (submit)="updatePart(recette)">
-            <div class="form-row">
-                <div class="col-md-4 mb-4">
-                    <label>Nombre</label>
-                    <input type="number" class="form-control" [(ngModel)]="recette.nbrePart" [ngModelOptions]="{standalone: true}" value="{{recette.nbrePart}}" required>
-                    <div class="invalid-tooltip">
-                        Rentrez une quantité correcte.
-                        <!--Vérifier que c'est pas négatif ou nulle-->
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <label>Libellé</label>
-                    <input type="text" class="form-control" [(ngModel)]="recette.libellePart" [ngModelOptions]="{standalone: true}" value="{{recette.libellePart}}" required>
-                    <div class="invalid-tooltip">
-                        Rentrez une quantité correcte.
-                        <!--Vérifier que c'est pas négatif ou nulle-->
-                    </div>
-                </div>
-            </div>
-
-            <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
-        </form>
-
-    </div>
-
-    <br>
-
-    <div class="card border-secondary col-md-4">
-        <div class="card-header">Temps</div>
-        <br>
-        <form (submit)="updateTemps(recette)">
-            <div class="form-row">
-                <div class="col-md-4 mb-4">
-                    <label>Préparation</label>
-                    <input type="time" class="form-control" [(ngModel)]="recette.tempsPreparation" [ngModelOptions]="{standalone: true}" value="{{recette.tempsPreparation}}" required>
-                    <div class="invalid-tooltip">
-                        Rentrez une quantité correcte.
-                        <!--Vérifier que c'est pas négatif ou nulle-->
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <label>Cuisson</label>
-                    <input type="time" class="form-control" [(ngModel)]="recette.tempsCuisson" [ngModelOptions]="{standalone: true}" value="{{recette.tempsCuisson}}" required>
-                    <div class="invalid-tooltip">
-                        Rentrez une quantité correcte.
-                        <!--Vérifier que c'est pas négatif ou nulle-->
-                    </div>
-                </div>
-            </div>
-
-            <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
-        </form>
-
-    </div>
-
-</div>
-
-
-<br>
-
-<!--ingrédients-->
-<div id="conteneur">
-    <div class="element 1">
-        <div id="card" class="element 1 card border-secondary mb-3 col-lg-6 col-md-9 col-sm-6 p-3">
-            <div class="card-header">Ingrédients</div>
-            <ul>
-                <div class="card-body text-secondary" id="ing">
-                    <div *ngFor="let ingredient of ingredients" class="card-text">
-
-                        <form (submit)="updateRecipeIng(recette,ingredient)">
-
-                            <h3>{{ingredient.nomIngredient}}</h3>
-
-
-
-                            <div class="form-row">
-
-                                <div class="col-md-3 mb-3">
-                                    <input id="qte" type="text" class="form-control" name="qte" value="{{ingredient.qte}}" #qte="ngModel" [(ngModel)]="ingredient.qte">
+                <div class="card border-secondary col-md-4">
+                    <div class="card-header">Temps</div>
+                    <br>
+                    <form (submit)="updateTemps(recette)">
+                        <div class="form-row">
+                            <div class="col-md-4 mb-4">
+                                <label>Préparation</label>
+                                <input type="time" class="form-control" [(ngModel)]="recette.tempsPreparation" [ngModelOptions]="{standalone: true}" value="{{recette.tempsPreparation}}" required>
+                                <div class="invalid-tooltip">
+                                    Rentrez une quantité correcte.
+                                    <!--Vérifier que c'est pas négatif ou nulle-->
                                 </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <label>Cuisson</label>
+                                <input type="time" class="form-control" [(ngModel)]="recette.tempsCuisson" [ngModelOptions]="{standalone: true}" value="{{recette.tempsCuisson}}" required>
+                                <div class="invalid-tooltip">
+                                    Rentrez une quantité correcte.
+                                    <!--Vérifier que c'est pas négatif ou nulle-->
+                                </div>
+                            </div>
+                        </div>
 
-                                <div class="col-md-3 mb-3">
-                                    <select class="custom-select" id="unit" #idUnite="ngModel" [(ngModel)]="ingredient.idUnite" [ngModelOptions]="{standalone: true}" required>
+                        <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <br>
+
+            <!--ingrédients-->
+            <div id="conteneur">
+                <div class="element 1">
+                    <div id="card" class="element 1 card border-secondary mb-3 col-lg-6 col-md-9 col-sm-6 p-3">
+                        <div class="card-header">Ingrédients</div>
+                        <ul>
+                            <div class="card-body text-secondary" id="ing">
+                                <div *ngFor="let ingredient of ingredients" class="card-text">
+
+                                    <form (submit)="updateRecipeIng(recette,ingredient)">
+
+                                        <h3>{{ingredient.nomIngredient}}</h3>
+
+
+
+                                        <div class="form-row">
+
+                                            <div class="col-md-3 mb-3">
+                                                <input id="qte" type="text" class="form-control" name="qte" value="{{ingredient.qte}}" #qte="ngModel" [(ngModel)]="ingredient.qte">
+                                            </div>
+
+                                            <div class="col-md-3 mb-3">
+                                                <select class="custom-select" id="unit" #idUnite="ngModel" [(ngModel)]="ingredient.idUnite" [ngModelOptions]="{standalone: true}" required>
                                         <option [ngValue]="ingredient.idUnite" selected>{{ingredient.libelleUnite}}
                                         </option>
                                         <option *ngFor="let unite of allUnites" [ngValue]="unite.idUnite">
                                             {{unite.libelleUnite}}
                                         </option>
                                     </select>
-                                </div>
-                            </div>
+                                            </div>
+                                        </div>
 
-                            <button id="crayon" class="btn btn-sm btn-warning">Modifier</button>
+                                        <button id="crayon" class="btn btn-sm btn-warning">Modifier</button>
 
-                            <button id="poubelle" class="btn btn-sm btn-danger" (click)=deleteIngredientRececipe(ingredient,recette)><i
+                                        <button id="poubelle" class="btn btn-sm btn-danger" (click)=deleteIngredientRececipe(ingredient,recette)><i
                                     class="fa fa-trash"></i></button>
 
 
 
 
-                        </form>
+                                    </form>
 
-                    </div>
-                </div>
-                <ng-template #content let-modal>
-                    <!--ce qui s'ouvre quand on clique sur créer un nouvel ingrédient-->
-                    <div class="modal-header">
-                        <h4 class="modal-title"></h4>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="form-row">
-                                <div class="col-md-3 mb-3">
-                                    <label for="validationTooltip04">Ingrédient</label>
-                                    <select class="custom-select" id="validationTooltip04" #idIngredient="ngModel" [(ngModel)]="newIngredient.idIngredient" [ngModelOptions]="{standalone: true}" required>
+                                </div>
+                            </div>
+                            <ng-template #content let-modal>
+                                <!--ce qui s'ouvre quand on clique sur créer un nouvel ingrédient-->
+                                <div class="modal-header">
+                                    <h4 class="modal-title"></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="col-md-3 mb-3">
+                                                <label for="validationTooltip04">Ingrédient</label>
+                                                <select class="custom-select" id="validationTooltip04" #idIngredient="ngModel" [(ngModel)]="newIngredient.idIngredient" [ngModelOptions]="{standalone: true}" required>
                                         <option *ngFor="let ingredient of allIngredients"
                                             [ngValue]="ingredient.idIngredient">
                                             {{ingredient.nomIngredient}}</option>
                                     </select>
-                                    <div class="invalid-tooltip">
-                                        Selectionnez un ingrédient.
-                                    </div>
-                                </div>
+                                                <div class="invalid-tooltip">
+                                                    Selectionnez un ingrédient.
+                                                </div>
+                                            </div>
 
-                                <div class="col-md-3 mb-3">
-                                    <label for="validationTooltip05">Quantité</label>
-                                    <input type="number" class="form-control" id="validationTooltip05" #qte="ngModel" [(ngModel)]="newIngredient.qte" [ngModelOptions]="{standalone: true}" required>
-                                    <div class="invalid-tooltip">
-                                        Rentrez une quantité correcte.
-                                        <!--Vérifier que c'est pas négatif ou nulle-->
-                                    </div>
-                                </div>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="validationTooltip05">Quantité</label>
+                                                <input type="number" class="form-control" id="validationTooltip05" #qte="ngModel" [(ngModel)]="newIngredient.qte" [ngModelOptions]="{standalone: true}" required>
+                                                <div class="invalid-tooltip">
+                                                    Rentrez une quantité correcte.
+                                                    <!--Vérifier que c'est pas négatif ou nulle-->
+                                                </div>
+                                            </div>
 
-                                <div class="col-md-3 mb-3">
-                                    <label for="validationTooltip04">Unité</label>
-                                    <select class="custom-select" id="validationTooltip04" #idUnite="ngModel" [(ngModel)]="newIngredient.idUnite" [ngModelOptions]="{standalone: true}" required>
+                                            <div class="col-md-3 mb-3">
+                                                <label for="validationTooltip04">Unité</label>
+                                                <select class="custom-select" id="validationTooltip04" #idUnite="ngModel" [(ngModel)]="newIngredient.idUnite" [ngModelOptions]="{standalone: true}" required>
                                         <option *ngFor="let unite of allUnites" [ngValue]="unite.idUnite">
                                             {{unite.libelleUnite}}
                                         </option>
                                     </select>
-                                    <div class="invalid-tooltip">
-                                        Selectionnez une unité.
-                                    </div>
+                                                <div class="invalid-tooltip">
+                                                    Selectionnez une unité.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                            </div>
-                        </form>
+                                <div class="modal-footer">
+                                    <button tyoe="button" class="btn btn-outline-dark" (click)="modal.close(newIngredient)">Ajouter</button>
+                                </div>
+                            </ng-template>
+
+                            <button class="btn btn-outline-primary" (click)="open(content)">Ajouter un nouvel ingrédient</button>
+
+
+                            <!--on appelle le modal-->
+
+
+                        </ul>
                     </div>
-                    <div class="modal-footer">
-                        <button tyoe="button" class="btn btn-outline-dark" (click)="modal.close(newIngredient)">Ajouter</button>
+                </div>
+                <div class="element 2">
+                    <div id="card" class="element 2 card border-secondary col-md-6">
+                        <div class="card-header">Préparation</div>
+                        <div class="card-body text-secondary center text-md-center">
+
+                            <form (submit)="updateSteps(recette)">
+                                <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes" [(ngModel)]="recette.etapes" [ngModelOptions]="{standalone: true}" value=" {{recette?.etapes}}"></textarea>
+
+                                <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
+                            </form>
+                        </div>
                     </div>
-                </ng-template>
 
-                <button class="btn btn-outline-primary" (click)="open(content)">Ajouter un nouvel ingrédient</button>
+                    <div id="card" class="element 2 card border-secondary mb-3 col-lg-6 col-md-6 col-sm-6">
+                        <div class="card-header">Astuce</div>
+                        <div class="card-body text-secondary center text-md-center">
 
+                            <form (submit)="updateAstuce(recette)">
+                                <textarea class="form-control" #etapes="ngModel" rows="15em" name="astuce" [(ngModel)]="recette.astuce" [ngModelOptions]="{standalone: true}" value=" {{recette?.astuce}}"></textarea>
 
-                <!--on appelle le modal-->
-
-
-            </ul>
-        </div>
-    </div>
-    <div class="element 2">
-        <div id="card" class="element 2 card border-secondary col-md-6">
-            <div class="card-header">Préparation</div>
-            <div class="card-body text-secondary center text-md-center">
-
-                <form (submit)="updateSteps(recette)">
-                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes" [(ngModel)]="recette.etapes" [ngModelOptions]="{standalone: true}" value=" {{recette?.etapes}}"></textarea>
-
-                    <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
-                </form>
-            </div>
-        </div>
-
-        <div id="card" class="element 2 card border-secondary mb-3 col-lg-6 col-md-6 col-sm-6">
-            <div class="card-header">Astuce</div>
-            <div class="card-body text-secondary center text-md-center">
-
-                <form (submit)="updateAstuce(recette)">
-                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="astuce" [(ngModel)]="recette.astuce" [ngModelOptions]="{standalone: true}" value=" {{recette?.astuce}}"></textarea>
-
-                    <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
-                </form>
-            </div>
-        </div>
-    </div>
+                                <button id="btn" class="btn btn-outline-warning" type="submit">Modifier</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>

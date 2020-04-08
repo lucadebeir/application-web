@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-gerer-les-recettes',
   templateUrl: './gerer-les-recettes.component.html',
-  styleUrls: ['./gerer-les-recettes.component.css']
+  styleUrls: ['./gerer-les-recettes.component.scss']
 })
 export class GererLesRecettesComponent implements OnInit {
 
