@@ -558,4 +558,11 @@ export class RecettesService {
         }))
     }
 
+    public deleteCommentaire(id: any): Observable<any> {
+        const url = `/server/commentaire/${id}/delete`;
+        return this.http.delete<any>(url).pipe(
+            tap(_ => console.log(`deleted ${id}`)),
+        );
+    }
+
 }    

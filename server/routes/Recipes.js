@@ -1007,5 +1007,22 @@ recipe.get('/recipe/:id/commentaires', (req, res) => {
 
 )
 
+//supprimer un commentaire
+recipe.delete('/commentaire/:id/delete', (req, res) => {
+    Commentaire.destroy({
+            where: {
+                idCommentaire: req.params.id
+
+            }
+        })
+        .then(() => {
+
+            res.send('Comment deleted!')
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 
 module.exports = recipe

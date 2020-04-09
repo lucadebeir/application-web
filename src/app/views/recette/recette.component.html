@@ -81,9 +81,11 @@
 
         <div class="comment-container theme--light">
             <div class="comments">
-                <div class="card v-card v-sheet theme--light elevation-2"><span class="headline">Mon commentaire..</span>
+                <div *ngIf="auth.isLoggedIn()" class="card v-card v-sheet theme--light elevation-2"><span class="headline">Laisser un commentaire</span>
                     <div class="sign-in-wrapper">
-                        <p class="caption disclaimer">Mettre un formulaire ici</p>
+                        <p class="caption disclaimer">
+                            <textarea> formulaire</textarea>
+                        </p>
                         <p class="error-message"></p>
                     </div>
                     <!---->
@@ -98,6 +100,8 @@
                             <p>{{commentaire.message}}</p>
                         </div>
                         <div class="actions">
+                            <button id="btn" *ngIf="auth.isAdmin()" class="btn btn-sm btn-danger" (click)="deleteCommentaire(commentaire.idCommentaire)"><i class=" fa fa-trash "></i></button>
+
                             <!---->
                             <!---->
                             <!---->

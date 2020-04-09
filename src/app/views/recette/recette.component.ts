@@ -116,5 +116,17 @@ export class RecetteComponent implements OnInit {
 
    
   }
+  deleteCommentaire(idCommentaire: any){
+    this.recetteService.deleteRecipe(idCommentaire)
+      .subscribe(res => {
+        this.router.navigate(['/recipe/' + parseInt(this.route.snapshot.paramMap.get('id'))]).then(() => {
+          window.location.reload()
+        })
+        }, (err) => {
+          console.log(err);
+        }
+      );
+      window.location.reload() /* rafraichit la page */
+  }
 
 }

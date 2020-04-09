@@ -14,11 +14,14 @@ export class AccueilComponent implements OnInit {
   public mostPopularRecipes: RecipeDetails[]
 
   public newFavori: FavorisDetails = {
-    pseudo : this.auth.getUserDetails().pseudo,
+    pseudo : '',
     idRecette : null 
   }
 
   constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService) { 
+    if(this.auth.isLoggedIn()) {
+      this.newFavori.pseudo = this.auth.getUserDetails().pseudo
+    }
   }
 
   addTimes (startTime, endTime) {

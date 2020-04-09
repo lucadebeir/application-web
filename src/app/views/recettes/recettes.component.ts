@@ -20,7 +20,7 @@ export class RecettesComponent implements OnInit {
   public filter$: Observable<string>
 
   public newFavori: FavorisDetails = {
-    pseudo : this.auth.getUserDetails().pseudo,
+    pseudo : '',
     idRecette : null 
   }
 
@@ -49,6 +49,10 @@ export class RecettesComponent implements OnInit {
     this.filter$.subscribe(data => {
       console.log(data)
     })
+    
+    if(this.auth.isLoggedIn()) {
+      this.newFavori.pseudo = this.auth.getUserDetails().pseudo
+    }
   }
 
   //dans ngOnInit on récupère les données à afficher au lancement de la page
