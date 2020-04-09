@@ -84,9 +84,10 @@
                 <div *ngIf="auth.isLoggedIn()" class="card v-card v-sheet theme--light elevation-2"><span class="headline">Laisser un commentaire</span>
                     <div class="sign-in-wrapper">
                         <p class="caption disclaimer">
-                            <textarea> formulaire</textarea>
+                            <textarea class="form-control" #message="ngModel" [(ngModel)]="newCommentaire.message" [ngModelOptions]="{standalone: true}" id="exampleFormControlTextarea1" rows="8" required></textarea>
                         </p>
                         <p class="error-message"></p>
+                        <button (click)="addCommentaire(newCommentaire.message)">Envoyer</button>
                     </div>
                     <!---->
                 </div>

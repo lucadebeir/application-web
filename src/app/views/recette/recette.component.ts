@@ -28,6 +28,12 @@ export class RecetteComponent implements OnInit {
   }
 
   public commentaires : CommentaireDetails[]
+  public newCommentaire : CommentaireDetails = {
+    message: '',
+    dateCommentaire: null,
+    ecritPar: this.auth.getUserDetails().pseudo,
+    concerne: parseInt(this.route.snapshot.paramMap.get('id'))
+  }
 
   constructor(public auth: AuthentificationService ,private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {
   }
@@ -117,7 +123,7 @@ export class RecetteComponent implements OnInit {
    
   }
   deleteCommentaire(idCommentaire: any){
-    this.recetteService.deleteRecipe(idCommentaire)
+    this.recetteService.deleteCommentaire(idCommentaire)
       .subscribe(res => {
         this.router.navigate(['/recipe/' + parseInt(this.route.snapshot.paramMap.get('id'))]).then(() => {
           window.location.reload()
@@ -127,6 +133,13 @@ export class RecetteComponent implements OnInit {
         }
       );
       window.location.reload() /* rafraichit la page */
+  }
+
+  addCommentaire(message: any) {
+    this.newCommentaire.message = message
+    console.log(this.newCommentaire)
+    this.recetteService.addCommentaire(this.newCommentaire)
+    window.location.reload()
   }
 
 }

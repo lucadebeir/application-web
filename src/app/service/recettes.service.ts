@@ -71,11 +71,11 @@ export interface ImageDetails {
 }
 
 export interface CommentaireDetails{
-    idCommentaire: number
-    message: Text
-    dateCommentaire: string
-    ecritPar: string
-    concerne: number
+    idCommentaire?: number
+    message?: string
+    dateCommentaire?: string
+    ecritPar?: string
+    concerne?: number
     nomRecette?: string
 
 }
@@ -550,6 +550,20 @@ export class RecettesService {
                 console.log(data)
                 return data
             }))
+    }
+
+    public addCommentaire(commentaire: CommentaireDetails): any {
+        this.http.post<any>(`/server/commentaires/add`, commentaire)
+            .subscribe((data: any) => {
+                return data
+            })
+    }
+
+    public modifyCommentaire(commentaire: CommentaireDetails): any {
+        this.http.post<any>(`/server/commentaires/update`, commentaire)
+            .subscribe((data: any) => {
+                return data
+            })
     }
 
     public getCommentaireRecipe(id:any): Observable<any>{

@@ -11,7 +11,7 @@
                     <span class="displayName title"><a routerLink="/recipe/{{commentaire.concerne}}">{{commentaire.nomRecette}}</a></span> <span class="displayName caption">{{commentaire.dateCommentaire}}</span></div>
                 <!---->
                 <div class="wrapper comment">
-                    <p>{{commentaire.message}} ecrire dans un imput pour modifier
+                    <p>{{commentaire.message}}
                     </p>
                 </div>
                 <div class="actions">
@@ -19,6 +19,26 @@
                    -->
                     <!---->
                     <!---->
+                    <button id="add" class="btn btn-outline-warning" (click)="open(content)">Modifier</button>
+                    <ng-template #content let-modal>
+                        <div class="modal-header">
+                            <h4 class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <textarea #message="ngModel" [(ngModel)]="commentaire.message" [ngModelOptions]="{standalone: true}">
+                                            {{commentaire.message}}
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button tyoe="button" class="btn btn-outline-yellow" (click)="modal.close(commentaire)">Modifier</button>
+                        </div>
+                    </ng-template>
                 </div>
                 <div class="v-dialog__container" style="display: block;"></div>
             </div>

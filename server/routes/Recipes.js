@@ -985,13 +985,54 @@ recipe.post('/update/:idImage/:idRecette', async(req, res) => {
 
 //Commentaires
 
+//ajout commentaire
+recipe.post('/commentaires/add', (req, res) => {
+    const commentaire = {
+        message: req.body.message,
+        dateCommentaire: new Date(),
+        ecritPar: req.body.ecritPar,
+        concerne: req.body.concerne
+    }
+
+    console.log(commentaire)
+    Commentaire.create(commentaire)
+        .then(res => {
+            res.send("Commentaire créé !")
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//modifier commentaire
+recipe.post('/commentaires/update', (req, res) => {
+    console.log(req.body)
+    Commentaire.update({
+            message: req.sanitize(req.body.message)
+        }, {
+            where: {
+                concerne: req.body.concerne,
+                ecritPar: req.body.ecritPar
+            }
+        })
+        .then(res => {
+            res.send("Commentaire changé !")
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 //Récupérer tous les commentaires d'une recette
 recipe.get('/recipe/:id/commentaires', (req, res) => {
 
         Commentaire.findAll({
                 where: {
                     concerne: req.params.id
-                }
+                },
+                order: [
+                    ["dateCommentaire", "DESC"]
+                ]
             })
             .then(commentaire => {
                 if (commentaire) {
