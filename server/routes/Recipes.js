@@ -1024,5 +1024,30 @@ recipe.delete('/commentaire/:id/delete', (req, res) => {
         })
 })
 
+//Récupérer les commentaires d'un utilisateur
+recipe.get('/:pseudo/mescommentaires', (req, res) => {
+
+        Commentaire.findAll({
+                where: {
+                    ecritPar: req.params.pseudo
+                },
+                order: [
+                    ["dateCommentaire", "DESC"]
+                ]
+            })
+            .then(commentaire => {
+                if (commentaire) {
+                    res.json(commentaire)
+                } else {
+                    res.send("Vous n'avez pas encore écrit de commentaires")
+                }
+            })
+            .catch(err => {
+                res.send('error: ' + err)
+            })
+    }
+
+)
+
 
 module.exports = recipe

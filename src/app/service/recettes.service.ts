@@ -76,6 +76,7 @@ export interface CommentaireDetails{
     dateCommentaire: string
     ecritPar: string
     concerne: number
+    nomRecette?: string
 
 }
 
@@ -563,6 +564,13 @@ export class RecettesService {
         return this.http.delete<any>(url).pipe(
             tap(_ => console.log(`deleted ${id}`)),
         );
+    }
+
+    public getCommentaireUser(pseudo: any): Observable<any> {
+        return this.http.get<any>(`/server/${pseudo}/mescommentaires`)
+        .pipe(map((data: any) => {
+            return data
+        }))
     }
 
 }    

@@ -56,13 +56,13 @@ export class RecetteComponent implements OnInit {
 
     this.recetteService.getCommentaireRecipe(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       commentaires => {
-        console.log(commentaires)
+     
         this.commentaires = commentaires
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
         this.commentaires.forEach(element => {
-          console.log(element.dateCommentaire)
+          
           var d = new Date(element.dateCommentaire)
-          console.log(d)
+      
           element.dateCommentaire = d.toLocaleString('FR-fr', options)
         })
       }
