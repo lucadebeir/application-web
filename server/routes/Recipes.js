@@ -13,6 +13,7 @@ const ListeCourse = require("../models/ListeCourses")
 const ClasserDans = require("../models/ClasserDans")
 const IllustrerRecettes = require("../models/IllustrerRecette")
 const Image = require("../models/Image")
+const Commentaire = require("../models/Commentaire")
 recipe.use(cors())
 const uploadImage = require('../helpers/helpers')
 let multer = require('multer');
@@ -978,6 +979,33 @@ recipe.post('/update/:idImage/:idRecette', async(req, res) => {
     }
 
 })
+
+
+
+
+//Commentaires
+
+//Récupérer tous les commentaires d'une recette
+recipe.get('/recipe/:id/commentaires', (req, res) => {
+
+        Commentaire.findAll({
+                where: {
+                    concerne: req.params.id
+                }
+            })
+            .then(commentaire => {
+                if (commentaire) {
+                    res.json(commentaire)
+                } else {
+                    res.send("Il n'y a pas encore de commentaires pour cette recette")
+                }
+            })
+            .catch(err => {
+                res.send('error: ' + err)
+            })
+    }
+
+)
 
 
 module.exports = recipe

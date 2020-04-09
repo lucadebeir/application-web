@@ -70,6 +70,15 @@ export interface ImageDetails {
     lienImage: string
 }
 
+export interface CommentaireDetails{
+    idCommentaire: number
+    message: Text
+    dateCommentaire: string
+    ecritPar: string
+    concerne: number
+
+}
+
 @Injectable()
 export class RecettesService {
 
@@ -540,6 +549,13 @@ export class RecettesService {
                 console.log(data)
                 return data
             }))
+    }
+
+    public getCommentaireRecipe(id:any): Observable<any>{
+        return this.http.get<any>(`/server/recipe/${id}/commentaires`)
+        .pipe(map((data: any) => {
+            return data
+        }))
     }
 
 }    

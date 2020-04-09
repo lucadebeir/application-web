@@ -2,9 +2,8 @@ const Sequelize = require('sequelize')
 const db = require("../database/db.js")
 
 var Image = db.sequelize.define(
-    'image',
-    {
-        idImage : {
+    'image', {
+        idImage: {
             type: Sequelize.INTEGER,
             primaryKey: true
 
@@ -12,15 +11,14 @@ var Image = db.sequelize.define(
         lienImage: {
             type: Sequelize.STRING,
         }
-        
-    },
-    {
+
+    }, {
         timestamps: false
     }
 )
 
 Image.associate = (models) => {
-    belongsToMany(models.IllustrerUtilisateur, {foreignKey : 'idImage'})
+    belongsToMany(models.IllustrerRecette, { foreignKey: 'idImage' })
 }
 
 module.exports = Image

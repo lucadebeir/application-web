@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, QuantiteDetails, FavorisDetails, ListeCoursesDetails, AuthentificationService } from '../../service';
+import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, QuantiteDetails, FavorisDetails, ListeCoursesDetails, AuthentificationService, CommentaireDetails } from '../../service';
 import { HttpResponse} from '@angular/common/http'
 import {Router, ActivatedRoute} from '@angular/router'
 import {Observable} from 'rxjs'
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-recette',
@@ -26,6 +27,8 @@ export class RecetteComponent implements OnInit {
     listIngredients : null
   }
 
+  public commentaires : CommentaireDetails[]
+
   constructor(public auth: AuthentificationService ,private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {
   }
 
@@ -45,8 +48,23 @@ export class RecetteComponent implements OnInit {
 
     this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       ingredient => {
+
         this.ingredients = ingredient
        
+      }
+    );
+
+    this.recetteService.getCommentaireRecipe(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+      commentaires => {
+        console.log(commentaires)
+        this.commentaires = commentaires
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+        this.commentaires.forEach(element => {
+          console.log(element.dateCommentaire)
+          var d = new Date(element.dateCommentaire)
+          console.log(d)
+          element.dateCommentaire = d.toLocaleString('FR-fr', options)
+        })
       }
     );
   }
