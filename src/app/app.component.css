@@ -1,28 +1,30 @@
-#logo{
+#logo {
     width: 6em;
-	height: 4em;
+    height: 4em;
 }
+
 
 /* footer */
 
 .social .fa-instagram:hover {
     background: #375989;
-   
 }
+
 .social .fa-envelope:hover {
     background: #FF5733;
- 
 }
-#message{
+
+#message {
     padding-left: 1em;
 }
+
 .social i {
     width: 40px;
     height: 40px;
     color: #FFF;
     background-color: #909AA0;
     font-size: 22px;
-    text-align:center;
+    text-align: center;
     padding-top: 12px;
     border-radius: 50%;
     -moz-border-radius: 50%;
@@ -33,12 +35,18 @@
     -webkit-transition: all ease 0.3s;
     -o-transition: all ease 0.3s;
     -ms-transition: all ease 0.3s;
-    margin-bottom: 2em; /*espace insta et copyright */
+    margin-bottom: 1em;
+    /*espace insta et copyright */
 }
+
 .dark-line {
     margin-top: 5em;
-	background: rgba(0,0,0,.15);
-	padding: 50px 0;
+    background: rgba(0, 0, 0, .15);
+    padding: 50px 0;
     margin-left: -2px;
     text-align: center;
+}
+
+#ment {
+    color: black;
 }

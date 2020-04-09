@@ -29,6 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RequestResetComponent } from './views/request-reset/request-reset.component';
 import { ResponseResetComponent } from './views/response-reset/response-reset.component';
 import { RefreshComponent } from './views/refresh/refresh.component';
+import { MentionsLegalesComponent } from './views/mentions-legales/mentions-legales.component';
 
 
 const routes: Routes = [
@@ -52,7 +53,8 @@ const routes: Routes = [
   { path: 'updateRecipe/:id', component: ModifierRecetteComponent, canActivate: [AdminAuthService, AuthGuardService] },
   { path: 'request-reset-password', component: RequestResetComponent },
   { path: 'response-reset-password/:token', component: ResponseResetComponent },
-  { path: 'refresh', component: RefreshComponent }
+  { path: 'refresh', component: RefreshComponent },
+  { path: 'rules', component: MentionsLegalesComponent }
 ]
 
 @NgModule({
@@ -77,7 +79,8 @@ const routes: Routes = [
     ModifierRecetteComponent,
     RequestResetComponent,
     ResponseResetComponent,
-    RefreshComponent
+    RefreshComponent,
+    MentionsLegalesComponent
   ],
   imports: [
     NgbModule,

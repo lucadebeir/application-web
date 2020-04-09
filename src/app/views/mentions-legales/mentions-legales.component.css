@@ -1,12 +1,3 @@
-td {
-    width: 50%;
-    color: #555;
-}
-
-h1 {
-    color: #555;
-}
-
 .pb-100 {
     padding-bottom: 100px;
 }
@@ -21,7 +12,7 @@ h1 {
 
 a {
     text-decoration: none;
-    color: #d8d8d8;
+    color: #333;
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -56,8 +47,20 @@ a {
     margin-left: -40px;
 }
 
+.section-title h4::after {
+    position: absolute;
+    content: "";
+    width: 50px;
+    height: 2px;
+    background-color: #FF7200;
+    left: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -25px;
+}
+
 .contact {
-    background-image: url("../../../assets/img/Monprofil.png");
+    background-image: url("../../../assets/img/fondContact.jpeg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -66,10 +69,8 @@ a {
     color: #fff;
 }
 
-.contact-form,
-input,
-textarea,
-select {
+.contact-form input,
+textarea {
     width: 100%;
     border: 1px solid #555;
     padding: 5px 10px;
@@ -86,7 +87,7 @@ select {
     height: 100%;
     left: 0;
     top: 0;
-    background-color: none;
+    background-color: #333;
     z-index: -1;
     opacity: .85;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
@@ -100,10 +101,15 @@ select {
     margin-top: 10px;
 }
 
-.single-contact h4 {
+.single-contact h5 {
     font-size: 18px;
     margin-bottom: 10px;
     font-weight: 500;
+}
+
+.single-contact p {
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .contact-form input[type="submit"] {
@@ -122,21 +128,4 @@ select {
 .contact-form input:focus,
 textarea:focus {
     border-color: #CC5B00
-}
-
-.inputfile {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-}
-
-#nomRecette {
-    text-align: center;
-}
-
-#ingredientformulaire {
-    width: auto;
 }

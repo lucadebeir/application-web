@@ -11,21 +11,19 @@
 
                 <tr>
                     <td>
-                        <label for="validationTooltip05">Nom de la recette</label>
+                        <label>Nom de la recette</label>
                     </td>
-                    <td>
-                        <input type="text" formControlName="nomRecette" class="form-control" id="validationTooltip05" required>
-                        <div class="invalid-tooltip">
-                            Rentrez un nom correcte.
-                        </div>
+                    <td id="nomRecette" style="vertical-align:middle;">
+                        <input type="text" formControlName="nomRecette" class="form-control" required>
                     </td>
 
                 </tr>
                 <tr>
                     <td>
                         <form>
-                            <div>
-                                <input type="file" name="image" (change)="selectImage($event)" />
+                            <div id="image">
+                                <input type="file" name="file" id="file" class="inputfile" name="image" (change)="selectImage($event)" />
+                                <label for="file">Choisir une image</label>
                             </div>
                             <br>
                         </form>
@@ -97,7 +95,7 @@
                             <!--idx = indexe d'une ligne ingrédient du formulaire-->
                             <div id="ingrForm" class="form-row">
                                 <tr>
-                                    <td>
+                                    <td id="ingredientformulaire">
 
 
 
@@ -111,7 +109,7 @@
                                             Selectionnez un ingrédient.
                                         </div>
                                     </td>
-                                    <td>
+                                    <td id="ingredientformulaire">
 
                                         <label for="validationTooltip05">Quantité</label>
                                         <input type="number" class="form-control" id="validationTooltip05" formControlName="qte" required>
@@ -122,7 +120,7 @@
 
                                     </td>
 
-                                    <td>
+                                    <td id="ingredientformulaire">
 
                                         <label for="validationTooltip04">Unité</label>
                                         <select class="custom-select" id="validationTooltip04" formControlName="idUnite" required>

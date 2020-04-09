@@ -1,59 +1,57 @@
 <script>
-  //pour que la navbar responsive se referme lorsqu'on sélectionne un ongle
-  $(document).on('click', '.navbar-collapse.show', function (e) {
-    $(this).collapse('hide');
-  });
+    //pour que la navbar responsive se referme lorsqu'on sélectionne un ongle
+    $(document).on('click', '.navbar-collapse.show', function(e) {
+        $(this).collapse('hide');
+    });
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toogle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toogle navigation">
     <span class="navbar-toggler-icon"></span>
 
   </button>
-  <img src="../assets/img/logo.jpeg" class="rounded float-left" alt="logo" id="logo">
-  <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/">Accueil </a>
-      </li>
+    <img src="../assets/img/logo.jpeg" class="rounded float-left" alt="logo" id="logo">
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/">Accueil </a>
+            </li>
 
-      <li class="nav-item">
-        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/allRecipes">Recettes</a>
-      </li>
+            <li class="nav-item">
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/allRecipes">Recettes</a>
+            </li>
 
-      <li class="nav-item">
-        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/aboutMe">A propos</a>
-      </li>
+            <li class="nav-item">
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/aboutMe">A propos</a>
+            </li>
 
-      <li class="nav-item">
-        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'contact'}" skipLocationChange="true">Contact</a>
-      </li>
+            <li class="nav-item">
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'contact'}" skipLocationChange="true">Contact</a>
+            </li>
 
-      <li class="nav-item" *ngIf="!auth.isLoggedIn()">
-        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'login'}" skipLocationChange="true">Se connecter</a>
-      </li>
+            <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'login'}" skipLocationChange="true">Se connecter</a>
+            </li>
 
-      <li class="nav-item" *ngIf="!auth.isLoggedIn()">
-        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'register'}" skipLocationChange="true">S'inscrire</a>
-      </li>
+            <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'register'}" skipLocationChange="true">S'inscrire</a>
+            </li>
 
-      <li class="nav-item dropdown" *ngIf="auth.isLoggedIn()">
-        <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link dropdown-toggle"
-          id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li class="nav-item dropdown" *ngIf="auth.isLoggedIn()">
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{auth.getUserDetails()?.pseudo}}
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" routerLink="/profile">Mon profil</a>
-          <a class="dropdown-item" routerLink="/favorites">Mes recettes ♥</a>
-          <a class="dropdown-item" routerLink="/shoppingList">Ma liste de course</a>
-          <a class="dropdown-item" routerLink="/comment">Mes commentaires</a>
-          <a class="dropdown-item" *ngIf="auth.isAdmin()" routerLink="/handleRecipes">Gerer les recettes</a>
-          <a class="dropdown-item" routerLink="" (click)="auth.logout()">Deconnexion</a>
-        </div>
-      </li>
-    </ul>
-  </div>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="/profile">Mon profil</a>
+                    <a class="dropdown-item" routerLink="/favorites">Mes recettes ♥</a>
+                    <a class="dropdown-item" routerLink="/shoppingList">Ma liste de course</a>
+                    <a class="dropdown-item" routerLink="/comment">Mes commentaires</a>
+                    <a class="dropdown-item" *ngIf="auth.isAdmin()" routerLink="/handleRecipes">Gerer les recettes</a>
+                    <a class="dropdown-item" routerLink="" (click)="auth.logout()">Deconnexion</a>
+                </div>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <router-outlet></router-outlet>
@@ -64,13 +62,16 @@
 
 <footer>
 
-  <div class="dark-line">
-  <h2> Marine's recipes |</h2>
-  <p>"Eat good, feel good" ||</p>
-  <div class="social">
-  <a href="https://www.instagram.com/marineteroitin/?hl=fr"><i class="fa fa-lg fa-instagram"></i></a>
-  <a routerLink="/contact" id="message"><i class="fa fa-lg fa-envelope"></i></a>
-  </div>
-  <span class="copyright"><a>© Concocté avec ♥ par  Marine Téroitin • Tous droits réservés marinesrecipes.fr </a></span>
-  </div>
+    <div class="dark-line">
+        <h2> Marine's recipes |</h2>
+        <p>"Eat good, feel good" ||</p>
+        <div class="social">
+            <a href="https://www.instagram.com/marineteroitin/?hl=fr"><i class="fa fa-lg fa-instagram"></i></a>
+            <a routerLink="/contact" id="message"><i class="fa fa-lg fa-envelope"></i></a>
+        </div>
+        <p>
+            <a id="ment" routerLink="/rules">Mentions légales</a>
+        </p>
+        <span class="copyright"><a>© Concocté avec ♥ par  Marine Téroitin • Tous droits réservés marinesrecipes.fr </a></span>
+    </div>
 </footer>
