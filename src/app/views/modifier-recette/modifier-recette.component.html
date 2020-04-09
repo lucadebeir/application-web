@@ -13,7 +13,7 @@
                         <input id="zone" type="text" class="form-control" name="nomRecette" value="{{recette?.nomRecette}}" #nomRecette="ngModel" [(ngModel)]="recette.nomRecette">
                     </td>
                     <td>
-                        <button id="btnTitre" class="btn btn-outline-dark" type="submit">Modifier</button>
+                        <button id="btnTitre" class="btn btn-primary" type="submit">Modifier</button>
                     </td>
             </form>
 
@@ -29,7 +29,7 @@
 
                                 </td>
                                 <td>
-                                    <button type="submit" class="btn btn-warning" (click)="onSubmit()">Modifier</button>
+                                    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Modifier</button>
 
                                 </td>
                             </tr>
@@ -44,7 +44,7 @@
                             <img src="{{image.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
                         </td>
                         <td>
-                            <button id="btnTitre" class="btn btn-outline-warning" type="submit">Modifier</button>
+                            <button id="btnTitre" class="btn btn-primary" type="submit">Modifier</button>
                         </td>
                     </tr>
 
@@ -72,7 +72,7 @@
                                     </figcaption>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                                     <button type="submit" class="btn btn-primary" (click)="onSubmit()">Modifier</button>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                         </div>
                     </td>
                     <td>
-                        <button id="btn" class="btn btn-outline-info" type="submit">Modifier</button>
+                        <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
                     </td>
                 </tr>
             </form>
@@ -162,7 +162,7 @@
                     </td>
                     <td>
 
-                        <button id="btn" class="btn btn-outline-dark" type="submit">Modifier</button>
+                        <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
                     </td>
                 </tr>
             </form>
@@ -265,7 +265,7 @@
             </tr>
             <tr>
                 <td>
-                    <button class="btn btn-outline-primary" (click)="open(content)">Ajouter un nouvel ingrédient</button>
+                    <button class="btn btn-primary" (click)="open(content)">Ajouter un nouvel ingrédient</button>
                 </td>
             </tr>
 
@@ -279,7 +279,7 @@
 
                         <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes" [(ngModel)]="recette.etapes" [ngModelOptions]="{standalone: true}" value=" {{recette?.etapes}}"></textarea>
                         <br>
-                        <button id="btn" class="btn btn-outline-success" type="submit">Modifier</button>
+                        <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
 
                     </form>
 
@@ -289,6 +289,6 @@
                         <form (submit)="updateAstuce(recette)">
                             <textarea class="form-control" #etapes="ngModel" rows="15em" name="astuce" [(ngModel)]="recette.astuce" [ngModelOptions]="{standalone: true}" value=" {{recette?.astuce}}"></textarea>
                             <br>
-                            <button id="btn" class="btn btn-outline-success" type="submit">Modifier</button>
+                            <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
                         </form>
                     </tr>
