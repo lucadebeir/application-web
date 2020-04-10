@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { map, tap } from 'rxjs/operators'
 import { CreateRecipe } from '../views/ajout-recette/ajout-recette.component'
-import { AuthentificationService } from './authentification.service'
+import { AuthentificationService, UserDetails } from './authentification.service'
 import { element } from 'protractor'
 import { Time } from '@angular/common'
 import { addTimes } from './../utils/Utils'
@@ -77,7 +77,7 @@ export interface CommentaireDetails{
     ecritPar?: string
     concerne?: number
     nomRecette?: string
-
+    admin?: boolean
 }
 
 @Injectable()

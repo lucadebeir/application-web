@@ -87,15 +87,15 @@
                             <textarea class="form-control" #message="ngModel" [(ngModel)]="newCommentaire.message" [ngModelOptions]="{standalone: true}" id="exampleFormControlTextarea1" rows="8" required></textarea>
                         </p>
                         <p class="error-message"></p>
-                        <button (click)="addCommentaire(newCommentaire.message)">Envoyer</button>
+                        <button id="envoyer" (click)="addCommentaire(newCommentaire.message)">Envoyer</button>
                     </div>
                     <!---->
                 </div>
                 <div>
                     <div class="card v-card v-sheet theme--light elevation-2" *ngFor="let commentaire of commentaires">
                         <div class="header">
-                            <div *ngIf="!auth.isAdmin()" class="v-avatar avatar" style="height: 50px; width: 50px;"><img src="../../../assets/img/avatar.png"></div>
-                            <div *ngIf="auth.isAdmin()" class="v-avatar avatar" style="height: 50px; width: 50px;"><img src="../../../assets/img/logo.jpeg"></div>
+                            <div *ngIf="!commentaire.admin" class="v-avatar avatar" style="height: 50px; width: 50px;"><img src="../../../assets/img/avatar.png"></div>
+                            <div *ngIf="commentaire.admin" class="v-avatar avatar" style="height: 2.5em; width: 3.5em;"><img src="../../../assets/img/logo.jpeg"></div>
                             <span class="displayName title">{{commentaire.ecritPar}}</span> <span class="displayName caption">{{commentaire.dateCommentaire}}</span></div>
                         <!---->
                         <div class="wrapper comment">

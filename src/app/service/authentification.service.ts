@@ -222,4 +222,8 @@ export class AuthentificationService {
 
         return this.http.get(`/server/contact/send`, { params: params})
     }
+
+    public getUser(pseudo: string): any {
+        return this.http.get(`/server/user/${pseudo}`);
+    }
 }

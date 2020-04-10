@@ -70,6 +70,10 @@ export class RecetteComponent implements OnInit {
           var d = new Date(element.dateCommentaire)
       
           element.dateCommentaire = d.toLocaleString('FR-fr', options)
+
+          this.auth.getUser(element.ecritPar).subscribe(data => {
+            element.admin = data.admin
+          })
         })
       }
     );
