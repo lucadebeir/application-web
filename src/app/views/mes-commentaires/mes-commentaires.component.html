@@ -19,29 +19,28 @@
                    -->
                     <!---->
                     <!---->
-                    <button id="add" class="btn btn-outline-warning" (click)="open(content)">Modifier</button>
-                    <ng-template #content let-modal>
-                        <div class="modal-header">
-                            <h4 class="modal-title"></h4>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <textarea #message="ngModel" [(ngModel)]="commentaire.message" [ngModelOptions]="{standalone: true}">
-                                            {{commentaire.message}}
-                                        </textarea>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button tyoe="button" class="btn btn-outline-yellow" (click)="modal.close(commentaire)">Modifier</button>
-                        </div>
-                    </ng-template>
+                    <button class="btn btn-warning" (click)="open(content)"><i class="fa fa-pencil"></i></button>
+                    <button id="poubelle" type="submit" class="btn btn-sm btn-danger" (click)="deleteCommentaire(commentaire.idCommentaire)"><i class="fa fa-trash"></i></button>
+
                 </div>
                 <div class="v-dialog__container" style="display: block;"></div>
+                <ng-template #content let-modal style="background:inherit">
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea #message="ngModel" [(ngModel)]="commentaire.message" [ngModelOptions]="{standalone: true}">
+                                        {{commentaire.message}}
+                                    </textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-warning" (click)="modal.close(commentaire)">Modifier</button>
+                    </div>
+                </ng-template>
             </div>
+
+
+
             <!---->
             <div class="answers">
 

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-mes-commentaires',
   templateUrl: './mes-commentaires.component.html',
-  styleUrls: ['./mes-commentaires.component.css']
+  styleUrls: ['./mes-commentaires.component.scss']
 })
 export class MesCommentairesComponent implements OnInit {
 
@@ -54,4 +54,19 @@ export class MesCommentairesComponent implements OnInit {
       })
   }
 
+  deleteCommentaire(idCommentaire: any){
+    this.recetteService.deleteCommentaire(idCommentaire)
+      .subscribe(res => {
+        this.router.navigate(['/comment']).then(() => {
+          window.location.reload()
+        })
+        }, (err) => {
+          console.log(err);
+        }
+      );
+      window.location.reload() /* rafraichit la page */
+  }
+
 }
+
+
