@@ -6,234 +6,251 @@
         </div>
 
         <table class="table col-md-8 mx-auto">
-            <form [formGroup]="recipeForm" (ngSubmit)="createRecipe()">
-
-
-                <tr>
-                    <td>
-                        <label>Nom de la recette</label>
-                    </td>
-                    <td id="nomRecette" style="vertical-align:middle;">
-                        <input type="text" formControlName="nomRecette" class="form-control" required>
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <form>
-                            <div id="image">
-                                <input type="file" name="file" id="file" class="inputfile" name="image" (change)="selectImage($event)" />
-                                <label for="file">Choisir une image</label>
-                            </div>
-                            <br>
-                        </form>
-                    </td>
-
-                </tr>
-
-
-
-                <tr>
-                    <td>
-                        <label>Catégorie</label>
-                    </td>
-                    <td>
-                        <form>
-                            <div id="ingrForm" class="form-row">
-
-                                <ng-multiselect-dropdown [data]="categories" placeholder="sélectionner" [settings]="dropdownSettings" [(ngModel)]="selectedItems" [ngModelOptions]="{standalone: true}">
-                                </ng-multiselect-dropdown>
-
-                            </div>
-                        </form>
-                    </td>
-                    <td>
-                        <div class="invalid-tooltip">
-                            Selectionnez une catégorie.
-                        </div>
-                    </td>
-                </tr>
-
-                <div id="ingrForm" class="form-row">
-                    <tr>
-                        <td>
-                            <label>Nombre de parts</label>
-
-
-                            <input type="number" class="form-control" formControlName="nbrePart" required>
-
-
-                            <div class="invalid-tooltip">
-                                Rentrez une quantité correcte.
-                                <!--Vérifier que c'est pas négatif ou nulle-->
-
-                            </div>
-                        </td>
-
-                        <td>
-                            <label>Libellé des parts</label>
-
-                            <input type="text" class="form-control" formControlName="libellePart" required>
-
-                            <div class="invalid-tooltip">
-                                Rentrez une quantité correcte.
-                                <!--Vérifier que c'est pas négatif ou nulle-->
-                            </div>
-                        </td>
-
-
-                    </tr>
-                </div>
-
-
-
-                <form [formGroup]="ingredientForm">
-                    <!--formulaire ingrédients-->
-
-                    <div formArrayName="ingredient">
-                        <div *ngFor="let ing of formData['controls']; let idx = index" [formGroupName]="idx" class="ingredient">
-                            <!--idx = indexe d'une ligne ingrédient du formulaire-->
-                            <div id="ingrForm" class="form-row">
-                                <tr>
-                                    <td id="ingredientformulaire">
-
-
-
-                                        <label for="validationTooltip04">Ingrédient</label>
-                                        <select class="custom-select" id="validationTooltip04" formControlName="idIngredient" required>
-                                    <option *ngFor="let ingredient of ingredients" [ngValue]="ingredient.idIngredient"
-                                        [disabled]="ingredient.disabled">
-                                        {{ingredient.nomIngredient}}</option>
-                                </select>
-                                        <div class="invalid-tooltip">
-                                            Selectionnez un ingrédient.
-                                        </div>
-                                    </td>
-                                    <td id="ingredientformulaire">
-
-                                        <label for="validationTooltip05">Quantité</label>
-                                        <input type="number" class="form-control" id="validationTooltip05" formControlName="qte" required>
-                                        <div class="invalid-tooltip">
-                                            Rentrez une quantité correcte.
-                                            <!--Vérifier que c'est pas négatif ou nulle-->
-                                        </div>
-
-                                    </td>
-
-                                    <td id="ingredientformulaire">
-
-                                        <label for="validationTooltip04">Unité</label>
-                                        <select class="custom-select" id="validationTooltip04" formControlName="idUnite" required>
-                                            <option *ngFor="let unite of unites" [ngValue]="unite.idUnite">
-                                                {{unite.libelleUnite}}
-                                            </option>
-                                        </select>
-                                        <div class="invalid-tooltip">
-                                            Selectionnez une unité.
-                                        </div>
-
-                                    </td>
-                                </tr>
-                            </div>
-                        </div>
-                    </div>
+            <ul>
+                <form [formGroup]="recipeForm" (ngSubmit)="createRecipe()">
 
 
                     <tr>
                         <td>
-                            <div id="buttonIngredient" class="form-row">
-                                <button type="button" class="btn btn-primary" (click)="addIngredient()">Ajouter un nouvel
-                        ingrédient</button>
-                            </div>
+                            <label>Nom de la recette</label>
+                        </td>
+                        <td id="nomRecette" style="vertical-align:middle;">
+                            <input type="text" formControlName="nomRecette" class="form-control" required>
                         </td>
 
-                        <ng-template #content let-modal>
-                            <!--ce qui s'ouvre quand on clique sur créer un nouvel ingrédient-->
-                            <div class="modal-header">
-                                <h4 class="modal-title"></h4>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="nomIngredient"> Nom de l'ingrédient </label>
-                                        <div class="input-group">
-                                            <input id="nomIngredient" class="form-control" placeholder="Cacahuète" #nomIngredient="ngModel" [(ngModel)]="newIngredient.nomIngredient" [ngModelOptions]="{standalone: true}">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-dark" (click)="modal.close(newIngredient.nomIngredient)">Ajouter</button>
-                            </div>
-                        </ng-template>
+                    </tr>
+                    <tr>
                         <td>
-                            <button class="btn btn-primary" (click)="open(content)">Créer un nouvel ingrédient</button>
-                            <!--on appelle le modal-->
+                            <form>
+                                <div id="image">
+                                    <input type="file" name="file" id="file" class="inputfile" name="image"
+                                        (change)="selectImage($event)" />
+                                    <label for="file">Choisir une image</label>
+                                </div>
+                                <br>
+                            </form>
+                        </td>
 
+                    </tr>
+
+
+
+                    <tr>
+                        <td>
+                            <label>Catégorie</label>
+                        </td>
+                        <td>
+                            <form>
+                                <div id="ingrForm" class="form-row">
+
+                                    <ng-multiselect-dropdown [data]="categories" placeholder="sélectionner"
+                                        [settings]="dropdownSettings" [(ngModel)]="selectedItems"
+                                        [ngModelOptions]="{standalone: true}">
+                                    </ng-multiselect-dropdown>
+
+                                </div>
+                            </form>
+                        </td>
+                        <td>
+                            <div class="invalid-tooltip">
+                                Selectionnez une catégorie.
+                            </div>
                         </td>
                     </tr>
-                </form>
-                <!--fin du formulaire ingrédients-->
-
-
-
-                <tr>
 
                     <div id="ingrForm" class="form-row">
-                        <td>
-                            <label>Temps de préparation</label>
-                            <input type="time" class="form-control" formControlName="tempsPreparation" required>
-                            <div class="invalid-tooltip">
-                                Rentrez une quantité correcte.
-                                <!--Vérifier que c'est pas négatif ou nulle-->
-                            </div>
-                        </td>
-                        <td>
-                            <label>Temps de cuisson</label>
-                            <input type="time" class="form-control" formControlName="tempsCuisson" required>
-                            <div class="invalid-tooltip">
-                                Rentrez une quantité correcte.
-                                <!--Vérifier que c'est pas négatif ou nulle-->
-                            </div>
-                        </td>
+                        <tr>
+                            <td>
+                                <label>Nombre de parts</label>
+
+
+                                <input type="number" class="form-control" formControlName="nbrePart" required>
+
+
+                                <div class="invalid-tooltip">
+                                    Rentrez une quantité correcte.
+                                    <!--Vérifier que c'est pas négatif ou nulle-->
+
+                                </div>
+                            </td>
+
+                            <td>
+                                <label>Libellé des parts</label>
+
+                                <input type="text" class="form-control" formControlName="libellePart" required>
+
+                                <div class="invalid-tooltip">
+                                    Rentrez une quantité correcte.
+                                    <!--Vérifier que c'est pas négatif ou nulle-->
+                                </div>
+                            </td>
+
+
+                        </tr>
                     </div>
-                </tr>
-
-                <tr>
-                    <td>
-                        <label>Préparation</label>
-
-                        <textarea class="form-control" formControlName="etapes" id="exampleFormControlTextarea1" rows="8" required></textarea>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <label>Astuces</label>
-
-                        <textarea class="form-control" formControlName="astuce" id="exampleFormControlTextarea1" rows="8" required></textarea>
-                    </td>
-                </tr>
 
 
-                <div class="col text-center">
-                    <button id="validateButton" type="submit" class="col-ld-6 btn btn-primary">Valider</button>
-                </div>
-            </form>
+
+                    <form [formGroup]="ingredientForm">
+                        <!--formulaire ingrédients-->
+
+                        <div formArrayName="ingredient">
+                            <div *ngFor="let ing of formData['controls']; let idx = index" [formGroupName]="idx"
+                                class="ingredient">
+                                <!--idx = indexe d'une ligne ingrédient du formulaire-->
+                                <div id="ingrForm" class="form-row">
+                                    <tr>
+                                        <td id="ingredientformulaire">
+
+
+
+                                            <label for="validationTooltip04">Ingrédient</label>
+                                            <select class="custom-select" id="validationTooltip04"
+                                                formControlName="idIngredient" required>
+                                                <option *ngFor="let ingredient of ingredients"
+                                                    [ngValue]="ingredient.idIngredient"
+                                                    [disabled]="ingredient.disabled">
+                                                    {{ingredient.nomIngredient}}</option>
+                                            </select>
+                                            <div class="invalid-tooltip">
+                                                Selectionnez un ingrédient.
+                                            </div>
+                                        </td>
+                                        <td id="ingredientformulaire">
+
+                                            <label for="validationTooltip05">Quantité</label>
+                                            <input type="number" class="form-control" id="validationTooltip05"
+                                                formControlName="qte" required>
+                                            <div class="invalid-tooltip">
+                                                Rentrez une quantité correcte.
+                                                <!--Vérifier que c'est pas négatif ou nulle-->
+                                            </div>
+
+                                        </td>
+
+                                        <td id="ingredientformulaire">
+
+                                            <label for="validationTooltip04">Unité</label>
+                                            <select class="custom-select" id="validationTooltip04"
+                                                formControlName="idUnite" required>
+                                                <option *ngFor="let unite of unites" [ngValue]="unite.idUnite">
+                                                    {{unite.libelleUnite}}
+                                                </option>
+                                            </select>
+                                            <div class="invalid-tooltip">
+                                                Selectionnez une unité.
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <tr>
+                            <td>
+                                <div id="buttonIngredient" class="form-row">
+                                    <button type="button" class="btn btn-primary" (click)="addIngredient()">Ajouter un
+                                        nouvel
+                                        ingrédient</button>
+                                </div>
+                            </td>
+
+                            <ng-template #content let-modal>
+                                <!--ce qui s'ouvre quand on clique sur créer un nouvel ingrédient-->
+                                <div class="modal-header">
+                                    <h4 class="modal-title"></h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="nomIngredient"> Nom de l'ingrédient </label>
+                                            <div class="input-group">
+                                                <input id="nomIngredient" class="form-control" placeholder="Cacahuète"
+                                                    #nomIngredient="ngModel" [(ngModel)]="newIngredient.nomIngredient"
+                                                    [ngModelOptions]="{standalone: true}">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-dark"
+                                        (click)="modal.close(newIngredient.nomIngredient)">Ajouter</button>
+                                </div>
+                            </ng-template>
+                            <td>
+                                <button class="btn btn-primary" (click)="open(content)">Créer un nouvel
+                                    ingrédient</button>
+                                <!--on appelle le modal-->
+
+                            </td>
+                        </tr>
+                    </form>
+                    <!--fin du formulaire ingrédients-->
+
+
+
+                    <tr>
+
+                        <div id="ingrForm" class="form-row">
+                            <td>
+                                <label>Temps de préparation</label>
+                                <input type="time" class="form-control" formControlName="tempsPreparation" required>
+                                <div class="invalid-tooltip">
+                                    Rentrez une quantité correcte.
+                                    <!--Vérifier que c'est pas négatif ou nulle-->
+                                </div>
+                            </td>
+                            <td>
+                                <label>Temps de cuisson</label>
+                                <input type="time" class="form-control" formControlName="tempsCuisson" required>
+                                <div class="invalid-tooltip">
+                                    Rentrez une quantité correcte.
+                                    <!--Vérifier que c'est pas négatif ou nulle-->
+                                </div>
+                            </td>
+                        </div>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label>Préparation</label>
+
+                            <textarea class="form-control" formControlName="etapes" id="exampleFormControlTextarea1"
+                                rows="8" required></textarea>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label>Astuces</label>
+
+                            <textarea class="form-control" formControlName="astuce" id="exampleFormControlTextarea1"
+                                rows="8" required></textarea>
+                        </td>
+                    </tr>
+
+
+                    <div class="col text-center">
+                        <button id="validateButton" type="submit" class="col-ld-6 btn btn-primary">Valider</button>
+                    </div>
+                </form>
+            </ul>
         </table>
 
 
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('select').formSelect();
                 $('select.select_all').siblings('ul').prepend('<li id=sm_select_all><span>Select All</span></li>');
-                $('li#sm_select_all').on('click', function() {
+                $('li#sm_select_all').on('click', function () {
                     var jq_elem = $(this),
                         jq_elem_span = jq_elem.find('span'),
                         select_all = jq_elem_span.text() == 'Select All',
                         set_text = select_all ? 'Select None' : 'Select All';
                     jq_elem_span.text(set_text);
-                    jq_elem.siblings('li').filter(function() {
+                    jq_elem.siblings('li').filter(function () {
                         return $(this).find('input').prop('checked') != select_all;
                     }).click();
                 });

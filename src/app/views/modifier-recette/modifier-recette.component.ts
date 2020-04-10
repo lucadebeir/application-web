@@ -8,7 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour
 @Component({
   selector: 'app-modifier-recette',
   templateUrl: './modifier-recette.component.html',
-  styleUrls: ['./modifier-recette.component.css']
+  styleUrls: ['./modifier-recette.component.scss']
 })
 export class ModifierRecetteComponent implements OnInit {
 
@@ -258,11 +258,7 @@ export class ModifierRecetteComponent implements OnInit {
         this.newIngredient.idUnite = result.idUnite
         this.recetteService.addIngredientRecette(this.newIngredient)
         setTimeout(() => {
-          this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-            ingredient => {
-              this.ingredients = ingredient
-            }
-          )
+          window.location.reload()
         }, 1000);
       })
   }
