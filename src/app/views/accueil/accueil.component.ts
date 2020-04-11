@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeDetails, RecettesService, AuthentificationService, FavorisDetails } from '../../service';
 import {HttpErrorResponse} from '@angular/common/http'
 import { Router } from '@angular/router';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-accueil',
@@ -18,9 +19,13 @@ export class AccueilComponent implements OnInit {
     idRecette : null 
   }
 
+  public favoris: number[] = []
+
   constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService) { 
     if(this.auth.isLoggedIn()) {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo
+
+      this.getFavoris()
     }
   }
 
@@ -118,9 +123,41 @@ export class AccueilComponent implements OnInit {
   addFavoris(id: number) {
     this.newFavori.idRecette = id
     this.recetteService.addFavoris(this.newFavori)
-    this.router.navigateByUrl('/favorites').then(() => {
+    this.router.navigateByUrl('/').then(() => {
       window.location.reload()
     })
   }
+
+  getFavoris() {
+   this.recetteService.getFavoris().subscribe(
+    (favoris: RecipeDetails[]) => {
+      console.log(favoris)
+      favoris.forEach(element => {
+        this.favoris.push(element.idRecette)
+ 
+        console.log(this.favoris)
+      })
+      
+  },err => {
+    if(err instanceof HttpErrorResponse){
+      if(err.status === 402) {
+        console.log("Cette user n'a pas de favoris")
+      }
+    }
+  })
+}
+
+deleteFavoris(idRecette: any) {
+  this.recetteService.deleteFavoris(idRecette)
+    .subscribe(res => {
+      this.router.navigate(['/'], {
+        queryParams: {refresh: new Date().getTime()}
+     })
+      }, (err) => {
+        console.log(err);
+      }
+    );
+    window.location.reload() /* rafraichit la page */
+}
 
 }

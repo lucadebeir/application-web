@@ -20,7 +20,8 @@
             <div class="header">
                 <img id="photo" src="{{recette.lienImage}}" alt="Photo de la recette">
                 <div class="icon">
-                    <a *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris(recette?.idRecette)"> <i class="fa fa-heart-o"></i></a>
+                    <a *ngIf="this.auth.isLoggedIn() && !this.favoris.includes(recette.idRecette)" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris(recette?.idRecette)"> <i class="fa fa-heart-o"></i></a>
+                    <a *ngIf="this.auth.isLoggedIn() && this.favoris.includes(recette.idRecette)" id="btn" type="button" class="btn btn-outline-danger" (click)="deleteFavoris(recette.idRecette)"> <i class="class= fa fa-heart"></i></a>
                 </div>
             </div>
             <div class="text">

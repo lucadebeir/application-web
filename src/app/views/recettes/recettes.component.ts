@@ -23,6 +23,7 @@ export class RecettesComponent implements OnInit {
     pseudo : '',
     idRecette : null 
   }
+  public favoris: number[] = []
 
   constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService) {
     //pour la recherche dynamique
@@ -52,6 +53,7 @@ export class RecettesComponent implements OnInit {
     
     if(this.auth.isLoggedIn()) {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo
+      this.getFavoris()
     }
   }
 
@@ -125,7 +127,7 @@ export class RecettesComponent implements OnInit {
   addFavoris(id: number) {
     this.newFavori.idRecette = id
     this.recetteService.addFavoris(this.newFavori)
-    this.router.navigateByUrl('/favorites').then(() => {
+    this.router.navigateByUrl('/allRecipes').then(() => {
       window.location.reload()
     })
   }
@@ -166,4 +168,37 @@ export class RecettesComponent implements OnInit {
   
     return ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2)
   }
+
+  getFavoris() {
+    this.recetteService.getFavoris().subscribe(
+     (favoris: RecipeDetails[]) => {
+       console.log(favoris)
+       favoris.forEach(element => {
+         this.favoris.push(element.idRecette)
+  
+         console.log(this.favoris)
+       })
+       
+   },err => {
+     if(err instanceof HttpErrorResponse){
+       if(err.status === 402) {
+         console.log("Cette user n'a pas de favoris")
+       }
+     }
+   })
+ }
+ 
+ deleteFavoris(idRecette: any) {
+   this.recetteService.deleteFavoris(idRecette)
+     .subscribe(res => {
+       this.router.navigate(['/'], {
+         queryParams: {refresh: new Date().getTime()}
+      })
+       }, (err) => {
+         console.log(err);
+       }
+     );
+     window.location.reload() /* rafraichit la page */
+ }
 }
+

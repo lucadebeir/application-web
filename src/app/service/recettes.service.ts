@@ -148,15 +148,10 @@ export class RecettesService {
     public getLatestReceipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/latestReceipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
-            console.log(data)
             data.forEach(element => {
-                console.log(element)
-                console.log(element.idRecette)
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
-                    console.log(data[0])
                 })
-                console.log(element)
             });
             return data
         }))
@@ -165,15 +160,10 @@ export class RecettesService {
     public getMostPopularRecipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/mostPopularRecipes`)
         return base.pipe(map((data: RecipeDetails[]) => {
-            console.log(data)
             data.forEach(element => {
-                console.log(element)
-                console.log(element.idRecette)
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
-                    console.log(data[0])
                 })
-                console.log(element)
             });
             return data
         }))
@@ -373,13 +363,9 @@ export class RecettesService {
         const base = this.http.get(`/server/recipe/favorites/${pseudo}`)
         return base.pipe(map((data: RecipeDetails[]) => {
             data.forEach(element => {
-                console.log(element)
-                console.log(element.idRecette)
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
-                    console.log(data[0])
                 })
-                console.log(element)
             });
             return data
         }))
