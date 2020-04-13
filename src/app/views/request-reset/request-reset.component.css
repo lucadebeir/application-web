@@ -30,7 +30,7 @@ a {
 .section-title h4 {
     font-size: 40px;
     font-weight: 600;
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
     position: relative;
     padding-bottom: 20px;
     display: inline-block;
@@ -62,7 +62,7 @@ textarea {
     width: 100%;
     border: 1px solid #fff;
     padding: 5px 10px;
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
     margin-top: 15px;
     background-color: transparent;
     color: #fff;

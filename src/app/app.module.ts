@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {  } from '@angular/cdk';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
@@ -30,6 +31,12 @@ import { RequestResetComponent } from './views/request-reset/request-reset.compo
 import { ResponseResetComponent } from './views/response-reset/response-reset.component';
 import { RefreshComponent } from './views/refresh/refresh.component';
 import { MentionsLegalesComponent } from './views/mentions-legales/mentions-legales.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
+
 
 
 const routes: Routes = [
@@ -83,6 +90,10 @@ const routes: Routes = [
     MentionsLegalesComponent
   ],
   imports: [
+    MatSidenavModule,
+    MatExpansionModule,
+    MatListModule,
+    FlexLayoutModule,
     NgbModule,
     NgMultiSelectDropDownModule.forRoot(),
     BrowserModule,

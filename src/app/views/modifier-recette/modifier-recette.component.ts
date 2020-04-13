@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { RecipeDetails, RecettesService, CategoryDetails, IngredientDetails, QuantiteDetails, UniteDetails } from '../../service';
+import { RecipeDetails, RecettesService, CategoryDetails, IngredientDetails, QuantiteDetails, UniteDetails, ImageRecipe } from '../../service';
 import { HttpResponse, HttpClient } from '@angular/common/http'
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
@@ -45,7 +45,10 @@ export class ModifierRecetteComponent implements OnInit {
   public allUnites: UniteDetails[]
   public allCategories: CategoryDetails[] //catégories disponibles
 
-
+  public imageToModify : ImageRecipe = {
+    idImage: null,
+    idRecette: null
+  }
 
   constructor(private recetteService: RecettesService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private modalService: NgbModal,
     private http: HttpClient) {
@@ -66,7 +69,8 @@ export class ModifierRecetteComponent implements OnInit {
 
     this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       res => {
-        if (res != []) {
+        console.log(res.length)
+        if (res.length != 0) {
           console.log(res)
           this.recette.idImage = res[0].idImage
           console.log(this.recette)
@@ -102,20 +106,45 @@ export class ModifierRecetteComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.image2 = file;
+      console.log(this.image2)
     }
   }
 
   onSubmit() {
+    console.log(this.image2)
     const formData = new FormData();
     formData.append('file', this.image2);
-    console.log("cc")
-    this.http.post<any>(`/server/update/${this.recette.idImage}/${this.recette.idRecette}`, formData).subscribe(
-      (res) => {
+    console.log(formData)
+    console.log(this.image)
+    if(this.image) {
+      console.log('cc')
+      this.recetteService.addImage(formData).subscribe(res => {
+        this.image = res[0]
+        console.log(this.image)
+        this.imageToModify.idImage = res[0]
+        this.imageToModify.idRecette = this.recette.idRecette
+        this.http.post<any>(`/server/image/update`, this.imageToModify).subscribe(
+          (res) => {
+            console.log(res)
+            this.image = res[0]
+            window.location.reload()
+          }
+        );
+      })
+    } else {
+      console.log('cc2')
+      this.recetteService.addImage(formData).subscribe(res => {
         console.log(res)
         this.image = res[0]
+        console.log(this.image)
+        this.imageToModify.idImage = res[0]
+        this.imageToModify.idRecette = this.recette.idRecette
+        console.log(this.imageToModify)
+        this.recetteService.addImageToRecipe(this.imageToModify)
         window.location.reload()
-      }
-    );
+      })
+    }
+    
 
 
 

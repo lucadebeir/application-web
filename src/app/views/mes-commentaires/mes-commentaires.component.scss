@@ -152,7 +152,7 @@ a {
 
 * {
     background-repeat: no-repeat;
-    padding: 0;
+    //padding: 0;
     margin: 0;
 }
 
@@ -166,7 +166,7 @@ button {
     overflow: visible;
     text-transform: none;
     background-color: transparent;
-    border-style: none;
+    //border-style: none;
     color: inherit;
 }
 
@@ -329,6 +329,15 @@ button {
     }
 }
 
+.btn-group-sm>.btn, .btn-sm {
+    padding: null;
+}
+
 #poubelle {
-    padding-left: 1em;
+    margin-left: 1em;
+}
+
+textarea {
+    width: -webkit-fill-available;
+    height: 15em;
 }

@@ -70,6 +70,11 @@ export interface ImageDetails {
     lienImage: string
 }
 
+export interface ImageRecipe {
+    idImage: number
+    idRecette: number
+}
+
 export interface CommentaireDetails{
     idCommentaire?: number
     message?: string
@@ -571,6 +576,14 @@ export class RecettesService {
         .pipe(map((data: any) => {
             return data
         }))
+    }
+
+    public addImageToRecipe(imageToModify: any): any {
+        this.http.post<any>(`/server/recipe/update/image`, imageToModify)
+            .subscribe((data: any) => {
+                console.log(data)
+                return data
+            })
     }
 
 }    

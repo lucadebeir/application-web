@@ -1,19 +1,24 @@
 <script>
     //pour que la navbar responsive se referme lorsqu'on sélectionne un ongle
-    $(document).on('click', '.navbar-collapse.show', function(e) {
+    $(document).on('click', '.navbar-collapse.show', function (e) {
         $(this).collapse('hide');
     });
 </script>
 
 <!--script pour les liens de partages sur les réseaux sociaux-->
-<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5e8ef1fbc08fd00012f1a697&product=inline-share-buttons" async="async"></script>
+<script type="text/javascript"
+    src="https://platform-api.sharethis.com/js/sharethis.js#property=5e8ef1fbc08fd00012f1a697&product=inline-share-buttons"
+    async="async"></script>
+
+<link href="//db.onlinewebfonts.com/c/ca42b7ce0d708ee0817789585c449739?family=PeachesandCreamRegularW00" rel="stylesheet" type="text/css"/>
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toogle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toogle navigation">
+        <span class="navbar-toggler-icon"></span>
 
-  </button>
+    </button>
     <img src="../assets/img/logo.jpeg" class="rounded float-left" alt="logo" id="logo">
     <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavDropdown">
         <ul class="navbar-nav">
@@ -22,29 +27,35 @@
             </li>
 
             <li class="nav-item">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/allRecipes">Recettes</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link"
+                    routerLink="/allRecipes">Recettes</a>
             </li>
 
             <li class="nav-item">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/aboutMe">A propos</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/aboutMe">A
+                    propos</a>
             </li>
 
             <li class="nav-item">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'contact'}" skipLocationChange="true">Contact</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']"
+                    [queryParams]="{url:'contact'}" skipLocationChange="true">Contact</a>
             </li>
 
             <li class="nav-item" *ngIf="!auth.isLoggedIn()">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'login'}" skipLocationChange="true">Se connecter</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']"
+                    [queryParams]="{url:'login'}" skipLocationChange="true">Se connecter</a>
             </li>
 
             <li class="nav-item" *ngIf="!auth.isLoggedIn()">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'register'}" skipLocationChange="true">S'inscrire</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']"
+                    [queryParams]="{url:'register'}" skipLocationChange="true">S'inscrire</a>
             </li>
 
             <li class="nav-item dropdown" *ngIf="auth.isLoggedIn()">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{auth.getUserDetails()?.pseudo}}
-        </a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link dropdown-toggle"
+                    id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{auth.getUserDetails()?.pseudo}}
+                </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" routerLink="/profile">Mon profil</a>
                     <a class="dropdown-item" routerLink="/favorites">Mes recettes ♥</a>
@@ -77,6 +88,7 @@
         <p>
             <a id="ment" routerLink="/rules">Mentions légales</a>
         </p>
-        <span class="copyright"><a>© Concocté avec ♥ par  Marine Téroitin • Tous droits réservés marinesrecipes.fr </a></span>
+        <span class="copyright"><a>© Concocté avec ♥ par Marine Téroitin • Tous droits réservés marinesrecipes.fr
+            </a></span>
     </div>
 </footer>

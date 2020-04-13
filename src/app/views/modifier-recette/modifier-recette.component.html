@@ -41,7 +41,7 @@
                     <div *ngIf="image">
                         <img src="{{image.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
                         <br>
-                        <button id="btnTitre" class="btn btn-primary" type="submit">Modifier</button>
+                        <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModal" data-backdrop="false">Modifier l'image de la recette</button>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -77,6 +77,7 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="modal-backdrop" class="modal-backdrop-transparent modal-transition"></div>
                     </div>
                 </td>
             </tr>

@@ -1,9 +1,16 @@
 #logo {
     width: 6em;
     height: 4em;
+    font-size: 1.5em;
 }
 
+* {
+    font-family: "proxima_nova_rgregular";
+}
 
+a {
+    font-size: 25px;
+}
 /* footer */
 
 .social .fa-instagram:hover {
@@ -40,7 +47,7 @@
 }
 
 .dark-line {
-    margin-top: 5em;
+    /*margin-top: 5em;*/
     background: rgba(0, 0, 0, .15);
     padding: 50px 0;
     margin-left: -2px;
@@ -49,4 +56,19 @@
 
 #ment {
     color: black;
+}
+
+@import url(//db.onlinewebfonts.com/c/ca42b7ce0d708ee0817789585c449739?family=PeachesandCreamRegularW00);
+
+@font-face {font-family: "PeachesandCreamRegularW00"; src: url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.eot"); src: url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.woff") format("woff"), url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.svg#PeachesandCreamRegularW00") format("svg"); }
+
+@font-face {
+	font-family: 'proxima_nova_rgregular';
+	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot');
+	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.woff') format('woff'),
+		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.ttf') format('truetype'),
+		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
 }
