@@ -1,6 +1,6 @@
 <main class="page-row page-row-expanded">
-    <div class="main-inner container">
-        <div class="item1">
+    <div class="main-inner">
+        <div class="item1 container">
             <div class="element1">
                 <aside class="sidebar is-visible">
                     <div class=”sidebar-content”>
@@ -21,8 +21,8 @@
                 </aside>
             </div>
         </div>
-        <div class="item2">
-            <div class="element2">
+        <div class="item2 container">
+            <div class="element2 row">
                 <section class="page">
                     <div class="container">
                         <div id="titre">
@@ -42,7 +42,7 @@
 
 
 
-                        <div class="row mb-3" *ngFor="let recette of filteredRecipe$ | async">
+                        <!--<div class="row mb-3" *ngFor="let recette of filteredRecipe$ | async">
                             <div class="col-sm-3"></div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="d-flex flex-row border rounded">
@@ -77,6 +77,43 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>-->
+
+                        <div class="app">
+
+                            <div class="recipesWrapper row">
+                        
+                                <div class="recipeDiv text-center col-lg-4 col-md-6 col-sm-12 p-3"
+                                    *ngFor="let recette of filteredRecipe$ | async">
+                                    <img class="rounded-circle" src="{{recette.lienImage}}" />
+                                    <h3>{{recette.nomRecette}}</h3>
+
+                                    <i class="badge badge-light"></i> {{recette.nbVues}} 👁
+                        
+                                    <i class="badge badge-light"></i>{{recette.nbFavoris}}
+                                        <svg class="bi bi-heart-fill" width="1em" height="1em"
+                                            viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    
+                        
+                                    <div class="controlBtns">
+                                        <button class="editBtn btn btn-warning" [routerLink]="['/updateRecipe', recette.idRecette]">
+                                            <i class="fa fa-pencil" aria-hidden="true">
+                                            </i>
+                                        </button>
+                        
+                                        <button class="deleteBtn btn btn-danger" (click)="deleteRecipe(recette.idRecette)">
+                                            <i class="fa fa-trash" aria-hidden="true">
+                                            </i>
+                                        </button>
+                                    </div>
+                        
+                                </div>
+                            </div>
+                        
                         </div>
                     </div>
                 </section>
@@ -84,3 +121,4 @@
         </div>
     </div>
 </main>
+

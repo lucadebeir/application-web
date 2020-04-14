@@ -1,6 +1,6 @@
 #titre {
     text-align: center;
-    margin-bottom: 2em;
+    margin-top: 2em;
 }
 
 #menu {
@@ -10,8 +10,6 @@
 button {
     margin-left: 1em;
 }
-
-
 
 .item1 {
     background: #312450;
@@ -89,7 +87,7 @@ input {
     justify-content: space-around;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1150px) {
     html,
     body {
         height: 100%;
@@ -113,21 +111,23 @@ input {
         height: 100%;
     }
 
-    .item1,
-    .item2 {
-        width: 29%;
+    .item1 {
+        width: 15%;
         box-sizing: border-box;
         display: table-cell;
         height: 100%;
     }
     .item2 {
         width: 70%;
+        box-sizing: border-box;
+        display: table-cell;
+        height: 100%;
     }
 
     .container {
         margin-right: inherit;
         margin-left: inherit;
-        padding-left: inherit;
+        //padding-left: inherit;
     }
 
     ul {
@@ -136,6 +136,231 @@ input {
             a {
                 line-height: 5em;
             }
+        }
+    }
+}
+
+/////////////////////////////////////////////
+
+$lg-width: 1200px;
+$md-width: 992px;
+$sm-width: 768px;
+$xs-width: 480px;
+
+$gray65: #a6a6a6;
+$dashed-gray65-border: 1px dashed $gray65;
+$dashed-black-border: 1px dashed black;
+
+$green: #00b300;
+$red: #cd0000;
+
+/* fixes the freezing of the webpage in safari (scrolling is not possible anymore) after appending items to a new row. */
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+button {
+    padding: 0 10px !important;
+}
+
+h3 {
+    font-size: 1.65em;
+    text-overflow: ellipsis;
+    //white-space: nowrap;
+    overflow: hidden;
+}
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
+.container {
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    font-style: italic;
+    color: $gray65;
+    margin-top: 25px;
+}
+
+.addBtn {
+    font-size: 1.2em;
+    display: block;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 3px 8px !important;
+}
+
+.addIcon {
+    font-size: 1em;
+}
+
+.recipeDiv {
+    margin-top: 40px;
+    &:nth-child(1),
+    &:nth-child(2),
+    &:nth-child(3) {
+        margin-top: 0;
+    }
+}
+
+.directionsUrlBtn {
+    margin-right: 40px;
+}
+
+.directionsUrlLink:focus {
+    outline: 0;
+}
+
+.controlBtns {
+    display: inline;
+}
+
+.editBtn {
+    margin-right: 7.5px;
+}
+
+.modal {
+    .editableProperty {
+        border: $dashed-gray65-border;
+        cursor: pointer;
+        &:hover,
+        &:active {
+            border: $dashed-black-border;
+        }
+    }
+
+    .directionsUrlBtnEditingModal {
+        &:hover,
+        &:active {
+            background-color: white;
+            box-shadow: none;
+        }
+    }
+
+    .userInputDiv {
+        margin-top: 20px;
+        &:first-child {
+            margin-top: 0;
+        }
+
+        label {
+            margin-left: 5px;
+        }
+
+        textarea {
+            resize: none;
+            padding: 5px;
+            text-align: center;
+            display: block;
+            margin: 0 auto;
+            border: $dashed-gray65-border;
+            &:hover {
+                border: $dashed-black-border;
+            }
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+
+    .commitBtn .commitIcon {
+        color: $green;
+    }
+
+    .cancelBtn .cancelIcon {
+        color: $red;
+    }
+
+    .inputTextModal .modal-dialog {
+        width: 42.5%;
+    }
+}
+
+@media (max-width: ($lg-width)-1) {
+    .container {
+        width: ($md-width);
+    }
+
+    .recipeDiv {
+        .directionsUrlBtn {
+            margin-right: 15px;
+        }
+
+        .editBtn {
+            margin-right: 5px;
+        }
+
+        .inputTextModal .modal-dialog {
+            width: 50%;
+        }
+    }
+}
+
+@media (max-width: ($md-width)-1) {
+    .container {
+        width: ($sm-width);
+    }
+    .recipeDiv {
+        .directionsUrlBtn {
+            margin-left: 15px;
+        }
+
+        .controlBtns {
+            margin-top: 5px;
+            display: block;
+        }
+
+        .deleteBtn {
+            margin-left: 5px;
+        }
+
+        .inputTextModal .modal-dialog {
+            width: 67.5%;
+        }
+    }
+
+    @media (max-width: ($sm-width)-1) {
+        *, ::after, ::before {
+            box-sizing: inherit;
+        }
+
+        .container {
+            width: $xs-width;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .addBtn {
+            margin-top: 40px;
+        }
+
+        .recipeDiv {
+            &:nth-child(3) {
+                margin-top: 40px;
+            }
+        }
+
+        .inputTextModal .modal-dialog {
+            width: 70%;
+            margin: 20px auto;
+        }
+    }
+
+    @media (max-width: ($xs-width)-1) {
+        .inputTextModal .modal-dialog {
+            width: 95%;
         }
     }
 }

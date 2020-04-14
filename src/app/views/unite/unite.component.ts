@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-unite',
   templateUrl: './unite.component.html',
-  styleUrls: ['./unite.component.css']
+  styleUrls: ['./unite.component.scss']
 })
 export class UniteComponent implements OnInit {
 

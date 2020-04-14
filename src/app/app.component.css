@@ -6,6 +6,15 @@
 
 * {
     font-family: "proxima_nova_rgregular";
+    -moz-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+footer {
+    position: inherit;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 a {
