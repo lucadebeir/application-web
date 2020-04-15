@@ -29,10 +29,24 @@
 
         <div>
             <div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+ 
+                    <div id="fb-root"></div>
+                    <script>(function(d, s, id) {
+                      var js, fjs = d.getElementsByTagName(s)[0];
+                      if (d.getElementById(id)) return;
+                      js = d.createElement(s); js.id = id;
+                      js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10';
+                      fjs.parentNode.insertBefore(js, fjs);
+                    }(document, 'script', 'facebook-jssdk'));</script>
+             
+                    <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//marinesrecipes.fr/recipe/{{this.recette?.idRecette}}">Partager sur Facebook</a>
+             
+                </div>
                 
         <!-- Facebook -->
-        <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2Fmarinesrecipes.fr%2Frecipe%2F106&layout=button_count&size=large&width=104&height=28&appId" width="104" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>       
-        <a target="_blank" title="Facebook" data-link="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmarinesrecipes.fr%2Frecipe%2F106" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmarinesrecipes.fr%2Frecipe%2F106" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><img src="../../../assets/Social_Icons/facebook.png" alt="Facebook" /></a>
+        <a target="_blank" title="Facebook" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fmarinesrecipes.fr%2Frecipe%2F{{this.recette?.idRecette}}" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;"><img src="../../../assets/Social_Icons/facebook.png" alt="Facebook" /></a>
         <!-- //Facebook -->
          
         <!-- Twitter -->
@@ -52,7 +66,6 @@
         <!-- //Email -->
             </div>
         </div>
-
     </div>
 
     <div class="hero-graphic" *ngFor="let img of image">
