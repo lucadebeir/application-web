@@ -50,6 +50,8 @@ export class RecetteComponent implements OnInit {
           { name: 'description', content: this.recette.etapes })
         this.metaService.updateTag(
           { property: 'og:description', content: this.recette.etapes })
+        this.metaService.updateTag(
+          { property: 'og:url', content: "marinesrecipes.fr" + this.router.url.toString() })
       }
     );
 
