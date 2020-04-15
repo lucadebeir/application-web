@@ -16,7 +16,7 @@ export interface RecipeDetails {
     datePublication: Date
     nbFavoris: number
     nbVues: number
-    etapes: Text
+    etapes: string
     nbrePart?: number
     libellePart?: string
     tempsPreparation?: Time

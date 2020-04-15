@@ -45,10 +45,9 @@ export class RecetteComponent implements OnInit {
     this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       recette => {
         this.recette = recette
-        this.titleService.setTitle(recette.nomRecette);
+        this.titleService.setTitle(this.recette.nomRecette);
         this.metaService.addTags([
-          { property: 'og:image', content: recette.lienImage },
-          { property: 'og:description', content: recette.preparation },
+          { property: 'og:description', content: this.recette.etapes },
           { property: 'og:site_name', content: 'Marine\'s Recipes' },
           { property: 'article:author', content: 'Marine Téroitin'}
         ]);
@@ -59,6 +58,10 @@ export class RecetteComponent implements OnInit {
       res => {
         console.log(res)
         this.image = res
+        console.log(this.image[0].lienImage)
+        this.metaService.addTags([
+          { property: 'og:image', content: this.image[0].lienImage }
+        ]);
       }
     );
 

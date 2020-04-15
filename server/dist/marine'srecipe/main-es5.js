@@ -9512,14 +9512,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(function (recette) {
             _this44.recette = recette;
 
-            _this44.titleService.setTitle(recette.nomRecette);
+            _this44.titleService.setTitle(_this44.recette.nomRecette);
 
             _this44.metaService.addTags([{
-              property: 'og:image',
-              content: recette.lienImage
-            }, {
               property: 'og:description',
-              content: recette.preparation
+              content: _this44.recette.etapes
             }, {
               property: 'og:site_name',
               content: 'Marine\'s Recipes'
@@ -9531,6 +9528,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(function (res) {
             console.log(res);
             _this44.image = res;
+            console.log(_this44.image[0].lienImage);
+
+            _this44.metaService.addTags([{
+              property: 'og:image',
+              content: _this44.image[0].lienImage
+            }]);
           });
           this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(function (ingredient) {
             _this44.ingredients = ingredient;
