@@ -9514,44 +9514,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this44.titleService.setTitle(_this44.recette.nomRecette);
 
-            _this44.metaService.addTags([{
+            _this44.metaService.updateTag({
               name: 'description',
               content: _this44.recette.etapes
-            }, {
+            });
+
+            _this44.metaService.updateTag({
               property: 'og:type',
               content: 'website' + _this44.recette.idRecette
-            }, {
+            });
+
+            _this44.metaService.updateTag({
               property: 'og:url',
               content: 'marinesrecipes.fr/recipe/' + _this44.recette.idRecette
-            }, {
+            });
+
+            _this44.metaService.updateTag({
               property: 'og:description',
               content: _this44.recette.etapes
-            }, {
-              property: 'og:site_name',
-              content: 'Marine\'s Recipes'
-            }, {
+            });
+
+            _this44.metaService.updateTag({
               property: 'article:author',
               content: 'Marine Téroitin'
-            }]);
+            });
           });
           this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(function (res) {
             console.log(res);
             _this44.image = res;
             console.log(_this44.image[0].lienImage);
 
-            _this44.metaService.addTags([{
+            _this44.metaService.updateTag({
               property: 'og:image',
               content: _this44.image[0].lienImage
-            }, {
-              property: "og:image:width",
-              content: "1024"
-            }, {
-              property: "og:image:heigth",
-              content: "1024"
-            }, {
-              property: "og:image:secure_url",
-              content: _this44.image[0].lienImage
-            }]);
+            });
           });
           this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(function (ingredient) {
             _this44.ingredients = ingredient;

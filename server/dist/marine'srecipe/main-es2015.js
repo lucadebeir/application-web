@@ -4892,25 +4892,17 @@ class RecetteComponent {
         this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(recette => {
             this.recette = recette;
             this.titleService.setTitle(this.recette.nomRecette);
-            this.metaService.addTags([
-                { name: 'description', content: this.recette.etapes },
-                { property: 'og:type', content: 'website' + this.recette.idRecette },
-                { property: 'og:url', content: 'marinesrecipes.fr/recipe/' + this.recette.idRecette },
-                { property: 'og:description', content: this.recette.etapes },
-                { property: 'og:site_name', content: 'Marine\'s Recipes' },
-                { property: 'article:author', content: 'Marine Téroitin' }
-            ]);
+            this.metaService.updateTag({ name: 'description', content: this.recette.etapes });
+            this.metaService.updateTag({ property: 'og:type', content: 'website' + this.recette.idRecette });
+            this.metaService.updateTag({ property: 'og:url', content: 'marinesrecipes.fr/recipe/' + this.recette.idRecette });
+            this.metaService.updateTag({ property: 'og:description', content: this.recette.etapes });
+            this.metaService.updateTag({ property: 'article:author', content: 'Marine Téroitin' });
         });
         this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(res => {
             console.log(res);
             this.image = res;
             console.log(this.image[0].lienImage);
-            this.metaService.addTags([
-                { property: 'og:image', content: this.image[0].lienImage },
-                { property: "og:image:width", content: "1024" },
-                { property: "og:image:heigth", content: "1024" },
-                { property: "og:image:secure_url", content: this.image[0].lienImage }
-            ]);
+            this.metaService.updateTag({ property: 'og:image', content: this.image[0].lienImage });
         });
         this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(ingredient => {
             this.ingredients = ingredient;
