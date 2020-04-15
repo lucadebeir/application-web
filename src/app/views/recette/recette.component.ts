@@ -61,6 +61,8 @@ export class RecetteComponent implements OnInit {
         this.metaService.updateTag(
           { property: 'og:image', content: this.image[0].lienImage });
         this.metaService.updateTag(
+          { property: 'og:image:url', content: this.image[0].lienImage });
+        this.metaService.updateTag(
           { property: 'og:image:secure_url', content: this.image[0].lienImage });
       }
     );

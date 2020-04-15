@@ -9535,6 +9535,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
 
             _this44.metaService.updateTag({
+              property: 'og:image:url',
+              content: _this44.image[0].lienImage
+            });
+
+            _this44.metaService.updateTag({
               property: 'og:image:secure_url',
               content: _this44.image[0].lienImage
             });
