@@ -47,6 +47,9 @@ export class RecetteComponent implements OnInit {
         this.recette = recette
         this.titleService.setTitle(this.recette.nomRecette);
         this.metaService.addTags([
+          { name: 'description', content: this.recette.etapes },
+          { property: 'og:type', content: 'website' + this.recette.idRecette},
+          { property: 'og:url', content: 'marinesrecipes.fr/recipe/' + this.recette.idRecette},
           { property: 'og:description', content: this.recette.etapes },
           { property: 'og:site_name', content: 'Marine\'s Recipes' },
           { property: 'article:author', content: 'Marine Téroitin'}
@@ -60,7 +63,10 @@ export class RecetteComponent implements OnInit {
         this.image = res
         console.log(this.image[0].lienImage)
         this.metaService.addTags([
-          { property: 'og:image', content: this.image[0].lienImage }
+          { property: 'og:image', content: this.image[0].lienImage },
+          { property: "og:image:width", content: "1024"},
+          { property: "og:image:heigth", content: "1024"},
+          { property: "og:image:secure_url", content: this.image[0].lienImage }
         ]);
       }
     );
