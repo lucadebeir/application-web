@@ -7,10 +7,6 @@
     margin-top: 5em;
 }
 
-button {
-    margin-left: 1em;
-}
-
 .item1 {
     background: #312450;
 }
@@ -168,6 +164,7 @@ body {
 
 button {
     padding: 0 10px !important;
+    margin-left: 1em;
 }
 
 h3 {
@@ -312,6 +309,11 @@ h1 {
     .container {
         width: ($sm-width);
     }
+
+    button {
+        margin-left: inherit;
+    }
+
     .recipeDiv {
         .directionsUrlBtn {
             margin-left: 15px;
@@ -334,6 +336,10 @@ h1 {
     @media (max-width: ($sm-width)-1) {
         *, ::after, ::before {
             box-sizing: inherit;
+        }
+
+        button {
+            margin-left: inherit;
         }
 
         .container {
@@ -365,6 +371,10 @@ h1 {
     @media (max-width: ($xs-width)-1) {
         .inputTextModal .modal-dialog {
             width: 95%;
+        }
+
+        button {
+            margin-left: inherit;
         }
     }
 }

@@ -3,7 +3,6 @@ import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, Quanti
 import { HttpResponse} from '@angular/common/http'
 import {Router, ActivatedRoute} from '@angular/router'
 import {Observable} from 'rxjs'
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-recette',
@@ -18,7 +17,7 @@ export class RecetteComponent implements OnInit {
   public unite: UniteDetails
   public qtes: QuantiteDetails[]
   public newFavori: FavorisDetails = {
-    pseudo : this.auth.getUserDetails().pseudo,
+    pseudo : '',
     idRecette : parseInt(this.route.snapshot.paramMap.get('id'))
   }
 
@@ -77,6 +76,10 @@ export class RecetteComponent implements OnInit {
         })
       }
     );
+
+    if(this.auth.isLoggedIn()) {
+      this.newFavori.pseudo = this.auth.getUserDetails().pseudo
+    }
   }
 
   getUtiliserIngredientsByIdRecette(id: any) : QuantiteDetails[] {
