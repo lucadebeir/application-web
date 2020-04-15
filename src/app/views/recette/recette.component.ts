@@ -47,10 +47,10 @@ export class RecetteComponent implements OnInit {
         this.recette = recette
         this.titleService.setTitle(recette.nomRecette);
         this.metaService.addTags([
-          { name: 'og:image', content: recette.lienImage },
-          { name: 'og:description', content: recette.preparation },
-          { name: 'og:site_name', content: 'Marine\'s Recipes' },
-          { name: 'article:author', content: 'Marine Téroitin'}
+          { property: 'og:image', content: recette.lienImage },
+          { property: 'og:description', content: recette.preparation },
+          { property: 'og:site_name', content: 'Marine\'s Recipes' },
+          { property: 'article:author', content: 'Marine Téroitin'}
         ]);
       }
     );

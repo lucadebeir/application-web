@@ -26,6 +26,7 @@ label {
 
 ul {
     align-content: center;
+    padding-inline-start: inherit;
 }
 
 td {
@@ -106,6 +107,10 @@ a {
     position: relative;
     z-index: 2;
     color: #fff;
+}
+
+.table td, .table th {
+    padding: .45rem;
 }
 
 .contact-form,
