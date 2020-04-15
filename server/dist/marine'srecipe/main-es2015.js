@@ -4893,7 +4893,7 @@ class RecetteComponent {
             this.recette = recette;
             this.titleService.setTitle(this.recette.nomRecette);
             this.metaService.updateTag({ name: 'description', content: this.recette.etapes });
-            this.metaService.updateTag({ property: 'og:url', content: 'http://www.marinesrecipes.fr/recipe/' + this.recette.idRecette });
+            this.metaService.updateTag({ property: 'og:url', content: 'http://marinesrecipes.fr/recipe/107' });
             this.metaService.updateTag({ property: 'og:description', content: this.recette.etapes });
             this.metaService.updateTag({ property: 'article:author', content: 'Marine Téroitin' });
         });

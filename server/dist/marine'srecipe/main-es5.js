@@ -9521,7 +9521,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this44.metaService.updateTag({
               property: 'og:url',
-              content: 'http://www.marinesrecipes.fr/recipe/' + _this44.recette.idRecette
+              content: 'http://marinesrecipes.fr/recipe/107'
             });
 
             _this44.metaService.updateTag({
