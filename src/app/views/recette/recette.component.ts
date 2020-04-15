@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, QuantiteDetails, FavorisDetails, ListeCoursesDetails, AuthentificationService, CommentaireDetails } from '../../service';
-import { HttpResponse} from '@angular/common/http'
-import {Router, ActivatedRoute} from '@angular/router'
-import {Observable} from 'rxjs'
+import { HttpResponse } from '@angular/common/http'
+import { Router, ActivatedRoute } from '@angular/router'
+import { Observable } from 'rxjs'
+import { Title, Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-recette',
@@ -11,36 +12,46 @@ import {Observable} from 'rxjs'
 })
 export class RecetteComponent implements OnInit {
 
+  public title;
+
   public image
   public recette: RecipeDetails
   public ingredients: Observable<IngredientDetails[]>
   public unite: UniteDetails
   public qtes: QuantiteDetails[]
   public newFavori: FavorisDetails = {
-    pseudo : '',
-    idRecette : parseInt(this.route.snapshot.paramMap.get('id'))
+    pseudo: '',
+    idRecette: parseInt(this.route.snapshot.paramMap.get('id'))
   }
 
   public newListeCourses: ListeCoursesDetails = {
     pseudo: '',
-    listIngredients : null
+    listIngredients: null
   }
 
-  public commentaires : CommentaireDetails[]
-  public newCommentaire : CommentaireDetails = {
+  public commentaires: CommentaireDetails[]
+  public newCommentaire: CommentaireDetails = {
     message: '',
     dateCommentaire: null,
     ecritPar: '',
     concerne: parseInt(this.route.snapshot.paramMap.get('id'))
   }
 
-  constructor(public auth: AuthentificationService ,private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {
+  constructor(public auth: AuthentificationService, private recetteService: RecettesService, private router: Router, private route: ActivatedRoute,
+    private titleService: Title, private metaService: Meta) {
   }
 
   ngOnInit(): void {
     this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       recette => {
         this.recette = recette
+        this.titleService.setTitle(recette.nomRecette);
+        this.metaService.addTags([
+          { name: 'og:image', content: recette.lienImage },
+          { name: 'og:description', content: recette.preparation },
+          { name: 'og:site_name', content: 'Marine\'s Recipes' },
+          { name: 'article:author', content: 'Marine Téroitin'}
+        ]);
       }
     );
 
@@ -55,19 +66,19 @@ export class RecetteComponent implements OnInit {
       ingredient => {
 
         this.ingredients = ingredient
-       
+
       }
     );
 
     this.recetteService.getCommentaireRecipe(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       commentaires => {
-     
+
         this.commentaires = commentaires
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
         this.commentaires.forEach(element => {
-          
+
           var d = new Date(element.dateCommentaire)
-      
+
           element.dateCommentaire = d.toLocaleString('FR-fr', options)
 
           this.auth.getUser(element.ecritPar).subscribe(data => {
@@ -77,20 +88,20 @@ export class RecetteComponent implements OnInit {
       }
     );
 
-    if(this.auth.isLoggedIn()) {
+    if (this.auth.isLoggedIn()) {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo
       this.newListeCourses.pseudo = this.auth.getUserDetails().pseudo
       this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo
     }
   }
 
-  getUtiliserIngredientsByIdRecette(id: any) : QuantiteDetails[] {
+  getUtiliserIngredientsByIdRecette(id: any): QuantiteDetails[] {
     this.recetteService.getUtiliserIngredientsByIdRecette(id).subscribe(
       (qtes: QuantiteDetails[]) => {
         this.qtes = qtes
       }, err => {
-        if(err instanceof HttpResponse) {
-          if(err.status === 402) {
+        if (err instanceof HttpResponse) {
+          if (err.status === 402) {
             console.log("Il n'y a pas d'ingrédients !")
           }
         }
@@ -99,13 +110,13 @@ export class RecetteComponent implements OnInit {
     return this.qtes
   }
 
-  getUniteByIdUnite(id: any) : UniteDetails {
+  getUniteByIdUnite(id: any): UniteDetails {
     this.recetteService.getUniteById(id).subscribe(
       (unite: UniteDetails) => {
         this.unite = unite
       }, err => {
-        if(err instanceof HttpResponse) {
-          if(err.status === 402) {
+        if (err instanceof HttpResponse) {
+          if (err.status === 402) {
             console.log("Il n'y a pas d'ingrédients !")
           }
         }
@@ -121,27 +132,27 @@ export class RecetteComponent implements OnInit {
     })
   }
 
-  addListeCourses(){
+  addListeCourses() {
     this.newListeCourses.listIngredients = this.ingredients
     this.recetteService.addListeCourses(this.newListeCourses)
-    
+
     this.router.navigate(['/shoppingList']).then(() => {
       window.location.reload()
     })
 
-   
+
   }
-  deleteCommentaire(idCommentaire: any){
+  deleteCommentaire(idCommentaire: any) {
     this.recetteService.deleteCommentaire(idCommentaire)
       .subscribe(res => {
         this.router.navigate(['/recipe/' + parseInt(this.route.snapshot.paramMap.get('id'))]).then(() => {
           window.location.reload()
         })
-        }, (err) => {
-          console.log(err);
-        }
+      }, (err) => {
+        console.log(err);
+      }
       );
-      window.location.reload() /* rafraichit la page */
+    window.location.reload() /* rafraichit la page */
   }
 
   addCommentaire(message: any) {
