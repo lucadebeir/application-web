@@ -45,14 +45,11 @@ export class RecetteComponent implements OnInit {
     this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       recette => {
         this.recette = recette
-        this.titleService.setTitle(this.recette.nomRecette);
+        this.titleService.setTitle(this.recette.nomRecette)
         this.metaService.updateTag(
           { name: 'description', content: this.recette.etapes })
         this.metaService.updateTag(
           { property: 'og:description', content: this.recette.etapes })
-        this.metaService.updateTag(
-          { property: 'article:author', content: 'Marine Téroitin' }
-        );
       }
     );
 

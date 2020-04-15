@@ -9523,11 +9523,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               property: 'og:description',
               content: _this44.recette.etapes
             });
-
-            _this44.metaService.updateTag({
-              property: 'article:author',
-              content: 'Marine Téroitin'
-            });
           });
           this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(function (res) {
             console.log(res);

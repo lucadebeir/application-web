@@ -4894,7 +4894,6 @@ class RecetteComponent {
             this.titleService.setTitle(this.recette.nomRecette);
             this.metaService.updateTag({ name: 'description', content: this.recette.etapes });
             this.metaService.updateTag({ property: 'og:description', content: this.recette.etapes });
-            this.metaService.updateTag({ property: 'article:author', content: 'Marine Téroitin' });
         });
         this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(res => {
             console.log(res);
