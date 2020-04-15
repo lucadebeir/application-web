@@ -22,7 +22,7 @@ export class RecetteComponent implements OnInit {
   }
 
   public newListeCourses: ListeCoursesDetails = {
-    pseudo: this.auth.getUserDetails().pseudo,
+    pseudo: '',
     listIngredients : null
   }
 
@@ -30,7 +30,7 @@ export class RecetteComponent implements OnInit {
   public newCommentaire : CommentaireDetails = {
     message: '',
     dateCommentaire: null,
-    ecritPar: this.auth.getUserDetails().pseudo,
+    ecritPar: '',
     concerne: parseInt(this.route.snapshot.paramMap.get('id'))
   }
 
@@ -79,6 +79,8 @@ export class RecetteComponent implements OnInit {
 
     if(this.auth.isLoggedIn()) {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo
+      this.newListeCourses.pseudo = this.auth.getUserDetails().pseudo
+      this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo
     }
   }
 

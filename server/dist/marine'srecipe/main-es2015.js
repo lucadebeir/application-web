@@ -4872,13 +4872,13 @@ class RecetteComponent {
             idRecette: parseInt(this.route.snapshot.paramMap.get('id'))
         };
         this.newListeCourses = {
-            pseudo: this.auth.getUserDetails().pseudo,
+            pseudo: '',
             listIngredients: null
         };
         this.newCommentaire = {
             message: '',
             dateCommentaire: null,
-            ecritPar: this.auth.getUserDetails().pseudo,
+            ecritPar: '',
             concerne: parseInt(this.route.snapshot.paramMap.get('id'))
         };
     }
@@ -4906,6 +4906,8 @@ class RecetteComponent {
         });
         if (this.auth.isLoggedIn()) {
             this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
+            this.newListeCourses.pseudo = this.auth.getUserDetails().pseudo;
+            this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo;
         }
     }
     getUtiliserIngredientsByIdRecette(id) {
