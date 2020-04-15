@@ -9533,6 +9533,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               property: 'og:image',
               content: _this44.image[0].lienImage
             });
+
+            _this44.metaService.updateTag({
+              property: 'og:image:secure_url',
+              content: _this44.image[0].lienImage
+            });
           });
           this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(function (ingredient) {
             _this44.ingredients = ingredient;
