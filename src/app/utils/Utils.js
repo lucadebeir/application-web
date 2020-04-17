@@ -34,3 +34,68 @@ export function addTimes(startTime, endTime) {
 
     return ('0' + hours).slice(-2) + ':' + ('0' + minutes).slice(-2) + ':' + ('0' + seconds).slice(-2)
 }
+
+export function addHours(time) {
+    let dateTime = new Date();
+    let temps = time.toString().split(':');
+    dateTime.setHours(parseInt(temps[0]));
+    dateTime.setMinutes(parseInt(temps[1]));
+    dateTime.setSeconds(parseInt(temps[2]));
+    if (dateTime.getHours() > 1) {
+        if (dateTime.getMinutes() > 1) {
+            if (dateTime.getSeconds() > 1) {
+                return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min " + dateTime.getSeconds().toString() + " s"
+            }
+        } else if (dateTime.getMinutes() == 1) {
+            if (dateTime.getSeconds() > 1) {
+                return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min " + dateTime.getSeconds().toString() + " s"
+            } else {
+                return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min"
+            }
+        } else {
+            if (dateTime.getSeconds() > 1) {
+                return dateTime.getHours().toString() + " h " + dateTime.getMinutes.toString() + " s"
+            } else {
+                return dateTime.getHours().toString() + " h"
+            }
+        }
+    } else if (dateTime.getHours() == 1) {
+        if (dateTime.getMinutes() > 1) {
+            if (dateTime.getSeconds() > 1) {
+                return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min " + dateTime.getSeconds().toString() + " s"
+            }
+        } else if (dateTime.getMinutes() == 1) {
+            if (dateTime.getSeconds() > 1) {
+                return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min et " + dateTime.getSeconds().toString() + " s"
+            } else {
+                return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min"
+            }
+        } else {
+            if (dateTime.getSeconds() > 1) {
+                return dateTime.getHours().toString() + " h " + dateTime.getSeconds().toString() + " s"
+            } else {
+                return dateTime.getHours().toString() + " h"
+            }
+        }
+    } else {
+        if (dateTime.getMinutes() > 1) {
+            if (dateTime.getSeconds() > 1) {
+                return dateTime.getMinutes().toString() + " min " + dateTime.getSeconds().toString()
+            } else {
+                return dateTime.getMinutes().toString() + " min"
+            }
+        } else if (dateTime.getMinutes() == 1) {
+            if (dateTime.getSeconds() > 1) {
+                return dateTime.getMinutes().toString() + " min " + dateTime.getSeconds().toString()
+            } else {
+                return dateTime.getMinutes().toString() + " min"
+            }
+        } else {
+            if (dateTime.getSeconds() > 1) {
+                return dateTime.getSeconds().toString() + " s"
+            } else {
+                return null
+            }
+        }
+    }
+}

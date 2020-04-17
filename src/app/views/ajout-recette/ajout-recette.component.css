@@ -15,6 +15,16 @@ h1 {
     padding-top: 100px;
 }
 
+ul{
+    padding-inline-start: initial;
+}
+#qteIng {
+    width: 20%;
+}
+
+#nomIng {
+    width: 40%;
+}
 .mb-100 {
     margin-bottom: 100px;
 }

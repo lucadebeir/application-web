@@ -32,8 +32,17 @@ $button: #154360;
     box-sizing: border-box;
 }*/
 
+#btn {
+    background: transparent;
+    border: none;
+}
+
 img {
     max-width: 100%;
+}
+
+i {
+    display: -webkit-inline-box;
 }
 
 .card {

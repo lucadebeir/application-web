@@ -4,11 +4,13 @@
     </li>
 
     <li class="nav-item" *ngFor="let categ of categories">
-        <a class="nav-link" routerLink="/allRecipes" (click)="getRecipeByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
+        <a class="nav-link" routerLink="/allRecipes"
+            (click)="getRecipeByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
     </li>
     <li>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" [formControl]="filter">
+            <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search"
+                [formControl]="filter">
         </form>
     </li>
 </ul>
@@ -20,21 +22,29 @@
             <div class="header">
                 <img id="photo" src="{{recette.lienImage}}" alt="Photo de la recette">
                 <div class="icon">
-                    <a *ngIf="this.auth.isLoggedIn() && !this.favoris.includes(recette.idRecette)" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris(recette?.idRecette)"> <i class="fa fa-heart-o"></i></a>
-                    <a *ngIf="this.auth.isLoggedIn() && this.favoris.includes(recette.idRecette)" id="btn" type="button" class="btn btn-outline-danger" (click)="deleteFavoris(recette.idRecette)"> <i class="class= fa fa-heart"></i></a>
+                    <a *ngIf="this.auth.isLoggedIn() && !this.favoris.includes(recette.idRecette)" id="btn"
+                        type="button" class="btn btn-outline-danger" (click)="addFavoris(recette?.idRecette)"> <i
+                            class="fa fa-heart-o"></i></a>
+                    <a *ngIf="this.auth.isLoggedIn() && this.favoris.includes(recette.idRecette)" id="btn" type="button"
+                        class="btn btn-outline-danger" (click)="deleteFavoris(recette.idRecette)"> <i
+                            class="class= fa fa-heart"></i></a>
                 </div>
             </div>
             <div class="text">
                 <h3 class="food">
                     {{recette.nomRecette}}
                 </h3>
-                <i class="fa fa-clock-o"> {{recette.globalTime}}</i>
-                <i class="fa fa-users"> {{recette.nbrePart}} {{recette.libellePart}}</i>
-                <i id="coeur"> {{recette?.nbFavoris}} ♥  </i>
-                <i id="vue">{{recette?.nbVues}} 👁</i>
+                <p>
+                    <i class="fa fa-clock-o"> {{recette.globalTime}}</i>
+                    <i class="fa fa-users"> {{recette.nbrePart}} {{recette.libellePart}}</i>
+                    <i id="coeur"> {{recette?.nbFavoris}} ♥ </i>
+                    <i id="vue">{{recette?.nbVues}} 👁</i>
+                </p>
+
                 <br>
             </div>
-            <a (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]" class="btn">Voir la recette!</a>
+            <a (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]" class="btn">Voir la
+                recette!</a>
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@ import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, Quanti
 import { HttpResponse } from '@angular/common/http'
 import { Router, ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs'
-import { Title, Meta } from '@angular/platform-browser';
+import { addHours } from '../../utils/Utils'
 
 @Component({
   selector: 'app-recette',
@@ -37,21 +37,20 @@ export class RecetteComponent implements OnInit {
     concerne: parseInt(this.route.snapshot.paramMap.get('id'))
   }
 
-  constructor(public auth: AuthentificationService, private recetteService: RecettesService, private router: Router, private route: ActivatedRoute,
-    private titleService: Title, private metaService: Meta) {
+  private nbrePartInitial: number;
+  private ingredientQteInitial : IngredientDetails[]
+
+  constructor(public auth: AuthentificationService, private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+
     this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       recette => {
         this.recette = recette
-        this.titleService.setTitle(this.recette.nomRecette)
-        this.metaService.updateTag(
-          { name: 'description', content: this.recette.etapes })
-        this.metaService.updateTag(
-          { property: 'og:description', content: this.recette.etapes })
-        this.metaService.updateTag(
-          { property: 'og:url', content: "marinesrecipes.fr" + this.router.url.toString() })
+        this.recette.tempsCuisson = addHours(this.recette.tempsCuisson)
+        this.recette.tempsPreparation = addHours(this.recette.tempsPreparation)
+        this.nbrePartInitial = this.recette.nbrePart
       }
     );
 
@@ -59,13 +58,6 @@ export class RecetteComponent implements OnInit {
       res => {
         console.log(res)
         this.image = res
-        console.log(this.image[0].lienImage)
-        this.metaService.updateTag(
-          { property: 'og:image', content: this.image[0].lienImage });
-        this.metaService.updateTag(
-          { property: 'og:image:url', content: this.image[0].lienImage });
-        this.metaService.updateTag(
-          { property: 'og:image:secure_url', content: this.image[0].lienImage });
       }
     );
 
@@ -73,7 +65,8 @@ export class RecetteComponent implements OnInit {
       ingredient => {
 
         this.ingredients = ingredient
-
+        this.recette.ingredients = ingredient
+        this.ingredientQteInitial = ingredient
       }
     );
 
@@ -167,6 +160,29 @@ export class RecetteComponent implements OnInit {
     console.log(this.newCommentaire)
     this.recetteService.addCommentaire(this.newCommentaire)
     window.location.reload()
+  }
+
+
+  onProportionChange(searchValue: string): void {  
+    this.recette.ingredients.forEach(element => {
+      element.qte = (element.qte*parseInt(searchValue))/this.recette.nbrePart
+    });
+    this.recette.nbrePart = parseInt(searchValue)
+  }
+
+  onProportionLess(value: number): void {
+    console.log(value)
+    this.recette.ingredients.forEach(element => {
+      element.qte = (element.qte*value)/this.recette.nbrePart
+    });
+    this.recette.nbrePart = this.recette.nbrePart - 1;
+  }
+
+  onProportionMore(value: number): void {
+    this.recette.ingredients.forEach(element => {
+      element.qte = (element.qte*value)/this.recette.nbrePart
+    });
+    this.recette.nbrePart = this.recette.nbrePart + 1;
   }
 
 }
