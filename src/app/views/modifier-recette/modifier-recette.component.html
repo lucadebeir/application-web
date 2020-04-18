@@ -180,7 +180,8 @@
                             <label>Préparation</label>
                             <br>
                             <input type="time" class="form-control" [(ngModel)]="recette.tempsPreparation"
-                                [ngModelOptions]="{standalone: true}" value="{{recette.tempsPreparation}}" step="2" required>
+                                [ngModelOptions]="{standalone: true}" value="{{recette.tempsPreparation}}" step="2"
+                                required>
                             <div class="invalid-tooltip">
                                 Rentrez une quantité correcte.
                                 <!--Vérifier que c'est pas négatif ou nulle-->
@@ -194,7 +195,8 @@
                             <label>Cuisson</label>
                             <br>
                             <input type="time" class="form-control" [(ngModel)]="recette.tempsCuisson"
-                                [ngModelOptions]="{standalone: true}" value="{{recette.tempsCuisson}}" step="2" required>
+                                [ngModelOptions]="{standalone: true}" value="{{recette.tempsCuisson}}" step="2"
+                                required>
                             <div class="invalid-tooltip">
                                 Rentrez une quantité correcte.
                                 <!--Vérifier que c'est pas négatif ou nulle-->
@@ -342,33 +344,50 @@
         <label>
             <h4><strong>Recette</strong></h4>
         </label>
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 p-3">
-                <label>Préparation</label>
+
+        <table class="table col-md-8 mx-auto">
+            <tr>
+                <ul>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12 p-3">
+                            <label>Préparation</label>
+
+                            <td>
+                                <form (submit)="updateSteps(recette)">
+
+                                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes"
+                                        [(ngModel)]="recette.etapes"
+                                        [ngModelOptions]="{standalone: true}">{{recette?.etapes}}</textarea>
+                                    <br>
+                                    <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
+
+                                </form>
+                            </td>
 
 
+                        </div>
 
-            <form (submit)="updateSteps(recette)">
+                        <div class="col-lg-6 col-md-6 col-sm-12 p-3">
+                            <label>Astuces</label>
+                            <td>
+                                <form (submit)="updateAstuce(recette)">
+                                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="astuce"
+                                        [(ngModel)]="recette.astuce"
+                                        [ngModelOptions]="{standalone: true}">{{recette?.astuce}}</textarea>
+                                    <br>
+                                    <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
+                                </form>
+                            </td>
 
-                <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes" [(ngModel)]="recette.etapes"
-                    [ngModelOptions]="{standalone: true}">{{recette?.etapes}}</textarea>
-                <br>
-                <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
+                        </div>
 
-            </form>
-            </div>
-            
-            <div class="col-lg-6 col-md-6 col-sm-12 p-3">
-                <label>Astuces</label>
-            <form (submit)="updateAstuce(recette)">
-                <textarea class="form-control" #etapes="ngModel" rows="15em" name="astuce" [(ngModel)]="recette.astuce"
-                    [ngModelOptions]="{standalone: true}">{{recette?.astuce}}</textarea>
-                <br>
-                <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
-            </form>
-            </div>
-            
 
-        </div>
+                    </div>
+
+                </ul>
+            </tr>
+        </table>
+
     </div>
 </section>
