@@ -1031,7 +1031,8 @@ recipe.get('/recipe/:id/commentaires', (req, res) => {
 
     Commentaire.findAll({
         where: {
-            concerne: req.params.id
+            concerne: req.params.id,
+            parent: 0
         },
         order: [
             ["dateCommentaire", "DESC"]
@@ -1047,9 +1048,31 @@ recipe.get('/recipe/:id/commentaires', (req, res) => {
         .catch(err => {
             res.send('error: ' + err)
         })
-}
+})
 
-)
+//Récupérer tous les commentaires fils d'un commentaire d'une recette
+recipe.get('/recipe/:id/commentaires/reponse/:idCommentaire', (req, res) => {
+
+    Commentaire.findAll({
+        where: {
+            concerne: req.params.id,
+            parent: req.params.idCommentaire
+        },
+        order: [
+            ["dateCommentaire", "DESC"]
+        ]
+    })
+        .then(commentaire => {
+            if (commentaire) {
+                res.json(commentaire)
+            } else {
+                res.send("Il n'y a pas encore de commentaires pour cette recette")
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 
 //supprimer un commentaire
 recipe.delete('/commentaire/:id/delete', (req, res) => {

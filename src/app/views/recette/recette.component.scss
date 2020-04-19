@@ -242,7 +242,7 @@ h2 {
 
 //commentaires
 .comment-container {
-    width: 60%;
+    //width: 60%;
     margin: 2rem auto;
 }
 
@@ -565,4 +565,70 @@ button {
     .comments {
         padding: 32px;
     }
+}
+
+
+
+
+//////////////////////////////////////////////////////
+
+.comment-list > .comment:first-child > article {
+    border-top: none;
+}
+
+.comment-list article, .comment-list .pingback, .comment-list .trackback {
+    border-top: 1px solid #eceeef;
+    padding: 2rem 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+    display: block;
+}
+
+.comment-meta {
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 992px) {
+    .post-comments {
+        padding: 4rem;
+    }
+}
+
+.post-comments {
+    margin-top: 2rem;
+    padding: 2rem;
+    background: #f8f8f8;
+}
+
+*, :after, :before {
+    box-sizing: inherit;
+}
+
+.comment-author .avatar {
+    float: left;
+    height: 60px;
+    margin-right: 1rem;
+    position: relative;
+    width: 60px;
+    border-radius: 50%;
+    margin-left: auto;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+    vertical-align: middle;
+}
+img {
+    border-style: none;
+}
+
+.comment-list {
+    padding-left: 0;
+    list-style: none;
+    margin: 0;
 }

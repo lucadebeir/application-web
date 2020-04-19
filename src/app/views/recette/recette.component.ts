@@ -38,7 +38,9 @@ export class RecetteComponent implements OnInit {
   }
 
   private nbrePartInitial: number;
-  private ingredientQteInitial : IngredientDetails[]
+  private ingredientQteInitial: IngredientDetails[]
+
+  public element: any
 
   constructor(public auth: AuthentificationService, private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {
   }
@@ -74,17 +76,7 @@ export class RecetteComponent implements OnInit {
       commentaires => {
 
         this.commentaires = commentaires
-        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
-        this.commentaires.forEach(element => {
 
-          var d = new Date(element.dateCommentaire)
-
-          element.dateCommentaire = d.toLocaleString('FR-fr', options)
-
-          this.auth.getUser(element.ecritPar).subscribe(data => {
-            element.admin = data.admin
-          })
-        })
       }
     );
 
@@ -93,6 +85,7 @@ export class RecetteComponent implements OnInit {
       this.newListeCourses.pseudo = this.auth.getUserDetails().pseudo
       this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo
     }
+
   }
 
   getUtiliserIngredientsByIdRecette(id: any): QuantiteDetails[] {
@@ -163,9 +156,9 @@ export class RecetteComponent implements OnInit {
   }
 
 
-  onProportionChange(searchValue: string): void {  
+  onProportionChange(searchValue: string): void {
     this.recette.ingredients.forEach(element => {
-      element.qte = (element.qte*parseInt(searchValue))/this.recette.nbrePart
+      element.qte = (element.qte * parseInt(searchValue)) / this.recette.nbrePart
     });
     this.recette.nbrePart = parseInt(searchValue)
   }
@@ -173,14 +166,14 @@ export class RecetteComponent implements OnInit {
   onProportionLess(value: number): void {
     console.log(value)
     this.recette.ingredients.forEach(element => {
-      element.qte = (element.qte*value)/this.recette.nbrePart
+      element.qte = (element.qte * value) / this.recette.nbrePart
     });
     this.recette.nbrePart = this.recette.nbrePart - 1;
   }
 
   onProportionMore(value: number): void {
     this.recette.ingredients.forEach(element => {
-      element.qte = (element.qte*value)/this.recette.nbrePart
+      element.qte = (element.qte * value) / this.recette.nbrePart
     });
     this.recette.nbrePart = this.recette.nbrePart + 1;
   }

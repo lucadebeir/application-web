@@ -75,7 +75,7 @@ export interface ImageRecipe {
     idRecette: number
 }
 
-export interface CommentaireDetails{
+export interface CommentaireDetails {
     idCommentaire?: number
     message?: string
     dateCommentaire?: string
@@ -83,6 +83,7 @@ export interface CommentaireDetails{
     concerne?: number
     nomRecette?: string
     admin?: boolean
+    children?: CommentaireDetails[]
 }
 
 @Injectable()
@@ -558,12 +559,59 @@ export class RecettesService {
             })
     }
 
-    public getCommentaireRecipe(id:any): Observable<any>{
+    public getCommentaireRecipe(id: any): Observable<any> {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
         return this.http.get<any>(`/server/recipe/${id}/commentaires`)
-        .pipe(map((data: any) => {
-            return data
-        }))
+            .pipe(map((data: any) => {
+                console.log(data)
+                data.forEach(element => {
+                    var d = new Date(element.dateCommentaire)
+
+                    element.dateCommentaire = d.toLocaleString('FR-fr', options)
+
+                    this.auth.getUser(element.ecritPar).subscribe(data => {
+                        element.admin = data.admin
+                    })
+                    let element2 = element
+                    let bool = true
+
+                    while(bool) {
+                        this.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(commentaire => {
+                            element.children = commentaire
+                        })
+                        if(element2.children) {
+                            element2 = element2.children
+                        } else {
+                            bool = false
+                        }
+                        
+                    }
+                });
+                console.log(data)
+                return data
+            }))
     }
+
+    public getReponseCommentaireRecipe(id: any, idCommentaire: any): Observable<any> {
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' }
+        return this.http.get<any>(`/server/recipe/${id}/commentaires/reponse/${idCommentaire}`)
+            .pipe(map((commentaire: any) => {
+                commentaire.forEach(element => {
+                    var d = new Date(element.dateCommentaire)
+
+                    element.dateCommentaire = d.toLocaleString('FR-fr', options)
+
+                    this.auth.getUser(element.ecritPar).subscribe(data => {
+                        element.admin = data.admin
+                    })
+                    this.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(commentaire => {
+                        element.children = commentaire
+                    })
+                });
+                return commentaire
+            }))
+    }
+
 
     public deleteCommentaire(id: any): Observable<any> {
         const url = `/server/commentaire/${id}/delete`;
@@ -574,9 +622,9 @@ export class RecettesService {
 
     public getCommentaireUser(pseudo: any): Observable<any> {
         return this.http.get<any>(`/server/${pseudo}/mescommentaires`)
-        .pipe(map((data: any) => {
-            return data
-        }))
+            .pipe(map((data: any) => {
+                return data
+            }))
     }
 
     public addImageToRecipe(imageToModify: any): any {

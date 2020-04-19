@@ -208,7 +208,7 @@ users.post('/login', (req, res) => {
             } else {
                 if (bcrypt.compareSync(req.sanitize(req.body.mdp), user.mdp)) {
                     let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                        expiresIn: Math.floor((Math.random() * 100) + 54);
+                        expiresIn: Math.floor((Math.random() * 100) + 54)
                     })
                     res.json({ token: token })
                 } else {

@@ -26,6 +26,9 @@ var Commentaire = db.sequelize.define(
         },
         concerne: {
             type: Sequelize.INTEGER,
+        },
+        parent: {
+            type: Sequelize.INTEGER
         }
 
 
