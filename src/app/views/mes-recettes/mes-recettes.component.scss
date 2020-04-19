@@ -37,6 +37,14 @@ $button: #154360;
     border: none;
 }
 
+.btn {
+    background-color: $button;
+}
+
+a {
+    color: $button;
+}
+
 img {
     max-width: 100%;
 }

@@ -184,14 +184,13 @@ export class RecettesService {
         const base = this.http.get(`/server/recipe/category/${idCategorie}`)
         return base.pipe(map((data: RecipeDetails[]) => {
             data.forEach(element => {
-                console.log(element)
-                console.log(element.idRecette)
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
-                    console.log(data[0])
+                })
+                this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
+                    element.ingredients = data
                 })
                 element.globalTime = addTimes(element.tempsCuisson, element.tempsPreparation)
-                console.log(element)
             });
             return data
         }))
@@ -370,6 +369,9 @@ export class RecettesService {
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
                 })
+                this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
+                    element.ingredients = data
+                })
             });
             return data
         }))
@@ -380,13 +382,13 @@ export class RecettesService {
         const base = this.http.get(`/server/recipe/favorites/${pseudo}/${idCategorie}`)
         return base.pipe(map((data: RecipeDetails[]) => {
             data.forEach(element => {
-                console.log(element)
-                console.log(element.idRecette)
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
                     console.log(data[0])
                 })
-                console.log(element)
+                this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
+                    element.ingredients = data
+                })
             });
             return data
         }))
