@@ -6,6 +6,7 @@ import { AuthentificationService } from './service/authentification.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  constructor(public auth: AuthentificationService){ }
+export class AppComponent {  
+  constructor(public auth: AuthentificationService){ 
+  }
 }

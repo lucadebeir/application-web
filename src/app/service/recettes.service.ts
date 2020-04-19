@@ -111,8 +111,7 @@ export class RecettesService {
                 })
                 element.ingredients = []
                 this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
-                    console.log(data)
-                    element.ingredients.push(data[0])
+                    element.ingredients = data
                 })
                 element.globalTime = addTimes(element.tempsPreparation, element.tempsCuisson)
             });

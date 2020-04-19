@@ -1,20 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryDetails, IngredientDetails, UniteDetails, RecettesService, UserDetails, AuthentificationService } from '../../service';
 import { FormGroup, FormArray, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
 import { Time } from '@angular/common';
+import { MatSelect } from '@angular/material/select';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ajout-recette',
   templateUrl: './ajout-recette.component.html',
-  styleUrls: ['./ajout-recette.component.css']
+  styleUrls: ['./ajout-recette.component.scss']
 })
 export class AjoutRecetteComponent implements OnInit {
-
 
   images;
 
@@ -96,6 +97,7 @@ export class AjoutRecetteComponent implements OnInit {
     this.createIngredientsForm()
 
     this.onChanges()
+
   }
 
   selectImage(event) {
@@ -239,7 +241,7 @@ export class AjoutRecetteComponent implements OnInit {
 
     console.log(ingredientFormValue.ingredient)
     this.recipe.ingredients = ingredientFormValue.ingredient //je récupère les info sur l'ingrédient
-    
+
     this.recipe.categories = this.selectedItems
     this.recipe.nomRecette = formValue.nomRecette
     this.recipe.etapes = formValue.etapes
@@ -305,6 +307,10 @@ export class AjoutRecetteComponent implements OnInit {
         disabled: false
       },
         Validators.compose([Validators.required])),
+      nomIngredient: new FormControl({
+        value: '',
+        disabled: false
+      }),
       qte: new FormControl({
         value: '',
         disabled: false
@@ -327,14 +333,14 @@ export class AjoutRecetteComponent implements OnInit {
       })
       this.ingredients.forEach(ingredient => {
         val.ingredient.forEach(element => {
-          if (element.idIngredient != '') {
-            console.log(ingredient)
-            console.log(element)
-            if (ingredient.idIngredient == element.idIngredient) {
+          if (element.nomIngredient != '') {
+            if (ingredient.nomIngredient == element.nomIngredient) {
               ingredient.disabled = true
+              element.idIngredient = ingredient.idIngredient
             }
             //this.selectIngredient.push(element.idIngredient)
           }
+          
         })
       })
     })
