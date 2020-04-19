@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
-import { RecipeDetails, RecettesService, CategoryDetails, AuthentificationService, FavorisDetails } from '../../service';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { RecipeDetails, RecettesService, CategoryDetails, AuthentificationService, FavorisDetails, IngredientDetails } from '../../service';
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router';
 import { Ingredient } from '../modifier-recette/modifier-recette.component';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-recettes',
@@ -26,11 +27,20 @@ export class RecettesComponent implements OnInit {
   }
   public favoris: number[] = []
 
-  public boolean: boolean = true
+  public researchForm: FormGroup
 
-  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService) {
+  public allRecipe: RecipeDetails[]
+  public allRecipe2: RecipeDetails[]
+
+  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService, private formBuilder: FormBuilder) {
     //pour la recherche dynamique
     this.recettes$ = this.recetteService.getAllRecipesAndIngredients()
+
+    this.recetteService.getAllRecipesAndIngredients().subscribe(data => {
+      this.allRecipe = data
+      this.allRecipe2 = data
+    })
+
     this.recettes$.subscribe(data => {
       console.log(data)
     })
@@ -40,10 +50,10 @@ export class RecettesComponent implements OnInit {
     this.filter$ = this.filter.valueChanges.pipe(startWith(''))
     this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)
       .pipe(map(([recipes, filterString]) => {
-        return recipes.filter(recipe => 
-          recipe.ingredients.filter(ingredient => 
+        return recipes.filter(recipe =>
+          recipe.ingredients.filter(ingredient =>
             ingredient.nomIngredient.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)
-          && recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1
+          && recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1
         )
       }))
 
@@ -51,6 +61,10 @@ export class RecettesComponent implements OnInit {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo
       this.getFavoris()
     }
+
+    this.initResearchForm()
+
+    this.research()
   }
 
   //dans ngOnInit on récupère les données à afficher au lancement de la page
@@ -58,9 +72,42 @@ export class RecettesComponent implements OnInit {
     this.getAllCategory()
   }
 
+  initResearchForm() {
+    this.researchForm = this.formBuilder.group({
+      filter: ['']
+    });
+  }
+
+  research() {
+    const formValue = this.researchForm.value;
+
+    if (formValue.filter != '') {
+      let researchResult: RecipeDetails[] = []
+
+      this.allRecipe2.forEach(recipe => {
+        recipe.ingredients.forEach(ingredient => {
+          if (ingredient.nomIngredient.toLowerCase().indexOf(formValue.filter.toLowerCase()) !== -1) {
+            if (!researchResult.includes(recipe)) {
+              researchResult.push(recipe)
+            }
+          }
+        })
+      })
+      this.allRecipe = researchResult
+    } else {
+      this.allRecipe = this.allRecipe2
+    }
+
+  }
+
   getAllRecipes() {
 
     this.recettes$ = this.recetteService.getAllRecipesAndIngredients()
+
+    this.recetteService.getAllRecipesAndIngredients().subscribe(data => {
+      this.allRecipe = data
+    })
+
     this.filter = new FormControl('')
     this.filter$ = this.filter.valueChanges.pipe(startWith(''))
     this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)
@@ -98,6 +145,11 @@ export class RecettesComponent implements OnInit {
   getRecipeByCategory(idCategorie: any) {
 
     this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie)
+
+    this.recetteService.getRecipeByCategory(idCategorie).subscribe(data => {
+      this.allRecipe = data
+    })
+
     this.filter = new FormControl('')
     this.filter$ = this.filter.valueChanges.pipe(startWith(''))
     this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)

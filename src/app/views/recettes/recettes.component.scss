@@ -29,12 +29,29 @@ $button: #154360;
     border: none;
 }
 
+.btn {
+    background-color: $button;
+}
+
+a {
+    color: $button;
+}
+
 img {
     max-width: 100%;
 }
 
 i {
     display: -webkit-inline-box;
+}
+
+.form-control {
+    width: initial;
+}
+
+input
+{
+    font-size: 20 px;
 }
 
 .card {
