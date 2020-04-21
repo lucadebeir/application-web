@@ -994,7 +994,8 @@ recipe.post('/commentaires/add', (req, res) => {
         message: req.body.message,
         dateCommentaire: new Date(),
         ecritPar: req.body.ecritPar,
-        concerne: req.body.concerne
+        concerne: req.body.concerne,
+        parent: req.body.parent
     }
 
     console.log(commentaire)
@@ -1059,7 +1060,7 @@ recipe.get('/recipe/:id/commentaires/reponse/:idCommentaire', (req, res) => {
             parent: req.params.idCommentaire
         },
         order: [
-            ["dateCommentaire", "DESC"]
+            ["dateCommentaire", "ASC"]
         ]
     })
         .then(commentaire => {

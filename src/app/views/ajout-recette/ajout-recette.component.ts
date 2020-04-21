@@ -157,43 +157,8 @@ export class AjoutRecetteComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', this.images);
 
-    if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.etapes == '' && formValue.nomRecette == '' && this.selectedItems.length == 0) {
-      alert("Vous devez remplir le champ du nom de la recette, au moins une catégorie de la recette, au moins rajouter un ingrédient, et remplir le champ de la Préparation.");
-      return;
-    }
-
-    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.etapes == '' && formValue.nomRecette == '') {
-      alert("Vous devez remplir le champ du nom de la recette, au moins rajouter un ingrédient, et remplir le champ de la Préparation.");
-      return;
-    }
-
-    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.etapes == '' && this.selectedItems.length == 0) {
-      alert("Vous devez remplir au moins une catégorie de la recette, au moins rajouter un ingrédient, et remplir le champ de la Préparation.");
-      return;
-    }
-
-    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.nomRecette == '' && this.selectedItems.length == 0) {
-      alert("Vous devez remplir le champ du nom de la recette, au moins une catégorie de la recette, et au moins rajouter un ingrédient.");
-      return;
-    }
-
-    else if (formValue.etapes == '' && formValue.nomRecette == '' && this.selectedItems.length == 0) {
+    if (formValue.etapes == '' && formValue.nomRecette == '' && this.selectedItems.length == 0) {
       alert("Vous devez remplir le champ du nom de la recette, au moins une catégorie de la recette et le champ de la Préparation.");
-      return;
-    }
-
-    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && formValue.nomRecette == '') {
-      alert("Vous devez remplir le champ du nom de la recette, et celui de la préparation.");
-      return;
-    }
-
-    else if (formValue.etapes == '' && this.ingredientForm.value.ingredient[0].idIngredient == "") {
-      alert("Vous devez remplir le champ du nom de la recette, et celui de la préparation.");
-      return;
-    }
-
-    else if (this.ingredientForm.value.ingredient[0].idIngredient == "" && this.selectedItems.length == 0) {
-      alert("Vous devez remplir le champ du nom de la recette, et celui de la préparation.");
       return;
     }
 
@@ -209,11 +174,6 @@ export class AjoutRecetteComponent implements OnInit {
 
     else if (formValue.etapes == '' && this.selectedItems.length == 0) {
       alert("Vous devez remplir le champ de la préparation, et sélectionner au moins une catégorie.");
-      return;
-    }
-
-    else if (this.ingredientForm.value.ingredient[0].idIngredient == "") {
-      alert("Vous devez choisir au moins un ingrédient pour votre recette.");
       return;
     }
 
@@ -318,9 +278,9 @@ export class AjoutRecetteComponent implements OnInit {
         Validators.compose([Validators.required, Validators.min(0)])),
       idUnite: new FormControl({
         value: '',
+        default: ' ',
         disabled: false
-      },
-        Validators.compose([Validators.required]))
+      })
     });
   }
 

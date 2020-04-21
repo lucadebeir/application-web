@@ -4,6 +4,7 @@ import { HttpResponse } from '@angular/common/http'
 import { Router, ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs'
 import { addHours } from '../../utils/Utils'
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-recette',
@@ -37,16 +38,27 @@ export class RecetteComponent implements OnInit {
     concerne: parseInt(this.route.snapshot.paramMap.get('id'))
   }
 
+  public newResponse: CommentaireDetails = {
+    message: '',
+    dateCommentaire: null,
+    ecritPar: '',
+    concerne: parseInt(this.route.snapshot.paramMap.get('id')),
+    parent: null
+  }
+
   private nbrePartInitial: number;
   private ingredientQteInitial: IngredientDetails[]
 
   public element: any
 
   constructor(public auth: AuthentificationService, private recetteService: RecettesService, private router: Router, private route: ActivatedRoute) {
+    
+  }
+
+  onClick() {
   }
 
   ngOnInit(): void {
-
     this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       recette => {
         this.recette = recette
@@ -84,8 +96,8 @@ export class RecetteComponent implements OnInit {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo
       this.newListeCourses.pseudo = this.auth.getUserDetails().pseudo
       this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo
+      this.newResponse.ecritPar = this.auth.getUserDetails().pseudo
     }
-
   }
 
   getUtiliserIngredientsByIdRecette(id: any): QuantiteDetails[] {
@@ -152,6 +164,13 @@ export class RecetteComponent implements OnInit {
     this.newCommentaire.message = message
     console.log(this.newCommentaire)
     this.recetteService.addCommentaire(this.newCommentaire)
+    window.location.reload()
+  }
+
+  addReponse(event, idCommentaire) {
+    this.newResponse.message = event.target.message.value
+    this.newResponse.parent = idCommentaire
+    this.recetteService.addCommentaire(this.newResponse)
     window.location.reload()
   }
 

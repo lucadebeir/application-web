@@ -84,6 +84,7 @@ export interface CommentaireDetails {
     nomRecette?: string
     admin?: boolean
     children?: CommentaireDetails[]
+    parent?: number
 }
 
 @Injectable()
