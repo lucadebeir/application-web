@@ -4,6 +4,22 @@
         $(this).collapse('hide');
     });
 </script>
+<script>
+    $(document).on("click", function (e) {
+		e.preventDefault();
+		var $item = $(".rad-dropmenu-item");
+		if ($item.hasClass("active")) {
+			$item.removeClass("active");
+		}
+    });
+    
+    $("a.rad-menu-item").on("click", function (e) {
+		var $item = $("ul.rad-dropmenu-item");
+		if (!$item.hasClass("active")) {
+			$item.toggleClass("active");
+		}
+	});
+  </script>
 
 <!--script pour les liens de partages sur les réseaux sociaux-->
 <script type="text/javascript"
@@ -67,6 +83,16 @@
                     <a class="dropdown-item" routerLink="" (click)="auth.logout()">Deconnexion</a>
                 </div>
             </li>
+            <!--<div class="col">
+                <div ngbDropdown class="d-inline-block">
+                  <a id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-bell-o"><span class="rad-menu-badge">49</span></i></a>
+                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Action - 1</button>
+                    <button ngbDropdownItem>Another Action</button>
+                    <button ngbDropdownItem>Something else is here</button>
+                  </div>
+                </div>
+              </div>-->
         </ul>
     </div>
 </nav>

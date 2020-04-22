@@ -4,7 +4,6 @@ import { HttpResponse } from '@angular/common/http'
 import { Router, ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs'
 import { addHours } from '../../utils/Utils'
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-recette',
