@@ -26,6 +26,16 @@
                         </div>
                         
                         <div class='flex-container'>
+
+                            <div id="addIng">
+                                <h6 id="question"> Ajouter un nouvel ingredient </h6>
+                                <form (submit)="addIngredient()">
+                                    <input type="text" class="form-control" name="nomIngredient" placeholder="nom ingredient" [(ngModel)]="ingredient.nomIngredient">
+                        
+                                    <button id="btn" class="btn btn-outline-info" type="submit">Valider</button>
+                        
+                                </form>
+                            </div>
                         
                             <div>
                                 <form>
@@ -59,15 +69,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div>
-                                <h6 id="question"> Ajouter un nouvel ingredient </h6>
-                                <form (submit)="addIngredient()">
-                                    <input type="text" class="form-control" name="nomIngredient" placeholder="nom ingredient" [(ngModel)]="ingredient.nomIngredient">
-                        
-                                    <button id="btn" class="btn btn-outline-info" type="submit">Valider</button>
-                        
-                                </form>
-                            </div>
+                            
                         </div>
                     </div>
                 </section>

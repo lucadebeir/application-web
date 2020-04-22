@@ -10,7 +10,7 @@ input {
 
 .flex-container {
     margin-top: 3em;
-    display: flex;
+    display: grid;
     justify-content: space-around;
     margin-bottom: 2em;
 }
@@ -103,6 +103,17 @@ input {
 
 .container {
     justify-content: space-around;
+}
+
+#addCat {
+    margin-bottom: 3em;
+}
+
+@media (min-width: 776px) {
+    .flex-container {
+        display: flex;
+        flex-direction: row-reverse;
+    }
 }
 
 @media screen and (min-width: 1000px) {

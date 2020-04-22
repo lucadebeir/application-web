@@ -4,9 +4,8 @@ import { Observable } from 'rxjs'
 import { map, tap } from 'rxjs/operators'
 import { CreateRecipe } from '../views/ajout-recette/ajout-recette.component'
 import { AuthentificationService, UserDetails } from './authentification.service'
-import { element } from 'protractor'
 import { Time } from '@angular/common'
-import { addTimes } from './../utils/Utils'
+import { addTimes, addHours } from './../utils/Utils'
 
 
 
@@ -115,7 +114,8 @@ export class RecettesService {
                 this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
                     element.ingredients = data
                 })
-                element.globalTime = addTimes(element.tempsPreparation, element.tempsCuisson)
+                element.globalTime = addHours(addTimes(element.tempsPreparation, element.tempsCuisson))
+
             });
             return data
         }))
@@ -157,6 +157,7 @@ export class RecettesService {
             data.forEach(element => {
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
+                    element.globalTime = addHours(addTimes(element.tempsPreparation, element.tempsCuisson))
                 })
             });
             return data
@@ -169,6 +170,7 @@ export class RecettesService {
             data.forEach(element => {
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
+                    element.globalTime = addHours(addTimes(element.tempsPreparation, element.tempsCuisson))
                 })
             });
             return data
@@ -192,7 +194,7 @@ export class RecettesService {
                 this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
                     element.ingredients = data
                 })
-                element.globalTime = addTimes(element.tempsCuisson, element.tempsPreparation)
+                element.globalTime = addHours(addTimes(element.tempsCuisson, element.tempsPreparation))
             });
             return data
         }))
@@ -374,6 +376,7 @@ export class RecettesService {
                 this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
                     element.ingredients = data
                 })
+                element.globalTime = addHours(addTimes(element.tempsPreparation, element.tempsCuisson))
             });
             return data
         }))
@@ -391,6 +394,7 @@ export class RecettesService {
                 this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
                     element.ingredients = data
                 })
+                element.globalTime = addHours(addTimes(element.tempsPreparation, element.tempsCuisson))
             });
             return data
         }))

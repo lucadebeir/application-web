@@ -25,6 +25,16 @@
                         </div>
                         
                         <div class='flex-container'>
+
+                            <div id="addUnite">
+                                <h6 id="question "> Ajouter une nouvelle unité </h6>
+                                <form (submit)="addUnite() ">
+                                    <input type="text " class="form-control " name="libelleUnite " placeholder="libelle unité " [(ngModel)]="unite.libelleUnite ">
+                        
+                                    <button id="btn" class="btn btn-outline-info " type="submit ">Valider</button>
+                        
+                                </form>
+                            </div>
                         
                             <div>
                                 <form class="form-inline my-2 my-lg-0">
@@ -57,15 +67,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div>
-                                <h6 id="question "> Ajouter une nouvelle unité </h6>
-                                <form (submit)="addUnite() ">
-                                    <input type="text " class="form-control " name="libelleUnite " placeholder="libelle unité " [(ngModel)]="unite.libelleUnite ">
-                        
-                                    <button id="btn" class="btn btn-outline-info " type="submit ">Valider</button>
-                        
-                                </form>
-                            </div>
+                            
                         </div>
                     </div>
                 </section>

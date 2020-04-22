@@ -1,4 +1,5 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <!--lien pour avoir le petit logo de poubelle-->
 
 <div id="titre">
@@ -10,7 +11,8 @@
         <a class="nav-link active" routerLink="/favorites" (click)="getFavoris()">Tous mes favoris</a>
     </li>
     <li class="nav-item" *ngFor="let categ of categories">
-        <a class="nav-link" routerLink="/favorites" (click)="getFavorisByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
+        <a class="nav-link" routerLink="/favorites"
+            (click)="getFavorisByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
     </li>
 </ul>
 
@@ -19,9 +21,11 @@
 <ul class="nav justify-content-center">
     <li>
         <form class="form-inline" [formGroup]="researchForm" (ngSubmit)="research()">
-            <input class="form-control" type="search" placeholder="Recette, ingrédient.." aria-label="Search"
-            formControlName="filter" (click)="ngOnChanges()">
-        
+            <div class="col text-center">
+                <input class="form-control" type="search" placeholder="Recette, ingrédient.." aria-label="Search"
+                    formControlName="filter" (click)="ngOnChanges()">
+            </div>
+
             <div class="col text-center">
                 <button id="validateButton" type="submit" class="btn btn-primary">Rechercher</button>
             </div>
@@ -38,7 +42,8 @@
             <div class="header">
                 <img id="photo" src="{{recette.lienImage}}" alt="Photo de la recette">
                 <div class="icon">
-                    <a id="btn" type="button" class="btn btn-outline-danger" (click)="deleteFavoris(recette.idRecette)"> <i class="fa fa-heart"></i></a>
+                    <a id="btn" type="button" class="btn btn-outline-danger" (click)="deleteFavoris(recette.idRecette)">
+                        <i class="fa fa-heart"></i></a>
                 </div>
             </div>
             <div class="text">
@@ -47,12 +52,13 @@
                 </h3>
                 <i class="fa fa-clock-o"> {{recette.globalTime}}</i>
                 <i class="fa fa-users"> {{recette.nbrePart}} {{recette.libellePart}}</i>
-                <i id="coeur"> {{recette?.nbFavoris}} ♥  </i>
+                <i id="coeur"> {{recette?.nbFavoris}} ♥ </i>
                 <i id="vue">{{recette?.nbVues}} 👁</i>
                 <br>
 
             </div>
-            <a (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]" class="btn">Voir la recette!</a>
+            <a (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]" class="btn">Voir la
+                recette!</a>
         </div>
     </div>
 </div>

@@ -20,9 +20,10 @@
 <ul class="nav justify-content-center">
     <li>
         <form class="form-inline" [formGroup]="researchForm" (ngSubmit)="research()">
-            <input class="form-control" type="search" placeholder="Recette, ingrédient.." aria-label="Search"
-            formControlName="filter" (click)="ngOnChanges()">
-        
+            <div class="col text-center">
+                <input class="form-control" type="search" placeholder="Recette, ingrédient.." aria-label="Search"
+                    formControlName="filter" (click)="ngOnChanges()">
+            </div>
             <div class="col text-center">
                 <button id="validateButton" type="submit" class="btn btn-primary">Rechercher</button>
             </div>

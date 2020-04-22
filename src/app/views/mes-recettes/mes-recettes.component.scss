@@ -50,7 +50,7 @@ img {
 }
 
 i {
-    display: -webkit-inline-box;
+    display: inline;
 }
 
 .card {
@@ -107,4 +107,13 @@ i {
             transition: 250ms;
         }
     }
+}
+
+.text-center {
+    margin-bottom: 1em;
+}
+
+.form-control {
+    display: inline;
+    width: initial;
 }

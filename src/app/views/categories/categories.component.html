@@ -24,6 +24,16 @@
                         </div>
                         
                         <div class='flex-container'>
+
+                            <div id="addCat">
+                                <h6 id="question"> Ajouter une nouvelle catégorie </h6>
+                                <form (submit)="addCategory()">
+                                    <input type="text" class="form-control" name="libelleCategorie" placeholder="nom catégorie" [(ngModel)]="categorie.libelleCategorie">
+                                    <button id="btn" class="btn btn-outline-info " type="submit ">Valider</button>
+                        
+                                </form>
+                            </div>
+
                             <div>
                                 <table class="table col-md-12 mx-auto">
                         
@@ -46,14 +56,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div>
-                                <h6 id="question"> Ajouter une nouvelle catégorie </h6>
-                                <form (submit)="addCategory()">
-                                    <input type="text" class="form-control" name="libelleCategorie" placeholder="nom catégorie" [(ngModel)]="categorie.libelleCategorie">
-                                    <button id="btn" class="btn btn-outline-info " type="submit ">Valider</button>
-                        
-                                </form>
-                            </div>
+                            
                         </div>
                     </div>
                 </section>
