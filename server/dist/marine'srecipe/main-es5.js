@@ -3173,7 +3173,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               element.disabled = false;
             });
             _this17.ingredients = ingredients;
-            console.log(_this17.ingredients);
           });
           this.recetteService.getAllUnite().subscribe(function (unites) {
             _this17.unites = unites;
@@ -3224,7 +3223,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           reader.onload = function () {
             dataURL = reader.result;
-            console.log(dataURL);
           };
 
           var fileMetaData = {
@@ -3232,9 +3230,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             type: file[0].type,
             buffer: file[0]
           };
-          console.log(fileMetaData);
           this.recetteService.addImage(fileMetaData).subscribe(function (data) {
-            console.log(data);
             _this18.recipe.idImage = data[0];
           }, function (error) {
             console.log(error);
@@ -3284,9 +3280,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               alert("Il faut une quantité positive pour l'ingrédient.");
               return;
             }
-          })) console.log(ingredientFormValue.ingredient);
+          })) this.recipe.ingredients = ingredientFormValue.ingredient; //je récupère les info sur l'ingrédient
 
-          this.recipe.ingredients = ingredientFormValue.ingredient; //je récupère les info sur l'ingrédient
 
           this.recipe.categories = this.selectedItems;
           this.recipe.nomRecette = formValue.nomRecette;
@@ -3296,27 +3291,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.recipe.tempsPreparation = formValue.tempsPreparation;
           this.recipe.tempsCuisson = formValue.tempsCuisson;
           this.recipe.astuce = formValue.astuce;
-          console.log(this.recipe);
           this.recetteService.addImage(formData).subscribe(function (res) {
             _this19.recipe.idImage = res[0];
-            console.log(res[0]);
 
             _this19.recetteService.createRecipe(_this19.recipe).subscribe(function (res) {
               _this19.recipe.idRecette = res[0]; // je récupère l'id de la recette que je viens de créer
 
               _this19.recetteService.addIngredientsAndCategoryToNewRecipe(_this19.recipe).subscribe(function (res) {
-                console.log("succès !!!!");
                 _this19.listAbonneNews$ = _this19.auth.getAbonneNews();
-                console.log(_this19.listAbonneNews$);
 
                 _this19.listAbonneNews$.subscribe(function (res) {
                   res.forEach(function (element) {
-                    console.log(element);
-
-                    _this19.auth.sentEmailToNewRecipe(element, _this19.recipe.idRecette).subscribe(function (res) {
-                      console.log(res);
-                      console.log("bg");
-                    });
+                    _this19.auth.sentEmailToNewRecipe(element, _this19.recipe.idRecette).subscribe();
                   });
                 });
               });
@@ -3379,8 +3365,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this20 = this;
 
           this.ingredientForm.valueChanges.subscribe(function (val) {
-            console.log(val.ingredient); //this.selectIngredient = []
-
+            //this.selectIngredient = []
             _this20.ingredients.forEach(function (ingredient) {
               ingredient.disabled = false;
             });

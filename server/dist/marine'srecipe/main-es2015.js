@@ -1803,7 +1803,6 @@ class AjoutRecetteComponent {
                 element.disabled = false;
             });
             this.ingredients = ingredients;
-            console.log(this.ingredients);
         });
         this.recetteService.getAllUnite().subscribe(unites => {
             this.unites = unites;
@@ -1841,16 +1840,13 @@ class AjoutRecetteComponent {
         var dataURL;
         reader.onload = function () {
             dataURL = reader.result;
-            console.log(dataURL);
         };
         const fileMetaData = {
             originalname: file[0].name,
             type: file[0].type,
             buffer: file[0]
         };
-        console.log(fileMetaData);
         this.recetteService.addImage(fileMetaData).subscribe(data => {
-            console.log(data);
             this.recipe.idImage = data[0];
         }, error => {
             console.log(error);
@@ -1902,8 +1898,7 @@ class AjoutRecetteComponent {
                 return;
             }
         }))
-            console.log(ingredientFormValue.ingredient);
-        this.recipe.ingredients = ingredientFormValue.ingredient; //je récupère les info sur l'ingrédient
+            this.recipe.ingredients = ingredientFormValue.ingredient; //je récupère les info sur l'ingrédient
         this.recipe.categories = this.selectedItems;
         this.recipe.nomRecette = formValue.nomRecette;
         this.recipe.etapes = formValue.etapes;
@@ -1912,23 +1907,15 @@ class AjoutRecetteComponent {
         this.recipe.tempsPreparation = formValue.tempsPreparation;
         this.recipe.tempsCuisson = formValue.tempsCuisson;
         this.recipe.astuce = formValue.astuce;
-        console.log(this.recipe);
         this.recetteService.addImage(formData).subscribe(res => {
             this.recipe.idImage = res[0];
-            console.log(res[0]);
             this.recetteService.createRecipe(this.recipe).subscribe(res => {
                 this.recipe.idRecette = res[0]; // je récupère l'id de la recette que je viens de créer
                 this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
-                    console.log("succès !!!!");
                     this.listAbonneNews$ = this.auth.getAbonneNews();
-                    console.log(this.listAbonneNews$);
                     this.listAbonneNews$.subscribe(res => {
                         res.forEach(element => {
-                            console.log(element);
-                            this.auth.sentEmailToNewRecipe(element, this.recipe.idRecette).subscribe(res => {
-                                console.log(res);
-                                console.log("bg");
-                            });
+                            this.auth.sentEmailToNewRecipe(element, this.recipe.idRecette).subscribe();
                         });
                     });
                 });
@@ -1979,7 +1966,6 @@ class AjoutRecetteComponent {
     }
     onChanges() {
         this.ingredientForm.valueChanges.subscribe(val => {
-            console.log(val.ingredient);
             //this.selectIngredient = []
             this.ingredients.forEach(ingredient => {
                 ingredient.disabled = false;

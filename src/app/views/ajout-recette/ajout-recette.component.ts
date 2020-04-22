@@ -1,14 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoryDetails, IngredientDetails, UniteDetails, RecettesService, UserDetails, AuthentificationService } from '../../service';
 import { FormGroup, FormArray, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; //la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
 import { HttpClient } from '@angular/common/http';
-import { Observable, ReplaySubject, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Time } from '@angular/common';
-import { MatSelect } from '@angular/material/select';
-import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ajout-recette',
@@ -66,7 +64,6 @@ export class AjoutRecetteComponent implements OnInit {
           element.disabled = false
         })
         this.ingredients = ingredients
-        console.log(this.ingredients)
       }
     )
 
@@ -125,7 +122,6 @@ export class AjoutRecetteComponent implements OnInit {
     var dataURL;
     reader.onload = function () {
       dataURL = reader.result;
-      console.log(dataURL)
     };
 
     const fileMetaData = {
@@ -133,9 +129,7 @@ export class AjoutRecetteComponent implements OnInit {
       type: file[0].type,
       buffer: file[0]
     }
-    console.log(fileMetaData)
     this.recetteService.addImage(fileMetaData).subscribe(data => {
-      console.log(data)
       this.recipe.idImage = data[0]
     }, error => {
       console.log(error);
@@ -199,7 +193,6 @@ export class AjoutRecetteComponent implements OnInit {
       }
     }))
 
-    console.log(ingredientFormValue.ingredient)
     this.recipe.ingredients = ingredientFormValue.ingredient //je récupère les info sur l'ingrédient
 
     this.recipe.categories = this.selectedItems
@@ -210,24 +203,15 @@ export class AjoutRecetteComponent implements OnInit {
     this.recipe.tempsPreparation = formValue.tempsPreparation
     this.recipe.tempsCuisson = formValue.tempsCuisson
     this.recipe.astuce = formValue.astuce
-    console.log(this.recipe)
     this.recetteService.addImage(formData).subscribe(res => {
       this.recipe.idImage = res[0]
-      console.log(res[0])
       this.recetteService.createRecipe(this.recipe).subscribe(res => {
         this.recipe.idRecette = res[0] // je récupère l'id de la recette que je viens de créer
-
         this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
-          console.log("succès !!!!")
           this.listAbonneNews$ = this.auth.getAbonneNews()
-          console.log(this.listAbonneNews$)
           this.listAbonneNews$.subscribe(res => {
             res.forEach(element => {
-              console.log(element)
-              this.auth.sentEmailToNewRecipe(element, this.recipe.idRecette).subscribe(res => {
-                console.log(res)
-                console.log("bg")
-              })
+              this.auth.sentEmailToNewRecipe(element, this.recipe.idRecette).subscribe()
             });
           });
         })
@@ -286,7 +270,6 @@ export class AjoutRecetteComponent implements OnInit {
 
   onChanges(): void {
     this.ingredientForm.valueChanges.subscribe(val => {
-      console.log(val.ingredient)
       //this.selectIngredient = []
       this.ingredients.forEach(ingredient => {
         ingredient.disabled = false
