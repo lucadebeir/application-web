@@ -1,7 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <script>
-
 </script>
 
 <header class="site-header">
@@ -176,9 +175,17 @@
 
                             </footer><!-- .comment-meta -->
 
-                            <div class="comment-content">
-                                <p>{{commentaire.message}}</p>
+                            <div class="comment-content row">
+                                <div class="column1">
+                                    <p>{{commentaire.message}}</p>
+                                </div>
+                                <div class="column2">
+                                    <button id="btnCancel" *ngIf="auth.isAdmin()" class="btn btn-sm btn-danger"
+                                        (click)="deleteCommentaire(commentaire.idCommentaire)"><i
+                                            class=" fa fa-trash "></i></button>
+                                </div>
                             </div><!-- .comment-content -->
+
                             <div class="comment-btn" *ngIf="commentaire.children.length == 0">
                                 <form (ngSubmit)="addReponse($event, commentaire.idCommentaire)">
                                     <input name="message" type="textarea" class="text" rows="10" cols="30"
@@ -214,15 +221,25 @@
 
                                         </footer><!-- .comment-meta -->
 
-                                        <div class="comment-content">
-                                            <p>{{children.message}}</p>
+                                        <div class="comment-content row">
+                                            <div class="column1">
+                                                <p>{{children.message}}</p>
+                                            </div>
+
+                                            <div class="column2">
+                                                <button id="btnCancel" *ngIf="auth.isAdmin()"
+                                                    class="btn btn-sm btn-danger"
+                                                    (click)="deleteCommentaire(children.idCommentaire)"><i
+                                                        class=" fa fa-trash "></i></button>
+                                            </div>
                                         </div><!-- .comment-content -->
+
 
                                         <div class="reply">
 
                                         </div><!-- #respond -->
 
-                                        <div class="comment-btn" *ngIf="isLast">
+                                        <div class="comment-btn" *ngIf="isLast && auth.isLoggedIn()">
                                             <form (ngSubmit)="addReponse($event, commentaire.idCommentaire)">
                                                 <input name="message" type="textarea" class="text" rows="10" cols="30"
                                                     placeholder="Répondre...">

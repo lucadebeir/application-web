@@ -9,10 +9,27 @@ pre {
 
 #timer {
     color: black;
+    font-size: larger;
+}
+
+p#timer {
+    text-align: end;
 }
 
 #logo {
     width: auto;
+}
+
+.column1 {
+    width: 70%;
+    display: table-cell;
+}
+
+.column2 {
+    width: 10%;
+    vertical-align: middle;
+    display: table-cell;
+    text-align: end;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Oswald|Nunito:400,700);
@@ -44,12 +61,13 @@ html {
 }
 
 #hero-graphic {
-    height: auto;
-    width: 60%;
+    max-height: 40em;
+    min-width: 60%;
 }
 
 .hero-graphic {
     width: unset;
+    margin: auto;
 }
 
 
@@ -592,7 +610,7 @@ button {
 
 #btn-p {
     margin-top: 2em;
-    text-align: center;
+    text-align: right;
 }
 
 
@@ -694,7 +712,8 @@ body{
 	color:#a2a2a2;
 }
 .comment-content{
-	margin-top:10px;
+    margin-top:10px;
+    display: table;
 }
 .comment-box{
 	margin-top:30px;
@@ -707,8 +726,14 @@ body{
 	border:1px solid #c2c2c2;
 	padding:10px 12px;
 	border-radius:3px;
-	margin-right: 10px;
+    //margin-right: 10px;
 }
+
+#btnCancel {
+    background-color: red;
+    font-size: larger;
+}
+
 .btn:hover{
 	border:1px solid #000;
 }
@@ -790,4 +815,5 @@ pre {
 
 #logoRecette {
     display: inline-block;
+    margin-right: 1em;
 }
