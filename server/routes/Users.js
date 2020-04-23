@@ -161,7 +161,7 @@ users.post('/register', (req, res) => { //req = info user
                                 to: req.body.email,
                                 subject: "Confirmation compte marine's recipes",
                                 text: "Bonjour" + user.pseudo + ",  Vous vous êtes résement inscrit sur marine's recipe, cliquez sur le lien suivant pour vérifier vôtre email." +
-                                    "\n\n" + link +
+                                    "\n\n" + link + "\n\n" +
                                     "<br>" +
                                     "Bonne journée," +
                                     "<br>" +
