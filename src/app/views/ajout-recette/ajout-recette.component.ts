@@ -193,6 +193,7 @@ export class AjoutRecetteComponent implements OnInit {
       }
     }))
 
+    console.log(ingredientFormValue.ingredient)
     this.recipe.ingredients = ingredientFormValue.ingredient //je récupère les info sur l'ingrédient
 
     this.recipe.categories = this.selectedItems

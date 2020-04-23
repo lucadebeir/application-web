@@ -576,7 +576,6 @@ recipe.post('/favorites/add', (req, res) => {
         }
     })
         .then(favoris => {
-            console.log(favoris)
             if (!favoris) {
 
                 Recipe.findOne({
@@ -585,7 +584,6 @@ recipe.post('/favorites/add', (req, res) => {
                     }
                 })
                     .then(recipe => {
-                        console.log(recipe)
                         Recipe.update({ nbFavoris: recipe.nbFavoris + 1 }, { where: { idRecette: favData.idRecette } })
                     })
 
@@ -671,26 +669,24 @@ recipe.delete('/favorites/:pseudo/delete/:id', (req, res) => {
             pseudo: req.params.pseudo
         }
     })
-        .then(() => {
-            res.send('Favoris deleted!')
-            Recipe.findOne({
+    Recipe.findOne({
+        where: {
+            idRecette: req.params.id
+        }
+    })
+        .then(recipe => {
+            Recipe.update({
+                nbFavoris: recipe.nbFavoris - 1
+            }, {
                 where: {
                     idRecette: req.params.id
                 }
             })
-                .then(recipe => {
-                    Recipe.update({
-                        nbFavoris: recipe.nbFavoris - 1
-                    }, {
-                        where: {
-                            idRecette: req.params.id
-                        }
-                    })
-                })
+            res.json({ success: "Supprimé des favoris !" })
         })
-        .catch(err => {
-            res.send('error: ' + err)
-        })
+    .catch(err => {
+        res.send('error: ' + err)
+    })
 })
 
 
@@ -963,11 +959,11 @@ recipe.post('/image/update', (req, res) => {
     db.sequelize.query("UPDATE illustrerRecettes SET idImage = ? WHERE idRecette = ?", {
         replacements: [req.body.idImage, req.body.idRecette]
     })
-            .then(result => {
-                res.json(result)
-            }).catch(err => {
-                res.json({ error: err })
-            })
+        .then(result => {
+            res.json(result)
+        }).catch(err => {
+            res.json({ error: err })
+        })
 
 })
 

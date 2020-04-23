@@ -52,54 +52,53 @@ export class ModifierRecetteComponent implements OnInit {
 
   constructor(private recetteService: RecettesService, private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private modalService: NgbModal,
     private http: HttpClient) {
+      this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+        recette => {
+          this.recette = recette
+        }
+      );
+  
+      this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+        ingredient => {
+          this.ingredients = ingredient
+        }
+      );
+  
+      this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+        res => {
+          console.log(res.length)
+          if (res.length != 0) {
+            console.log(res)
+            this.recette.idImage = res[0].idImage
+            console.log(this.recette)
+            this.image = res[0]
+          }
+        }
+      );
+  
+      this.recetteService.getRestIngredients(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+        ingredients => {
+          this.allIngredients = ingredients
+        }
+      )
+  
+      this.recetteService.getAllUnite().subscribe(
+        unites => {
+          this.allUnites = unites
+        }
+      )
+  
+      this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
+        categories => {
+          this.allCategories = categories
+        }
+      )
+  
+  
+      this.getCategory(parseInt(this.route.snapshot.paramMap.get('id')))
   }
 
   ngOnInit(): void {
-    this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-      recette => {
-        this.recette = recette
-      }
-    );
-
-    this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-      ingredient => {
-        this.ingredients = ingredient
-      }
-    );
-
-    this.recetteService.getImage(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-      res => {
-        console.log(res.length)
-        if (res.length != 0) {
-          console.log(res)
-          this.recette.idImage = res[0].idImage
-          console.log(this.recette)
-          this.image = res[0]
-        }
-      }
-    );
-
-    this.recetteService.getRestIngredients(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-      ingredients => {
-        this.allIngredients = ingredients
-      }
-    )
-
-    this.recetteService.getAllUnite().subscribe(
-      unites => {
-        this.allUnites = unites
-      }
-    )
-
-    this.recetteService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
-      categories => {
-        this.allCategories = categories
-      }
-    )
-
-
-    this.getCategory(parseInt(this.route.snapshot.paramMap.get('id')))
-
   }
 
   selectImage(event) {

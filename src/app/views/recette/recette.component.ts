@@ -77,6 +77,10 @@ export class RecetteComponent implements OnInit {
     this.recetteService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'))).subscribe(
       ingredient => {
 
+        ingredient.forEach(element => {
+          element.qte = roundDecimal(element.qte)
+        });
+
         this.ingredients = ingredient
         this.recette.ingredients = ingredient
         this.ingredientQteInitial = ingredient

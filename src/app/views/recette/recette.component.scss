@@ -43,6 +43,20 @@ html {
     }
 }
 
+#hero-graphic {
+    height: auto;
+    width: 60%;
+}
+
+.hero-graphic {
+    width: unset;
+}
+
+
+#titreRecette {
+    justify-content: space-evenly;
+}
+
 
 /* Header */
 
@@ -137,7 +151,7 @@ input.recipe-ingredients__qt-counter__value {
 
 .hero-graphic,
 #hero-graphic {
-    width: 80%;
+    //width: 80%;
     text-align: center;
     /*this should default to a small graphic (or nothing)*/
     background-size: cover;

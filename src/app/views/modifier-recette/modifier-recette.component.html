@@ -244,7 +244,7 @@
                                 <select class="custom-select" #idUnite="ngModel" [(ngModel)]="ingredient.idUnite"
                                     [ngModelOptions]="{standalone: true}" required>
                                     <option *ngFor="let unite of allUnites"
-                                        [attr.selected]="ingredient.libelleUnite === unite.libelleUnite ? true : null"
+                                        [attr.selected]="ingredient.libelleUnite == unite.libelleUnite ? true : null"
                                         [attr.value]="unite.idUnite">
                                         {{unite.libelleUnite}}
                                     </option>

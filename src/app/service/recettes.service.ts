@@ -345,12 +345,9 @@ export class RecettesService {
     }
 
 
-    public addFavoris(newFavori: FavorisDetails): any {
-        return this.http.post(`/server/favorites/add`, newFavori).subscribe(res => {
-            {
-                return res
-            }
-
+    public addFavoris(newFavori: FavorisDetails): Observable<any> {
+        return this.http.post(`/server/favorites/add`, newFavori).pipe(res => {
+            return res
         })
     }
 
@@ -403,9 +400,9 @@ export class RecettesService {
     public deleteFavoris(id: any): Observable<any> {
         const pseudo = this.auth.getUserDetails().pseudo;
         const url = `/server/favorites/${pseudo}/delete/${id}`;
-        return this.http.delete<any>(url).pipe(
-            tap(_ => console.log(`deleted ${id}`)),
-        );
+        return this.http.delete<any>(url).pipe(res => {
+            return res
+        });
     }
 
 

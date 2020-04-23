@@ -64,7 +64,7 @@ export class RecettesComponent implements OnInit {
       (categorie: CategoryDetails[]) => {
         this.categories = categorie
         categorie.forEach(data => {
-          this.recetteService.getRecipeByCategory(data.idCategorie).subscribe(recipes => { 
+          this.recetteService.getRecipeByCategory(data.idCategorie).subscribe(recipes => {
             this.recipeCategory = recipes
             this.recipeByCategory[data.idCategorie] = this.recipeCategory
           })
@@ -143,6 +143,8 @@ export class RecettesComponent implements OnInit {
 
   getAllRecipes() {
 
+    this.actualCategory = null
+
     this.recettes$ = this.recetteService.getAllRecipesAndIngredients()
 
     this.recetteService.getAllRecipesAndIngredients().subscribe(data => {
@@ -216,14 +218,14 @@ export class RecettesComponent implements OnInit {
 
   addFavoris(id: number) {
     this.newFavori.idRecette = id
-    this.recetteService.addFavoris(this.newFavori)
-    this.router.navigateByUrl('/allRecipes').then(() => {
-      window.location.reload()
+    this.recetteService.addFavoris(this.newFavori).subscribe(res => {
+      this.getFavoris()
     })
   }
 
 
   getFavoris() {
+    this.favoris = []
     this.recetteService.getFavoris().subscribe(
       (favoris: RecipeDetails[]) => {
         console.log(favoris)
@@ -243,16 +245,9 @@ export class RecettesComponent implements OnInit {
   }
 
   deleteFavoris(idRecette: any) {
-    this.recetteService.deleteFavoris(idRecette)
-      .subscribe(res => {
-        this.router.navigate(['/'], {
-          queryParams: { refresh: new Date().getTime() }
-        })
-      }, (err) => {
-        console.log(err);
-      }
-      );
-    window.location.reload() /* rafraichit la page */
+    this.recetteService.deleteFavoris(idRecette).subscribe(res => {
+      this.getFavoris()
+    }) /* rafraichit la page */
   }
 }
 
