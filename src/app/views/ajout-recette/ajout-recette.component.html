@@ -19,13 +19,15 @@
                     </td>
 
                 </tr>
+            </table>
+            <table class="table col-md-8 mx-auto">
                 <tr>
                     <td>
                         <form>
                             <div id="image">
                                 <input type="file" name="file" id="file" class="inputfile" name="image"
                                     (change)="selectImage($event)" />
-                                <label for="file">Choisir une image</label>
+                                <label id="positionImage" for="file">Choisir une image</label>
                             </div>
                             <br>
                         </form>
