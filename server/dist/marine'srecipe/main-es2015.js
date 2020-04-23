@@ -1212,13 +1212,20 @@ RecettesService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineI
 /*!********************************!*\
   !*** ./src/app/utils/Utils.js ***!
   \********************************/
-/*! exports provided: addTimes, addHours */
+/*! exports provided: roundDecimal, addTimes, addHours */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "roundDecimal", function() { return roundDecimal; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addTimes", function() { return addTimes; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addHours", function() { return addHours; });
+function roundDecimal(nombre, precision){
+    var precision = precision || 2;
+    var tmp = Math.pow(10, precision);
+    return Math.round( nombre*tmp )/tmp;
+}
+
 function addTimes(startTime, endTime) {
     var times = [0, 0, 0]
     var max = times.length
@@ -3009,7 +3016,7 @@ class InscrireComponent {
     }
 }
 InscrireComponent.ɵfac = function InscrireComponent_Factory(t) { return new (t || InscrireComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service___WEBPACK_IMPORTED_MODULE_2__["AuthentificationService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormBuilder"])); };
-InscrireComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: InscrireComponent, selectors: [["app-inscrire"]], decls: 39, vars: 2, consts: [["id", "contact", 1, "contact", "pt-100", "pb-100"], [1, "container"], [1, "row"], [1, "col-md-6", "mt-5", "mx-auto"], ["data-toggle", "validator", "role", "form", 1, "contact-form", 3, "formGroup", "ngSubmit"], ["id", "lien", 1, "h3", "mb-3", "font-weight-normal"], [1, "form-group"], ["id", "pseudo", "pattern", "[a-z0-9._%+-]*", "type", "text", "formControlName", "pseudo", "placeholder", "pseudo", "required", "", 1, "form-control"], ["for", "inputEmail", 1, "control-label"], ["id", "to", "type", "email", "formControlName", "email", "placeholder", "nom.prenom@exemple.com", "id", "inputEmail", "required", "", "pattern", "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$", "data-error", "Bruh, that email address is invalid", 1, "form-control"], [1, "help-block", "with-errors"], ["type", "password", "formControlName", "mdp", "placeholder", "****", "required", "", 1, "form-control"], ["type", "password", "formControlName", "mdp2", "placeholder", "****", "required", "", 1, "form-control"], [1, "form-row", "align-items-center"], [1, "col-auto"], ["type", "radio", "formControlName", "abonneNews", "value", "true", "checked", ""], ["type", "radio", "formControlName", "abonneNews", "value", "false"], ["id", "send_email", "type", "submit", "value", "Cr\u00E9er mon compte", 1, "btn", "btn-lg", "btn-primary", 3, "disabled"]], template: function InscrireComponent_Template(rf, ctx) { if (rf & 1) {
+InscrireComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: InscrireComponent, selectors: [["app-inscrire"]], decls: 39, vars: 2, consts: [["id", "contact", 1, "contact", "pt-100", "pb-100"], [1, "container"], [1, "row"], [1, "col-md-6", "mt-5", "mx-auto"], ["data-toggle", "validator", "role", "form", 1, "contact-form", 3, "formGroup", "ngSubmit"], ["id", "lien", 1, "h3", "mb-3", "font-weight-normal"], [1, "form-group"], ["id", "pseudo", "pattern", "[a-zA-Z0-9._%+-]*", "type", "text", "formControlName", "pseudo", "placeholder", "pseudo", "required", "", 1, "form-control"], ["for", "inputEmail", 1, "control-label"], ["id", "to", "type", "email", "formControlName", "email", "placeholder", "nom.prenom@exemple.com", "id", "inputEmail", "required", "", "pattern", "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$", "data-error", "Bruh, that email address is invalid", 1, "form-control"], [1, "help-block", "with-errors"], ["type", "password", "formControlName", "mdp", "placeholder", "****", "required", "", 1, "form-control"], ["type", "password", "formControlName", "mdp2", "placeholder", "****", "required", "", 1, "form-control"], [1, "form-row", "align-items-center"], [1, "col-auto"], ["type", "radio", "formControlName", "abonneNews", "value", "true", "checked", ""], ["type", "radio", "formControlName", "abonneNews", "value", "false"], ["id", "send_email", "type", "submit", "value", "Cr\u00E9er mon compte", 1, "btn", "btn-lg", "btn-primary", 3, "disabled"]], template: function InscrireComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -5264,13 +5271,13 @@ class RecetteComponent {
     onProportionLess(value) {
         console.log(value);
         this.recette.ingredients.forEach(element => {
-            element.qte = (element.qte * value) / this.recette.nbrePart;
+            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])((element.qte * value) / this.recette.nbrePart);
         });
         this.recette.nbrePart = this.recette.nbrePart - 1;
     }
     onProportionMore(value) {
         this.recette.ingredients.forEach(element => {
-            element.qte = (element.qte * value) / this.recette.nbrePart;
+            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])((element.qte * value) / this.recette.nbrePart);
         });
         this.recette.nbrePart = this.recette.nbrePart + 1;
     }

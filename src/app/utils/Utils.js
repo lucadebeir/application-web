@@ -1,3 +1,9 @@
+export function roundDecimal(nombre, precision){
+    var precision = precision || 2;
+    var tmp = Math.pow(10, precision);
+    return Math.round( nombre*tmp )/tmp;
+}
+
 export function addTimes(startTime, endTime) {
     var times = [0, 0, 0]
     var max = times.length

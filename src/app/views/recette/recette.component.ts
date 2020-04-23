@@ -3,7 +3,7 @@ import { RecipeDetails, RecettesService, IngredientDetails, UniteDetails, Quanti
 import { HttpResponse } from '@angular/common/http'
 import { Router, ActivatedRoute } from '@angular/router'
 import { Observable } from 'rxjs'
-import { addHours } from '../../utils/Utils'
+import { addHours, roundDecimal } from '../../utils/Utils'
 
 @Component({
   selector: 'app-recette',
@@ -184,14 +184,14 @@ export class RecetteComponent implements OnInit {
   onProportionLess(value: number): void {
     console.log(value)
     this.recette.ingredients.forEach(element => {
-      element.qte = (element.qte * value) / this.recette.nbrePart
+      element.qte = roundDecimal((element.qte * value) / this.recette.nbrePart)
     });
     this.recette.nbrePart = this.recette.nbrePart - 1;
   }
 
   onProportionMore(value: number): void {
     this.recette.ingredients.forEach(element => {
-      element.qte = (element.qte * value) / this.recette.nbrePart
+      element.qte = roundDecimal((element.qte * value) / this.recette.nbrePart)
     });
     this.recette.nbrePart = this.recette.nbrePart + 1;
   }
