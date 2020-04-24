@@ -2,12 +2,35 @@
     text-align: center;
 }
 
+.mt-5, .my-5 {
+    margin-top: 3rem!important;
+}
+
 #menu {
     margin-top: 5em;
 }
 
 #poubelle {
     float: right;
+}
+
+#logoRecette {
+    display: flex;
+    position: absolute;
+    bottom: 27px;
+    left: 24px;
+    right: 24px;
+    color: white;
+    justify-content: space-between;
+    //background-color: rgba(0, 0, 0, 0.35)
+}
+
+
+#photo {
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 30em 30em rgba(0, 0, 0, 0.35);
+    //background-color: rgba(0, 0, 0, 0.35)
 }
 
 // FONT
@@ -20,17 +43,36 @@ $gray: #9B9B9B;
 $heart: #C2567F;
 $button: #154360;
 
-/** {
-    margin: 0;
-    padding: 0;
-    font-family: $font;
-    list-style-type: none;
-    text-decoration: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-}*/
+a {
+    color: $button;
+}
+
+#textlogo {
+    font-family: "proxima_nova_rgregular";
+    text-transform: uppercase;
+    color: $white;
+    font-size: medium;
+}
+
+#coeur {
+    a {
+        color: $heart;
+    }
+}
+
+
+#titleRecipe {
+    display: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    //display: flex;
+    position: absolute;
+    bottom: 77px;
+    left: 24px;
+    right: 24px;
+    border-bottom-color: white;
+    border-bottom-style: outset;
+}
 
 #btn {
     background: transparent;
@@ -45,15 +87,27 @@ a {
     color: $button;
 }
 
-img {
-    max-width: 100%;
+h3 {
+    height: 100px;
+    vertical-align: middle;
+    display: table-cell;
+    font-family: "PeachesandCreamRegularW00";
+    font-size: 60px;
+    color: $white;
 }
 
 i {
     display: inline;
 }
 
+.row {
+    margin-left: inherit;
+    margin-right: inherit;
+}
+
 .card {
+    height: 450px; 
+    min-height: 450px;
     position: relative;
     background: $white;
     max-width: 500px;

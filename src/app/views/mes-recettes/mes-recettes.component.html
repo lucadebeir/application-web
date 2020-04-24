@@ -2,7 +2,7 @@
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <!--lien pour avoir le petit logo de poubelle-->
 
-<div id="titre">
+<div id="titre" class="mt-5">
     <h1>Mes recettes ♥</h1>
 </div>
 
@@ -37,28 +37,42 @@
 
 <div class="row">
     <div class="col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of allRecipe">
-        <!--Pour chaque recette on représente sa carte-->
-        <div class="card">
-            <div class="header">
-                <img id="photo" src="{{recette.lienImage}}" alt="Photo de la recette">
-                <div class="icon">
-                    <a id="btn" type="button" class="btn btn-outline-danger" (click)="deleteFavoris(recette.idRecette)">
-                        <i class="fa fa-heart"></i></a>
+        <article class="card wrap">
+            <div style="min-height: inherit;">
+                <a (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">
+                    <div id="photo" [ngStyle]="{'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'}"
+                        alt="Photo de la recette"></div>
+                </a>
+            </div>
+            <div>
+                <a>
+                </a>
+                <div id="titleRecipe">
+                    <h3 class="food">
+                        {{recette.nomRecette}}
+                    </h3>
+                </div>
+                <div id="logoRecette">
+                    <div>
+                        <i class="fa fa-clock-o"></i><a class="picto-item" aria-label="Temps de préparation"><i
+                                id="textlogo">{{recette.globalTime}}</i></a>
+                    </div>
+                    <div>
+                        <i class="fa fa-users"></i><a class="picto-item" aria-label="Nombre de parts"><i
+                                id="textlogo">{{recette.nbrePart}} {{recette.libellePart}}</i></a>
+                    </div>
+                    <div>
+                        <a class="picto-item" aria-label="Nombre de vues"><i id="textlogo">{{recette?.nbVues}}</i><i
+                                id="vue"> 👁</i></a>
+                    </div>
+                    <div id="coeur">
+                        <a *ngIf="this.auth.isLoggedIn()" id="btn"
+                            (click)="deleteFavoris(recette.idRecette)" class="picto-item"
+                            aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
+                                class="class= fa fa-heart"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="text">
-                <h3 class="food">
-                    {{recette.nomRecette}}
-                </h3>
-                <i class="fa fa-clock-o"> {{recette.globalTime}}</i>
-                <i class="fa fa-users"> {{recette.nbrePart}} {{recette.libellePart}}</i>
-                <i id="coeur"> {{recette?.nbFavoris}} ♥ </i>
-                <i id="vue">{{recette?.nbVues}} 👁</i>
-                <br>
-
-            </div>
-            <a (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]" class="btn">Voir la
-                recette!</a>
-        </div>
+        </article>
     </div>
 </div>

@@ -2,27 +2,51 @@
     margin-top: 5em;
 }
 
+#logoRecette {
+    display: flex;
+    position: absolute;
+    bottom: 27px;
+    left: 24px;
+    right: 24px;
+    color: white;
+    justify-content: space-between;
+    //background-color: rgba(0, 0, 0, 0.35)
+}
+
+
+#photo {
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 30em 30em rgba(0, 0, 0, 0.35);
+    //background-color: rgba(0, 0, 0, 0.35)
+}
+
 // FONT
-$font: 'Roboto',
-sans-serif;
+$font: "Roboto", sans-serif;
 // COLORS
 $white: #fff;
 $black: #212129;
-$gray: #9B9B9B;
-$heart: #C2567F;
+$gray: #9b9b9b;
+$heart: #c2567f;
 $button: #154360;
 
-/** {
-    margin: 0;
-    padding: 0;
-    font-family: $font;
-    list-style-type: none;
-    text-decoration: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
-}*/
+#textlogo {
+    font-family: "proxima_nova_rgregular";
+    text-transform: uppercase;
+    color: $white;
+    font-size: medium;
+}
+
+#coeur {
+    a {
+        color: $heart;
+    }
+}
+
+.lineCard {
+    background-color: rgb(255, 255, 255);
+}
+
 
 #btn {
     background: transparent;
@@ -41,6 +65,32 @@ img {
     max-width: 100%;
 }
 
+#titleRecipe {
+    display: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    //display: flex;
+    position: absolute;
+    bottom: 77px;
+    left: 24px;
+    right: 24px;
+    border-bottom-color: white;
+    border-bottom-style: outset;
+}
+
+h3 {
+    height: 100px;
+    vertical-align: middle;
+    display: table-cell;
+    font-family: "PeachesandCreamRegularW00";
+    font-size: 60px;
+    color: $white;
+}
+
+p {
+    text-align: center;
+}
+
 i {
     display: inline;
 }
@@ -49,12 +99,18 @@ i {
     width: initial;
 }
 
-input
-{
+input {
     font-size: 20 px;
 }
 
+.row {
+    margin-left: inherit;
+    margin-right: inherit;
+}
+
 .card {
+    height: 450px; 
+    min-height: 450px;
     position: relative;
     background: $white;
     max-width: 500px;
@@ -83,7 +139,7 @@ input
             text-align: left;
             font-weight: normal;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            //letter-spacing: 0.1em;
             margin: 5px 30px;
         }
         .fa-clock-o,
@@ -118,3 +174,50 @@ input
 .form-control {
     display: inline;
 }
+
+
+
+
+//bulle infos
+
+.picto-item {
+    position: relative;  /*les .picto-item deviennent référents*/
+    cursor: help;
+    border-radius: 50%;
+  }
+  
+  /* on génère un élément :after lors du survol et du focus :*/
+  
+  .picto-item:hover:after,
+  .picto-item:focus:after {
+    content: attr(aria-label);  /* on affiche aria-label */
+    position: absolute;
+    top: -2.4em;
+    left: 50%;
+      transform: translateX(-50%); /* on centre horizontalement  */
+    z-index: 1; /* pour s'afficher au dessus des éléments en position relative */
+    white-space: normal;  /* on interdit le retour à la ligne*/
+    padding: 5px 14px;
+    background: #413219;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1.2rem;
+  }
+  
+  /* on génère un second élément en :before pour la flèche */
+  
+  [aria-label]:hover:before,
+  [aria-label]:focus:before {
+    content: "▼";
+    position: absolute;
+    top: -1em;
+      left: 50%;
+      transform: translateX(-50%); /* on centre horizontalement  */
+    font-size: 20px;
+    color: #413219;
+  }
+  
+  /* pas de contour durant le :focus */
+  [aria-label]:focus {
+    outline: none;
+  }

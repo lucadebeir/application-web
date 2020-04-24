@@ -6,6 +6,7 @@ import { CreateRecipe } from '../views/ajout-recette/ajout-recette.component'
 import { AuthentificationService, UserDetails } from './authentification.service'
 import { Time } from '@angular/common'
 import { addTimes, addHours } from './../utils/Utils'
+import { SafeStyle, DomSanitizer } from '@angular/platform-browser'
 
 
 
@@ -25,6 +26,7 @@ export interface RecipeDetails {
     idImage?: number
     ingredients?: IngredientDetails[]
     globalTime?: string
+    backgroundImg?: SafeStyle
 }
 
 export interface IngredientDetails {
@@ -89,7 +91,7 @@ export interface CommentaireDetails {
 @Injectable()
 export class RecettesService {
 
-    constructor(private http: HttpClient, private auth: AuthentificationService) { }
+    constructor(private http: HttpClient, private auth: AuthentificationService, private sanitizer: DomSanitizer) { }
 
     public getAllRecipes(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/allRecipes`)
@@ -108,8 +110,12 @@ export class RecettesService {
         return base.pipe(map((data: RecipeDetails[]) => {
             data.forEach(element => {
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    console.log(data[0])
                     element.lienImage = data[0]?.lienImage
+                    element.backgroundImg = this.sanitizer.bypassSecurityTrustStyle('url( &quot;' + data[0]?.lienImage  + '&quot;)');
                 })
+                
+                console.log(element)
                 element.ingredients = []
                 this.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
                     element.ingredients = data
@@ -117,6 +123,7 @@ export class RecettesService {
                 element.globalTime = addHours(addTimes(element.tempsPreparation, element.tempsCuisson))
 
             });
+            console.log(data)
             return data
         }))
     }

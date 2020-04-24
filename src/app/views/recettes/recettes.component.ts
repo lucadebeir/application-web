@@ -5,6 +5,8 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { RecipeDetails, RecettesService, CategoryDetails, AuthentificationService, FavorisDetails, IngredientDetails } from '../../service';
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-recettes',
@@ -34,12 +36,17 @@ export class RecettesComponent implements OnInit {
   public allRecipe: RecipeDetails[]
   public allRecipe2: RecipeDetails[]
 
-  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService, private formBuilder: FormBuilder) {
+  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService, private formBuilder: FormBuilder,
+    private sanitizer: DomSanitizer) {
     //pour la recherche dynamique
     this.recettes$ = this.recetteService.getAllRecipesAndIngredients()
 
     this.recetteService.getAllRecipesAndIngredients().subscribe(data => {
+      data.forEach(element => {
+        console.log(element)
+      })
       this.allRecipe = data
+      console.log(this.allRecipe)
       this.allRecipe2 = data
     })
 

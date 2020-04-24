@@ -10,7 +10,7 @@
         <div class="title-area">
 
             <h1>{{recette?.nomRecette}}</h1>
-            <p id="timer">{{recette?.nbVues}} 👁 {{recette?.nbFavoris}}<svg class="bi bi-heart-fill" width="1em"
+            <p id="timer">{{recette?.nbVues}} 👁 {{recette?.nbFavoris}} <svg class="bi bi-heart-fill" width="1em"
                     height="1em" viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd"
                         d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
@@ -187,10 +187,11 @@
                             </div><!-- .comment-content -->
 
                             <div class="comment-btn" *ngIf="commentaire.children.length == 0">
-                                <form (ngSubmit)="addReponse($event, commentaire.idCommentaire)">
-                                    <input name="message" type="textarea" class="text" rows="10" cols="30"
-                                        placeholder="Répondre...">
-                                    <button type="submit" id="envoyer">Répondre</button>
+                                <form id="formCommentaire" (ngSubmit)="addReponse($event, commentaire.idCommentaire)">
+                                    <textarea name="message" type="textarea" class="text" rows="3"></textarea>
+                                    <div id="envoyerCommentaire">
+                                        <button type="submit">Répondre</button>
+                                    </div>
                                 </form>
                             </div>
 
@@ -240,10 +241,12 @@
                                         </div><!-- #respond -->
 
                                         <div class="comment-btn" *ngIf="isLast && auth.isLoggedIn()">
-                                            <form (ngSubmit)="addReponse($event, commentaire.idCommentaire)">
-                                                <input name="message" type="textarea" class="text" rows="10" cols="30"
-                                                    placeholder="Répondre...">
-                                                <button type="submit" id="envoyer">Répondre</button>
+                                            <form id="formCommentaire"
+                                                (ngSubmit)="addReponse($event, commentaire.idCommentaire)">
+                                                <textarea name="message" type="textarea" class="text" rows="3"></textarea>
+                                                <div id="envoyerCommentaire">
+                                                    <button type="submit">Répondre</button>
+                                                </div>
                                             </form>
                                         </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeDetails, RecettesService, AuthentificationService, FavorisDetails } from '../../service';
-import {HttpErrorResponse} from '@angular/common/http'
+import { HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router';
 import { element } from 'protractor';
 
@@ -15,14 +15,14 @@ export class AccueilComponent implements OnInit {
   public mostPopularRecipes: RecipeDetails[]
 
   public newFavori: FavorisDetails = {
-    pseudo : '',
-    idRecette : null 
+    pseudo: '',
+    idRecette: null
   }
 
   public favoris: number[] = []
 
-  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService) { 
-    if(this.auth.isLoggedIn()) {
+  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService) {
+    if (this.auth.isLoggedIn()) {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo
 
       this.getFavoris()
@@ -39,13 +39,13 @@ export class AccueilComponent implements OnInit {
     this.recetteService.getLatestReceipes().subscribe(
       (latestRecipes: RecipeDetails[]) => {
         this.latestRecipes = latestRecipes
-    },err => {
-      if(err instanceof HttpErrorResponse){
-        if(err.status === 402) {
-          console.log("Il n'y a pas encore de recettes.")
+      }, err => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 402) {
+            console.log("Il n'y a pas encore de recettes.")
+          }
         }
-      }
-    })
+      })
   }
 
   getMostPopularRecipes() {
@@ -53,13 +53,13 @@ export class AccueilComponent implements OnInit {
     this.recetteService.getMostPopularRecipes().subscribe(
       (mostPopularRecipes: RecipeDetails[]) => {
         this.mostPopularRecipes = mostPopularRecipes
-    },err => {
-      if(err instanceof HttpErrorResponse){
-        if(err.status === 402) {
-          console.log("Il n'y a pas encore de recettes.")
+      }, err => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 402) {
+            console.log("Il n'y a pas encore de recettes.")
+          }
         }
-      }
-    })
+      })
   }
 
   updateNbView(recette: any) {
@@ -69,52 +69,45 @@ export class AccueilComponent implements OnInit {
           window.location.reload()
         })
       }, err => {
-        if(err instanceof HttpErrorResponse){
-          if(err.status === 402) {
-          console.log("Cette recette n'existe pas !")
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 402) {
+            console.log("Cette recette n'existe pas !")
+          }
         }
-      }
-    })
+      })
   }
 
   addFavoris(id: number) {
     this.newFavori.idRecette = id
-    this.recetteService.addFavoris(this.newFavori)
-    this.router.navigateByUrl('/').then(() => {
-      window.location.reload()
+    this.recetteService.addFavoris(this.newFavori).subscribe(res => {
+      this.getFavoris()
     })
   }
 
   getFavoris() {
-   this.recetteService.getFavoris().subscribe(
-    (favoris: RecipeDetails[]) => {
-      console.log(favoris)
-      favoris.forEach(element => {
-        this.favoris.push(element.idRecette)
- 
-        console.log(this.favoris)
-      })
-      
-  },err => {
-    if(err instanceof HttpErrorResponse){
-      if(err.status === 402) {
-        console.log("Cette user n'a pas de favoris")
-      }
-    }
-  })
-}
+    this.favoris = []
+    this.recetteService.getFavoris().subscribe(
+      (favoris: RecipeDetails[]) => {
+        console.log(favoris)
+        favoris.forEach(element => {
+          this.favoris.push(element.idRecette)
 
-deleteFavoris(idRecette: any) {
-  this.recetteService.deleteFavoris(idRecette)
-    .subscribe(res => {
-      this.router.navigate(['/'], {
-        queryParams: {refresh: new Date().getTime()}
-     })
-      }, (err) => {
-        console.log(err);
-      }
-    );
-    window.location.reload() /* rafraichit la page */
-}
+          console.log(this.favoris)
+        })
+
+      }, err => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 402) {
+            console.log("Cette user n'a pas de favoris")
+          }
+        }
+      })
+  }
+
+  deleteFavoris(idRecette: any) {
+    this.recetteService.deleteFavoris(idRecette).subscribe(res => {
+      this.getFavoris()
+    }) /* rafraichit la page */
+  }
 
 }

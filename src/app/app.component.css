@@ -21,13 +21,15 @@ a {
     font-size: 25px;
 }
 /* footer */
-
+.social .fa-pinterest:hover{
+    background: red;
+}
 .social .fa-instagram:hover {
-    background: #375989;
+    background:  linear-gradient(45DEG, #405DE6,#5851DB,#833AB4,#FD1D1D ) ;
 }
 
 .social .fa-envelope:hover {
-    background: #FF5733;
+    background: #375989;
 }
 
 #message {

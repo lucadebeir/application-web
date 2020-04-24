@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { RecipeDetails, RecettesService, CategoryDetails } from '../../service';
+import { RecipeDetails, RecettesService, CategoryDetails, AuthentificationService } from '../../service';
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router';
 import { HashTable } from '../recettes/recettes.component';
@@ -29,7 +29,7 @@ export class MesRecettesComponent implements OnInit {
   public filter: FormControl
   public filter$: Observable<string>
 
-  constructor(private recetteService: RecettesService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private recetteService: RecettesService, private router: Router, private formBuilder: FormBuilder, public auth: AuthentificationService) {
     //pour la recherche dynamique
     this.recettes$ = this.recetteService.getFavoris()
     this.filter = new FormControl('')

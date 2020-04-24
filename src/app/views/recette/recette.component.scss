@@ -605,7 +605,7 @@ button {
 }
 
 #children {
-    margin-left: inherit;
+    //margin-left: inherit;
 }
 
 #btn-p {
@@ -714,6 +714,7 @@ body{
 .comment-content{
     margin-top:10px;
     display: table;
+    width: 100%;
 }
 .comment-box{
 	margin-top:30px;
@@ -816,4 +817,20 @@ pre {
 #logoRecette {
     display: inline-block;
     margin-right: 1em;
+}
+
+#formCommentaire {
+    display: inherit;
+}
+
+#envoyerCommentaire {
+    text-align: end;
+}
+
+textarea {
+    width: 100%;
+}
+
+time {
+    display: inline-block;
 }
