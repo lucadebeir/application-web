@@ -6,7 +6,7 @@
 
 * {
     font-family: "proxima_nova_rgregular";
-    -moz-box-sizing: border-box; 
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -21,11 +21,11 @@ a {
     font-size: 25px;
 }
 /* footer */
-.social .fa-pinterest:hover{
+.social .fa-pinterest:hover {
     background: red;
 }
 .social .fa-instagram:hover {
-    background:  linear-gradient(45DEG, #405DE6,#5851DB,#833AB4,#FD1D1D ) ;
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #fd1d1d);
 }
 
 .social .fa-envelope:hover {
@@ -39,8 +39,8 @@ a {
 .social i {
     width: 40px;
     height: 40px;
-    color: #FFF;
-    background-color: #909AA0;
+    color: #fff;
+    background-color: #909aa0;
     font-size: 22px;
     text-align: center;
     padding-top: 12px;
@@ -59,7 +59,7 @@ a {
 
 .dark-line {
     /*margin-top: 5em;*/
-    background: rgba(0, 0, 0, .15);
+    background: rgba(0, 0, 0, 0.15);
     padding: 50px 0;
     margin-left: -2px;
     text-align: center;
@@ -71,20 +71,25 @@ a {
 
 @import url(//db.onlinewebfonts.com/c/ca42b7ce0d708ee0817789585c449739?family=PeachesandCreamRegularW00);
 
-@font-face {font-family: "PeachesandCreamRegularW00"; src: url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.eot"); src: url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.woff") format("woff"), url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.svg#PeachesandCreamRegularW00") format("svg"); }
-
 @font-face {
-	font-family: 'proxima_nova_rgregular';
-	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot');
-	src: url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'),
-		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.woff') format('woff'),
-		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.ttf') format('truetype'),
-		 url('https://litmus.com/fonts/Emails/proximanova-regular-webfont.svg#proxima_nova_rgregular') format('svg');
-	font-weight: normal;
-	font-style: normal;
+    font-family: "PeachesandCreamRegularW00";
+    src: url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.eot");
+    src: url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.eot?#iefix") format("embedded-opentype"),
+        url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.woff2") format("woff2"),
+        url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.woff") format("woff"),
+        url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.ttf") format("truetype"),
+        url("//db.onlinewebfonts.com/t/ca42b7ce0d708ee0817789585c449739.svg#PeachesandCreamRegularW00") format("svg");
 }
-
-
+@font-face {
+    font-family: "proxima_nova_rgregular";
+    src: url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot");
+    src: url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.eot?#iefix") format("embedded-opentype"),
+        url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.woff") format("woff"),
+        url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.ttf") format("truetype"),
+        url("https://litmus.com/fonts/Emails/proximanova-regular-webfont.svg#proxima_nova_rgregular") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
 
 .flat-theme .rad-navigation .rad-top-nav-container .links:last-child > li > ul.rad-dropmenu-item {
     left: 0;
@@ -106,7 +111,7 @@ a {
     top: 45px;
     min-width: 250px;
     background: white;
-    border: 1px solid #BDBDBD;
+    border: 1px solid #bdbdbd;
     border-top: 5px solid #515d6e;
     border-radius: 2px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
@@ -121,7 +126,11 @@ a {
     display: inline-block;
     line-height: 32px;
 }
-a, a:hover, a:visited, a:link, a:active {
+a,
+a:hover,
+a:visited,
+a:link,
+a:active {
     text-decoration: none;
 }
 .rad-menu-item {
@@ -129,7 +138,7 @@ a, a:hover, a:visited, a:link, a:active {
     padding: 0 5px;
     line-height: 30px;
     height: 30px;
-    color: #89949B;
+    color: #89949b;
     z-index: 5;
     display: inline-block;
 }
