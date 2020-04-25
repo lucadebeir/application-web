@@ -227,6 +227,9 @@ export class RecettesComponent implements OnInit {
     this.newFavori.idRecette = id
     this.recetteService.addFavoris(this.newFavori).subscribe(res => {
       this.getFavoris()
+      this.recetteService.getAllRecipesAndIngredients().subscribe(data => {
+        this.allRecipe = data
+      })
     })
   }
 
@@ -254,6 +257,9 @@ export class RecettesComponent implements OnInit {
   deleteFavoris(idRecette: any) {
     this.recetteService.deleteFavoris(idRecette).subscribe(res => {
       this.getFavoris()
+      this.recetteService.getAllRecipesAndIngredients().subscribe(data => {
+        this.allRecipe = data
+      })
     }) /* rafraichit la page */
   }
 }

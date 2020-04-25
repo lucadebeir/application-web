@@ -55,8 +55,7 @@
                 <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger"
                     (click)="addFavoris()">♥ Ajouter la recettes à mes favoris</button> </p>
 
-
-
+            
 
         </div>
 
@@ -149,7 +148,7 @@
             <!---->
         </div>
 
-        <div id="comments" class="post-comments elevation-2">
+        <div *ngIf="auth.isLoggedIn()" id="comments" class="post-comments elevation-2">
 
             <div>
                 <ol class="comment-list">
@@ -243,7 +242,8 @@
                                         <div class="comment-btn" *ngIf="isLast && auth.isLoggedIn()">
                                             <form id="formCommentaire"
                                                 (ngSubmit)="addReponse($event, commentaire.idCommentaire)">
-                                                <textarea name="message" type="textarea" class="text" rows="3"></textarea>
+                                                <textarea name="message" type="textarea" class="text"
+                                                    rows="3"></textarea>
                                                 <div id="envoyerCommentaire">
                                                     <button type="submit">Répondre</button>
                                                 </div>

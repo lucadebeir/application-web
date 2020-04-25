@@ -63,7 +63,7 @@ export class InscrireComponent implements OnInit {
           return;
         } else {
           this.auth.logout()
-          alert("Vous pouvez maintenant aller votre boîte mail pour confirmer votre adresse mail. Pensez à vérifier dans vos spams !")
+          alert("Vous pouvez maintenant aller dans votre boîte mail pour confirmer votre adresse mail. Pensez à vérifier dans vos spams !")
           setTimeout(() => this.router.navigate(['login'])
           , 5) 
         }

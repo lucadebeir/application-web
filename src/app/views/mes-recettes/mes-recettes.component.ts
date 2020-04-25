@@ -178,7 +178,9 @@ export class MesRecettesComponent implements OnInit {
         console.log(err);
       }
       );
-    window.location.reload() /* rafraichit la page */
+      this.recetteService.getFavoris().subscribe(data => {
+        this.allRecipe = data
+      }) /* rafraichit la page */
   }
 
 }

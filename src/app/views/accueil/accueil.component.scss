@@ -6,15 +6,28 @@ h5 {
     font-size: 80px;
 }
 
+#carousel {
+    margin: auto;
+}
+
+#carousel2 {
+    margin: auto;
+    margin-bottom: 5em;
+}
+
 #logoRecette {
     display: flex;
-    position: absolute;
+    position: relative;
     bottom: 27px;
     left: 24px;
     right: 24px;
     color: white;
     justify-content: space-between;
     //background-color: rgba(0, 0, 0, 0.35)
+    font-size: medium;
+    margin-right: auto;
+    margin-left: auto;
+    width: 50%;
 }
 
 #photo {
@@ -68,21 +81,90 @@ a {
     margin-right: auto;
     //display: flex;
     position: absolute;
-    bottom: 77px;
+    //bottom: 77px;
     left: 24px;
     right: 24px;
-    border-bottom-color: white;
-    border-bottom-style: outset;
+    display: block;
+    width: 50%;
+}
+
+.carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: initial;
+}
+
+#h3 {
+    display: block;
+    //height: 300px;
+    font-size: 40px;
+    line-height: 70px;
+    border-style: solid;
+    border-color: $white;
 }
 
 h3 {
-    height: 100px;
+    //height: 100px;
     vertical-align: middle;
     display: table-cell;
     font-family: "PeachesandCreamRegularW00";
-    font-size: 60px;
+    font-size: 50px;
     color: $white;
-    font: normal normal bold 28px/35px cookie,cursive;
+    font: normal normal bold 28px/35px cookie, cursive;
+}
+
+@media (max-width: 1000px) {
+    #h3 {
+        font-size: 30px;
+        line-height: 50px;
+    }
+}
+
+@media (max-width: 700px) {
+    #h3 {
+        font-size: 20px;
+        line-height: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    #h3 {
+        font-size: 15px;
+        line-height: 20px;
+    }
+}
+
+ngb-carousel .picsum-img-wrapper {
+    position: relative;
+    height: 0;
+    padding-top: 55%; /* Keep ratio for 900x500 images */
+}
+
+ngb-carousel .picsum-img-wrapper > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+::ng-deep .carousel-control-next-icon {
+    filter: invert(1);
+}
+
+::ng-deep .carousel-control-prev-icon {
+    filter: invert(1);
+}
+
+#img {
+    margin: auto;
+    height: 100%;
+    width: auto;
+    filter: brightness(0.8);
+}
+
+ngb-carousel {
+    background-color: $white;
 }
 
 i {
@@ -97,6 +179,24 @@ body {
 .row {
     margin-left: inherit;
     margin-right: inherit;
+}
+
+#card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+#card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
 }
 
 .card {

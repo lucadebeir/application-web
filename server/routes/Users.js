@@ -159,12 +159,11 @@ users.post('/register', (req, res) => { //req = info user
                             link = "http://" + req.get('host') + "/server/verify?id=" + rand + "&pseudo=" + req.body.pseudo;
                             mailOptions = {
                                 to: req.body.email,
-                                subject: "Confirmation compte marine's recipes",
-                                text: "Bonjour" + user.pseudo + ",  Vous vous êtes résement inscrit sur marine's recipe, cliquez sur le lien suivant pour vérifier vôtre email." +
+                                subject: "Confirmation de votre compte sur Marine's Recipes",
+                                text: "Bonjour " + user.pseudo + ", " + "\n\n" + "Vous vous êtes récemment inscrit sur Marine's Recipe, cliquez sur le lien suivant pour vérifier votre adresse mail : " +
                                     "\n\n" + link + "\n\n" +
-                                    "<br>" +
                                     "Bonne journée," +
-                                    "<br>" +
+                                    "\n\n" +
                                     "Marine."
                             }
                             console.log(mailOptions);

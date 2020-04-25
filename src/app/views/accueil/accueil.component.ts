@@ -3,11 +3,13 @@ import { RecipeDetails, RecettesService, AuthentificationService, FavorisDetails
 import { HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router';
 import { element } from 'protractor';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.scss']
+  styleUrls: ['./accueil.component.scss'],
+  providers: [NgbCarouselConfig]
 })
 export class AccueilComponent implements OnInit {
 
@@ -21,12 +23,13 @@ export class AccueilComponent implements OnInit {
 
   public favoris: number[] = []
 
-  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService) {
+  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService, config: NgbCarouselConfig) {
     if (this.auth.isLoggedIn()) {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo
 
       this.getFavoris()
     }
+    config.showNavigationIndicators = false;
   }
 
   ngOnInit(): void {
@@ -81,6 +84,14 @@ export class AccueilComponent implements OnInit {
     this.newFavori.idRecette = id
     this.recetteService.addFavoris(this.newFavori).subscribe(res => {
       this.getFavoris()
+      this.recetteService.getMostPopularRecipes().subscribe(
+        (mostPopularRecipes: RecipeDetails[]) => {
+          this.mostPopularRecipes = mostPopularRecipes
+        })
+      this.recetteService.getLatestReceipes().subscribe(
+        (latestRecipes: RecipeDetails[]) => {
+          this.latestRecipes = latestRecipes
+        })
     })
   }
 
@@ -107,6 +118,14 @@ export class AccueilComponent implements OnInit {
   deleteFavoris(idRecette: any) {
     this.recetteService.deleteFavoris(idRecette).subscribe(res => {
       this.getFavoris()
+      this.recetteService.getMostPopularRecipes().subscribe(
+        (mostPopularRecipes: RecipeDetails[]) => {
+          this.mostPopularRecipes = mostPopularRecipes
+        })
+      this.recetteService.getLatestReceipes().subscribe(
+        (latestRecipes: RecipeDetails[]) => {
+          this.latestRecipes = latestRecipes
+        })
     }) /* rafraichit la page */
   }
 
