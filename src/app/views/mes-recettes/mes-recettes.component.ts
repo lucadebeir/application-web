@@ -14,6 +14,8 @@ import { HashTable } from '../recettes/recettes.component';
 })
 export class MesRecettesComponent implements OnInit {
 
+  page: number = 1;
+
   public actualCategory: number = null
   public recipeByCategory: HashTable<RecipeDetails[]> = {}
   public recipeCategory: RecipeDetails[] = []
@@ -30,6 +32,7 @@ export class MesRecettesComponent implements OnInit {
   public filter$: Observable<string>
 
   constructor(private recetteService: RecettesService, private router: Router, private formBuilder: FormBuilder, public auth: AuthentificationService) {
+    
     //pour la recherche dynamique
     this.recettes$ = this.recetteService.getFavoris()
     this.filter = new FormControl('')

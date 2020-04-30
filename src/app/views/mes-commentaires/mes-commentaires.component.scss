@@ -1,6 +1,10 @@
-h2 {
-    text-align: center;
-    margin-top: 2em;
+.contact {
+	background-image: url("../../../assets/img/commentaires.png");
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	position: relative;
+    z-index: 2;
 }
 
 .comment-container {
@@ -16,6 +20,10 @@ a {
 
 #burger-fourth {
     min-height: 40em;
+}
+
+#titre{
+    padding-top: 1em;
 }
 
 .v-btn {

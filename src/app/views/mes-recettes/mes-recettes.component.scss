@@ -2,6 +2,17 @@
     text-align: center;
 }
 
+.logo {
+    margin: .5em;
+}
+
+#paginationRecette {
+    padding-top: 4em;
+    margin: auto;
+    margin-bottom: 4em;
+    text-align: center;
+}
+
 .mt-5, .my-5 {
     margin-top: 3rem!important;
 }
@@ -43,6 +54,11 @@ $gray: #9B9B9B;
 $heart: #C2567F;
 $button: #154360;
 
+pagination-controls::ng-deep .ngx-pagination .current {
+    background: $button;
+    border-radius: 60px;
+}
+
 a {
     color: $button;
 }
@@ -67,7 +83,7 @@ a {
     margin-right: auto;
     //display: flex;
     position: absolute;
-    bottom: 77px;
+    bottom: 97px;
     left: 24px;
     right: 24px;
     border-bottom-color: white;

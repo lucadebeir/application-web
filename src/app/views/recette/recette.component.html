@@ -131,7 +131,9 @@
     <article id="burger-fourth">
 
         <h2>Commentaires</h2>
-
+<div *ngIf="!auth.isLoggedIn()" class="blog-text-color">
+<span class="blog-button-color" routerLink="/register">Connexion</span> pour rédiger un commentaire.
+</div>
         <div *ngIf="auth.isLoggedIn()" class="card v-card v-sheet theme--light elevation-2"><span
                 class="headline">Laisser un commentaire</span>
             <div class="sign-in-wrapper">

@@ -36,7 +36,7 @@
 <br>
 
 <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of allRecipe">
+    <div class="col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of allRecipe | paginate: { id: 'listing_pagination', itemsPerPage:12, currentPage: page}">
         <article class="card wrap">
             <div id="photo" [ngStyle]="{'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'}"
                 (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">
@@ -50,19 +50,19 @@
                     </h3>
                 </div>
                 <div id="logoRecette">
-                    <div>
+                    <div class="logo">
                         <i class="fa fa-clock-o"></i><a class="picto-item" aria-label="Temps de préparation"><i
                                 id="textlogo">{{recette.globalTime}}</i></a>
                     </div>
-                    <div>
+                    <div class="logo">
                         <i class="fa fa-users"></i><a class="picto-item" aria-label="Nombre de parts"><i
                                 id="textlogo">{{recette.nbrePart}} {{recette.libellePart}}</i></a>
                     </div>
-                    <div>
+                    <div class="logo">
                         <a class="picto-item" aria-label="Nombre de vues"><i id="textlogo">{{recette?.nbVues}}</i><i
                                 id="vue"> 👁</i></a>
                     </div>
-                    <div id="coeur">
+                    <div id="coeur" class="logo">
                         <a *ngIf="this.auth.isLoggedIn()" id="btn"
                             (click)="deleteFavoris(recette.idRecette)" class="picto-item"
                             aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
@@ -72,4 +72,8 @@
             </div>
         </article>
     </div>
+</div>
+<div id="paginationRecette">
+    <pagination-controls id='listing_pagination' (pageChange)="page = $event" previousLabel="Précédent"
+        nextLabel="Suivant"></pagination-controls>
 </div>

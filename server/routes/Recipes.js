@@ -14,6 +14,7 @@ const ClasserDans = require("../models/ClasserDans")
 const IllustrerRecettes = require("../models/IllustrerRecette")
 const Image = require("../models/Image")
 const Commentaire = require("../models/Commentaire")
+const Menu = require("../models/Menu")
 recipe.use(cors())
 const uploadImage = require('../helpers/helpers')
 let multer = require('multer');
@@ -169,6 +170,21 @@ recipe.get('/recipe/category/:idCategorie', (req, res) => {
 
     let query = db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN categories INNER JOIN classerDans WHERE classerDans.idCategorie = categories.idCategorie AND classerDans.idRecette = recettes.idRecette AND categories.idCategorie = ?", {
         replacements: [req.params.idCategorie],
+        type: sequelize.QueryTypes.SELECT
+    })
+    query.then(resultats => {
+        res.json(resultats)
+    })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//Récupérer les catégories d'une recette
+recipe.get('/category/recipe/:idRecette', (req, res) => {
+
+    let query = db.sequelize.query("SELECT * FROM categories, classerDans WHERE categories.idCategorie = classerDans.idCategorie AND classerDans.idRecette = ?", {
+        replacements: [req.params.idRecette],
         type: sequelize.QueryTypes.SELECT
     })
     query.then(resultats => {
@@ -1109,9 +1125,67 @@ recipe.get('/:pseudo/mescommentaires', (req, res) => {
         .catch(err => {
             res.send('error: ' + err)
         })
-}
+})
 
-)
+//récupérer le menu du moment
+recipe.get('/menu/recipe', (req, res) => {
+    db.sequelize.query("SELECT idMenu, recettes.* FROM menus INNER JOIN recettes ON menus.idRecette = recettes.idRecette")
+        .then(menu => {
+            if(menu) {
+                res.json(menu[0])
+            } else {
+                res.send("Pas de recettes disponibles dans le menu")
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//récupérer le petit dejeuner du moment
+recipe.get('/menu/petitDej', (req, res) => {
+    db.sequelize.query("SELECT recettes.* FROM menus, recettes WHERE menus.idMenu = 1 AND menus.idRecette = recettes.idRecette")
+        .then(menu => {
+            if(menu) {
+                res.json(menu[0])
+            } else {
+                res.send("Pas de petit déjeuner disponibles dans le menu")
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//récupérer le petit dejeuner du moment
+recipe.get('/menu/repas', (req, res) => {
+    db.sequelize.query("SELECT recettes.* FROM menus, recettes WHERE menus.idMenu = 2 AND menus.idRecette = recettes.idRecette")
+        .then(menu => {
+            if(menu) {
+                res.json(menu[0])
+            } else {
+                res.send("Pas de repas disponibles dans le menu")
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//récupérer le petit dejeuner du moment
+recipe.get('/menu/douceur', (req, res) => {
+    db.sequelize.query("SELECT recettes.* FROM menus, recettes WHERE menus.idMenu = 3 AND menus.idRecette = recettes.idRecette")
+        .then(menu => {
+            if(menu) {
+                res.json(menu[0])
+            } else {
+                res.send("Pas de douceur disponibles dans le menu")
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
 
 
 module.exports = recipe

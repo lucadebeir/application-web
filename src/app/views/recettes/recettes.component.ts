@@ -15,6 +15,8 @@ import { element } from 'protractor';
 })
 export class RecettesComponent implements OnInit {
 
+  page: number = 1;
+  
   public actualCategory: number = null
   public recipeByCategory: HashTable<RecipeDetails[]> = {}
   public recipeCategory: RecipeDetails[] = []

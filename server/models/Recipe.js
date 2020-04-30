@@ -44,9 +44,12 @@ module.exports = db.sequelize.define(
         },
         astuce : {
             type: Sequelize.TEXT
+        },
+        mot : {
+            type: Sequelize.STRING
         }
     },
     {
-        timestamps: false
+        timestamps: false 
     }
 )

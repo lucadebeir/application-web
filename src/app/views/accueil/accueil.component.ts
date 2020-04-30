@@ -1,47 +1,64 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeDetails, RecettesService, AuthentificationService, FavorisDetails } from '../../service';
-import { HttpErrorResponse } from '@angular/common/http'
+import { RecettesService, RecipeDetails, Menu } from 'src/app/service';
 import { Router } from '@angular/router';
-import { element } from 'protractor';
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
+import { HttpErrorResponse } from '@angular/common/http'
 
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
-  styleUrls: ['./accueil.component.scss'],
-  providers: [NgbCarouselConfig]
+  styleUrls: ['./accueil.component.scss']
 })
 export class AccueilComponent implements OnInit {
 
-  public latestRecipes: RecipeDetails[]
   public mostPopularRecipes: RecipeDetails[]
+  public latestRecipes: RecipeDetails[]
 
-  public newFavori: FavorisDetails = {
-    pseudo: '',
-    idRecette: null
+  public menu: Menu = {
+    petitDej : null,
+    repas : null,
+    douceur : null
   }
 
-  public favoris: number[] = []
+  public petitDej: RecipeDetails = null
+  public repas: RecipeDetails = null
+  public douceur: RecipeDetails = null
 
-  constructor(private recetteService: RecettesService, private router: Router, public auth: AuthentificationService, config: NgbCarouselConfig) {
-    if (this.auth.isLoggedIn()) {
-      this.newFavori.pseudo = this.auth.getUserDetails().pseudo
+  constructor(private recetteService: RecettesService, private router: Router) {
+    this.getMostPopularRecipes()
+    this.getLatestReceipes()
 
-      this.getFavoris()
-    }
-    config.showNavigationIndicators = false;
+    this.recetteService.getPetitDej().subscribe(data => {
+      this.petitDej = data
+    })
+
+    this.recetteService.getRepas().subscribe(data => {
+      this.repas = data
+    })
+
+    this.recetteService.getDouceur().subscribe(data => {
+      this.douceur = data
+    })
+    
   }
 
   ngOnInit(): void {
-    this.getLatestReceipes()
-    this.getMostPopularRecipes()
   }
 
-  getLatestReceipes() {
+  getMenu() {
 
-    this.recetteService.getLatestReceipes().subscribe(
-      (latestRecipes: RecipeDetails[]) => {
-        this.latestRecipes = latestRecipes
+    this.recetteService.getMenu().subscribe(
+      (menu: any) => {
+        menu.forEach(element => {
+          if (element.idMenu == 1) {
+            this.menu.petitDej = element
+          }
+          else if (element.idMenu == 2) {
+            this.menu.repas = element
+          }
+          else if (element.idMenu == 3) {
+            this.menu.douceur = element
+          }
+        });
       }, err => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 402) {
@@ -65,6 +82,20 @@ export class AccueilComponent implements OnInit {
       })
   }
 
+  getLatestReceipes() {
+
+    this.recetteService.getLatestReceipes().subscribe(
+      (latestRecipes: RecipeDetails[]) => {
+        this.latestRecipes = latestRecipes
+      }, err => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 402) {
+            console.log("Il n'y a pas encore de recettes.")
+          }
+        }
+      })
+  }
+
   updateNbView(recette: any) {
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
@@ -78,55 +109,6 @@ export class AccueilComponent implements OnInit {
           }
         }
       })
-  }
-
-  addFavoris(id: number) {
-    this.newFavori.idRecette = id
-    this.recetteService.addFavoris(this.newFavori).subscribe(res => {
-      this.getFavoris()
-      this.recetteService.getMostPopularRecipes().subscribe(
-        (mostPopularRecipes: RecipeDetails[]) => {
-          this.mostPopularRecipes = mostPopularRecipes
-        })
-      this.recetteService.getLatestReceipes().subscribe(
-        (latestRecipes: RecipeDetails[]) => {
-          this.latestRecipes = latestRecipes
-        })
-    })
-  }
-
-  getFavoris() {
-    this.favoris = []
-    this.recetteService.getFavoris().subscribe(
-      (favoris: RecipeDetails[]) => {
-        console.log(favoris)
-        favoris.forEach(element => {
-          this.favoris.push(element.idRecette)
-
-          console.log(this.favoris)
-        })
-
-      }, err => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 402) {
-            console.log("Cette user n'a pas de favoris")
-          }
-        }
-      })
-  }
-
-  deleteFavoris(idRecette: any) {
-    this.recetteService.deleteFavoris(idRecette).subscribe(res => {
-      this.getFavoris()
-      this.recetteService.getMostPopularRecipes().subscribe(
-        (mostPopularRecipes: RecipeDetails[]) => {
-          this.mostPopularRecipes = mostPopularRecipes
-        })
-      this.recetteService.getLatestReceipes().subscribe(
-        (latestRecipes: RecipeDetails[]) => {
-          this.latestRecipes = latestRecipes
-        })
-    }) /* rafraichit la page */
   }
 
 }

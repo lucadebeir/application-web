@@ -1,262 +1,334 @@
-h5 {
-    text-align: center;
-    margin-top: 5%;
-    //text-decoration: underline;
-    font-family: "PeachesandCreamRegularW00";
-    font-size: 80px;
+h1 {
+    margin-bottom: 1.5rem;
 }
 
-#carousel {
-    margin: auto;
-}
-
-#carousel2 {
-    margin: auto;
-    margin-bottom: 5em;
-}
-
-#logoRecette {
+.col-md-4 {
     display: flex;
-    position: relative;
-    bottom: 27px;
-    left: 24px;
-    right: 24px;
-    color: white;
-    justify-content: space-between;
-    //background-color: rgba(0, 0, 0, 0.35)
-    font-size: medium;
-    margin-right: auto;
-    margin-left: auto;
-    width: 50%;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-#photo {
-    box-shadow: inset 30em 30em rgba(0, 0, 0, 0.35);
-    //background-color: rgba(0, 0, 0, 0.35)
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+#cardTitle {
+    margin-bottom: .5em;
 }
 
-// FONT
-$font: "Roboto", sans-serif;
-// COLORS
-$white: #fff;
-$black: #212129;
-$gray: #9b9b9b;
-$heart: #c2567f;
-$button: #154360;
-* {
+/*p {
+    text-align: center;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: #9400ff;
+    white-space: nowrap;
+}*/
+
+#container {
+    width: 100%;
+    height: auto;
+    //background-color: #ccc;
+    //border: 1px solid #000;
+    overflow: hidden;
+    margin-bottom: 1em;
+}
+
+.centre {
+    float: left;
+    width: 100%;
     margin: 0;
-    padding: 0;
-    font-family: $font;
-    list-style-type: none;
-    text-decoration: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    box-sizing: border-box;
+    //max-width: 50%;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*border: 1px solid #514242;*/
+    @supports (-webkit-line-clamp: 3) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: initial;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
 }
 
-a {
-    color: $button;
+#imgSize {
+    width: auto;
+    display: inline-table;
+    height: 350px;
 }
 
-#textlogo {
-    font-family: "proxima_nova_rgregular";
-    text-transform: uppercase;
-    color: $white;
-    font-size: medium;
-}
-
-#coeur {
-    a {
-        color: $heart;
-    }
-}
-
-#titleRecipe {
-    display: inherit;
-    margin-left: auto;
-    margin-right: auto;
-    //display: flex;
-    position: absolute;
-    //bottom: 77px;
-    left: 24px;
-    right: 24px;
+img {
     display: block;
-    width: 50%;
+    margin: 0 auto;
 }
 
-.carousel-caption {
-    top: 50%;
-    transform: translateY(-50%);
-    bottom: initial;
+#imgCard {
+    width: 250px;
 }
 
-#h3 {
-    display: block;
-    //height: 300px;
-    font-size: 40px;
-    line-height: 70px;
-    border-style: solid;
-    border-color: $white;
-}
-
-h3 {
-    //height: 100px;
-    vertical-align: middle;
+.box {
     display: table-cell;
-    font-family: "PeachesandCreamRegularW00";
-    font-size: 50px;
-    color: $white;
-    font: normal normal bold 28px/35px cookie, cursive;
+    vertical-align: middle;
+    text-align: center;
 }
 
-@media (max-width: 1000px) {
-    #h3 {
-        font-size: 30px;
-        line-height: 50px;
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
     }
 }
 
-@media (max-width: 700px) {
-    #h3 {
-        font-size: 20px;
-        line-height: 40px;
-    }
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
 }
 
-@media (max-width: 400px) {
-    #h3 {
-        font-size: 15px;
-        line-height: 20px;
-    }
+/* CUSTOMIZE THE CAROUSEL
+  -------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    margin-bottom: 4rem;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+    top: 55%;
+    transform: translateY(-50%);
 }
 
-ngb-carousel .picsum-img-wrapper {
-    position: relative;
-    height: 0;
-    padding-top: 55%; /* Keep ratio for 900x500 images */
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: 40rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-
-ngb-carousel .picsum-img-wrapper > img {
+.carousel-item > img {
     position: absolute;
     top: 0;
     left: 0;
-    bottom: 0;
-    right: 0;
+    min-width: 100%;
+    height: 40rem;
+    background-color: rgba(0, 0, 0, 0.35);
 }
 
-::ng-deep .carousel-control-next-icon {
-    filter: invert(1);
+/* MARKETING CONTENT
+  -------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+.marketing h2 {
+    font-weight: 300;
+}
+.marketing .col-lg-4 p {
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
 }
 
-::ng-deep .carousel-control-prev-icon {
-    filter: invert(1);
+.lead {
+    font-size: 1.55em;
 }
 
-#img {
-    margin: auto;
-    height: 100%;
-    width: auto;
-    filter: brightness(0.8);
+/* Featurettes
+  ------------------------- */
+
+.featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
 }
 
-ngb-carousel {
-    background-color: $white;
+/* Thin out the marketing headings */
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.05rem;
 }
 
-i {
-    display: inline;
+.text-muted {
+    margin-top: inherit;
 }
 
-html,
-body {
-    height: 100%;
+.title-trending {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-.row {
-    margin-left: inherit;
-    margin-right: inherit;
+.title-trending:after {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 2px;
+    background: black;
+    margin: 1rem auto 0;
 }
 
-#card {
+/* RESPONSIVE CSS
+  -------------------------------------------------- */
+
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+
+    .featurette-heading {
+        font-size: 50px;
+    }
+
+    .text-muted {
+        margin-top: inherit;
+    }
+}
+
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 7rem;
+    }
+
+    .text-muted {
+        margin-top: inherit;
+    }
+}
+
+////////BUTTON//////////
+
+.post-more {
+    text-align: center;
+}
+
+.btn {
+    border-color: transparent;
+}
+
+.btn.btn-primary {
+    color: #eeeeee;
+    background-color: #282828;
+    width: 7em;
+    font-family: Montserrat, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2rem;
+}
+
+.btn:focus,
+.btn:hover {
+    border-color: transparent;
+}
+
+input,
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.btn-effect {
+    overflow: hidden;
+    display: inline-block;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
 }
 
-#card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1.25rem;
+.btn-effect span {
+    display: block;
+    transition: all 0.2s ease;
 }
 
-.card {
-    height: 450px;
-    min-height: 450px;
-    position: relative;
-    background: $white;
-    max-width: 500px;
-    margin: 20px auto;
-    box-shadow: 0px 0px 30px 2px #000;
-    .header,
-    #photo {
-        min-height: 100%;
-        .icon a .fa-heart-o,
-        .fa-heart {
-            position: absolute;
-            left: 85%;
-            bottom: 30.7%;
-            background: $heart;
-            color: $white;
-            font-size: 1.3em;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 50%;
-            box-shadow: 0px 5px 30px 1px $heart;
-        }
-    }
-    .text {
-        .food {
-            color: $black;
-            text-align: left;
-            font-weight: normal;
-            text-transform: uppercase;
-            //letter-spacing: 0.1em;
-            margin: 5px 30px;
-        }
-        .fa-clock-o,
-        .fa-users,
-        #coeur,
-        #vue {
-            color: $gray;
-            margin: 0 10px;
-        }
-    }
-    a.btn {
-        display: block;
-        background: $button;
-        color: $white;
-        position: relative;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-align: center;
-        padding: 10px;
-        transition: 250ms;
-    }
+.btn-effect span:first-child {
+    transform: translate(0);
 }
 
-#btn {
-    background: transparent;
-    border: none;
+.btn-effect span:last-child {
+    transform: translateY(200%) translateX(-50%);
+    position: absolute;
+    left: 50%;
 }
 
-//bulle infos
+.btn-effect:hover span:first-child {
+    transform: translateY(-200%);
+}
+
+.btn-effect:hover span:last-child {
+    transform: translateY(-100%) translateX(-50%);
+}
+
+.btn-effect .icon {
+    font-size: 1rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+///////CATEGORIES
+
+.post-categories {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.post-categories li {
+    display: inline-block;
+}
+
+.post-categories li:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+.post-categories:before {
+    vertical-align: middle;
+    display: inline-block;
+    content: "";
+    width: 2.5rem;
+    margin-right: 0.5rem;
+    height: 1px;
+    background: #eceeef;
+}
+
+.post-categories li:not(:last-child):after {
+    content: ",";
+}
+
+.post-categories2 {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 1.5rem;
+}
+
+.post-categories2 li {
+    display: inline-block;
+}
+
+.post-categories2 li:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+.post-categories2:before {
+    vertical-align: middle;
+    display: inline-block;
+    content: "";
+    width: 2.5rem;
+    margin-right: 0.5rem;
+    height: 1px;
+    background: #6c757d !important;
+}
+
+.post-categories2 li:not(:last-child):after {
+    content: ",";
+}

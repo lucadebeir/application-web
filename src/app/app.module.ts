@@ -42,6 +42,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 const routes: Routes = [
@@ -92,9 +93,10 @@ const routes: Routes = [
     RequestResetComponent,
     ResponseResetComponent,
     RefreshComponent,
-    MentionsLegalesComponent
+    MentionsLegalesComponent,
   ],
   imports: [
+    NgxPaginationModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatSelectModule,

@@ -6,7 +6,7 @@ import { CreateRecipe } from '../views/ajout-recette/ajout-recette.component'
 import { AuthentificationService, UserDetails } from './authentification.service'
 import { Time } from '@angular/common'
 import { addTimes, addHours } from './../utils/Utils'
-import { SafeStyle, DomSanitizer } from '@angular/platform-browser'
+import { DomSanitizer } from '@angular/platform-browser'
 
 
 
@@ -26,7 +26,15 @@ export interface RecipeDetails {
     idImage?: number
     ingredients?: IngredientDetails[]
     globalTime?: string
-    backgroundImg?: SafeStyle
+    categories?: CategoryDetails[]
+    idMenu?: number
+    mot?: string
+}
+
+export interface Menu {
+    petitDej: RecipeDetails
+    repas: RecipeDetails
+    douceur: RecipeDetails
 }
 
 export interface IngredientDetails {
@@ -100,6 +108,9 @@ export class RecettesService {
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
                 })
+                this.getCategoryByRecette(element.idRecette).subscribe((data: any) => {
+                    element.categories = data
+                })
             });
             return data
         }))
@@ -112,7 +123,6 @@ export class RecettesService {
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     console.log(data[0])
                     element.lienImage = data[0]?.lienImage
-                    element.backgroundImg = this.sanitizer.bypassSecurityTrustStyle('url( &quot;' + data[0]?.lienImage  + '&quot;)');
                 })
                 
                 console.log(element)
@@ -121,7 +131,9 @@ export class RecettesService {
                     element.ingredients = data
                 })
                 element.globalTime = addHours(addTimes(element.tempsPreparation, element.tempsCuisson))
-
+                this.getCategoryByRecette(element.idRecette).subscribe((data: any) => {
+                    element.categories = data
+                })
             });
             console.log(data)
             return data
@@ -166,6 +178,9 @@ export class RecettesService {
                     element.lienImage = data[0]?.lienImage
                     element.globalTime = addHours(addTimes(element.tempsPreparation, element.tempsCuisson))
                 })
+                this.getCategoryByRecette(element.idRecette).subscribe((data: any) => {
+                    element.categories = data
+                })
             });
             return data
         }))
@@ -178,6 +193,9 @@ export class RecettesService {
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
                     element.lienImage = data[0]?.lienImage
                     element.globalTime = addHours(addTimes(element.tempsPreparation, element.tempsCuisson))
+                })
+                this.getCategoryByRecette(element.idRecette).subscribe((data: any) => {
+                    element.categories = data
                 })
             });
             return data
@@ -203,6 +221,13 @@ export class RecettesService {
                 })
                 element.globalTime = addHours(addTimes(element.tempsCuisson, element.tempsPreparation))
             });
+            return data
+        }))
+    }
+
+    public getCategoryByRecette(idRecette: any): Observable<CategoryDetails[]> {
+        const base = this.http.get(`/server/category/recipe/${idRecette}`)
+        return base.pipe(map((data: CategoryDetails[]) => {
             return data
         }))
     }
@@ -642,6 +667,52 @@ export class RecettesService {
                 console.log(data)
                 return data
             })
+    }
+
+    public getMenu(): Observable<any> {
+        return this.http.get<any>('/server/menu/recipe')
+            .pipe(map((data: any) => {
+                return data
+            }))
+    }
+
+    public getPetitDej(): Observable<any> {
+        return this.http.get<any>('/server/menu/petitDej')
+            .pipe(map((element: any) => {
+                this.http.get(`/server/image/${element[0].idRecette}`).subscribe((data: any) => {
+                    element[0].lienImage = data[0]?.lienImage
+                })
+                this.getCategoryByRecette(element[0].idRecette).subscribe((data: any) => {
+                    element[0].categories = data
+                })
+                return element[0]
+            }))
+    }
+
+    public getRepas(): Observable<any> {
+        return this.http.get<any>('/server/menu/repas')
+            .pipe(map((element: any) => {
+                this.http.get(`/server/image/${element[0].idRecette}`).subscribe((data: any) => {
+                    element[0].lienImage = data[0]?.lienImage
+                })
+                this.getCategoryByRecette(element[0].idRecette).subscribe((data: any) => {
+                    element[0].categories = data
+                })
+                return element[0]
+            }))
+    }
+
+    public getDouceur(): Observable<any> {
+        return this.http.get<any>('/server/menu/douceur')
+            .pipe(map((element: any) => {
+                this.http.get(`/server/image/${element[0].idRecette}`).subscribe((data: any) => {
+                    element[0].lienImage = data[0]?.lienImage
+                })
+                this.getCategoryByRecette(element[0].idRecette).subscribe((data: any) => {
+                    element[0].categories = data
+                })
+                return element[0]
+            }))
     }
 
 }    

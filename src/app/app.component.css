@@ -142,3 +142,17 @@ a:active {
     z-index: 5;
     display: inline-block;
 }
+
+
+
+@media (min-width: 768px) {
+    .justify-content-md-center {
+        -webkit-box-pack: center!important;
+        justify-content: flex-end!important;
+    }
+}
+
+.navbar-nav .dropdown-menu {
+    left: auto;
+    right: 0;
+}
