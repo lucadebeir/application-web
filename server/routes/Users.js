@@ -8,9 +8,6 @@ const Recipe = require("../models/Recipe")
 const passwordResetToken = require("../models/ResetToken")
 const crypto = require('crypto');
 users.use(cors())
-    //require ('dotenv').config()
-    //var xoauth2 = require('xoauth2');
-
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
@@ -22,9 +19,7 @@ oauth2Client.setCredentials({
     refresh_token: '1//04BWvnOqpAFjgCgYIARAAGAQSNwF-L9IrXjtjL9QBYGwV5XEf1wECPN7rc_2jz17s8bBRPeJlxrv7YS4UxiJxHHyXbcVhYj0misA'
 });
 const accessToken = oauth2Client.getAccessToken()
-
 process.env.SECRET_KEY = 'secret'
-
 const nodemailer = require("nodemailer");
 
 /*
@@ -53,24 +48,23 @@ const smtpTransport = nodemailer.createTransport({
     }
 });
 
-
 var rand, mailOptions, host, link;
 
-
-users.get('/newRecipe/:pseudo/:idRecette', function(req, res) {
+//envoi mail aux abonnes quand nouvelle recette
+users.get('/newRecipe/:pseudo/:idRecette', function (req, res) {
     host = req.get('host');
     link = "http://marinesrecipes.fr/recipe/" + req.params.idRecette;
     User.findOne({
-            where: {
-                pseudo: req.sanitize(req.params.pseudo)
-            }
-        })
+        where: {
+            pseudo: req.sanitize(req.params.pseudo)
+        }
+    })
         .then(user => {
             Recipe.findOne({
-                    where: {
-                        idRecette: req.sanitize(req.params.idRecette)
-                    }
-                })
+                where: {
+                    idRecette: req.sanitize(req.params.idRecette)
+                }
+            })
                 .then(recette => {
                     if (user && recette) {
                         mailOptions = {
@@ -92,7 +86,6 @@ users.get('/newRecipe/:pseudo/:idRecette', function(req, res) {
                                 "</div>"
 
                         }
-                        console.log(mailOptions);
                         smtpTransport.sendMail(mailOptions, (error, response) => {
                             error ? console.log(error) : console.log(response);
                             smtpTransport.close();
@@ -107,17 +100,13 @@ users.get('/newRecipe/:pseudo/:idRecette', function(req, res) {
 });
 
 //Confirmation du mail
-users.get('/verify', function(req, res) {
-    console.log(req.protocol + ":/" + req.get('host'));
+users.get('/verify', function (req, res) {
     if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
-        console.log("Domain is matched. Information is from Authentic email");
         if (req.query.id == rand) {
-            console.log("email is verified");
             User.update({ emailConfirmed: true }, { where: { pseudo: req.query.pseudo } })
-                //res.end("<h1>Email " + mailOptions.to + " is been Successfully verified");
+            //res.end("<h1>Email " + mailOptions.to + " is been Successfully verified");
             res.redirect("http://" + req.get('host') + "/login")
         } else {
-            console.log("email is not verified");
             res.end("<h1>Bad Request</h1>");
         }
     } else {
@@ -139,10 +128,10 @@ users.post('/register', (req, res) => { //req = info user
     }
 
     User.findOne({ //un peu comme ma requete SQL
-            where: {
-                pseudo: req.sanitize(req.body.pseudo)
-            }
-        })
+        where: {
+            pseudo: req.sanitize(req.body.pseudo)
+        }
+    })
         .then(user => {
             if (!user) {
                 if (req.sanitize(req.body.mdp) === req.sanitize(req.body.mdp2)) {
@@ -155,7 +144,6 @@ users.post('/register', (req, res) => { //req = info user
                             })
                             rand = Math.floor((Math.random() * 100) + 54);
                             host = req.get('host');
-                            console.log(host)
                             link = "http://" + req.get('host') + "/server/verify?id=" + rand + "&pseudo=" + req.body.pseudo;
                             mailOptions = {
                                 to: req.body.email,
@@ -166,7 +154,6 @@ users.post('/register', (req, res) => { //req = info user
                                     "\n\n" +
                                     "Marine."
                             }
-                            console.log(mailOptions);
                             smtpTransport.sendMail(mailOptions, (error, response) => {
                                 if (error) {
                                     console.log(error);
@@ -197,10 +184,10 @@ users.post('/register', (req, res) => { //req = info user
 //Connexion
 users.post('/login', (req, res) => {
     User.findOne({
-            where: {
-                pseudo: req.sanitize(req.body.pseudo)
-            }
-        })
+        where: {
+            pseudo: req.sanitize(req.body.pseudo)
+        }
+    })
         .then(user => {
             if (!user) {
                 res.json({ error: "Mot de passe et/ou pseudo incorrect" })
@@ -225,10 +212,10 @@ users.get('/profile', (req, res) => {
     var decoded = jwt.verify(req.sanitize(req.headers['authorization']), process.env.SECRET_KEY)
 
     User.findOne({
-            where: {
-                pseudo: decoded.pseudo
-            }
-        })
+        where: {
+            pseudo: decoded.pseudo
+        }
+    })
         .then(user => {
             if (user) {
                 res.json(user)
@@ -244,10 +231,10 @@ users.get('/profile', (req, res) => {
 //Tous les abonnés (get pour recuperer)
 users.get('/abonneNews', (req, res) => {
     User.findAll({
-            where: {
-                abonneNews: true
-            }
-        })
+        where: {
+            abonneNews: true
+        }
+    })
         .then(user => {
             if (user) {
                 res.json(user)
@@ -262,9 +249,6 @@ users.get('/abonneNews', (req, res) => {
 
 //changement mdp (put pour modifier)
 users.put('/update-password/:pseudo', (req, res) => {
-
-
-
     const userData = {
         pseudo: req.sanitize(req.params.pseudo),
         mdp: req.sanitize(req.body.mdp),
@@ -273,10 +257,10 @@ users.put('/update-password/:pseudo', (req, res) => {
     }
 
     User.findOne({
-            where: {
-                pseudo: req.sanitize(req.params.pseudo)
-            }
-        })
+        where: {
+            pseudo: req.sanitize(req.params.pseudo)
+        }
+    })
         .then(user => {
             if (!req.sanitize(req.body.newmdp) || !req.sanitize(req.body.mdp) || !req.sanitize(req.body.mdp2)) {
                 res.status(400)
@@ -292,8 +276,8 @@ users.put('/update-password/:pseudo', (req, res) => {
                             .error(err => handleError(err))
                     } else {
                         res.json({ error: "Les deux mots de passe ne sont pas identiques." })
-                            /*json permet de renvoyer uniquement ce qu'il y a entre {}
-                                               alors que si on met send on recuperera toute la requete http*/
+                        /*json permet de renvoyer uniquement ce qu'il y a entre {}
+                                           alors que si on met send on recuperera toute la requete http*/
                     }
 
                 } else {
@@ -306,16 +290,8 @@ users.put('/update-password/:pseudo', (req, res) => {
         })
 })
 
-
 //modifier info profile 
 users.put('/mon-profile/:pseudo', (req, res) => {
-
-
-    const userData = {
-        pseudo: req.sanitize(req.params.pseudo),
-        email: req.sanitize(req.body.email),
-        abonneNews: req.sanitize(req.body.abonneNews),
-    }
 
     User.findOne({
         where: {
@@ -324,24 +300,22 @@ users.put('/mon-profile/:pseudo', (req, res) => {
     })
 
     User.update({
-            email: req.sanitize(req.body.email),
-            abonneNews: req.sanitize(req.body.abonneNews),
-        }, { where: { pseudo: req.sanitize(req.params.pseudo) } })
+        email: req.sanitize(req.body.email),
+        abonneNews: req.sanitize(req.body.abonneNews),
+    }, { where: { pseudo: req.sanitize(req.params.pseudo) } })
         .then(() => {
             res.json({ success: 'Informations personnelles modifiées avec succès !' })
         })
         .error(err => handleError(err))
 })
 
-
-
 //supprimer compte
 users.delete('/delete-profile/:pseudo', (req, res) => {
     User.destroy({
-            where: {
-                pseudo: req.sanitize(req.params.pseudo)
-            }
-        })
+        where: {
+            pseudo: req.sanitize(req.params.pseudo)
+        }
+    })
         .then(() => {
             res.send('User deleted!')
         })
@@ -350,7 +324,8 @@ users.delete('/delete-profile/:pseudo', (req, res) => {
         })
 })
 
-users.post('/req-reset-password', async(req, res) => {
+//envoie mail pour changement de mdp
+users.post('/req-reset-password', async (req, res) => {
     if (!req.body.email) {
         return res
             .status(500)
@@ -370,7 +345,6 @@ users.post('/req-reset-password', async(req, res) => {
         userId: user.pseudo,
         resettoken: crypto.randomBytes(16).toString('hex')
     }
-    console.log(resettoken)
     passwordResetToken.create(resettoken)
         .then(() => {
             res.status(200).json({ message: 'Mot de passe modifié avec succès' });
@@ -382,21 +356,18 @@ users.post('/req-reset-password', async(req, res) => {
                     'http://marinesrecipes.fr/response-reset-password/' + resettoken.resettoken + '\n\n' +
                     "Si vous n'avez pas demandé à changer votre mot de passe, ignorer cet email et votre mot de passe restera inchangé.\nBonne journée ! \n Marine."
             }
-            console.log(mailOptions)
             smtpTransport.sendMail(mailOptions, (error, response) => {
                 if (error) {
-                    console.log(error);
                     res.end("error");
                 } else {
-                    console.log("Message sent: " + response.message);
                     res.end("sent");
                 }
             })
         })
 })
 
-users.post('/valid-password-token', async function(req, res) {
-    console.log(req.body)
+//vérification du token pour changement de mdp
+users.post('/valid-password-token', async function (req, res) {
     if (!req.body.resettoken) {
         return res
             .status(500)
@@ -419,11 +390,11 @@ users.post('/valid-password-token', async function(req, res) {
     });
 })
 
-users.post('/new-password', async function(req, res) {
+//changement de mdp après envoie du mail
+users.post('/new-password', async function (req, res) {
     passwordResetToken.findOne({
         where: { resettoken: req.body.resettoken }
     }).then((userToken) => {
-        console.log(userToken)
         if (!userToken) {
             return res
                 .status(409)
@@ -435,7 +406,6 @@ users.post('/new-password', async function(req, res) {
                 pseudo: userToken.userId
             }
         }).then((userEmail) => {
-            console.log(userEmail)
             if (!userEmail) {
                 return res
                     .status(409)
@@ -443,16 +413,16 @@ users.post('/new-password', async function(req, res) {
             }
             const hash = bcrypt.hashSync(req.body.newPassword, 10)
             User.update({ mdp: hash }, { where: { pseudo: userEmail.pseudo } }).then(() => {
-                    passwordResetToken.destroy({
-                        where: {
-                            userId: userToken.userId,
-                            resettoken: userToken.resettoken
-                        }
-                    });
-                    return res
-                        .status(201)
-                        .json({ message: 'Mot de passe changé avec succès' });
-                })
+                passwordResetToken.destroy({
+                    where: {
+                        userId: userToken.userId,
+                        resettoken: userToken.resettoken
+                    }
+                });
+                return res
+                    .status(201)
+                    .json({ message: 'Mot de passe changé avec succès' });
+            })
                 .catch(err => {
                     res.send('error: ' + err)
                 })
@@ -461,6 +431,7 @@ users.post('/new-password', async function(req, res) {
     })
 })
 
+//envoie du message page contact
 users.get('/contact/send', (req, res) => {
     if (!req.query.email) {
         return res
@@ -497,12 +468,13 @@ users.get('/contact/send', (req, res) => {
 
 })
 
+//renvoie user avec son pseudo
 users.get('/user/:pseudo', (req, res) => {
     User.findOne({
-            where: {
-                pseudo: req.sanitize(req.params.pseudo)
-            }
-        })
+        where: {
+            pseudo: req.sanitize(req.params.pseudo)
+        }
+    })
         .then(user => {
             if (user) {
                 res.json(user)

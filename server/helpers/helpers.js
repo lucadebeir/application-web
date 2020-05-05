@@ -14,6 +14,7 @@ const { format } = util
  */
 
 const uploadImage = (file) => new Promise((resolve, reject) => {
+  console.log(file)
   const { originalname, buffer } = file
 
   const blob = bucket.file(originalname)

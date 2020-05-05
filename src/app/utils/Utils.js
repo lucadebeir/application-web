@@ -51,6 +51,8 @@ export function addHours(time) {
         if (dateTime.getMinutes() > 1) {
             if (dateTime.getSeconds() > 1) {
                 return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min " + dateTime.getSeconds().toString() + " s"
+            } else {
+                return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min"
             }
         } else if (dateTime.getMinutes() == 1) {
             if (dateTime.getSeconds() > 1) {
@@ -69,6 +71,8 @@ export function addHours(time) {
         if (dateTime.getMinutes() > 1) {
             if (dateTime.getSeconds() > 1) {
                 return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min " + dateTime.getSeconds().toString() + " s"
+            } else {
+                return dateTime.getHours().toString() + " h " + dateTime.getMinutes().toString() + " min"
             }
         } else if (dateTime.getMinutes() == 1) {
             if (dateTime.getSeconds() > 1) {

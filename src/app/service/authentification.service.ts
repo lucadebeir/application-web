@@ -1,157 +1,157 @@
-import { Injectable } from '@angular/core'
-import { HttpClient, HttpParams } from '@angular/common/http'
-import { Observable, of } from 'rxjs'
-import { map, tap, catchError } from 'rxjs/operators'
-import { Router } from '@angular/router'
-import { ContactDetail } from '../views/contact/contact.component'
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { map, tap, catchError } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { ContactDetail } from '../pages/contact/contact.component';
 
-//login
+// login
 export interface UserDetails {
-    pseudo: string
-    email: string
-    mdp: string
-    admin: boolean
-    emailConfirmed?: boolean
-    abonneNews: boolean
-    exp: number
-    iat: number
+    pseudo: string;
+    email: string;
+    mdp: string;
+    admin: boolean;
+    emailConfirmed?: boolean;
+    abonneNews: boolean;
+    exp: number;
+    iat: number;
 }
 
 interface TokenResponse {
-    token: string
-    error: string
+    token: string;
+    error: string;
 }
 
 interface Response {
-    error: string
+    error: string;
 }
 
-//inscription
+// inscription
 export interface TokenPayload {
-    pseudo: string
-    email: string
-    mdp: string
-    mdp2: string
-    admin: boolean
-    abonneNews: boolean
-    error: string
+    pseudo: string;
+    email: string;
+    mdp: string;
+    mdp2: string;
+    admin: boolean;
+    abonneNews: boolean;
+    error: string;
 }
 
-//changement mdp
+// changement mdp
 export interface UserMdp {
-    pseudo: string
-    mdp: string
-    newmdp: string
-    mdp2: string
-    error: string
-    success: string
+    pseudo: string;
+    mdp: string;
+    newmdp: string;
+    mdp2: string;
+    error: string;
+    success: string;
 }
 
-//modif profile
+// modif profile
 export interface UserProfile {
-    pseudo: string
-    email: string
-    abonneNews: boolean
-    success: string
+    pseudo: string;
+    email: string;
+    abonneNews: boolean;
+    success: string;
 }
 
 @Injectable()
 export class AuthentificationService {
-    private token: string
-    private error: string
+    private token: string;
+    private error: string;
 
     constructor(private http: HttpClient, private router: Router) {
 
     }
 
     private saveToken(token: string): void {
-        localStorage.setItem('userToken', token)
-        this.token = token
+        localStorage.setItem('userToken', token);
+        this.token = token;
     }
 
     private getToken(): string {
         if (!this.token) {
-            this.token = localStorage.getItem('userToken')
+            this.token = localStorage.getItem('userToken');
         }
-        return this.token
+        return this.token;
     }
 
     public getUserDetails(): UserDetails {
-        const token = this.getToken()
-        let payload
+        const token = this.getToken();
+        let payload;
         if (token) {
-            payload = token.split('.')[1]
-            payload = window.atob(payload)
-            return JSON.parse(payload)
+            payload = token.split('.')[1];
+            payload = window.atob(payload);
+            return JSON.parse(payload);
         } else {
-            return null
+            return null;
         }
     }
 
     public isLoggedIn(): boolean {
-        const user = this.getUserDetails()
+        const user = this.getUserDetails();
         if (user) {
-            return user.exp > Date.now() / 1000
+            return user.exp > Date.now() / 1000;
         } else {
-            return false
+            return false;
         }
     }
 
     public emailConfirmed(): boolean {
-        const user = this.getUserDetails()
+        const user = this.getUserDetails();
         if (user) {
-            return user.emailConfirmed
+            return user.emailConfirmed;
         } else {
-            return false
+            return false;
         }
     }
 
     public isAdmin(): boolean {
-        const user = this.getUserDetails()
+        const user = this.getUserDetails();
         if (user) {
-            return user.admin
+            return user.admin;
         } else {
-            return false
+            return false;
         }
     }
 
     public register(user: TokenPayload): Observable<any> {
-        const base = this.http.post('/server/register', user)
+        const base = this.http.post('/server/register', user);
 
         const request = base.pipe(
             map((data: TokenResponse) => {
                 if (data.token) {
-                    this.saveToken(data.token)
+                    this.saveToken(data.token);
                 }
-                return data
+                return data;
             })
-        )
-        return request
+        );
+        return request;
     }
 
     public login(user: TokenPayload): Observable<any> {
-        const base = this.http.post('/server/login', user)
+        const base = this.http.post('/server/login', user);
         const request = base.pipe(
-            map((data: TokenResponse) => { //map permet de récupérer des données
+            map((data: TokenResponse) => { // map permet de récupérer des données
                 if (data.token) {
-                    this.saveToken(data.token)
+                    this.saveToken(data.token);
                 }
-                return data
+                return data;
             })
-        )
-        return request
+        );
+        return request;
     }
 
     public profile(): Observable<any> {
         return this.http.get('/server/profile', {
             headers: { Authorization: `${this.getToken()}` }
-        })
+        });
     }
 
     public logout(): void {
-        this.token = ''
-        window.localStorage.removeItem('userToken')
-        this.router.navigateByUrl('/')
+        this.token = '';
+        window.localStorage.removeItem('userToken');
+        this.router.navigateByUrl('/');
     }
 
     private handleError<T>(operation = 'operation', result?: T) {
@@ -166,11 +166,11 @@ export class AuthentificationService {
     }
 
     public updatePassword(user: UserMdp): Observable<any> {
-        const base = this.http.put(`/server/update-password/${user.pseudo}`, user)
+        const base = this.http.put(`/server/update-password/${user.pseudo}`, user);
 
         return base.pipe(
             map((data: Response) => {
-                return data
+                return data;
             })
         );
     }
@@ -184,7 +184,7 @@ export class AuthentificationService {
     }
 
     public updateProfile(user: UserProfile): Observable<any> {
-        const base = this.http.put(`/server/mon-profile/${user.pseudo}`, user)
+        const base = this.http.put(`/server/mon-profile/${user.pseudo}`, user);
 
         return base.pipe(
             tap(_ => console.log(`updated ${user.pseudo}`)),
@@ -193,11 +193,11 @@ export class AuthentificationService {
     }
 
     public getAbonneNews(): any {
-        return this.http.get(`/server/abonneNews`)
+        return this.http.get(`/server/abonneNews`);
     }
 
     public sentEmailToNewRecipe(to: any, idRecette: number): any {
-        return this.http.get(`/server/newRecipe/${to.pseudo}/${idRecette}`)
+        return this.http.get(`/server/newRecipe/${to.pseudo}/${idRecette}`);
     }
 
     public requestReset(body): Observable<any> {
@@ -220,7 +220,7 @@ export class AuthentificationService {
         params = params.append(`subject`, infos.subject);
         params = params.append(`message`, infos.message);
 
-        return this.http.get(`/server/contact/send`, { params: params})
+        return this.http.get(`/server/contact/send`, { params });
     }
 
     public getUser(pseudo: string): any {

@@ -100,7 +100,7 @@ a {
 }
 .rad-dropmenu-item.active {
     display: block;
-    -webkit-animation: flipInX 1s ease;
+    /*-webkit-animation: flipInX 1s ease;*/
 }
 .rad-navigation ul {
     margin-bottom: 0;

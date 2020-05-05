@@ -1,0 +1,191 @@
+#titre {
+    text-align: center;
+}
+
+.logo {
+    margin: .5em;
+}
+
+#paginationRecette {
+    padding-top: 4em;
+    margin: auto;
+    margin-bottom: 4em;
+    text-align: center;
+}
+
+.mt-5, .my-5 {
+    margin-top: 3rem!important;
+}
+
+#menu {
+    margin-top: 5em;
+}
+
+#poubelle {
+    float: right;
+}
+
+#logoRecette {
+    display: flex;
+    position: absolute;
+    bottom: 27px;
+    left: 24px;
+    right: 24px;
+    color: white;
+    justify-content: space-between;
+    //background-color: rgba(0, 0, 0, 0.35)
+}
+
+
+#photo {
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 30em 30em rgba(0, 0, 0, 0.35);
+    //background-color: rgba(0, 0, 0, 0.35)
+}
+
+// FONT
+$font: 'Roboto',
+sans-serif;
+// COLORS
+$white: #fff;
+$black: #212129;
+$gray: #9B9B9B;
+$heart: #C2567F;
+$button: #154360;
+
+pagination-controls::ng-deep .ngx-pagination .current {
+    background: $button;
+    border-radius: 60px;
+}
+
+a {
+    color: $button;
+}
+
+#textlogo {
+    font-family: "proxima_nova_rgregular";
+    text-transform: uppercase;
+    color: $white;
+    font-size: medium;
+}
+
+#coeur {
+    a {
+        color: $heart;
+    }
+}
+
+
+#titleRecipe {
+    display: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    //display: flex;
+    position: absolute;
+    bottom: 97px;
+    left: 24px;
+    right: 24px;
+    border-bottom-color: white;
+    border-bottom-style: outset;
+}
+
+#btn {
+    background: transparent;
+    border: none;
+}
+
+.btn {
+    background-color: $button;
+}
+
+a {
+    color: $button;
+}
+
+h3 {
+    height: 100px;
+    vertical-align: middle;
+    display: table-cell;
+    font-family: "PeachesandCreamRegularW00";
+    font-size: 60px;
+    color: $white;
+    font: normal normal bold 28px/35px cookie,cursive;
+}
+
+i {
+    display: inline;
+}
+
+.row {
+    margin-left: inherit;
+    margin-right: inherit;
+    min-height: 20em;
+}
+
+.card {
+    height: 450px; 
+    min-height: 450px;
+    position: relative;
+    background: $white;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 30px 2px #000;
+    .header,
+    #photo {
+        min-height: 100%;
+        .icon a .fa-heart {
+            position: absolute;
+            left: 85%;
+            bottom: 30.7%;
+            background: $heart;
+            color: $white;
+            font-size: 1.3em;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0px 5px 30px 1px $heart;
+        }
+    }
+    .text {
+        .food {
+            color: $black;
+            text-align: left;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin: 5px 30px;
+        }
+        .fa-clock-o,
+        .fa-users,
+        #coeur,
+        #vue {
+            color: $gray;
+            margin: 0 10px;
+        }
+    }
+    a.btn {
+        display: block;
+        background: $button;
+        color: $white;
+        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-align: center;
+        padding: 10px;
+        transition: 250ms;
+        &:hover {
+            background: $heart;
+            transition: 250ms;
+        }
+    }
+}
+
+.text-center {
+    margin-bottom: 1em;
+}
+
+.form-control {
+    display: inline;
+    max-width: initial;
+}
