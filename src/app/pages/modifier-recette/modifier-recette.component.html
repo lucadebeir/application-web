@@ -1,7 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-<script>
-</script>
+<script></script>
 
 <section class="contact pt-100 pb-100" id="contact">
     <div class="container">
@@ -9,77 +8,77 @@
             <h1>Modifier la recette</h1>
         </div>
 
-        <hr>
+        <hr />
 
         <label>
-            <h4><strong>Nom de la recette</strong></h4>
-        </label>
+      <h4><strong>Nom de la recette</strong></h4>
+    </label>
         <table class="table col-md-8 mx-auto">
             <tr>
                 <td id="nomRecette">
                     <form (submit)="updateRecipeName(recette)">
-                        <input type="text" class="form-control" name="nomRecette"
-                            value="(recette?.nomRecette)" #nomRecette="ngModel"
-                            [(ngModel)]="recette.nomRecette" />
-                        <br>
+                        <input type="text" class="form-control" name="nomRecette" value="(recette?.nomRecette)" #nomRecette="ngModel" [(ngModel)]="recette.nomRecette" />
+                        <br />
                         <button class="btn btn-primary" type="submit">Modifier</button>
                     </form>
                 </td>
             </tr>
         </table>
 
-        <hr>
+        <hr />
 
         <label>
-            <h4><strong>Image de la recette</strong></h4>
-        </label>
+      <h4><strong>Image de la recette</strong></h4>
+    </label>
         <table class="table col-md-8 mx-auto">
             <tr>
                 <td>
                     <div *ngIf="!image">
                         <input type="file" name="image" (change)="selectImage($event)" />
-                        <br>
-                        <br>
-                        <button type="submit" class="btn btn-primary" (click)="onSubmit()">Modifier</button>
+                        <br />
+                        <br />
+                        <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+              Modifier
+            </button>
                     </div>
 
-
                     <div *ngIf="image">
-                        <img src="{{image.lienImage}}" class="rounded mx-auto d-block" alt="Responsive image" id="resp">
+                        <img src="{{ image.lienImage }}" class="rounded mx-auto d-block" alt="Responsive image" id="resp" />
                         <br>
-                        <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModal"
-                            data-backdrop="false">Modifier l'image de la recette</button>
+                        <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModal" data-backdrop="false">
+              Modifier l'image de la recette
+            </button>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modification de l'image de la
-                                            recette
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            Modification de l'image de la recette
                                         </h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                                     </div>
                                     <div class="modal-body">
                                         <figcaption class="figure-caption">
                                             <!--bouton modifier photo à faire-->
-                                            <div style="text-align: center">
+                                            <div style="text-align: center;">
                                                 <form>
                                                     <div>
-                                                        <input type="file" name="image"
-                                                            (change)="selectImage($event)" />
+                                                        <input type="file" name="image" (change)="selectFile($event)" />
                                                     </div>
                                                 </form>
                                             </div>
                                         </figcaption>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-primary"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary"
-                                            (click)="onSubmit()">Modifier</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">
+                      Close
+                    </button>
+                                        <button type="submit" class="btn btn-primary" (click)="onSubmit()">
+                      Modifier
+                    </button>
                                     </div>
                                 </div>
                             </div>
@@ -90,70 +89,59 @@
             </tr>
         </table>
 
-        <hr>
+        <hr />
 
         <label>
-            <h4><strong>Catégories</strong></h4>
-        </label>
+      <h4><strong>Catégories</strong></h4>
+    </label>
         <table class="table col-md-8 mx-auto">
-
             <tr>
-
                 <td>
                     <!--catégories de la recette-->
                     <div style="text-align: initial;" *ngFor="let categ of categories">
-                        <button id="poubelle" class="btn btn-sm btn-danger"
-                            (click)="deleteRecipeCategory(categ,recette)"><i class="fa fa-trash"></i></button>
-                        {{categ.libelleCategorie}}
+                        <button id="poubelle" class="btn btn-sm btn-danger" (click)="deleteRecipeCategory(categ, recette)">
+              <i class="fa fa-trash"></i>
+            </button> {{ categ.libelleCategorie }}
                     </div>
                 </td>
                 <td>
                     <!--catégorie dont la recette ne fait pas partie-->
                     <div style="text-align: initial;" *ngFor="let cat of allCategories">
-                        <button id="add" class="btn btn-sm btn-success" (click)="addRecipeCategory(cat,recette)"><i
-                                class="fa fa-plus-circle"></i></button> {{cat.libelleCategorie}}
-
+                        <button id="add" class="btn btn-sm btn-success" (click)="addRecipeCategory(cat, recette)">
+              <i class="fa fa-plus-circle"></i>
+            </button> {{ cat.libelleCategorie }}
                     </div>
                 </td>
             </tr>
         </table>
 
-        <hr>
+        <hr />
 
         <label>
-            <h4><strong>Parts</strong></h4>
-        </label>
+      <h4><strong>Parts</strong></h4>
+    </label>
         <table class="table col-md-8 mx-auto">
-
             <tr>
                 <ul>
-
                     <form (submit)="updatePart(recette)">
                         <td>
-
                             <label>Nombre</label>
-                            <br>
-                            <input type="number" class="form-control" [(ngModel)]="recette.nbrePart"
-                                [ngModelOptions]="{standalone: true}" value="{{recette.nbrePart}}" required>
+                            <br />
+                            <input type="number" class="form-control" [(ngModel)]="recette.nbrePart" [ngModelOptions]="{ standalone: true }" value="{{ recette.nbrePart }}" required />
                             <div class="invalid-tooltip">
                                 Rentrez une quantité correcte.
                                 <!--Vérifier que c'est pas négatif ou nulle-->
                             </div>
-
                         </td>
 
                         <td>
-
-
                             <label>Libellé</label>
-                            <br>
-                            <input type="text" class="form-control" [(ngModel)]="recette.libellePart"
-                                [ngModelOptions]="{standalone: true}" value="{{recette.libellePart}}" required>
+                            <br />
+                            <input type="text" class="form-control" [(ngModel)]="recette.libellePart" [ngModelOptions]="{ standalone: true }" value="{{ recette.libellePart }}" required />
                             <div class="invalid-tooltip">
                                 Rentrez une quantité correcte.
                                 <!--Vérifier que c'est pas négatif ou nulle-->
                             </div>
-
                         </td>
 
                         <td>
@@ -161,53 +149,38 @@
                                 <button class="btn btn-primary" type="submit">Modifier</button>
                             </div>
                         </td>
-
-
                     </form>
-
                 </ul>
             </tr>
-
         </table>
 
-        <hr>
+        <hr />
 
         <label>
-            <h4><strong>Temps</strong></h4>
-        </label>
+      <h4><strong>Temps</strong></h4>
+    </label>
         <table class="table col-md-8 mx-auto">
-
             <tr>
                 <ul>
-
                     <form (submit)="updateTemps(recette)">
                         <td>
-
                             <label>Préparation</label>
-                            <br>
-                            <input type="time" class="form-control" [(ngModel)]="recette.tempsPreparation"
-                                [ngModelOptions]="{standalone: true}" value="{{recette.tempsPreparation}}" step="2"
-                                required>
+                            <br />
+                            <input type="time" class="form-control" [(ngModel)]="recette.tempsPreparation" [ngModelOptions]="{ standalone: true }" value="{{ recette.tempsPreparation }}" step="2" required />
                             <div class="invalid-tooltip">
                                 Rentrez une quantité correcte.
                                 <!--Vérifier que c'est pas négatif ou nulle-->
                             </div>
-
                         </td>
 
                         <td>
-
-
                             <label>Cuisson</label>
-                            <br>
-                            <input type="time" class="form-control" [(ngModel)]="recette.tempsCuisson"
-                                [ngModelOptions]="{standalone: true}" value="{{recette.tempsCuisson}}" step="2"
-                                required>
+                            <br />
+                            <input type="time" class="form-control" [(ngModel)]="recette.tempsCuisson" [ngModelOptions]="{ standalone: true }" value="{{ recette.tempsCuisson }}" step="2" required />
                             <div class="invalid-tooltip">
                                 Rentrez une quantité correcte.
                                 <!--Vérifier que c'est pas négatif ou nulle-->
                             </div>
-
                         </td>
 
                         <td>
@@ -215,64 +188,55 @@
                                 <button class="btn btn-primary" type="submit">Modifier</button>
                             </div>
                         </td>
-
-
                     </form>
-
                 </ul>
             </tr>
-
         </table>
 
-        <hr>
+        <hr />
 
         <table class="table col-md-8 mx-auto">
-
             <tr>
                 <label>
-                    <h4><strong>Ingrédients</strong></h4>
-                </label>
+          <h4><strong>Ingrédients</strong></h4>
+        </label>
 
                 <ul>
                     <div *ngFor="let ingredient of ingredients" class="card-text">
-
-                        <form (submit)="updateRecipeIng(recette,ingredient)">
-
+                        <form (submit)="updateRecipeIng(recette, ingredient)">
                             <td id="nomIng">
-                                <p>{{ingredient.nomIngredient}}</p>
+                                <p>{{ ingredient.nomIngredient }}</p>
                             </td>
 
                             <td id="qteIng">
-                                <input type="text" class="form-control" name="qte" value="{{ingredient.qte}}"
-                                    #qte="ngModel" [(ngModel)]="ingredient.qte">
+                                <input type="text" class="form-control" name="qte" value="{{ ingredient.qte }}" #qte="ngModel" [(ngModel)]="ingredient.qte" />
                             </td>
                             <td>
-                                <select class="custom-select" #idUnite="ngModel" [(ngModel)]="ingredient.idUnite"
-                                    [ngModelOptions]="{standalone: true}" required>
-                                    <option *ngFor="let unite of allUnites"
-                                        [attr.selected]="ingredient.libelleUnite == unite.libelleUnite ? true : null"
-                                        [attr.value]="unite.idUnite">
-                                        {{unite.libelleUnite}}
-                                    </option>
-                                </select>
+                                <select class="custom-select" #idUnite="ngModel" [(ngModel)]="ingredient.idUnite" [ngModelOptions]="{ standalone: true }" required>
+                  <option
+                    *ngFor="let unite of allUnites"
+                    [attr.selected]="
+                      ingredient.libelleUnite == unite.libelleUnite
+                        ? true
+                        : null
+                    "
+                    [attr.value]="unite.idUnite"
+                  >
+                    {{ unite.libelleUnite }}
+                  </option>
+                </select>
                             </td>
                             <td>
-
-                                <button id="crayon" class="btn btn-sm btn-warning"><i class="fa fa-pencil"
-                                        aria-hidden="true"></i></button>
+                                <button id="crayon" class="btn btn-sm btn-warning">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
                             </td>
                             <td>
-                                <button id="poubelle" class="btn btn-sm btn-danger"
-                                    (click)=deleteIngredientRececipe(ingredient,recette)><i
-                                        class="fa fa-trash"></i></button>
+                                <button id="poubelle" class="btn btn-sm btn-danger" (click)="deleteIngredientRececipe(ingredient, recette)">
+                  <i class="fa fa-trash"></i>
+                </button>
                             </td>
-
-
-
-
                         </form>
-
-
                     </div>
                     <ng-template #content let-modal>
                         <!--ce qui s'ouvre quand on clique sur créer un nouvel ingrédient-->
@@ -284,13 +248,14 @@
                                 <div class="form-row">
                                     <div class="col-md-3 mb-3">
                                         <label for="validationTooltip04">Ingrédient</label>
-                                        <select class="custom-select" id="validationTooltip04" #idIngredient="ngModel"
-                                            [(ngModel)]="newIngredient.idIngredient"
-                                            [ngModelOptions]="{standalone: true}" required>
-                                            <option *ngFor="let ingredient of allIngredients"
-                                                [ngValue]="ingredient.idIngredient">
-                                                {{ingredient.nomIngredient}}</option>
-                                        </select>
+                                        <select class="custom-select" id="validationTooltip04" #idIngredient="ngModel" [(ngModel)]="newIngredient.idIngredient" [ngModelOptions]="{ standalone: true }" required>
+                      <option
+                        *ngFor="let ingredient of allIngredients"
+                        [ngValue]="ingredient.idIngredient"
+                      >
+                        {{ ingredient.nomIngredient }}</option
+                      >
+                    </select>
                                         <div class="invalid-tooltip">
                                             Selectionnez un ingrédient.
                                         </div>
@@ -298,9 +263,7 @@
 
                                     <div class="col-md-3 mb-3">
                                         <label for="validationTooltip05">Quantité</label>
-                                        <input type="number" class="form-control" id="validationTooltip05"
-                                            #qte="ngModel" [(ngModel)]="newIngredient.qte"
-                                            [ngModelOptions]="{standalone: true}" required>
+                                        <input type="number" class="form-control" id="validationTooltip05" #qte="ngModel" [(ngModel)]="newIngredient.qte" [ngModelOptions]="{ standalone: true }" required />
                                         <div class="invalid-tooltip">
                                             Rentrez une quantité correcte.
                                             <!--Vérifier que c'est pas négatif ou nulle-->
@@ -309,13 +272,14 @@
 
                                     <div class="col-md-3 mb-3">
                                         <label for="validationTooltip04">Unité</label>
-                                        <select class="custom-select" id="validationTooltip04" #idUnite="ngModel"
-                                            [(ngModel)]="newIngredient.idUnite" [ngModelOptions]="{standalone: true}"
-                                            required>
-                                            <option *ngFor="let unite of allUnites" [ngValue]="unite.idUnite">
-                                                {{unite.libelleUnite}}
-                                            </option>
-                                        </select>
+                                        <select class="custom-select" id="validationTooltip04" #idUnite="ngModel" [(ngModel)]="newIngredient.idUnite" [ngModelOptions]="{ standalone: true }" required>
+                      <option
+                        *ngFor="let unite of allUnites"
+                        [ngValue]="unite.idUnite"
+                      >
+                        {{ unite.libelleUnite }}
+                      </option>
+                    </select>
                                         <div class="invalid-tooltip">
                                             Selectionnez une unité.
                                         </div>
@@ -324,76 +288,73 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button tyoe="button" class="btn btn-outline-dark"
-                                (click)="modal.close(newIngredient)">Ajouter</button>
+                            <button tyoe="button" class="btn btn-outline-dark" (click)="modal.close(newIngredient)">
+                Ajouter
+              </button>
                         </div>
                     </ng-template>
 
                     <!--on appelle le modal-->
-
-
                 </ul>
-
             </tr>
-
 
             <tr>
                 <td>
-                    <button class="btn btn-primary" (click)="open(content)">Ajouter un nouvel ingrédient</button>
+                    <button class="btn btn-primary" (click)="open(content)">
+            Ajouter un nouvel ingrédient
+          </button>
                 </td>
             </tr>
-
         </table>
 
-        <hr>
+        <hr />
 
         <label>
-            <h4><strong>Recette</strong></h4>
-        </label>
+      <h4><strong>Recette</strong></h4>
+    </label>
 
         <table class="table col-md-8 mx-auto">
             <tr>
                 <ul>
-
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-12 p-3">
                             <label>Préparation</label>
 
                             <td>
                                 <form (submit)="updateSteps(recette)">
+                                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes" [(ngModel)]="recette.etapes" [ngModelOptions]="{ standalone: true }">{{ recette?.etapes }}</textarea
+                  >
+                  <br />
+                  <button id="btn" class="btn btn-primary" type="submit">
+                    Modifier
+                  </button>
+                </form>
+              </td>
+            </div>
 
-                                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="etapes"
-                                        [(ngModel)]="recette.etapes"
-                                        [ngModelOptions]="{standalone: true}">{{recette?.etapes}}</textarea>
-                                    <br>
-                                    <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
-
-                                </form>
-                            </td>
-
-
-                        </div>
-
-                        <div class="col-lg-6 col-md-6 col-sm-12 p-3">
-                            <label>Astuces</label>
-                            <td>
-                                <form (submit)="updateAstuce(recette)">
-                                    <textarea class="form-control" #etapes="ngModel" rows="15em" name="astuce"
-                                        [(ngModel)]="recette.astuce"
-                                        [ngModelOptions]="{standalone: true}">{{recette?.astuce}}</textarea>
-                                    <br>
-                                    <button id="btn" class="btn btn-primary" type="submit">Modifier</button>
-                                </form>
-                            </td>
-
-                        </div>
-
-
-                    </div>
-
-                </ul>
-            </tr>
-        </table>
-
-    </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 p-3">
+              <label>Astuces</label>
+              <td>
+                <form (submit)="updateAstuce(recette)">
+                  <textarea
+                    class="form-control"
+                    #etapes="ngModel"
+                    rows="15em"
+                    name="astuce"
+                    [(ngModel)]="recette.astuce"
+                    [ngModelOptions]="{ standalone: true }"
+                    >{{ recette?.astuce }}</textarea
+                  >
+                  <br />
+                  <button id="btn" class="btn btn-primary" type="submit">
+                    Modifier
+                  </button>
+                </form>
+              </td>
+            </div>
+          </div>
+        </ul>
+      </tr>
+    </table>
+  </div>
 </section>

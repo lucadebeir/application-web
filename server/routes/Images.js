@@ -28,6 +28,7 @@ const upload = multer({ storage: storage })
 //upload image
 image.post('/uploads', upload.single('file'), async (req, res, next) => {
     try {
+        console.log(req.file)
         const myFile = req.file
         //myFile.originalname = myFile.filename
         const imageUrl = await uploadImage(myFile)

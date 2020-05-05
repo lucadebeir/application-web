@@ -8,7 +8,8 @@ import {
     CategoryDetails, CreateRecipe,
     IngredientDetails, RecipeDetails
 } from '../../models';
-import { CategoriesService, IngredientsService } from '..';
+import { CategoriesService } from '../categories/categories.service';
+import { IngredientsService } from '../ingredients/ingredients.service';
 
 @Injectable()
 export class RecettesService {

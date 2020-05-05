@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { RecipeDetails,
+import {
+  RecipeDetails,
   CategoryDetails,
   IngredientDetails,
   QuantiteDetails,
   UniteDetails,
-  ImageRecipe } from '../../models';
+  ImageRecipe
+} from '../../models';
 import { RecettesService, IngredientsService, CategoriesService, ImagesService, UnitesService } from '../../service';
 import { HttpResponse, HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 // la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @Component({
   selector: 'app-modifier-recette',
@@ -19,48 +22,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModifierRecetteComponent implements OnInit {
 
-  public newIngredient: IngredientDetails = {
-    qte: null,
-    idRecette: parseInt(this.route.snapshot.paramMap.get('id'), 10),
-    idIngredient: null,
-    idUnite: null
-  };
-
-  public recette: RecipeDetails = {
-    idRecette: null,
-    nomRecette: 'string',
-    datePublication: null,
-    nbFavoris: null,
-    nbVues: null,
-    idImage: null,
-    lienImage: null,
-    etapes: null,
-    nbrePart: null,
-    libellePart: '',
-    tempsPreparation: null,
-    tempsCuisson: null,
-    astuce: ''
-  };
-  public ingredients: IngredientDetails;
-  public unite: UniteDetails;
-  public qtes: QuantiteDetails[];
-  public categories: CategoryDetails[];
-
-  public image;
-  public image2;
-  public allIngredients: IngredientDetails[]; // ingredients disponibles
-  public allUnites: UniteDetails[];
-  public allCategories: CategoryDetails[]; // catégories disponibles
-
-  public imageToModify: ImageRecipe = {
-    idImage: null,
-    idRecette: null
-  };
-
   constructor(private recetteService: RecettesService, private router: Router, private route: ActivatedRoute,
               private ingredientsService: IngredientsService, private modalService: NgbModal,
               private http: HttpClient, private categoriesService: CategoriesService,
-              private unitesService: UnitesService, private imagesService: ImagesService) {
+              private unitesService: UnitesService, private imagesService: ImagesService, private imageCompress: NgxImageCompressService) {
     this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(
       recette => {
         this.recette = recette;
@@ -104,18 +69,112 @@ export class ModifierRecetteComponent implements OnInit {
     this.getCategory(parseInt(this.route.snapshot.paramMap.get('id'), 10));
   }
 
+  public newIngredient: IngredientDetails = {
+    qte: null,
+    idRecette: parseInt(this.route.snapshot.paramMap.get('id'), 10),
+    idIngredient: null,
+    idUnite: null
+  };
+
+  public recette: RecipeDetails = {
+    idRecette: null,
+    nomRecette: 'string',
+    datePublication: null,
+    nbFavoris: null,
+    nbVues: null,
+    idImage: null,
+    lienImage: null,
+    etapes: null,
+    nbrePart: null,
+    libellePart: '',
+    tempsPreparation: null,
+    tempsCuisson: null,
+    astuce: ''
+  };
+  public ingredients: IngredientDetails;
+  public unite: UniteDetails;
+  public qtes: QuantiteDetails[];
+  public categories: CategoryDetails[];
+
+  public image;
+  public image2;
+  public allIngredients: IngredientDetails[]; // ingredients disponibles
+  public allUnites: UniteDetails[];
+  public allCategories: CategoryDetails[]; // catégories disponibles
+
+  public imageToModify: ImageRecipe = {
+    idImage: null,
+    idRecette: null
+  };
+
+  file: any;
+  localUrl: any;
+  localCompressedURl: any;
+  sizeOfOriginalImage: number;
+  sizeOFCompressedImage: number;
+  imgResultBeforeCompress: string;
+  imgResultAfterCompress: string;
+
   ngOnInit(): void {
+  }
+
+
+  selectFile(event: any) {
+    let fileName: any;
+    this.file = event.target.files[0];
+    fileName = this.file.name;
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.localUrl = event.target.result;
+        this.compressFile(this.localUrl, fileName);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  compressFile(image, fileName) {
+    const orientation = -1;
+    this.sizeOfOriginalImage = this.imageCompress.byteCount(image) / (1024 * 1024);
+    console.warn('Size in bytes is now:', this.sizeOfOriginalImage);
+    this.imageCompress.compressFile(image, orientation, 50, 50).then(
+      result => {
+        this.imgResultAfterCompress = result;
+        this.localCompressedURl = result;
+        this.sizeOFCompressedImage = this.imageCompress.byteCount(result) / (1024 * 1024);
+        console.warn('Size in bytes after compression:', this.sizeOFCompressedImage);
+        // create file from byte
+        const imageName = fileName;
+        // call method that creates a blob from dataUri
+        const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress.split(',')[1]);
+        // imageFile created below is the new compressed file which can be send to API in form data
+        const imageFile = new File([imageBlob], imageName, { type: 'image/jpeg' });
+
+        this.image2 = imageFile;
+      });
+  }
+
+  dataURItoBlob(dataURI) {
+    const byteString = window.atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'image/jpeg' });
+    return blob;
   }
 
   selectImage(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
+      console.log(file);
       this.image2 = file;
     }
   }
 
   onSubmit() {
     const formData = new FormData();
+    console.log(this.image2);
     formData.append('file', this.image2);
     if (this.image) {
       this.imagesService.addImage(formData).subscribe(res => {
@@ -138,11 +197,6 @@ export class ModifierRecetteComponent implements OnInit {
         window.location.reload();
       });
     }
-
-
-
-
-
   }
 
   getCategory(id: any): any {
@@ -159,8 +213,6 @@ export class ModifierRecetteComponent implements OnInit {
     );
     return this.categories;
   }
-
-
 
   updateRecipeName(recette: RecipeDetails) {
     this.recetteService.updateRecipeName(recette).subscribe((res: any) => {
@@ -286,10 +338,5 @@ export class ModifierRecetteComponent implements OnInit {
       });
   }
 
-}
-export class Ingredient {
-  idIngredient = '';
-  quantite = '';
-  idUnite = '';
 }
 

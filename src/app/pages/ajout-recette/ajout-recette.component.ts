@@ -11,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // la fenetre qui pop pour ajouter l'ingrédient pendant création d'une recette = modal
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @Component({
   selector: 'app-ajout-recette',
@@ -56,10 +57,20 @@ export class AjoutRecetteComponent implements OnInit {
   dropdownSettings: IDropdownSettings;
   fileToUpload: File = null;
 
+  // pour compresser image
+  file: any;
+  localUrl: any;
+  localCompressedURl: any;
+  sizeOfOriginalImage: number;
+  sizeOFCompressedImage: number;
+  imgResultBeforeCompress: string;
+  imgResultAfterCompress: string;
+
   constructor(private recetteService: RecettesService, private formBuilder: FormBuilder, private router: Router,
               private modalService: NgbModal, private http: HttpClient, private auth: AuthentificationService,
               private ingredientsService: IngredientsService, private unitesService: UnitesService,
-              private categoriesService: CategoriesService, private imagesService: ImagesService) { }
+              private categoriesService: CategoriesService, private imagesService: ImagesService,
+              private imageCompress: NgxImageCompressService) { }
 
   ngOnInit(): void {
     // on récupère tous les ingrédients, unités, catégories pour les réponses possibles à notre formulaire
@@ -102,6 +113,39 @@ export class AjoutRecetteComponent implements OnInit {
 
   }
 
+  selectFile(event: any) {
+    let fileName: any;
+    this.file = event.target.files[0];
+    fileName = this.file.name;
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.localUrl = event.target.result;
+        this.compressFile(this.localUrl, fileName);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  compressFile(image, fileName) {
+    const orientation = -1;
+    this.sizeOfOriginalImage = this.imageCompress.byteCount(image) / (1024 * 1024);
+    console.warn('Size in bytes is now:', this.sizeOfOriginalImage);
+    this.imageCompress.compressFile(image, orientation, 50, 50).then(
+      result => {
+        this.imgResultAfterCompress = result;
+        this.localCompressedURl = result;
+        this.sizeOFCompressedImage = this.imageCompress.byteCount(result) / (1024 * 1024);
+        console.warn('Size in bytes after compression:', this.sizeOFCompressedImage);
+        // create file from byte
+        const imageName = fileName;
+        // imageFile created below is the new compressed file which can be send to API in form data
+        const imageFile = new File([result], imageName, { type: 'image/jpeg' });
+
+        this.images = imageFile;
+      });
+  }
+
   selectImage(event) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
@@ -117,14 +161,6 @@ export class AjoutRecetteComponent implements OnInit {
       (res) => console.log(res),
       (err) => console.log(err)
     );
-  }
-
-  uploadFileToActivity() {
-    this.imagesService.addImage(this.fileToUpload).subscribe(data => {
-      // do something, if upload success
-    }, error => {
-      console.log(error);
-    });
   }
 
   createRecipe() {

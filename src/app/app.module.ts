@@ -35,6 +35,7 @@ import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-lega
 import { NgxPaginationModule } from 'ngx-pagination';
 import { OwlModule } from 'ngx-owl-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 import { MaterialModule } from './modules/material.module';
 
@@ -79,7 +80,7 @@ import { MaterialModule } from './modules/material.module';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuardService, AuthentificationService, RecettesService, AdminAuthService],
+  providers: [AuthGuardService, AuthentificationService, RecettesService, AdminAuthService, NgxImageCompressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
