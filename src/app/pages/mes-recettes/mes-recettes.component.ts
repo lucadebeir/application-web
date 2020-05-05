@@ -111,7 +111,6 @@ export class MesRecettesComponent implements OnInit, OnChanges {
               researchResult.push(recipe);
             }
           }
-          console.log(recipe);
           recipe.ingredients.forEach(ingredient => {
             if (ingredient.nomIngredient.toLowerCase().indexOf(formValue.filter.toLowerCase()) !== -1) {
               if (!researchResult.includes(recipe)) {

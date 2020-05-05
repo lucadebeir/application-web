@@ -48,11 +48,7 @@ export class RecettesComponent implements OnInit, OnChanges {
       this.getRecipeByCategory(this.route.snapshot.paramMap.get('id'));
     } else {
       this.recetteService.getAllRecipesAndIngredients().subscribe(data => {
-        data.forEach(element => {
-          console.log(element);
-        });
         this.allRecipe = data;
-        console.log(this.allRecipe);
         this.allRecipe2 = data;
       });
     }
@@ -250,11 +246,8 @@ export class RecettesComponent implements OnInit, OnChanges {
     this.favoris = [];
     this.favorisService.getFavoris().subscribe(
       (favoris: RecipeDetails[]) => {
-        console.log(favoris);
         favoris.forEach(element => {
           this.favoris.push(element.idRecette);
-
-          console.log(this.favoris);
         });
 
       }, err => {

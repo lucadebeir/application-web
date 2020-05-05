@@ -15,7 +15,6 @@ export class FavorisService {
   constructor(private http: HttpClient, private ingredientService: IngredientsService, private auth: AuthentificationService) { }
 
   public addFavoris(newFavori: FavorisDetails): Observable<any> {
-    console.log(newFavori);
     return this.http.post(`/server/favorites/add`, newFavori).pipe(res => {
       return res;
     });

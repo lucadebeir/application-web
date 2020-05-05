@@ -25,7 +25,6 @@ export class ResponseResetComponent implements OnInit {
     this.CurrentState = 'Wait';
     this.route.params.subscribe(params => {
       this.resetToken = params.token;
-      console.log(this.resetToken);
       this.VerifyToken();
     });
   }
@@ -76,7 +75,6 @@ export class ResponseResetComponent implements OnInit {
 
 
   ResetPassword(form) {
-    console.log(form.get('confirmPassword'));
     if (form.valid) {
       this.IsResetFormValid = true;
       this.authService.newPassword(this.ResponseResetForm.value).subscribe(

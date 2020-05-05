@@ -132,7 +132,6 @@ export class RecettesService {
     public addIngredientsAndCategoryToNewRecipe(recipe: CreateRecipe): Observable<any> {
         const res = this.http.post('/server/recipe/addIngredientAndCategorie', recipe);
         return res.pipe(map((res) => {
-            console.log(res);
             return res;
         }));
     }

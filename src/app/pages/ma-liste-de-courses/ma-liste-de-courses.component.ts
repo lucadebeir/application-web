@@ -76,7 +76,6 @@ export class MaListeDeCoursesComponent implements OnInit {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result
       .then((result) => {
         this.ingredientToAdd.idIngredient = result.idIngredient;
-        console.log(this.ingredientToAdd);
         this.shoppingListService.addIngredientShoppingList(this.ingredientToAdd);
         this.router.navigate(['/refresh'], {
           queryParams: {url: 'shoppingList'}

@@ -37,10 +37,8 @@ export class CommentairesService {
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     return this.http.get<any>(`/server/commentaires/recipe/${id}`)
       .pipe(map((data: any) => {
-        console.log(data);
         data.forEach(element => {
           this.http.get(`/server/image/commentaire/${element.idCommentaire}`).subscribe((data: any) => {
-            console.log(data);
             element.lienImage = data[0]?.lienImage;
           });
 
@@ -66,7 +64,6 @@ export class CommentairesService {
 
           }
         });
-        console.log(data);
         return data;
       }));
   }
@@ -77,7 +74,6 @@ export class CommentairesService {
       .pipe(map((commentaire: any) => {
         commentaire.forEach(element => {
           this.http.get(`/server/image/commentaire/${element.idCommentaire}`).subscribe((data: any) => {
-            console.log(data);
             element.lienImage = data[0]?.lienImage;
           });
 

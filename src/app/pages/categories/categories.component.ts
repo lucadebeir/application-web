@@ -25,7 +25,6 @@ export class CategoriesComponent implements OnInit {
       categories => {
 
         this.categories = categories;
-        console.log(this.categories);
       }
     );
   }

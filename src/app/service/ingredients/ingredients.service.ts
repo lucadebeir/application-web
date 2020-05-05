@@ -74,7 +74,6 @@ export class IngredientsService {
     });
     return this.http.get<any>(`/server/ingredient/rest`, { params })
         .pipe(map((data: IngredientDetails[]) => {
-            console.log(data);
             return data;
         }));
 }

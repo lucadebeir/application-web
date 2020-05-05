@@ -23,7 +23,6 @@ export class MesCommentairesComponent implements OnInit {
       commentaires => {
 
         this.commentaires = commentaires;
-        console.log(commentaires);
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
         this.commentaires.forEach(element => {
 
@@ -49,7 +48,6 @@ export class MesCommentairesComponent implements OnInit {
         this.commentaireToModify.message = result.message;
         this.commentaireToModify.dateCommentaire = result.dateCommentaire;
         this.commentaireToModify.concerne = result.concerne;
-        console.log(this.commentaireToModify);
         this.commentairesService.modifyCommentaire(this.commentaireToModify);
         this.router.navigate(['/refresh'], {
           queryParams: {url: 'comment'}
