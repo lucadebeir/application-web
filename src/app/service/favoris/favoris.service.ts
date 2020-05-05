@@ -45,7 +45,6 @@ export class FavorisService {
       data.forEach(element => {
         this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
           element.lienImage = data[0]?.lienImage;
-          console.log(data[0]);
         });
         this.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
           element.ingredients = data;

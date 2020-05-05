@@ -55,7 +55,6 @@ ingredient.get('/rest', (req, res) => {
     })
         .then(ingredient => {
             if (ingredient) {
-                console.log(ingredient[0])
                 res.json(ingredient[0])
             } else {
                 res.send("Il n'y a pas d'ingrédient'.")

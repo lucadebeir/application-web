@@ -27,7 +27,6 @@ const upload = multer({ storage: storage })
 
 //upload image
 image.post('/uploads', upload.single('file'), async (req, res, next) => {
-    console.log(req)
     try {
         const myFile = req.file
         //myFile.originalname = myFile.filename
@@ -36,7 +35,6 @@ image.post('/uploads', upload.single('file'), async (req, res, next) => {
             replacements: [imageUrl],
             type: sequelize.QueryTypes.INSERT
         }).then(resultats => {
-            console.log(resultats)
             res.json(resultats)
         }).catch(err => {
             res.json({ error: err })
@@ -76,7 +74,6 @@ image.get('/commentaire/:idCommentaire', (req, res) => {
 
 //Modifier image d'une recette
 image.post('/update', (req, res) => {
-    console.log(req)
     db.sequelize.query("UPDATE illustrerRecettes SET idImage = ? WHERE idRecette = ?", {
         replacements: [req.body.idImage, req.body.idRecette]
     })

@@ -9,8 +9,6 @@ const ListeCourse = require("../models/ListeCourses")
 //ajouter à la liste de course
 shoppingList.post('/add', (req, res) => {
 
-    console.log(req.body.listIngredients[0])
-
     for (let i = 0; i < req.body.listIngredients.length; i++) {
 
 

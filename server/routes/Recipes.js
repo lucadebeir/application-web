@@ -9,7 +9,9 @@ recipe.use(cors())
 //Récupérer toutes les recettes
 recipe.get('/allRecipes', (req, res) => {
     Recipe.findAll({
-
+        order: [
+            ["datePublication", "DESC"]
+        ]
     })
         .then(recipes => {
             if (recipes) {
@@ -101,7 +103,7 @@ recipe.get('/mostPopularRecipes', (req, res) => {
 //Récupérer les recettes d'une catégorie
 recipe.get('/category/:idCategorie', (req, res) => {
 
-    let query = db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN categories INNER JOIN classerDans WHERE classerDans.idCategorie = categories.idCategorie AND classerDans.idRecette = recettes.idRecette AND categories.idCategorie = ?", {
+    let query = db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN categories INNER JOIN classerDans WHERE classerDans.idCategorie = categories.idCategorie AND classerDans.idRecette = recettes.idRecette AND categories.idCategorie = ? ORDER BY recettes.datePublication DESC", {
         replacements: [req.params.idCategorie],
         type: sequelize.QueryTypes.SELECT
     })

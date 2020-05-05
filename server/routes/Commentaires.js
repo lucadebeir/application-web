@@ -6,7 +6,6 @@ commentaire.use(cors())
 
 //ajout commentaire
 commentaire.post('/add', (req, res) => {
-    console.log(req.body)
     const commentaire = {
         message: req.body.message,
         dateCommentaire: new Date(),
@@ -15,7 +14,6 @@ commentaire.post('/add', (req, res) => {
         parent: req.body.parent
     }
 
-    console.log(commentaire)
     Commentaire.create(commentaire)
         .then(resultats => {
             res.json(resultats)

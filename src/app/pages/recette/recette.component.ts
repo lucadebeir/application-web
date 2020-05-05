@@ -179,14 +179,12 @@ export class RecetteComponent implements OnInit {
   }
 
   addFavoris() {
-    console.log(this.newFavori);
     this.favorisService.addFavoris(this.newFavori).subscribe();
     this.isFavori = true;
     window.location.reload();
   }
 
   deleteFavoris() {
-    console.log(this.newFavori);
     this.favorisService.deleteFavoris(this.newFavori.idRecette).subscribe();
     this.isFavori = false;
     window.location.reload();
@@ -220,11 +218,9 @@ export class RecetteComponent implements OnInit {
       const formData = new FormData();
       formData.append('file', this.images);
       this.newCommentaire.message = message;
-      console.log(this.newCommentaire);
       this.imagesService.addImage(formData).subscribe(res => {
         this.newCommentaire.idImage = res[0];
         this.commentairesService.addCommentaire(this.newCommentaire).subscribe(res2 => {
-          console.log(res2);
           this.newCommentaire.idCommentaire = res2.idCommentaire;
           this.commentairesService.addImageToCommentaire(this.newCommentaire).subscribe();
           window.location.reload();
@@ -248,7 +244,6 @@ export class RecetteComponent implements OnInit {
       this.imagesService.addImage(formData).subscribe(res => {
         this.newResponse.idImage = res[0];
         this.commentairesService.addCommentaire(this.newResponse).subscribe(res2 => {
-          console.log(res2);
           this.newResponse.idCommentaire = res2.idCommentaire;
           this.commentairesService.addImageToCommentaire(this.newResponse).subscribe();
           window.location.reload();
@@ -272,7 +267,6 @@ export class RecetteComponent implements OnInit {
   }
 
   onProportionLess(value: number): void {
-    console.log(value);
     this.recette.ingredients.forEach(element => {
       element.qte = roundDecimal((element.qte * value) / this.recette.nbrePart);
     });

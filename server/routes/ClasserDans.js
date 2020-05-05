@@ -28,7 +28,6 @@ classerDans.post(`/recipe/:idRecette/category/add`, (req, res) => {
     }
     ClasserDans.create(CategData)
         .then((result) => {
-            console.log(result)
             res.json(result)
         })
         .catch(err => {

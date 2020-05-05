@@ -37,7 +37,6 @@ favori.post('/add', (req, res) => {
                     type: sequelize.QueryTypes.INSERT
                 })
                     .then(success => {
-                        console.log(success)
                         res.json({ success: "Ajouté aux favoris !" })
                     })
                     .catch(err => {
@@ -55,7 +54,7 @@ favori.post('/add', (req, res) => {
 
 //récupérer les favoris de l'utilisateur
 favori.get('/recipe/:pseudo', (req, res) => {
-    db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN favoris WHERE recettes.idRecette = favoris.idRecette AND favoris.pseudo = ? ", {
+    db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN favoris WHERE recettes.idRecette = favoris.idRecette AND favoris.pseudo = ? ORDER BY recettes.datePublication DESC", {
         replacements: [req.params.pseudo],
         type: sequelize.QueryTypes.SELECT
     }).then(resultats => {
@@ -67,7 +66,7 @@ favori.get('/recipe/:pseudo', (req, res) => {
 
 //récupérer les favoris de l'utilisateur selon une catégorie
 favori.get('/recipe/:pseudo/:idCategorie', (req, res) => {
-    db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN favoris INNER JOIN classerDans WHERE recettes.idRecette = favoris.idRecette AND recettes.idRecette = classerDans.idRecette AND classerDans.idCategorie = ? AND favoris.pseudo = ?", {
+    db.sequelize.query("SELECT recettes.* FROM recettes INNER JOIN favoris INNER JOIN classerDans WHERE recettes.idRecette = favoris.idRecette AND recettes.idRecette = classerDans.idRecette AND classerDans.idCategorie = ? AND favoris.pseudo = ? ORDER BY recettes.datePublication DESC", {
         replacements: [req.params.idCategorie, req.params.pseudo],
         type: sequelize.QueryTypes.SELECT
     }).then(resultats => {

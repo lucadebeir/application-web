@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RecettesService, UserDetails, AuthentificationService, IngredientsService, UnitesService,
-  CategoriesService, ImagesService } from '../../service';
+import {
+  RecettesService, UserDetails, AuthentificationService, IngredientsService, UnitesService,
+  CategoriesService, ImagesService
+} from '../../service';
 import { CategoryDetails, IngredientDetails, UniteDetails, CreateRecipe } from '../../models';
 import { FormGroup, FormArray, Validators, FormBuilder, FormControl } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
@@ -117,29 +119,6 @@ export class AjoutRecetteComponent implements OnInit {
     );
   }
 
-  onFileChange(file: any) {
-
-    console.log(file);
-
-    const reader = new FileReader();
-    let dataURL;
-    // tslint:disable-next-line: only-arrow-functions
-    reader.onload = function() {
-      dataURL = reader.result;
-    };
-
-    const fileMetaData = {
-      originalname: file[0].name,
-      type: file[0].type,
-      buffer: file[0]
-    };
-    this.imagesService.addImage(fileMetaData).subscribe(data => {
-      this.recipe.idImage = data[0];
-    }, error => {
-      console.log(error);
-    });
-  }
-
   uploadFileToActivity() {
     this.imagesService.addImage(this.fileToUpload).subscribe(data => {
       // do something, if upload success
@@ -183,8 +162,8 @@ export class AjoutRecetteComponent implements OnInit {
       }
     })) {
 
-    console.log(ingredientFormValue.ingredient);
- }
+      console.log(ingredientFormValue.ingredient);
+    }
     this.recipe.ingredients = ingredientFormValue.ingredient; // je récupère les info sur l'ingrédient
 
     this.recipe.categories = this.selectedItems;
@@ -199,7 +178,6 @@ export class AjoutRecetteComponent implements OnInit {
       this.recipe.idImage = res[0];
       this.recetteService.createRecipe(this.recipe).subscribe(res => {
         this.recipe.idRecette = res[0]; // je récupère l'id de la recette que je viens de créer
-        console.log(this.recipe);
         this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
           this.listAbonneNews$ = this.auth.getAbonneNews();
           this.listAbonneNews$.subscribe(res => {

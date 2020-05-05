@@ -1419,25 +1419,6 @@ class AjoutRecetteComponent {
         formData.append('file', this.images);
         this.http.post('/server/uploads', formData).subscribe((res) => console.log(res), (err) => console.log(err));
     }
-    onFileChange(file) {
-        console.log(file);
-        const reader = new FileReader();
-        let dataURL;
-        // tslint:disable-next-line: only-arrow-functions
-        reader.onload = function () {
-            dataURL = reader.result;
-        };
-        const fileMetaData = {
-            originalname: file[0].name,
-            type: file[0].type,
-            buffer: file[0]
-        };
-        this.imagesService.addImage(fileMetaData).subscribe(data => {
-            this.recipe.idImage = data[0];
-        }, error => {
-            console.log(error);
-        });
-    }
     uploadFileToActivity() {
         this.imagesService.addImage(this.fileToUpload).subscribe(data => {
             // do something, if upload success
@@ -1499,7 +1480,6 @@ class AjoutRecetteComponent {
             this.recipe.idImage = res[0];
             this.recetteService.createRecipe(this.recipe).subscribe(res => {
                 this.recipe.idRecette = res[0]; // je récupère l'id de la recette que je viens de créer
-                console.log(this.recipe);
                 this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
                     this.listAbonneNews$ = this.auth.getAbonneNews();
                     this.listAbonneNews$.subscribe(res => {
@@ -5175,13 +5155,11 @@ class RecetteComponent {
         return this.unite;
     }
     addFavoris() {
-        console.log(this.newFavori);
         this.favorisService.addFavoris(this.newFavori).subscribe();
         this.isFavori = true;
         window.location.reload();
     }
     deleteFavoris() {
-        console.log(this.newFavori);
         this.favorisService.deleteFavoris(this.newFavori.idRecette).subscribe();
         this.isFavori = false;
         window.location.reload();
@@ -5209,11 +5187,9 @@ class RecetteComponent {
             const formData = new FormData();
             formData.append('file', this.images);
             this.newCommentaire.message = message;
-            console.log(this.newCommentaire);
             this.imagesService.addImage(formData).subscribe(res => {
                 this.newCommentaire.idImage = res[0];
                 this.commentairesService.addCommentaire(this.newCommentaire).subscribe(res2 => {
-                    console.log(res2);
                     this.newCommentaire.idCommentaire = res2.idCommentaire;
                     this.commentairesService.addImageToCommentaire(this.newCommentaire).subscribe();
                     window.location.reload();
@@ -5236,7 +5212,6 @@ class RecetteComponent {
             this.imagesService.addImage(formData).subscribe(res => {
                 this.newResponse.idImage = res[0];
                 this.commentairesService.addCommentaire(this.newResponse).subscribe(res2 => {
-                    console.log(res2);
                     this.newResponse.idCommentaire = res2.idCommentaire;
                     this.commentairesService.addImageToCommentaire(this.newResponse).subscribe();
                     window.location.reload();
@@ -5258,7 +5233,6 @@ class RecetteComponent {
         this.recette.nbrePart = parseInt(searchValue, 10);
     }
     onProportionLess(value) {
-        console.log(value);
         this.recette.ingredients.forEach(element => {
             element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])((element.qte * value) / this.recette.nbrePart);
         });
@@ -7222,7 +7196,6 @@ class FavorisService {
                 this.http.get(`/server/image/${element.idRecette}`).subscribe((data) => {
                     var _a;
                     element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
-                    console.log(data[0]);
                 });
                 this.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(data => {
                     element.ingredients = data;

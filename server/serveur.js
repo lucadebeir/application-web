@@ -80,7 +80,6 @@ app.use(multerMid.single('file'))
 app.post('/uploads', async (req, res, next) => {
   try {
     const myFile = req.file
-    console.log(req)
     const imageUrl = await uploadImage(myFile)
 
     res
