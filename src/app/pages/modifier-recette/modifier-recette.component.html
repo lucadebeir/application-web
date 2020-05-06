@@ -34,7 +34,7 @@
             <tr>
                 <td>
                     <div *ngIf="!image">
-                        <input type="file" name="image" (change)="selectImage($event)" />
+                        <input type="file" name="image" (change)="selectFile($event)" />
                         <br />
                         <br />
                         <button type="submit" class="btn btn-primary" (click)="onSubmit()">
