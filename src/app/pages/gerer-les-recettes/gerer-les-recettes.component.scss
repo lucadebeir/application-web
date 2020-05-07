@@ -7,6 +7,18 @@
     margin-top: 5em;
 }
 
+#paginationRecette {
+    padding-top: 4em;
+    margin: auto;
+    margin-bottom: 4em;
+    text-align: center;
+}
+
+pagination-controls::ng-deep .ngx-pagination .current {
+    background: #154360;
+    border-radius: 60px;
+}
+
 .item1 {
     background: #312450;
 }
@@ -19,7 +31,6 @@ ul {
     justify-content: center;
     list-style: none;
     padding-inline-start: inherit;
-    
     text-align: center;
     position: relative;
     li {
@@ -66,7 +77,6 @@ ul {
         width: auto;
         vertical-align: text-top;
     }
-
     .mr-sm-2,
     .mx-sm-2 {
         margin-right: 0.5rem !important;
@@ -95,23 +105,19 @@ input {
         margin: 0;
         margin-top: none;
     }
-
     body,
     .main-inner {
         display: table;
         width: 100%;
         height: 100%;
     }
-
     .page-row {
         //display: table-row;
         height: 1px;
     }
-
     .page-row-expanded {
         height: 100%;
     }
-
     .item1 {
         width: 15%;
         box-sizing: border-box;
@@ -124,13 +130,11 @@ input {
         display: table-cell;
         height: 100%;
     }
-
     .container {
         margin-right: inherit;
         margin-left: inherit;
         //padding-left: inherit;
     }
-
     ul {
         list-style: none;
         li {
@@ -142,20 +146,18 @@ input {
 }
 
 /////////////////////////////////////////////
-
 $lg-width: 1200px;
 $md-width: 992px;
 $sm-width: 768px;
 $xs-width: 480px;
-
 $gray65: #a6a6a6;
 $dashed-gray65-border: 1px dashed $gray65;
 $dashed-black-border: 1px dashed black;
-
 $green: #00b300;
 $red: #cd0000;
 
 /* fixes the freezing of the webpage in safari (scrolling is not possible anymore) after appending items to a new row. */
+
 html,
 body {
     height: 100%;
@@ -238,7 +240,6 @@ h1 {
             border: $dashed-black-border;
         }
     }
-
     .directionsUrlBtnEditingModal {
         &:hover,
         &:active {
@@ -246,17 +247,14 @@ h1 {
             box-shadow: none;
         }
     }
-
     .userInputDiv {
         margin-top: 20px;
         &:first-child {
             margin-top: 0;
         }
-
         label {
             margin-left: 5px;
         }
-
         textarea {
             resize: none;
             padding: 5px;
@@ -272,15 +270,12 @@ h1 {
             }
         }
     }
-
     .commitBtn .commitIcon {
         color: $green;
     }
-
     .cancelBtn .cancelIcon {
         color: $red;
     }
-
     .inputTextModal .modal-dialog {
         width: 42.5%;
     }
@@ -290,16 +285,13 @@ h1 {
     .container {
         width: ($md-width);
     }
-
     .recipeDiv {
         .directionsUrlBtn {
             margin-right: 15px;
         }
-
         .editBtn {
             margin-right: 5px;
         }
-
         .inputTextModal .modal-dialog {
             width: 50%;
         }
@@ -310,70 +302,58 @@ h1 {
     .container {
         width: ($sm-width);
     }
-
     button {
         margin-left: inherit;
     }
-
     .recipeDiv {
         .directionsUrlBtn {
             margin-left: 15px;
         }
-
         .controlBtns {
             margin-top: 5px;
             display: block;
         }
-
         .deleteBtn {
             margin-left: 5px;
         }
-
         .inputTextModal .modal-dialog {
             width: 67.5%;
         }
     }
-
     @media (max-width: ($sm-width)-1) {
-        *, ::after, ::before {
+        *,
+         ::after,
+         ::before {
             box-sizing: inherit;
         }
-
         button {
             margin-left: inherit;
         }
-
         .container {
             width: auto;
         }
-
         h1,
         h2 {
             text-align: center;
             margin-top: 15px;
         }
-
         .addBtn {
             margin-top: 40px;
         }
-
         .recipeDiv {
             &:nth-child(3) {
                 margin-top: 40px;
             }
         }
-
         .inputTextModal .modal-dialog {
             width: 70%;
             margin: 20px auto;
         }
     }
-
     @media (max-width: ($xs-width)-1) {
         .inputTextModal .modal-dialog {
             width: 95%;
         }
-
         button {
             margin-left: inherit;
         }

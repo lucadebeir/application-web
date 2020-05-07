@@ -36,7 +36,7 @@
 
                             <div class="recipesWrapper row">
 
-                                <div class="recipeDiv text-center col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of filteredRecipe$ | async">
+                                <div class="recipeDiv text-center col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of filteredRecipe$ | async  | paginate: { id: 'listing_pagination', itemsPerPage:9, currentPage: currentPage}">
                                     <img class="rounded-circle" src="{{recette.lienImage}}" />
                                     <h3>{{recette.nomRecette}}</h3>
 
@@ -63,6 +63,10 @@
                                     </div>
 
                                 </div>
+                            </div>
+
+                            <div id="paginationRecette" #scrollContainer>
+                                <pagination-controls id='listing_pagination' (pageChange)="onPageChange($event)" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
                             </div>
 
                         </div>

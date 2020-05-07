@@ -28,6 +28,8 @@ export class GererLesRecettesComponent implements OnInit {
   public filter: FormControl;
   public filter$: Observable<string>;
 
+  currentPage: number;
+
   constructor(private recettesService: RecettesService, private router: Router, media: MediaObserver) {
     // pour la recherche dynamique
     this.recettes$ = this.recettesService.getAllRecipes();
@@ -37,6 +39,8 @@ export class GererLesRecettesComponent implements OnInit {
     this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$)
       .pipe(map(([recipes, filterString]) =>
         recipes.filter(recipe => recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)));
+
+    this.currentPage = 1;
   }
 
   ngOnInit(): void {
@@ -55,6 +59,11 @@ export class GererLesRecettesComponent implements OnInit {
       );
     window.location.reload(); /* rafraichit la page */
   }
+
+  onPageChange(page: number) {
+    this.currentPage = page;
+    window.scrollTo(0, 0);
+ }
 
 
 }
