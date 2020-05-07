@@ -9,6 +9,7 @@
                             <li><a id="nav" href="/ingredient">Ingrédients</a></li>
                             <li class="active"><a id="nav" href="/category">Catégories</a></li>
                             <li><a id="nav" href="/unite">Unités</a></li>
+                            <li><a id="nav" href="/handleMenu">Gérer le menu</a></li>
                             <li><a id="nav" href="/add-recipe">Créer une nouvelle recette</a></li>
                         </ul>
                     </div>
@@ -22,7 +23,7 @@
                         <div id="titre">
                             <h1>Catégories</h1>
                         </div>
-                        
+
                         <div class='flex-container'>
 
                             <div id="addCat">
@@ -30,13 +31,13 @@
                                 <form (submit)="addCategory()">
                                     <input type="text" class="form-control" name="libelleCategorie" placeholder="nom catégorie" [(ngModel)]="categorie.libelleCategorie">
                                     <button id="btn" class="btn btn-outline-info " type="submit ">Valider</button>
-                        
+
                                 </form>
                             </div>
 
                             <div>
                                 <table class="table col-md-12 mx-auto">
-                        
+
                                     <tr *ngFor="let categorie of categories">
                                         <td>
                                             <form (submit)="updateCategory(categorie)">
@@ -56,7 +57,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </div>
                 </section>

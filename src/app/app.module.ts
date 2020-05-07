@@ -38,6 +38,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import {NgxImageCompressService} from 'ngx-image-compress';
 
 import { MaterialModule } from './modules/material.module';
+import { GererLeMenuComponent } from './pages/gerer-le-menu/gerer-le-menu.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { MaterialModule } from './modules/material.module';
     RequestResetComponent,
     ResponseResetComponent,
     RefreshComponent,
-    MentionsLegalesComponent
+    MentionsLegalesComponent,
+    GererLeMenuComponent
   ],
   imports: [
     MaterialModule,

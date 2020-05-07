@@ -6,7 +6,7 @@ import { AuthentificationService } from '../authentification.service';
 import { addTimes, addHours } from '../../utils/Utils';
 import {
     CategoryDetails, CreateRecipe,
-    IngredientDetails, RecipeDetails
+    IngredientDetails, RecipeDetails, Menu
 } from '../../models';
 import { CategoriesService } from '../categories/categories.service';
 import { IngredientsService } from '../ingredients/ingredients.service';
@@ -222,6 +222,21 @@ export class RecettesService {
             }));
     }
 
+    public getAllRecipesForMenu(): Observable<RecipeDetails[]> {
+        const base = this.http.get(`/server/menu/allRecipes`);
+        return base.pipe(map((data: RecipeDetails[]) => {
+            data.forEach(element => {
+                this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    element.lienImage = data[0]?.lienImage;
+                });
+                this.categoryService.getCategoryByRecette(element.idRecette).subscribe((data: any) => {
+                    element.categories = data;
+                });
+            });
+            return data;
+        }));
+    }
+
     public getPetitDej(): Observable<any> {
         return this.http.get<any>('/server/menu/petitDej')
             .pipe(map((element: any) => {
@@ -258,6 +273,28 @@ export class RecettesService {
                     element[0].categories = data;
                 });
                 return element[0];
+            }));
+    }
+
+    public updatePetitDej(petitDej: RecipeDetails): Observable<any> {
+        console.log(petitDej);
+        return this.http.post<any>('/server/menu/petitDej/update', petitDej)
+            .pipe(map((element: any) => {
+                return element;
+            }));
+    }
+
+    public updateRepas(repas: RecipeDetails): Observable<any> {
+        return this.http.post<any>('/server/menu/repas/update', repas)
+            .pipe(map((element: any) => {
+                return element;
+            }));
+    }
+
+    public updateDouceur(douceur: RecipeDetails): Observable<any> {
+        return this.http.post<any>('/server/menu/douceur/update', douceur)
+            .pipe(map((element: any) => {
+                return element;
             }));
     }
 

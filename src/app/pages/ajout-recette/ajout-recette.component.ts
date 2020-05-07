@@ -33,7 +33,8 @@ export class AjoutRecetteComponent implements OnInit {
     libellePart: '',
     tempsPreparation: null,
     tempsCuisson: null,
-    astuce: ''
+    astuce: '',
+    mot: ''
   };
 
   public ingredients: IngredientDetails[];
@@ -139,11 +140,24 @@ export class AjoutRecetteComponent implements OnInit {
         console.warn('Size in bytes after compression:', this.sizeOFCompressedImage);
         // create file from byte
         const imageName = fileName;
+        // call method that creates a blob from dataUri
+        const imageBlob = this.dataURItoBlob(this.imgResultAfterCompress.split(',')[1]);
         // imageFile created below is the new compressed file which can be send to API in form data
-        const imageFile = new File([result], imageName, { type: 'image/jpeg' });
+        const imageFile = new File([imageBlob], imageName, { type: 'image/jpeg' });
 
         this.images = imageFile;
       });
+  }
+
+  dataURItoBlob(dataURI) {
+    const byteString = window.atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'image/jpeg' });
+    return blob;
   }
 
   selectImage(event) {
@@ -210,6 +224,7 @@ export class AjoutRecetteComponent implements OnInit {
     this.recipe.tempsPreparation = formValue.tempsPreparation;
     this.recipe.tempsCuisson = formValue.tempsCuisson;
     this.recipe.astuce = formValue.astuce;
+    this.recipe.mot = formValue.mot;
     this.imagesService.addImage(formData).subscribe(res => {
       this.recipe.idImage = res[0];
       this.recetteService.createRecipe(this.recipe).subscribe(res => {
@@ -239,7 +254,8 @@ export class AjoutRecetteComponent implements OnInit {
       libellePart: ['', Validators.required],
       tempsPreparation: ['', Validators.required],
       tempsCuisson: ['', Validators.required],
-      astuce: ['', Validators.required]
+      astuce: ['', Validators.required],
+      mot: ['', Validators.required]
     });
   }
 

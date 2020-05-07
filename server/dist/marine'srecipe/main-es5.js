@@ -212,6 +212,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
     /*! ./pages/mentions-legales/mentions-legales.component */
     "./src/app/pages/mentions-legales/mentions-legales.component.ts");
+    /* harmony import */
+
+
+    var _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
+    /*! ./pages/gerer-le-menu/gerer-le-menu.component */
+    "./src/app/pages/gerer-le-menu/gerer-le-menu.component.ts");
 
     var routes = [{
       path: '',
@@ -290,6 +296,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'rules',
       component: _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_24__["MentionsLegalesComponent"]
+    }, {
+      path: 'handleMenu',
+      component: _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_25__["GererLeMenuComponent"]
     }, {
       path: '**',
       redirectTo: ''
@@ -453,7 +462,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function AppComponent_li_21_Template(rf, ctx) {
       if (rf & 1) {
-        var _r312 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r327 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 25);
 
@@ -494,11 +503,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "a", 33);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_li_21_Template_a_click_13_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r312);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r327);
 
-          var ctx_r311 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r326 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r311.auth.logout();
+          return ctx_r326.auth.logout();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Deconnexion");
@@ -511,17 +520,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r309 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r324 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         var tmp_0_0 = null;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", (tmp_0_0 = ctx_r309.auth.getUserDetails()) == null ? null : tmp_0_0.pseudo, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", (tmp_0_0 = ctx_r324.auth.getUserDetails()) == null ? null : tmp_0_0.pseudo, " ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r309.auth.isAdmin());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r324.auth.isAdmin());
       }
     }
 
@@ -972,6 +981,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _modules_material_module__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(
     /*! ./modules/material.module */
     "./src/app/modules/material.module.ts");
+    /* harmony import */
+
+
+    var _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(
+    /*! ./pages/gerer-le-menu/gerer-le-menu.component */
+    "./src/app/pages/gerer-le-menu/gerer-le-menu.component.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -991,7 +1006,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, {
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _pages_apropos_apropos_component__WEBPACK_IMPORTED_MODULE_19__["AProposComponent"], _pages_accueil_accueil_component__WEBPACK_IMPORTED_MODULE_9__["AccueilComponent"], _pages_mon_profile_mon_profile_component__WEBPACK_IMPORTED_MODULE_16__["MonProfileComponent"], _pages_inscrire_inscrire_component__WEBPACK_IMPORTED_MODULE_7__["InscrireComponent"], _pages_se_connecter_se_connecter_component__WEBPACK_IMPORTED_MODULE_8__["SeConnecterComponent"], _pages_contact_contact_component__WEBPACK_IMPORTED_MODULE_11__["ContactComponent"], _pages_gerer_les_recettes_gerer_les_recettes_component__WEBPACK_IMPORTED_MODULE_12__["GererLesRecettesComponent"], _pages_ma_liste_de_courses_ma_liste_de_courses_component__WEBPACK_IMPORTED_MODULE_13__["MaListeDeCoursesComponent"], _pages_mes_commentaires_mes_commentaires_component__WEBPACK_IMPORTED_MODULE_14__["MesCommentairesComponent"], _pages_mes_recettes_mes_recettes_component__WEBPACK_IMPORTED_MODULE_15__["MesRecettesComponent"], _pages_recettes_recettes_component__WEBPACK_IMPORTED_MODULE_17__["RecettesComponent"], _pages_update_password_update_password_component__WEBPACK_IMPORTED_MODULE_18__["UpdatePasswordComponent"], _pages_recette_recette_component__WEBPACK_IMPORTED_MODULE_20__["RecetteComponent"], _pages_ingredients_ingredients_component__WEBPACK_IMPORTED_MODULE_21__["IngredientsComponent"], _pages_categories_categories_component__WEBPACK_IMPORTED_MODULE_22__["CategoriesComponent"], _pages_unite_unite_component__WEBPACK_IMPORTED_MODULE_23__["UniteComponent"], _pages_ajout_recette_ajout_recette_component__WEBPACK_IMPORTED_MODULE_24__["AjoutRecetteComponent"], _pages_modifier_recette_modifier_recette_component__WEBPACK_IMPORTED_MODULE_26__["ModifierRecetteComponent"], _pages_request_reset_request_reset_component__WEBPACK_IMPORTED_MODULE_28__["RequestResetComponent"], _pages_response_reset_response_reset_component__WEBPACK_IMPORTED_MODULE_29__["ResponseResetComponent"], _pages_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_30__["RefreshComponent"], _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_31__["MentionsLegalesComponent"]],
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _pages_apropos_apropos_component__WEBPACK_IMPORTED_MODULE_19__["AProposComponent"], _pages_accueil_accueil_component__WEBPACK_IMPORTED_MODULE_9__["AccueilComponent"], _pages_mon_profile_mon_profile_component__WEBPACK_IMPORTED_MODULE_16__["MonProfileComponent"], _pages_inscrire_inscrire_component__WEBPACK_IMPORTED_MODULE_7__["InscrireComponent"], _pages_se_connecter_se_connecter_component__WEBPACK_IMPORTED_MODULE_8__["SeConnecterComponent"], _pages_contact_contact_component__WEBPACK_IMPORTED_MODULE_11__["ContactComponent"], _pages_gerer_les_recettes_gerer_les_recettes_component__WEBPACK_IMPORTED_MODULE_12__["GererLesRecettesComponent"], _pages_ma_liste_de_courses_ma_liste_de_courses_component__WEBPACK_IMPORTED_MODULE_13__["MaListeDeCoursesComponent"], _pages_mes_commentaires_mes_commentaires_component__WEBPACK_IMPORTED_MODULE_14__["MesCommentairesComponent"], _pages_mes_recettes_mes_recettes_component__WEBPACK_IMPORTED_MODULE_15__["MesRecettesComponent"], _pages_recettes_recettes_component__WEBPACK_IMPORTED_MODULE_17__["RecettesComponent"], _pages_update_password_update_password_component__WEBPACK_IMPORTED_MODULE_18__["UpdatePasswordComponent"], _pages_recette_recette_component__WEBPACK_IMPORTED_MODULE_20__["RecetteComponent"], _pages_ingredients_ingredients_component__WEBPACK_IMPORTED_MODULE_21__["IngredientsComponent"], _pages_categories_categories_component__WEBPACK_IMPORTED_MODULE_22__["CategoriesComponent"], _pages_unite_unite_component__WEBPACK_IMPORTED_MODULE_23__["UniteComponent"], _pages_ajout_recette_ajout_recette_component__WEBPACK_IMPORTED_MODULE_24__["AjoutRecetteComponent"], _pages_modifier_recette_modifier_recette_component__WEBPACK_IMPORTED_MODULE_26__["ModifierRecetteComponent"], _pages_request_reset_request_reset_component__WEBPACK_IMPORTED_MODULE_28__["RequestResetComponent"], _pages_response_reset_response_reset_component__WEBPACK_IMPORTED_MODULE_29__["ResponseResetComponent"], _pages_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_30__["RefreshComponent"], _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_31__["MentionsLegalesComponent"], _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_37__["GererLeMenuComponent"]],
         imports: [_modules_material_module__WEBPACK_IMPORTED_MODULE_36__["MaterialModule"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_34__["CarouselModule"], ngx_owl_carousel__WEBPACK_IMPORTED_MODULE_33__["OwlModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_32__["NgxPaginationModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_27__["NgbModule"], ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_25__["NgMultiSelectDropDownModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"]]
       });
     })();
@@ -1002,7 +1017,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
-          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _pages_apropos_apropos_component__WEBPACK_IMPORTED_MODULE_19__["AProposComponent"], _pages_accueil_accueil_component__WEBPACK_IMPORTED_MODULE_9__["AccueilComponent"], _pages_mon_profile_mon_profile_component__WEBPACK_IMPORTED_MODULE_16__["MonProfileComponent"], _pages_inscrire_inscrire_component__WEBPACK_IMPORTED_MODULE_7__["InscrireComponent"], _pages_se_connecter_se_connecter_component__WEBPACK_IMPORTED_MODULE_8__["SeConnecterComponent"], _pages_contact_contact_component__WEBPACK_IMPORTED_MODULE_11__["ContactComponent"], _pages_gerer_les_recettes_gerer_les_recettes_component__WEBPACK_IMPORTED_MODULE_12__["GererLesRecettesComponent"], _pages_ma_liste_de_courses_ma_liste_de_courses_component__WEBPACK_IMPORTED_MODULE_13__["MaListeDeCoursesComponent"], _pages_mes_commentaires_mes_commentaires_component__WEBPACK_IMPORTED_MODULE_14__["MesCommentairesComponent"], _pages_mes_recettes_mes_recettes_component__WEBPACK_IMPORTED_MODULE_15__["MesRecettesComponent"], _pages_recettes_recettes_component__WEBPACK_IMPORTED_MODULE_17__["RecettesComponent"], _pages_update_password_update_password_component__WEBPACK_IMPORTED_MODULE_18__["UpdatePasswordComponent"], _pages_recette_recette_component__WEBPACK_IMPORTED_MODULE_20__["RecetteComponent"], _pages_ingredients_ingredients_component__WEBPACK_IMPORTED_MODULE_21__["IngredientsComponent"], _pages_categories_categories_component__WEBPACK_IMPORTED_MODULE_22__["CategoriesComponent"], _pages_unite_unite_component__WEBPACK_IMPORTED_MODULE_23__["UniteComponent"], _pages_ajout_recette_ajout_recette_component__WEBPACK_IMPORTED_MODULE_24__["AjoutRecetteComponent"], _pages_modifier_recette_modifier_recette_component__WEBPACK_IMPORTED_MODULE_26__["ModifierRecetteComponent"], _pages_request_reset_request_reset_component__WEBPACK_IMPORTED_MODULE_28__["RequestResetComponent"], _pages_response_reset_response_reset_component__WEBPACK_IMPORTED_MODULE_29__["ResponseResetComponent"], _pages_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_30__["RefreshComponent"], _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_31__["MentionsLegalesComponent"]],
+          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _pages_apropos_apropos_component__WEBPACK_IMPORTED_MODULE_19__["AProposComponent"], _pages_accueil_accueil_component__WEBPACK_IMPORTED_MODULE_9__["AccueilComponent"], _pages_mon_profile_mon_profile_component__WEBPACK_IMPORTED_MODULE_16__["MonProfileComponent"], _pages_inscrire_inscrire_component__WEBPACK_IMPORTED_MODULE_7__["InscrireComponent"], _pages_se_connecter_se_connecter_component__WEBPACK_IMPORTED_MODULE_8__["SeConnecterComponent"], _pages_contact_contact_component__WEBPACK_IMPORTED_MODULE_11__["ContactComponent"], _pages_gerer_les_recettes_gerer_les_recettes_component__WEBPACK_IMPORTED_MODULE_12__["GererLesRecettesComponent"], _pages_ma_liste_de_courses_ma_liste_de_courses_component__WEBPACK_IMPORTED_MODULE_13__["MaListeDeCoursesComponent"], _pages_mes_commentaires_mes_commentaires_component__WEBPACK_IMPORTED_MODULE_14__["MesCommentairesComponent"], _pages_mes_recettes_mes_recettes_component__WEBPACK_IMPORTED_MODULE_15__["MesRecettesComponent"], _pages_recettes_recettes_component__WEBPACK_IMPORTED_MODULE_17__["RecettesComponent"], _pages_update_password_update_password_component__WEBPACK_IMPORTED_MODULE_18__["UpdatePasswordComponent"], _pages_recette_recette_component__WEBPACK_IMPORTED_MODULE_20__["RecetteComponent"], _pages_ingredients_ingredients_component__WEBPACK_IMPORTED_MODULE_21__["IngredientsComponent"], _pages_categories_categories_component__WEBPACK_IMPORTED_MODULE_22__["CategoriesComponent"], _pages_unite_unite_component__WEBPACK_IMPORTED_MODULE_23__["UniteComponent"], _pages_ajout_recette_ajout_recette_component__WEBPACK_IMPORTED_MODULE_24__["AjoutRecetteComponent"], _pages_modifier_recette_modifier_recette_component__WEBPACK_IMPORTED_MODULE_26__["ModifierRecetteComponent"], _pages_request_reset_request_reset_component__WEBPACK_IMPORTED_MODULE_28__["RequestResetComponent"], _pages_response_reset_response_reset_component__WEBPACK_IMPORTED_MODULE_29__["ResponseResetComponent"], _pages_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_30__["RefreshComponent"], _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_31__["MentionsLegalesComponent"], _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_37__["GererLeMenuComponent"]],
           imports: [_modules_material_module__WEBPACK_IMPORTED_MODULE_36__["MaterialModule"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_34__["CarouselModule"], ngx_owl_carousel__WEBPACK_IMPORTED_MODULE_33__["OwlModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_32__["NgxPaginationModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_27__["NgbModule"], ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_25__["NgMultiSelectDropDownModule"].forRoot(), _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"]],
           providers: [_service__WEBPACK_IMPORTED_MODULE_10__["AuthGuardService"], _service__WEBPACK_IMPORTED_MODULE_10__["AuthentificationService"], _service__WEBPACK_IMPORTED_MODULE_10__["RecettesService"], _service__WEBPACK_IMPORTED_MODULE_10__["AdminAuthService"], ngx_image_compress__WEBPACK_IMPORTED_MODULE_35__["NgxImageCompressService"]],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
@@ -2515,7 +2530,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function AjoutRecetteComponent_div_52_option_7_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 42);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -2535,7 +2550,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function AjoutRecetteComponent_div_52_option_20_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 43);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -2555,23 +2570,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function AjoutRecetteComponent_div_52_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 31);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tr");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "td", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "td", 32);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "label", 33);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Ingr\xE9dient");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "input", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "input", 34);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "datalist", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "datalist", 35);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, AjoutRecetteComponent_div_52_option_7_Template, 2, 3, "option", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, AjoutRecetteComponent_div_52_option_7_Template, 2, 3, "option", 36);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -2583,15 +2598,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "td", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "td", 37);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "label", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "label", 38);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Quantit\xE9");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "input", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "input", 39);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 12);
 
@@ -2601,17 +2616,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "td", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "td", 32);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "label", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "label", 33);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Unit\xE9");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "select", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "select", 40);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, AjoutRecetteComponent_div_52_option_20_Template, 2, 2, "option", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, AjoutRecetteComponent_div_52_option_20_Template, 2, 2, "option", 41);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -2655,27 +2670,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (rf & 1) {
         var _r194 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 44);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "h4", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "h4", 45);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 45);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 46);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "form");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 46);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 47);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label", 47);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "label", 48);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Nom de l'ingr\xE9dient ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 48);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 49);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "input", 49, 50);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "input", 50, 51);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AjoutRecetteComponent_ng_template_58_Template_input_ngModelChange_8_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r194);
@@ -2695,9 +2710,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 51);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 52);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 52);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 53);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AjoutRecetteComponent_ng_template_58_Template_button_click_11_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r194);
@@ -2753,7 +2768,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           libellePart: '',
           tempsPreparation: null,
           tempsCuisson: null,
-          astuce: ''
+          astuce: '',
+          mot: ''
         };
         this.selectIngredient = [];
         this.newIngredient = {
@@ -2831,13 +2847,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this8.sizeOFCompressedImage = _this8.imageCompress.byteCount(result) / (1024 * 1024);
             console.warn('Size in bytes after compression:', _this8.sizeOFCompressedImage); // create file from byte
 
-            var imageName = fileName; // imageFile created below is the new compressed file which can be send to API in form data
+            var imageName = fileName; // call method that creates a blob from dataUri
 
-            var imageFile = new File([result], imageName, {
+            var imageBlob = _this8.dataURItoBlob(_this8.imgResultAfterCompress.split(',')[1]); // imageFile created below is the new compressed file which can be send to API in form data
+
+
+            var imageFile = new File([imageBlob], imageName, {
               type: 'image/jpeg'
             });
             _this8.images = imageFile;
           });
+        }
+      }, {
+        key: "dataURItoBlob",
+        value: function dataURItoBlob(dataURI) {
+          var byteString = window.atob(dataURI);
+          var arrayBuffer = new ArrayBuffer(byteString.length);
+          var int8Array = new Uint8Array(arrayBuffer);
+
+          for (var i = 0; i < byteString.length; i++) {
+            int8Array[i] = byteString.charCodeAt(i);
+          }
+
+          var blob = new Blob([int8Array], {
+            type: 'image/jpeg'
+          });
+          return blob;
         }
       }, {
         key: "selectImage",
@@ -2908,6 +2943,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.recipe.tempsPreparation = formValue.tempsPreparation;
           this.recipe.tempsCuisson = formValue.tempsCuisson;
           this.recipe.astuce = formValue.astuce;
+          this.recipe.mot = formValue.mot;
           this.imagesService.addImage(formData).subscribe(function (res) {
             _this9.recipe.idImage = res[0];
 
@@ -2940,7 +2976,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             libellePart: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             tempsPreparation: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
             tempsCuisson: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
-            astuce: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]
+            astuce: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+            mot: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]
           });
         }
         /******  création formulaire pour ajouter autant de lignes ingrédient (qté, nom, unite) qu'on veut *****/
@@ -3046,9 +3083,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     AjoutRecetteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: AjoutRecetteComponent,
       selectors: [["app-ajout-recette"]],
-      decls: 92,
+      decls: 98,
       vars: 8,
-      consts: [["id", "contact", 1, "contact", "pt-100", "pb-100"], [1, "container"], [1, "text-center"], [3, "formGroup", "ngSubmit"], [1, "table", "col-md-8", "mx-auto"], ["id", "nomRecette", 2, "vertical-align", "middle"], ["type", "text", "formControlName", "nomRecette", "required", "", 1, "form-control"], ["id", "image"], ["type", "file", "name", "file", "id", "file", "name", "image", 1, "inputfile", 3, "change"], ["id", "positionImage", "for", "file"], ["id", "ingrForm", 1, "form-row", 2, "justify-content", "center"], ["placeholder", "s\xE9lectionner", 3, "data", "settings", "ngModel", "ngModelOptions", "ngModelChange"], [1, "invalid-tooltip"], ["type", "number", "formControlName", "nbrePart", "required", "", 1, "form-control"], ["type", "text", "formControlName", "libellePart", "required", "", 1, "form-control"], [3, "formGroup"], ["formArrayName", "ingredient"], ["class", "ingredient", 3, "formGroupName", 4, "ngFor", "ngForOf"], [2, "text-align", "-webkit-center"], ["id", "buttonIngredient"], ["type", "button", 1, "btn", "btn-primary", 3, "click"], ["content", ""], [1, "btn", "btn-primary", 3, "click"], ["id", "ingrForm", 1, "form-row"], ["type", "time", "formControlName", "tempsPreparation", "step", "2", "required", "", 1, "form-control"], ["type", "time", "formControlName", "tempsCuisson", "step", "2", "required", "", 1, "form-control"], ["formControlName", "etapes", "id", "exampleFormControlTextarea1", "rows", "8", "required", "", 1, "form-control"], ["formControlName", "astuce", "id", "exampleFormControlTextarea1", "rows", "8", "required", "", 1, "form-control"], [1, "col", "text-center"], ["id", "validateButton", "type", "submit", 1, "col-ld-6", "btn", "btn-primary"], [1, "ingredient", 3, "formGroupName"], ["id", "nomIng"], ["for", "validationTooltip04"], ["id", "validationTooltip04", "list", "brow", "formControlName", "nomIngredient"], ["id", "brow"], [3, "ngValue", "disabled", 4, "ngFor", "ngForOf"], ["id", "qteIng"], ["for", "validationTooltip05"], ["type", "number", "id", "validationTooltip05", "formControlName", "qte", "required", "", 1, "form-control"], ["id", "validationTooltip04", "formControlName", "idUnite", "required", "", 1, "custom-select"], [3, "ngValue", 4, "ngFor", "ngForOf"], [3, "ngValue", "disabled"], [3, "ngValue"], [1, "modal-header"], [1, "modal-title"], [1, "modal-body"], [1, "form-group"], ["for", "nomIngredient"], [1, "input-group"], ["id", "nomIngredient", "placeholder", "Cacahu\xE8te", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["nomIngredient", "ngModel"], [1, "modal-footer"], ["type", "button", 1, "btn", "btn-outline-dark", 3, "click"]],
+      consts: [["id", "contact", 1, "contact", "pt-100", "pb-100"], [1, "container"], [1, "text-center"], [3, "formGroup", "ngSubmit"], [1, "table", "col-md-8", "mx-auto"], ["id", "nomRecette", 2, "vertical-align", "middle"], ["type", "text", "formControlName", "nomRecette", "required", "", 1, "form-control"], ["id", "image"], ["type", "file", "name", "file", "id", "file", "name", "image", 1, "inputfile", 3, "change"], ["id", "positionImage", "for", "file"], ["id", "ingrForm", 1, "form-row", 2, "justify-content", "center"], ["placeholder", "s\xE9lectionner", 3, "data", "settings", "ngModel", "ngModelOptions", "ngModelChange"], [1, "invalid-tooltip"], ["type", "number", "formControlName", "nbrePart", "required", "", 1, "form-control"], ["type", "text", "formControlName", "libellePart", "required", "", 1, "form-control"], [3, "formGroup"], ["formArrayName", "ingredient"], ["class", "ingredient", 3, "formGroupName", 4, "ngFor", "ngForOf"], [2, "text-align", "-webkit-center"], ["id", "buttonIngredient"], ["type", "button", 1, "btn", "btn-primary", 3, "click"], ["content", ""], [1, "btn", "btn-primary", 3, "click"], ["id", "ingrForm", 1, "form-row"], ["type", "time", "formControlName", "tempsPreparation", "step", "2", "required", "", 1, "form-control"], ["type", "time", "formControlName", "tempsCuisson", "step", "2", "required", "", 1, "form-control"], ["formControlName", "etapes", "id", "exampleFormControlTextarea1", "rows", "8", "required", "", 1, "form-control"], ["formControlName", "astuce", "id", "exampleFormControlTextarea1", "rows", "8", "required", "", 1, "form-control"], ["formControlName", "mot", "id", "exampleFormControlTextarea1", "rows", "8", "required", "", 1, "form-control"], [1, "col", "text-center"], ["id", "validateButton", "type", "submit", 1, "col-ld-6", "btn", "btn-primary"], [1, "ingredient", 3, "formGroupName"], ["id", "nomIng"], ["for", "validationTooltip04"], ["id", "validationTooltip04", "list", "brow", "formControlName", "nomIngredient"], ["id", "brow"], [3, "ngValue", "disabled", 4, "ngFor", "ngForOf"], ["id", "qteIng"], ["for", "validationTooltip05"], ["type", "number", "id", "validationTooltip05", "formControlName", "qte", "required", "", 1, "form-control"], ["id", "validationTooltip04", "formControlName", "idUnite", "required", "", 1, "custom-select"], [3, "ngValue", 4, "ngFor", "ngForOf"], [3, "ngValue", "disabled"], [3, "ngValue"], [1, "modal-header"], [1, "modal-title"], [1, "modal-body"], [1, "form-group"], ["for", "nomIngredient"], [1, "input-group"], ["id", "nomIngredient", "placeholder", "Cacahu\xE8te", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["nomIngredient", "ngModel"], [1, "modal-footer"], ["type", "button", 1, "btn", "btn-outline-dark", 3, "click"]],
       template: function AjoutRecetteComponent_Template(rf, ctx) {
         if (rf & 1) {
           var _r196 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -3369,11 +3406,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "div", 28);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](89, "table", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "button", 29);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](90, "tr");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](91, "Valider");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](91, "td");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](92, "label");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](93, "Description");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](94, "textarea", 28);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](95, "div", 29);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](96, "button", 30);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](97, "Valider");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -3643,7 +3700,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
-    function CategoriesComponent_tr_39_Template(rf, ctx) {
+    function CategoriesComponent_tr_42_Template(rf, ctx) {
       if (rf & 1) {
         var _r172 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
@@ -3651,9 +3708,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "form", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "form", 21);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function CategoriesComponent_tr_39_Template_form_submit_2_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function CategoriesComponent_tr_42_Template_form_submit_2_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r172);
 
           var categorie_r170 = ctx.$implicit;
@@ -3663,13 +3720,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r171.updateCategory(categorie_r170);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 26);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 27);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "input", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "input", 28);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function CategoriesComponent_tr_39_Template_input_ngModelChange_5_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function CategoriesComponent_tr_42_Template_input_ngModelChange_5_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r172);
 
           var categorie_r170 = ctx.$implicit;
@@ -3680,21 +3737,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 27);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 29);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "i", 29);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "i", 30);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 27);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CategoriesComponent_tr_39_Template_button_click_10_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 31);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CategoriesComponent_tr_42_Template_button_click_10_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r172);
 
           var categorie_r170 = ctx.$implicit;
@@ -3704,7 +3761,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r174.deleteCategory(categorie_r170.idCategorie);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "i", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "i", 32);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -3798,9 +3855,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     CategoriesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: CategoriesComponent,
       selectors: [["app-categories"]],
-      decls: 40,
+      decls: 43,
       vars: 2,
-      consts: [[1, "page-row", "page-row-expanded"], [1, "main-inner"], [1, "item1", "container"], [1, "element1"], ["id", "aside", 1, "sidebar", "is-visible"], [1, "\u201Dsidebar-content\u201D"], ["id", "nav", "href", "/handleRecipes"], ["id", "nav", "href", "/ingredient"], [1, "active"], ["id", "nav", "href", "/category"], ["id", "nav", "href", "/unite"], ["id", "nav", "href", "/add-recipe"], [1, "item2", "container"], [1, "element2"], [1, "page"], [1, "container"], ["id", "titre"], [1, "flex-container"], ["id", "addCat"], ["id", "question"], [3, "submit"], ["type", "text", "name", "libelleCategorie", "placeholder", "nom cat\xE9gorie", 1, "form-control", 3, "ngModel", "ngModelChange"], ["id", "btn", "type", "submit ", 1, "btn", "btn-outline-info"], [1, "table", "col-md-12", "mx-auto"], [4, "ngFor", "ngForOf"], [1, "form-row", "align-items-center"], [1, "col-auto"], ["type", "text", "name", "libelleCategorie", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["id", "btn", "type", "submit", 1, "btn", "btn-sm", "btn-warning"], [1, "fa", "fa-pencil"], ["id", "btn", "type", "submit", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"]],
+      consts: [[1, "page-row", "page-row-expanded"], [1, "main-inner"], [1, "item1", "container"], [1, "element1"], ["id", "aside", 1, "sidebar", "is-visible"], [1, "\u201Dsidebar-content\u201D"], ["id", "nav", "href", "/handleRecipes"], ["id", "nav", "href", "/ingredient"], [1, "active"], ["id", "nav", "href", "/category"], ["id", "nav", "href", "/unite"], ["id", "nav", "href", "/handleMenu"], ["id", "nav", "href", "/add-recipe"], [1, "item2", "container"], [1, "element2"], [1, "page"], [1, "container"], ["id", "titre"], [1, "flex-container"], ["id", "addCat"], ["id", "question"], [3, "submit"], ["type", "text", "name", "libelleCategorie", "placeholder", "nom cat\xE9gorie", 1, "form-control", 3, "ngModel", "ngModelChange"], ["id", "btn", "type", "submit ", 1, "btn", "btn-outline-info"], [1, "table", "col-md-12", "mx-auto"], [4, "ngFor", "ngForOf"], [1, "form-row", "align-items-center"], [1, "col-auto"], ["type", "text", "name", "libelleCategorie", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["id", "btn", "type", "submit", 1, "btn", "btn-sm", "btn-warning"], [1, "fa", "fa-pencil"], ["id", "btn", "type", "submit", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"]],
       template: function CategoriesComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "main", 0);
@@ -3861,7 +3918,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "a", 11);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Cr\xE9er une nouvelle recette");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "G\xE9rer le menu");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "li");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "a", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Cr\xE9er une nouvelle recette");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -3877,63 +3944,63 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "div", 12);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 13);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 14);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "section", 14);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "section", 15);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 15);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 16);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "h1");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Cat\xE9gories");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 16);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "h1");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "h6", 19);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, " Ajouter une nouvelle cat\xE9gorie ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Cat\xE9gories");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "form", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function CategoriesComponent_Template_form_submit_33_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 18);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 19);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "h6", 20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35, " Ajouter une nouvelle cat\xE9gorie ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "form", 21);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function CategoriesComponent_Template_form_submit_36_listener($event) {
             return ctx.addCategory();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "input", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 22);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function CategoriesComponent_Template_input_ngModelChange_34_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function CategoriesComponent_Template_input_ngModelChange_37_listener($event) {
             return ctx.categorie.libelleCategorie = $event;
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "button", 22);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "button", 23);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Valider");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "Valider");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "table", 23);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](39, CategoriesComponent_tr_39_Template, 12, 2, "tr", 24);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "table", 24);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](42, CategoriesComponent_tr_42_Template, 12, 2, "tr", 25);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -3955,7 +4022,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](34);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](37);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.categorie.libelleCategorie);
 
@@ -4223,6 +4290,537 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/pages/gerer-le-menu/gerer-le-menu.component.ts":
+  /*!****************************************************************!*\
+    !*** ./src/app/pages/gerer-le-menu/gerer-le-menu.component.ts ***!
+    \****************************************************************/
+
+  /*! exports provided: GererLeMenuComponent */
+
+  /***/
+  function srcAppPagesGererLeMenuGererLeMenuComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "GererLeMenuComponent", function () {
+      return GererLeMenuComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! src/app/service */
+    "./src/app/service/index.ts");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
+    function GererLeMenuComponent_div_34_option_6_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var recette_r311 = ctx.$implicit;
+
+        var ctx_r310 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", recette_r311.nomRecette == ctx_r310.petitDej.nomRecette ? true : null)("value", recette_r311.nomRecette);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r311.nomRecette, "");
+      }
+    }
+
+    var _c0 = function _c0() {
+      return {
+        standalone: true
+      };
+    };
+
+    function GererLeMenuComponent_div_34_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r313 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 23);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Petit d\xE9jeuner : ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 25);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GererLeMenuComponent_div_34_Template_input_ngModelChange_4_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r313);
+
+          var ctx_r312 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r312.petitDej.nomRecette = $event;
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "datalist", 26);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, GererLeMenuComponent_div_34_option_6_Template, 2, 3, "option", 27);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 28);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r307 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r307.petitDej.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r307.allRecipes);
+      }
+    }
+
+    function GererLeMenuComponent_div_36_option_6_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var recette_r315 = ctx.$implicit;
+
+        var ctx_r314 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", recette_r315.nomRecette == ctx_r314.repas.nomRecette ? true : null)("value", recette_r315.nomRecette);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r315.nomRecette, "");
+      }
+    }
+
+    function GererLeMenuComponent_div_36_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r317 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 23);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Repas : ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 25);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GererLeMenuComponent_div_36_Template_input_ngModelChange_4_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r317);
+
+          var ctx_r316 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r316.repas.nomRecette = $event;
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "datalist", 26);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, GererLeMenuComponent_div_36_option_6_Template, 2, 3, "option", 27);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 28);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r308 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r308.repas.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r308.allRecipes);
+      }
+    }
+
+    function GererLeMenuComponent_div_38_option_6_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var recette_r319 = ctx.$implicit;
+
+        var ctx_r318 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", recette_r319.nomRecette == ctx_r318.douceur.nomRecette ? true : null)("value", recette_r319.nomRecette);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r319.nomRecette, "");
+      }
+    }
+
+    function GererLeMenuComponent_div_38_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r321 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 23);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Douceur : ");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 25);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GererLeMenuComponent_div_38_Template_input_ngModelChange_4_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r321);
+
+          var ctx_r320 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r320.douceur.nomRecette = $event;
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "datalist", 26);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](6, GererLeMenuComponent_div_38_option_6_Template, 2, 3, "option", 27);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 28);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var ctx_r309 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r309.douceur.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r309.allRecipes);
+      }
+    }
+
+    var GererLeMenuComponent =
+    /*#__PURE__*/
+    function () {
+      function GererLeMenuComponent(recetteService) {
+        var _this14 = this;
+
+        _classCallCheck(this, GererLeMenuComponent);
+
+        this.recetteService = recetteService;
+        this.recetteService.getAllRecipesForMenu().subscribe(function (recipes) {
+          _this14.allRecipes = recipes;
+        });
+        this.recetteService.getPetitDej().subscribe(function (data) {
+          _this14.petitDej = data;
+          console.log(data);
+          _this14.petitDej.idMenu = 1;
+        });
+        this.recetteService.getRepas().subscribe(function (data) {
+          _this14.repas = data;
+          _this14.repas.idMenu = 2;
+        });
+        this.recetteService.getDouceur().subscribe(function (data) {
+          _this14.douceur = data;
+          _this14.douceur.idMenu = 3;
+        });
+      }
+
+      _createClass(GererLeMenuComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "updateMenu",
+        value: function updateMenu(petitDej, repas, douceur) {
+          var _this15 = this;
+
+          this.allRecipes.forEach(function (element) {
+            if (element.nomRecette === petitDej.nomRecette) {
+              console.log(element);
+              _this15.petitDej = element;
+              _this15.petitDej.idMenu = 1;
+            }
+
+            if (element.nomRecette === repas.nomRecette) {
+              _this15.repas = element;
+              _this15.repas.idMenu = 1;
+            }
+
+            if (element.nomRecette === douceur.nomRecette) {
+              _this15.douceur = element;
+              _this15.douceur.idMenu = 1;
+            }
+          });
+          console.log(this.petitDej);
+          this.recetteService.updatePetitDej(this.petitDej).subscribe();
+          this.recetteService.updateRepas(this.repas).subscribe();
+          this.recetteService.updateDouceur(this.douceur).subscribe();
+          window.location.reload();
+        }
+      }]);
+
+      return GererLeMenuComponent;
+    }();
+
+    GererLeMenuComponent.ɵfac = function GererLeMenuComponent_Factory(t) {
+      return new (t || GererLeMenuComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service__WEBPACK_IMPORTED_MODULE_1__["RecettesService"]));
+    };
+
+    GererLeMenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: GererLeMenuComponent,
+      selectors: [["app-gerer-le-menu"]],
+      decls: 42,
+      vars: 3,
+      consts: [[1, "page-row", "page-row-expanded"], [1, "main-inner"], [1, "item1", "container"], [1, "element1"], ["id", "aside", 1, "sidebar", "is-visible"], [1, "\u201Dsidebar-content\u201D"], ["id", "nav", "href", "/handleRecipes"], ["id", "nav", "href", "/ingredient"], ["id", "nav", "href", "/category"], ["id", "nav", "href", "/unite"], [1, "active"], ["id", "nav", "href", "/handleMenu"], ["id", "nav", "href", "/add-recipe"], [1, "item2", "container"], [1, "element2"], [1, "page"], [1, "container"], ["id", "titre"], [1, "flex-container"], [3, "submit"], ["class", "row", 4, "ngIf"], [1, "col-auto"], ["id", "btn", "type", "submit", 1, "btn", "btn-sm", "btn-warning"], [1, "row"], [1, "col", "col-sm-6"], ["id", "answerInput", "list", "brow", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["id", "brow"], [4, "ngFor", "ngForOf"], ["type", "hidden", "name", "answer", "id", "answerInput-hidden"]],
+      template: function GererLeMenuComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "main", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "aside", 4);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "ul");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "li");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "a", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "G\xE9rer les recettes");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "li");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "a", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Ingr\xE9dients");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "li");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "a", 8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Cat\xE9gories");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "li");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "a", 9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, "Unit\xE9s");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "li", 10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "a", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "G\xE9rer le menu");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "li");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "a", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Cr\xE9er une nouvelle recette");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 14);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "section", 15);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 16);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 17);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "h1");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "G\xE9rer le menu du moment");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 18);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "form", 19);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function GererLeMenuComponent_Template_form_submit_33_listener($event) {
+            return ctx.updateMenu(ctx.petitDej, ctx.repas, ctx.douceur);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](34, GererLeMenuComponent_div_34_Template, 8, 4, "div", 20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "hr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](36, GererLeMenuComponent_div_36_Template, 8, 4, "div", 20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](37, "hr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](38, GererLeMenuComponent_div_38_Template, 8, 4, "div", 20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 21);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "button", 22);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, " Modifier ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](34);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.petitDej);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.repas);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.douceur);
+        }
+      },
+      directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgForm"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_x"]],
+      styles: ["#titre[_ngcontent-%COMP%] {\n  text-align: center;\n  margin-top: 2em;\n}\n\n.main-inner[_ngcontent-%COMP%] {\n  min-height: 37em;\n}\n\n#back[_ngcontent-%COMP%] {\n  float: left;\n  margin-left: 5em;\n}\n\n#zone[_ngcontent-%COMP%] {\n  width: 10 em;\n}\n\n#question[_ngcontent-%COMP%] {\n  text-align: center;\n  margin-top: 2em;\n  margin-bottom: 2em;\n}\n\n.flex-container[_ngcontent-%COMP%] {\n  margin-top: 5em;\n  display: grid;\n  justify-content: space-around;\n  margin-bottom: 2em;\n}\n\n.col-auto[_ngcontent-%COMP%] {\n  text-align: center;\n  margin-top: 3em;\n}\n\n#rech[_ngcontent-%COMP%] {\n  margin-bottom: 2em;\n  width: 15em;\n}\n\n#menu[_ngcontent-%COMP%] {\n  margin-top: 5em;\n}\n\nbutton[_ngcontent-%COMP%] {\n  margin-left: 1em;\n}\n\n.item1[_ngcontent-%COMP%] {\n  background: #312450;\n}\n\n.item2[_ngcontent-%COMP%] {\n  min-height: 41em;\n}\n\nul[_ngcontent-%COMP%] {\n  -webkit-box-pack: center;\n          justify-content: center;\n  list-style: none;\n  -webkit-padding-start: inherit;\n          padding-inline-start: inherit;\n  text-align: center;\n  position: relative;\n}\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%] {\n  position: relative;\n}\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  line-height: 2;\n  text-transform: uppercase;\n  text-decoration: none;\n  color: rgba(255, 255, 255, 0.35);\n  display: block;\n  -webkit-transition: all ease-out 300ms;\n  transition: all ease-out 300ms;\n}\n\nul[_ngcontent-%COMP%]   li.active[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  color: white;\n}\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:not(.active)::after {\n  opacity: 0.2;\n}\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:not(.active):hover   a[_ngcontent-%COMP%] {\n  color: rgba(255, 255, 255, 0.75);\n}\n\nul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]::after {\n  content: \"\";\n  position: absolute;\n  width: 100%;\n  height: 0.2em;\n  background: black;\n  left: 0;\n  bottom: 0;\n  background-image: -webkit-gradient(linear, left top, right top, from(#5e42a6), to(#b74e91));\n  background-image: linear-gradient(to right, #5e42a6, #b74e91);\n}\n\n@media (min-width: 50px) {\n  .mr-sm-2[_ngcontent-%COMP%], .mx-sm-2[_ngcontent-%COMP%] {\n    margin-right: 0.5rem !important;\n  }\n}\n\ninput[_ngcontent-%COMP%] {\n  line-height: 2rem;\n  padding: 0 8px;\n  border-top: none;\n  border-bottom: 1px solid #ccc;\n  border-left: none;\n  border-right: none;\n  background-color: transparent;\n  margin-bottom: 1em;\n}\n\n.container[_ngcontent-%COMP%] {\n  justify-content: space-around;\n}\n\n#addUnite[_ngcontent-%COMP%] {\n  margin-bottom: 3em;\n}\n\n@media (min-width: 776px) {\n  .flex-container[_ngcontent-%COMP%] {\n    display: -webkit-box;\n    display: flex;\n    -webkit-box-orient: horizontal;\n    -webkit-box-direction: reverse;\n            flex-direction: row-reverse;\n  }\n}\n\n@media screen and (min-width: 1100px) {\n  html[_ngcontent-%COMP%], body[_ngcontent-%COMP%] {\n    height: 100%;\n    margin: 0;\n    margin-top: none;\n  }\n\n  body[_ngcontent-%COMP%], .main-inner[_ngcontent-%COMP%] {\n    display: table;\n    width: 100%;\n    height: 100%;\n  }\n\n  .page-row[_ngcontent-%COMP%] {\n    height: 1px;\n  }\n\n  .page-row-expanded[_ngcontent-%COMP%] {\n    height: 100%;\n  }\n\n  .item1[_ngcontent-%COMP%] {\n    width: 15%;\n    box-sizing: border-box;\n    display: table-cell;\n    height: 100%;\n  }\n\n  .item2[_ngcontent-%COMP%] {\n    width: 70%;\n    box-sizing: border-box;\n    display: table-cell;\n    height: 100%;\n  }\n\n  .container[_ngcontent-%COMP%] {\n    margin-right: inherit;\n    margin-left: inherit;\n  }\n\n  form[_ngcontent-%COMP%] {\n    width: 50em;\n  }\n  form[_ngcontent-%COMP%]   .row[_ngcontent-%COMP%] {\n    width: 50em;\n  }\n  form[_ngcontent-%COMP%]   #answerInput[_ngcontent-%COMP%] {\n    width: inherit;\n  }\n\n  .col[_ngcontent-%COMP%] {\n    text-align: center;\n  }\n\n  ul[_ngcontent-%COMP%] {\n    list-style: none;\n  }\n  ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n    line-height: 5em;\n  }\n}\n\n.table[_ngcontent-%COMP%]   td[_ngcontent-%COMP%], .table[_ngcontent-%COMP%]   th[_ngcontent-%COMP%] {\n  vertical-align: inherit;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWNhZGViZWlyL0RvY3VtZW50cy9HaXRIdWIvcHJvamV0LXdlYi9zcmMvYXBwL3BhZ2VzL2dlcmVyLWxlLW1lbnUvZ2VyZXItbGUtbWVudS5jb21wb25lbnQuc2NzcyIsIi4uL3NyYy9hcHAvcGFnZXMvZ2VyZXItbGUtbWVudS9nZXJlci1sZS1tZW51LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSxlQUFBO0FDQ0o7O0FERUE7RUFDSSxnQkFBQTtBQ0NKOztBREVBO0VBQ0ksV0FBQTtFQUNBLGdCQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0FDQ0o7O0FERUE7RUFDSSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxrQkFBQTtBQ0NKOztBREVBO0VBQ0ksZUFBQTtFQUNBLGFBQUE7RUFDQSw2QkFBQTtFQUNBLGtCQUFBO0FDQ0o7O0FERUE7RUFDSSxrQkFBQTtFQUNBLGVBQUE7QUNDSjs7QURFQTtFQUNJLGtCQUFBO0VBQ0EsV0FBQTtBQ0NKOztBREVBO0VBQ0ksZUFBQTtBQ0NKOztBREVBO0VBQ0ksZ0JBQUE7QUNDSjs7QURFQTtFQUNJLG1CQUFBO0FDQ0o7O0FERUE7RUFDSSxnQkFBQTtBQ0NKOztBREVBO0VBQ0ksd0JBQUE7VUFBQSx1QkFBQTtFQUNBLGdCQUFBO0VBQ0EsOEJBQUE7VUFBQSw2QkFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7QUNDSjs7QURBSTtFQUNJLGtCQUFBO0FDRVI7O0FERFE7RUFDSSxjQUFBO0VBQ0EseUJBQUE7RUFDQSxxQkFBQTtFQUVBLGdDQUFBO0VBQ0EsY0FBQTtFQUNBLHNDQUFBO0VBQUEsOEJBQUE7QUNFWjs7QURBUTtFQUNJLFlBQUE7QUNFWjs7QURBUTtFQUNJLFlBQUE7QUNFWjs7QURBUTtFQUNJLGdDQUFBO0FDRVo7O0FEQVE7RUFDSSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0VBQ0EsT0FBQTtFQUNBLFNBQUE7RUFDQSwyRkFBQTtFQUFBLDZEQUFBO0FDRVo7O0FER0E7RUFDSTs7SUFFSSwrQkFBQTtFQ0FOO0FBQ0Y7O0FER0E7RUFDSSxpQkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtFQUNBLDZCQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLDZCQUFBO0VBQ0Esa0JBQUE7QUNESjs7QURJQTtFQUNJLDZCQUFBO0FDREo7O0FESUE7RUFDSSxrQkFBQTtBQ0RKOztBRElBO0VBQ0k7SUFDSSxvQkFBQTtJQUFBLGFBQUE7SUFDQSw4QkFBQTtJQUFBLDhCQUFBO1lBQUEsMkJBQUE7RUNETjtBQUNGOztBRElBO0VBQ0k7O0lBRUksWUFBQTtJQUNBLFNBQUE7SUFDQSxnQkFBQTtFQ0ZOOztFRElFOztJQUVJLGNBQUE7SUFDQSxXQUFBO0lBQ0EsWUFBQTtFQ0ROOztFREdFO0lBRUksV0FBQTtFQ0ROOztFREdFO0lBQ0ksWUFBQTtFQ0FOOztFREVFO0lBQ0ksVUFBQTtJQUNBLHNCQUFBO0lBQ0EsbUJBQUE7SUFDQSxZQUFBO0VDQ047O0VEQ0U7SUFDSSxVQUFBO0lBQ0Esc0JBQUE7SUFDQSxtQkFBQTtJQUNBLFlBQUE7RUNFTjs7RURBRTtJQUNJLHFCQUFBO0lBQ0Esb0JBQUE7RUNHTjs7RURBRTtJQUNJLFdBQUE7RUNHTjtFREZNO0lBQ0ksV0FBQTtFQ0lWO0VERk07SUFDSSxjQUFBO0VDSVY7O0VEREU7SUFDSSxrQkFBQTtFQ0lOOztFREZFO0lBQ0ksZ0JBQUE7RUNLTjtFREhVO0lBQ0ksZ0JBQUE7RUNLZDtBQUNGOztBREFBOztFQUVJLHVCQUFBO0FDRUoiLCJmaWxlIjoiLi4vc3JjL2FwcC9wYWdlcy9nZXJlci1sZS1tZW51L2dlcmVyLWxlLW1lbnUuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjdGl0cmUge1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBtYXJnaW4tdG9wOiAyZW07XG59XG5cbi5tYWluLWlubmVyIHtcbiAgICBtaW4taGVpZ2h0OiAzN2VtO1xufVxuXG4jYmFjayB7XG4gICAgZmxvYXQ6IGxlZnQ7XG4gICAgbWFyZ2luLWxlZnQ6IDVlbTtcbn1cblxuI3pvbmUge1xuICAgIHdpZHRoOiAxMCBlbTtcbn1cblxuI3F1ZXN0aW9uIHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgbWFyZ2luLXRvcDogMmVtO1xuICAgIG1hcmdpbi1ib3R0b206IDJlbTtcbn1cblxuLmZsZXgtY29udGFpbmVyIHtcbiAgICBtYXJnaW4tdG9wOiA1ZW07XG4gICAgZGlzcGxheTogZ3JpZDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbiAgICBtYXJnaW4tYm90dG9tOiAyZW07XG59XG5cbi5jb2wtYXV0byB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIG1hcmdpbi10b3A6IDNlbTtcbn1cblxuI3JlY2gge1xuICAgIG1hcmdpbi1ib3R0b206IDJlbTtcbiAgICB3aWR0aDogMTVlbTtcbn1cblxuI21lbnUge1xuICAgIG1hcmdpbi10b3A6IDVlbTtcbn1cblxuYnV0dG9uIHtcbiAgICBtYXJnaW4tbGVmdDogMWVtO1xufVxuXG4uaXRlbTEge1xuICAgIGJhY2tncm91bmQ6ICMzMTI0NTA7XG59XG5cbi5pdGVtMiB7XG4gICAgbWluLWhlaWdodDogNDFlbTtcbn1cblxudWwge1xuICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG4gICAgcGFkZGluZy1pbmxpbmUtc3RhcnQ6IGluaGVyaXQ7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICBsaSB7XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgYSB7XG4gICAgICAgICAgICBsaW5lLWhlaWdodDogMjtcbiAgICAgICAgICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gICAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgICAgICAgICAvL2xldHRlci1zcGFjaW5nOiAwLjRlbTtcbiAgICAgICAgICAgIGNvbG9yOiByZ2JhKCNmZmYsIDAuMzUpO1xuICAgICAgICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgICAgICAgICB0cmFuc2l0aW9uOiBhbGwgZWFzZS1vdXQgMzAwbXM7XG4gICAgICAgIH1cbiAgICAgICAgJi5hY3RpdmUgYSB7XG4gICAgICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIH1cbiAgICAgICAgJjpub3QoLmFjdGl2ZSk6OmFmdGVyIHtcbiAgICAgICAgICAgIG9wYWNpdHk6IDAuMjtcbiAgICAgICAgfVxuICAgICAgICAmOm5vdCguYWN0aXZlKTpob3ZlciBhIHtcbiAgICAgICAgICAgIGNvbG9yOiByZ2JhKCNmZmYsIDAuNzUpO1xuICAgICAgICB9XG4gICAgICAgICY6OmFmdGVyIHtcbiAgICAgICAgICAgIGNvbnRlbnQ6IFwiXCI7XG4gICAgICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgICAgIGhlaWdodDogMC4yZW07XG4gICAgICAgICAgICBiYWNrZ3JvdW5kOiBibGFjaztcbiAgICAgICAgICAgIGxlZnQ6IDA7XG4gICAgICAgICAgICBib3R0b206IDA7XG4gICAgICAgICAgICBiYWNrZ3JvdW5kLWltYWdlOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM1ZTQyYTYsICNiNzRlOTEpO1xuICAgICAgICB9XG4gICAgfVxufVxuXG5AbWVkaWEgKG1pbi13aWR0aDogNTBweCkge1xuICAgIC5tci1zbS0yLFxuICAgIC5teC1zbS0yIHtcbiAgICAgICAgbWFyZ2luLXJpZ2h0OiAwLjVyZW0gIWltcG9ydGFudDtcbiAgICB9XG59XG5cbmlucHV0IHtcbiAgICBsaW5lLWhlaWdodDogMnJlbTtcbiAgICBwYWRkaW5nOiAwIDhweDtcbiAgICBib3JkZXItdG9wOiBub25lO1xuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjY2NjO1xuICAgIGJvcmRlci1sZWZ0OiBub25lO1xuICAgIGJvcmRlci1yaWdodDogbm9uZTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB0cmFuc3BhcmVudDtcbiAgICBtYXJnaW4tYm90dG9tOiAxZW07XG59XG5cbi5jb250YWluZXIge1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xufVxuXG4jYWRkVW5pdGUge1xuICAgIG1hcmdpbi1ib3R0b206IDNlbTtcbn1cblxuQG1lZGlhIChtaW4td2lkdGg6IDc3NnB4KSB7XG4gICAgLmZsZXgtY29udGFpbmVyIHtcbiAgICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgICAgZmxleC1kaXJlY3Rpb246IHJvdy1yZXZlcnNlO1xuICAgIH1cbn1cblxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogMTEwMHB4KSB7XG4gICAgaHRtbCxcbiAgICBib2R5IHtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIG1hcmdpbi10b3A6IG5vbmU7XG4gICAgfVxuICAgIGJvZHksXG4gICAgLm1haW4taW5uZXIge1xuICAgICAgICBkaXNwbGF5OiB0YWJsZTtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICB9XG4gICAgLnBhZ2Utcm93IHtcbiAgICAgICAgLy9kaXNwbGF5OiB0YWJsZS1yb3c7XG4gICAgICAgIGhlaWdodDogMXB4O1xuICAgIH1cbiAgICAucGFnZS1yb3ctZXhwYW5kZWQge1xuICAgICAgICBoZWlnaHQ6IDEwMCU7XG4gICAgfVxuICAgIC5pdGVtMSB7XG4gICAgICAgIHdpZHRoOiAxNSU7XG4gICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgICAgIGRpc3BsYXk6IHRhYmxlLWNlbGw7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICB9XG4gICAgLml0ZW0yIHtcbiAgICAgICAgd2lkdGg6IDcwJTtcbiAgICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgICAgICAgZGlzcGxheTogdGFibGUtY2VsbDtcbiAgICAgICAgaGVpZ2h0OiAxMDAlO1xuICAgIH1cbiAgICAuY29udGFpbmVyIHtcbiAgICAgICAgbWFyZ2luLXJpZ2h0OiBpbmhlcml0O1xuICAgICAgICBtYXJnaW4tbGVmdDogaW5oZXJpdDtcbiAgICAgICAgLy9wYWRkaW5nLWxlZnQ6IGluaGVyaXQ7XG4gICAgfVxuICAgIGZvcm0ge1xuICAgICAgICB3aWR0aDogNTBlbTtcbiAgICAgICAgLnJvdyB7XG4gICAgICAgICAgICB3aWR0aDogNTBlbTtcbiAgICAgICAgfVxuICAgICAgICAjYW5zd2VySW5wdXQge1xuICAgICAgICAgICAgd2lkdGg6IGluaGVyaXQ7XG4gICAgICAgIH1cbiAgICB9XG4gICAgLmNvbCB7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB9XG4gICAgdWwge1xuICAgICAgICBsaXN0LXN0eWxlOiBub25lO1xuICAgICAgICBsaSB7XG4gICAgICAgICAgICBhIHtcbiAgICAgICAgICAgICAgICBsaW5lLWhlaWdodDogNWVtO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgfVxufVxuXG4udGFibGUgdGQsXG4udGFibGUgdGgge1xuICAgIHZlcnRpY2FsLWFsaWduOiBpbmhlcml0O1xufSIsIiN0aXRyZSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luLXRvcDogMmVtO1xufVxuXG4ubWFpbi1pbm5lciB7XG4gIG1pbi1oZWlnaHQ6IDM3ZW07XG59XG5cbiNiYWNrIHtcbiAgZmxvYXQ6IGxlZnQ7XG4gIG1hcmdpbi1sZWZ0OiA1ZW07XG59XG5cbiN6b25lIHtcbiAgd2lkdGg6IDEwIGVtO1xufVxuXG4jcXVlc3Rpb24ge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG1hcmdpbi10b3A6IDJlbTtcbiAgbWFyZ2luLWJvdHRvbTogMmVtO1xufVxuXG4uZmxleC1jb250YWluZXIge1xuICBtYXJnaW4tdG9wOiA1ZW07XG4gIGRpc3BsYXk6IGdyaWQ7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xuICBtYXJnaW4tYm90dG9tOiAyZW07XG59XG5cbi5jb2wtYXV0byB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luLXRvcDogM2VtO1xufVxuXG4jcmVjaCB7XG4gIG1hcmdpbi1ib3R0b206IDJlbTtcbiAgd2lkdGg6IDE1ZW07XG59XG5cbiNtZW51IHtcbiAgbWFyZ2luLXRvcDogNWVtO1xufVxuXG5idXR0b24ge1xuICBtYXJnaW4tbGVmdDogMWVtO1xufVxuXG4uaXRlbTEge1xuICBiYWNrZ3JvdW5kOiAjMzEyNDUwO1xufVxuXG4uaXRlbTIge1xuICBtaW4taGVpZ2h0OiA0MWVtO1xufVxuXG51bCB7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBsaXN0LXN0eWxlOiBub25lO1xuICBwYWRkaW5nLWlubGluZS1zdGFydDogaW5oZXJpdDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG51bCBsaSB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbn1cbnVsIGxpIGEge1xuICBsaW5lLWhlaWdodDogMjtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBjb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjM1KTtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHRyYW5zaXRpb246IGFsbCBlYXNlLW91dCAzMDBtcztcbn1cbnVsIGxpLmFjdGl2ZSBhIHtcbiAgY29sb3I6IHdoaXRlO1xufVxudWwgbGk6bm90KC5hY3RpdmUpOjphZnRlciB7XG4gIG9wYWNpdHk6IDAuMjtcbn1cbnVsIGxpOm5vdCguYWN0aXZlKTpob3ZlciBhIHtcbiAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC43NSk7XG59XG51bCBsaTo6YWZ0ZXIge1xuICBjb250ZW50OiBcIlwiO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDAuMmVtO1xuICBiYWNrZ3JvdW5kOiBibGFjaztcbiAgbGVmdDogMDtcbiAgYm90dG9tOiAwO1xuICBiYWNrZ3JvdW5kLWltYWdlOiBsaW5lYXItZ3JhZGllbnQodG8gcmlnaHQsICM1ZTQyYTYsICNiNzRlOTEpO1xufVxuXG5AbWVkaWEgKG1pbi13aWR0aDogNTBweCkge1xuICAubXItc20tMixcbi5teC1zbS0yIHtcbiAgICBtYXJnaW4tcmlnaHQ6IDAuNXJlbSAhaW1wb3J0YW50O1xuICB9XG59XG5pbnB1dCB7XG4gIGxpbmUtaGVpZ2h0OiAycmVtO1xuICBwYWRkaW5nOiAwIDhweDtcbiAgYm9yZGVyLXRvcDogbm9uZTtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNjY2M7XG4gIGJvcmRlci1sZWZ0OiBub25lO1xuICBib3JkZXItcmlnaHQ6IG5vbmU7XG4gIGJhY2tncm91bmQtY29sb3I6IHRyYW5zcGFyZW50O1xuICBtYXJnaW4tYm90dG9tOiAxZW07XG59XG5cbi5jb250YWluZXIge1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbn1cblxuI2FkZFVuaXRlIHtcbiAgbWFyZ2luLWJvdHRvbTogM2VtO1xufVxuXG5AbWVkaWEgKG1pbi13aWR0aDogNzc2cHgpIHtcbiAgLmZsZXgtY29udGFpbmVyIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3ctcmV2ZXJzZTtcbiAgfVxufVxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogMTEwMHB4KSB7XG4gIGh0bWwsXG5ib2R5IHtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gICAgbWFyZ2luOiAwO1xuICAgIG1hcmdpbi10b3A6IG5vbmU7XG4gIH1cblxuICBib2R5LFxuLm1haW4taW5uZXIge1xuICAgIGRpc3BsYXk6IHRhYmxlO1xuICAgIHdpZHRoOiAxMDAlO1xuICAgIGhlaWdodDogMTAwJTtcbiAgfVxuXG4gIC5wYWdlLXJvdyB7XG4gICAgaGVpZ2h0OiAxcHg7XG4gIH1cblxuICAucGFnZS1yb3ctZXhwYW5kZWQge1xuICAgIGhlaWdodDogMTAwJTtcbiAgfVxuXG4gIC5pdGVtMSB7XG4gICAgd2lkdGg6IDE1JTtcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICAgIGRpc3BsYXk6IHRhYmxlLWNlbGw7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICB9XG5cbiAgLml0ZW0yIHtcbiAgICB3aWR0aDogNzAlO1xuICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgZGlzcGxheTogdGFibGUtY2VsbDtcbiAgICBoZWlnaHQ6IDEwMCU7XG4gIH1cblxuICAuY29udGFpbmVyIHtcbiAgICBtYXJnaW4tcmlnaHQ6IGluaGVyaXQ7XG4gICAgbWFyZ2luLWxlZnQ6IGluaGVyaXQ7XG4gIH1cblxuICBmb3JtIHtcbiAgICB3aWR0aDogNTBlbTtcbiAgfVxuICBmb3JtIC5yb3cge1xuICAgIHdpZHRoOiA1MGVtO1xuICB9XG4gIGZvcm0gI2Fuc3dlcklucHV0IHtcbiAgICB3aWR0aDogaW5oZXJpdDtcbiAgfVxuXG4gIC5jb2wge1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgfVxuXG4gIHVsIHtcbiAgICBsaXN0LXN0eWxlOiBub25lO1xuICB9XG4gIHVsIGxpIGEge1xuICAgIGxpbmUtaGVpZ2h0OiA1ZW07XG4gIH1cbn1cbi50YWJsZSB0ZCxcbi50YWJsZSB0aCB7XG4gIHZlcnRpY2FsLWFsaWduOiBpbmhlcml0O1xufSJdfQ== */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](GererLeMenuComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'app-gerer-le-menu',
+          templateUrl: './gerer-le-menu.component.html',
+          styleUrls: ['./gerer-le-menu.component.scss']
+        }]
+      }], function () {
+        return [{
+          type: src_app_service__WEBPACK_IMPORTED_MODULE_1__["RecettesService"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
   "./src/app/pages/gerer-les-recettes/gerer-les-recettes.component.ts":
   /*!**************************************************************************!*\
     !*** ./src/app/pages/gerer-les-recettes/gerer-les-recettes.component.ts ***!
@@ -4294,13 +4892,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return ["/updateRecipe", a1];
     };
 
-    function GererLesRecettesComponent_div_37_Template(rf, ctx) {
+    function GererLesRecettesComponent_div_40_Template(rf, ctx) {
       if (rf & 1) {
         var _r168 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 23);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 24);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h3");
 
@@ -4308,35 +4906,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "i", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "i", 25);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "i", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "i", 25);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceSVG"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "svg", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "svg", 26);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "path", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "path", 27);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnamespaceHTML"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 28);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 29);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "i", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "i", 30);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 31);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GererLesRecettesComponent_div_37_Template_button_click_13_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function GererLesRecettesComponent_div_40_Template_button_click_13_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r168);
 
           var recette_r166 = ctx.$implicit;
@@ -4346,7 +4944,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r167.deleteRecipe(recette_r166.idRecette);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "i", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "i", 32);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4415,10 +5013,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteRecipe",
         value: function deleteRecipe(idRecette) {
-          var _this14 = this;
+          var _this16 = this;
 
           this.recettesService.deleteRecipe(idRecette).subscribe(function (res) {
-            _this14.router.navigate(['/handleRecipes']).then(function () {
+            _this16.router.navigate(['/handleRecipes']).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -4439,9 +5037,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     GererLesRecettesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: GererLesRecettesComponent,
       selectors: [["app-gerer-les-recettes"]],
-      decls: 39,
+      decls: 42,
       vars: 4,
-      consts: [[1, "page-row", "page-row-expanded"], [1, "main-inner"], [1, "item1", "container"], [1, "element1"], [1, "sidebar", "is-visible"], [1, "\u201Dsidebar-content\u201D"], [1, "active"], ["id", "nav", "href", "/handleRecipes"], ["id", "nav", "href", "/ingredient"], ["id", "nav", "href", "/category"], ["id", "nav", "href", "/unite"], ["id", "nav", "href", "/add-recipe"], ["id", "nav", 1, "form-inline", "my-2", "my-lg-0"], ["type", "search", "placeholder", "Recherche", "aria-label", "Search", 1, "form-control", "mr-sm-2", 3, "formControl"], [1, "item2", "container"], [1, "element2", "row"], [1, "page"], [1, "container"], ["id", "titre"], [1, "app"], [1, "recipesWrapper", "row"], ["class", "recipeDiv text-center col-lg-4 col-md-6 col-sm-12 p-3", 4, "ngFor", "ngForOf"], [1, "recipeDiv", "text-center", "col-lg-4", "col-md-6", "col-sm-12", "p-3"], [1, "rounded-circle", 3, "src"], [1, "badge", "badge-light"], ["width", "1em", "height", "1em", "viewBox", "0 0 16 16", "fill", "red", "xmlns", "http://www.w3.org/2000/svg", 1, "bi", "bi-heart-fill"], ["fill-rule", "evenodd", "d", "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z", "clip-rule", "evenodd"], [1, "controlBtns"], [1, "editBtn", "btn", "btn-warning", 3, "routerLink"], ["aria-hidden", "true", 1, "fa", "fa-pencil"], [1, "deleteBtn", "btn", "btn-danger", 3, "click"], ["aria-hidden", "true", 1, "fa", "fa-trash"]],
+      consts: [[1, "page-row", "page-row-expanded"], [1, "main-inner"], [1, "item1", "container"], [1, "element1"], [1, "sidebar", "is-visible"], [1, "\u201Dsidebar-content\u201D"], [1, "active"], ["id", "nav", "href", "/handleRecipes"], ["id", "nav", "href", "/ingredient"], ["id", "nav", "href", "/category"], ["id", "nav", "href", "/unite"], ["id", "nav", "href", "/handleMenu"], ["id", "nav", "href", "/add-recipe"], ["id", "nav", 1, "form-inline", "my-2", "my-lg-0"], ["type", "search", "placeholder", "Recherche", "aria-label", "Search", 1, "form-control", "mr-sm-2", 3, "formControl"], [1, "item2", "container"], [1, "element2", "row"], [1, "page"], [1, "container"], ["id", "titre"], [1, "app"], [1, "recipesWrapper", "row"], ["class", "recipeDiv text-center col-lg-4 col-md-6 col-sm-12 p-3", 4, "ngFor", "ngForOf"], [1, "recipeDiv", "text-center", "col-lg-4", "col-md-6", "col-sm-12", "p-3"], [1, "rounded-circle", 3, "src"], [1, "badge", "badge-light"], ["width", "1em", "height", "1em", "viewBox", "0 0 16 16", "fill", "red", "xmlns", "http://www.w3.org/2000/svg", 1, "bi", "bi-heart-fill"], ["fill-rule", "evenodd", "d", "M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z", "clip-rule", "evenodd"], [1, "controlBtns"], [1, "editBtn", "btn", "btn-warning", 3, "routerLink"], ["aria-hidden", "true", 1, "fa", "fa-pencil"], [1, "deleteBtn", "btn", "btn-danger", 3, "click"], ["aria-hidden", "true", 1, "fa", "fa-trash"]],
       template: function GererLesRecettesComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "main", 0);
@@ -4502,7 +5100,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "a", 11);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Cr\xE9er une nouvelle recette");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "G\xE9rer le menu");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4510,9 +5108,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "li");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "form", 12);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "a", 12);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](24, "input", 13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Cr\xE9er une nouvelle recette");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "li");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "form", 13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](27, "input", 14);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4528,29 +5136,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 14);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 15);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 15);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 16);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "section", 16);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "section", 17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 17);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 18);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 19);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "h1");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "h1");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Gerer les recettes");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 18);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "h3");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Recettes publi\xE9es");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "G\xE9rer les recettes");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4558,11 +5156,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "div", 19);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "div", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "h3");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](37, GererLesRecettesComponent_div_37_Template, 15, 7, "div", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](37, "Recettes publi\xE9es");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](38, "async");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "div", 20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 21);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, GererLesRecettesComponent_div_40_Template, 15, 7, "div", 22);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](41, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4582,13 +5190,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](24);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](27);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.filter);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](38, 2, ctx.filteredRecipe$));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](41, 2, ctx.filteredRecipe$));
         }
       },
       directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterLink"]],
@@ -4681,7 +5289,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
-    function IngredientsComponent_tr_41_Template(rf, ctx) {
+    function IngredientsComponent_tr_44_Template(rf, ctx) {
       if (rf & 1) {
         var _r179 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
@@ -4689,9 +5297,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "form", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "form", 21);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function IngredientsComponent_tr_41_Template_form_submit_2_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function IngredientsComponent_tr_44_Template_form_submit_2_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r179);
 
           var ingredient_r176 = ctx.$implicit;
@@ -4701,13 +5309,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r178.updateIngredient(ingredient_r176);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 27);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 28);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "input", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "input", 29);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function IngredientsComponent_tr_41_Template_input_ngModelChange_5_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function IngredientsComponent_tr_44_Template_input_ngModelChange_5_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r179);
 
           var ingredient_r176 = ctx.$implicit;
@@ -4718,21 +5326,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 28);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 30);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "i", 30);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "i", 31);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 28);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function IngredientsComponent_tr_41_Template_button_click_10_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 32);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function IngredientsComponent_tr_44_Template_button_click_10_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r179);
 
           var ingredient_r176 = ctx.$implicit;
@@ -4742,7 +5350,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r181.deleteIngredient(ingredient_r176.idIngredient);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "i", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "i", 33);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4822,10 +5430,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteIngredient",
         value: function deleteIngredient(idIngredient) {
-          var _this15 = this;
+          var _this17 = this;
 
           this.ingredientsService.deleteIngredient(idIngredient).subscribe(function (res) {
-            _this15.router.navigate(['/ingredient'], {
+            _this17.router.navigate(['/ingredient'], {
               queryParams: {
                 refresh: new Date().getTime()
               }
@@ -4863,9 +5471,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     IngredientsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: IngredientsComponent,
       selectors: [["app-ingredients"]],
-      decls: 43,
+      decls: 46,
       vars: 5,
-      consts: [[1, "page-row", "page-row-expanded"], [1, "main-inner"], [1, "item1", "container"], [1, "element1"], [1, "sidebar", "is-visible"], [1, "\u201Dsidebar-content\u201D"], ["id", "nav", "href", "/handleRecipes"], [1, "active"], ["id", "nav", "href", "/ingredient"], ["id", "nav", "href", "/category"], ["id", "nav", "href", "/unite"], ["id", "nav", "href", "/add-recipe"], [1, "item2", "container"], [1, "element2"], [1, "page"], [1, "container"], ["id", "titre"], [1, "flex-container"], ["id", "addIng"], ["id", "question"], [3, "submit"], ["type", "text", "name", "nomIngredient", "placeholder", "nom ingredient", 1, "form-control", 3, "ngModel", "ngModelChange"], ["id", "btn", "type", "submit", 1, "btn", "btn-outline-info"], ["id", "rech", "type", "search", "placeholder", "Rechercher un ingr\xE9dient", "aria-label", "Search", 1, "form-control", "mr-sm-", 3, "formControl"], [1, "table", "col-md-12", "mx-auto"], [4, "ngFor", "ngForOf"], [1, "form-row", "align-items-center"], [1, "col-auto"], ["id", "zone", "type", "text", "name", "nomIngredient", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["id", "btn", "type", "submit", 1, "btn", "btn-sm", "btn-warning"], [1, "fa", "fa-pencil"], ["id", "btn", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"]],
+      consts: [[1, "page-row", "page-row-expanded"], [1, "main-inner"], [1, "item1", "container"], [1, "element1"], [1, "sidebar", "is-visible"], [1, "\u201Dsidebar-content\u201D"], ["id", "nav", "href", "/handleRecipes"], [1, "active"], ["id", "nav", "href", "/ingredient"], ["id", "nav", "href", "/category"], ["id", "nav", "href", "/unite"], ["id", "nav", "href", "/handleMenu"], ["id", "nav", "href", "/add-recipe"], [1, "item2", "container"], [1, "element2"], [1, "page"], [1, "container"], ["id", "titre"], [1, "flex-container"], ["id", "addIng"], ["id", "question"], [3, "submit"], ["type", "text", "name", "nomIngredient", "placeholder", "nom ingredient", 1, "form-control", 3, "ngModel", "ngModelChange"], ["id", "btn", "type", "submit", 1, "btn", "btn-outline-info"], ["id", "rech", "type", "search", "placeholder", "Rechercher un ingr\xE9dient", "aria-label", "Search", 1, "form-control", "mr-sm-", 3, "formControl"], [1, "table", "col-md-12", "mx-auto"], [4, "ngFor", "ngForOf"], [1, "form-row", "align-items-center"], [1, "col-auto"], ["id", "zone", "type", "text", "name", "nomIngredient", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["id", "btn", "type", "submit", 1, "btn", "btn-sm", "btn-warning"], [1, "fa", "fa-pencil"], ["id", "btn", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"]],
       template: function IngredientsComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "main", 0);
@@ -4926,7 +5534,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "a", 11);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Cr\xE9er une nouvelle recette");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "G\xE9rer le menu");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "li");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "a", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Cr\xE9er une nouvelle recette");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4942,71 +5560,71 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "div", 12);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 13);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 14);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "section", 14);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "section", 15);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 15);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 16);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "h1");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Ingr\xE9dients");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 16);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "h1");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "h6", 19);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, " Ajouter un nouvel ingredient ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Ingr\xE9dients");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "form", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function IngredientsComponent_Template_form_submit_33_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 18);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 19);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "h6", 20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35, " Ajouter un nouvel ingredient ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "form", 21);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function IngredientsComponent_Template_form_submit_36_listener($event) {
             return ctx.addIngredient();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "input", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 22);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function IngredientsComponent_Template_input_ngModelChange_34_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function IngredientsComponent_Template_input_ngModelChange_37_listener($event) {
             return ctx.ingredient.nomIngredient = $event;
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "button", 22);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "button", 23);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Valider");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "Valider");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "form");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "input", 23);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "form");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](42, "input", 24);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "table", 24);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](43, "table", 25);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](41, IngredientsComponent_tr_41_Template, 12, 2, "tr", 25);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](44, IngredientsComponent_tr_44_Template, 12, 2, "tr", 26);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](42, "async");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](45, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -5028,7 +5646,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](34);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](37);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.ingredient.nomIngredient);
 
@@ -5038,7 +5656,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](42, 3, ctx.filteredIngredient$));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](45, 3, ctx.filteredIngredient$));
         }
       },
       directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"]],
@@ -5232,7 +5850,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "register",
         value: function register() {
-          var _this16 = this;
+          var _this18 = this;
 
           var mdpFormValue = this.mdpForm.value;
           var formValue = this.userForm.value;
@@ -5252,11 +5870,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               alert('L\'utilisateur existe déjà');
               return;
             } else {
-              _this16.auth.logout();
+              _this18.auth.logout();
 
               alert('Vous pouvez maintenant aller dans votre boîte mail pour confirmer votre adresse mail. Pensez à vérifier dans vos spams !');
               setTimeout(function () {
-                return _this16.router.navigate(['login']);
+                return _this18.router.navigate(['login']);
               }, 5);
             }
           }, function (err) {
@@ -5748,11 +6366,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteListeCourse",
         value: function deleteListeCourse(idIngredient) {
-          var _this17 = this;
+          var _this19 = this;
 
           this.ingredientToDelete.idIngredient = idIngredient;
           this.shoppingListService.deleteListeCourse(idIngredient).subscribe(function (res) {
-            _this17.router.navigate(['/refresh'], {
+            _this19.router.navigate(['/refresh'], {
               queryParams: {
                 url: 'shoppingList'
               }
@@ -5766,16 +6384,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content) {
-          var _this18 = this;
+          var _this20 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this18.ingredientToAdd.idIngredient = result.idIngredient;
+            _this20.ingredientToAdd.idIngredient = result.idIngredient;
 
-            _this18.shoppingListService.addIngredientShoppingList(_this18.ingredientToAdd);
+            _this20.shoppingListService.addIngredientShoppingList(_this20.ingredientToAdd);
 
-            _this18.router.navigate(['/refresh'], {
+            _this20.router.navigate(['/refresh'], {
               queryParams: {
                 url: 'shoppingList'
               }
@@ -6396,7 +7014,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function MesCommentairesComponent(auth, recetteService, modalService, router, commentairesService) {
-        var _this19 = this;
+        var _this21 = this;
 
         _classCallCheck(this, MesCommentairesComponent);
 
@@ -6409,7 +7027,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           ecritPar: this.auth.getUserDetails().pseudo
         };
         this.commentairesService.getCommentaireUser(this.auth.getUserDetails().pseudo).subscribe(function (commentaires) {
-          _this19.commentaires = commentaires;
+          _this21.commentaires = commentaires;
           var options = {
             weekday: 'long',
             year: 'numeric',
@@ -6419,11 +7037,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             minute: 'numeric'
           };
 
-          _this19.commentaires.forEach(function (element) {
+          _this21.commentaires.forEach(function (element) {
             var d = new Date(element.dateCommentaire);
             element.dateCommentaire = d.toLocaleString('FR-fr', options);
 
-            _this19.recetteService.getRecipeById(element.concerne).subscribe(function (data) {
+            _this21.recetteService.getRecipeById(element.concerne).subscribe(function (data) {
               element.nomRecette = data.nomRecette;
             });
           });
@@ -6436,18 +7054,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content) {
-          var _this20 = this;
+          var _this22 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this20.commentaireToModify.message = result.message;
-            _this20.commentaireToModify.dateCommentaire = result.dateCommentaire;
-            _this20.commentaireToModify.concerne = result.concerne;
+            _this22.commentaireToModify.message = result.message;
+            _this22.commentaireToModify.dateCommentaire = result.dateCommentaire;
+            _this22.commentaireToModify.concerne = result.concerne;
 
-            _this20.commentairesService.modifyCommentaire(_this20.commentaireToModify);
+            _this22.commentairesService.modifyCommentaire(_this22.commentaireToModify);
 
-            _this20.router.navigate(['/refresh'], {
+            _this22.router.navigate(['/refresh'], {
               queryParams: {
                 url: 'comment'
               }
@@ -6457,10 +7075,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteCommentaire",
         value: function deleteCommentaire(idCommentaire) {
-          var _this21 = this;
+          var _this23 = this;
 
           this.commentairesService.deleteCommentaire(idCommentaire).subscribe(function (res) {
-            _this21.router.navigate(['/comment']).then(function () {
+            _this23.router.navigate(['/comment']).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -6860,7 +7478,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function MesRecettesComponent(recetteService, router, formBuilder, auth, favorisService, categoriesService) {
-        var _this22 = this;
+        var _this24 = this;
 
         _classCallCheck(this, MesRecettesComponent);
 
@@ -6889,17 +7507,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }));
         this.favorisService.getFavoris().subscribe(function (data) {
-          _this22.allRecipe = data;
-          _this22.allRecipe2 = data;
+          _this24.allRecipe = data;
+          _this24.allRecipe2 = data;
         });
         this.categoriesService.getAllCategory().subscribe(function (categorie) {
           categorie.forEach(function (data) {
-            _this22.favorisService.getFavorisByCategory(data.idCategorie).subscribe(function (recipes) {
-              _this22.recipeCategory = recipes;
-              _this22.recipeByCategory[data.idCategorie] = _this22.recipeCategory;
+            _this24.favorisService.getFavorisByCategory(data.idCategorie).subscribe(function (recipes) {
+              _this24.recipeCategory = recipes;
+              _this24.recipeByCategory[data.idCategorie] = _this24.recipeCategory;
             });
           });
-          _this22.categories = categorie;
+          _this24.categories = categorie;
         });
         this.initResearchForm();
       }
@@ -6974,22 +7592,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFavoris",
         value: function getFavoris() {
-          var _this23 = this;
+          var _this25 = this;
 
           this.favorisService.getFavoris().subscribe(function (data) {
-            _this23.allRecipe = data;
-            _this23.allRecipe2 = data;
+            _this25.allRecipe = data;
+            _this25.allRecipe2 = data;
           });
         }
       }, {
         key: "getFavorisByCategory",
         value: function getFavorisByCategory(idCategorie) {
-          var _this24 = this;
+          var _this26 = this;
 
           this.actualCategory = idCategorie;
           this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie);
           this.favorisService.getFavorisByCategory(idCategorie).subscribe(function (data) {
-            _this24.allRecipe = data;
+            _this26.allRecipe = data;
           });
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
@@ -7008,10 +7626,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateNbView",
         value: function updateNbView(recette) {
-          var _this25 = this;
+          var _this27 = this;
 
           this.recetteService.updateNbView(recette).subscribe(function (res) {
-            _this25.router.navigate(['/recipe', recette.idRecette]).then(function () {
+            _this27.router.navigate(['/recipe', recette.idRecette]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -7025,10 +7643,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteFavoris",
         value: function deleteFavoris(idRecette) {
-          var _this26 = this;
+          var _this28 = this;
 
           this.favorisService.deleteFavoris(idRecette).subscribe(function (res) {
-            _this26.router.navigate(['/favorites'], {
+            _this28.router.navigate(['/favorites'], {
               queryParams: {
                 refresh: new Date().getTime()
               }
@@ -7037,7 +7655,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             console.log(err);
           });
           this.favorisService.getFavoris().subscribe(function (data) {
-            _this26.allRecipe = data;
+            _this28.allRecipe = data;
           });
           /* rafraichit la page */
         }
@@ -7648,9 +8266,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function ModifierRecetteComponent_ng_template_103_option_10_Template(rf, ctx) {
+    function ModifierRecetteComponent_ng_template_103_option_11_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 67);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 71);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -7660,7 +8278,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (rf & 2) {
         var ingredient_r286 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", ingredient_r286.idIngredient);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", ingredient_r286.nomIngredient)("disabled", ingredient_r286.disabled);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -7668,9 +8286,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function ModifierRecetteComponent_ng_template_103_option_25_Template(rf, ctx) {
+    function ModifierRecetteComponent_ng_template_103_option_26_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 67);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 72);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -7712,39 +8330,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 61, 62);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "input", 61, 62);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_ng_template_103_Template_select_ngModelChange_8_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_ng_template_103_Template_input_ngModelChange_8_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r289);
 
           var ctx_r288 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r288.newIngredient.idIngredient = $event;
+          return ctx_r288.newIngredient.nomIngredient = $event;
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, ModifierRecetteComponent_ng_template_103_option_10_Template, 2, 2, "option", 63);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "datalist", 63);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, ModifierRecetteComponent_ng_template_103_option_11_Template, 2, 3, "option", 64);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, " Selectionnez un ingr\xE9dient. ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Selectionnez un ingr\xE9dient. ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 59);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "label", 64);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 65);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Quantit\xE9");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "label", 66);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Quantit\xE9");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "input", 65, 51);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "input", 67, 51);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_ng_template_103_Template_input_ngModelChange_16_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_ng_template_103_Template_input_ngModelChange_17_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r289);
 
           var ctx_r290 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -7754,25 +8376,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "div", 12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, " Rentrez une quantit\xE9 correcte. ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, " Rentrez une quantit\xE9 correcte. ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 59);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "label", 60);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 65);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, "Unit\xE9");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "label", 60);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Unit\xE9");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "select", 61, 53);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "select", 68, 53);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_ng_template_103_Template_select_ngModelChange_23_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_ng_template_103_Template_select_ngModelChange_24_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r289);
 
           var ctx_r291 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
@@ -7780,17 +8402,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r291.newIngredient.idUnite = $event;
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](25, ModifierRecetteComponent_ng_template_103_option_25_Template, 2, 2, "option", 63);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](26, ModifierRecetteComponent_ng_template_103_option_26_Template, 2, 2, "option", 69);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, " Selectionnez une unit\xE9. ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, " Selectionnez une unit\xE9. ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -7798,11 +8416,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "button", 66);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ModifierRecetteComponent_ng_template_103_Template_button_click_29_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 39);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "button", 70);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ModifierRecetteComponent_ng_template_103_Template_button_click_30_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r289);
 
           var modal_r280 = ctx.$implicit;
@@ -7812,7 +8434,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return modal_r280.close(ctx_r292.newIngredient);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, " Ajouter ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, " Ajouter ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -7824,9 +8446,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r254.newIngredient.idIngredient)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](8, _c0));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r254.newIngredient.nomIngredient)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](8, _c0));
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r254.allIngredients);
 
@@ -7848,7 +8470,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function ModifierRecetteComponent(recetteService, router, route, ingredientsService, modalService, http, categoriesService, unitesService, imagesService, imageCompress) {
-        var _this27 = this;
+        var _this29 = this;
 
         _classCallCheck(this, ModifierRecetteComponent);
 
@@ -7888,25 +8510,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           idRecette: null
         };
         this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (recette) {
-          _this27.recette = recette;
+          _this29.recette = recette;
         });
         this.ingredientsService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (ingredient) {
-          _this27.ingredients = ingredient;
+          _this29.ingredients = ingredient;
         });
         this.imagesService.getImage(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (res) {
           if (res.length !== 0) {
-            _this27.recette.idImage = res[0].idImage;
-            _this27.image = res[0];
+            _this29.recette.idImage = res[0].idImage;
+            _this29.image = res[0];
           }
         });
         this.ingredientsService.getRestIngredients(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (ingredients) {
-          _this27.allIngredients = ingredients;
+          _this29.allIngredients = ingredients;
         });
         this.unitesService.getAllUnite().subscribe(function (unites) {
-          _this27.allUnites = unites;
+          _this29.allUnites = unites;
         });
         this.categoriesService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-          _this27.allCategories = categories;
+          _this29.allCategories = categories;
         });
         this.getCategory(parseInt(this.route.snapshot.paramMap.get('id'), 10));
       }
@@ -7917,7 +8539,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "selectFile",
         value: function selectFile(event) {
-          var _this28 = this;
+          var _this30 = this;
 
           var fileName;
           this.file = event.target.files[0];
@@ -7927,9 +8549,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var reader = new FileReader();
 
             reader.onload = function (event) {
-              _this28.localUrl = event.target.result;
+              _this30.localUrl = event.target.result;
 
-              _this28.compressFile(_this28.localUrl, fileName);
+              _this30.compressFile(_this30.localUrl, fileName);
             };
 
             reader.readAsDataURL(event.target.files[0]);
@@ -7938,26 +8560,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "compressFile",
         value: function compressFile(image, fileName) {
-          var _this29 = this;
+          var _this31 = this;
 
           var orientation = -1;
           this.sizeOfOriginalImage = this.imageCompress.byteCount(image) / (1024 * 1024);
           console.warn('Size in bytes is now:', this.sizeOfOriginalImage);
           this.imageCompress.compressFile(image, orientation, 50, 50).then(function (result) {
-            _this29.imgResultAfterCompress = result;
-            _this29.localCompressedURl = result;
-            _this29.sizeOFCompressedImage = _this29.imageCompress.byteCount(result) / (1024 * 1024);
-            console.warn('Size in bytes after compression:', _this29.sizeOFCompressedImage); // create file from byte
+            _this31.imgResultAfterCompress = result;
+            _this31.localCompressedURl = result;
+            _this31.sizeOFCompressedImage = _this31.imageCompress.byteCount(result) / (1024 * 1024);
+            console.warn('Size in bytes after compression:', _this31.sizeOFCompressedImage); // create file from byte
 
             var imageName = fileName; // call method that creates a blob from dataUri
 
-            var imageBlob = _this29.dataURItoBlob(_this29.imgResultAfterCompress.split(',')[1]); // imageFile created below is the new compressed file which can be send to API in form data
+            var imageBlob = _this31.dataURItoBlob(_this31.imgResultAfterCompress.split(',')[1]); // imageFile created below is the new compressed file which can be send to API in form data
 
 
             var imageFile = new File([imageBlob], imageName, {
               type: 'image/jpeg'
             });
-            _this29.image2 = imageFile;
+            _this31.image2 = imageFile;
           });
         }
       }, {
@@ -7988,7 +8610,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this30 = this;
+          var _this32 = this;
 
           var formData = new FormData();
           console.log(this.image2);
@@ -7996,22 +8618,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (this.image) {
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this30.image = res[0];
-              _this30.imageToModify.idImage = res[0];
-              _this30.imageToModify.idRecette = _this30.recette.idRecette;
+              _this32.image = res[0];
+              _this32.imageToModify.idImage = res[0];
+              _this32.imageToModify.idRecette = _this32.recette.idRecette;
 
-              _this30.http.post("/server/image/update", _this30.imageToModify).subscribe(function (res) {
-                _this30.image = res[0];
+              _this32.http.post("/server/image/update", _this32.imageToModify).subscribe(function (res) {
+                _this32.image = res[0];
                 window.location.reload();
               });
             });
           } else {
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this30.image = res[0];
-              _this30.imageToModify.idImage = res[0];
-              _this30.imageToModify.idRecette = _this30.recette.idRecette;
+              _this32.image = res[0];
+              _this32.imageToModify.idImage = res[0];
+              _this32.imageToModify.idRecette = _this32.recette.idRecette;
 
-              _this30.imagesService.addImageToRecipe(_this30.imageToModify);
+              _this32.imagesService.addImageToRecipe(_this32.imageToModify);
 
               window.location.reload();
             });
@@ -8020,10 +8642,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCategory",
         value: function getCategory(id) {
-          var _this31 = this;
+          var _this33 = this;
 
           this.categoriesService.getCategoryByRecette(id).subscribe(function (categories) {
-            _this31.categories = categories;
+            _this33.categories = categories;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               if (err.status === 402) {
@@ -8090,10 +8712,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteIngredientRececipe",
         value: function deleteIngredientRececipe(ingredient, recette) {
-          var _this32 = this;
+          var _this34 = this;
 
           this.recetteService.deleteIngredientRecipe(ingredient, recette).subscribe(function (res) {
-            _this32.router.navigate(['updateRecipe/:id']).then(function () {
+            _this34.router.navigate(['updateRecipe/:id']).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -8103,16 +8725,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteRecipeCategory",
         value: function deleteRecipeCategory(categorie, recette) {
-          var _this33 = this;
+          var _this35 = this;
 
           this.recetteService.deleteRecipeCategory(categorie, recette).subscribe(function (res) {
             setTimeout(function () {
-              _this33.categoriesService.getRestCategory(parseInt(_this33.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this33.allCategories = categories;
+              _this35.categoriesService.getRestCategory(parseInt(_this35.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this35.allCategories = categories;
               });
 
-              _this33.categoriesService.getCategoryByRecette(parseInt(_this33.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this33.categories = categories;
+              _this35.categoriesService.getCategoryByRecette(parseInt(_this35.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this35.categories = categories;
               });
             }, 1000);
           }, function (err) {
@@ -8122,16 +8744,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addRecipeCategory",
         value: function addRecipeCategory(categorie, recette) {
-          var _this34 = this;
+          var _this36 = this;
 
           this.recetteService.addRecipeCategory(categorie, recette).subscribe(function (res) {
             setTimeout(function () {
-              _this34.categoriesService.getRestCategory(parseInt(_this34.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this34.allCategories = categories;
+              _this36.categoriesService.getRestCategory(parseInt(_this36.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this36.allCategories = categories;
               });
 
-              _this34.categoriesService.getCategoryByRecette(parseInt(_this34.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this34.categories = categories;
+              _this36.categoriesService.getCategoryByRecette(parseInt(_this36.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this36.categories = categories;
               });
             }, 1000);
           }, function (err) {
@@ -8141,16 +8763,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content) {
-          var _this35 = this;
+          var _this37 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this35.newIngredient.idIngredient = result.idIngredient;
-            _this35.newIngredient.qte = result.qte;
-            _this35.newIngredient.idUnite = result.idUnite;
+            console.log(result);
 
-            _this35.recetteService.addIngredientRecette(_this35.newIngredient);
+            _this37.allIngredients.forEach(function (element) {
+              if (result.nomIngredient === element.nomIngredient) {
+                _this37.newIngredient.idIngredient = element.idIngredient;
+              }
+            });
+
+            _this37.newIngredient.qte = result.qte;
+            _this37.newIngredient.idUnite = result.idUnite;
+
+            _this37.recetteService.addIngredientRecette(_this37.newIngredient);
 
             setTimeout(function () {
               window.location.reload();
@@ -8171,7 +8800,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selectors: [["app-modifier-recette"]],
       decls: 140,
       vars: 30,
-      consts: [["id", "contact", 1, "contact", "pt-100", "pb-100"], [1, "container"], [1, "text-center"], [1, "table", "col-md-8", "mx-auto"], ["id", "nomRecette"], [3, "submit"], ["type", "text", "name", "nomRecette", "value", "(recette?.nomRecette)", 1, "form-control", 3, "ngModel", "ngModelChange"], ["nomRecette", "ngModel"], ["type", "submit", 1, "btn", "btn-primary"], [4, "ngIf"], ["style", "text-align: initial;", 4, "ngFor", "ngForOf"], ["type", "number", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], [1, "invalid-tooltip"], ["type", "text", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], [2, "margin-top", "2em"], ["type", "time", "step", "2", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], ["class", "card-text", 4, "ngFor", "ngForOf"], ["content", ""], [1, "btn", "btn-primary", 3, "click"], [1, "row"], [1, "col-lg-6", "col-md-6", "col-sm-12", "p-3"], ["rows", "15em", "name", "etapes", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["etapes", "ngModel"], ["id", "btn", "type", "submit", 1, "btn", "btn-primary"], ["rows", "15em", "name", "astuce", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["type", "file", "name", "image", 3, "change"], ["type", "submit", 1, "btn", "btn-primary", 3, "click"], ["alt", "Responsive image", "id", "resp", 1, "rounded", "mx-auto", "d-block", 3, "src"], ["type", "submit", "data-toggle", "modal", "data-target", "#exampleModal", "data-backdrop", "false", 1, "btn", "btn-primary"], ["id", "exampleModal", "tabindex", "-1", "role", "dialog", "aria-labelledby", "exampleModalLabel", "aria-hidden", "true", 1, "modal", "fade"], ["role", "document", 1, "modal-dialog"], [1, "modal-content"], [1, "modal-header"], ["id", "exampleModalLabel", 1, "modal-title"], ["type", "button", "data-dismiss", "modal", "aria-label", "Close", 1, "close"], ["aria-hidden", "true"], [1, "modal-body"], [1, "figure-caption"], [2, "text-align", "center"], [1, "modal-footer"], ["type", "button", "data-dismiss", "modal", 1, "btn", "btn-primary"], ["id", "modal-backdrop", 1, "modal-backdrop-transparent", "modal-transition"], [2, "text-align", "initial"], ["id", "poubelle", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"], ["id", "add", 1, "btn", "btn-sm", "btn-success", 3, "click"], [1, "fa", "fa-plus-circle"], [1, "card-text"], ["id", "nomIng"], ["id", "qteIng"], ["type", "text", "name", "qte", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["qte", "ngModel"], ["required", "", 1, "custom-select", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["idUnite", "ngModel"], [4, "ngFor", "ngForOf"], ["id", "crayon", 1, "btn", "btn-sm", "btn-warning"], ["aria-hidden", "true", 1, "fa", "fa-pencil"], [1, "modal-title"], [1, "form-row"], [1, "col-md-3", "mb-3"], ["for", "validationTooltip04"], ["id", "validationTooltip04", "required", "", 1, "custom-select", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["idIngredient", "ngModel"], [3, "ngValue", 4, "ngFor", "ngForOf"], ["for", "validationTooltip05"], ["type", "number", "id", "validationTooltip05", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["tyoe", "button", 1, "btn", "btn-outline-dark", 3, "click"], [3, "ngValue"]],
+      consts: [["id", "contact", 1, "contact", "pt-100", "pb-100"], [1, "container"], [1, "text-center"], [1, "table", "col-md-8", "mx-auto"], ["id", "nomRecette"], [3, "submit"], ["type", "text", "name", "nomRecette", "value", "(recette?.nomRecette)", 1, "form-control", 3, "ngModel", "ngModelChange"], ["nomRecette", "ngModel"], ["type", "submit", 1, "btn", "btn-primary"], [4, "ngIf"], ["style", "text-align: initial;", 4, "ngFor", "ngForOf"], ["type", "number", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], [1, "invalid-tooltip"], ["type", "text", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], [2, "margin-top", "2em"], ["type", "time", "step", "2", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], ["class", "card-text", 4, "ngFor", "ngForOf"], ["content", ""], [1, "btn", "btn-primary", 3, "click"], [1, "row"], [1, "col-lg-6", "col-md-6", "col-sm-12", "p-3"], ["rows", "15em", "name", "etapes", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["etapes", "ngModel"], ["id", "btn", "type", "submit", 1, "btn", "btn-primary"], ["rows", "15em", "name", "astuce", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["type", "file", "name", "image", 3, "change"], ["type", "submit", 1, "btn", "btn-primary", 3, "click"], ["alt", "Responsive image", "id", "resp", 1, "rounded", "mx-auto", "d-block", 3, "src"], ["type", "submit", "data-toggle", "modal", "data-target", "#exampleModal", "data-backdrop", "false", 1, "btn", "btn-primary"], ["id", "exampleModal", "tabindex", "-1", "role", "dialog", "aria-labelledby", "exampleModalLabel", "aria-hidden", "true", 1, "modal", "fade"], ["role", "document", 1, "modal-dialog"], [1, "modal-content"], [1, "modal-header"], ["id", "exampleModalLabel", 1, "modal-title"], ["type", "button", "data-dismiss", "modal", "aria-label", "Close", 1, "close"], ["aria-hidden", "true"], [1, "modal-body"], [1, "figure-caption"], [2, "text-align", "center"], [1, "modal-footer"], ["type", "button", "data-dismiss", "modal", 1, "btn", "btn-primary"], ["id", "modal-backdrop", 1, "modal-backdrop-transparent", "modal-transition"], [2, "text-align", "initial"], ["id", "poubelle", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"], ["id", "add", 1, "btn", "btn-sm", "btn-success", 3, "click"], [1, "fa", "fa-plus-circle"], [1, "card-text"], ["id", "nomIng"], ["id", "qteIng"], ["type", "text", "name", "qte", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["qte", "ngModel"], ["required", "", 1, "custom-select", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["idUnite", "ngModel"], [4, "ngFor", "ngForOf"], ["id", "crayon", 1, "btn", "btn-sm", "btn-warning"], ["aria-hidden", "true", 1, "fa", "fa-pencil"], [1, "modal-title"], [1, "form-row"], [1, "col-md-6", "mb-3"], ["for", "validationTooltip04"], ["id", "validationTooltip04", "list", "brow", "required", "", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["nomIngredient", "ngModel"], ["id", "brow"], [3, "ngValue", "disabled", 4, "ngFor", "ngForOf"], [1, "col-md-3", "mb-3"], ["for", "validationTooltip05"], ["type", "number", "id", "validationTooltip05", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["id", "validationTooltip04", "required", "", 1, "custom-select", 3, "ngModel", "ngModelOptions", "ngModelChange"], [3, "ngValue", 4, "ngFor", "ngForOf"], ["tyoe", "button", 1, "btn", "btn-outline-dark", 3, "click"], [3, "ngValue", "disabled"], [3, "ngValue"]],
       template: function ModifierRecetteComponent_Template(rf, ctx) {
         if (rf & 1) {
           var _r293 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -8538,7 +9167,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](102, ModifierRecetteComponent_div_102_Template, 18, 7, "div", 16);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](103, ModifierRecetteComponent_ng_template_103_Template, 31, 11, "ng-template", null, 17, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](103, ModifierRecetteComponent_ng_template_103_Template, 32, 11, "ng-template", null, 17, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -9042,29 +9671,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(MonProfileComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this36 = this;
+          var _this38 = this;
 
           this.auth.profile().subscribe(function (user) {
-            _this36.credentials = user;
+            _this38.credentials = user;
           }, function (err) {
             console.error(err);
           });
 
           if (this.route.queryParams) {
             this.route.queryParams.subscribe(function (params) {
-              _this36.credentials.success = params.success;
+              _this38.credentials.success = params.success;
             });
           }
         }
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this37 = this;
+          var _this39 = this;
 
           this.auth.updateProfile(this.credentials).subscribe(function (res) {
-            _this37.credentials.success = res.success;
+            _this39.credentials.success = res.success;
 
-            _this37.router.navigateByUrl('/profile').then(function () {
+            _this39.router.navigateByUrl('/profile').then(function () {
               // tslint:disable-next-line: deprecation
               setTimeout(window.location.reload.bind(window.location), 2500);
             });
@@ -9075,11 +9704,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteProfile",
         value: function deleteProfile(pseudo) {
-          var _this38 = this;
+          var _this40 = this;
 
           this.auth.logout();
           this.auth.deleteProfile(pseudo).subscribe(function (res) {
-            _this38.router.navigate(['/']);
+            _this40.router.navigate(['/']);
           }, function (err) {
             console.log(err);
           });
@@ -10314,7 +10943,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function RecetteComponent(auth, recetteService, router, route, imagesService, commentairesService, ingredientsService, favorisService, unitesService, shoppingListService) {
-        var _this39 = this;
+        var _this41 = this;
 
         _classCallCheck(this, RecetteComponent);
 
@@ -10351,37 +10980,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
         this.isFavori = false;
         this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (recette) {
-          _this39.recette = recette;
-          _this39.recette.tempsCuisson = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this39.recette.tempsCuisson);
-          _this39.recette.tempsPreparation = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this39.recette.tempsPreparation);
-          _this39.nbrePartInitial = _this39.recette.nbrePart;
+          _this41.recette = recette;
+          _this41.recette.tempsCuisson = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this41.recette.tempsCuisson);
+          _this41.recette.tempsPreparation = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this41.recette.tempsPreparation);
+          _this41.nbrePartInitial = _this41.recette.nbrePart;
         });
         this.recetteService.getLatestReceipes().subscribe(function (data) {
-          _this39.latestRecipes = data;
+          _this41.latestRecipes = data;
         });
         this.imagesService.getImage(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (res) {
           console.log(res);
-          _this39.image = res;
+          _this41.image = res;
         });
         this.ingredientsService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (ingredient) {
           ingredient.forEach(function (element) {
             element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte);
           });
-          _this39.ingredients = ingredient;
-          _this39.recette.ingredients = ingredient;
-          _this39.ingredientQteInitial = ingredient;
+          _this41.ingredients = ingredient;
+          _this41.recette.ingredients = ingredient;
+          _this41.ingredientQteInitial = ingredient;
         });
         this.commentairesService.getCommentaireRecipe(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (commentaires) {
           if (commentaires[0]) {
-            _this39.commentaires = commentaires;
+            _this41.commentaires = commentaires;
           }
         });
 
         if (this.auth.isLoggedIn()) {
           this.favorisService.getFavoris().subscribe(function (data) {
             data.forEach(function (element) {
-              if (element.idRecette === parseInt(_this39.route.snapshot.paramMap.get('id'), 10)) {
-                _this39.isFavori = true;
+              if (element.idRecette === parseInt(_this41.route.snapshot.paramMap.get('id'), 10)) {
+                _this41.isFavori = true;
               }
             });
           });
@@ -10401,10 +11030,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateNbView",
         value: function updateNbView(recette) {
-          var _this40 = this;
+          var _this42 = this;
 
           this.recetteService.updateNbView(recette).subscribe(function (res) {
-            _this40.router.navigate(['/recipe', recette.idRecette]).then(function () {
+            _this42.router.navigate(['/recipe', recette.idRecette]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -10426,10 +11055,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUtiliserIngredientsByIdRecette",
         value: function getUtiliserIngredientsByIdRecette(id) {
-          var _this41 = this;
+          var _this43 = this;
 
           this.ingredientsService.getUtiliserIngredientsByIdRecette(id).subscribe(function (qtes) {
-            _this41.qtes = qtes;
+            _this43.qtes = qtes;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               if (err.status === 402) {
@@ -10442,10 +11071,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUniteByIdUnite",
         value: function getUniteByIdUnite(id) {
-          var _this42 = this;
+          var _this44 = this;
 
           this.unitesService.getUniteById(id).subscribe(function (unite) {
-            _this42.unite = unite;
+            _this44.unite = unite;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               if (err.status === 402) {
@@ -10481,10 +11110,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteCommentaire",
         value: function deleteCommentaire(idCommentaire) {
-          var _this43 = this;
+          var _this45 = this;
 
           this.commentairesService.deleteCommentaire(idCommentaire).subscribe(function (res) {
-            _this43.router.navigate(['/recipe/' + parseInt(_this43.route.snapshot.paramMap.get('id'), 10)]).then(function () {
+            _this45.router.navigate(['/recipe/' + parseInt(_this45.route.snapshot.paramMap.get('id'), 10)]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -10496,19 +11125,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addCommentaire",
         value: function addCommentaire(message) {
-          var _this44 = this;
+          var _this46 = this;
 
           if (this.images) {
             var formData = new FormData();
             formData.append('file', this.images);
             this.newCommentaire.message = message;
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this44.newCommentaire.idImage = res[0];
+              _this46.newCommentaire.idImage = res[0];
 
-              _this44.commentairesService.addCommentaire(_this44.newCommentaire).subscribe(function (res2) {
-                _this44.newCommentaire.idCommentaire = res2.idCommentaire;
+              _this46.commentairesService.addCommentaire(_this46.newCommentaire).subscribe(function (res2) {
+                _this46.newCommentaire.idCommentaire = res2.idCommentaire;
 
-                _this44.commentairesService.addImageToCommentaire(_this44.newCommentaire).subscribe();
+                _this46.commentairesService.addImageToCommentaire(_this46.newCommentaire).subscribe();
 
                 window.location.reload();
               });
@@ -10523,7 +11152,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addReponse",
         value: function addReponse(event, idCommentaire) {
-          var _this45 = this;
+          var _this47 = this;
 
           if (this.images) {
             var formData = new FormData();
@@ -10531,12 +11160,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.newResponse.message = event.target.message.value;
             this.newResponse.parent = idCommentaire;
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this45.newResponse.idImage = res[0];
+              _this47.newResponse.idImage = res[0];
 
-              _this45.commentairesService.addCommentaire(_this45.newResponse).subscribe(function (res2) {
-                _this45.newResponse.idCommentaire = res2.idCommentaire;
+              _this47.commentairesService.addCommentaire(_this47.newResponse).subscribe(function (res2) {
+                _this47.newResponse.idCommentaire = res2.idCommentaire;
 
-                _this45.commentairesService.addImageToCommentaire(_this45.newResponse).subscribe();
+                _this47.commentairesService.addImageToCommentaire(_this47.newResponse).subscribe();
 
                 window.location.reload();
               });
@@ -10552,30 +11181,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onProportionChange",
         value: function onProportionChange(searchValue) {
-          var _this46 = this;
+          var _this48 = this;
 
           this.recette.ingredients.forEach(function (element) {
-            element.qte = element.qte * parseInt(searchValue, 10) / _this46.recette.nbrePart;
+            element.qte = element.qte * parseInt(searchValue, 10) / _this48.recette.nbrePart;
           });
           this.recette.nbrePart = parseInt(searchValue, 10);
         }
       }, {
         key: "onProportionLess",
         value: function onProportionLess(value) {
-          var _this47 = this;
+          var _this49 = this;
 
           this.recette.ingredients.forEach(function (element) {
-            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this47.recette.nbrePart);
+            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this49.recette.nbrePart);
           });
           this.recette.nbrePart = this.recette.nbrePart - 1;
         }
       }, {
         key: "onProportionMore",
         value: function onProportionMore(value) {
-          var _this48 = this;
+          var _this50 = this;
 
           this.recette.ingredients.forEach(function (element) {
-            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this48.recette.nbrePart);
+            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this50.recette.nbrePart);
           });
           this.recette.nbrePart = this.recette.nbrePart + 1;
         }
@@ -11324,7 +11953,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function RecettesComponent(recetteService, router, auth, formBuilder, route, imagesService, categoriesService, favorisService) {
-        var _this49 = this;
+        var _this51 = this;
 
         _classCallCheck(this, RecettesComponent);
 
@@ -11352,8 +11981,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.getRecipeByCategory(this.route.snapshot.paramMap.get('id'));
         } else {
           this.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-            _this49.allRecipe = data;
-            _this49.allRecipe2 = data;
+            _this51.allRecipe = data;
+            _this51.allRecipe2 = data;
           });
         }
 
@@ -11378,11 +12007,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this.categoriesService.getAllCategory().subscribe(function (categorie) {
-          _this49.categories = categorie;
+          _this51.categories = categorie;
           categorie.forEach(function (data) {
-            _this49.recetteService.getRecipeByCategory(data.idCategorie).subscribe(function (recipes) {
-              _this49.recipeCategory = recipes;
-              _this49.recipeByCategory[data.idCategorie] = _this49.recipeCategory;
+            _this51.recetteService.getRecipeByCategory(data.idCategorie).subscribe(function (recipes) {
+              _this51.recipeCategory = recipes;
+              _this51.recipeByCategory[data.idCategorie] = _this51.recipeCategory;
             });
           });
         });
@@ -11468,12 +12097,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllRecipes",
         value: function getAllRecipes() {
-          var _this50 = this;
+          var _this52 = this;
 
           this.actualCategory = null;
           this.recettes$ = this.recetteService.getAllRecipesAndIngredients();
           this.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-            _this50.allRecipe = data;
+            _this52.allRecipe = data;
           });
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
@@ -11498,10 +12127,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllCategory",
         value: function getAllCategory() {
-          var _this51 = this;
+          var _this53 = this;
 
           this.categoriesService.getAllCategory().subscribe(function (categorie) {
-            _this51.categories = categorie;
+            _this53.categories = categorie;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) {
               if (err.status === 402) {
@@ -11513,12 +12142,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRecipeByCategory",
         value: function getRecipeByCategory(idCategorie) {
-          var _this52 = this;
+          var _this54 = this;
 
           this.actualCategory = idCategorie;
           this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie);
           this.recetteService.getRecipeByCategory(idCategorie).subscribe(function (data) {
-            _this52.allRecipe = data;
+            _this54.allRecipe = data;
           });
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
@@ -11536,10 +12165,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateNbView",
         value: function updateNbView(recette) {
-          var _this53 = this;
+          var _this55 = this;
 
           this.recetteService.updateNbView(recette).subscribe(function (res) {
-            _this53.router.navigate(['/recipe', recette.idRecette]).then(function () {
+            _this55.router.navigate(['/recipe', recette.idRecette]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -11553,26 +12182,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addFavoris",
         value: function addFavoris(id) {
-          var _this54 = this;
+          var _this56 = this;
 
           this.newFavori.idRecette = id;
           this.favorisService.addFavoris(this.newFavori).subscribe(function (res) {
-            _this54.getFavoris();
+            _this56.getFavoris();
 
-            _this54.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-              _this54.allRecipe = data;
+            _this56.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
+              _this56.allRecipe = data;
             });
           });
         }
       }, {
         key: "getFavoris",
         value: function getFavoris() {
-          var _this55 = this;
+          var _this57 = this;
 
           this.favoris = [];
           this.favorisService.getFavoris().subscribe(function (favoris) {
             favoris.forEach(function (element) {
-              _this55.favoris.push(element.idRecette);
+              _this57.favoris.push(element.idRecette);
             });
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) {
@@ -11585,13 +12214,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteFavoris",
         value: function deleteFavoris(idRecette) {
-          var _this56 = this;
+          var _this58 = this;
 
           this.favorisService.deleteFavoris(idRecette).subscribe(function (res) {
-            _this56.getFavoris();
+            _this58.getFavoris();
 
-            _this56.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-              _this56.allRecipe = data;
+            _this58.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
+              _this58.allRecipe = data;
             });
           });
           /* rafraichit la page */
@@ -11794,11 +12423,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(RefreshComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this57 = this;
+          var _this59 = this;
 
           this.activatedRoute.queryParams.subscribe(function (params) {
             if (params.url) {
-              _this57.route.navigate([params.url]);
+              _this59.route.navigate([params.url]);
             }
           });
         }
@@ -11974,22 +12603,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "RequestResetUser",
         value: function RequestResetUser(form) {
-          var _this58 = this;
+          var _this60 = this;
 
           if (form.valid) {
             this.IsvalidForm = true;
             this.authService.requestReset(this.RequestResetForm.value).subscribe(function (data) {
-              _this58.RequestResetForm.reset();
+              _this60.RequestResetForm.reset();
 
-              _this58.successMessage = 'Un email vous a été envoyé pour changer votre mot de passe.';
+              _this60.successMessage = 'Un email vous a été envoyé pour changer votre mot de passe.';
               setTimeout(function () {
-                _this58.successMessage = null;
+                _this60.successMessage = null;
 
-                _this58.router.navigate(['login']);
+                _this60.router.navigate(['login']);
               }, 3000);
             }, function (err) {
               if (err.error.message) {
-                _this58.errorMessage = err.error.message;
+                _this60.errorMessage = err.error.message;
               }
             });
           } else {
@@ -12377,7 +13006,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function ResponseResetComponent(authService, router, route, fb) {
-        var _this59 = this;
+        var _this61 = this;
 
         _classCallCheck(this, ResponseResetComponent);
 
@@ -12388,9 +13017,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.IsResetFormValid = true;
         this.CurrentState = 'Wait';
         this.route.params.subscribe(function (params) {
-          _this59.resetToken = params.token;
+          _this61.resetToken = params.token;
 
-          _this59.VerifyToken();
+          _this61.VerifyToken();
         });
       }
 
@@ -12402,14 +13031,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "VerifyToken",
         value: function VerifyToken() {
-          var _this60 = this;
+          var _this62 = this;
 
           this.authService.ValidPasswordToken({
             resettoken: this.resetToken
           }).subscribe(function (data) {
-            _this60.CurrentState = 'Verified';
+            _this62.CurrentState = 'Verified';
           }, function (err) {
-            _this60.CurrentState = 'NotVerified';
+            _this62.CurrentState = 'NotVerified';
           });
         }
       }, {
@@ -12442,22 +13071,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ResetPassword",
         value: function ResetPassword(form) {
-          var _this61 = this;
+          var _this63 = this;
 
           if (form.valid) {
             this.IsResetFormValid = true;
             this.authService.newPassword(this.ResponseResetForm.value).subscribe(function (data) {
-              _this61.ResponseResetForm.reset();
+              _this63.ResponseResetForm.reset();
 
-              _this61.successMessage = data.message;
+              _this63.successMessage = data.message;
               setTimeout(function () {
-                _this61.successMessage = null;
+                _this63.successMessage = null;
 
-                _this61.router.navigate(['login']);
+                _this63.router.navigate(['login']);
               }, 3000);
             }, function (err) {
               if (err.error.message) {
-                _this61.errorMessage = err.error.message;
+                _this63.errorMessage = err.error.message;
               }
             });
           } else {
@@ -12615,7 +13244,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "login",
         value: function login() {
-          var _this62 = this;
+          var _this64 = this;
 
           var formValue = this.loginForm.value;
           this.credentials.pseudo = formValue.pseudo;
@@ -12624,12 +13253,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (res.error === 'Mot de passe et/ou pseudo incorrect') {
               alert(res.error);
             } else {
-              if (_this62.auth.emailConfirmed()) {
-                _this62.router.navigateByUrl('/');
+              if (_this64.auth.emailConfirmed()) {
+                _this64.router.navigateByUrl('/');
 
                 alert('Bienvenue sur Marine\'s Recipe');
               } else {
-                _this62.auth.logout();
+                _this64.auth.logout();
 
                 window.location.reload();
                 alert('Vous devez vérifier votre adresse mail avant de pouvoir vous connecter ! :)');
@@ -12848,19 +13477,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
-    function UniteComponent_table_40_Template(rf, ctx) {
+    function UniteComponent_table_43_Template(rf, ctx) {
       if (rf & 1) {
         var _r200 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "table", 27);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "tr");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "td");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "form", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "form", 21);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function UniteComponent_table_40_Template_form_submit_3_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function UniteComponent_table_43_Template_form_submit_3_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r200);
 
           var unite_r198 = ctx.$implicit;
@@ -12870,13 +13499,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r199.updateUnite(unite_r198);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 28);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 29);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "input", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "input", 30);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function UniteComponent_table_40_Template_input_ngModelChange_6_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function UniteComponent_table_43_Template_input_ngModelChange_6_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r200);
 
           var unite_r198 = ctx.$implicit;
@@ -12887,21 +13516,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 29);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "button", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "button", 31);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "i", 31);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "i", 32);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 29);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UniteComponent_table_40_Template_button_click_11_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 33);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function UniteComponent_table_43_Template_button_click_11_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r200);
 
           var unite_r198 = ctx.$implicit;
@@ -12911,7 +13540,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return ctx_r202.deleteUnite(unite_r198.idUnite);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "i", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "i", 34);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -12991,10 +13620,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteUnite",
         value: function deleteUnite(idUnite) {
-          var _this63 = this;
+          var _this65 = this;
 
           this.unitesService.deleteUnite(idUnite).subscribe(function (res) {
-            _this63.router.navigate(['/unite'], {
+            _this65.router.navigate(['/unite'], {
               queryParams: {
                 refresh: new Date().getTime()
               }
@@ -13032,9 +13661,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     UniteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: UniteComponent,
       selectors: [["app-unite"]],
-      decls: 42,
+      decls: 45,
       vars: 5,
-      consts: [[1, "page-row", "page-row-expanded"], [1, "main-inner"], [1, "item1", "container"], [1, "element1"], ["id", "aside", 1, "sidebar", "is-visible"], [1, "\u201Dsidebar-content\u201D"], ["id", "nav", "href", "/handleRecipes"], ["id", "nav", "href", "/ingredient"], ["id", "nav", "href", "/category"], [1, "active"], ["id", "nav", "href", "/unite"], ["id", "nav", "href", "/add-recipe"], [1, "item2", "container"], [1, "element2"], [1, "page"], [1, "container"], ["id", "titre"], [1, "flex-container"], ["id", "addUnite"], ["id", "question "], [3, "submit"], ["type", "text ", "name", "libelleUnite ", "placeholder", "libelle unit\xE9 ", 1, "form-control", 3, "ngModel", "ngModelChange"], ["id", "btn", "type", "submit ", 1, "btn", "btn-outline-info"], [1, "form-inline", "my-2", "my-lg-0"], ["id", "rech", "type", "search", "placeholder", "Rechercher une unit\xE9", "aria-label", "Search", 1, "form-control", "mr-sm-", 3, "formControl"], ["class", "table col-md-12 mx-auto", 4, "ngFor", "ngForOf"], [1, "table", "col-md-12", "mx-auto"], [1, "form-row", "align-items-center"], [1, "col-auto"], ["id", "zone", "type", "text", "name", "libelleUnite", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["id", "btn", "type", "submit", 1, "btn", "btn-sm", "btn-warning"], [1, "fa", "fa-pencil"], ["id", "btn", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"]],
+      consts: [[1, "page-row", "page-row-expanded"], [1, "main-inner"], [1, "item1", "container"], [1, "element1"], ["id", "aside", 1, "sidebar", "is-visible"], [1, "\u201Dsidebar-content\u201D"], ["id", "nav", "href", "/handleRecipes"], ["id", "nav", "href", "/ingredient"], ["id", "nav", "href", "/category"], [1, "active"], ["id", "nav", "href", "/unite"], ["id", "nav", "href", "/handleMenu"], ["id", "nav", "href", "/add-recipe"], [1, "item2", "container"], [1, "element2"], [1, "page"], [1, "container"], ["id", "titre"], [1, "flex-container"], ["id", "addUnite"], ["id", "question "], [3, "submit"], ["type", "text ", "name", "libelleUnite ", "placeholder", "libelle unit\xE9 ", 1, "form-control", 3, "ngModel", "ngModelChange"], ["id", "btn", "type", "submit ", 1, "btn", "btn-outline-info"], [1, "form-inline", "my-2", "my-lg-0"], ["id", "rech", "type", "search", "placeholder", "Rechercher une unit\xE9", "aria-label", "Search", 1, "form-control", "mr-sm-", 3, "formControl"], ["class", "table col-md-12 mx-auto", 4, "ngFor", "ngForOf"], [1, "table", "col-md-12", "mx-auto"], [1, "form-row", "align-items-center"], [1, "col-auto"], ["id", "zone", "type", "text", "name", "libelleUnite", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["id", "btn", "type", "submit", 1, "btn", "btn-sm", "btn-warning"], [1, "fa", "fa-pencil"], ["id", "btn", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"]],
       template: function UniteComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "main", 0);
@@ -13095,7 +13724,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "a", 11);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Cr\xE9er une nouvelle recette");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "G\xE9rer le menu");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "li");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "a", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Cr\xE9er une nouvelle recette");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -13111,69 +13750,69 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "div", 12);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 13);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 14);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "section", 14);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "section", 15);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 15);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 16);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "h1");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28, "Unit\xE9s");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "div", 16);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 17);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 18);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "h1");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "h6", 19);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](32, " Ajouter une nouvelle unit\xE9 ");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, "Unit\xE9s");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "form", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function UniteComponent_Template_form_submit_33_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 18);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 19);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "h6", 20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](35, " Ajouter une nouvelle unit\xE9 ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "form", 21);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function UniteComponent_Template_form_submit_36_listener($event) {
             return ctx.addUnite();
           });
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "input", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "input", 22);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function UniteComponent_Template_input_ngModelChange_34_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function UniteComponent_Template_input_ngModelChange_37_listener($event) {
             return ctx.unite.libelleUnite = $event;
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "button", 22);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "button", 23);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](36, "Valider");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](39, "Valider");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "form", 23);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "div");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "input", 24);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "form", 24);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](42, "input", 25);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, UniteComponent_table_40_Template, 13, 2, "table", 25);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](43, UniteComponent_table_43_Template, 13, 2, "table", 26);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](41, "async");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](44, "async");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -13193,7 +13832,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](34);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](37);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.unite.libelleUnite);
 
@@ -13203,7 +13842,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](41, 3, ctx.filteredUnite$));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](44, 3, ctx.filteredUnite$));
         }
       },
       directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_6__["NgForOf"]],
@@ -13321,7 +13960,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updatePassword",
         value: function updatePassword() {
-          var _this64 = this;
+          var _this66 = this;
 
           var formValue = this.updatePasswordForm.value;
           this.credentials.mdp = formValue.mdp;
@@ -13339,7 +13978,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               alert('L\'ancien mot de passe n\'est pas correct.');
               return;
             } else {
-              _this64.router.navigateByUrl('/profile');
+              _this66.router.navigateByUrl('/profile');
             }
           }, function (err) {
             console.log(err);
@@ -13775,12 +14414,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "register",
         value: function register(user) {
-          var _this65 = this;
+          var _this67 = this;
 
           var base = this.http.post('/server/register', user);
           var request = base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             if (data.token) {
-              _this65.saveToken(data.token);
+              _this67.saveToken(data.token);
             }
 
             return data;
@@ -13790,12 +14429,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "login",
         value: function login(user) {
-          var _this66 = this;
+          var _this68 = this;
 
           var base = this.http.post('/server/login', user);
           var request = base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             if (data.token) {
-              _this66.saveToken(data.token);
+              _this68.saveToken(data.token);
             }
 
             return data;
@@ -14130,7 +14769,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCommentaireRecipe",
         value: function getCommentaireRecipe(id) {
-          var _this67 = this;
+          var _this69 = this;
 
           var options = {
             weekday: 'long',
@@ -14142,7 +14781,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           return this.http.get("/server/commentaires/recipe/".concat(id)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this67.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
+              _this69.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
@@ -14151,7 +14790,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var d = new Date(element.dateCommentaire);
               element.dateCommentaire = d.toLocaleString('FR-fr', options);
 
-              _this67.auth.getUser(element.ecritPar).subscribe(function (data) {
+              _this69.auth.getUser(element.ecritPar).subscribe(function (data) {
                 element.admin = data.admin;
               });
 
@@ -14159,7 +14798,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var bool = true;
 
               while (bool) {
-                _this67.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
+                _this69.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
                   element.children = commentaire;
                 });
 
@@ -14176,7 +14815,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getReponseCommentaireRecipe",
         value: function getReponseCommentaireRecipe(id, idCommentaire) {
-          var _this68 = this;
+          var _this70 = this;
 
           var options = {
             weekday: 'long',
@@ -14188,7 +14827,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           return this.http.get("/server/commentaires/recipe/".concat(id, "/reponse/").concat(idCommentaire)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (commentaire) {
             commentaire.forEach(function (element) {
-              _this68.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
+              _this70.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
@@ -14197,11 +14836,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var d = new Date(element.dateCommentaire);
               element.dateCommentaire = d.toLocaleString('FR-fr', options);
 
-              _this68.auth.getUser(element.ecritPar).subscribe(function (data) {
+              _this70.auth.getUser(element.ecritPar).subscribe(function (data) {
                 element.admin = data.admin;
               });
 
-              _this68.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
+              _this70.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
                 element.children = commentaire;
               });
             });
@@ -14334,19 +14973,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFavoris",
         value: function getFavoris() {
-          var _this69 = this;
+          var _this71 = this;
 
           var pseudo = this.auth.getUserDetails().pseudo;
           var base = this.http.get("/server/favorites/recipe/".concat(pseudo));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this69.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this71.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this69.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this71.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
@@ -14358,19 +14997,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFavorisByCategory",
         value: function getFavorisByCategory(idCategorie) {
-          var _this70 = this;
+          var _this72 = this;
 
           var pseudo = this.auth.getUserDetails().pseudo;
           var base = this.http.get("/server/favorites/recipe/".concat(pseudo, "/").concat(idCategorie));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this70.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this72.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this70.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this72.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
@@ -14902,18 +15541,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(RecettesService, [{
         key: "getAllRecipes",
         value: function getAllRecipes() {
-          var _this71 = this;
+          var _this73 = this;
 
           var base = this.http.get("/server/recipe/allRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this71.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this73.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this71.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this73.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -14923,12 +15562,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllRecipesAndIngredients",
         value: function getAllRecipesAndIngredients() {
-          var _this72 = this;
+          var _this74 = this;
 
           var base = this.http.get("/server/recipe/allRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this72.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this74.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
@@ -14936,13 +15575,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               element.ingredients = [];
 
-              _this72.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this74.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
               element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
 
-              _this72.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this74.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -14957,19 +15596,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getLatestReceipes",
         value: function getLatestReceipes() {
-          var _this73 = this;
+          var _this75 = this;
 
           var base = this.http.get("/server/recipe/latestRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this73.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this75.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
                 element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
               });
 
-              _this73.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this75.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -14979,19 +15618,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getMostPopularRecipes",
         value: function getMostPopularRecipes() {
-          var _this74 = this;
+          var _this76 = this;
 
           var base = this.http.get("/server/recipe/mostPopularRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this74.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this76.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
                 element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
               });
 
-              _this74.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this76.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -15009,18 +15648,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRecipeByCategory",
         value: function getRecipeByCategory(idCategorie) {
-          var _this75 = this;
+          var _this77 = this;
 
           var base = this.http.get("/server/recipe/category/".concat(idCategorie));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this75.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this77.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this75.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this77.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
@@ -15139,18 +15778,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
+        key: "getAllRecipesForMenu",
+        value: function getAllRecipesForMenu() {
+          var _this78 = this;
+
+          var base = this.http.get("/server/menu/allRecipes");
+          return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
+            data.forEach(function (element) {
+              _this78.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+                var _a;
+
+                element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
+              });
+
+              _this78.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+                element.categories = data;
+              });
+            });
+            return data;
+          }));
+        }
+      }, {
         key: "getPetitDej",
         value: function getPetitDej() {
-          var _this76 = this;
+          var _this79 = this;
 
           return this.http.get('/server/menu/petitDej').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this76.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
+            _this79.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
               var _a;
 
               element[0].lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
             });
 
-            _this76.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
+            _this79.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
               element[0].categories = data;
             });
 
@@ -15160,16 +15820,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRepas",
         value: function getRepas() {
-          var _this77 = this;
+          var _this80 = this;
 
           return this.http.get('/server/menu/repas').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this77.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
+            _this80.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
               var _a;
 
               element[0].lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
             });
 
-            _this77.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
+            _this80.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
               element[0].categories = data;
             });
 
@@ -15179,20 +15839,42 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getDouceur",
         value: function getDouceur() {
-          var _this78 = this;
+          var _this81 = this;
 
           return this.http.get('/server/menu/douceur').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this78.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
+            _this81.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
               var _a;
 
               element[0].lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
             });
 
-            _this78.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
+            _this81.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
               element[0].categories = data;
             });
 
             return element[0];
+          }));
+        }
+      }, {
+        key: "updatePetitDej",
+        value: function updatePetitDej(petitDej) {
+          console.log(petitDej);
+          return this.http.post('/server/menu/petitDej/update', petitDej).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
+            return element;
+          }));
+        }
+      }, {
+        key: "updateRepas",
+        value: function updateRepas(repas) {
+          return this.http.post('/server/menu/repas/update', repas).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
+            return element;
+          }));
+        }
+      }, {
+        key: "updateDouceur",
+        value: function updateDouceur(douceur) {
+          return this.http.post('/server/menu/douceur/update', douceur).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
+            return element;
           }));
         }
       }]);

@@ -9,10 +9,10 @@ recipe.use(cors())
 //Récupérer toutes les recettes
 recipe.get('/allRecipes', (req, res) => {
     Recipe.findAll({
-        order: [
-            ["datePublication", "DESC"]
-        ]
-    })
+            order: [
+                ["datePublication", "DESC"]
+            ]
+        })
         .then(recipes => {
             if (recipes) {
                 res.json(recipes)
@@ -29,10 +29,10 @@ recipe.get('/allRecipes', (req, res) => {
 //Récupérer la recette depuis son identifiant
 recipe.get('/get/:id', (req, res) => {
     Recipe.findOne({
-        where: {
-            idRecette: req.params.id
-        }
-    })
+            where: {
+                idRecette: req.params.id
+            }
+        })
         .then(recipe => {
             if (recipe) {
                 res.json(recipe)
@@ -53,8 +53,8 @@ recipe.get('/:id/ingredients', (req, res) => {
         type: sequelize.QueryTypes.SELECT
     })
     query.then(resultats => {
-        res.json(resultats)
-    })
+            res.json(resultats)
+        })
         .catch(err => {
             res.send('error: ' + err)
         })
@@ -63,11 +63,11 @@ recipe.get('/:id/ingredients', (req, res) => {
 //Récupérer les 3 recettes les plus récentes 
 recipe.get('/latestRecipes', (req, res) => {
     Recipe.findAll({
-        order: [
-            ["datePublication", "DESC"]
-        ],
-        limit: 3
-    })
+            order: [
+                ["datePublication", "DESC"]
+            ],
+            limit: 3
+        })
         .then(recipe => {
             if (recipe) {
                 res.json(recipe)
@@ -83,11 +83,11 @@ recipe.get('/latestRecipes', (req, res) => {
 //Récupérer les 3 recettes les plus vues
 recipe.get('/mostPopularRecipes', (req, res) => {
     Recipe.findAll({
-        order: [
-            ["nbVues", "DESC"]
-        ],
-        limit: 3
-    })
+            order: [
+                ["nbVues", "DESC"]
+            ],
+            limit: 3
+        })
         .then(recipe => {
             if (recipe) {
                 res.json(recipe)
@@ -108,8 +108,8 @@ recipe.get('/category/:idCategorie', (req, res) => {
         type: sequelize.QueryTypes.SELECT
     })
     query.then(resultats => {
-        res.json(resultats)
-    })
+            res.json(resultats)
+        })
         .catch(err => {
             res.send('error: ' + err)
         })
@@ -128,10 +128,10 @@ recipe.put('/update-nbView/:idRecette', (req, res) => {
 //supprimer recette
 recipe.delete('/delete-recipe/:id', (req, res) => {
     Recipe.destroy({
-        where: {
-            idRecette: req.params.id
-        }
-    })
+            where: {
+                idRecette: req.params.id
+            }
+        })
         .then(() => {
 
             res.send('Recipe deleted!')
@@ -143,11 +143,11 @@ recipe.delete('/delete-recipe/:id', (req, res) => {
 
 //creer recette
 recipe.post('/add-recipe', (req, res) => {
-    db.sequelize.query("INSERT INTO recettes (idRecette, nomRecette, datePublication, nbFavoris, nbVues, etapes, nbrePart, libellePart, tempsPreparation, tempsCuisson, astuce) VALUES (NULL, ?, ?, 0, 0, ?, ?, ?, ?, ?, ?) ", {
-        replacements: [req.sanitize(req.body.nomRecette), new Date(), req.sanitize(req.body.etapes), req.sanitize(req.body.nbrePart), req.sanitize(req.body.libellePart),
-        req.sanitize(req.body.tempsPreparation), req.sanitize(req.body.tempsCuisson), req.sanitize(req.body.astuce)
-        ]
-    })
+    db.sequelize.query("INSERT INTO recettes (idRecette, nomRecette, datePublication, nbFavoris, nbVues, etapes, nbrePart, libellePart, tempsPreparation, tempsCuisson, astuce, mot) VALUES (NULL, ?, ?, 0, 0, ?, ?, ?, ?, ?, ?, ?) ", {
+            replacements: [req.sanitize(req.body.nomRecette), new Date(), req.sanitize(req.body.etapes), req.sanitize(req.body.nbrePart), req.sanitize(req.body.libellePart),
+                req.sanitize(req.body.tempsPreparation), req.sanitize(req.body.tempsCuisson), req.sanitize(req.body.astuce), req.sanitize(req.body.mot)
+            ]
+        })
         .then(result => {
             res.json(result)
         }).catch(err => {
@@ -168,8 +168,8 @@ recipe.post('/addIngredientAndCategorie', (req, res) => {
         })
     }
     db.sequelize.query("INSERT INTO `illustrerRecettes` (`idRecette`, `idImage`) VALUES (?, ?)", {
-        replacements: [req.body.idRecette, req.body.idImage]
-    })
+            replacements: [req.body.idRecette, req.body.idImage]
+        })
         .then(result => {
             res.json(result)
         }).catch(err => {
@@ -201,20 +201,20 @@ recipe.put('/step/update', (req, res) => {
 
 //modifier astuce recette
 recipe.put('/astuce/update', (req, res) => {
-    if(req.body.astuce) {
+    if (req.body.astuce) {
         Recipe.update({ astuce: req.sanitize(req.body.astuce) }, { where: { idRecette: req.body.idRecette } })
-        .then(() => {
-            res.json({ success: 'Astuce modifié !' })
-        })
-        .error(err =>
-            res.json({ error: err }))
+            .then(() => {
+                res.json({ success: 'Astuce modifié !' })
+            })
+            .error(err =>
+                res.json({ error: err }))
     } else {
         Recipe.update({ astuce: '' }, { where: { idRecette: req.body.idRecette } })
-        .then(() => {
-            res.json({ success: 'Astuce modifié !' })
-        })
-        .error(err =>
-            res.json({ error: err }))
+            .then(() => {
+                res.json({ success: 'Astuce modifié !' })
+            })
+            .error(err =>
+                res.json({ error: err }))
     }
 })
 

@@ -246,16 +246,14 @@
                         <div class="modal-body">
                             <form>
                                 <div class="form-row">
-                                    <div class="col-md-3 mb-3">
+                                    <div class="col-md-6 mb-3">
                                         <label for="validationTooltip04">Ingrédient</label>
-                                        <select class="custom-select" id="validationTooltip04" #idIngredient="ngModel" [(ngModel)]="newIngredient.idIngredient" [ngModelOptions]="{ standalone: true }" required>
-                      <option
-                        *ngFor="let ingredient of allIngredients"
-                        [ngValue]="ingredient.idIngredient"
-                      >
-                        {{ ingredient.nomIngredient }}</option
-                      >
-                    </select>
+                                        <input id="validationTooltip04" list="brow" #nomIngredient="ngModel" [(ngModel)]="newIngredient.nomIngredient" [ngModelOptions]="{ standalone: true }" required>
+                                        <datalist id="brow">
+                                            <option *ngFor="let ingredient of allIngredients"
+                                                [ngValue]="ingredient.nomIngredient" [disabled]="ingredient.disabled">
+                                                {{ingredient.nomIngredient}}</option>
+                                        </datalist>
                                         <div class="invalid-tooltip">
                                             Selectionnez un ingrédient.
                                         </div>

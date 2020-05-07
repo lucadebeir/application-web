@@ -12,4 +12,5 @@ export class CreateRecipe {
     tempsPreparation?: Time;
     tempsCuisson?: Time;
     astuce?: string;
+    mot?: string;
 }

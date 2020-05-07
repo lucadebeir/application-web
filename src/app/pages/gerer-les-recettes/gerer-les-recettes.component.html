@@ -9,11 +9,11 @@
                             <li><a id="nav" href="/ingredient">Ingrédients</a></li>
                             <li><a id="nav" href="/category">Catégories</a></li>
                             <li><a id="nav" href="/unite">Unités</a></li>
+                            <li><a id="nav" href="/handleMenu">Gérer le menu</a></li>
                             <li><a id="nav" href="/add-recipe">Créer une nouvelle recette</a></li>
                             <li>
                                 <form id="nav" class="form-inline my-2 my-lg-0">
-                                    <input class="form-control mr-sm-2" type="search" placeholder="Recherche"
-                                        aria-label="Search" [formControl]="filter">
+                                    <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search" [formControl]="filter">
                                 </form>
                             </li>
                         </ul>
@@ -26,94 +26,45 @@
                 <section class="page">
                     <div class="container">
                         <div id="titre">
-                            <h1>Gerer les recettes</h1>
+                            <h1>Gérer les recettes</h1>
                         </div>
                         <div id="titre">
                             <h3>Recettes publiées</h3>
                         </div>
 
-
-
-
-
-
-
-
-
-
-
-                        <!--<div class="row mb-3" *ngFor="let recette of filteredRecipe$ | async">
-                            <div class="col-sm-3"></div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="d-flex flex-row border rounded">
-                                    <div class="p-0 w-25">
-                                        <img src="{{recette.lienImage}}" class="img-thumbnail border-0"
-                                            alt="photo de la recette" />
-
-                                    </div>
-                                    <div class="pl-3 pt-2 pr-2 pb-2 w-75 border-left">
-
-                                        <h5 class="text">{{recette.nomRecette}}</h5>
-                                        <ul class="m-0 float-left" style="list-style: none; margin:0; padding: 0">
-                                            <li><i class="badge badge-light"></i>{{recette.nbFavoris}}
-                                                <svg class="bi bi-heart-fill" width="1em" height="1em"
-                                                    viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg">
-                                                    <path fill-rule="evenodd"
-                                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                                                        clip-rule="evenodd" />
-                                                </svg></li>
-                                            <li><i class="badge badge-light"></i> {{recette.nbVues}} 👁</li>
-                                        </ul>
-
-                                        <button id="crayon" type="submit" class="btn btn-sm btn-warning"
-                                            [routerLink]="['/updateRecipe', recette.idRecette]"><i
-                                                class="fa fa-pencil"></i></button>
-
-                                        <button id="poubelle" type="submit" class="btn btn-sm btn-danger"
-                                            (click)="deleteRecipe(recette.idRecette)"><i
-                                                class="fa fa-trash"></i></button>
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
-
                         <div class="app">
 
                             <div class="recipesWrapper row">
-                        
-                                <div class="recipeDiv text-center col-lg-4 col-md-6 col-sm-12 p-3"
-                                    *ngFor="let recette of filteredRecipe$ | async">
+
+                                <div class="recipeDiv text-center col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of filteredRecipe$ | async">
                                     <img class="rounded-circle" src="{{recette.lienImage}}" />
                                     <h3>{{recette.nomRecette}}</h3>
 
                                     <i class="badge badge-light"></i> {{recette.nbVues}} 👁
-                        
+
                                     <i class="badge badge-light"></i>{{recette.nbFavoris}}
-                                        <svg class="bi bi-heart-fill" width="1em" height="1em"
-                                            viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                                                 clip-rule="evenodd" />
                                         </svg>
-                                    
-                        
+
+
                                     <div class="controlBtns">
                                         <button class="editBtn btn btn-warning" [routerLink]="['/updateRecipe', recette.idRecette]">
                                             <i class="fa fa-pencil" aria-hidden="true">
                                             </i>
                                         </button>
-                        
+
                                         <button class="deleteBtn btn btn-danger" (click)="deleteRecipe(recette.idRecette)">
                                             <i class="fa fa-trash" aria-hidden="true">
                                             </i>
                                         </button>
                                     </div>
-                        
+
                                 </div>
                             </div>
-                        
+
                         </div>
                     </div>
                 </section>
@@ -121,4 +72,3 @@
         </div>
     </div>
 </main>
-

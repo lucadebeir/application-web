@@ -91,7 +91,7 @@ export class ModifierRecetteComponent implements OnInit {
     tempsCuisson: null,
     astuce: ''
   };
-  public ingredients: IngredientDetails;
+  public ingredients: IngredientDetails[];
   public unite: UniteDetails;
   public qtes: QuantiteDetails[];
   public categories: CategoryDetails[];
@@ -107,6 +107,7 @@ export class ModifierRecetteComponent implements OnInit {
     idRecette: null
   };
 
+  // pour compresser image
   file: any;
   localUrl: any;
   localCompressedURl: any;
@@ -132,6 +133,7 @@ export class ModifierRecetteComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0]);
     }
   }
+
   compressFile(image, fileName) {
     const orientation = -1;
     this.sizeOfOriginalImage = this.imageCompress.byteCount(image) / (1024 * 1024);
@@ -328,7 +330,12 @@ export class ModifierRecetteComponent implements OnInit {
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result
       .then((result) => {
-        this.newIngredient.idIngredient = result.idIngredient;
+        console.log(result);
+        this.allIngredients.forEach(element => {
+          if (result.nomIngredient === element.nomIngredient) {
+            this.newIngredient.idIngredient = element.idIngredient;
+          }
+        });
         this.newIngredient.qte = result.qte;
         this.newIngredient.idUnite = result.idUnite;
         this.recetteService.addIngredientRecette(this.newIngredient);

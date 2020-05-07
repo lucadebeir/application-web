@@ -9,6 +9,7 @@
                             <li class="active"><a id="nav" href="/ingredient">Ingrédients</a></li>
                             <li><a id="nav" href="/category">Catégories</a></li>
                             <li><a id="nav" href="/unite">Unités</a></li>
+                            <li><a id="nav" href="/handleMenu">Gérer le menu</a></li>
                             <li><a id="nav" href="/add-recipe">Créer une nouvelle recette</a></li>
                         </ul>
                     </div>
@@ -22,54 +23,54 @@
                         <div id="titre">
 
                             <h1>Ingrédients</h1>
-                        
+
                         </div>
-                        
+
                         <div class='flex-container'>
 
                             <div id="addIng">
                                 <h6 id="question"> Ajouter un nouvel ingredient </h6>
                                 <form (submit)="addIngredient()">
                                     <input type="text" class="form-control" name="nomIngredient" placeholder="nom ingredient" [(ngModel)]="ingredient.nomIngredient">
-                        
+
                                     <button id="btn" class="btn btn-outline-info" type="submit">Valider</button>
-                        
+
                                 </form>
                             </div>
-                        
+
                             <div>
                                 <form>
                                     <input id="rech" class="form-control mr-sm-" type="search" placeholder="Rechercher un ingrédient" aria-label="Search" [formControl]="filter">
                                 </form>
                                 <table class="table col-md-12 mx-auto">
-                        
+
                                     <tr *ngFor="let ingredient of filteredIngredient$ | async; let i=index">
-                                        <td>                        
-                        
+                                        <td>
+
                                             <form (submit)="updateIngredient(ingredient)">
                                                 <div class="form-row align-items-center">
                                                     <div class="col-auto">
-                        
+
                                                         <input id="zone" type="text" class="form-control" name="nomIngredient" value={{ingredient.nomIngredient}} [(ngModel)]="ingredient.nomIngredient">
                                                     </div>
                                                     <div class="col-auto">
                                                         <button id="btn" type="submit" class="btn btn-sm btn-warning"><i class="fa fa-pencil" ></i></button>
-                        
-                        
+
+
                                                     </div>
                                                     <div class="col-auto">
-                        
+
                                                         <button id="btn" class="btn btn-sm btn-danger" (click)="deleteIngredient(ingredient.idIngredient)"><i class="fa fa-trash"></i></button>
-                        
+
                                                     </div>
                                                 </div>
                                             </form>
-                        
+
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </div>
                 </section>
@@ -77,4 +78,3 @@
         </div>
     </div>
 </main>
-

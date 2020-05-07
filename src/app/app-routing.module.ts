@@ -23,6 +23,7 @@ import { RequestResetComponent } from './pages/request-reset/request-reset.compo
 import { ResponseResetComponent } from './pages/response-reset/response-reset.component';
 import { RefreshComponent } from './pages/refresh/refresh.component';
 import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
+import { GererLeMenuComponent } from './pages/gerer-le-menu/gerer-le-menu.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,7 @@ const routes: Routes = [
   { path: 'response-reset-password/:token', component: ResponseResetComponent },
   { path: 'refresh', component: RefreshComponent },
   { path: 'rules', component: MentionsLegalesComponent },
+  { path: 'handleMenu', component: GererLeMenuComponent },
   { path: '**', redirectTo: '' }
 ];
 

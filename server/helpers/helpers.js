@@ -14,26 +14,27 @@ const { format } = util
  */
 
 const uploadImage = (file) => new Promise((resolve, reject) => {
-  const { originalname, buffer } = file
+    console.log(file)
+    const { originalname, buffer } = file
 
-  const blob = bucket.file(originalname)
-  const blobStream = blob.createWriteStream({
-    metadata: {
-      contentType: file.mimetype
-    },
-    resumable: false
-  })
+    const blob = bucket.file(originalname)
+    const blobStream = blob.createWriteStream({
+        metadata: {
+            contentType: file.mimetype
+        },
+        resumable: false
+    })
 
-  blobStream.on('finish', () => {
-    const publicUrl = format(
-      `https://storage.googleapis.com/${bucket.name}/${blob.name}`
-    )
-    resolve(publicUrl)
-  })
-  .on('error', () => {
-    reject(`Unable to upload image, something went wrong`)
-  })
-  .end(buffer)
+    blobStream.on('finish', () => {
+            const publicUrl = format(
+                `https://storage.googleapis.com/${bucket.name}/${blob.name}`
+            )
+            resolve(publicUrl)
+        })
+        .on('error', () => {
+            reject(`Unable to upload image, something went wrong`)
+        })
+        .end(buffer)
 
 })
 
