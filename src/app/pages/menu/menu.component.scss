@@ -8,6 +8,7 @@ $white-border: 3px solid $white;
 #fond {
     background-image: url("../../../assets/img/menu.jpg");
     background-size: cover;
+    background-attachment: fixed;
 }
 
 #top {
@@ -48,7 +49,7 @@ h1 {
     margin-right: auto;
     margin-bottom: 1em;
     display: table;
-    padding: .1em;
+    padding: .2em;
     @media (min-width: 600px) {
         font-size: 72px;
     }
