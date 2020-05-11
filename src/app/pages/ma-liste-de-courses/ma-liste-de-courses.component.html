@@ -10,7 +10,7 @@
         <i id="panier" class="fa fa-shopping-basket fa-3x" aria-hidden="true"></i>
         <div class="app-body" *ngFor="let ingredient of filteredIngredient$ | async">
             <ul class="list">{{ingredient.nomIngredient}}
-                <button id="trash" class="btn  btn-outline-danger" (click)=deleteListeCourse(ingredient.idIngredient)><i class="fa fa-trash"></i></button>
+                <button id="trash" class="btn  btn-outline-danger" (click)=deleteListeCourse(ingredient.nomIngredient)><i class="fa fa-trash"></i></button>
             </ul>
         </div>
     </div>
@@ -27,11 +27,15 @@
             <div class="form-row">
                 <div class="col-md-6">
                     <label for="validationTooltip04">Ingrédient</label>
-                    <select class="custom-select" id="validationTooltip04" #idIngredient="ngModel" [(ngModel)]="ingredientToAdd.idIngredient" [ngModelOptions]="{standalone: true}" required>
-                    <option *ngFor="let ingredient of restIngredients$ | async"
-                        [ngValue]="ingredient.idIngredient">
-                        {{ingredient.nomIngredient}}</option>
-                </select>
+                    <input type="text" class="col-xs-8 col-sm-9" placeholder="" list="brow" #nomIngredient="ngModel" [(ngModel)]="ingredientToAdd.nomIngredient" [ngModelOptions]="{ standalone: true }" />
+                    <datalist id="brow">
+          <option
+            *ngFor="let ingredient of restIngredients$ | async"
+            [ngValue]="ingredient.nomIngredient"
+          >
+          {{ingredient.nomIngredient}}</option
+          >
+        </datalist>
                     <div class="invalid-tooltip">
                         Selectionnez un ingrédient.
                     </div>

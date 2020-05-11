@@ -1,6 +1,6 @@
 export interface IngredientDetails {
     idRecette?: number;
-    idIngredient?: string;
+    idIngredient?: number;
     nomIngredient?: string;
     qte?: number;
     libelleUnite?: string;

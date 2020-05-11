@@ -53,7 +53,7 @@ export class MenuComponent implements OnInit {
 
     this.allRecipe = [];
 
-    this.recetteService.getAllRecipes().subscribe(data => {
+    this.recetteService.getAllRecipesAsc().subscribe(data => {
       data.forEach((element: RecipeDetails) => {
         let res = true;
         this.list.forEach(element2 => {

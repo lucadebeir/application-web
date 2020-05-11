@@ -17,11 +17,11 @@ shoppingList.post('/add', (req, res) => {
             idIngredient: req.body.listIngredients[i].idIngredient
         }
         ListeCourse.findOne({
-            where: {
-                pseudo: req.body.pseudo,
-                idIngredient: req.body.listIngredients[i].idIngredient
-            }
-        })
+                where: {
+                    pseudo: req.body.pseudo,
+                    idIngredient: req.body.listIngredients[i].idIngredient
+                }
+            })
             .then(listeCourse => {
                 if (!listeCourse) {
                     ListeCourse.create(listeCourseData)
@@ -32,7 +32,7 @@ shoppingList.post('/add', (req, res) => {
 
 //récupérer la liste de courses de l'utilisateur
 shoppingList.get('/:pseudo', (req, res) => {
-    db.sequelize.query("SELECT ingredient.* FROM ingredient INNER JOIN liste_de_courses WHERE liste_de_courses.idIngredient = ingredient.idIngredient AND liste_de_courses.pseudo = ? ORDER BY ingredient.nomIngredient", {
+    db.sequelize.query("SELECT * FROM liste_de_courses WHERE liste_de_courses.pseudo = ? ORDER BY nomIngredient", {
         replacements: [req.params.pseudo],
         type: sequelize.QueryTypes.SELECT
     }).then(resultats => {
@@ -54,17 +54,19 @@ shoppingList.get('/rest/:pseudo', (req, res) => {
     })
 })
 
+//ajouter un ingrédient à la liste de courses
 shoppingList.post('/add/ingredient', (req, res) => {
     const listeCourseData = {
         pseudo: req.body.pseudo,
-        idIngredient: req.body.idIngredient
+        idIngredient: req.body.idIngredient,
+        nomIngredient: req.body.nomIngredient
     }
     ListeCourse.create(listeCourseData)
         .then(() => {
-            res.send('Ingredient added!')
+            res.json('Ingredient added!')
         })
         .catch(err => {
-            res.send('error: ' + err)
+            res.json('error: ' + err)
         })
 })
 
@@ -72,11 +74,11 @@ shoppingList.post('/add/ingredient', (req, res) => {
 //supprimer un ingredient de la liste de course
 shoppingList.delete('/delete/:id/:pseudo', (req, res) => {
     ListeCourse.destroy({
-        where: {
-            idIngredient: req.params.id,
-            pseudo: req.params.pseudo
-        }
-    })
+            where: {
+                nomIngredient: req.params.id,
+                pseudo: req.params.pseudo
+            }
+        })
         .then(() => {
             res.send('Ingredient deleted!')
         })

@@ -6227,7 +6227,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           var ctx_r208 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r208.deleteListeCourse(ingredient_r207.idIngredient);
+          return ctx_r208.deleteListeCourse(ingredient_r207.nomIngredient);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "i", 11);
@@ -6248,9 +6248,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function MaListeDeCoursesComponent_ng_template_11_option_10_Template(rf, ctx) {
+    function MaListeDeCoursesComponent_ng_template_11_option_11_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 25);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -6260,7 +6260,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (rf & 2) {
         var ingredient_r213 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", ingredient_r213.idIngredient);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", ingredient_r213.nomIngredient);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
@@ -6298,27 +6298,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "select", 18, 19);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "input", 18, 19);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function MaListeDeCoursesComponent_ng_template_11_Template_select_ngModelChange_8_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function MaListeDeCoursesComponent_ng_template_11_Template_input_ngModelChange_8_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r215);
 
           var ctx_r214 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r214.ingredientToAdd.idIngredient = $event;
+          return ctx_r214.ingredientToAdd.nomIngredient = $event;
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, MaListeDeCoursesComponent_ng_template_11_option_10_Template, 2, 2, "option", 20);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](11, "async");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "datalist", 20);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, MaListeDeCoursesComponent_ng_template_11_option_11_Template, 2, 2, "option", 21);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](12, "async");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 21);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 22);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Selectionnez un ingr\xE9dient. ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, " Selectionnez un ingr\xE9dient. ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -6328,11 +6330,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "button", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 23);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MaListeDeCoursesComponent_ng_template_11_Template_button_click_15_listener($event) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "button", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MaListeDeCoursesComponent_ng_template_11_Template_button_click_16_listener($event) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r215);
 
           var modal_r210 = ctx.$implicit;
@@ -6342,7 +6346,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return modal_r210.close(ctx_r216.ingredientToAdd);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Ajouter");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Ajouter");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -6354,18 +6358,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r206.ingredientToAdd.idIngredient)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](5, _c0));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r206.ingredientToAdd.nomIngredient)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](5, _c0));
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](11, 3, ctx_r206.restIngredients$));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](12, 3, ctx_r206.restIngredients$));
       }
     }
 
     var MaListeDeCoursesComponent =
     /*#__PURE__*/
     function () {
-      function MaListeDeCoursesComponent(recetteService, router, auth, modalService, shoppingListService) {
+      function MaListeDeCoursesComponent(recetteService, router, auth, modalService, shoppingListService, ingredientService) {
+        var _this19 = this;
+
         _classCallCheck(this, MaListeDeCoursesComponent);
 
         this.recetteService = recetteService;
@@ -6373,13 +6379,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.auth = auth;
         this.modalService = modalService;
         this.shoppingListService = shoppingListService;
+        this.ingredientService = ingredientService;
         this.ingredientToDelete = {
           pseudo: this.auth.getUserDetails().pseudo,
-          idIngredient: null
+          idIngredient: null,
+          nomIngredient: '',
+          idIngredientList: null
         };
         this.ingredientToAdd = {
           pseudo: this.auth.getUserDetails().pseudo,
-          idIngredient: null
+          idIngredient: null,
+          nomIngredient: '',
+          idIngredientList: null
         };
         this.ingredients$ = this.shoppingListService.getListeCourses();
         this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
@@ -6395,14 +6406,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }));
         this.restIngredients$ = this.shoppingListService.getRestListeCourses();
+        this.ingredientService.getAllIngredients().subscribe(function (res) {
+          _this19.allIngredient = res;
+        });
       }
 
       _createClass(MaListeDeCoursesComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {}
       }, {
-        key: "getListeCourses",
-        value: function getListeCourses() {
+        key: "getInitData",
+        value: function getInitData() {
           this.ingredients$ = this.shoppingListService.getListeCourses();
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
@@ -6416,15 +6430,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               return ingredient.nomIngredient.toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
             });
           }));
+          this.restIngredients$ = this.shoppingListService.getRestListeCourses();
+        }
+      }, {
+        key: "getListeCourses",
+        value: function getListeCourses() {
+          this.ingredients$ = this.shoppingListService.getListeCourses();
+          this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
+          this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
+
+          this.filteredIngredient$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.ingredients$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref11) {
+            var _ref12 = _slicedToArray(_ref11, 2),
+                ingredients = _ref12[0],
+                filterString = _ref12[1];
+
+            return ingredients.filter(function (ingredient) {
+              return ingredient.nomIngredient.toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
+            });
+          }));
         }
       }, {
         key: "deleteListeCourse",
-        value: function deleteListeCourse(idIngredient) {
-          var _this19 = this;
+        value: function deleteListeCourse(nomIngredient) {
+          var _this20 = this;
 
-          this.ingredientToDelete.idIngredient = idIngredient;
-          this.shoppingListService.deleteListeCourse(idIngredient).subscribe(function (res) {
-            _this19.router.navigate(['/refresh'], {
+          this.ingredientToDelete.nomIngredient = nomIngredient;
+          this.shoppingListService.deleteListeCourse(nomIngredient).subscribe(function (res) {
+            _this20.router.navigate(['/refresh'], {
               queryParams: {
                 url: 'shoppingList'
               }
@@ -6438,16 +6470,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content) {
-          var _this20 = this;
+          var _this21 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this20.ingredientToAdd.idIngredient = result.idIngredient;
+            _this21.allIngredient.forEach(function (element) {
+              if (element.nomIngredient === _this21.ingredientToAdd.nomIngredient) {
+                _this21.ingredientToAdd.idIngredient = element.idIngredient;
+              }
+            });
 
-            _this20.shoppingListService.addIngredientShoppingList(_this20.ingredientToAdd);
+            _this21.shoppingListService.addIngredientShoppingList(_this21.ingredientToAdd).subscribe(function (res) {
+              _this21.getInitData();
 
-            _this20.router.navigate(['/refresh'], {
+              _this21.ingredientToAdd.nomIngredient = '';
+              _this21.ingredientToAdd.idIngredient = null;
+            });
+
+            _this21.ingredientToAdd.idIngredient = result.idIngredient;
+
+            _this21.shoppingListService.addIngredientShoppingList(_this21.ingredientToAdd);
+
+            _this21.router.navigate(['/refresh'], {
               queryParams: {
                 url: 'shoppingList'
               }
@@ -6460,7 +6505,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     MaListeDeCoursesComponent.ɵfac = function MaListeDeCoursesComponent_Factory(t) {
-      return new (t || MaListeDeCoursesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service__WEBPACK_IMPORTED_MODULE_4__["RecettesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service__WEBPACK_IMPORTED_MODULE_4__["AuthentificationService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_6__["NgbModal"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service__WEBPACK_IMPORTED_MODULE_4__["ShoppingListService"]));
+      return new (t || MaListeDeCoursesComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service__WEBPACK_IMPORTED_MODULE_4__["RecettesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service__WEBPACK_IMPORTED_MODULE_4__["AuthentificationService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_6__["NgbModal"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service__WEBPACK_IMPORTED_MODULE_4__["ShoppingListService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service__WEBPACK_IMPORTED_MODULE_4__["IngredientsService"]));
     };
 
     MaListeDeCoursesComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -6468,7 +6513,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selectors: [["app-ma-liste-de-courses"]],
       decls: 13,
       vars: 4,
-      consts: [["id", "liste"], [1, "app"], ["type", "search", "placeholder", "Recherche", 3, "formControl"], ["id", "add", 1, "btn", "btn-outline-success", 3, "click"], [1, "fa", "fa-plus-circle"], ["id", "panier", "aria-hidden", "true", 1, "fa", "fa-shopping-basket", "fa-3x"], ["class", "app-body", 4, "ngFor", "ngForOf"], ["content", ""], [1, "app-body"], [1, "list"], ["id", "trash", 1, "btn", "btn-outline-danger", 3, "click"], [1, "fa", "fa-trash"], [1, "modal-header"], [1, "modal-title"], [1, "modal-body"], [1, "form-row"], [1, "col-md-6"], ["for", "validationTooltip04"], ["id", "validationTooltip04", "required", "", 1, "custom-select", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["idIngredient", "ngModel"], [3, "ngValue", 4, "ngFor", "ngForOf"], [1, "invalid-tooltip"], [1, "modal-footer"], ["tyoe", "button", 1, "btn", "btn-outline-dark", 3, "click"], [3, "ngValue"]],
+      consts: [["id", "liste"], [1, "app"], ["type", "search", "placeholder", "Recherche", 3, "formControl"], ["id", "add", 1, "btn", "btn-outline-success", 3, "click"], [1, "fa", "fa-plus-circle"], ["id", "panier", "aria-hidden", "true", 1, "fa", "fa-shopping-basket", "fa-3x"], ["class", "app-body", 4, "ngFor", "ngForOf"], ["content", ""], [1, "app-body"], [1, "list"], ["id", "trash", 1, "btn", "btn-outline-danger", 3, "click"], [1, "fa", "fa-trash"], [1, "modal-header"], [1, "modal-title"], [1, "modal-body"], [1, "form-row"], [1, "col-md-6"], ["for", "validationTooltip04"], ["type", "text", "placeholder", "", "list", "brow", 1, "col-xs-8", "col-sm-9", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["nomIngredient", "ngModel"], ["id", "brow"], [3, "ngValue", 4, "ngFor", "ngForOf"], [1, "invalid-tooltip"], [1, "modal-footer"], ["tyoe", "button", 1, "btn", "btn-outline-dark", 3, "click"], [3, "ngValue"]],
       template: function MaListeDeCoursesComponent_Template(rf, ctx) {
         if (rf & 1) {
           var _r217 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -6513,7 +6558,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, MaListeDeCoursesComponent_ng_template_11_Template, 17, 6, "ng-template", null, 7, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, MaListeDeCoursesComponent_ng_template_11_Template, 18, 6, "ng-template", null, 7, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplateRefExtractor"]);
         }
 
         if (rf & 2) {
@@ -6526,7 +6571,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](10, 2, ctx.filteredIngredient$));
         }
       },
-      directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"]],
+      directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_x"]],
       pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["AsyncPipe"]],
       styles: ["#trash[_ngcontent-%COMP%] {\n  float: right;\n  border: none;\n}\n\n#add[_ngcontent-%COMP%] {\n  border: none;\n  padding-left: 1em;\n}\n\n[_ngcontent-%COMP%]::-webkit-input-placeholder {\n  \n  color: #B5B5B5;\n}\n\n[_ngcontent-%COMP%]::-moz-placeholder {\n  \n  color: #B5B5B5;\n}\n\n[_ngcontent-%COMP%]:-ms-input-placeholder {\n  \n  color: #B5B5B5;\n}\n\n[_ngcontent-%COMP%]:-moz-placeholder {\n  \n  color: #ccc;\n}\n\n#liste[_ngcontent-%COMP%] {\n  background-image: url('listedecourses.png');\n  background-size: cover;\n  background-position: center;\n  background-attachment: fixed;\n  position: relative;\n  z-index: 2;\n  color: #6C75A6;\n  padding-top: 1em;\n  padding-bottom: 1em;\n  min-height: 40em;\n}\n\n.app[_ngcontent-%COMP%] {\n  background-color: rgba(255, 255, 255, 0.8);\n  border-radius: 5px;\n  max-width: 300px;\n  text-align: center;\n  padding: 60px 0;\n  margin: 4% auto;\n  top: 20%;\n  box-shadow: 18px 18px 31px -12px rgba(0, 0, 0, 0.3);\n}\n\nh2[_ngcontent-%COMP%] {\n  font-size: 2rem;\n  padding-bottom: 60px;\n  line-height: 0;\n  color: #6C75A6;\n  font-weight: 300;\n}\n\n#panier[_ngcontent-%COMP%] {\n  margin-top: 25px;\n  color: #6C75A6;\n}\n\nul[_ngcontent-%COMP%] {\n  margin-top: 25px;\n  padding: 0 20px;\n}\n\nli[_ngcontent-%COMP%] {\n  list-style: none;\n  font-size: 1.2rem;\n  line-height: 3rem;\n  border-bottom: 1px solid #ccc;\n  color: #6C75A6;\n  max-width: 300px;\n}\n\ninput[_ngcontent-%COMP%] {\n  line-height: 2rem;\n  padding: 0 8px;\n  border-top: none;\n  border-bottom: 1px solid #ccc;\n  border-left: none;\n  border-right: none;\n  background-color: transparent;\n  color: #6C75A6;\n}\n\ninput[_ngcontent-%COMP%]:focus {\n  border-bottom: 1px solid #8888AC;\n  outline-width: 0;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWNhZGViZWlyL0RvY3VtZW50cy9HaXRIdWIvcHJvamV0LXdlYi9zcmMvYXBwL3BhZ2VzL21hLWxpc3RlLWRlLWNvdXJzZXMvbWEtbGlzdGUtZGUtY291cnNlcy5jb21wb25lbnQuc2NzcyIsIi4uL3NyYy9hcHAvcGFnZXMvbWEtbGlzdGUtZGUtY291cnNlcy9tYS1saXN0ZS1kZS1jb3Vyc2VzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksWUFBQTtFQUNBLFlBQUE7QUNDSjs7QURFQTtFQUNJLFlBQUE7RUFDQSxpQkFBQTtBQ0NKOztBREVBO0VBQ0ksd0JBQUE7RUFDQSxjQUFBO0FDQ0o7O0FERUE7RUFDSSxnQkFBQTtFQUNBLGNBQUE7QUNDSjs7QURFQTtFQUNJLFdBQUE7RUFDQSxjQUFBO0FDQ0o7O0FERUE7RUFDSSxnQkFBQTtFQUNBLFdBQUE7QUNDSjs7QURFQTtFQUNJLDJDQUFBO0VBQ0Esc0JBQUE7RUFDQSwyQkFBQTtFQUNBLDRCQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsY0FBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVBO0VBQ0ksMENBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0VBQ0EsZUFBQTtFQUNBLFFBQUE7RUFHQSxtREFBQTtBQ0NKOztBREVBO0VBQ0ksZUFBQTtFQUNBLG9CQUFBO0VBQ0EsY0FBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVBO0VBQ0ksZ0JBQUE7RUFDQSxjQUFBO0FDQ0o7O0FER0E7RUFDSSxnQkFBQTtFQUNBLGVBQUE7QUNBSjs7QURHQTtFQUNJLGdCQUFBO0VBQ0EsaUJBQUE7RUFDQSxpQkFBQTtFQUNBLDZCQUFBO0VBQ0EsY0FBQTtFQUVBLGdCQUFBO0FDREo7O0FESUE7RUFDSSxpQkFBQTtFQUNBLGNBQUE7RUFDQSxnQkFBQTtFQUNBLDZCQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLDZCQUFBO0VBQ0EsY0FBQTtBQ0RKOztBREtBO0VBQ0ksZ0NBQUE7RUFDQSxnQkFBQTtBQ0ZKIiwiZmlsZSI6Ii4uL3NyYy9hcHAvcGFnZXMvbWEtbGlzdGUtZGUtY291cnNlcy9tYS1saXN0ZS1kZS1jb3Vyc2VzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI3RyYXNoIHtcbiAgICBmbG9hdDogcmlnaHQ7XG4gICAgYm9yZGVyOiBub25lO1xufVxuXG4jYWRkIHtcbiAgICBib3JkZXI6IG5vbmU7XG4gICAgcGFkZGluZy1sZWZ0OiAxZW07XG59XG5cbjo6LXdlYmtpdC1pbnB1dC1wbGFjZWhvbGRlciB7XG4gICAgLyogQ2hyb21lL09wZXJhL1NhZmFyaSAqL1xuICAgIGNvbG9yOiAjQjVCNUI1O1xufVxuXG46Oi1tb3otcGxhY2Vob2xkZXIge1xuICAgIC8qIEZpcmVmb3ggMTkrICovXG4gICAgY29sb3I6ICNCNUI1QjU7XG59XG5cbjotbXMtaW5wdXQtcGxhY2Vob2xkZXIge1xuICAgIC8qIElFIDEwKyAqL1xuICAgIGNvbG9yOiAjQjVCNUI1O1xufVxuXG46LW1vei1wbGFjZWhvbGRlciB7XG4gICAgLyogRmlyZWZveCAxOC0gKi9cbiAgICBjb2xvcjogI2NjYztcbn1cblxuI2xpc3RlIHtcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL2xpc3RlZGVjb3Vyc2VzLnBuZ1wiKTtcbiAgICBiYWNrZ3JvdW5kLXNpemU6IGNvdmVyO1xuICAgIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbiAgICBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGZpeGVkO1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICB6LWluZGV4OiAyO1xuICAgIGNvbG9yOiAjNkM3NUE2O1xuICAgIHBhZGRpbmctdG9wOiAxZW07XG4gICAgcGFkZGluZy1ib3R0b206IDFlbTtcbiAgICBtaW4taGVpZ2h0OiA0MGVtO1xufVxuXG4uYXBwIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuOCk7XG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xuICAgIG1heC13aWR0aDogMzAwcHg7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIHBhZGRpbmc6IDYwcHggMDtcbiAgICBtYXJnaW46IDQlIGF1dG87XG4gICAgdG9wOiAyMCU7XG4gICAgLXdlYmtpdC1ib3gtc2hhZG93OiAxOHB4IDE4cHggMzFweCAtMTJweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgLW1vei1ib3gtc2hhZG93OiAxOHB4IDE4cHggMzFweCAtMTJweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gICAgYm94LXNoYWRvdzogMThweCAxOHB4IDMxcHggLTEycHggcmdiYSgwLCAwLCAwLCAwLjMpO1xufVxuXG5oMiB7XG4gICAgZm9udC1zaXplOiAycmVtO1xuICAgIHBhZGRpbmctYm90dG9tOiA2MHB4O1xuICAgIGxpbmUtaGVpZ2h0OiAwO1xuICAgIGNvbG9yOiAjNkM3NUE2O1xuICAgIGZvbnQtd2VpZ2h0OiAzMDA7XG59XG5cbiNwYW5pZXIge1xuICAgIG1hcmdpbi10b3A6IDI1cHg7XG4gICAgY29sb3I6ICM2Qzc1QTY7XG4gICAgO1xufVxuXG51bCB7XG4gICAgbWFyZ2luLXRvcDogMjVweDtcbiAgICBwYWRkaW5nOiAwIDIwcHg7XG59XG5cbmxpIHtcbiAgICBsaXN0LXN0eWxlOiBub25lO1xuICAgIGZvbnQtc2l6ZTogMS4ycmVtO1xuICAgIGxpbmUtaGVpZ2h0OiAzcmVtO1xuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjY2NjO1xuICAgIGNvbG9yOiAjNkM3NUE2O1xuICAgIDtcbiAgICBtYXgtd2lkdGg6IDMwMHB4O1xufVxuXG5pbnB1dCB7XG4gICAgbGluZS1oZWlnaHQ6IDJyZW07XG4gICAgcGFkZGluZzogMCA4cHg7XG4gICAgYm9yZGVyLXRvcDogbm9uZTtcbiAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2NjYztcbiAgICBib3JkZXItbGVmdDogbm9uZTtcbiAgICBib3JkZXItcmlnaHQ6IG5vbmU7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gICAgY29sb3I6ICM2Qzc1QTY7XG4gICAgO1xufVxuXG5pbnB1dDpmb2N1cyB7XG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICM4ODg4QUM7XG4gICAgb3V0bGluZS13aWR0aDogMDtcbn0iLCIjdHJhc2gge1xuICBmbG9hdDogcmlnaHQ7XG4gIGJvcmRlcjogbm9uZTtcbn1cblxuI2FkZCB7XG4gIGJvcmRlcjogbm9uZTtcbiAgcGFkZGluZy1sZWZ0OiAxZW07XG59XG5cbjo6LXdlYmtpdC1pbnB1dC1wbGFjZWhvbGRlciB7XG4gIC8qIENocm9tZS9PcGVyYS9TYWZhcmkgKi9cbiAgY29sb3I6ICNCNUI1QjU7XG59XG5cbjo6LW1vei1wbGFjZWhvbGRlciB7XG4gIC8qIEZpcmVmb3ggMTkrICovXG4gIGNvbG9yOiAjQjVCNUI1O1xufVxuXG46LW1zLWlucHV0LXBsYWNlaG9sZGVyIHtcbiAgLyogSUUgMTArICovXG4gIGNvbG9yOiAjQjVCNUI1O1xufVxuXG46LW1vei1wbGFjZWhvbGRlciB7XG4gIC8qIEZpcmVmb3ggMTgtICovXG4gIGNvbG9yOiAjY2NjO1xufVxuXG4jbGlzdGUge1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL2xpc3RlZGVjb3Vyc2VzLnBuZ1wiKTtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xuICBiYWNrZ3JvdW5kLWF0dGFjaG1lbnQ6IGZpeGVkO1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHotaW5kZXg6IDI7XG4gIGNvbG9yOiAjNkM3NUE2O1xuICBwYWRkaW5nLXRvcDogMWVtO1xuICBwYWRkaW5nLWJvdHRvbTogMWVtO1xuICBtaW4taGVpZ2h0OiA0MGVtO1xufVxuXG4uYXBwIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjgpO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG1heC13aWR0aDogMzAwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZzogNjBweCAwO1xuICBtYXJnaW46IDQlIGF1dG87XG4gIHRvcDogMjAlO1xuICAtd2Via2l0LWJveC1zaGFkb3c6IDE4cHggMThweCAzMXB4IC0xMnB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbiAgLW1vei1ib3gtc2hhZG93OiAxOHB4IDE4cHggMzFweCAtMTJweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gIGJveC1zaGFkb3c6IDE4cHggMThweCAzMXB4IC0xMnB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbn1cblxuaDIge1xuICBmb250LXNpemU6IDJyZW07XG4gIHBhZGRpbmctYm90dG9tOiA2MHB4O1xuICBsaW5lLWhlaWdodDogMDtcbiAgY29sb3I6ICM2Qzc1QTY7XG4gIGZvbnQtd2VpZ2h0OiAzMDA7XG59XG5cbiNwYW5pZXIge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xuICBjb2xvcjogIzZDNzVBNjtcbn1cblxudWwge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xuICBwYWRkaW5nOiAwIDIwcHg7XG59XG5cbmxpIHtcbiAgbGlzdC1zdHlsZTogbm9uZTtcbiAgZm9udC1zaXplOiAxLjJyZW07XG4gIGxpbmUtaGVpZ2h0OiAzcmVtO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2NjYztcbiAgY29sb3I6ICM2Qzc1QTY7XG4gIG1heC13aWR0aDogMzAwcHg7XG59XG5cbmlucHV0IHtcbiAgbGluZS1oZWlnaHQ6IDJyZW07XG4gIHBhZGRpbmc6IDAgOHB4O1xuICBib3JkZXItdG9wOiBub25lO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2NjYztcbiAgYm9yZGVyLWxlZnQ6IG5vbmU7XG4gIGJvcmRlci1yaWdodDogbm9uZTtcbiAgYmFja2dyb3VuZC1jb2xvcjogdHJhbnNwYXJlbnQ7XG4gIGNvbG9yOiAjNkM3NUE2O1xufVxuXG5pbnB1dDpmb2N1cyB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjODg4OEFDO1xuICBvdXRsaW5lLXdpZHRoOiAwO1xufSJdfQ== */"]
     });
@@ -6551,6 +6596,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_6__["NgbModal"]
         }, {
           type: _service__WEBPACK_IMPORTED_MODULE_4__["ShoppingListService"]
+        }, {
+          type: _service__WEBPACK_IMPORTED_MODULE_4__["IngredientsService"]
         }];
       }, null);
     })();
@@ -7005,41 +7052,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addRecipeToList",
         value: function addRecipeToList() {
-          var _this21 = this;
+          var _this22 = this;
 
           this.allRecipe.forEach(function (element) {
-            if (element.nomRecette === _this21.newRecetteList.nomRecette) {
-              _this21.newRecetteList.idRecette = element.idRecette;
+            if (element.nomRecette === _this22.newRecetteList.nomRecette) {
+              _this22.newRecetteList.idRecette = element.idRecette;
             }
           });
           this.recetteService.addRecipeToList(this.newRecetteList).subscribe(function (res) {
-            _this21.getInitData();
+            _this22.getInitData();
 
-            _this21.newRecetteList.nomRecette = '';
-            _this21.newRecetteList.idRecette = null;
+            _this22.newRecetteList.nomRecette = '';
+            _this22.newRecetteList.idRecette = null;
           });
         }
       }, {
         key: "getInitData",
         value: function getInitData() {
-          var _this22 = this;
+          var _this23 = this;
 
           this.recetteService.getListRecipes().subscribe(function (data) {
-            _this22.list = data;
+            _this23.list = data;
           });
           this.allRecipe = [];
-          this.recetteService.getAllRecipes().subscribe(function (data) {
+          this.recetteService.getAllRecipesAsc().subscribe(function (data) {
             data.forEach(function (element) {
               var res = true;
 
-              _this22.list.forEach(function (element2) {
+              _this23.list.forEach(function (element2) {
                 if (element.idRecette === element2.idRecette) {
                   res = false;
                 }
               });
 
               if (res) {
-                _this22.allRecipe.push(element);
+                _this23.allRecipe.push(element);
               }
             });
           });
@@ -7047,21 +7094,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteRecipeOfList",
         value: function deleteRecipeOfList(recette) {
-          var _this23 = this;
-
-          this.recetteService.deleteRecipeOfList(recette).subscribe(function (res) {
-            _this23.getInitData();
-
-            _this23.newRecetteList.nomRecette = '';
-            _this23.newRecetteList.idRecette = null;
-          });
-        }
-      }, {
-        key: "deleteAllRecipeOfList",
-        value: function deleteAllRecipeOfList() {
           var _this24 = this;
 
-          this.recetteService.deleteAllRecipeOfList().subscribe(function (res) {
+          this.recetteService.deleteRecipeOfList(recette).subscribe(function (res) {
             _this24.getInitData();
 
             _this24.newRecetteList.nomRecette = '';
@@ -7069,15 +7104,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
-        key: "changeStateOfRecipe",
-        value: function changeStateOfRecipe(recette) {
+        key: "deleteAllRecipeOfList",
+        value: function deleteAllRecipeOfList() {
           var _this25 = this;
 
-          this.recetteService.changeStateOfRecipe(recette).subscribe(function (res) {
+          this.recetteService.deleteAllRecipeOfList().subscribe(function (res) {
             _this25.getInitData();
 
             _this25.newRecetteList.nomRecette = '';
             _this25.newRecetteList.idRecette = null;
+          });
+        }
+      }, {
+        key: "changeStateOfRecipe",
+        value: function changeStateOfRecipe(recette) {
+          var _this26 = this;
+
+          this.recetteService.changeStateOfRecipe(recette).subscribe(function (res) {
+            _this26.getInitData();
+
+            _this26.newRecetteList.nomRecette = '';
+            _this26.newRecetteList.idRecette = null;
           });
         }
       }]);
@@ -7495,7 +7542,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function MesCommentairesComponent(auth, recetteService, modalService, router, commentairesService) {
-        var _this26 = this;
+        var _this27 = this;
 
         _classCallCheck(this, MesCommentairesComponent);
 
@@ -7508,7 +7555,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           ecritPar: this.auth.getUserDetails().pseudo
         };
         this.commentairesService.getCommentaireUser(this.auth.getUserDetails().pseudo).subscribe(function (commentaires) {
-          _this26.commentaires = commentaires;
+          _this27.commentaires = commentaires;
           var options = {
             weekday: 'long',
             year: 'numeric',
@@ -7518,11 +7565,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             minute: 'numeric'
           };
 
-          _this26.commentaires.forEach(function (element) {
+          _this27.commentaires.forEach(function (element) {
             var d = new Date(element.dateCommentaire);
             element.dateCommentaire = d.toLocaleString('FR-fr', options);
 
-            _this26.recetteService.getRecipeById(element.concerne).subscribe(function (data) {
+            _this27.recetteService.getRecipeById(element.concerne).subscribe(function (data) {
               element.nomRecette = data.nomRecette;
             });
           });
@@ -7535,18 +7582,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content) {
-          var _this27 = this;
+          var _this28 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this27.commentaireToModify.message = result.message;
-            _this27.commentaireToModify.dateCommentaire = result.dateCommentaire;
-            _this27.commentaireToModify.concerne = result.concerne;
+            _this28.commentaireToModify.message = result.message;
+            _this28.commentaireToModify.dateCommentaire = result.dateCommentaire;
+            _this28.commentaireToModify.concerne = result.concerne;
 
-            _this27.commentairesService.modifyCommentaire(_this27.commentaireToModify);
+            _this28.commentairesService.modifyCommentaire(_this28.commentaireToModify);
 
-            _this27.router.navigate(['/refresh'], {
+            _this28.router.navigate(['/refresh'], {
               queryParams: {
                 url: 'comment'
               }
@@ -7556,10 +7603,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteCommentaire",
         value: function deleteCommentaire(idCommentaire) {
-          var _this28 = this;
+          var _this29 = this;
 
           this.commentairesService.deleteCommentaire(idCommentaire).subscribe(function (res) {
-            _this28.router.navigate(['/comment']).then(function () {
+            _this29.router.navigate(['/comment']).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -7959,7 +8006,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function MesRecettesComponent(recetteService, router, formBuilder, auth, favorisService, categoriesService) {
-        var _this29 = this;
+        var _this30 = this;
 
         _classCallCheck(this, MesRecettesComponent);
 
@@ -7978,27 +8025,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
         this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
 
-        this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref11) {
-          var _ref12 = _slicedToArray(_ref11, 2),
-              recipes = _ref12[0],
-              filterString = _ref12[1];
+        this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref13) {
+          var _ref14 = _slicedToArray(_ref13, 2),
+              recipes = _ref14[0],
+              filterString = _ref14[1];
 
           return recipes.filter(function (recipe) {
             return recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
           });
         }));
         this.favorisService.getFavoris().subscribe(function (data) {
-          _this29.allRecipe = data;
-          _this29.allRecipe2 = data;
+          _this30.allRecipe = data;
+          _this30.allRecipe2 = data;
         });
         this.categoriesService.getAllCategory().subscribe(function (categorie) {
           categorie.forEach(function (data) {
-            _this29.favorisService.getFavorisByCategory(data.idCategorie).subscribe(function (recipes) {
-              _this29.recipeCategory = recipes;
-              _this29.recipeByCategory[data.idCategorie] = _this29.recipeCategory;
+            _this30.favorisService.getFavorisByCategory(data.idCategorie).subscribe(function (recipes) {
+              _this30.recipeCategory = recipes;
+              _this30.recipeByCategory[data.idCategorie] = _this30.recipeCategory;
             });
           });
-          _this29.categories = categorie;
+          _this30.categories = categorie;
         });
         this.initResearchForm();
       }
@@ -8073,30 +8120,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFavoris",
         value: function getFavoris() {
-          var _this30 = this;
+          var _this31 = this;
 
           this.favorisService.getFavoris().subscribe(function (data) {
-            _this30.allRecipe = data;
-            _this30.allRecipe2 = data;
+            _this31.allRecipe = data;
+            _this31.allRecipe2 = data;
           });
         }
       }, {
         key: "getFavorisByCategory",
         value: function getFavorisByCategory(idCategorie) {
-          var _this31 = this;
+          var _this32 = this;
 
           this.actualCategory = idCategorie;
           this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie);
           this.favorisService.getFavorisByCategory(idCategorie).subscribe(function (data) {
-            _this31.allRecipe = data;
+            _this32.allRecipe = data;
           });
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
 
-          this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref13) {
-            var _ref14 = _slicedToArray(_ref13, 2),
-                recipes = _ref14[0],
-                filterString = _ref14[1];
+          this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref15) {
+            var _ref16 = _slicedToArray(_ref15, 2),
+                recipes = _ref16[0],
+                filterString = _ref16[1];
 
             return recipes.filter(function (recipe) {
               return recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
@@ -8107,10 +8154,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateNbView",
         value: function updateNbView(recette) {
-          var _this32 = this;
+          var _this33 = this;
 
           this.recetteService.updateNbView(recette).subscribe(function (res) {
-            _this32.router.navigate(['/recipe', recette.idRecette]).then(function () {
+            _this33.router.navigate(['/recipe', recette.idRecette]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -8124,10 +8171,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteFavoris",
         value: function deleteFavoris(idRecette) {
-          var _this33 = this;
+          var _this34 = this;
 
           this.favorisService.deleteFavoris(idRecette).subscribe(function (res) {
-            _this33.router.navigate(['/favorites'], {
+            _this34.router.navigate(['/favorites'], {
               queryParams: {
                 refresh: new Date().getTime()
               }
@@ -8136,7 +8183,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             console.log(err);
           });
           this.favorisService.getFavoris().subscribe(function (data) {
-            _this33.allRecipe = data;
+            _this34.allRecipe = data;
           });
           /* rafraichit la page */
         }
@@ -8951,7 +8998,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function ModifierRecetteComponent(recetteService, router, route, ingredientsService, modalService, http, categoriesService, unitesService, imagesService, imageCompress) {
-        var _this34 = this;
+        var _this35 = this;
 
         _classCallCheck(this, ModifierRecetteComponent);
 
@@ -8991,25 +9038,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           idRecette: null
         };
         this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (recette) {
-          _this34.recette = recette;
+          _this35.recette = recette;
         });
         this.ingredientsService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (ingredient) {
-          _this34.ingredients = ingredient;
+          _this35.ingredients = ingredient;
         });
         this.imagesService.getImage(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (res) {
           if (res.length !== 0) {
-            _this34.recette.idImage = res[0].idImage;
-            _this34.image = res[0];
+            _this35.recette.idImage = res[0].idImage;
+            _this35.image = res[0];
           }
         });
         this.ingredientsService.getRestIngredients(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (ingredients) {
-          _this34.allIngredients = ingredients;
+          _this35.allIngredients = ingredients;
         });
         this.unitesService.getAllUnite().subscribe(function (unites) {
-          _this34.allUnites = unites;
+          _this35.allUnites = unites;
         });
         this.categoriesService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-          _this34.allCategories = categories;
+          _this35.allCategories = categories;
         });
         this.getCategory(parseInt(this.route.snapshot.paramMap.get('id'), 10));
       }
@@ -9020,7 +9067,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "selectFile",
         value: function selectFile(event) {
-          var _this35 = this;
+          var _this36 = this;
 
           var fileName;
           this.file = event.target.files[0];
@@ -9030,9 +9077,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var reader = new FileReader();
 
             reader.onload = function (event) {
-              _this35.localUrl = event.target.result;
+              _this36.localUrl = event.target.result;
 
-              _this35.compressFile(_this35.localUrl, fileName);
+              _this36.compressFile(_this36.localUrl, fileName);
             };
 
             reader.readAsDataURL(event.target.files[0]);
@@ -9041,26 +9088,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "compressFile",
         value: function compressFile(image, fileName) {
-          var _this36 = this;
+          var _this37 = this;
 
           var orientation = -1;
           this.sizeOfOriginalImage = this.imageCompress.byteCount(image) / (1024 * 1024);
           console.warn('Size in bytes is now:', this.sizeOfOriginalImage);
           this.imageCompress.compressFile(image, orientation, 50, 50).then(function (result) {
-            _this36.imgResultAfterCompress = result;
-            _this36.localCompressedURl = result;
-            _this36.sizeOFCompressedImage = _this36.imageCompress.byteCount(result) / (1024 * 1024);
-            console.warn('Size in bytes after compression:', _this36.sizeOFCompressedImage); // create file from byte
+            _this37.imgResultAfterCompress = result;
+            _this37.localCompressedURl = result;
+            _this37.sizeOFCompressedImage = _this37.imageCompress.byteCount(result) / (1024 * 1024);
+            console.warn('Size in bytes after compression:', _this37.sizeOFCompressedImage); // create file from byte
 
             var imageName = fileName; // call method that creates a blob from dataUri
 
-            var imageBlob = _this36.dataURItoBlob(_this36.imgResultAfterCompress.split(',')[1]); // imageFile created below is the new compressed file which can be send to API in form data
+            var imageBlob = _this37.dataURItoBlob(_this37.imgResultAfterCompress.split(',')[1]); // imageFile created below is the new compressed file which can be send to API in form data
 
 
             var imageFile = new File([imageBlob], imageName, {
               type: 'image/jpeg'
             });
-            _this36.image2 = imageFile;
+            _this37.image2 = imageFile;
           });
         }
       }, {
@@ -9091,7 +9138,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this37 = this;
+          var _this38 = this;
 
           var formData = new FormData();
           console.log(this.image2);
@@ -9099,22 +9146,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (this.image) {
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this37.image = res[0];
-              _this37.imageToModify.idImage = res[0];
-              _this37.imageToModify.idRecette = _this37.recette.idRecette;
+              _this38.image = res[0];
+              _this38.imageToModify.idImage = res[0];
+              _this38.imageToModify.idRecette = _this38.recette.idRecette;
 
-              _this37.http.post("/server/image/update", _this37.imageToModify).subscribe(function (res) {
-                _this37.image = res[0];
+              _this38.http.post("/server/image/update", _this38.imageToModify).subscribe(function (res) {
+                _this38.image = res[0];
                 window.location.reload();
               });
             });
           } else {
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this37.image = res[0];
-              _this37.imageToModify.idImage = res[0];
-              _this37.imageToModify.idRecette = _this37.recette.idRecette;
+              _this38.image = res[0];
+              _this38.imageToModify.idImage = res[0];
+              _this38.imageToModify.idRecette = _this38.recette.idRecette;
 
-              _this37.imagesService.addImageToRecipe(_this37.imageToModify);
+              _this38.imagesService.addImageToRecipe(_this38.imageToModify);
 
               window.location.reload();
             });
@@ -9123,10 +9170,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCategory",
         value: function getCategory(id) {
-          var _this38 = this;
+          var _this39 = this;
 
           this.categoriesService.getCategoryByRecette(id).subscribe(function (categories) {
-            _this38.categories = categories;
+            _this39.categories = categories;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               if (err.status === 402) {
@@ -9202,10 +9249,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteIngredientRececipe",
         value: function deleteIngredientRececipe(ingredient, recette) {
-          var _this39 = this;
+          var _this40 = this;
 
           this.recetteService.deleteIngredientRecipe(ingredient, recette).subscribe(function (res) {
-            _this39.router.navigate(['updateRecipe/:id']).then(function () {
+            _this40.router.navigate(['updateRecipe/:id']).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -9215,28 +9262,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteRecipeCategory",
         value: function deleteRecipeCategory(categorie, recette) {
-          var _this40 = this;
-
-          this.recetteService.deleteRecipeCategory(categorie, recette).subscribe(function (res) {
-            setTimeout(function () {
-              _this40.categoriesService.getRestCategory(parseInt(_this40.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this40.allCategories = categories;
-              });
-
-              _this40.categoriesService.getCategoryByRecette(parseInt(_this40.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this40.categories = categories;
-              });
-            }, 1000);
-          }, function (err) {
-            console.log(err);
-          });
-        }
-      }, {
-        key: "addRecipeCategory",
-        value: function addRecipeCategory(categorie, recette) {
           var _this41 = this;
 
-          this.recetteService.addRecipeCategory(categorie, recette).subscribe(function (res) {
+          this.recetteService.deleteRecipeCategory(categorie, recette).subscribe(function (res) {
             setTimeout(function () {
               _this41.categoriesService.getRestCategory(parseInt(_this41.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
                 _this41.allCategories = categories;
@@ -9251,25 +9279,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
+        key: "addRecipeCategory",
+        value: function addRecipeCategory(categorie, recette) {
+          var _this42 = this;
+
+          this.recetteService.addRecipeCategory(categorie, recette).subscribe(function (res) {
+            setTimeout(function () {
+              _this42.categoriesService.getRestCategory(parseInt(_this42.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this42.allCategories = categories;
+              });
+
+              _this42.categoriesService.getCategoryByRecette(parseInt(_this42.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this42.categories = categories;
+              });
+            }, 1000);
+          }, function (err) {
+            console.log(err);
+          });
+        }
+      }, {
         key: "open",
         value: function open(content) {
-          var _this42 = this;
+          var _this43 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
             console.log(result);
 
-            _this42.allIngredients.forEach(function (element) {
+            _this43.allIngredients.forEach(function (element) {
               if (result.nomIngredient === element.nomIngredient) {
-                _this42.newIngredient.idIngredient = element.idIngredient;
+                _this43.newIngredient.idIngredient = element.idIngredient;
               }
             });
 
-            _this42.newIngredient.qte = result.qte;
-            _this42.newIngredient.idUnite = result.idUnite;
+            _this43.newIngredient.qte = result.qte;
+            _this43.newIngredient.idUnite = result.idUnite;
 
-            _this42.recetteService.addIngredientRecette(_this42.newIngredient);
+            _this43.recetteService.addIngredientRecette(_this43.newIngredient);
 
             setTimeout(function () {
               window.location.reload();
@@ -10211,29 +10258,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(MonProfileComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this43 = this;
+          var _this44 = this;
 
           this.auth.profile().subscribe(function (user) {
-            _this43.credentials = user;
+            _this44.credentials = user;
           }, function (err) {
             console.error(err);
           });
 
           if (this.route.queryParams) {
             this.route.queryParams.subscribe(function (params) {
-              _this43.credentials.success = params.success;
+              _this44.credentials.success = params.success;
             });
           }
         }
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this44 = this;
+          var _this45 = this;
 
           this.auth.updateProfile(this.credentials).subscribe(function (res) {
-            _this44.credentials.success = res.success;
+            _this45.credentials.success = res.success;
 
-            _this44.router.navigateByUrl('/profile').then(function () {
+            _this45.router.navigateByUrl('/profile').then(function () {
               // tslint:disable-next-line: deprecation
               setTimeout(window.location.reload.bind(window.location), 2500);
             });
@@ -10244,11 +10291,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteProfile",
         value: function deleteProfile(pseudo) {
-          var _this45 = this;
+          var _this46 = this;
 
           this.auth.logout();
           this.auth.deleteProfile(pseudo).subscribe(function (res) {
-            _this45.router.navigate(['/']);
+            _this46.router.navigate(['/']);
           }, function (err) {
             console.log(err);
           });
@@ -11483,7 +11530,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function RecetteComponent(auth, recetteService, router, route, imagesService, commentairesService, ingredientsService, favorisService, unitesService, shoppingListService) {
-        var _this46 = this;
+        var _this47 = this;
 
         _classCallCheck(this, RecetteComponent);
 
@@ -11520,37 +11567,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
         this.isFavori = false;
         this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (recette) {
-          _this46.recette = recette;
-          _this46.recette.tempsCuisson = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this46.recette.tempsCuisson);
-          _this46.recette.tempsPreparation = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this46.recette.tempsPreparation);
-          _this46.nbrePartInitial = _this46.recette.nbrePart;
+          _this47.recette = recette;
+          _this47.recette.tempsCuisson = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this47.recette.tempsCuisson);
+          _this47.recette.tempsPreparation = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this47.recette.tempsPreparation);
+          _this47.nbrePartInitial = _this47.recette.nbrePart;
         });
         this.recetteService.getLatestReceipes().subscribe(function (data) {
-          _this46.latestRecipes = data;
+          _this47.latestRecipes = data;
         });
         this.imagesService.getImage(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (res) {
           console.log(res);
-          _this46.image = res;
+          _this47.image = res;
         });
         this.ingredientsService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (ingredient) {
           ingredient.forEach(function (element) {
             element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte);
           });
-          _this46.ingredients = ingredient;
-          _this46.recette.ingredients = ingredient;
-          _this46.ingredientQteInitial = ingredient;
+          _this47.ingredients = ingredient;
+          _this47.recette.ingredients = ingredient;
+          _this47.ingredientQteInitial = ingredient;
         });
         this.commentairesService.getCommentaireRecipe(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (commentaires) {
           if (commentaires[0]) {
-            _this46.commentaires = commentaires;
+            _this47.commentaires = commentaires;
           }
         });
 
         if (this.auth.isLoggedIn()) {
           this.favorisService.getFavoris().subscribe(function (data) {
             data.forEach(function (element) {
-              if (element.idRecette === parseInt(_this46.route.snapshot.paramMap.get('id'), 10)) {
-                _this46.isFavori = true;
+              if (element.idRecette === parseInt(_this47.route.snapshot.paramMap.get('id'), 10)) {
+                _this47.isFavori = true;
               }
             });
           });
@@ -11570,10 +11617,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateNbView",
         value: function updateNbView(recette) {
-          var _this47 = this;
+          var _this48 = this;
 
           this.recetteService.updateNbView(recette).subscribe(function (res) {
-            _this47.router.navigate(['/recipe', recette.idRecette]).then(function () {
+            _this48.router.navigate(['/recipe', recette.idRecette]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -11595,10 +11642,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUtiliserIngredientsByIdRecette",
         value: function getUtiliserIngredientsByIdRecette(id) {
-          var _this48 = this;
+          var _this49 = this;
 
           this.ingredientsService.getUtiliserIngredientsByIdRecette(id).subscribe(function (qtes) {
-            _this48.qtes = qtes;
+            _this49.qtes = qtes;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               if (err.status === 402) {
@@ -11611,10 +11658,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUniteByIdUnite",
         value: function getUniteByIdUnite(id) {
-          var _this49 = this;
+          var _this50 = this;
 
           this.unitesService.getUniteById(id).subscribe(function (unite) {
-            _this49.unite = unite;
+            _this50.unite = unite;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               if (err.status === 402) {
@@ -11650,10 +11697,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteCommentaire",
         value: function deleteCommentaire(idCommentaire) {
-          var _this50 = this;
+          var _this51 = this;
 
           this.commentairesService.deleteCommentaire(idCommentaire).subscribe(function (res) {
-            _this50.router.navigate(['/recipe/' + parseInt(_this50.route.snapshot.paramMap.get('id'), 10)]).then(function () {
+            _this51.router.navigate(['/recipe/' + parseInt(_this51.route.snapshot.paramMap.get('id'), 10)]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -11665,19 +11712,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addCommentaire",
         value: function addCommentaire(message) {
-          var _this51 = this;
+          var _this52 = this;
 
           if (this.images) {
             var formData = new FormData();
             formData.append('file', this.images);
             this.newCommentaire.message = message;
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this51.newCommentaire.idImage = res[0];
+              _this52.newCommentaire.idImage = res[0];
 
-              _this51.commentairesService.addCommentaire(_this51.newCommentaire).subscribe(function (res2) {
-                _this51.newCommentaire.idCommentaire = res2.idCommentaire;
+              _this52.commentairesService.addCommentaire(_this52.newCommentaire).subscribe(function (res2) {
+                _this52.newCommentaire.idCommentaire = res2.idCommentaire;
 
-                _this51.commentairesService.addImageToCommentaire(_this51.newCommentaire).subscribe();
+                _this52.commentairesService.addImageToCommentaire(_this52.newCommentaire).subscribe();
 
                 window.location.reload();
               });
@@ -11692,7 +11739,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addReponse",
         value: function addReponse(event, idCommentaire) {
-          var _this52 = this;
+          var _this53 = this;
 
           if (this.images) {
             var formData = new FormData();
@@ -11700,12 +11747,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.newResponse.message = event.target.message.value;
             this.newResponse.parent = idCommentaire;
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this52.newResponse.idImage = res[0];
+              _this53.newResponse.idImage = res[0];
 
-              _this52.commentairesService.addCommentaire(_this52.newResponse).subscribe(function (res2) {
-                _this52.newResponse.idCommentaire = res2.idCommentaire;
+              _this53.commentairesService.addCommentaire(_this53.newResponse).subscribe(function (res2) {
+                _this53.newResponse.idCommentaire = res2.idCommentaire;
 
-                _this52.commentairesService.addImageToCommentaire(_this52.newResponse).subscribe();
+                _this53.commentairesService.addImageToCommentaire(_this53.newResponse).subscribe();
 
                 window.location.reload();
               });
@@ -11721,30 +11768,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onProportionChange",
         value: function onProportionChange(searchValue) {
-          var _this53 = this;
+          var _this54 = this;
 
           this.recette.ingredients.forEach(function (element) {
-            element.qte = element.qte * parseInt(searchValue, 10) / _this53.recette.nbrePart;
+            element.qte = element.qte * parseInt(searchValue, 10) / _this54.recette.nbrePart;
           });
           this.recette.nbrePart = parseInt(searchValue, 10);
         }
       }, {
         key: "onProportionLess",
         value: function onProportionLess(value) {
-          var _this54 = this;
+          var _this55 = this;
 
           this.recette.ingredients.forEach(function (element) {
-            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this54.recette.nbrePart);
+            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this55.recette.nbrePart);
           });
           this.recette.nbrePart = this.recette.nbrePart - 1;
         }
       }, {
         key: "onProportionMore",
         value: function onProportionMore(value) {
-          var _this55 = this;
+          var _this56 = this;
 
           this.recette.ingredients.forEach(function (element) {
-            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this55.recette.nbrePart);
+            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this56.recette.nbrePart);
           });
           this.recette.nbrePart = this.recette.nbrePart + 1;
         }
@@ -12493,7 +12540,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function RecettesComponent(recetteService, router, auth, formBuilder, route, imagesService, categoriesService, favorisService) {
-        var _this56 = this;
+        var _this57 = this;
 
         _classCallCheck(this, RecettesComponent);
 
@@ -12521,18 +12568,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.getRecipeByCategory(this.route.snapshot.paramMap.get('id'));
         } else {
           this.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-            _this56.allRecipe = data;
-            _this56.allRecipe2 = data;
+            _this57.allRecipe = data;
+            _this57.allRecipe2 = data;
           });
         }
 
         this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
         this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
 
-        this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref15) {
-          var _ref16 = _slicedToArray(_ref15, 2),
-              recipes = _ref16[0],
-              filterString = _ref16[1];
+        this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref17) {
+          var _ref18 = _slicedToArray(_ref17, 2),
+              recipes = _ref18[0],
+              filterString = _ref18[1];
 
           return recipes.filter(function (recipe) {
             return recipe.ingredients.filter(function (ingredient) {
@@ -12547,11 +12594,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this.categoriesService.getAllCategory().subscribe(function (categorie) {
-          _this56.categories = categorie;
+          _this57.categories = categorie;
           categorie.forEach(function (data) {
-            _this56.recetteService.getRecipeByCategory(data.idCategorie).subscribe(function (recipes) {
-              _this56.recipeCategory = recipes;
-              _this56.recipeByCategory[data.idCategorie] = _this56.recipeCategory;
+            _this57.recetteService.getRecipeByCategory(data.idCategorie).subscribe(function (recipes) {
+              _this57.recipeCategory = recipes;
+              _this57.recipeByCategory[data.idCategorie] = _this57.recipeCategory;
             });
           });
         });
@@ -12637,20 +12684,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllRecipes",
         value: function getAllRecipes() {
-          var _this57 = this;
+          var _this58 = this;
 
           this.actualCategory = null;
           this.recettes$ = this.recetteService.getAllRecipesAndIngredients();
           this.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-            _this57.allRecipe = data;
+            _this58.allRecipe = data;
           });
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
 
-          this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref17) {
-            var _ref18 = _slicedToArray(_ref17, 2),
-                recipes = _ref18[0],
-                filterString = _ref18[1];
+          this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref19) {
+            var _ref20 = _slicedToArray(_ref19, 2),
+                recipes = _ref20[0],
+                filterString = _ref20[1];
 
             return recipes.filter(function (recipe) {
               return recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
@@ -12667,10 +12714,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllCategory",
         value: function getAllCategory() {
-          var _this58 = this;
+          var _this59 = this;
 
           this.categoriesService.getAllCategory().subscribe(function (categorie) {
-            _this58.categories = categorie;
+            _this59.categories = categorie;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) {
               if (err.status === 402) {
@@ -12682,20 +12729,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRecipeByCategory",
         value: function getRecipeByCategory(idCategorie) {
-          var _this59 = this;
+          var _this60 = this;
 
           this.actualCategory = idCategorie;
           this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie);
           this.recetteService.getRecipeByCategory(idCategorie).subscribe(function (data) {
-            _this59.allRecipe = data;
+            _this60.allRecipe = data;
           });
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
 
-          this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref19) {
-            var _ref20 = _slicedToArray(_ref19, 2),
-                recipes = _ref20[0],
-                filterString = _ref20[1];
+          this.filteredRecipe$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.recettes$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref21) {
+            var _ref22 = _slicedToArray(_ref21, 2),
+                recipes = _ref22[0],
+                filterString = _ref22[1];
 
             return recipes.filter(function (recipe) {
               return recipe.nomRecette.toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
@@ -12705,10 +12752,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateNbView",
         value: function updateNbView(recette) {
-          var _this60 = this;
+          var _this61 = this;
 
           this.recetteService.updateNbView(recette).subscribe(function (res) {
-            _this60.router.navigate(['/recipe', recette.idRecette]).then(function () {
+            _this61.router.navigate(['/recipe', recette.idRecette]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -12722,26 +12769,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addFavoris",
         value: function addFavoris(id) {
-          var _this61 = this;
+          var _this62 = this;
 
           this.newFavori.idRecette = id;
           this.favorisService.addFavoris(this.newFavori).subscribe(function (res) {
-            _this61.getFavoris();
+            _this62.getFavoris();
 
-            _this61.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-              _this61.allRecipe = data;
+            _this62.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
+              _this62.allRecipe = data;
             });
           });
         }
       }, {
         key: "getFavoris",
         value: function getFavoris() {
-          var _this62 = this;
+          var _this63 = this;
 
           this.favoris = [];
           this.favorisService.getFavoris().subscribe(function (favoris) {
             favoris.forEach(function (element) {
-              _this62.favoris.push(element.idRecette);
+              _this63.favoris.push(element.idRecette);
             });
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) {
@@ -12754,13 +12801,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteFavoris",
         value: function deleteFavoris(idRecette) {
-          var _this63 = this;
+          var _this64 = this;
 
           this.favorisService.deleteFavoris(idRecette).subscribe(function (res) {
-            _this63.getFavoris();
+            _this64.getFavoris();
 
-            _this63.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-              _this63.allRecipe = data;
+            _this64.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
+              _this64.allRecipe = data;
             });
           });
           /* rafraichit la page */
@@ -12963,11 +13010,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(RefreshComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this64 = this;
+          var _this65 = this;
 
           this.activatedRoute.queryParams.subscribe(function (params) {
             if (params.url) {
-              _this64.route.navigate([params.url]);
+              _this65.route.navigate([params.url]);
             }
           });
         }
@@ -13143,22 +13190,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "RequestResetUser",
         value: function RequestResetUser(form) {
-          var _this65 = this;
+          var _this66 = this;
 
           if (form.valid) {
             this.IsvalidForm = true;
             this.authService.requestReset(this.RequestResetForm.value).subscribe(function (data) {
-              _this65.RequestResetForm.reset();
+              _this66.RequestResetForm.reset();
 
-              _this65.successMessage = 'Un email vous a été envoyé pour changer votre mot de passe.';
+              _this66.successMessage = 'Un email vous a été envoyé pour changer votre mot de passe.';
               setTimeout(function () {
-                _this65.successMessage = null;
+                _this66.successMessage = null;
 
-                _this65.router.navigate(['login']);
+                _this66.router.navigate(['login']);
               }, 3000);
             }, function (err) {
               if (err.error.message) {
-                _this65.errorMessage = err.error.message;
+                _this66.errorMessage = err.error.message;
               }
             });
           } else {
@@ -13546,7 +13593,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function ResponseResetComponent(authService, router, route, fb) {
-        var _this66 = this;
+        var _this67 = this;
 
         _classCallCheck(this, ResponseResetComponent);
 
@@ -13557,9 +13604,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.IsResetFormValid = true;
         this.CurrentState = 'Wait';
         this.route.params.subscribe(function (params) {
-          _this66.resetToken = params.token;
+          _this67.resetToken = params.token;
 
-          _this66.VerifyToken();
+          _this67.VerifyToken();
         });
       }
 
@@ -13571,14 +13618,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "VerifyToken",
         value: function VerifyToken() {
-          var _this67 = this;
+          var _this68 = this;
 
           this.authService.ValidPasswordToken({
             resettoken: this.resetToken
           }).subscribe(function (data) {
-            _this67.CurrentState = 'Verified';
+            _this68.CurrentState = 'Verified';
           }, function (err) {
-            _this67.CurrentState = 'NotVerified';
+            _this68.CurrentState = 'NotVerified';
           });
         }
       }, {
@@ -13611,22 +13658,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ResetPassword",
         value: function ResetPassword(form) {
-          var _this68 = this;
+          var _this69 = this;
 
           if (form.valid) {
             this.IsResetFormValid = true;
             this.authService.newPassword(this.ResponseResetForm.value).subscribe(function (data) {
-              _this68.ResponseResetForm.reset();
+              _this69.ResponseResetForm.reset();
 
-              _this68.successMessage = data.message;
+              _this69.successMessage = data.message;
               setTimeout(function () {
-                _this68.successMessage = null;
+                _this69.successMessage = null;
 
-                _this68.router.navigate(['login']);
+                _this69.router.navigate(['login']);
               }, 3000);
             }, function (err) {
               if (err.error.message) {
-                _this68.errorMessage = err.error.message;
+                _this69.errorMessage = err.error.message;
               }
             });
           } else {
@@ -13784,7 +13831,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "login",
         value: function login() {
-          var _this69 = this;
+          var _this70 = this;
 
           var formValue = this.loginForm.value;
           this.credentials.pseudo = formValue.pseudo;
@@ -13793,12 +13840,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (res.error === 'Mot de passe et/ou pseudo incorrect') {
               alert(res.error);
             } else {
-              if (_this69.auth.emailConfirmed()) {
-                _this69.router.navigateByUrl('/');
+              if (_this70.auth.emailConfirmed()) {
+                _this70.router.navigateByUrl('/');
 
                 alert('Bienvenue sur Marine\'s Recipe');
               } else {
-                _this69.auth.logout();
+                _this70.auth.logout();
 
                 window.location.reload();
                 alert('Vous devez vérifier votre adresse mail avant de pouvoir vous connecter ! :)');
@@ -14126,10 +14173,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
         this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
 
-        this.filteredUnite$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.unites$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref21) {
-          var _ref22 = _slicedToArray(_ref21, 2),
-              unites = _ref22[0],
-              filterString = _ref22[1];
+        this.filteredUnite$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.unites$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref23) {
+          var _ref24 = _slicedToArray(_ref23, 2),
+              unites = _ref24[0],
+              filterString = _ref24[1];
 
           return unites.filter(function (unite) {
             return unite.libelleUnite.toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
@@ -14147,10 +14194,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
 
-          this.filteredUnite$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.unites$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref23) {
-            var _ref24 = _slicedToArray(_ref23, 2),
-                unites = _ref24[0],
-                filterString = _ref24[1];
+          this.filteredUnite$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["combineLatest"])(this.unites$, this.filter$).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])(function (_ref25) {
+            var _ref26 = _slicedToArray(_ref25, 2),
+                unites = _ref26[0],
+                filterString = _ref26[1];
 
             return unites.filter(function (unite) {
               return unite.libelleUnite.toLowerCase().indexOf(filterString.toLowerCase()) !== -1;
@@ -14160,10 +14207,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteUnite",
         value: function deleteUnite(idUnite) {
-          var _this70 = this;
+          var _this71 = this;
 
           this.unitesService.deleteUnite(idUnite).subscribe(function (res) {
-            _this70.router.navigate(['/unite'], {
+            _this71.router.navigate(['/unite'], {
               queryParams: {
                 refresh: new Date().getTime()
               }
@@ -14500,7 +14547,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updatePassword",
         value: function updatePassword() {
-          var _this71 = this;
+          var _this72 = this;
 
           var formValue = this.updatePasswordForm.value;
           this.credentials.mdp = formValue.mdp;
@@ -14518,7 +14565,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               alert('L\'ancien mot de passe n\'est pas correct.');
               return;
             } else {
-              _this71.router.navigateByUrl('/profile');
+              _this72.router.navigateByUrl('/profile');
             }
           }, function (err) {
             console.log(err);
@@ -14954,12 +15001,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "register",
         value: function register(user) {
-          var _this72 = this;
+          var _this73 = this;
 
           var base = this.http.post('/server/register', user);
           var request = base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             if (data.token) {
-              _this72.saveToken(data.token);
+              _this73.saveToken(data.token);
             }
 
             return data;
@@ -14969,12 +15016,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "login",
         value: function login(user) {
-          var _this73 = this;
+          var _this74 = this;
 
           var base = this.http.post('/server/login', user);
           var request = base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             if (data.token) {
-              _this73.saveToken(data.token);
+              _this74.saveToken(data.token);
             }
 
             return data;
@@ -15309,7 +15356,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCommentaireRecipe",
         value: function getCommentaireRecipe(id) {
-          var _this74 = this;
+          var _this75 = this;
 
           var options = {
             weekday: 'long',
@@ -15321,7 +15368,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           return this.http.get("/server/commentaires/recipe/".concat(id)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this74.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
+              _this75.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
@@ -15330,7 +15377,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var d = new Date(element.dateCommentaire);
               element.dateCommentaire = d.toLocaleString('FR-fr', options);
 
-              _this74.auth.getUser(element.ecritPar).subscribe(function (data) {
+              _this75.auth.getUser(element.ecritPar).subscribe(function (data) {
                 element.admin = data.admin;
               });
 
@@ -15338,7 +15385,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var bool = true;
 
               while (bool) {
-                _this74.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
+                _this75.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
                   element.children = commentaire;
                 });
 
@@ -15355,7 +15402,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getReponseCommentaireRecipe",
         value: function getReponseCommentaireRecipe(id, idCommentaire) {
-          var _this75 = this;
+          var _this76 = this;
 
           var options = {
             weekday: 'long',
@@ -15367,7 +15414,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           return this.http.get("/server/commentaires/recipe/".concat(id, "/reponse/").concat(idCommentaire)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (commentaire) {
             commentaire.forEach(function (element) {
-              _this75.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
+              _this76.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
@@ -15376,11 +15423,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var d = new Date(element.dateCommentaire);
               element.dateCommentaire = d.toLocaleString('FR-fr', options);
 
-              _this75.auth.getUser(element.ecritPar).subscribe(function (data) {
+              _this76.auth.getUser(element.ecritPar).subscribe(function (data) {
                 element.admin = data.admin;
               });
 
-              _this75.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
+              _this76.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
                 element.children = commentaire;
               });
             });
@@ -15513,19 +15560,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFavoris",
         value: function getFavoris() {
-          var _this76 = this;
+          var _this77 = this;
 
           var pseudo = this.auth.getUserDetails().pseudo;
           var base = this.http.get("/server/favorites/recipe/".concat(pseudo));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this76.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this77.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this76.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this77.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
@@ -15537,19 +15584,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFavorisByCategory",
         value: function getFavorisByCategory(idCategorie) {
-          var _this77 = this;
+          var _this78 = this;
 
           var pseudo = this.auth.getUserDetails().pseudo;
           var base = this.http.get("/server/favorites/recipe/".concat(pseudo, "/").concat(idCategorie));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this77.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this78.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this77.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this78.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
@@ -16081,27 +16128,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(RecettesService, [{
         key: "getAllRecipes",
         value: function getAllRecipes() {
-          var _this78 = this;
-
-          var base = this.http.get("/server/recipe/allRecipes");
-          return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
-            data.forEach(function (element) {
-              _this78.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
-                var _a;
-
-                element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
-              });
-
-              _this78.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
-                element.categories = data;
-              });
-            });
-            return data;
-          }));
-        }
-      }, {
-        key: "getAllRecipesAndIngredients",
-        value: function getAllRecipesAndIngredients() {
           var _this79 = this;
 
           var base = this.http.get("/server/recipe/allRecipes");
@@ -16113,14 +16139,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              element.ingredients = [];
-
-              _this79.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
-                element.ingredients = data;
-              });
-
-              element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
-
               _this79.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
@@ -16129,38 +16147,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
-        key: "getRecipeById",
-        value: function getRecipeById(id) {
+        key: "getAllRecipesAsc",
+        value: function getAllRecipesAsc() {
           var _this80 = this;
 
-          return this.http.get('/server/recipe/get/' + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this80.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
-              var _a;
+          var base = this.http.get("/server/recipe/allRecipes/asc");
+          return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
+            data.forEach(function (element) {
+              _this80.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+                var _a;
 
-              element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
+                element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
+              });
+
+              _this80.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+                element.categories = data;
+              });
             });
-
-            _this80.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
-              element.categories = data;
-            });
-
-            return element;
+            return data;
           }));
         }
       }, {
-        key: "getLatestReceipes",
-        value: function getLatestReceipes() {
+        key: "getAllRecipesAndIngredients",
+        value: function getAllRecipesAndIngredients() {
           var _this81 = this;
 
-          var base = this.http.get("/server/recipe/latestRecipes");
+          var base = this.http.get("/server/recipe/allRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
               _this81.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
-                element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
               });
+
+              element.ingredients = [];
+
+              _this81.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+                element.ingredients = data;
+              });
+
+              element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
 
               _this81.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
@@ -16170,21 +16197,62 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
-        key: "getMostPopularRecipes",
-        value: function getMostPopularRecipes() {
+        key: "getRecipeById",
+        value: function getRecipeById(id) {
           var _this82 = this;
 
-          var base = this.http.get("/server/recipe/mostPopularRecipes");
+          return this.http.get('/server/recipe/get/' + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
+            _this82.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              var _a;
+
+              element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
+            });
+
+            _this82.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              element.categories = data;
+            });
+
+            return element;
+          }));
+        }
+      }, {
+        key: "getLatestReceipes",
+        value: function getLatestReceipes() {
+          var _this83 = this;
+
+          var base = this.http.get("/server/recipe/latestRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this82.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this83.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
                 element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
               });
 
-              _this82.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this83.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+                element.categories = data;
+              });
+            });
+            return data;
+          }));
+        }
+      }, {
+        key: "getMostPopularRecipes",
+        value: function getMostPopularRecipes() {
+          var _this84 = this;
+
+          var base = this.http.get("/server/recipe/mostPopularRecipes");
+          return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
+            data.forEach(function (element) {
+              _this84.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+                var _a;
+
+                element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
+                element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
+              });
+
+              _this84.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -16202,18 +16270,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRecipeByCategory",
         value: function getRecipeByCategory(idCategorie) {
-          var _this83 = this;
+          var _this85 = this;
 
           var base = this.http.get("/server/recipe/category/".concat(idCategorie));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this83.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this85.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this83.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this85.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
@@ -16341,18 +16409,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllRecipesForMenu",
         value: function getAllRecipesForMenu() {
-          var _this84 = this;
+          var _this86 = this;
 
           var base = this.http.get("/server/menu/allRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this84.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this86.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this84.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this86.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -16362,16 +16430,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPetitDej",
         value: function getPetitDej() {
-          var _this85 = this;
+          var _this87 = this;
 
           return this.http.get('/server/menu/petitDej').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this85.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
+            _this87.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
               var _a;
 
               element[0].lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
             });
 
-            _this85.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
+            _this87.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
               element[0].categories = data;
             });
 
@@ -16381,16 +16449,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRepas",
         value: function getRepas() {
-          var _this86 = this;
+          var _this88 = this;
 
           return this.http.get('/server/menu/repas').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this86.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
+            _this88.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
               var _a;
 
               element[0].lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
             });
 
-            _this86.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
+            _this88.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
               element[0].categories = data;
             });
 
@@ -16400,16 +16468,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getDouceur",
         value: function getDouceur() {
-          var _this87 = this;
+          var _this89 = this;
 
           return this.http.get('/server/menu/douceur').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this87.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
+            _this89.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
               var _a;
 
               element[0].lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
             });
 
-            _this87.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
+            _this89.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
               element[0].categories = data;
             });
 
@@ -16578,6 +16646,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var pseudo = this.auth.getUserDetails().pseudo;
           var base = this.http.get("/server/shoppingList/".concat(pseudo));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
+            console.log(data);
             return data;
           }));
         }
@@ -16587,17 +16656,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var pseudo = this.auth.getUserDetails().pseudo;
           var base = this.http.get("/server/shoppingList/rest/".concat(pseudo));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
+            console.log(data);
             return data;
           }));
         }
       }, {
         key: "addIngredientShoppingList",
         value: function addIngredientShoppingList(ingredient) {
-          return this.http.post("/server/shoppingList/add/ingredient", ingredient).subscribe(function (res) {
+          return this.http.post("/server/shoppingList/add/ingredient", ingredient).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (res) {
             {
               return res;
             }
-          });
+          }));
         }
       }, {
         key: "deleteListeCourse",

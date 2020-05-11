@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ListeCoursesDetails, IngredientDetails } from 'src/app/models';
+import { ListeCoursesDetails, IngredientDetails, ListCourses } from 'src/app/models';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { AuthentificationService } from '../authentification.service';
@@ -21,29 +21,31 @@ export class ShoppingListService {
     });
   }
 
-  public getListeCourses(): Observable<IngredientDetails[]> {
+  public getListeCourses(): Observable<ListCourses[]> {
     const pseudo = this.auth.getUserDetails().pseudo;
     const base = this.http.get(`/server/shoppingList/${pseudo}`);
-    return base.pipe(map((data: IngredientDetails[]) => {
+    return base.pipe(map((data: ListCourses[]) => {
+      console.log(data);
       return data;
     }));
 
   }
 
-  public getRestListeCourses(): Observable<IngredientDetails[]> {
+  public getRestListeCourses(): Observable<ListCourses[]> {
     const pseudo = this.auth.getUserDetails().pseudo;
     const base = this.http.get(`/server/shoppingList/rest/${pseudo}`);
-    return base.pipe(map((data: IngredientDetails[]) => {
+    return base.pipe(map((data: ListCourses[]) => {
+      console.log(data);
       return data;
     }));
   }
 
-  public addIngredientShoppingList(ingredient: any): any {
-    return this.http.post(`/server/shoppingList/add/ingredient`, ingredient).subscribe(res => {
+  public addIngredientShoppingList(ingredient: ListCourses): Observable<any> {
+    return this.http.post(`/server/shoppingList/add/ingredient`, ingredient).pipe(map((res) => {
       {
         return res;
       }
-    });
+    }));
 
   }
 

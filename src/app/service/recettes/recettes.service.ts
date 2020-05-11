@@ -33,6 +33,21 @@ export class RecettesService {
         }));
     }
 
+    public getAllRecipesAsc(): Observable<RecipeDetails[]> {
+        const base = this.http.get(`/server/recipe/allRecipes/asc`);
+        return base.pipe(map((data: RecipeDetails[]) => {
+            data.forEach(element => {
+                this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                    element.lienImage = data[0]?.lienImage;
+                });
+                this.categoryService.getCategoryByRecette(element.idRecette).subscribe((data: any) => {
+                    element.categories = data;
+                });
+            });
+            return data;
+        }));
+    }
+
     public getAllRecipesAndIngredients(): Observable<RecipeDetails[]> {
         const base = this.http.get(`/server/recipe/allRecipes`);
         return base.pipe(map((data: RecipeDetails[]) => {

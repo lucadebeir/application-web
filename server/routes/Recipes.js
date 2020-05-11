@@ -26,6 +26,26 @@ recipe.get('/allRecipes', (req, res) => {
         })
 })
 
+//Récupérer toutes les recettes dans l'ordre alphabétique
+recipe.get('/allRecipes/asc', (req, res) => {
+    Recipe.findAll({
+            order: [
+                ["nomRecette", "ASC"]
+            ]
+        })
+        .then(recipes => {
+            if (recipes) {
+                res.json(recipes)
+            } else {
+                res.send("Il n'y a pas de recettes")
+            }
+
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
 //Récupérer la recette depuis son identifiant
 recipe.get('/get/:id', (req, res) => {
     Recipe.findOne({
