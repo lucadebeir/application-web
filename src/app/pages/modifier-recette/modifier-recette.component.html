@@ -44,7 +44,7 @@
 
                     <div *ngIf="image">
                         <img src="{{ image.lienImage }}" class="rounded mx-auto d-block" alt="Responsive image" id="resp" />
-                        <br>
+                        <br />
                         <button class="btn btn-primary" type="submit" data-toggle="modal" data-target="#exampleModal" data-backdrop="false">
               Modifier l'image de la recette
             </button>
@@ -248,12 +248,16 @@
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
                                         <label for="validationTooltip04">Ingrédient</label>
-                                        <input id="validationTooltip04" list="brow" #nomIngredient="ngModel" [(ngModel)]="newIngredient.nomIngredient" [ngModelOptions]="{ standalone: true }" required>
+                                        <input id="validationTooltip04" list="brow" #nomIngredient="ngModel" [(ngModel)]="newIngredient.nomIngredient" [ngModelOptions]="{ standalone: true }" required />
                                         <datalist id="brow">
-                                            <option *ngFor="let ingredient of allIngredients"
-                                                [ngValue]="ingredient.nomIngredient" [disabled]="ingredient.disabled">
-                                                {{ingredient.nomIngredient}}</option>
-                                        </datalist>
+                      <option
+                        *ngFor="let ingredient of allIngredients"
+                        [ngValue]="ingredient.nomIngredient"
+                        [disabled]="ingredient.disabled"
+                      >
+                        {{ ingredient.nomIngredient }}</option
+                      >
+                    </datalist>
                                         <div class="invalid-tooltip">
                                             Selectionnez un ingrédient.
                                         </div>
@@ -353,6 +357,27 @@
           </div>
         </ul>
       </tr>
+    </table>
+    <hr>
+    <table class="table col-md-8 mx-auto">
+      <div class="col-lg-12 p-3">
+            <label>Description</label>
+            <form (submit)="updateDescription(recette)">
+                <textarea
+                  class="form-control"
+                  #mot="ngModel"
+                  rows="6em"
+                  name="mot"
+                  [(ngModel)]="recette.mot"
+                  [ngModelOptions]="{ standalone: true }"
+                  >{{ recette?.mot }}</textarea
+                >
+                <br />
+                <button id="btn" class="btn btn-primary" type="submit">
+                  Modifier
+                </button>
+              </form>
+          </div>
     </table>
   </div>
 </section>

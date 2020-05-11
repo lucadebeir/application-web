@@ -24,6 +24,7 @@ import { ResponseResetComponent } from './pages/response-reset/response-reset.co
 import { RefreshComponent } from './pages/refresh/refresh.component';
 import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
 import { GererLeMenuComponent } from './pages/gerer-le-menu/gerer-le-menu.component';
+import { MenuComponent } from './pages/menu/menu.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'refresh', component: RefreshComponent },
   { path: 'rules', component: MentionsLegalesComponent },
   { path: 'handleMenu', component: GererLeMenuComponent },
+  { path: 'menu', component: MenuComponent},
   { path: '**', redirectTo: '' }
 ];
 

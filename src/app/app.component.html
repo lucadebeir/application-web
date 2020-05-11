@@ -1,39 +1,36 @@
 <script>
     //pour que la navbar responsive se referme lorsqu'on sélectionne un ongle
-    $(document).on('click', '.navbar-collapse.show', function (e) {
+    $(document).on('click', '.navbar-collapse.show', function(e) {
         $(this).collapse('hide');
     });
 </script>
 <script>
-    $(document).on("click", function (e) {
-		e.preventDefault();
-		var $item = $(".rad-dropmenu-item");
-		if ($item.hasClass("active")) {
-			$item.removeClass("active");
-		}
+    $(document).on("click", function(e) {
+        e.preventDefault();
+        var $item = $(".rad-dropmenu-item");
+        if ($item.hasClass("active")) {
+            $item.removeClass("active");
+        }
     });
-    
-    $("a.rad-menu-item").on("click", function (e) {
-		var $item = $("ul.rad-dropmenu-item");
-		if (!$item.hasClass("active")) {
-			$item.toggleClass("active");
-		}
-	});
-  </script>
+
+    $("a.rad-menu-item").on("click", function(e) {
+        var $item = $("ul.rad-dropmenu-item");
+        if (!$item.hasClass("active")) {
+            $item.toggleClass("active");
+        }
+    });
+</script>
 
 <!--script pour les liens de partages sur les réseaux sociaux-->
-<script type="text/javascript"
-    src="https://platform-api.sharethis.com/js/sharethis.js#property=5e8ef1fbc08fd00012f1a697&product=inline-share-buttons"
-    async="async"></script>
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5e8ef1fbc08fd00012f1a697&product=inline-share-buttons" async="async"></script>
 
 <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
 
-<link href="//db.onlinewebfonts.com/c/ca42b7ce0d708ee0817789585c449739?family=PeachesandCreamRegularW00" rel="stylesheet" type="text/css"/>
+<link href="//db.onlinewebfonts.com/c/ca42b7ce0d708ee0817789585c449739?family=PeachesandCreamRegularW00" rel="stylesheet" type="text/css" />
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toogle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toogle navigation">
         <span class="navbar-toggler-icon"></span>
 
     </button>
@@ -45,8 +42,7 @@
             </li>
 
             <li class="nav-item">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link"
-                    routerLink="/allRecipes">Recettes</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" routerLink="/allRecipes">Recettes</a>
             </li>
 
             <li class="nav-item">
@@ -55,28 +51,25 @@
             </li>
 
             <li class="nav-item">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']"
-                    [queryParams]="{url:'contact'}" skipLocationChange="true">Contact</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'contact'}" skipLocationChange="true">Contact</a>
             </li>
 
             <li class="nav-item" *ngIf="!auth.isLoggedIn()">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']"
-                    [queryParams]="{url:'login'}" skipLocationChange="true">Se connecter</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'login'}" skipLocationChange="true">Se connecter</a>
             </li>
 
             <li class="nav-item" *ngIf="!auth.isLoggedIn()">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']"
-                    [queryParams]="{url:'register'}" skipLocationChange="true">S'inscrire</a>
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link" [routerLink]="['/refresh']" [queryParams]="{url:'register'}" skipLocationChange="true">S'inscrire</a>
             </li>
 
             <li class="nav-item dropdown" *ngIf="auth.isLoggedIn()">
-                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link dropdown-toggle"
-                    id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a data-toggle="collapse" data-target=".navbar-collapse" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{auth.getUserDetails()?.pseudo}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" routerLink="/profile">Mon profil</a>
                     <a class="dropdown-item" routerLink="/favorites">Mes recettes ♥</a>
+                    <a class="dropdown-item" routerLink="/menu">Menu de la semaine</a>
                     <a class="dropdown-item" routerLink="/shoppingList">Ma liste de course</a>
                     <a class="dropdown-item" routerLink="/comment">Mes commentaires</a>
                     <a class="dropdown-item" *ngIf="auth.isAdmin()" routerLink="/handleRecipes">Gerer les recettes</a>

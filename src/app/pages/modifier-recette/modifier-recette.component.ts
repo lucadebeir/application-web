@@ -242,6 +242,15 @@ export class ModifierRecetteComponent implements OnInit {
     );
   }
 
+  updateDescription(recette: RecipeDetails) {
+    this.recetteService.updateDescription(recette).subscribe((res: any) => {
+      window.location.reload();
+    }, (err: any) => {
+      console.error(err);
+    }
+    );
+  }
+
   updatePart(recette: RecipeDetails) {
     this.recetteService.updatePart(recette).subscribe((res: any) => {
       window.location.reload();

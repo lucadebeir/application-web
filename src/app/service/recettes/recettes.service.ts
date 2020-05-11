@@ -10,6 +10,7 @@ import {
 } from '../../models';
 import { CategoriesService } from '../categories/categories.service';
 import { IngredientsService } from '../ingredients/ingredients.service';
+import { ListRecipe } from 'src/app/models/listRecipe.model';
 
 @Injectable()
 export class RecettesService {
@@ -54,7 +55,15 @@ export class RecettesService {
     }
 
     public getRecipeById(id: any): Observable<any> {
-        return this.http.get<any>('/server/recipe/get/' + id);
+        return this.http.get<any>('/server/recipe/get/' + id).pipe(map((element: RecipeDetails) => {
+            this.http.get(`/server/image/${element.idRecette}`).subscribe((data: any) => {
+                element.lienImage = data[0]?.lienImage;
+            });
+            this.categoryService.getCategoryByRecette(element.idRecette).subscribe((data: any) => {
+                element.categories = data;
+            });
+            return element;
+        }));
     }
 
     public getLatestReceipes(): Observable<RecipeDetails[]> {
@@ -173,6 +182,13 @@ export class RecettesService {
 
     public updateAstuce(recette: RecipeDetails): Observable<any> {
         return this.http.put(`/server/recipe/astuce/update`, recette)
+            .pipe(map((data: RecipeDetails) => {
+                return data;
+            }));
+    }
+
+    public updateDescription(recette: RecipeDetails): Observable<any> {
+        return this.http.put(`/server/recipe/description/update`, recette)
             .pipe(map((data: RecipeDetails) => {
                 return data;
             }));
@@ -298,4 +314,39 @@ export class RecettesService {
             }));
     }
 
+    public getListRecipes(): Observable<ListRecipe[]> {
+        const base = this.http.get(`/server/recipeList/${this.auth.getUserDetails().pseudo}`);
+        return base.pipe(map((data: ListRecipe[]) => {
+            return data;
+        }));
+    }
+
+    public addRecipeToList(recipe: ListRecipe): Observable<any> {
+        return this.http.post(`/server/recipeList/add`, recipe)
+            .pipe(map((res) => {
+                return res;
+            }));
+    }
+
+    public deleteRecipeOfList(recipe: ListRecipe): Observable<any> {
+        return this.http.post(`/server/recipeList/delete`, recipe)
+            .pipe(map((res) => {
+                return res;
+            }));
+    }
+
+    public deleteAllRecipeOfList(): Observable<any> {
+        return this.http.post(`/server/recipeList/delete/all`, this.auth.getUserDetails().pseudo)
+            .pipe(map((res) => {
+                return res;
+            }));
+    }
+
+    public changeStateOfRecipe(recipe: ListRecipe): Observable<any> {
+        recipe.complet = !recipe.complet;
+        return this.http.post(`/server/recipeList/update`, recipe)
+            .pipe(map((res) => {
+                return res;
+            }));
+    }
 }

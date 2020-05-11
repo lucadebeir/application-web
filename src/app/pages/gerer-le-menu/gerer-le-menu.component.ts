@@ -22,7 +22,6 @@ export class GererLeMenuComponent implements OnInit {
 
     this.recetteService.getPetitDej().subscribe(data => {
       this.petitDej = data;
-      console.log(data);
       this.petitDej.idMenu = 1;
     });
 
@@ -56,7 +55,6 @@ export class GererLeMenuComponent implements OnInit {
         this.douceur.idMenu = 1;
       }
     });
-    console.log(this.petitDej);
     this.recetteService.updatePetitDej(this.petitDej).subscribe();
     this.recetteService.updateRepas(this.repas).subscribe();
     this.recetteService.updateDouceur(this.douceur).subscribe();

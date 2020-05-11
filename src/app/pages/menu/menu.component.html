@@ -1,0 +1,63 @@
+<section id="fond">
+    <div id="top">
+        <h1>Menu de la <br> semaine</h1>
+        <div class="container">
+            <div class="row">
+                <input type="text" class="col-xs-8 col-sm-9" placeholder="Nom recette.." list="brow" #nomRecette="ngModel" [(ngModel)]="newRecetteList.nomRecette" [ngModelOptions]="{ standalone: true }" />
+                <datalist id="brow">
+          <option
+            *ngFor="let recette of allRecipe"
+            [ngValue]="recette.nomRecette"
+            [disabled]="recette.disabled"
+          >
+            {{ recette.nomRecette }}</option
+          >
+        </datalist>
+                <div class="input-buttons col-xs-4 col-sm-3">
+                    <a class="clear-text" (click)="deleteAllRecipeOfList()"><i class="fa fa-trash-o fa-2x"></i
+          ></a>
+                    <a class="add-todo" (click)="addRecipeToList()"><i class="fa fa-plus fa-2x"></i
+          ></a>
+                </div>
+                <!-- div.input-buttons-->
+            </div>
+            <!-- div.row -->
+            <div class="row">
+                <div class="error">
+                    <a href="/menu"><i class="fa fa-times"></i></a>
+                    <p>
+                        We both know you should be doing something right now. Please enter a task.
+                    </p>
+                </div>
+                <!-- div.error -->
+                <!-- Start to-do list -->
+                <ul class="todo-list col-xs-12">
+                    <li *ngFor="let recette of list" [class.complete]="recette.complet" class="todo">
+                        <a *ngIf="recette.idRecette" href="/recipe/{{ recette.idRecette }}">{{ recette.nomRecette }}</a
+            >
+            <a *ngIf="!recette.idRecette">{{ recette.nomRecette }}</a>
+                        <span>
+              <a class="check">
+                <i
+                  class="fa fa-check fa-lg"
+                  (click)="changeStateOfRecipe(recette)"
+                ></i>
+              </a>
+              <a (click)="deleteRecipeOfList(recette)" class="delete-todo">
+                <i class="fa fa-trash-o fa-lg"></i>
+              </a>
+            </span>
+                    </li>
+                    <hr>
+                </ul>
+            </div>
+            <!-- div.row -->
+        </div>
+    </div>
+</section>
+
+<!-- div.container -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<script src="../../../assets/js/custom.js"></script>

@@ -24,7 +24,7 @@ app.use(sanitizer())
 app.use(bodyParser.json())
 app.use(cors())
 app.use(
-  bodyParser.urlencoded({ extended: false })
+    bodyParser.urlencoded({ extended: false })
 )
 
 //déclaration des routes
@@ -40,6 +40,7 @@ var Favori = require("./routes/Favoris")
 var Commentaire = require("./routes/Commentaires")
 var ClasserDans = require("./routes/ClasserDans")
 var Categorie = require("./routes/Categories")
+var RecipeList = require("./routes/RecipeList")
 
 app.use("/server", Users)
 app.use("/server/recipe", Recipes)
@@ -53,47 +54,46 @@ app.use("/server/favorites", Favori)
 app.use("/server/commentaires", Commentaire)
 app.use("/server", ClasserDans)
 app.use("/server/category", Categorie)
+app.use("/server/recipeList", RecipeList)
 
 //Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/marine\'srecipe'))
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname + '/dist/marine\'srecipe/index.html'))
+app.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname + '/dist/marine\'srecipe/index.html'))
 })
 
 //lancement serveur
-app.listen(port, function () {
-  console.log("Server is running on port " + port)
+app.listen(port, function() {
+    console.log("Server is running on port " + port)
 })
 
 
 
 //util?
 const multerMid = multer({
-  storage: multer.memoryStorage(),
-  limits: {
-    fileSize: 5 * 1024 * 1024,
-  },
+    storage: multer.memoryStorage(),
+    limits: {
+        fileSize: 5 * 1024 * 1024,
+    },
 })
 app.disable('x-powered-by')
 app.use(multerMid.single('file'))
 
-app.post('/uploads', async (req, res, next) => {
-  try {
-    const myFile = req.file
-    const imageUrl = await uploadImage(myFile)
+app.post('/uploads', async(req, res, next) => {
+    try {
+        const myFile = req.file
+        const imageUrl = await uploadImage(myFile)
 
-    res
-      .status(200)
-      .json({
-        message: "Upload was successful",
-        data: imageUrl
-      })
-  } catch (error) {
-    next(error)
-  }
+        res
+            .status(200)
+            .json({
+                message: "Upload was successful",
+                data: imageUrl
+            })
+    } catch (error) {
+        next(error)
+    }
 })
 
 app.use(methodOverride('_method'));
 app.use(fileUpload());
-
-

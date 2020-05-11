@@ -39,6 +39,7 @@ import {NgxImageCompressService} from 'ngx-image-compress';
 
 import { MaterialModule } from './modules/material.module';
 import { GererLeMenuComponent } from './pages/gerer-le-menu/gerer-le-menu.component';
+import { MenuComponent } from './pages/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { GererLeMenuComponent } from './pages/gerer-le-menu/gerer-le-menu.compon
     ResponseResetComponent,
     RefreshComponent,
     MentionsLegalesComponent,
-    GererLeMenuComponent
+    GererLeMenuComponent,
+    MenuComponent
   ],
   imports: [
     MaterialModule,

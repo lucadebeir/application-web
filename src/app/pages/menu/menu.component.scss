@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Zilla+Slab:300,400');
+$dark-gray: #455a64;
+$light-gray: #90a4ae;
+$white: #eceff1;
+$red: #ff5252;
+$green: #69f0ae;
+$white-border: 3px solid $white;
+#fond {
+    background-image: url("../../../assets/img/menu.jpg");
+    background-size: cover;
+}
+
+#top {
+    padding-top: 2em;
+}
+
+.row {
+    flex-wrap: inherit;
+}
+
+ul {
+    width: 100%;
+}
+
+body {
+    background: $dark-gray;
+    color: $white;
+    font: {
+        family: 'Lato', sans-serif;
+        weight: 300;
+    }
+}
+
+.col-sm-3 {
+    width: 10em;
+}
+
+h1 {
+    font-size: 40px;
+    font-family: 'fredericka the great', cursive;
+    text-align: center;
+    color: white;
+    background: black;
+    border-color: white;
+    border-style: ridge;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    display: table;
+    padding: .1em;
+    @media (min-width: 600px) {
+        font-size: 72px;
+    }
+}
+
+.container {
+    font-family: 'zilla slab', serif;
+    min-height: 37em;
+    margin: 0 auto;
+    width: 95%;
+    @media (min-width: 600px) {
+        width: 75%;
+    }
+    @media (min-width: 900px) {
+        width: 65%;
+    }
+}
+
+input {
+    background: transparent;
+    border: none {
+        bottom: $white-border;
+    }
+    font-size: 24px;
+    height: 50px;
+    padding-bottom: 15px;
+    &:focus {
+        outline: 0;
+    }
+    @media (min-width: 900px) {
+        font-size: 32px;
+    }
+}
+
+.input-buttons {
+    height: 50px;
+    border-bottom: $white-border;
+    padding: 0;
+    i {
+        padding: 0 12px;
+        color: $white;
+        float: right;
+    }
+    .fa-plus {
+        border-right: $white-border;
+    }
+    @media (min-width: 600px) {
+        .fa-trash-o:hover {
+            color: $red;
+        }
+        .fa-plus:hover {
+            color: #69f0ae;
+        }
+    }
+}
+
+.error {
+    color: $red;
+    display: none;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+    .fa-times {
+        color: $white;
+        padding: 5px 15px;
+        float: right;
+        &:hover {
+            color: #fafafa;
+        }
+    }
+    p {
+        margin: 20px 0;
+        @media (min-width: 600px) {
+            font-size: 20px;
+        }
+    }
+}
+
+.todo-list {
+    padding: 0;
+    margin: 20px 0 50px;
+    .todo {
+        background: $white;
+        border-bottom: 1px dotted $dark-gray;
+        color: $dark-gray;
+        font-size: 20px;
+        list-style: none;
+        padding: 20px 130px 20px 15px;
+        position: relative;
+        white-space: normal;
+        display: list-item;
+        margin-top: .5em;
+        border-radius: 1em;
+    }
+}
+
+::placeholder {
+    color: white;
+}
+
+span {
+    position: absolute;
+    top: 15px;
+    right: 0;
+    a {
+        color: $dark-gray;
+    }
+    i {
+        padding: 10px 15px;
+    }
+    .fa-check {
+        border-right: 1px solid $dark-gray;
+        &:hover {
+            color: $green;
+        }
+    }
+    .fa-trash-o:hover {
+        color: $red;
+    }
+}
+
+.complete {
+    color: $light-gray;
+    text-decoration: line-through;
+    .check {
+        color: $green;
+    }
+}

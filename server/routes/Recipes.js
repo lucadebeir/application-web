@@ -218,6 +218,25 @@ recipe.put('/astuce/update', (req, res) => {
     }
 })
 
+//modifier astuce recette
+recipe.put('/description/update', (req, res) => {
+    if (req.body.mot) {
+        Recipe.update({ mot: req.sanitize(req.body.mot) }, { where: { idRecette: req.body.idRecette } })
+            .then(() => {
+                res.json({ success: 'Description modifié !' })
+            })
+            .error(err =>
+                res.json({ error: err }))
+    } else {
+        Recipe.update({ mot: '' }, { where: { idRecette: req.body.idRecette } })
+            .then(() => {
+                res.json({ success: 'Description modifié !' })
+            })
+            .error(err =>
+                res.json({ error: err }))
+    }
+})
+
 //modifier temps recette
 recipe.put('/temps/update', (req, res) => {
     Recipe.update({ tempsPreparation: req.sanitize(req.body.tempsPreparation), tempsCuisson: req.sanitize(req.body.tempsCuisson) }, { where: { idRecette: req.body.idRecette } })

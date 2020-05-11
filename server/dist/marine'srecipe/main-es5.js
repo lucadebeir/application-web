@@ -218,6 +218,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
     /*! ./pages/gerer-le-menu/gerer-le-menu.component */
     "./src/app/pages/gerer-le-menu/gerer-le-menu.component.ts");
+    /* harmony import */
+
+
+    var _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
+    /*! ./pages/menu/menu.component */
+    "./src/app/pages/menu/menu.component.ts");
 
     var routes = [{
       path: '',
@@ -299,6 +305,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'handleMenu',
       component: _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_25__["GererLeMenuComponent"]
+    }, {
+      path: 'menu',
+      component: _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_26__["MenuComponent"]
     }, {
       path: '**',
       redirectTo: ''
@@ -450,9 +459,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function AppComponent_li_21_a_12_Template(rf, ctx) {
+    function AppComponent_li_21_a_14_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 35);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Gerer les recettes");
 
@@ -462,7 +471,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function AppComponent_li_21_Template(rf, ctx) {
       if (rf & 1) {
-        var _r328 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r341 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 25);
 
@@ -488,29 +497,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "a", 30);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Ma liste de course");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Menu de la semaine");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "a", 31);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Mes commentaires");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Ma liste de course");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, AppComponent_li_21_a_12_Template, 2, 0, "a", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "a", 32);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "a", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Mes commentaires");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_li_21_Template_a_click_13_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r328);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          var ctx_r327 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, AppComponent_li_21_a_14_Template, 2, 0, "a", 33);
 
-          return ctx_r327.auth.logout();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "a", 34);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_li_21_Template_a_click_15_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r341);
+
+          var ctx_r340 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r340.auth.logout();
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Deconnexion");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Deconnexion");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -520,17 +535,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r325 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r338 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         var tmp_0_0 = null;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", (tmp_0_0 = ctx_r325.auth.getUserDetails()) == null ? null : tmp_0_0.pseudo, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", (tmp_0_0 = ctx_r338.auth.getUserDetails()) == null ? null : tmp_0_0.pseudo, " ");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](12);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r325.auth.isAdmin());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r338.auth.isAdmin());
       }
     }
 
@@ -555,7 +570,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selectors: [["app-root"]],
       decls: 43,
       vars: 7,
-      consts: [["href", "//db.onlinewebfonts.com/c/ca42b7ce0d708ee0817789585c449739?family=PeachesandCreamRegularW00", "rel", "stylesheet", "type", "text/css"], ["role", "navigation", 1, "navbar", "navbar-expand-lg", "navbar-light", "bg-light"], ["type", "button", "data-toggle", "collapse", "data-target", "#navbarNavDropdown", "aria-controls", "navbarNavDropdown", "aria-expanded", "false", "aria-label", "Toogle navigation", 1, "navbar-toggler"], [1, "navbar-toggler-icon"], ["src", "../assets/img/logo.jpeg", "alt", "logo", "id", "logo", 1, "rounded", "float-left"], ["id", "navbarNavDropdown", 1, "collapse", "navbar-collapse", "justify-content-md-center"], [1, "navbar-nav"], [1, "nav-item"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "routerLink", "/", 1, "nav-link"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "routerLink", "/allRecipes", 1, "nav-link"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "routerLink", "/aboutMe", 1, "nav-link"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "skipLocationChange", "true", 1, "nav-link", 3, "routerLink", "queryParams"], ["class", "nav-item", 4, "ngIf"], ["class", "nav-item dropdown", 4, "ngIf"], ["rel", "stylesheet", "href", "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", "type", "text/css"], [1, "dark-line"], [1, "social"], ["href", "https://pin.it/3m5tTu0"], [1, "fa", "fa-lg", "fa-pinterest"], ["id", "message", "href", "https://www.instagram.com/marineteroitin/?hl=fr"], [1, "fa", "fa-lg", "fa-instagram"], ["routerLink", "/contact", "id", "message"], [1, "fa", "fa-lg", "fa-envelope"], ["id", "ment", "routerLink", "/rules"], [1, "copyright"], [1, "nav-item", "dropdown"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "id", "navbarDropdownMenuLink", "data-toggle", "dropdown", "aria-haspopup", "true", "aria-expanded", "false", 1, "nav-link", "dropdown-toggle"], ["aria-labelledby", "navbarDropdownMenuLink", 1, "dropdown-menu"], ["routerLink", "/profile", 1, "dropdown-item"], ["routerLink", "/favorites", 1, "dropdown-item"], ["routerLink", "/shoppingList", 1, "dropdown-item"], ["routerLink", "/comment", 1, "dropdown-item"], ["class", "dropdown-item", "routerLink", "/handleRecipes", 4, "ngIf"], ["routerLink", "", 1, "dropdown-item", 3, "click"], ["routerLink", "/handleRecipes", 1, "dropdown-item"]],
+      consts: [["href", "//db.onlinewebfonts.com/c/ca42b7ce0d708ee0817789585c449739?family=PeachesandCreamRegularW00", "rel", "stylesheet", "type", "text/css"], ["role", "navigation", 1, "navbar", "navbar-expand-lg", "navbar-light", "bg-light"], ["type", "button", "data-toggle", "collapse", "data-target", "#navbarNavDropdown", "aria-controls", "navbarNavDropdown", "aria-expanded", "false", "aria-label", "Toogle navigation", 1, "navbar-toggler"], [1, "navbar-toggler-icon"], ["src", "../assets/img/logo.jpeg", "alt", "logo", "id", "logo", 1, "rounded", "float-left"], ["id", "navbarNavDropdown", 1, "collapse", "navbar-collapse", "justify-content-md-center"], [1, "navbar-nav"], [1, "nav-item"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "routerLink", "/", 1, "nav-link"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "routerLink", "/allRecipes", 1, "nav-link"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "routerLink", "/aboutMe", 1, "nav-link"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "skipLocationChange", "true", 1, "nav-link", 3, "routerLink", "queryParams"], ["class", "nav-item", 4, "ngIf"], ["class", "nav-item dropdown", 4, "ngIf"], ["rel", "stylesheet", "href", "//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", "type", "text/css"], [1, "dark-line"], [1, "social"], ["href", "https://pin.it/3m5tTu0"], [1, "fa", "fa-lg", "fa-pinterest"], ["id", "message", "href", "https://www.instagram.com/marineteroitin/?hl=fr"], [1, "fa", "fa-lg", "fa-instagram"], ["routerLink", "/contact", "id", "message"], [1, "fa", "fa-lg", "fa-envelope"], ["id", "ment", "routerLink", "/rules"], [1, "copyright"], [1, "nav-item", "dropdown"], ["data-toggle", "collapse", "data-target", ".navbar-collapse", "id", "navbarDropdownMenuLink", "data-toggle", "dropdown", "aria-haspopup", "true", "aria-expanded", "false", 1, "nav-link", "dropdown-toggle"], ["aria-labelledby", "navbarDropdownMenuLink", 1, "dropdown-menu"], ["routerLink", "/profile", 1, "dropdown-item"], ["routerLink", "/favorites", 1, "dropdown-item"], ["routerLink", "/menu", 1, "dropdown-item"], ["routerLink", "/shoppingList", 1, "dropdown-item"], ["routerLink", "/comment", 1, "dropdown-item"], ["class", "dropdown-item", "routerLink", "/handleRecipes", 4, "ngIf"], ["routerLink", "", 1, "dropdown-item", 3, "click"], ["routerLink", "/handleRecipes", 1, "dropdown-item"]],
       template: function AppComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "link", 0);
@@ -618,7 +633,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, AppComponent_li_20_Template, 3, 4, "li", 12);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](21, AppComponent_li_21_Template, 15, 2, "li", 13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](21, AppComponent_li_21_Template, 17, 2, "li", 13);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -987,6 +1002,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(
     /*! ./pages/gerer-le-menu/gerer-le-menu.component */
     "./src/app/pages/gerer-le-menu/gerer-le-menu.component.ts");
+    /* harmony import */
+
+
+    var _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(
+    /*! ./pages/menu/menu.component */
+    "./src/app/pages/menu/menu.component.ts");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -1006,7 +1027,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](AppModule, {
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _pages_apropos_apropos_component__WEBPACK_IMPORTED_MODULE_19__["AProposComponent"], _pages_accueil_accueil_component__WEBPACK_IMPORTED_MODULE_9__["AccueilComponent"], _pages_mon_profile_mon_profile_component__WEBPACK_IMPORTED_MODULE_16__["MonProfileComponent"], _pages_inscrire_inscrire_component__WEBPACK_IMPORTED_MODULE_7__["InscrireComponent"], _pages_se_connecter_se_connecter_component__WEBPACK_IMPORTED_MODULE_8__["SeConnecterComponent"], _pages_contact_contact_component__WEBPACK_IMPORTED_MODULE_11__["ContactComponent"], _pages_gerer_les_recettes_gerer_les_recettes_component__WEBPACK_IMPORTED_MODULE_12__["GererLesRecettesComponent"], _pages_ma_liste_de_courses_ma_liste_de_courses_component__WEBPACK_IMPORTED_MODULE_13__["MaListeDeCoursesComponent"], _pages_mes_commentaires_mes_commentaires_component__WEBPACK_IMPORTED_MODULE_14__["MesCommentairesComponent"], _pages_mes_recettes_mes_recettes_component__WEBPACK_IMPORTED_MODULE_15__["MesRecettesComponent"], _pages_recettes_recettes_component__WEBPACK_IMPORTED_MODULE_17__["RecettesComponent"], _pages_update_password_update_password_component__WEBPACK_IMPORTED_MODULE_18__["UpdatePasswordComponent"], _pages_recette_recette_component__WEBPACK_IMPORTED_MODULE_20__["RecetteComponent"], _pages_ingredients_ingredients_component__WEBPACK_IMPORTED_MODULE_21__["IngredientsComponent"], _pages_categories_categories_component__WEBPACK_IMPORTED_MODULE_22__["CategoriesComponent"], _pages_unite_unite_component__WEBPACK_IMPORTED_MODULE_23__["UniteComponent"], _pages_ajout_recette_ajout_recette_component__WEBPACK_IMPORTED_MODULE_24__["AjoutRecetteComponent"], _pages_modifier_recette_modifier_recette_component__WEBPACK_IMPORTED_MODULE_26__["ModifierRecetteComponent"], _pages_request_reset_request_reset_component__WEBPACK_IMPORTED_MODULE_28__["RequestResetComponent"], _pages_response_reset_response_reset_component__WEBPACK_IMPORTED_MODULE_29__["ResponseResetComponent"], _pages_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_30__["RefreshComponent"], _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_31__["MentionsLegalesComponent"], _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_37__["GererLeMenuComponent"]],
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _pages_apropos_apropos_component__WEBPACK_IMPORTED_MODULE_19__["AProposComponent"], _pages_accueil_accueil_component__WEBPACK_IMPORTED_MODULE_9__["AccueilComponent"], _pages_mon_profile_mon_profile_component__WEBPACK_IMPORTED_MODULE_16__["MonProfileComponent"], _pages_inscrire_inscrire_component__WEBPACK_IMPORTED_MODULE_7__["InscrireComponent"], _pages_se_connecter_se_connecter_component__WEBPACK_IMPORTED_MODULE_8__["SeConnecterComponent"], _pages_contact_contact_component__WEBPACK_IMPORTED_MODULE_11__["ContactComponent"], _pages_gerer_les_recettes_gerer_les_recettes_component__WEBPACK_IMPORTED_MODULE_12__["GererLesRecettesComponent"], _pages_ma_liste_de_courses_ma_liste_de_courses_component__WEBPACK_IMPORTED_MODULE_13__["MaListeDeCoursesComponent"], _pages_mes_commentaires_mes_commentaires_component__WEBPACK_IMPORTED_MODULE_14__["MesCommentairesComponent"], _pages_mes_recettes_mes_recettes_component__WEBPACK_IMPORTED_MODULE_15__["MesRecettesComponent"], _pages_recettes_recettes_component__WEBPACK_IMPORTED_MODULE_17__["RecettesComponent"], _pages_update_password_update_password_component__WEBPACK_IMPORTED_MODULE_18__["UpdatePasswordComponent"], _pages_recette_recette_component__WEBPACK_IMPORTED_MODULE_20__["RecetteComponent"], _pages_ingredients_ingredients_component__WEBPACK_IMPORTED_MODULE_21__["IngredientsComponent"], _pages_categories_categories_component__WEBPACK_IMPORTED_MODULE_22__["CategoriesComponent"], _pages_unite_unite_component__WEBPACK_IMPORTED_MODULE_23__["UniteComponent"], _pages_ajout_recette_ajout_recette_component__WEBPACK_IMPORTED_MODULE_24__["AjoutRecetteComponent"], _pages_modifier_recette_modifier_recette_component__WEBPACK_IMPORTED_MODULE_26__["ModifierRecetteComponent"], _pages_request_reset_request_reset_component__WEBPACK_IMPORTED_MODULE_28__["RequestResetComponent"], _pages_response_reset_response_reset_component__WEBPACK_IMPORTED_MODULE_29__["ResponseResetComponent"], _pages_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_30__["RefreshComponent"], _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_31__["MentionsLegalesComponent"], _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_37__["GererLeMenuComponent"], _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_38__["MenuComponent"]],
         imports: [_modules_material_module__WEBPACK_IMPORTED_MODULE_36__["MaterialModule"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_34__["CarouselModule"], ngx_owl_carousel__WEBPACK_IMPORTED_MODULE_33__["OwlModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_32__["NgxPaginationModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_27__["NgbModule"], ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_25__["NgMultiSelectDropDownModule"], _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"]]
       });
     })();
@@ -1017,7 +1038,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](AppModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
         args: [{
-          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _pages_apropos_apropos_component__WEBPACK_IMPORTED_MODULE_19__["AProposComponent"], _pages_accueil_accueil_component__WEBPACK_IMPORTED_MODULE_9__["AccueilComponent"], _pages_mon_profile_mon_profile_component__WEBPACK_IMPORTED_MODULE_16__["MonProfileComponent"], _pages_inscrire_inscrire_component__WEBPACK_IMPORTED_MODULE_7__["InscrireComponent"], _pages_se_connecter_se_connecter_component__WEBPACK_IMPORTED_MODULE_8__["SeConnecterComponent"], _pages_contact_contact_component__WEBPACK_IMPORTED_MODULE_11__["ContactComponent"], _pages_gerer_les_recettes_gerer_les_recettes_component__WEBPACK_IMPORTED_MODULE_12__["GererLesRecettesComponent"], _pages_ma_liste_de_courses_ma_liste_de_courses_component__WEBPACK_IMPORTED_MODULE_13__["MaListeDeCoursesComponent"], _pages_mes_commentaires_mes_commentaires_component__WEBPACK_IMPORTED_MODULE_14__["MesCommentairesComponent"], _pages_mes_recettes_mes_recettes_component__WEBPACK_IMPORTED_MODULE_15__["MesRecettesComponent"], _pages_recettes_recettes_component__WEBPACK_IMPORTED_MODULE_17__["RecettesComponent"], _pages_update_password_update_password_component__WEBPACK_IMPORTED_MODULE_18__["UpdatePasswordComponent"], _pages_recette_recette_component__WEBPACK_IMPORTED_MODULE_20__["RecetteComponent"], _pages_ingredients_ingredients_component__WEBPACK_IMPORTED_MODULE_21__["IngredientsComponent"], _pages_categories_categories_component__WEBPACK_IMPORTED_MODULE_22__["CategoriesComponent"], _pages_unite_unite_component__WEBPACK_IMPORTED_MODULE_23__["UniteComponent"], _pages_ajout_recette_ajout_recette_component__WEBPACK_IMPORTED_MODULE_24__["AjoutRecetteComponent"], _pages_modifier_recette_modifier_recette_component__WEBPACK_IMPORTED_MODULE_26__["ModifierRecetteComponent"], _pages_request_reset_request_reset_component__WEBPACK_IMPORTED_MODULE_28__["RequestResetComponent"], _pages_response_reset_response_reset_component__WEBPACK_IMPORTED_MODULE_29__["ResponseResetComponent"], _pages_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_30__["RefreshComponent"], _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_31__["MentionsLegalesComponent"], _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_37__["GererLeMenuComponent"]],
+          declarations: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"], _pages_apropos_apropos_component__WEBPACK_IMPORTED_MODULE_19__["AProposComponent"], _pages_accueil_accueil_component__WEBPACK_IMPORTED_MODULE_9__["AccueilComponent"], _pages_mon_profile_mon_profile_component__WEBPACK_IMPORTED_MODULE_16__["MonProfileComponent"], _pages_inscrire_inscrire_component__WEBPACK_IMPORTED_MODULE_7__["InscrireComponent"], _pages_se_connecter_se_connecter_component__WEBPACK_IMPORTED_MODULE_8__["SeConnecterComponent"], _pages_contact_contact_component__WEBPACK_IMPORTED_MODULE_11__["ContactComponent"], _pages_gerer_les_recettes_gerer_les_recettes_component__WEBPACK_IMPORTED_MODULE_12__["GererLesRecettesComponent"], _pages_ma_liste_de_courses_ma_liste_de_courses_component__WEBPACK_IMPORTED_MODULE_13__["MaListeDeCoursesComponent"], _pages_mes_commentaires_mes_commentaires_component__WEBPACK_IMPORTED_MODULE_14__["MesCommentairesComponent"], _pages_mes_recettes_mes_recettes_component__WEBPACK_IMPORTED_MODULE_15__["MesRecettesComponent"], _pages_recettes_recettes_component__WEBPACK_IMPORTED_MODULE_17__["RecettesComponent"], _pages_update_password_update_password_component__WEBPACK_IMPORTED_MODULE_18__["UpdatePasswordComponent"], _pages_recette_recette_component__WEBPACK_IMPORTED_MODULE_20__["RecetteComponent"], _pages_ingredients_ingredients_component__WEBPACK_IMPORTED_MODULE_21__["IngredientsComponent"], _pages_categories_categories_component__WEBPACK_IMPORTED_MODULE_22__["CategoriesComponent"], _pages_unite_unite_component__WEBPACK_IMPORTED_MODULE_23__["UniteComponent"], _pages_ajout_recette_ajout_recette_component__WEBPACK_IMPORTED_MODULE_24__["AjoutRecetteComponent"], _pages_modifier_recette_modifier_recette_component__WEBPACK_IMPORTED_MODULE_26__["ModifierRecetteComponent"], _pages_request_reset_request_reset_component__WEBPACK_IMPORTED_MODULE_28__["RequestResetComponent"], _pages_response_reset_response_reset_component__WEBPACK_IMPORTED_MODULE_29__["ResponseResetComponent"], _pages_refresh_refresh_component__WEBPACK_IMPORTED_MODULE_30__["RefreshComponent"], _pages_mentions_legales_mentions_legales_component__WEBPACK_IMPORTED_MODULE_31__["MentionsLegalesComponent"], _pages_gerer_le_menu_gerer_le_menu_component__WEBPACK_IMPORTED_MODULE_37__["GererLeMenuComponent"], _pages_menu_menu_component__WEBPACK_IMPORTED_MODULE_38__["MenuComponent"]],
           imports: [_modules_material_module__WEBPACK_IMPORTED_MODULE_36__["MaterialModule"], ngx_owl_carousel_o__WEBPACK_IMPORTED_MODULE_34__["CarouselModule"], ngx_owl_carousel__WEBPACK_IMPORTED_MODULE_33__["OwlModule"], ngx_pagination__WEBPACK_IMPORTED_MODULE_32__["NgxPaginationModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_2__["BrowserAnimationsModule"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_27__["NgbModule"], ng_multiselect_dropdown__WEBPACK_IMPORTED_MODULE_25__["NgMultiSelectDropDownModule"].forRoot(), _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_5__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"]],
           providers: [_service__WEBPACK_IMPORTED_MODULE_10__["AuthGuardService"], _service__WEBPACK_IMPORTED_MODULE_10__["AuthentificationService"], _service__WEBPACK_IMPORTED_MODULE_10__["RecettesService"], _service__WEBPACK_IMPORTED_MODULE_10__["AdminAuthService"], ngx_image_compress__WEBPACK_IMPORTED_MODULE_35__["NgxImageCompressService"]],
           bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
@@ -4343,15 +4364,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var recette_r312 = ctx.$implicit;
+        var recette_r313 = ctx.$implicit;
 
-        var ctx_r311 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r312 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", recette_r312.nomRecette == ctx_r311.petitDej.nomRecette ? true : null)("value", recette_r312.nomRecette);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", recette_r313.nomRecette == ctx_r312.petitDej.nomRecette ? true : null)("value", recette_r313.nomRecette);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r312.nomRecette, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r313.nomRecette, "");
       }
     }
 
@@ -4363,7 +4384,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function GererLeMenuComponent_div_34_Template(rf, ctx) {
       if (rf & 1) {
-        var _r314 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r315 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 23);
 
@@ -4378,11 +4399,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 25);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GererLeMenuComponent_div_34_Template_input_ngModelChange_4_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r314);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r315);
 
-          var ctx_r313 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r314 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r313.petitDej.nomRecette = $event;
+          return ctx_r314.petitDej.nomRecette = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4401,15 +4422,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r308 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r309 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r308.petitDej.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r309.petitDej.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r308.allRecipes);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r309.allRecipes);
       }
     }
 
@@ -4423,21 +4444,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var recette_r316 = ctx.$implicit;
+        var recette_r317 = ctx.$implicit;
 
-        var ctx_r315 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r316 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", recette_r316.nomRecette == ctx_r315.repas.nomRecette ? true : null)("value", recette_r316.nomRecette);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", recette_r317.nomRecette == ctx_r316.repas.nomRecette ? true : null)("value", recette_r317.nomRecette);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r316.nomRecette, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r317.nomRecette, "");
       }
     }
 
     function GererLeMenuComponent_div_36_Template(rf, ctx) {
       if (rf & 1) {
-        var _r318 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r319 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 23);
 
@@ -4452,11 +4473,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 25);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GererLeMenuComponent_div_36_Template_input_ngModelChange_4_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r318);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r319);
 
-          var ctx_r317 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r318 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r317.repas.nomRecette = $event;
+          return ctx_r318.repas.nomRecette = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4475,15 +4496,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r309 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r310 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r309.repas.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r310.repas.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r309.allRecipes);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r310.allRecipes);
       }
     }
 
@@ -4497,21 +4518,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var recette_r320 = ctx.$implicit;
+        var recette_r321 = ctx.$implicit;
 
-        var ctx_r319 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r320 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", recette_r320.nomRecette == ctx_r319.douceur.nomRecette ? true : null)("value", recette_r320.nomRecette);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", recette_r321.nomRecette == ctx_r320.douceur.nomRecette ? true : null)("value", recette_r321.nomRecette);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r320.nomRecette, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r321.nomRecette, "");
       }
     }
 
     function GererLeMenuComponent_div_38_Template(rf, ctx) {
       if (rf & 1) {
-        var _r322 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r323 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 23);
 
@@ -4526,11 +4547,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "input", 25);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function GererLeMenuComponent_div_38_Template_input_ngModelChange_4_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r322);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r323);
 
-          var ctx_r321 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r322 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r321.douceur.nomRecette = $event;
+          return ctx_r322.douceur.nomRecette = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -4549,15 +4570,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r310 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r311 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r310.douceur.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx_r311.douceur.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](3, _c0));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r310.allRecipes);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r311.allRecipes);
       }
     }
 
@@ -4575,7 +4596,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         });
         this.recetteService.getPetitDej().subscribe(function (data) {
           _this14.petitDej = data;
-          console.log(data);
           _this14.petitDej.idMenu = 1;
         });
         this.recetteService.getRepas().subscribe(function (data) {
@@ -4613,7 +4633,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this15.douceur.idMenu = 1;
             }
           });
-          console.log(this.petitDej);
           this.recetteService.updatePetitDej(this.petitDej).subscribe();
           this.recetteService.updateRepas(this.repas).subscribe();
           this.recetteService.updateDouceur(this.douceur).subscribe();
@@ -6784,6 +6803,433 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/pages/menu/menu.component.ts":
+  /*!**********************************************!*\
+    !*** ./src/app/pages/menu/menu.component.ts ***!
+    \**********************************************/
+
+  /*! exports provided: MenuComponent */
+
+  /***/
+  function srcAppPagesMenuMenuComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "MenuComponent", function () {
+      return MenuComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! src/app/service */
+    "./src/app/service/index.ts");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
+    function MenuComponent_option_11_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 18);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var recette_r327 = ctx.$implicit;
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", recette_r327.nomRecette)("disabled", recette_r327.disabled);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", recette_r327.nomRecette, "");
+      }
+    }
+
+    function MenuComponent_li_24_a_1_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a", 26);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var recette_r328 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("href", "/recipe/", recette_r328.idRecette, "", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](recette_r328.nomRecette);
+      }
+    }
+
+    function MenuComponent_li_24_a_2_Template(rf, ctx) {
+      if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "a");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var recette_r328 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](recette_r328.nomRecette);
+      }
+    }
+
+    function MenuComponent_li_24_Template(rf, ctx) {
+      if (rf & 1) {
+        var _r334 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 19);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, MenuComponent_li_24_a_1_Template, 2, 2, "a", 20);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, MenuComponent_li_24_a_2_Template, 2, 1, "a", 21);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span");
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "a", 22);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "i", 23);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MenuComponent_li_24_Template_i_click_5_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r334);
+
+          var recette_r328 = ctx.$implicit;
+
+          var ctx_r333 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r333.changeStateOfRecipe(recette_r328);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "a", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MenuComponent_li_24_Template_a_click_6_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r334);
+
+          var recette_r328 = ctx.$implicit;
+
+          var ctx_r335 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r335.deleteRecipeOfList(recette_r328);
+        });
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "i", 25);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      }
+
+      if (rf & 2) {
+        var recette_r328 = ctx.$implicit;
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("complete", recette_r328.complet);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", recette_r328.idRecette);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !recette_r328.idRecette);
+      }
+    }
+
+    var _c0 = function _c0() {
+      return {
+        standalone: true
+      };
+    };
+
+    var MenuComponent =
+    /*#__PURE__*/
+    function () {
+      function MenuComponent(recetteService, auth) {
+        _classCallCheck(this, MenuComponent);
+
+        this.recetteService = recetteService;
+        this.auth = auth;
+        this.allRecipe = [];
+        this.newRecetteList = {
+          pseudoUser: '',
+          nomRecette: '',
+          idRecette: null,
+          idRecipeList: null,
+          complet: false
+        };
+        this.getInitData();
+
+        if (this.auth.isLoggedIn()) {
+          this.newRecetteList.pseudoUser = this.auth.getUserDetails().pseudo;
+        }
+      }
+
+      _createClass(MenuComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }, {
+        key: "addRecipeToList",
+        value: function addRecipeToList() {
+          var _this21 = this;
+
+          this.allRecipe.forEach(function (element) {
+            if (element.nomRecette === _this21.newRecetteList.nomRecette) {
+              _this21.newRecetteList.idRecette = element.idRecette;
+            }
+          });
+          this.recetteService.addRecipeToList(this.newRecetteList).subscribe(function (res) {
+            _this21.getInitData();
+
+            _this21.newRecetteList.nomRecette = '';
+            _this21.newRecetteList.idRecette = null;
+          });
+        }
+      }, {
+        key: "getInitData",
+        value: function getInitData() {
+          var _this22 = this;
+
+          this.recetteService.getListRecipes().subscribe(function (data) {
+            _this22.list = data;
+          });
+          this.allRecipe = [];
+          this.recetteService.getAllRecipes().subscribe(function (data) {
+            data.forEach(function (element) {
+              var res = true;
+
+              _this22.list.forEach(function (element2) {
+                if (element.idRecette === element2.idRecette) {
+                  res = false;
+                }
+              });
+
+              if (res) {
+                _this22.allRecipe.push(element);
+              }
+            });
+          });
+        }
+      }, {
+        key: "deleteRecipeOfList",
+        value: function deleteRecipeOfList(recette) {
+          var _this23 = this;
+
+          this.recetteService.deleteRecipeOfList(recette).subscribe(function (res) {
+            _this23.getInitData();
+
+            _this23.newRecetteList.nomRecette = '';
+            _this23.newRecetteList.idRecette = null;
+          });
+        }
+      }, {
+        key: "deleteAllRecipeOfList",
+        value: function deleteAllRecipeOfList() {
+          var _this24 = this;
+
+          this.recetteService.deleteAllRecipeOfList().subscribe(function (res) {
+            _this24.getInitData();
+
+            _this24.newRecetteList.nomRecette = '';
+            _this24.newRecetteList.idRecette = null;
+          });
+        }
+      }, {
+        key: "changeStateOfRecipe",
+        value: function changeStateOfRecipe(recette) {
+          var _this25 = this;
+
+          this.recetteService.changeStateOfRecipe(recette).subscribe(function (res) {
+            _this25.getInitData();
+
+            _this25.newRecetteList.nomRecette = '';
+            _this25.newRecetteList.idRecette = null;
+          });
+        }
+      }]);
+
+      return MenuComponent;
+    }();
+
+    MenuComponent.ɵfac = function MenuComponent_Factory(t) {
+      return new (t || MenuComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service__WEBPACK_IMPORTED_MODULE_1__["RecettesService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_service__WEBPACK_IMPORTED_MODULE_1__["AuthentificationService"]));
+    };
+
+    MenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: MenuComponent,
+      selectors: [["app-menu"]],
+      decls: 26,
+      vars: 5,
+      consts: [["id", "fond"], ["id", "top"], [1, "container"], [1, "row"], ["type", "text", "placeholder", "Nom recette..", "list", "brow", 1, "col-xs-8", "col-sm-9", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["nomRecette", "ngModel"], ["id", "brow"], [3, "ngValue", "disabled", 4, "ngFor", "ngForOf"], [1, "input-buttons", "col-xs-4", "col-sm-3"], [1, "clear-text", 3, "click"], [1, "fa", "fa-trash-o", "fa-2x"], [1, "add-todo", 3, "click"], [1, "fa", "fa-plus", "fa-2x"], [1, "error"], ["href", "/menu"], [1, "fa", "fa-times"], [1, "todo-list", "col-xs-12"], ["class", "todo", 3, "complete", 4, "ngFor", "ngForOf"], [3, "ngValue", "disabled"], [1, "todo"], [3, "href", 4, "ngIf"], [4, "ngIf"], [1, "check"], [1, "fa", "fa-check", "fa-lg", 3, "click"], [1, "delete-todo", 3, "click"], [1, "fa", "fa-trash-o", "fa-lg"], [3, "href"]],
+      template: function MenuComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "h1");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Menu de la ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "br");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " semaine");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "input", 4, 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function MenuComponent_Template_input_ngModelChange_8_listener($event) {
+            return ctx.newRecetteList.nomRecette = $event;
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "datalist", 6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, MenuComponent_option_11_Template, 2, 3, "option", 7);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "div", 8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "a", 9);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MenuComponent_Template_a_click_13_listener($event) {
+            return ctx.deleteAllRecipeOfList();
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "i", 10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "a", 11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MenuComponent_Template_a_click_15_listener($event) {
+            return ctx.addRecipeToList();
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "i", 12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "a", 14);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](20, "i", 15);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, " We both know you should be doing something right now. Please enter a task. ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "ul", 16);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](24, MenuComponent_li_24_Template, 8, 4, "li", 17);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "hr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.newRecetteList.nomRecette)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](4, _c0));
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.allRecipe);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](13);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.list);
+        }
+      },
+      directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_x"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"]],
+      styles: ["@import url(\"https://fonts.googleapis.com/css?family=Fredericka+the+Great|Zilla+Slab:300,400\");\n#fond[_ngcontent-%COMP%] {\n  background-image: url('menu.jpg');\n  background-size: cover;\n}\n#top[_ngcontent-%COMP%] {\n  padding-top: 2em;\n}\n.row[_ngcontent-%COMP%] {\n  flex-wrap: inherit;\n}\nul[_ngcontent-%COMP%] {\n  width: 100%;\n}\nbody[_ngcontent-%COMP%] {\n  background: #455a64;\n  color: #eceff1;\n  font-family: \"Lato\", sans-serif;\n  font-weight: 300;\n}\n.col-sm-3[_ngcontent-%COMP%] {\n  width: 10em;\n}\nh1[_ngcontent-%COMP%] {\n  font-size: 40px;\n  font-family: \"fredericka the great\", cursive;\n  text-align: center;\n  color: white;\n  background: black;\n  border-color: white;\n  border-style: ridge;\n  text-align: center;\n  margin-left: auto;\n  margin-right: auto;\n  margin-bottom: 1em;\n  display: table;\n  padding: 0.1em;\n}\n@media (min-width: 600px) {\n  h1[_ngcontent-%COMP%] {\n    font-size: 72px;\n  }\n}\n.container[_ngcontent-%COMP%] {\n  font-family: \"zilla slab\", serif;\n  min-height: 37em;\n  margin: 0 auto;\n  width: 95%;\n}\n@media (min-width: 600px) {\n  .container[_ngcontent-%COMP%] {\n    width: 75%;\n  }\n}\n@media (min-width: 900px) {\n  .container[_ngcontent-%COMP%] {\n    width: 65%;\n  }\n}\ninput[_ngcontent-%COMP%] {\n  background: transparent;\n  border: none;\n  border-bottom: 3px solid #eceff1;\n  font-size: 24px;\n  height: 50px;\n  padding-bottom: 15px;\n}\ninput[_ngcontent-%COMP%]:focus {\n  outline: 0;\n}\n@media (min-width: 900px) {\n  input[_ngcontent-%COMP%] {\n    font-size: 32px;\n  }\n}\n.input-buttons[_ngcontent-%COMP%] {\n  height: 50px;\n  border-bottom: 3px solid #eceff1;\n  padding: 0;\n}\n.input-buttons[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  padding: 0 12px;\n  color: #eceff1;\n  float: right;\n}\n.input-buttons[_ngcontent-%COMP%]   .fa-plus[_ngcontent-%COMP%] {\n  border-right: 3px solid #eceff1;\n}\n@media (min-width: 600px) {\n  .input-buttons[_ngcontent-%COMP%]   .fa-trash-o[_ngcontent-%COMP%]:hover {\n    color: #ff5252;\n  }\n  .input-buttons[_ngcontent-%COMP%]   .fa-plus[_ngcontent-%COMP%]:hover {\n    color: #69f0ae;\n  }\n}\n.error[_ngcontent-%COMP%] {\n  color: #ff5252;\n  display: none;\n  font-size: 16px;\n  margin-top: 20px;\n  text-align: center;\n}\n.error[_ngcontent-%COMP%]   .fa-times[_ngcontent-%COMP%] {\n  color: #eceff1;\n  padding: 5px 15px;\n  float: right;\n}\n.error[_ngcontent-%COMP%]   .fa-times[_ngcontent-%COMP%]:hover {\n  color: #fafafa;\n}\n.error[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n  margin: 20px 0;\n}\n@media (min-width: 600px) {\n  .error[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    font-size: 20px;\n  }\n}\n.todo-list[_ngcontent-%COMP%] {\n  padding: 0;\n  margin: 20px 0 50px;\n}\n.todo-list[_ngcontent-%COMP%]   .todo[_ngcontent-%COMP%] {\n  background: #eceff1;\n  border-bottom: 1px dotted #455a64;\n  color: #455a64;\n  font-size: 20px;\n  list-style: none;\n  padding: 20px 130px 20px 15px;\n  position: relative;\n  white-space: normal;\n  display: list-item;\n  margin-top: 0.5em;\n  border-radius: 1em;\n}\n[_ngcontent-%COMP%]::-webkit-input-placeholder {\n  color: white;\n}\n[_ngcontent-%COMP%]::-moz-placeholder {\n  color: white;\n}\n[_ngcontent-%COMP%]::-ms-input-placeholder {\n  color: white;\n}\n[_ngcontent-%COMP%]::placeholder {\n  color: white;\n}\nspan[_ngcontent-%COMP%] {\n  position: absolute;\n  top: 15px;\n  right: 0;\n}\nspan[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  color: #455a64;\n}\nspan[_ngcontent-%COMP%]   i[_ngcontent-%COMP%] {\n  padding: 10px 15px;\n}\nspan[_ngcontent-%COMP%]   .fa-check[_ngcontent-%COMP%] {\n  border-right: 1px solid #455a64;\n}\nspan[_ngcontent-%COMP%]   .fa-check[_ngcontent-%COMP%]:hover {\n  color: #69f0ae;\n}\nspan[_ngcontent-%COMP%]   .fa-trash-o[_ngcontent-%COMP%]:hover {\n  color: #ff5252;\n}\n.complete[_ngcontent-%COMP%] {\n  color: #90a4ae;\n  text-decoration: line-through;\n}\n.complete[_ngcontent-%COMP%]   .check[_ngcontent-%COMP%] {\n  color: #69f0ae;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9sdWNhZGViZWlyL0RvY3VtZW50cy9HaXRIdWIvcHJvamV0LXdlYi9zcmMvYXBwL3BhZ2VzL21lbnUvbWVudS5jb21wb25lbnQuc2NzcyIsIi4uL3NyYy9hcHAvcGFnZXMvbWVudS9tZW51LmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFRLDhGQUFBO0FBT1I7RUFDSSxpQ0FBQTtFQUNBLHNCQUFBO0FDTEo7QURRQTtFQUNJLGdCQUFBO0FDTEo7QURRQTtFQUNJLGtCQUFBO0FDTEo7QURRQTtFQUNJLFdBQUE7QUNMSjtBRFFBO0VBQ0ksbUJBeEJRO0VBeUJSLGNBdkJJO0VBeUJBLCtCQUFBO0VBQ0EsZ0JBQUE7QUNOUjtBRFVBO0VBQ0ksV0FBQTtBQ1BKO0FEVUE7RUFDSSxlQUFBO0VBQ0EsNENBQUE7RUFDQSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtFQUNBLG1CQUFBO0VBQ0EsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxrQkFBQTtFQUNBLGNBQUE7RUFDQSxjQUFBO0FDUEo7QURRSTtFQWRKO0lBZVEsZUFBQTtFQ0xOO0FBQ0Y7QURRQTtFQUNJLGdDQUFBO0VBQ0EsZ0JBQUE7RUFDQSxjQUFBO0VBQ0EsVUFBQTtBQ0xKO0FETUk7RUFMSjtJQU1RLFVBQUE7RUNITjtBQUNGO0FESUk7RUFSSjtJQVNRLFVBQUE7RUNETjtBQUNGO0FESUE7RUFDSSx1QkFBQTtFQUNBLFlBQUE7RUFDSSxnQ0FsRU87RUFvRVgsZUFBQTtFQUNBLFlBQUE7RUFDQSxvQkFBQTtBQ0ZKO0FER0k7RUFDSSxVQUFBO0FDRFI7QURHSTtFQVhKO0lBWVEsZUFBQTtFQ0FOO0FBQ0Y7QURHQTtFQUNJLFlBQUE7RUFDQSxnQ0FqRlc7RUFrRlgsVUFBQTtBQ0FKO0FEQ0k7RUFDSSxlQUFBO0VBQ0EsY0F4RkE7RUF5RkEsWUFBQTtBQ0NSO0FEQ0k7RUFDSSwrQkF6Rk87QUMwRmY7QURDSTtFQUNJO0lBQ0ksY0EvRk47RUNnR0o7RURDTTtJQUNJLGNBQUE7RUNDVjtBQUNGO0FER0E7RUFDSSxjQXhHRTtFQXlHRixhQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0Esa0JBQUE7QUNBSjtBRENJO0VBQ0ksY0EvR0E7RUFnSEEsaUJBQUE7RUFDQSxZQUFBO0FDQ1I7QURBUTtFQUNJLGNBQUE7QUNFWjtBRENJO0VBQ0ksY0FBQTtBQ0NSO0FEQVE7RUFGSjtJQUdRLGVBQUE7RUNHVjtBQUNGO0FEQ0E7RUFDSSxVQUFBO0VBQ0EsbUJBQUE7QUNFSjtBRERJO0VBQ0ksbUJBbElBO0VBbUlBLGlDQUFBO0VBQ0EsY0F0SUk7RUF1SUosZUFBQTtFQUNBLGdCQUFBO0VBQ0EsNkJBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0FDR1I7QURDQTtFQUNJLFlBQUE7QUNFSjtBREhBO0VBQ0ksWUFBQTtBQ0VKO0FESEE7RUFDSSxZQUFBO0FDRUo7QURIQTtFQUNJLFlBQUE7QUNFSjtBRENBO0VBQ0ksa0JBQUE7RUFDQSxTQUFBO0VBQ0EsUUFBQTtBQ0VKO0FEREk7RUFDSSxjQTNKSTtBQzhKWjtBRERJO0VBQ0ksa0JBQUE7QUNHUjtBRERJO0VBQ0ksK0JBQUE7QUNHUjtBREZRO0VBQ0ksY0EvSko7QUNtS1I7QURESTtFQUNJLGNBcEtGO0FDdUtOO0FEQ0E7RUFDSSxjQTNLUztFQTRLVCw2QkFBQTtBQ0VKO0FEREk7RUFDSSxjQTNLQTtBQzhLUiIsImZpbGUiOiIuLi9zcmMvYXBwL3BhZ2VzL21lbnUvbWVudS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBpbXBvcnQgdXJsKCdodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9RnJlZGVyaWNrYSt0aGUrR3JlYXR8WmlsbGErU2xhYjozMDAsNDAwJyk7XG4kZGFyay1ncmF5OiAjNDU1YTY0O1xuJGxpZ2h0LWdyYXk6ICM5MGE0YWU7XG4kd2hpdGU6ICNlY2VmZjE7XG4kcmVkOiAjZmY1MjUyO1xuJGdyZWVuOiAjNjlmMGFlO1xuJHdoaXRlLWJvcmRlcjogM3B4IHNvbGlkICR3aGl0ZTtcbiNmb25kIHtcbiAgICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvaW1nL21lbnUuanBnXCIpO1xuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG59XG5cbiN0b3Age1xuICAgIHBhZGRpbmctdG9wOiAyZW07XG59XG5cbi5yb3cge1xuICAgIGZsZXgtd3JhcDogaW5oZXJpdDtcbn1cblxudWwge1xuICAgIHdpZHRoOiAxMDAlO1xufVxuXG5ib2R5IHtcbiAgICBiYWNrZ3JvdW5kOiAkZGFyay1ncmF5O1xuICAgIGNvbG9yOiAkd2hpdGU7XG4gICAgZm9udDoge1xuICAgICAgICBmYW1pbHk6ICdMYXRvJywgc2Fucy1zZXJpZjtcbiAgICAgICAgd2VpZ2h0OiAzMDA7XG4gICAgfVxufVxuXG4uY29sLXNtLTMge1xuICAgIHdpZHRoOiAxMGVtO1xufVxuXG5oMSB7XG4gICAgZm9udC1zaXplOiA0MHB4O1xuICAgIGZvbnQtZmFtaWx5OiAnZnJlZGVyaWNrYSB0aGUgZ3JlYXQnLCBjdXJzaXZlO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAgYmFja2dyb3VuZDogYmxhY2s7XG4gICAgYm9yZGVyLWNvbG9yOiB3aGl0ZTtcbiAgICBib3JkZXItc3R5bGU6IHJpZGdlO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBtYXJnaW4tbGVmdDogYXV0bztcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gICAgbWFyZ2luLWJvdHRvbTogMWVtO1xuICAgIGRpc3BsYXk6IHRhYmxlO1xuICAgIHBhZGRpbmc6IC4xZW07XG4gICAgQG1lZGlhIChtaW4td2lkdGg6IDYwMHB4KSB7XG4gICAgICAgIGZvbnQtc2l6ZTogNzJweDtcbiAgICB9XG59XG5cbi5jb250YWluZXIge1xuICAgIGZvbnQtZmFtaWx5OiAnemlsbGEgc2xhYicsIHNlcmlmO1xuICAgIG1pbi1oZWlnaHQ6IDM3ZW07XG4gICAgbWFyZ2luOiAwIGF1dG87XG4gICAgd2lkdGg6IDk1JTtcbiAgICBAbWVkaWEgKG1pbi13aWR0aDogNjAwcHgpIHtcbiAgICAgICAgd2lkdGg6IDc1JTtcbiAgICB9XG4gICAgQG1lZGlhIChtaW4td2lkdGg6IDkwMHB4KSB7XG4gICAgICAgIHdpZHRoOiA2NSU7XG4gICAgfVxufVxuXG5pbnB1dCB7XG4gICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gICAgYm9yZGVyOiBub25lIHtcbiAgICAgICAgYm90dG9tOiAkd2hpdGUtYm9yZGVyO1xuICAgIH1cbiAgICBmb250LXNpemU6IDI0cHg7XG4gICAgaGVpZ2h0OiA1MHB4O1xuICAgIHBhZGRpbmctYm90dG9tOiAxNXB4O1xuICAgICY6Zm9jdXMge1xuICAgICAgICBvdXRsaW5lOiAwO1xuICAgIH1cbiAgICBAbWVkaWEgKG1pbi13aWR0aDogOTAwcHgpIHtcbiAgICAgICAgZm9udC1zaXplOiAzMnB4O1xuICAgIH1cbn1cblxuLmlucHV0LWJ1dHRvbnMge1xuICAgIGhlaWdodDogNTBweDtcbiAgICBib3JkZXItYm90dG9tOiAkd2hpdGUtYm9yZGVyO1xuICAgIHBhZGRpbmc6IDA7XG4gICAgaSB7XG4gICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgY29sb3I6ICR3aGl0ZTtcbiAgICAgICAgZmxvYXQ6IHJpZ2h0O1xuICAgIH1cbiAgICAuZmEtcGx1cyB7XG4gICAgICAgIGJvcmRlci1yaWdodDogJHdoaXRlLWJvcmRlcjtcbiAgICB9XG4gICAgQG1lZGlhIChtaW4td2lkdGg6IDYwMHB4KSB7XG4gICAgICAgIC5mYS10cmFzaC1vOmhvdmVyIHtcbiAgICAgICAgICAgIGNvbG9yOiAkcmVkO1xuICAgICAgICB9XG4gICAgICAgIC5mYS1wbHVzOmhvdmVyIHtcbiAgICAgICAgICAgIGNvbG9yOiAjNjlmMGFlO1xuICAgICAgICB9XG4gICAgfVxufVxuXG4uZXJyb3Ige1xuICAgIGNvbG9yOiAkcmVkO1xuICAgIGRpc3BsYXk6IG5vbmU7XG4gICAgZm9udC1zaXplOiAxNnB4O1xuICAgIG1hcmdpbi10b3A6IDIwcHg7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgIC5mYS10aW1lcyB7XG4gICAgICAgIGNvbG9yOiAkd2hpdGU7XG4gICAgICAgIHBhZGRpbmc6IDVweCAxNXB4O1xuICAgICAgICBmbG9hdDogcmlnaHQ7XG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgICAgY29sb3I6ICNmYWZhZmE7XG4gICAgICAgIH1cbiAgICB9XG4gICAgcCB7XG4gICAgICAgIG1hcmdpbjogMjBweCAwO1xuICAgICAgICBAbWVkaWEgKG1pbi13aWR0aDogNjAwcHgpIHtcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMjBweDtcbiAgICAgICAgfVxuICAgIH1cbn1cblxuLnRvZG8tbGlzdCB7XG4gICAgcGFkZGluZzogMDtcbiAgICBtYXJnaW46IDIwcHggMCA1MHB4O1xuICAgIC50b2RvIHtcbiAgICAgICAgYmFja2dyb3VuZDogJHdoaXRlO1xuICAgICAgICBib3JkZXItYm90dG9tOiAxcHggZG90dGVkICRkYXJrLWdyYXk7XG4gICAgICAgIGNvbG9yOiAkZGFyay1ncmF5O1xuICAgICAgICBmb250LXNpemU6IDIwcHg7XG4gICAgICAgIGxpc3Qtc3R5bGU6IG5vbmU7XG4gICAgICAgIHBhZGRpbmc6IDIwcHggMTMwcHggMjBweCAxNXB4O1xuICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgICAgIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gICAgICAgIGRpc3BsYXk6IGxpc3QtaXRlbTtcbiAgICAgICAgbWFyZ2luLXRvcDogLjVlbTtcbiAgICAgICAgYm9yZGVyLXJhZGl1czogMWVtO1xuICAgIH1cbn1cblxuOjpwbGFjZWhvbGRlciB7XG4gICAgY29sb3I6IHdoaXRlO1xufVxuXG5zcGFuIHtcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiAxNXB4O1xuICAgIHJpZ2h0OiAwO1xuICAgIGEge1xuICAgICAgICBjb2xvcjogJGRhcmstZ3JheTtcbiAgICB9XG4gICAgaSB7XG4gICAgICAgIHBhZGRpbmc6IDEwcHggMTVweDtcbiAgICB9XG4gICAgLmZhLWNoZWNrIHtcbiAgICAgICAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgJGRhcmstZ3JheTtcbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgICBjb2xvcjogJGdyZWVuO1xuICAgICAgICB9XG4gICAgfVxuICAgIC5mYS10cmFzaC1vOmhvdmVyIHtcbiAgICAgICAgY29sb3I6ICRyZWQ7XG4gICAgfVxufVxuXG4uY29tcGxldGUge1xuICAgIGNvbG9yOiAkbGlnaHQtZ3JheTtcbiAgICB0ZXh0LWRlY29yYXRpb246IGxpbmUtdGhyb3VnaDtcbiAgICAuY2hlY2sge1xuICAgICAgICBjb2xvcjogJGdyZWVuO1xuICAgIH1cbn0iLCJAaW1wb3J0IHVybChcImh0dHBzOi8vZm9udHMuZ29vZ2xlYXBpcy5jb20vY3NzP2ZhbWlseT1GcmVkZXJpY2thK3RoZStHcmVhdHxaaWxsYStTbGFiOjMwMCw0MDBcIik7XG4jZm9uZCB7XG4gIGJhY2tncm91bmQtaW1hZ2U6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9pbWcvbWVudS5qcGdcIik7XG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG59XG5cbiN0b3Age1xuICBwYWRkaW5nLXRvcDogMmVtO1xufVxuXG4ucm93IHtcbiAgZmxleC13cmFwOiBpbmhlcml0O1xufVxuXG51bCB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG5ib2R5IHtcbiAgYmFja2dyb3VuZDogIzQ1NWE2NDtcbiAgY29sb3I6ICNlY2VmZjE7XG4gIGZvbnQtZmFtaWx5OiBcIkxhdG9cIiwgc2Fucy1zZXJpZjtcbiAgZm9udC13ZWlnaHQ6IDMwMDtcbn1cblxuLmNvbC1zbS0zIHtcbiAgd2lkdGg6IDEwZW07XG59XG5cbmgxIHtcbiAgZm9udC1zaXplOiA0MHB4O1xuICBmb250LWZhbWlseTogXCJmcmVkZXJpY2thIHRoZSBncmVhdFwiLCBjdXJzaXZlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgYmFja2dyb3VuZDogYmxhY2s7XG4gIGJvcmRlci1jb2xvcjogd2hpdGU7XG4gIGJvcmRlci1zdHlsZTogcmlkZ2U7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luLWxlZnQ6IGF1dG87XG4gIG1hcmdpbi1yaWdodDogYXV0bztcbiAgbWFyZ2luLWJvdHRvbTogMWVtO1xuICBkaXNwbGF5OiB0YWJsZTtcbiAgcGFkZGluZzogMC4xZW07XG59XG5AbWVkaWEgKG1pbi13aWR0aDogNjAwcHgpIHtcbiAgaDEge1xuICAgIGZvbnQtc2l6ZTogNzJweDtcbiAgfVxufVxuXG4uY29udGFpbmVyIHtcbiAgZm9udC1mYW1pbHk6IFwiemlsbGEgc2xhYlwiLCBzZXJpZjtcbiAgbWluLWhlaWdodDogMzdlbTtcbiAgbWFyZ2luOiAwIGF1dG87XG4gIHdpZHRoOiA5NSU7XG59XG5AbWVkaWEgKG1pbi13aWR0aDogNjAwcHgpIHtcbiAgLmNvbnRhaW5lciB7XG4gICAgd2lkdGg6IDc1JTtcbiAgfVxufVxuQG1lZGlhIChtaW4td2lkdGg6IDkwMHB4KSB7XG4gIC5jb250YWluZXIge1xuICAgIHdpZHRoOiA2NSU7XG4gIH1cbn1cblxuaW5wdXQge1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgYm9yZGVyOiBub25lO1xuICBib3JkZXItYm90dG9tOiAzcHggc29saWQgI2VjZWZmMTtcbiAgZm9udC1zaXplOiAyNHB4O1xuICBoZWlnaHQ6IDUwcHg7XG4gIHBhZGRpbmctYm90dG9tOiAxNXB4O1xufVxuaW5wdXQ6Zm9jdXMge1xuICBvdXRsaW5lOiAwO1xufVxuQG1lZGlhIChtaW4td2lkdGg6IDkwMHB4KSB7XG4gIGlucHV0IHtcbiAgICBmb250LXNpemU6IDMycHg7XG4gIH1cbn1cblxuLmlucHV0LWJ1dHRvbnMge1xuICBoZWlnaHQ6IDUwcHg7XG4gIGJvcmRlci1ib3R0b206IDNweCBzb2xpZCAjZWNlZmYxO1xuICBwYWRkaW5nOiAwO1xufVxuLmlucHV0LWJ1dHRvbnMgaSB7XG4gIHBhZGRpbmc6IDAgMTJweDtcbiAgY29sb3I6ICNlY2VmZjE7XG4gIGZsb2F0OiByaWdodDtcbn1cbi5pbnB1dC1idXR0b25zIC5mYS1wbHVzIHtcbiAgYm9yZGVyLXJpZ2h0OiAzcHggc29saWQgI2VjZWZmMTtcbn1cbkBtZWRpYSAobWluLXdpZHRoOiA2MDBweCkge1xuICAuaW5wdXQtYnV0dG9ucyAuZmEtdHJhc2gtbzpob3ZlciB7XG4gICAgY29sb3I6ICNmZjUyNTI7XG4gIH1cbiAgLmlucHV0LWJ1dHRvbnMgLmZhLXBsdXM6aG92ZXIge1xuICAgIGNvbG9yOiAjNjlmMGFlO1xuICB9XG59XG5cbi5lcnJvciB7XG4gIGNvbG9yOiAjZmY1MjUyO1xuICBkaXNwbGF5OiBub25lO1xuICBmb250LXNpemU6IDE2cHg7XG4gIG1hcmdpbi10b3A6IDIwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cbi5lcnJvciAuZmEtdGltZXMge1xuICBjb2xvcjogI2VjZWZmMTtcbiAgcGFkZGluZzogNXB4IDE1cHg7XG4gIGZsb2F0OiByaWdodDtcbn1cbi5lcnJvciAuZmEtdGltZXM6aG92ZXIge1xuICBjb2xvcjogI2ZhZmFmYTtcbn1cbi5lcnJvciBwIHtcbiAgbWFyZ2luOiAyMHB4IDA7XG59XG5AbWVkaWEgKG1pbi13aWR0aDogNjAwcHgpIHtcbiAgLmVycm9yIHAge1xuICAgIGZvbnQtc2l6ZTogMjBweDtcbiAgfVxufVxuXG4udG9kby1saXN0IHtcbiAgcGFkZGluZzogMDtcbiAgbWFyZ2luOiAyMHB4IDAgNTBweDtcbn1cbi50b2RvLWxpc3QgLnRvZG8ge1xuICBiYWNrZ3JvdW5kOiAjZWNlZmYxO1xuICBib3JkZXItYm90dG9tOiAxcHggZG90dGVkICM0NTVhNjQ7XG4gIGNvbG9yOiAjNDU1YTY0O1xuICBmb250LXNpemU6IDIwcHg7XG4gIGxpc3Qtc3R5bGU6IG5vbmU7XG4gIHBhZGRpbmc6IDIwcHggMTMwcHggMjBweCAxNXB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIGRpc3BsYXk6IGxpc3QtaXRlbTtcbiAgbWFyZ2luLXRvcDogMC41ZW07XG4gIGJvcmRlci1yYWRpdXM6IDFlbTtcbn1cblxuOjpwbGFjZWhvbGRlciB7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cblxuc3BhbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAxNXB4O1xuICByaWdodDogMDtcbn1cbnNwYW4gYSB7XG4gIGNvbG9yOiAjNDU1YTY0O1xufVxuc3BhbiBpIHtcbiAgcGFkZGluZzogMTBweCAxNXB4O1xufVxuc3BhbiAuZmEtY2hlY2sge1xuICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCAjNDU1YTY0O1xufVxuc3BhbiAuZmEtY2hlY2s6aG92ZXIge1xuICBjb2xvcjogIzY5ZjBhZTtcbn1cbnNwYW4gLmZhLXRyYXNoLW86aG92ZXIge1xuICBjb2xvcjogI2ZmNTI1Mjtcbn1cblxuLmNvbXBsZXRlIHtcbiAgY29sb3I6ICM5MGE0YWU7XG4gIHRleHQtZGVjb3JhdGlvbjogbGluZS10aHJvdWdoO1xufVxuLmNvbXBsZXRlIC5jaGVjayB7XG4gIGNvbG9yOiAjNjlmMGFlO1xufSJdfQ== */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MenuComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'app-menu',
+          templateUrl: './menu.component.html',
+          styleUrls: ['./menu.component.scss']
+        }]
+      }], function () {
+        return [{
+          type: src_app_service__WEBPACK_IMPORTED_MODULE_1__["RecettesService"]
+        }, {
+          type: src_app_service__WEBPACK_IMPORTED_MODULE_1__["AuthentificationService"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
   "./src/app/pages/mes-commentaires/mes-commentaires.component.ts":
   /*!**********************************************************************!*\
     !*** ./src/app/pages/mes-commentaires/mes-commentaires.component.ts ***!
@@ -7049,7 +7495,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function MesCommentairesComponent(auth, recetteService, modalService, router, commentairesService) {
-        var _this21 = this;
+        var _this26 = this;
 
         _classCallCheck(this, MesCommentairesComponent);
 
@@ -7062,7 +7508,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           ecritPar: this.auth.getUserDetails().pseudo
         };
         this.commentairesService.getCommentaireUser(this.auth.getUserDetails().pseudo).subscribe(function (commentaires) {
-          _this21.commentaires = commentaires;
+          _this26.commentaires = commentaires;
           var options = {
             weekday: 'long',
             year: 'numeric',
@@ -7072,11 +7518,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             minute: 'numeric'
           };
 
-          _this21.commentaires.forEach(function (element) {
+          _this26.commentaires.forEach(function (element) {
             var d = new Date(element.dateCommentaire);
             element.dateCommentaire = d.toLocaleString('FR-fr', options);
 
-            _this21.recetteService.getRecipeById(element.concerne).subscribe(function (data) {
+            _this26.recetteService.getRecipeById(element.concerne).subscribe(function (data) {
               element.nomRecette = data.nomRecette;
             });
           });
@@ -7089,18 +7535,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content) {
-          var _this22 = this;
+          var _this27 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
-            _this22.commentaireToModify.message = result.message;
-            _this22.commentaireToModify.dateCommentaire = result.dateCommentaire;
-            _this22.commentaireToModify.concerne = result.concerne;
+            _this27.commentaireToModify.message = result.message;
+            _this27.commentaireToModify.dateCommentaire = result.dateCommentaire;
+            _this27.commentaireToModify.concerne = result.concerne;
 
-            _this22.commentairesService.modifyCommentaire(_this22.commentaireToModify);
+            _this27.commentairesService.modifyCommentaire(_this27.commentaireToModify);
 
-            _this22.router.navigate(['/refresh'], {
+            _this27.router.navigate(['/refresh'], {
               queryParams: {
                 url: 'comment'
               }
@@ -7110,10 +7556,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteCommentaire",
         value: function deleteCommentaire(idCommentaire) {
-          var _this23 = this;
+          var _this28 = this;
 
           this.commentairesService.deleteCommentaire(idCommentaire).subscribe(function (res) {
-            _this23.router.navigate(['/comment']).then(function () {
+            _this28.router.navigate(['/comment']).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -7513,7 +7959,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function MesRecettesComponent(recetteService, router, formBuilder, auth, favorisService, categoriesService) {
-        var _this24 = this;
+        var _this29 = this;
 
         _classCallCheck(this, MesRecettesComponent);
 
@@ -7542,17 +7988,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }));
         this.favorisService.getFavoris().subscribe(function (data) {
-          _this24.allRecipe = data;
-          _this24.allRecipe2 = data;
+          _this29.allRecipe = data;
+          _this29.allRecipe2 = data;
         });
         this.categoriesService.getAllCategory().subscribe(function (categorie) {
           categorie.forEach(function (data) {
-            _this24.favorisService.getFavorisByCategory(data.idCategorie).subscribe(function (recipes) {
-              _this24.recipeCategory = recipes;
-              _this24.recipeByCategory[data.idCategorie] = _this24.recipeCategory;
+            _this29.favorisService.getFavorisByCategory(data.idCategorie).subscribe(function (recipes) {
+              _this29.recipeCategory = recipes;
+              _this29.recipeByCategory[data.idCategorie] = _this29.recipeCategory;
             });
           });
-          _this24.categories = categorie;
+          _this29.categories = categorie;
         });
         this.initResearchForm();
       }
@@ -7627,22 +8073,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFavoris",
         value: function getFavoris() {
-          var _this25 = this;
+          var _this30 = this;
 
           this.favorisService.getFavoris().subscribe(function (data) {
-            _this25.allRecipe = data;
-            _this25.allRecipe2 = data;
+            _this30.allRecipe = data;
+            _this30.allRecipe2 = data;
           });
         }
       }, {
         key: "getFavorisByCategory",
         value: function getFavorisByCategory(idCategorie) {
-          var _this26 = this;
+          var _this31 = this;
 
           this.actualCategory = idCategorie;
           this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie);
           this.favorisService.getFavorisByCategory(idCategorie).subscribe(function (data) {
-            _this26.allRecipe = data;
+            _this31.allRecipe = data;
           });
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
@@ -7661,10 +8107,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateNbView",
         value: function updateNbView(recette) {
-          var _this27 = this;
+          var _this32 = this;
 
           this.recetteService.updateNbView(recette).subscribe(function (res) {
-            _this27.router.navigate(['/recipe', recette.idRecette]).then(function () {
+            _this32.router.navigate(['/recipe', recette.idRecette]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -7678,10 +8124,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteFavoris",
         value: function deleteFavoris(idRecette) {
-          var _this28 = this;
+          var _this33 = this;
 
           this.favorisService.deleteFavoris(idRecette).subscribe(function (res) {
-            _this28.router.navigate(['/favorites'], {
+            _this33.router.navigate(['/favorites'], {
               queryParams: {
                 refresh: new Date().getTime()
               }
@@ -7690,7 +8136,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             console.log(err);
           });
           this.favorisService.getFavoris().subscribe(function (data) {
-            _this28.allRecipe = data;
+            _this33.allRecipe = data;
           });
           /* rafraichit la page */
         }
@@ -7925,18 +8371,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function ModifierRecetteComponent_div_27_Template(rf, ctx) {
       if (rf & 1) {
-        var _r259 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r260 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "input", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "input", 28);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ModifierRecetteComponent_div_27_Template_input_change_1_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r259);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r260);
 
-          var ctx_r258 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r259 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r258.selectFile($event);
+          return ctx_r259.selectFile($event);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -7945,14 +8391,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "br");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 29);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ModifierRecetteComponent_div_27_Template_button_click_4_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r259);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r260);
 
-          var ctx_r260 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r261 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r260.onSubmit();
+          return ctx_r261.onSubmit();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Modifier ");
@@ -7965,37 +8411,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function ModifierRecetteComponent_div_28_Template(rf, ctx) {
       if (rf & 1) {
-        var _r262 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r263 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 30);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "br");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 31);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, " Modifier l'image de la recette ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 32);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 33);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 34);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div", 35);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "h5", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "h5", 36);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " Modification de l'image de la recette ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 37);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "span", 38);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "\xD7");
 
@@ -8005,24 +8451,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 39);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "figcaption", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "figcaption", 40);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 41);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "form");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "input", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "input", 28);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ModifierRecetteComponent_div_28_Template_input_change_19_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r262);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r263);
 
-          var ctx_r261 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r262 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r261.selectFile($event);
+          return ctx_r262.selectFile($event);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -8037,22 +8483,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "div", 42);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "button", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "button", 43);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22, " Close ");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "button", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "button", 29);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ModifierRecetteComponent_div_28_Template_button_click_23_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r262);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r263);
 
-          var ctx_r263 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r264 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r263.onSubmit();
+          return ctx_r264.onSubmit();
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, " Modifier ");
@@ -8067,7 +8513,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "div", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "div", 44);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       }
@@ -8083,23 +8529,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function ModifierRecetteComponent_div_37_Template(rf, ctx) {
       if (rf & 1) {
-        var _r266 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r267 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 45);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 46);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ModifierRecetteComponent_div_37_Template_button_click_1_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r266);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r267);
 
-          var categ_r264 = ctx.$implicit;
+          var categ_r265 = ctx.$implicit;
 
-          var ctx_r265 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r266 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r265.deleteRecipeCategory(categ_r264, ctx_r265.recette);
+          return ctx_r266.deleteRecipeCategory(categ_r265, ctx_r266.recette);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "i", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "i", 47);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8109,33 +8555,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var categ_r264 = ctx.$implicit;
+        var categ_r265 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", categ_r264.libelleCategorie, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", categ_r265.libelleCategorie, " ");
       }
     }
 
     function ModifierRecetteComponent_div_39_Template(rf, ctx) {
       if (rf & 1) {
-        var _r269 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r270 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 45);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 45);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 48);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ModifierRecetteComponent_div_39_Template_button_click_1_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r269);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r270);
 
-          var cat_r267 = ctx.$implicit;
+          var cat_r268 = ctx.$implicit;
 
-          var ctx_r268 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r269 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r268.addRecipeCategory(cat_r267, ctx_r268.recette);
+          return ctx_r269.addRecipeCategory(cat_r268, ctx_r269.recette);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "i", 46);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "i", 49);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8145,11 +8591,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var cat_r267 = ctx.$implicit;
+        var cat_r268 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", cat_r267.libelleCategorie, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", cat_r268.libelleCategorie, " ");
       }
     }
 
@@ -8163,15 +8609,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var unite_r274 = ctx.$implicit;
+        var unite_r275 = ctx.$implicit;
 
-        var ingredient_r270 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+        var ingredient_r271 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", ingredient_r270.libelleUnite == unite_r274.libelleUnite ? true : null)("value", unite_r274.idUnite);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("selected", ingredient_r271.libelleUnite == unite_r275.libelleUnite ? true : null)("value", unite_r275.idUnite);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", unite_r274.libelleUnite, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", unite_r275.libelleUnite, " ");
       }
     }
 
@@ -8183,23 +8629,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function ModifierRecetteComponent_div_102_Template(rf, ctx) {
       if (rf & 1) {
-        var _r277 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r278 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 47);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 50);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "form", 5);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function ModifierRecetteComponent_div_102_Template_form_submit_1_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r277);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r278);
 
-          var ingredient_r270 = ctx.$implicit;
+          var ingredient_r271 = ctx.$implicit;
 
-          var ctx_r276 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r277 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r276.updateRecipeIng(ctx_r276.recette, ingredient_r270);
+          return ctx_r277.updateRecipeIng(ctx_r277.recette, ingredient_r271);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "td", 48);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "td", 51);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "p");
 
@@ -8209,15 +8655,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 49);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "td", 52);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "input", 50, 51);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "input", 53, 54);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_div_102_Template_input_ngModelChange_6_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r277);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r278);
 
-          var ingredient_r270 = ctx.$implicit;
-          return ingredient_r270.qte = $event;
+          var ingredient_r271 = ctx.$implicit;
+          return ingredient_r271.qte = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -8226,16 +8672,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "td");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "select", 52, 53);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "select", 55, 56);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_div_102_Template_select_ngModelChange_9_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r277);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r278);
 
-          var ingredient_r270 = ctx.$implicit;
-          return ingredient_r270.idUnite = $event;
+          var ingredient_r271 = ctx.$implicit;
+          return ingredient_r271.idUnite = $event;
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, ModifierRecetteComponent_div_102_option_11_Template, 2, 3, "option", 54);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, ModifierRecetteComponent_div_102_option_11_Template, 2, 3, "option", 57);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8243,9 +8689,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "td");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 55);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "button", 58);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "i", 56);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "i", 59);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8253,19 +8699,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "td");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "button", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "button", 46);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ModifierRecetteComponent_div_102_Template_button_click_16_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r277);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r278);
 
-          var ingredient_r270 = ctx.$implicit;
+          var ingredient_r271 = ctx.$implicit;
 
-          var ctx_r280 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r281 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r280.deleteIngredientRececipe(ingredient_r270, ctx_r280.recette);
+          return ctx_r281.deleteIngredientRececipe(ingredient_r271, ctx_r281.recette);
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "i", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "i", 47);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8277,23 +8723,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ingredient_r270 = ctx.$implicit;
+        var ingredient_r271 = ctx.$implicit;
 
         var ctx_r253 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ingredient_r270.nomIngredient);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ingredient_r271.nomIngredient);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", ingredient_r270.qte);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", ingredient_r271.qte);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ingredient_r270.qte);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ingredient_r271.qte);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ingredient_r270.idUnite)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](6, _c0));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ingredient_r271.idUnite)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](6, _c0));
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
@@ -8303,7 +8749,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function ModifierRecetteComponent_ng_template_103_option_11_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 71);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 74);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -8311,19 +8757,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ingredient_r287 = ctx.$implicit;
+        var ingredient_r288 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", ingredient_r287.nomIngredient)("disabled", ingredient_r287.disabled);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", ingredient_r288.nomIngredient)("disabled", ingredient_r288.disabled);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ingredient_r287.nomIngredient, "");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ingredient_r288.nomIngredient, "");
       }
     }
 
     function ModifierRecetteComponent_ng_template_103_option_26_Template(rf, ctx) {
       if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 72);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "option", 75);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
 
@@ -8331,55 +8777,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var unite_r288 = ctx.$implicit;
+        var unite_r289 = ctx.$implicit;
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", unite_r288.idUnite);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngValue", unite_r289.idUnite);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", unite_r288.libelleUnite, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", unite_r289.libelleUnite, " ");
       }
     }
 
     function ModifierRecetteComponent_ng_template_103_Template(rf, ctx) {
       if (rf & 1) {
-        var _r290 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r291 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 35);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "h4", 57);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "h4", 60);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 39);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "form");
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 58);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 61);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 59);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 62);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "label", 60);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "label", 63);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Ingr\xE9dient");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "input", 61, 62);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "input", 64, 65);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_ng_template_103_Template_input_ngModelChange_8_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r290);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r291);
 
-          var ctx_r289 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r290 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r289.newIngredient.nomIngredient = $event;
+          return ctx_r290.newIngredient.nomIngredient = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "datalist", 63);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "datalist", 66);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, ModifierRecetteComponent_ng_template_103_option_11_Template, 2, 3, "option", 64);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, ModifierRecetteComponent_ng_template_103_option_11_Template, 2, 3, "option", 67);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8391,22 +8837,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 65);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "div", 68);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "label", 66);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "label", 69);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16, "Quantit\xE9");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "input", 67, 51);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "input", 70, 54);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_ng_template_103_Template_input_ngModelChange_17_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r290);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r291);
 
-          var ctx_r291 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r292 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r291.newIngredient.qte = $event;
+          return ctx_r292.newIngredient.qte = $event;
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -8419,25 +8865,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 65);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 68);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "label", 60);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "label", 63);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](23, "Unit\xE9");
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "select", 68, 53);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "select", 71, 56);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_ng_template_103_Template_select_ngModelChange_24_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r290);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r291);
 
-          var ctx_r292 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r293 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r292.newIngredient.idUnite = $event;
+          return ctx_r293.newIngredient.idUnite = $event;
         });
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](26, ModifierRecetteComponent_ng_template_103_option_26_Template, 2, 2, "option", 69);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](26, ModifierRecetteComponent_ng_template_103_option_26_Template, 2, 2, "option", 72);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -8455,18 +8901,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "div", 42);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "button", 70);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "button", 73);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ModifierRecetteComponent_ng_template_103_Template_button_click_30_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r290);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r291);
 
-          var modal_r281 = ctx.$implicit;
+          var modal_r282 = ctx.$implicit;
 
-          var ctx_r293 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r294 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return modal_r281.close(ctx_r293.newIngredient);
+          return modal_r282.close(ctx_r294.newIngredient);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31, " Ajouter ");
@@ -8505,7 +8951,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function ModifierRecetteComponent(recetteService, router, route, ingredientsService, modalService, http, categoriesService, unitesService, imagesService, imageCompress) {
-        var _this29 = this;
+        var _this34 = this;
 
         _classCallCheck(this, ModifierRecetteComponent);
 
@@ -8545,25 +8991,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           idRecette: null
         };
         this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (recette) {
-          _this29.recette = recette;
+          _this34.recette = recette;
         });
         this.ingredientsService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (ingredient) {
-          _this29.ingredients = ingredient;
+          _this34.ingredients = ingredient;
         });
         this.imagesService.getImage(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (res) {
           if (res.length !== 0) {
-            _this29.recette.idImage = res[0].idImage;
-            _this29.image = res[0];
+            _this34.recette.idImage = res[0].idImage;
+            _this34.image = res[0];
           }
         });
         this.ingredientsService.getRestIngredients(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (ingredients) {
-          _this29.allIngredients = ingredients;
+          _this34.allIngredients = ingredients;
         });
         this.unitesService.getAllUnite().subscribe(function (unites) {
-          _this29.allUnites = unites;
+          _this34.allUnites = unites;
         });
         this.categoriesService.getRestCategory(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-          _this29.allCategories = categories;
+          _this34.allCategories = categories;
         });
         this.getCategory(parseInt(this.route.snapshot.paramMap.get('id'), 10));
       }
@@ -8574,7 +9020,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "selectFile",
         value: function selectFile(event) {
-          var _this30 = this;
+          var _this35 = this;
 
           var fileName;
           this.file = event.target.files[0];
@@ -8584,9 +9030,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var reader = new FileReader();
 
             reader.onload = function (event) {
-              _this30.localUrl = event.target.result;
+              _this35.localUrl = event.target.result;
 
-              _this30.compressFile(_this30.localUrl, fileName);
+              _this35.compressFile(_this35.localUrl, fileName);
             };
 
             reader.readAsDataURL(event.target.files[0]);
@@ -8595,26 +9041,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "compressFile",
         value: function compressFile(image, fileName) {
-          var _this31 = this;
+          var _this36 = this;
 
           var orientation = -1;
           this.sizeOfOriginalImage = this.imageCompress.byteCount(image) / (1024 * 1024);
           console.warn('Size in bytes is now:', this.sizeOfOriginalImage);
           this.imageCompress.compressFile(image, orientation, 50, 50).then(function (result) {
-            _this31.imgResultAfterCompress = result;
-            _this31.localCompressedURl = result;
-            _this31.sizeOFCompressedImage = _this31.imageCompress.byteCount(result) / (1024 * 1024);
-            console.warn('Size in bytes after compression:', _this31.sizeOFCompressedImage); // create file from byte
+            _this36.imgResultAfterCompress = result;
+            _this36.localCompressedURl = result;
+            _this36.sizeOFCompressedImage = _this36.imageCompress.byteCount(result) / (1024 * 1024);
+            console.warn('Size in bytes after compression:', _this36.sizeOFCompressedImage); // create file from byte
 
             var imageName = fileName; // call method that creates a blob from dataUri
 
-            var imageBlob = _this31.dataURItoBlob(_this31.imgResultAfterCompress.split(',')[1]); // imageFile created below is the new compressed file which can be send to API in form data
+            var imageBlob = _this36.dataURItoBlob(_this36.imgResultAfterCompress.split(',')[1]); // imageFile created below is the new compressed file which can be send to API in form data
 
 
             var imageFile = new File([imageBlob], imageName, {
               type: 'image/jpeg'
             });
-            _this31.image2 = imageFile;
+            _this36.image2 = imageFile;
           });
         }
       }, {
@@ -8645,7 +9091,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onSubmit",
         value: function onSubmit() {
-          var _this32 = this;
+          var _this37 = this;
 
           var formData = new FormData();
           console.log(this.image2);
@@ -8653,22 +9099,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           if (this.image) {
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this32.image = res[0];
-              _this32.imageToModify.idImage = res[0];
-              _this32.imageToModify.idRecette = _this32.recette.idRecette;
+              _this37.image = res[0];
+              _this37.imageToModify.idImage = res[0];
+              _this37.imageToModify.idRecette = _this37.recette.idRecette;
 
-              _this32.http.post("/server/image/update", _this32.imageToModify).subscribe(function (res) {
-                _this32.image = res[0];
+              _this37.http.post("/server/image/update", _this37.imageToModify).subscribe(function (res) {
+                _this37.image = res[0];
                 window.location.reload();
               });
             });
           } else {
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this32.image = res[0];
-              _this32.imageToModify.idImage = res[0];
-              _this32.imageToModify.idRecette = _this32.recette.idRecette;
+              _this37.image = res[0];
+              _this37.imageToModify.idImage = res[0];
+              _this37.imageToModify.idRecette = _this37.recette.idRecette;
 
-              _this32.imagesService.addImageToRecipe(_this32.imageToModify);
+              _this37.imagesService.addImageToRecipe(_this37.imageToModify);
 
               window.location.reload();
             });
@@ -8677,10 +9123,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCategory",
         value: function getCategory(id) {
-          var _this33 = this;
+          var _this38 = this;
 
           this.categoriesService.getCategoryByRecette(id).subscribe(function (categories) {
-            _this33.categories = categories;
+            _this38.categories = categories;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               if (err.status === 402) {
@@ -8718,6 +9164,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
+        key: "updateDescription",
+        value: function updateDescription(recette) {
+          this.recetteService.updateDescription(recette).subscribe(function (res) {
+            window.location.reload();
+          }, function (err) {
+            console.error(err);
+          });
+        }
+      }, {
         key: "updatePart",
         value: function updatePart(recette) {
           this.recetteService.updatePart(recette).subscribe(function (res) {
@@ -8747,10 +9202,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteIngredientRececipe",
         value: function deleteIngredientRececipe(ingredient, recette) {
-          var _this34 = this;
+          var _this39 = this;
 
           this.recetteService.deleteIngredientRecipe(ingredient, recette).subscribe(function (res) {
-            _this34.router.navigate(['updateRecipe/:id']).then(function () {
+            _this39.router.navigate(['updateRecipe/:id']).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -8760,16 +9215,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteRecipeCategory",
         value: function deleteRecipeCategory(categorie, recette) {
-          var _this35 = this;
+          var _this40 = this;
 
           this.recetteService.deleteRecipeCategory(categorie, recette).subscribe(function (res) {
             setTimeout(function () {
-              _this35.categoriesService.getRestCategory(parseInt(_this35.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this35.allCategories = categories;
+              _this40.categoriesService.getRestCategory(parseInt(_this40.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this40.allCategories = categories;
               });
 
-              _this35.categoriesService.getCategoryByRecette(parseInt(_this35.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this35.categories = categories;
+              _this40.categoriesService.getCategoryByRecette(parseInt(_this40.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this40.categories = categories;
               });
             }, 1000);
           }, function (err) {
@@ -8779,16 +9234,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addRecipeCategory",
         value: function addRecipeCategory(categorie, recette) {
-          var _this36 = this;
+          var _this41 = this;
 
           this.recetteService.addRecipeCategory(categorie, recette).subscribe(function (res) {
             setTimeout(function () {
-              _this36.categoriesService.getRestCategory(parseInt(_this36.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this36.allCategories = categories;
+              _this41.categoriesService.getRestCategory(parseInt(_this41.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this41.allCategories = categories;
               });
 
-              _this36.categoriesService.getCategoryByRecette(parseInt(_this36.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
-                _this36.categories = categories;
+              _this41.categoriesService.getCategoryByRecette(parseInt(_this41.route.snapshot.paramMap.get('id'), 10)).subscribe(function (categories) {
+                _this41.categories = categories;
               });
             }, 1000);
           }, function (err) {
@@ -8798,23 +9253,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "open",
         value: function open(content) {
-          var _this37 = this;
+          var _this42 = this;
 
           this.modalService.open(content, {
             ariaLabelledBy: 'modal-basic-title'
           }).result.then(function (result) {
             console.log(result);
 
-            _this37.allIngredients.forEach(function (element) {
+            _this42.allIngredients.forEach(function (element) {
               if (result.nomIngredient === element.nomIngredient) {
-                _this37.newIngredient.idIngredient = element.idIngredient;
+                _this42.newIngredient.idIngredient = element.idIngredient;
               }
             });
 
-            _this37.newIngredient.qte = result.qte;
-            _this37.newIngredient.idUnite = result.idUnite;
+            _this42.newIngredient.qte = result.qte;
+            _this42.newIngredient.idUnite = result.idUnite;
 
-            _this37.recetteService.addIngredientRecette(_this37.newIngredient);
+            _this42.recetteService.addIngredientRecette(_this42.newIngredient);
 
             setTimeout(function () {
               window.location.reload();
@@ -8833,12 +9288,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     ModifierRecetteComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: ModifierRecetteComponent,
       selectors: [["app-modifier-recette"]],
-      decls: 140,
-      vars: 30,
-      consts: [["id", "contact", 1, "contact", "pt-100", "pb-100"], [1, "container"], [1, "text-center"], [1, "table", "col-md-8", "mx-auto"], ["id", "nomRecette"], [3, "submit"], ["type", "text", "name", "nomRecette", "value", "(recette?.nomRecette)", 1, "form-control", 3, "ngModel", "ngModelChange"], ["nomRecette", "ngModel"], ["type", "submit", 1, "btn", "btn-primary"], [4, "ngIf"], ["style", "text-align: initial;", 4, "ngFor", "ngForOf"], ["type", "number", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], [1, "invalid-tooltip"], ["type", "text", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], [2, "margin-top", "2em"], ["type", "time", "step", "2", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], ["class", "card-text", 4, "ngFor", "ngForOf"], ["content", ""], [1, "btn", "btn-primary", 3, "click"], [1, "row"], [1, "col-lg-6", "col-md-6", "col-sm-12", "p-3"], ["rows", "15em", "name", "etapes", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["etapes", "ngModel"], ["id", "btn", "type", "submit", 1, "btn", "btn-primary"], ["rows", "15em", "name", "astuce", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["type", "file", "name", "image", 3, "change"], ["type", "submit", 1, "btn", "btn-primary", 3, "click"], ["alt", "Responsive image", "id", "resp", 1, "rounded", "mx-auto", "d-block", 3, "src"], ["type", "submit", "data-toggle", "modal", "data-target", "#exampleModal", "data-backdrop", "false", 1, "btn", "btn-primary"], ["id", "exampleModal", "tabindex", "-1", "role", "dialog", "aria-labelledby", "exampleModalLabel", "aria-hidden", "true", 1, "modal", "fade"], ["role", "document", 1, "modal-dialog"], [1, "modal-content"], [1, "modal-header"], ["id", "exampleModalLabel", 1, "modal-title"], ["type", "button", "data-dismiss", "modal", "aria-label", "Close", 1, "close"], ["aria-hidden", "true"], [1, "modal-body"], [1, "figure-caption"], [2, "text-align", "center"], [1, "modal-footer"], ["type", "button", "data-dismiss", "modal", 1, "btn", "btn-primary"], ["id", "modal-backdrop", 1, "modal-backdrop-transparent", "modal-transition"], [2, "text-align", "initial"], ["id", "poubelle", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"], ["id", "add", 1, "btn", "btn-sm", "btn-success", 3, "click"], [1, "fa", "fa-plus-circle"], [1, "card-text"], ["id", "nomIng"], ["id", "qteIng"], ["type", "text", "name", "qte", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["qte", "ngModel"], ["required", "", 1, "custom-select", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["idUnite", "ngModel"], [4, "ngFor", "ngForOf"], ["id", "crayon", 1, "btn", "btn-sm", "btn-warning"], ["aria-hidden", "true", 1, "fa", "fa-pencil"], [1, "modal-title"], [1, "form-row"], [1, "col-md-6", "mb-3"], ["for", "validationTooltip04"], ["id", "validationTooltip04", "list", "brow", "required", "", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["nomIngredient", "ngModel"], ["id", "brow"], [3, "ngValue", "disabled", 4, "ngFor", "ngForOf"], [1, "col-md-3", "mb-3"], ["for", "validationTooltip05"], ["type", "number", "id", "validationTooltip05", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["id", "validationTooltip04", "required", "", 1, "custom-select", 3, "ngModel", "ngModelOptions", "ngModelChange"], [3, "ngValue", 4, "ngFor", "ngForOf"], ["tyoe", "button", 1, "btn", "btn-outline-dark", 3, "click"], [3, "ngValue", "disabled"], [3, "ngValue"]],
+      decls: 152,
+      vars: 34,
+      consts: [["id", "contact", 1, "contact", "pt-100", "pb-100"], [1, "container"], [1, "text-center"], [1, "table", "col-md-8", "mx-auto"], ["id", "nomRecette"], [3, "submit"], ["type", "text", "name", "nomRecette", "value", "(recette?.nomRecette)", 1, "form-control", 3, "ngModel", "ngModelChange"], ["nomRecette", "ngModel"], ["type", "submit", 1, "btn", "btn-primary"], [4, "ngIf"], ["style", "text-align: initial;", 4, "ngFor", "ngForOf"], ["type", "number", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], [1, "invalid-tooltip"], ["type", "text", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], [2, "margin-top", "2em"], ["type", "time", "step", "2", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "value", "ngModelChange"], ["class", "card-text", 4, "ngFor", "ngForOf"], ["content", ""], [1, "btn", "btn-primary", 3, "click"], [1, "row"], [1, "col-lg-6", "col-md-6", "col-sm-12", "p-3"], ["rows", "15em", "name", "etapes", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["etapes", "ngModel"], ["id", "btn", "type", "submit", 1, "btn", "btn-primary"], ["rows", "15em", "name", "astuce", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], [1, "col-lg-12", "p-3"], ["rows", "6em", "name", "mot", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["mot", "ngModel"], ["type", "file", "name", "image", 3, "change"], ["type", "submit", 1, "btn", "btn-primary", 3, "click"], ["alt", "Responsive image", "id", "resp", 1, "rounded", "mx-auto", "d-block", 3, "src"], ["type", "submit", "data-toggle", "modal", "data-target", "#exampleModal", "data-backdrop", "false", 1, "btn", "btn-primary"], ["id", "exampleModal", "tabindex", "-1", "role", "dialog", "aria-labelledby", "exampleModalLabel", "aria-hidden", "true", 1, "modal", "fade"], ["role", "document", 1, "modal-dialog"], [1, "modal-content"], [1, "modal-header"], ["id", "exampleModalLabel", 1, "modal-title"], ["type", "button", "data-dismiss", "modal", "aria-label", "Close", 1, "close"], ["aria-hidden", "true"], [1, "modal-body"], [1, "figure-caption"], [2, "text-align", "center"], [1, "modal-footer"], ["type", "button", "data-dismiss", "modal", 1, "btn", "btn-primary"], ["id", "modal-backdrop", 1, "modal-backdrop-transparent", "modal-transition"], [2, "text-align", "initial"], ["id", "poubelle", 1, "btn", "btn-sm", "btn-danger", 3, "click"], [1, "fa", "fa-trash"], ["id", "add", 1, "btn", "btn-sm", "btn-success", 3, "click"], [1, "fa", "fa-plus-circle"], [1, "card-text"], ["id", "nomIng"], ["id", "qteIng"], ["type", "text", "name", "qte", 1, "form-control", 3, "value", "ngModel", "ngModelChange"], ["qte", "ngModel"], ["required", "", 1, "custom-select", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["idUnite", "ngModel"], [4, "ngFor", "ngForOf"], ["id", "crayon", 1, "btn", "btn-sm", "btn-warning"], ["aria-hidden", "true", 1, "fa", "fa-pencil"], [1, "modal-title"], [1, "form-row"], [1, "col-md-6", "mb-3"], ["for", "validationTooltip04"], ["id", "validationTooltip04", "list", "brow", "required", "", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["nomIngredient", "ngModel"], ["id", "brow"], [3, "ngValue", "disabled", 4, "ngFor", "ngForOf"], [1, "col-md-3", "mb-3"], ["for", "validationTooltip05"], ["type", "number", "id", "validationTooltip05", "required", "", 1, "form-control", 3, "ngModel", "ngModelOptions", "ngModelChange"], ["id", "validationTooltip04", "required", "", 1, "custom-select", 3, "ngModel", "ngModelOptions", "ngModelChange"], [3, "ngValue", 4, "ngFor", "ngForOf"], ["tyoe", "button", 1, "btn", "btn-outline-dark", 3, "click"], [3, "ngValue", "disabled"], [3, "ngValue"]],
       template: function ModifierRecetteComponent_Template(rf, ctx) {
         if (rf & 1) {
-          var _r294 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+          var _r295 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0);
 
@@ -9215,7 +9670,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](107, "button", 18);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ModifierRecetteComponent_Template_button_click_107_listener($event) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r294);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r295);
 
             var _r254 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](104);
 
@@ -9344,6 +9799,48 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](140, "hr");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](141, "table", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](142, "div", 25);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](143, "label");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](144, "Description");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](145, "form", 5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("submit", function ModifierRecetteComponent_Template_form_submit_145_listener($event) {
+            return ctx.updateDescription(ctx.recette);
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](146, "textarea", 26, 27);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function ModifierRecetteComponent_Template_textarea_ngModelChange_146_listener($event) {
+            return ctx.recette.mot = $event;
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](148);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](149, "br");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](150, "button", 23);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](151, " Modifier ");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -9374,25 +9871,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", ctx.recette.nbrePart);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.nbrePart)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](24, _c0));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.nbrePart)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](27, _c0));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", ctx.recette.libellePart);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.libellePart)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](25, _c0));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.libellePart)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](28, _c0));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](20);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", ctx.recette.tempsPreparation);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.tempsPreparation)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](26, _c0));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.tempsPreparation)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](29, _c0));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", ctx.recette.tempsCuisson);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.tempsCuisson)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](27, _c0));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.tempsCuisson)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](30, _c0));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](15);
 
@@ -9400,7 +9897,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](21);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.etapes)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](28, _c0));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.etapes)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](31, _c0));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
@@ -9408,11 +9905,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.astuce)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](29, _c0));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.astuce)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](32, _c0));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.recette == null ? null : ctx.recette.astuce);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngModel", ctx.recette.mot)("ngModelOptions", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](33, _c0));
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.recette == null ? null : ctx.recette.mot);
         }
       },
       directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_6__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgModel"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NumberValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["SelectControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["NgSelectOption"], _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ɵangular_packages_forms_forms_x"]],
@@ -9706,29 +10211,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(MonProfileComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this38 = this;
+          var _this43 = this;
 
           this.auth.profile().subscribe(function (user) {
-            _this38.credentials = user;
+            _this43.credentials = user;
           }, function (err) {
             console.error(err);
           });
 
           if (this.route.queryParams) {
             this.route.queryParams.subscribe(function (params) {
-              _this38.credentials.success = params.success;
+              _this43.credentials.success = params.success;
             });
           }
         }
       }, {
         key: "updateProfile",
         value: function updateProfile() {
-          var _this39 = this;
+          var _this44 = this;
 
           this.auth.updateProfile(this.credentials).subscribe(function (res) {
-            _this39.credentials.success = res.success;
+            _this44.credentials.success = res.success;
 
-            _this39.router.navigateByUrl('/profile').then(function () {
+            _this44.router.navigateByUrl('/profile').then(function () {
               // tslint:disable-next-line: deprecation
               setTimeout(window.location.reload.bind(window.location), 2500);
             });
@@ -9739,11 +10244,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteProfile",
         value: function deleteProfile(pseudo) {
-          var _this40 = this;
+          var _this45 = this;
 
           this.auth.logout();
           this.auth.deleteProfile(pseudo).subscribe(function (res) {
-            _this40.router.navigate(['/']);
+            _this45.router.navigate(['/']);
           }, function (err) {
             console.log(err);
           });
@@ -10978,7 +11483,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function RecetteComponent(auth, recetteService, router, route, imagesService, commentairesService, ingredientsService, favorisService, unitesService, shoppingListService) {
-        var _this41 = this;
+        var _this46 = this;
 
         _classCallCheck(this, RecetteComponent);
 
@@ -11015,37 +11520,37 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
         this.isFavori = false;
         this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (recette) {
-          _this41.recette = recette;
-          _this41.recette.tempsCuisson = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this41.recette.tempsCuisson);
-          _this41.recette.tempsPreparation = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this41.recette.tempsPreparation);
-          _this41.nbrePartInitial = _this41.recette.nbrePart;
+          _this46.recette = recette;
+          _this46.recette.tempsCuisson = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this46.recette.tempsCuisson);
+          _this46.recette.tempsPreparation = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(_this46.recette.tempsPreparation);
+          _this46.nbrePartInitial = _this46.recette.nbrePart;
         });
         this.recetteService.getLatestReceipes().subscribe(function (data) {
-          _this41.latestRecipes = data;
+          _this46.latestRecipes = data;
         });
         this.imagesService.getImage(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (res) {
           console.log(res);
-          _this41.image = res;
+          _this46.image = res;
         });
         this.ingredientsService.getIngredientsByIdRecette(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (ingredient) {
           ingredient.forEach(function (element) {
             element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte);
           });
-          _this41.ingredients = ingredient;
-          _this41.recette.ingredients = ingredient;
-          _this41.ingredientQteInitial = ingredient;
+          _this46.ingredients = ingredient;
+          _this46.recette.ingredients = ingredient;
+          _this46.ingredientQteInitial = ingredient;
         });
         this.commentairesService.getCommentaireRecipe(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(function (commentaires) {
           if (commentaires[0]) {
-            _this41.commentaires = commentaires;
+            _this46.commentaires = commentaires;
           }
         });
 
         if (this.auth.isLoggedIn()) {
           this.favorisService.getFavoris().subscribe(function (data) {
             data.forEach(function (element) {
-              if (element.idRecette === parseInt(_this41.route.snapshot.paramMap.get('id'), 10)) {
-                _this41.isFavori = true;
+              if (element.idRecette === parseInt(_this46.route.snapshot.paramMap.get('id'), 10)) {
+                _this46.isFavori = true;
               }
             });
           });
@@ -11065,10 +11570,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateNbView",
         value: function updateNbView(recette) {
-          var _this42 = this;
+          var _this47 = this;
 
           this.recetteService.updateNbView(recette).subscribe(function (res) {
-            _this42.router.navigate(['/recipe', recette.idRecette]).then(function () {
+            _this47.router.navigate(['/recipe', recette.idRecette]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -11090,10 +11595,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUtiliserIngredientsByIdRecette",
         value: function getUtiliserIngredientsByIdRecette(id) {
-          var _this43 = this;
+          var _this48 = this;
 
           this.ingredientsService.getUtiliserIngredientsByIdRecette(id).subscribe(function (qtes) {
-            _this43.qtes = qtes;
+            _this48.qtes = qtes;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               if (err.status === 402) {
@@ -11106,10 +11611,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getUniteByIdUnite",
         value: function getUniteByIdUnite(id) {
-          var _this44 = this;
+          var _this49 = this;
 
           this.unitesService.getUniteById(id).subscribe(function (unite) {
-            _this44.unite = unite;
+            _this49.unite = unite;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpResponse"]) {
               if (err.status === 402) {
@@ -11145,10 +11650,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteCommentaire",
         value: function deleteCommentaire(idCommentaire) {
-          var _this45 = this;
+          var _this50 = this;
 
           this.commentairesService.deleteCommentaire(idCommentaire).subscribe(function (res) {
-            _this45.router.navigate(['/recipe/' + parseInt(_this45.route.snapshot.paramMap.get('id'), 10)]).then(function () {
+            _this50.router.navigate(['/recipe/' + parseInt(_this50.route.snapshot.paramMap.get('id'), 10)]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -11160,19 +11665,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addCommentaire",
         value: function addCommentaire(message) {
-          var _this46 = this;
+          var _this51 = this;
 
           if (this.images) {
             var formData = new FormData();
             formData.append('file', this.images);
             this.newCommentaire.message = message;
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this46.newCommentaire.idImage = res[0];
+              _this51.newCommentaire.idImage = res[0];
 
-              _this46.commentairesService.addCommentaire(_this46.newCommentaire).subscribe(function (res2) {
-                _this46.newCommentaire.idCommentaire = res2.idCommentaire;
+              _this51.commentairesService.addCommentaire(_this51.newCommentaire).subscribe(function (res2) {
+                _this51.newCommentaire.idCommentaire = res2.idCommentaire;
 
-                _this46.commentairesService.addImageToCommentaire(_this46.newCommentaire).subscribe();
+                _this51.commentairesService.addImageToCommentaire(_this51.newCommentaire).subscribe();
 
                 window.location.reload();
               });
@@ -11187,7 +11692,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addReponse",
         value: function addReponse(event, idCommentaire) {
-          var _this47 = this;
+          var _this52 = this;
 
           if (this.images) {
             var formData = new FormData();
@@ -11195,12 +11700,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.newResponse.message = event.target.message.value;
             this.newResponse.parent = idCommentaire;
             this.imagesService.addImage(formData).subscribe(function (res) {
-              _this47.newResponse.idImage = res[0];
+              _this52.newResponse.idImage = res[0];
 
-              _this47.commentairesService.addCommentaire(_this47.newResponse).subscribe(function (res2) {
-                _this47.newResponse.idCommentaire = res2.idCommentaire;
+              _this52.commentairesService.addCommentaire(_this52.newResponse).subscribe(function (res2) {
+                _this52.newResponse.idCommentaire = res2.idCommentaire;
 
-                _this47.commentairesService.addImageToCommentaire(_this47.newResponse).subscribe();
+                _this52.commentairesService.addImageToCommentaire(_this52.newResponse).subscribe();
 
                 window.location.reload();
               });
@@ -11216,30 +11721,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "onProportionChange",
         value: function onProportionChange(searchValue) {
-          var _this48 = this;
+          var _this53 = this;
 
           this.recette.ingredients.forEach(function (element) {
-            element.qte = element.qte * parseInt(searchValue, 10) / _this48.recette.nbrePart;
+            element.qte = element.qte * parseInt(searchValue, 10) / _this53.recette.nbrePart;
           });
           this.recette.nbrePart = parseInt(searchValue, 10);
         }
       }, {
         key: "onProportionLess",
         value: function onProportionLess(value) {
-          var _this49 = this;
+          var _this54 = this;
 
           this.recette.ingredients.forEach(function (element) {
-            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this49.recette.nbrePart);
+            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this54.recette.nbrePart);
           });
           this.recette.nbrePart = this.recette.nbrePart - 1;
         }
       }, {
         key: "onProportionMore",
         value: function onProportionMore(value) {
-          var _this50 = this;
+          var _this55 = this;
 
           this.recette.ingredients.forEach(function (element) {
-            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this50.recette.nbrePart);
+            element.qte = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["roundDecimal"])(element.qte * value / _this55.recette.nbrePart);
           });
           this.recette.nbrePart = this.recette.nbrePart + 1;
         }
@@ -11988,7 +12493,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function RecettesComponent(recetteService, router, auth, formBuilder, route, imagesService, categoriesService, favorisService) {
-        var _this51 = this;
+        var _this56 = this;
 
         _classCallCheck(this, RecettesComponent);
 
@@ -12016,8 +12521,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.getRecipeByCategory(this.route.snapshot.paramMap.get('id'));
         } else {
           this.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-            _this51.allRecipe = data;
-            _this51.allRecipe2 = data;
+            _this56.allRecipe = data;
+            _this56.allRecipe2 = data;
           });
         }
 
@@ -12042,11 +12547,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         this.categoriesService.getAllCategory().subscribe(function (categorie) {
-          _this51.categories = categorie;
+          _this56.categories = categorie;
           categorie.forEach(function (data) {
-            _this51.recetteService.getRecipeByCategory(data.idCategorie).subscribe(function (recipes) {
-              _this51.recipeCategory = recipes;
-              _this51.recipeByCategory[data.idCategorie] = _this51.recipeCategory;
+            _this56.recetteService.getRecipeByCategory(data.idCategorie).subscribe(function (recipes) {
+              _this56.recipeCategory = recipes;
+              _this56.recipeByCategory[data.idCategorie] = _this56.recipeCategory;
             });
           });
         });
@@ -12132,12 +12637,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllRecipes",
         value: function getAllRecipes() {
-          var _this52 = this;
+          var _this57 = this;
 
           this.actualCategory = null;
           this.recettes$ = this.recetteService.getAllRecipesAndIngredients();
           this.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-            _this52.allRecipe = data;
+            _this57.allRecipe = data;
           });
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
@@ -12162,10 +12667,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllCategory",
         value: function getAllCategory() {
-          var _this53 = this;
+          var _this58 = this;
 
           this.categoriesService.getAllCategory().subscribe(function (categorie) {
-            _this53.categories = categorie;
+            _this58.categories = categorie;
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) {
               if (err.status === 402) {
@@ -12177,12 +12682,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRecipeByCategory",
         value: function getRecipeByCategory(idCategorie) {
-          var _this54 = this;
+          var _this59 = this;
 
           this.actualCategory = idCategorie;
           this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie);
           this.recetteService.getRecipeByCategory(idCategorie).subscribe(function (data) {
-            _this54.allRecipe = data;
+            _this59.allRecipe = data;
           });
           this.filter = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('');
           this.filter$ = this.filter.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["startWith"])('')); // tslint:disable-next-line: deprecation
@@ -12200,10 +12705,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updateNbView",
         value: function updateNbView(recette) {
-          var _this55 = this;
+          var _this60 = this;
 
           this.recetteService.updateNbView(recette).subscribe(function (res) {
-            _this55.router.navigate(['/recipe', recette.idRecette]).then(function () {
+            _this60.router.navigate(['/recipe', recette.idRecette]).then(function () {
               window.location.reload();
             });
           }, function (err) {
@@ -12217,26 +12722,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "addFavoris",
         value: function addFavoris(id) {
-          var _this56 = this;
+          var _this61 = this;
 
           this.newFavori.idRecette = id;
           this.favorisService.addFavoris(this.newFavori).subscribe(function (res) {
-            _this56.getFavoris();
+            _this61.getFavoris();
 
-            _this56.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-              _this56.allRecipe = data;
+            _this61.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
+              _this61.allRecipe = data;
             });
           });
         }
       }, {
         key: "getFavoris",
         value: function getFavoris() {
-          var _this57 = this;
+          var _this62 = this;
 
           this.favoris = [];
           this.favorisService.getFavoris().subscribe(function (favoris) {
             favoris.forEach(function (element) {
-              _this57.favoris.push(element.idRecette);
+              _this62.favoris.push(element.idRecette);
             });
           }, function (err) {
             if (err instanceof _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpErrorResponse"]) {
@@ -12249,13 +12754,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteFavoris",
         value: function deleteFavoris(idRecette) {
-          var _this58 = this;
+          var _this63 = this;
 
           this.favorisService.deleteFavoris(idRecette).subscribe(function (res) {
-            _this58.getFavoris();
+            _this63.getFavoris();
 
-            _this58.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
-              _this58.allRecipe = data;
+            _this63.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
+              _this63.allRecipe = data;
             });
           });
           /* rafraichit la page */
@@ -12377,7 +12882,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       directives: [_angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterLinkWithHref"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgForOf"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControlName"], ngx_pagination__WEBPACK_IMPORTED_MODULE_8__["PaginationControlsComponent"], _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_9__["DefaultStyleDirective"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgStyle"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterLink"], _angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"]],
       pipes: [ngx_pagination__WEBPACK_IMPORTED_MODULE_8__["PaginatePipe"]],
-      styles: ["@charset \"UTF-8\";\n#menu[_ngcontent-%COMP%] {\n  margin-top: 5em;\n}\n#paginationRecette[_ngcontent-%COMP%] {\n  padding-top: 4em;\n  margin: auto;\n  margin-bottom: 4em;\n  text-align: center;\n}\n#logoRecette[_ngcontent-%COMP%] {\n  display: -webkit-box;\n  display: flex;\n  position: absolute;\n  bottom: 27px;\n  left: 24px;\n  right: 24px;\n  color: white;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.logo[_ngcontent-%COMP%] {\n  margin: 0.5em;\n}\n#photo[_ngcontent-%COMP%] {\n  background-size: cover;\n  background-position: center;\n  box-shadow: inset 30em 30em rgba(0, 0, 0, 0.35);\n}\npagination-controls[_ngcontent-%COMP%]  .ngx-pagination .current {\n  background: #154360;\n  border-radius: 60px;\n}\n#textlogo[_ngcontent-%COMP%] {\n  font-family: \"proxima_nova_rgregular\";\n  text-transform: uppercase;\n  color: #fff;\n  font-size: medium;\n}\n#coeur[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  color: #c2567f;\n}\n.lineCard[_ngcontent-%COMP%] {\n  background-color: white;\n}\n#btn[_ngcontent-%COMP%] {\n  background: transparent;\n  border: none;\n}\n.btn[_ngcontent-%COMP%] {\n  background-color: #154360;\n}\na[_ngcontent-%COMP%] {\n  color: #154360;\n}\nimg[_ngcontent-%COMP%] {\n  max-width: 100%;\n}\n#titleRecipe[_ngcontent-%COMP%] {\n  display: inherit;\n  margin-left: auto;\n  margin-right: auto;\n  position: absolute;\n  bottom: 97px;\n  left: 24px;\n  right: 24px;\n  border-bottom-color: white;\n  border-bottom-style: outset;\n}\nh3[_ngcontent-%COMP%] {\n  height: 100px;\n  vertical-align: middle;\n  display: table-cell;\n  font-family: \"PeachesandCreamRegularW00\";\n  font-size: 60px;\n  color: #fff;\n  font: normal normal bold 28px/35px cookie, cursive;\n}\np[_ngcontent-%COMP%] {\n  text-align: center;\n}\ni[_ngcontent-%COMP%] {\n  display: inline;\n}\n.form-control[_ngcontent-%COMP%] {\n  width: initial;\n}\ninput[_ngcontent-%COMP%] {\n  font-size: 20 px;\n}\n.row[_ngcontent-%COMP%] {\n  margin-left: inherit;\n  margin-right: inherit;\n}\n.card[_ngcontent-%COMP%] {\n  height: 450px;\n  min-height: 450px;\n  position: relative;\n  background: #fff;\n  max-width: 500px;\n  margin: 20px auto;\n  box-shadow: 0px 0px 30px 2px #000;\n}\n.card[_ngcontent-%COMP%]   .header[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   #photo[_ngcontent-%COMP%] {\n  min-height: 100%;\n}\n.card[_ngcontent-%COMP%]   .header[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]   .fa-heart-o[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   .header[_ngcontent-%COMP%]   .fa-heart[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   #photo[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]   .fa-heart-o[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   #photo[_ngcontent-%COMP%]   .fa-heart[_ngcontent-%COMP%] {\n  position: absolute;\n  left: 85%;\n  bottom: 30.7%;\n  background: #c2567f;\n  color: #fff;\n  font-size: 1.3em;\n  font-weight: bold;\n  padding: 15px;\n  border-radius: 50%;\n  box-shadow: 0px 5px 30px 1px #c2567f;\n}\n.card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   .food[_ngcontent-%COMP%] {\n  color: #212129;\n  text-align: left;\n  font-weight: normal;\n  text-transform: uppercase;\n  margin: 5px 30px;\n}\n.card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   .fa-clock-o[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   .fa-users[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   #coeur[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   #vue[_ngcontent-%COMP%] {\n  color: #9b9b9b;\n  margin: 0 10px;\n}\n.card[_ngcontent-%COMP%]   a.btn[_ngcontent-%COMP%] {\n  display: block;\n  background: #154360;\n  color: #fff;\n  position: relative;\n  text-transform: uppercase;\n  letter-spacing: 0.1em;\n  text-align: center;\n  padding: 10px;\n  -webkit-transition: 250ms;\n  transition: 250ms;\n}\n.card[_ngcontent-%COMP%]   a.btn[_ngcontent-%COMP%]:hover {\n  background: #c2567f;\n  -webkit-transition: 250ms;\n  transition: 250ms;\n}\n.text-center[_ngcontent-%COMP%] {\n  margin-bottom: 1em;\n}\n.form-control[_ngcontent-%COMP%] {\n  display: inline;\n}\n.picto-item[_ngcontent-%COMP%] {\n  position: relative;\n  \n  cursor: help;\n  border-radius: 50%;\n}\n\n.picto-item[_ngcontent-%COMP%]:hover:after, .picto-item[_ngcontent-%COMP%]:focus:after {\n  content: attr(aria-label);\n  \n  position: absolute;\n  top: -2.4em;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  \n  z-index: 1;\n  \n  white-space: normal;\n  \n  padding: 5px 14px;\n  background: #413219;\n  color: #fff;\n  border-radius: 4px;\n  font-size: 1.2rem;\n}\n\n[aria-label][_ngcontent-%COMP%]:hover:before, [aria-label][_ngcontent-%COMP%]:focus:before {\n  content: \"\u25BC\";\n  position: absolute;\n  top: -1em;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  \n  font-size: 20px;\n  color: #413219;\n}\n\n[aria-label][_ngcontent-%COMP%]:focus {\n  outline: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9hcHAvcGFnZXMvcmVjZXR0ZXMvcmVjZXR0ZXMuY29tcG9uZW50LnNjc3MiLCIvVXNlcnMvbHVjYWRlYmVpci9Eb2N1bWVudHMvR2l0SHViL3Byb2pldC13ZWIvc3JjL2FwcC9wYWdlcy9yZWNldHRlcy9yZWNldHRlcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNBaEI7RUFDSSxlQUFBO0FERUo7QUNDQTtFQUNJLGdCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7QURFSjtBQ0NBO0VBQ0ksb0JBQUE7RUFBQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EseUJBQUE7VUFBQSw4QkFBQTtBREVKO0FDRUE7RUFDSSxhQUFBO0FEQ0o7QUNFQTtFQUNJLHNCQUFBO0VBQ0EsMkJBQUE7RUFDQSwrQ0FBQTtBRENKO0FDWUE7RUFDSSxtQkFISztFQUlMLG1CQUFBO0FEVEo7QUNZQTtFQUNJLHFDQUFBO0VBQ0EseUJBQUE7RUFDQSxXQWRJO0VBZUosaUJBQUE7QURUSjtBQ2FJO0VBQ0ksY0FqQkE7QURPUjtBQ2NBO0VBQ0ksdUJBQUE7QURYSjtBQ2NBO0VBQ0ksdUJBQUE7RUFDQSxZQUFBO0FEWEo7QUNjQTtFQUNJLHlCQTlCSztBRG1CVDtBQ2NBO0VBQ0ksY0FsQ0s7QUR1QlQ7QUNjQTtFQUNJLGVBQUE7QURYSjtBQ2NBO0VBQ0ksZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBRUEsa0JBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSwwQkFBQTtFQUNBLDJCQUFBO0FEWko7QUNlQTtFQUNJLGFBQUE7RUFDQSxzQkFBQTtFQUNBLG1CQUFBO0VBQ0Esd0NBQUE7RUFDQSxlQUFBO0VBQ0EsV0FoRUk7RUFpRUosa0RBQUE7QURaSjtBQ2VBO0VBQ0ksa0JBQUE7QURaSjtBQ2VBO0VBQ0ksZUFBQTtBRFpKO0FDZUE7RUFDSSxjQUFBO0FEWko7QUNlQTtFQUNJLGdCQUFBO0FEWko7QUNlQTtFQUNJLG9CQUFBO0VBQ0EscUJBQUE7QURaSjtBQ2VBO0VBQ0ksYUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkE3Rkk7RUE4RkosZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLGlDQUFBO0FEWko7QUNhSTs7RUFFSSxnQkFBQTtBRFhSO0FDWVE7Ozs7RUFFSSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBdEdKO0VBdUdJLFdBMUdKO0VBMkdJLGdCQUFBO0VBQ0EsaUJBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxvQ0FBQTtBRFJaO0FDWVE7RUFDSSxjQW5ISjtFQW9ISSxnQkFBQTtFQUNBLG1CQUFBO0VBQ0EseUJBQUE7RUFFQSxnQkFBQTtBRFhaO0FDYVE7Ozs7RUFJSSxjQTdITDtFQThISyxjQUFBO0FEWFo7QUNjSTtFQUNJLGNBQUE7RUFDQSxtQkFqSUM7RUFrSUQsV0F0SUE7RUF1SUEsa0JBQUE7RUFDQSx5QkFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EseUJBQUE7RUFBQSxpQkFBQTtBRFpSO0FDYVE7RUFDSSxtQkEzSUo7RUE0SUkseUJBQUE7RUFBQSxpQkFBQTtBRFhaO0FDZ0JBO0VBQ0ksa0JBQUE7QURiSjtBQ2dCQTtFQUNJLGVBQUE7QURiSjtBQ2tCQTtFQUNJLGtCQUFBO0VBQW9CLHVDQUFBO0VBQ3BCLFlBQUE7RUFDQSxrQkFBQTtBRGRKO0FDaUJBLDREQUFBO0FBRUE7O0VBRUkseUJBQUE7RUFBMkIsMEJBQUE7RUFDM0Isa0JBQUE7RUFDQSxXQUFBO0VBQ0EsU0FBQTtFQUNBLG1DQUFBO1VBQUEsMkJBQUE7RUFBNkIsK0JBQUE7RUFDN0IsVUFBQTtFQUFZLGdFQUFBO0VBQ1osbUJBQUE7RUFBcUIsb0NBQUE7RUFDckIsaUJBQUE7RUFDQSxtQkFBQTtFQUNBLFdBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0FEWEo7QUNjQSwwREFBQTtBQUVBOztFQUVJLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxTQUFBO0VBQ0EsbUNBQUE7VUFBQSwyQkFBQTtFQUE2QiwrQkFBQTtFQUM3QixlQUFBO0VBQ0EsY0FBQTtBRFhKO0FDY0Esb0NBQUE7QUFDQTtFQUNJLGFBQUE7QURYSiIsImZpbGUiOiIuLi9zcmMvYXBwL3BhZ2VzL3JlY2V0dGVzL3JlY2V0dGVzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGNoYXJzZXQgXCJVVEYtOFwiO1xuI21lbnUge1xuICBtYXJnaW4tdG9wOiA1ZW07XG59XG5cbiNwYWdpbmF0aW9uUmVjZXR0ZSB7XG4gIHBhZGRpbmctdG9wOiA0ZW07XG4gIG1hcmdpbjogYXV0bztcbiAgbWFyZ2luLWJvdHRvbTogNGVtO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbiNsb2dvUmVjZXR0ZSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiAyN3B4O1xuICBsZWZ0OiAyNHB4O1xuICByaWdodDogMjRweDtcbiAgY29sb3I6IHdoaXRlO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG59XG5cbi5sb2dvIHtcbiAgbWFyZ2luOiAwLjVlbTtcbn1cblxuI3Bob3RvIHtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xuICBib3gtc2hhZG93OiBpbnNldCAzMGVtIDMwZW0gcmdiYSgwLCAwLCAwLCAwLjM1KTtcbn1cblxucGFnaW5hdGlvbi1jb250cm9sczo6bmctZGVlcCAubmd4LXBhZ2luYXRpb24gLmN1cnJlbnQge1xuICBiYWNrZ3JvdW5kOiAjMTU0MzYwO1xuICBib3JkZXItcmFkaXVzOiA2MHB4O1xufVxuXG4jdGV4dGxvZ28ge1xuICBmb250LWZhbWlseTogXCJwcm94aW1hX25vdmFfcmdyZWd1bGFyXCI7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gIGNvbG9yOiAjZmZmO1xuICBmb250LXNpemU6IG1lZGl1bTtcbn1cblxuI2NvZXVyIGEge1xuICBjb2xvcjogI2MyNTY3Zjtcbn1cblxuLmxpbmVDYXJkIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG59XG5cbiNidG4ge1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgYm9yZGVyOiBub25lO1xufVxuXG4uYnRuIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzE1NDM2MDtcbn1cblxuYSB7XG4gIGNvbG9yOiAjMTU0MzYwO1xufVxuXG5pbWcge1xuICBtYXgtd2lkdGg6IDEwMCU7XG59XG5cbiN0aXRsZVJlY2lwZSB7XG4gIGRpc3BsYXk6IGluaGVyaXQ7XG4gIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICBtYXJnaW4tcmlnaHQ6IGF1dG87XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgYm90dG9tOiA5N3B4O1xuICBsZWZ0OiAyNHB4O1xuICByaWdodDogMjRweDtcbiAgYm9yZGVyLWJvdHRvbS1jb2xvcjogd2hpdGU7XG4gIGJvcmRlci1ib3R0b20tc3R5bGU6IG91dHNldDtcbn1cblxuaDMge1xuICBoZWlnaHQ6IDEwMHB4O1xuICB2ZXJ0aWNhbC1hbGlnbjogbWlkZGxlO1xuICBkaXNwbGF5OiB0YWJsZS1jZWxsO1xuICBmb250LWZhbWlseTogXCJQZWFjaGVzYW5kQ3JlYW1SZWd1bGFyVzAwXCI7XG4gIGZvbnQtc2l6ZTogNjBweDtcbiAgY29sb3I6ICNmZmY7XG4gIGZvbnQ6IG5vcm1hbCBub3JtYWwgYm9sZCAyOHB4LzM1cHggY29va2llLCBjdXJzaXZlO1xufVxuXG5wIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG5pIHtcbiAgZGlzcGxheTogaW5saW5lO1xufVxuXG4uZm9ybS1jb250cm9sIHtcbiAgd2lkdGg6IGluaXRpYWw7XG59XG5cbmlucHV0IHtcbiAgZm9udC1zaXplOiAyMCBweDtcbn1cblxuLnJvdyB7XG4gIG1hcmdpbi1sZWZ0OiBpbmhlcml0O1xuICBtYXJnaW4tcmlnaHQ6IGluaGVyaXQ7XG59XG5cbi5jYXJkIHtcbiAgaGVpZ2h0OiA0NTBweDtcbiAgbWluLWhlaWdodDogNDUwcHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgbWF4LXdpZHRoOiA1MDBweDtcbiAgbWFyZ2luOiAyMHB4IGF1dG87XG4gIGJveC1zaGFkb3c6IDBweCAwcHggMzBweCAycHggIzAwMDtcbn1cbi5jYXJkIC5oZWFkZXIsXG4uY2FyZCAjcGhvdG8ge1xuICBtaW4taGVpZ2h0OiAxMDAlO1xufVxuLmNhcmQgLmhlYWRlciAuaWNvbiBhIC5mYS1oZWFydC1vLFxuLmNhcmQgLmhlYWRlciAuZmEtaGVhcnQsXG4uY2FyZCAjcGhvdG8gLmljb24gYSAuZmEtaGVhcnQtbyxcbi5jYXJkICNwaG90byAuZmEtaGVhcnQge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGxlZnQ6IDg1JTtcbiAgYm90dG9tOiAzMC43JTtcbiAgYmFja2dyb3VuZDogI2MyNTY3ZjtcbiAgY29sb3I6ICNmZmY7XG4gIGZvbnQtc2l6ZTogMS4zZW07XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBwYWRkaW5nOiAxNXB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIGJveC1zaGFkb3c6IDBweCA1cHggMzBweCAxcHggI2MyNTY3Zjtcbn1cbi5jYXJkIC50ZXh0IC5mb29kIHtcbiAgY29sb3I6ICMyMTIxMjk7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG4gIGZvbnQtd2VpZ2h0OiBub3JtYWw7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gIG1hcmdpbjogNXB4IDMwcHg7XG59XG4uY2FyZCAudGV4dCAuZmEtY2xvY2stbyxcbi5jYXJkIC50ZXh0IC5mYS11c2Vycyxcbi5jYXJkIC50ZXh0ICNjb2V1cixcbi5jYXJkIC50ZXh0ICN2dWUge1xuICBjb2xvcjogIzliOWI5YjtcbiAgbWFyZ2luOiAwIDEwcHg7XG59XG4uY2FyZCBhLmJ0biB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBiYWNrZ3JvdW5kOiAjMTU0MzYwO1xuICBjb2xvcjogI2ZmZjtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICBsZXR0ZXItc3BhY2luZzogMC4xZW07XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZzogMTBweDtcbiAgdHJhbnNpdGlvbjogMjUwbXM7XG59XG4uY2FyZCBhLmJ0bjpob3ZlciB7XG4gIGJhY2tncm91bmQ6ICNjMjU2N2Y7XG4gIHRyYW5zaXRpb246IDI1MG1zO1xufVxuXG4udGV4dC1jZW50ZXIge1xuICBtYXJnaW4tYm90dG9tOiAxZW07XG59XG5cbi5mb3JtLWNvbnRyb2wge1xuICBkaXNwbGF5OiBpbmxpbmU7XG59XG5cbi5waWN0by1pdGVtIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAvKmxlcyAucGljdG8taXRlbSBkZXZpZW5uZW50IHLDqWbDqXJlbnRzKi9cbiAgY3Vyc29yOiBoZWxwO1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG59XG5cbi8qIG9uIGfDqW7DqHJlIHVuIMOpbMOpbWVudCA6YWZ0ZXIgbG9ycyBkdSBzdXJ2b2wgZXQgZHUgZm9jdXMgOiovXG4ucGljdG8taXRlbTpob3ZlcjphZnRlcixcbi5waWN0by1pdGVtOmZvY3VzOmFmdGVyIHtcbiAgY29udGVudDogYXR0cihhcmlhLWxhYmVsKTtcbiAgLyogb24gYWZmaWNoZSBhcmlhLWxhYmVsICovXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAtMi40ZW07XG4gIGxlZnQ6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAvKiBvbiBjZW50cmUgaG9yaXpvbnRhbGVtZW50ICAqL1xuICB6LWluZGV4OiAxO1xuICAvKiBwb3VyIHMnYWZmaWNoZXIgYXUgZGVzc3VzIGRlcyDDqWzDqW1lbnRzIGVuIHBvc2l0aW9uIHJlbGF0aXZlICovXG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIC8qIG9uIGludGVyZGl0IGxlIHJldG91ciDDoCBsYSBsaWduZSovXG4gIHBhZGRpbmc6IDVweCAxNHB4O1xuICBiYWNrZ3JvdW5kOiAjNDEzMjE5O1xuICBjb2xvcjogI2ZmZjtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xuICBmb250LXNpemU6IDEuMnJlbTtcbn1cblxuLyogb24gZ8OpbsOocmUgdW4gc2Vjb25kIMOpbMOpbWVudCBlbiA6YmVmb3JlIHBvdXIgbGEgZmzDqGNoZSAqL1xuW2FyaWEtbGFiZWxdOmhvdmVyOmJlZm9yZSxcblthcmlhLWxhYmVsXTpmb2N1czpiZWZvcmUge1xuICBjb250ZW50OiBcIuKWvFwiO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogLTFlbTtcbiAgbGVmdDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7XG4gIC8qIG9uIGNlbnRyZSBob3Jpem9udGFsZW1lbnQgICovXG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgY29sb3I6ICM0MTMyMTk7XG59XG5cbi8qIHBhcyBkZSBjb250b3VyIGR1cmFudCBsZSA6Zm9jdXMgKi9cblthcmlhLWxhYmVsXTpmb2N1cyB7XG4gIG91dGxpbmU6IG5vbmU7XG59IiwiI21lbnUge1xuICAgIG1hcmdpbi10b3A6IDVlbTtcbn1cblxuI3BhZ2luYXRpb25SZWNldHRlIHtcbiAgICBwYWRkaW5nLXRvcDogNGVtO1xuICAgIG1hcmdpbjogYXV0bztcbiAgICBtYXJnaW4tYm90dG9tOiA0ZW07XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4jbG9nb1JlY2V0dGUge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGJvdHRvbTogMjdweDtcbiAgICBsZWZ0OiAyNHB4O1xuICAgIHJpZ2h0OiAyNHB4O1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgLy9iYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuMzUpXG59XG5cbi5sb2dvIHtcbiAgICBtYXJnaW46IC41ZW07XG59XG5cbiNwaG90byB7XG4gICAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjtcbiAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiBjZW50ZXI7XG4gICAgYm94LXNoYWRvdzogaW5zZXQgMzBlbSAzMGVtIHJnYmEoMCwgMCwgMCwgMC4zNSk7XG4gICAgLy9iYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuMzUpXG59XG5cbi8vIEZPTlRcbiRmb250OiBcIlJvYm90b1wiLCBzYW5zLXNlcmlmO1xuLy8gQ09MT1JTXG4kd2hpdGU6ICNmZmY7XG4kYmxhY2s6ICMyMTIxMjk7XG4kZ3JheTogIzliOWI5YjtcbiRoZWFydDogI2MyNTY3ZjtcbiRidXR0b246ICMxNTQzNjA7XG5cbnBhZ2luYXRpb24tY29udHJvbHM6Om5nLWRlZXAgLm5neC1wYWdpbmF0aW9uIC5jdXJyZW50IHtcbiAgICBiYWNrZ3JvdW5kOiAkYnV0dG9uO1xuICAgIGJvcmRlci1yYWRpdXM6IDYwcHg7XG59XG5cbiN0ZXh0bG9nbyB7XG4gICAgZm9udC1mYW1pbHk6IFwicHJveGltYV9ub3ZhX3JncmVndWxhclwiO1xuICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gICAgY29sb3I6ICR3aGl0ZTtcbiAgICBmb250LXNpemU6IG1lZGl1bTtcbn1cblxuI2NvZXVyIHtcbiAgICBhIHtcbiAgICAgICAgY29sb3I6ICRoZWFydDtcbiAgICB9XG59XG5cbi5saW5lQ2FyZCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI1NSwgMjU1LCAyNTUpO1xufVxuXG4jYnRuIHtcbiAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgICBib3JkZXI6IG5vbmU7XG59XG5cbi5idG4ge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRidXR0b247XG59XG5cbmEge1xuICAgIGNvbG9yOiAkYnV0dG9uO1xufVxuXG5pbWcge1xuICAgIG1heC13aWR0aDogMTAwJTtcbn1cblxuI3RpdGxlUmVjaXBlIHtcbiAgICBkaXNwbGF5OiBpbmhlcml0O1xuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogYXV0bztcbiAgICAvL2Rpc3BsYXk6IGZsZXg7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGJvdHRvbTogOTdweDtcbiAgICBsZWZ0OiAyNHB4O1xuICAgIHJpZ2h0OiAyNHB4O1xuICAgIGJvcmRlci1ib3R0b20tY29sb3I6IHdoaXRlO1xuICAgIGJvcmRlci1ib3R0b20tc3R5bGU6IG91dHNldDtcbn1cblxuaDMge1xuICAgIGhlaWdodDogMTAwcHg7XG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgICBkaXNwbGF5OiB0YWJsZS1jZWxsO1xuICAgIGZvbnQtZmFtaWx5OiBcIlBlYWNoZXNhbmRDcmVhbVJlZ3VsYXJXMDBcIjtcbiAgICBmb250LXNpemU6IDYwcHg7XG4gICAgY29sb3I6ICR3aGl0ZTtcbiAgICBmb250OiBub3JtYWwgbm9ybWFsIGJvbGQgMjhweC8zNXB4IGNvb2tpZSwgY3Vyc2l2ZTtcbn1cblxucCB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG5pIHtcbiAgICBkaXNwbGF5OiBpbmxpbmU7XG59XG5cbi5mb3JtLWNvbnRyb2wge1xuICAgIHdpZHRoOiBpbml0aWFsO1xufVxuXG5pbnB1dCB7XG4gICAgZm9udC1zaXplOiAyMCBweDtcbn1cblxuLnJvdyB7XG4gICAgbWFyZ2luLWxlZnQ6IGluaGVyaXQ7XG4gICAgbWFyZ2luLXJpZ2h0OiBpbmhlcml0O1xufVxuXG4uY2FyZCB7XG4gICAgaGVpZ2h0OiA0NTBweDtcbiAgICBtaW4taGVpZ2h0OiA0NTBweDtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgYmFja2dyb3VuZDogJHdoaXRlO1xuICAgIG1heC13aWR0aDogNTAwcHg7XG4gICAgbWFyZ2luOiAyMHB4IGF1dG87XG4gICAgYm94LXNoYWRvdzogMHB4IDBweCAzMHB4IDJweCAjMDAwO1xuICAgIC5oZWFkZXIsXG4gICAgI3Bob3RvIHtcbiAgICAgICAgbWluLWhlaWdodDogMTAwJTtcbiAgICAgICAgLmljb24gYSAuZmEtaGVhcnQtbyxcbiAgICAgICAgLmZhLWhlYXJ0IHtcbiAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICAgIGxlZnQ6IDg1JTtcbiAgICAgICAgICAgIGJvdHRvbTogMzAuNyU7XG4gICAgICAgICAgICBiYWNrZ3JvdW5kOiAkaGVhcnQ7XG4gICAgICAgICAgICBjb2xvcjogJHdoaXRlO1xuICAgICAgICAgICAgZm9udC1zaXplOiAxLjNlbTtcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgICAgICAgICAgcGFkZGluZzogMTVweDtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDBweCA1cHggMzBweCAxcHggJGhlYXJ0O1xuICAgICAgICB9XG4gICAgfVxuICAgIC50ZXh0IHtcbiAgICAgICAgLmZvb2Qge1xuICAgICAgICAgICAgY29sb3I6ICRibGFjaztcbiAgICAgICAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgICAgICAgICBmb250LXdlaWdodDogbm9ybWFsO1xuICAgICAgICAgICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgICAgICAgICAgIC8vbGV0dGVyLXNwYWNpbmc6IDAuMWVtO1xuICAgICAgICAgICAgbWFyZ2luOiA1cHggMzBweDtcbiAgICAgICAgfVxuICAgICAgICAuZmEtY2xvY2stbyxcbiAgICAgICAgLmZhLXVzZXJzLFxuICAgICAgICAjY29ldXIsXG4gICAgICAgICN2dWUge1xuICAgICAgICAgICAgY29sb3I6ICRncmF5O1xuICAgICAgICAgICAgbWFyZ2luOiAwIDEwcHg7XG4gICAgICAgIH1cbiAgICB9XG4gICAgYS5idG4ge1xuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgICAgYmFja2dyb3VuZDogJGJ1dHRvbjtcbiAgICAgICAgY29sb3I6ICR3aGl0ZTtcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICAgICAgICBsZXR0ZXItc3BhY2luZzogMC4xZW07XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgcGFkZGluZzogMTBweDtcbiAgICAgICAgdHJhbnNpdGlvbjogMjUwbXM7XG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgICAgYmFja2dyb3VuZDogJGhlYXJ0O1xuICAgICAgICAgICAgdHJhbnNpdGlvbjogMjUwbXM7XG4gICAgICAgIH1cbiAgICB9XG59XG5cbi50ZXh0LWNlbnRlciB7XG4gICAgbWFyZ2luLWJvdHRvbTogMWVtO1xufVxuXG4uZm9ybS1jb250cm9sIHtcbiAgICBkaXNwbGF5OiBpbmxpbmU7XG59XG5cbi8vYnVsbGUgaW5mb3NcblxuLnBpY3RvLWl0ZW0ge1xuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTsgLypsZXMgLnBpY3RvLWl0ZW0gZGV2aWVubmVudCByw6lmw6lyZW50cyovXG4gICAgY3Vyc29yOiBoZWxwO1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbn1cblxuLyogb24gZ8OpbsOocmUgdW4gw6lsw6ltZW50IDphZnRlciBsb3JzIGR1IHN1cnZvbCBldCBkdSBmb2N1cyA6Ki9cblxuLnBpY3RvLWl0ZW06aG92ZXI6YWZ0ZXIsXG4ucGljdG8taXRlbTpmb2N1czphZnRlciB7XG4gICAgY29udGVudDogYXR0cihhcmlhLWxhYmVsKTsgLyogb24gYWZmaWNoZSBhcmlhLWxhYmVsICovXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogLTIuNGVtO1xuICAgIGxlZnQ6IDUwJTtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTUwJSk7IC8qIG9uIGNlbnRyZSBob3Jpem9udGFsZW1lbnQgICovXG4gICAgei1pbmRleDogMTsgLyogcG91ciBzJ2FmZmljaGVyIGF1IGRlc3N1cyBkZXMgw6lsw6ltZW50cyBlbiBwb3NpdGlvbiByZWxhdGl2ZSAqL1xuICAgIHdoaXRlLXNwYWNlOiBub3JtYWw7IC8qIG9uIGludGVyZGl0IGxlIHJldG91ciDDoCBsYSBsaWduZSovXG4gICAgcGFkZGluZzogNXB4IDE0cHg7XG4gICAgYmFja2dyb3VuZDogIzQxMzIxOTtcbiAgICBjb2xvcjogI2ZmZjtcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgZm9udC1zaXplOiAxLjJyZW07XG59XG5cbi8qIG9uIGfDqW7DqHJlIHVuIHNlY29uZCDDqWzDqW1lbnQgZW4gOmJlZm9yZSBwb3VyIGxhIGZsw6hjaGUgKi9cblxuW2FyaWEtbGFiZWxdOmhvdmVyOmJlZm9yZSxcblthcmlhLWxhYmVsXTpmb2N1czpiZWZvcmUge1xuICAgIGNvbnRlbnQ6IFwi4pa8XCI7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogLTFlbTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpOyAvKiBvbiBjZW50cmUgaG9yaXpvbnRhbGVtZW50ICAqL1xuICAgIGZvbnQtc2l6ZTogMjBweDtcbiAgICBjb2xvcjogIzQxMzIxOTtcbn1cblxuLyogcGFzIGRlIGNvbnRvdXIgZHVyYW50IGxlIDpmb2N1cyAqL1xuW2FyaWEtbGFiZWxdOmZvY3VzIHtcbiAgICBvdXRsaW5lOiBub25lO1xufVxuIl19 */"]
+      styles: ["@charset \"UTF-8\";\n#menu[_ngcontent-%COMP%] {\n  margin-top: 2em;\n}\n#paginationRecette[_ngcontent-%COMP%] {\n  padding-top: 4em;\n  margin: auto;\n  margin-bottom: 4em;\n  text-align: center;\n}\n#logoRecette[_ngcontent-%COMP%] {\n  display: -webkit-box;\n  display: flex;\n  position: absolute;\n  bottom: 27px;\n  left: 24px;\n  right: 24px;\n  color: white;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n.logo[_ngcontent-%COMP%] {\n  margin: 0.5em;\n}\n#photo[_ngcontent-%COMP%] {\n  background-size: cover;\n  background-position: center;\n  box-shadow: inset 30em 30em rgba(0, 0, 0, 0.35);\n}\npagination-controls[_ngcontent-%COMP%]  .ngx-pagination .current {\n  background: #154360;\n  border-radius: 60px;\n}\n#textlogo[_ngcontent-%COMP%] {\n  font-family: \"proxima_nova_rgregular\";\n  text-transform: uppercase;\n  color: #fff;\n  font-size: medium;\n}\n#coeur[_ngcontent-%COMP%]   a[_ngcontent-%COMP%] {\n  color: #c2567f;\n}\n.lineCard[_ngcontent-%COMP%] {\n  background-color: white;\n}\n#btn[_ngcontent-%COMP%] {\n  background: transparent;\n  border: none;\n}\n.btn[_ngcontent-%COMP%] {\n  background-color: #154360;\n}\na[_ngcontent-%COMP%] {\n  color: #154360;\n}\nimg[_ngcontent-%COMP%] {\n  max-width: 100%;\n}\n#titleRecipe[_ngcontent-%COMP%] {\n  display: inherit;\n  margin-left: auto;\n  margin-right: auto;\n  position: absolute;\n  bottom: 97px;\n  left: 24px;\n  right: 24px;\n  border-bottom-color: white;\n  border-bottom-style: outset;\n}\nh3[_ngcontent-%COMP%] {\n  height: 100px;\n  vertical-align: middle;\n  display: table-cell;\n  font-family: \"PeachesandCreamRegularW00\";\n  font-size: 60px;\n  color: #fff;\n  font: normal normal bold 28px/35px cookie, cursive;\n}\np[_ngcontent-%COMP%] {\n  text-align: center;\n}\ni[_ngcontent-%COMP%] {\n  display: inline;\n}\n.form-control[_ngcontent-%COMP%] {\n  width: initial;\n}\ninput[_ngcontent-%COMP%] {\n  font-size: 20 px;\n}\n.row[_ngcontent-%COMP%] {\n  margin-left: inherit;\n  margin-right: inherit;\n}\n.card[_ngcontent-%COMP%] {\n  height: 450px;\n  min-height: 450px;\n  position: relative;\n  background: #fff;\n  max-width: 500px;\n  margin: 20px auto;\n  box-shadow: 0px 0px 30px 2px #000;\n}\n.card[_ngcontent-%COMP%]   .header[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   #photo[_ngcontent-%COMP%] {\n  min-height: 100%;\n}\n.card[_ngcontent-%COMP%]   .header[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]   .fa-heart-o[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   .header[_ngcontent-%COMP%]   .fa-heart[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   #photo[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]   .fa-heart-o[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   #photo[_ngcontent-%COMP%]   .fa-heart[_ngcontent-%COMP%] {\n  position: absolute;\n  left: 85%;\n  bottom: 30.7%;\n  background: #c2567f;\n  color: #fff;\n  font-size: 1.3em;\n  font-weight: bold;\n  padding: 15px;\n  border-radius: 50%;\n  box-shadow: 0px 5px 30px 1px #c2567f;\n}\n.card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   .food[_ngcontent-%COMP%] {\n  color: #212129;\n  text-align: left;\n  font-weight: normal;\n  text-transform: uppercase;\n  margin: 5px 30px;\n}\n.card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   .fa-clock-o[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   .fa-users[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   #coeur[_ngcontent-%COMP%], .card[_ngcontent-%COMP%]   .text[_ngcontent-%COMP%]   #vue[_ngcontent-%COMP%] {\n  color: #9b9b9b;\n  margin: 0 10px;\n}\n.card[_ngcontent-%COMP%]   a.btn[_ngcontent-%COMP%] {\n  display: block;\n  background: #154360;\n  color: #fff;\n  position: relative;\n  text-transform: uppercase;\n  letter-spacing: 0.1em;\n  text-align: center;\n  padding: 10px;\n  -webkit-transition: 250ms;\n  transition: 250ms;\n}\n.card[_ngcontent-%COMP%]   a.btn[_ngcontent-%COMP%]:hover {\n  background: #c2567f;\n  -webkit-transition: 250ms;\n  transition: 250ms;\n}\n.text-center[_ngcontent-%COMP%] {\n  margin-bottom: 1em;\n}\n.form-control[_ngcontent-%COMP%] {\n  display: inline;\n}\n.picto-item[_ngcontent-%COMP%] {\n  position: relative;\n  \n  cursor: help;\n  border-radius: 50%;\n}\n\n.picto-item[_ngcontent-%COMP%]:hover:after, .picto-item[_ngcontent-%COMP%]:focus:after {\n  content: attr(aria-label);\n  \n  position: absolute;\n  top: -2.4em;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  \n  z-index: 1;\n  \n  white-space: normal;\n  \n  padding: 5px 14px;\n  background: #413219;\n  color: #fff;\n  border-radius: 4px;\n  font-size: 1.2rem;\n}\n\n[aria-label][_ngcontent-%COMP%]:hover:before, [aria-label][_ngcontent-%COMP%]:focus:before {\n  content: \"\u25BC\";\n  position: absolute;\n  top: -1em;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  \n  font-size: 20px;\n  color: #413219;\n}\n\n[aria-label][_ngcontent-%COMP%]:focus {\n  outline: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3NyYy9hcHAvcGFnZXMvcmVjZXR0ZXMvcmVjZXR0ZXMuY29tcG9uZW50LnNjc3MiLCIvVXNlcnMvbHVjYWRlYmVpci9Eb2N1bWVudHMvR2l0SHViL3Byb2pldC13ZWIvc3JjL2FwcC9wYWdlcy9yZWNldHRlcy9yZWNldHRlcy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNBaEI7RUFDSSxlQUFBO0FERUo7QUNDQTtFQUNJLGdCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7QURFSjtBQ0NBO0VBQ0ksb0JBQUE7RUFBQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EseUJBQUE7VUFBQSw4QkFBQTtBREVKO0FDRUE7RUFDSSxhQUFBO0FEQ0o7QUNFQTtFQUNJLHNCQUFBO0VBQ0EsMkJBQUE7RUFDQSwrQ0FBQTtBRENKO0FDWUE7RUFDSSxtQkFGSztFQUdMLG1CQUFBO0FEVEo7QUNZQTtFQUNJLHFDQUFBO0VBQ0EseUJBQUE7RUFDQSxXQWJJO0VBY0osaUJBQUE7QURUSjtBQ2FJO0VBQ0ksY0FoQkE7QURNUjtBQ2NBO0VBQ0ksdUJBQUE7QURYSjtBQ2NBO0VBQ0ksdUJBQUE7RUFDQSxZQUFBO0FEWEo7QUNjQTtFQUNJLHlCQTdCSztBRGtCVDtBQ2NBO0VBQ0ksY0FqQ0s7QURzQlQ7QUNjQTtFQUNJLGVBQUE7QURYSjtBQ2NBO0VBQ0ksZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBRUEsa0JBQUE7RUFDQSxZQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSwwQkFBQTtFQUNBLDJCQUFBO0FEWko7QUNlQTtFQUNJLGFBQUE7RUFDQSxzQkFBQTtFQUNBLG1CQUFBO0VBQ0Esd0NBQUE7RUFDQSxlQUFBO0VBQ0EsV0EvREk7RUFnRUosa0RBQUE7QURaSjtBQ2VBO0VBQ0ksa0JBQUE7QURaSjtBQ2VBO0VBQ0ksZUFBQTtBRFpKO0FDZUE7RUFDSSxjQUFBO0FEWko7QUNlQTtFQUNJLGdCQUFBO0FEWko7QUNlQTtFQUNJLG9CQUFBO0VBQ0EscUJBQUE7QURaSjtBQ2VBO0VBQ0ksYUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkE1Rkk7RUE2RkosZ0JBQUE7RUFDQSxpQkFBQTtFQUNBLGlDQUFBO0FEWko7QUNhSTs7RUFFSSxnQkFBQTtBRFhSO0FDWVE7Ozs7RUFFSSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxhQUFBO0VBQ0EsbUJBckdKO0VBc0dJLFdBekdKO0VBMEdJLGdCQUFBO0VBQ0EsaUJBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxvQ0FBQTtBRFJaO0FDWVE7RUFDSSxjQWxISjtFQW1ISSxnQkFBQTtFQUNBLG1CQUFBO0VBQ0EseUJBQUE7RUFFQSxnQkFBQTtBRFhaO0FDYVE7Ozs7RUFJSSxjQTVITDtFQTZISyxjQUFBO0FEWFo7QUNjSTtFQUNJLGNBQUE7RUFDQSxtQkFoSUM7RUFpSUQsV0FySUE7RUFzSUEsa0JBQUE7RUFDQSx5QkFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxhQUFBO0VBQ0EseUJBQUE7RUFBQSxpQkFBQTtBRFpSO0FDYVE7RUFDSSxtQkExSUo7RUEySUkseUJBQUE7RUFBQSxpQkFBQTtBRFhaO0FDZ0JBO0VBQ0ksa0JBQUE7QURiSjtBQ2dCQTtFQUNJLGVBQUE7QURiSjtBQ2lCQTtFQUNJLGtCQUFBO0VBQ0EsdUNBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7QURkSjtBQ2tCQSw0REFBQTtBQUVBOztFQUVJLHlCQUFBO0VBQ0EsMEJBQUE7RUFDQSxrQkFBQTtFQUNBLFdBQUE7RUFDQSxTQUFBO0VBQ0EsbUNBQUE7VUFBQSwyQkFBQTtFQUNBLCtCQUFBO0VBQ0EsVUFBQTtFQUNBLGdFQUFBO0VBQ0EsbUJBQUE7RUFDQSxvQ0FBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7RUFDQSxXQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtBRGhCSjtBQ29CQSwwREFBQTtBQUVBOztFQUVJLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxTQUFBO0VBQ0EsbUNBQUE7VUFBQSwyQkFBQTtFQUNBLCtCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7QURsQko7QUNzQkEsb0NBQUE7QUFFQTtFQUNJLGFBQUE7QURwQkoiLCJmaWxlIjoiLi4vc3JjL2FwcC9wYWdlcy9yZWNldHRlcy9yZWNldHRlcy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBjaGFyc2V0IFwiVVRGLThcIjtcbiNtZW51IHtcbiAgbWFyZ2luLXRvcDogMmVtO1xufVxuXG4jcGFnaW5hdGlvblJlY2V0dGUge1xuICBwYWRkaW5nLXRvcDogNGVtO1xuICBtYXJnaW46IGF1dG87XG4gIG1hcmdpbi1ib3R0b206IDRlbTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4jbG9nb1JlY2V0dGUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGJvdHRvbTogMjdweDtcbiAgbGVmdDogMjRweDtcbiAgcmlnaHQ6IDI0cHg7XG4gIGNvbG9yOiB3aGl0ZTtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuXG4ubG9nbyB7XG4gIG1hcmdpbjogMC41ZW07XG59XG5cbiNwaG90byB7XG4gIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gIGJhY2tncm91bmQtcG9zaXRpb246IGNlbnRlcjtcbiAgYm94LXNoYWRvdzogaW5zZXQgMzBlbSAzMGVtIHJnYmEoMCwgMCwgMCwgMC4zNSk7XG59XG5cbnBhZ2luYXRpb24tY29udHJvbHM6Om5nLWRlZXAgLm5neC1wYWdpbmF0aW9uIC5jdXJyZW50IHtcbiAgYmFja2dyb3VuZDogIzE1NDM2MDtcbiAgYm9yZGVyLXJhZGl1czogNjBweDtcbn1cblxuI3RleHRsb2dvIHtcbiAgZm9udC1mYW1pbHk6IFwicHJveGltYV9ub3ZhX3JncmVndWxhclwiO1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICBjb2xvcjogI2ZmZjtcbiAgZm9udC1zaXplOiBtZWRpdW07XG59XG5cbiNjb2V1ciBhIHtcbiAgY29sb3I6ICNjMjU2N2Y7XG59XG5cbi5saW5lQ2FyZCB7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG4jYnRuIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7XG4gIGJvcmRlcjogbm9uZTtcbn1cblxuLmJ0biB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMxNTQzNjA7XG59XG5cbmEge1xuICBjb2xvcjogIzE1NDM2MDtcbn1cblxuaW1nIHtcbiAgbWF4LXdpZHRoOiAxMDAlO1xufVxuXG4jdGl0bGVSZWNpcGUge1xuICBkaXNwbGF5OiBpbmhlcml0O1xuICBtYXJnaW4tbGVmdDogYXV0bztcbiAgbWFyZ2luLXJpZ2h0OiBhdXRvO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIGJvdHRvbTogOTdweDtcbiAgbGVmdDogMjRweDtcbiAgcmlnaHQ6IDI0cHg7XG4gIGJvcmRlci1ib3R0b20tY29sb3I6IHdoaXRlO1xuICBib3JkZXItYm90dG9tLXN0eWxlOiBvdXRzZXQ7XG59XG5cbmgzIHtcbiAgaGVpZ2h0OiAxMDBweDtcbiAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgZGlzcGxheTogdGFibGUtY2VsbDtcbiAgZm9udC1mYW1pbHk6IFwiUGVhY2hlc2FuZENyZWFtUmVndWxhclcwMFwiO1xuICBmb250LXNpemU6IDYwcHg7XG4gIGNvbG9yOiAjZmZmO1xuICBmb250OiBub3JtYWwgbm9ybWFsIGJvbGQgMjhweC8zNXB4IGNvb2tpZSwgY3Vyc2l2ZTtcbn1cblxucCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuaSB7XG4gIGRpc3BsYXk6IGlubGluZTtcbn1cblxuLmZvcm0tY29udHJvbCB7XG4gIHdpZHRoOiBpbml0aWFsO1xufVxuXG5pbnB1dCB7XG4gIGZvbnQtc2l6ZTogMjAgcHg7XG59XG5cbi5yb3cge1xuICBtYXJnaW4tbGVmdDogaW5oZXJpdDtcbiAgbWFyZ2luLXJpZ2h0OiBpbmhlcml0O1xufVxuXG4uY2FyZCB7XG4gIGhlaWdodDogNDUwcHg7XG4gIG1pbi1oZWlnaHQ6IDQ1MHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIGJhY2tncm91bmQ6ICNmZmY7XG4gIG1heC13aWR0aDogNTAwcHg7XG4gIG1hcmdpbjogMjBweCBhdXRvO1xuICBib3gtc2hhZG93OiAwcHggMHB4IDMwcHggMnB4ICMwMDA7XG59XG4uY2FyZCAuaGVhZGVyLFxuLmNhcmQgI3Bob3RvIHtcbiAgbWluLWhlaWdodDogMTAwJTtcbn1cbi5jYXJkIC5oZWFkZXIgLmljb24gYSAuZmEtaGVhcnQtbyxcbi5jYXJkIC5oZWFkZXIgLmZhLWhlYXJ0LFxuLmNhcmQgI3Bob3RvIC5pY29uIGEgLmZhLWhlYXJ0LW8sXG4uY2FyZCAjcGhvdG8gLmZhLWhlYXJ0IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBsZWZ0OiA4NSU7XG4gIGJvdHRvbTogMzAuNyU7XG4gIGJhY2tncm91bmQ6ICNjMjU2N2Y7XG4gIGNvbG9yOiAjZmZmO1xuICBmb250LXNpemU6IDEuM2VtO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgcGFkZGluZzogMTVweDtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuICBib3gtc2hhZG93OiAwcHggNXB4IDMwcHggMXB4ICNjMjU2N2Y7XG59XG4uY2FyZCAudGV4dCAuZm9vZCB7XG4gIGNvbG9yOiAjMjEyMTI5O1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xuICBmb250LXdlaWdodDogbm9ybWFsO1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICBtYXJnaW46IDVweCAzMHB4O1xufVxuLmNhcmQgLnRleHQgLmZhLWNsb2NrLW8sXG4uY2FyZCAudGV4dCAuZmEtdXNlcnMsXG4uY2FyZCAudGV4dCAjY29ldXIsXG4uY2FyZCAudGV4dCAjdnVlIHtcbiAgY29sb3I6ICM5YjliOWI7XG4gIG1hcmdpbjogMCAxMHB4O1xufVxuLmNhcmQgYS5idG4ge1xuICBkaXNwbGF5OiBibG9jaztcbiAgYmFja2dyb3VuZDogIzE1NDM2MDtcbiAgY29sb3I6ICNmZmY7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgbGV0dGVyLXNwYWNpbmc6IDAuMWVtO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIHRyYW5zaXRpb246IDI1MG1zO1xufVxuLmNhcmQgYS5idG46aG92ZXIge1xuICBiYWNrZ3JvdW5kOiAjYzI1NjdmO1xuICB0cmFuc2l0aW9uOiAyNTBtcztcbn1cblxuLnRleHQtY2VudGVyIHtcbiAgbWFyZ2luLWJvdHRvbTogMWVtO1xufVxuXG4uZm9ybS1jb250cm9sIHtcbiAgZGlzcGxheTogaW5saW5lO1xufVxuXG4ucGljdG8taXRlbSB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgLypsZXMgLnBpY3RvLWl0ZW0gZGV2aWVubmVudCByw6lmw6lyZW50cyovXG4gIGN1cnNvcjogaGVscDtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xufVxuXG4vKiBvbiBnw6luw6hyZSB1biDDqWzDqW1lbnQgOmFmdGVyIGxvcnMgZHUgc3Vydm9sIGV0IGR1IGZvY3VzIDoqL1xuLnBpY3RvLWl0ZW06aG92ZXI6YWZ0ZXIsXG4ucGljdG8taXRlbTpmb2N1czphZnRlciB7XG4gIGNvbnRlbnQ6IGF0dHIoYXJpYS1sYWJlbCk7XG4gIC8qIG9uIGFmZmljaGUgYXJpYS1sYWJlbCAqL1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogLTIuNGVtO1xuICBsZWZ0OiA1MCU7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKTtcbiAgLyogb24gY2VudHJlIGhvcml6b250YWxlbWVudCAgKi9cbiAgei1pbmRleDogMTtcbiAgLyogcG91ciBzJ2FmZmljaGVyIGF1IGRlc3N1cyBkZXMgw6lsw6ltZW50cyBlbiBwb3NpdGlvbiByZWxhdGl2ZSAqL1xuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xuICAvKiBvbiBpbnRlcmRpdCBsZSByZXRvdXIgw6AgbGEgbGlnbmUqL1xuICBwYWRkaW5nOiA1cHggMTRweDtcbiAgYmFja2dyb3VuZDogIzQxMzIxOTtcbiAgY29sb3I6ICNmZmY7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgZm9udC1zaXplOiAxLjJyZW07XG59XG5cbi8qIG9uIGfDqW7DqHJlIHVuIHNlY29uZCDDqWzDqW1lbnQgZW4gOmJlZm9yZSBwb3VyIGxhIGZsw6hjaGUgKi9cblthcmlhLWxhYmVsXTpob3ZlcjpiZWZvcmUsXG5bYXJpYS1sYWJlbF06Zm9jdXM6YmVmb3JlIHtcbiAgY29udGVudDogXCLilrxcIjtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IC0xZW07XG4gIGxlZnQ6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAvKiBvbiBjZW50cmUgaG9yaXpvbnRhbGVtZW50ICAqL1xuICBmb250LXNpemU6IDIwcHg7XG4gIGNvbG9yOiAjNDEzMjE5O1xufVxuXG4vKiBwYXMgZGUgY29udG91ciBkdXJhbnQgbGUgOmZvY3VzICovXG5bYXJpYS1sYWJlbF06Zm9jdXMge1xuICBvdXRsaW5lOiBub25lO1xufSIsIiNtZW51IHtcbiAgICBtYXJnaW4tdG9wOiAyZW07XG59XG5cbiNwYWdpbmF0aW9uUmVjZXR0ZSB7XG4gICAgcGFkZGluZy10b3A6IDRlbTtcbiAgICBtYXJnaW46IGF1dG87XG4gICAgbWFyZ2luLWJvdHRvbTogNGVtO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuI2xvZ29SZWNldHRlIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICBib3R0b206IDI3cHg7XG4gICAgbGVmdDogMjRweDtcbiAgICByaWdodDogMjRweDtcbiAgICBjb2xvcjogd2hpdGU7XG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICAgIC8vYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLCAwLCAwLCAwLjM1KVxufVxuXG4ubG9nbyB7XG4gICAgbWFyZ2luOiAuNWVtO1xufVxuXG4jcGhvdG8ge1xuICAgIGJhY2tncm91bmQtc2l6ZTogY292ZXI7XG4gICAgYmFja2dyb3VuZC1wb3NpdGlvbjogY2VudGVyO1xuICAgIGJveC1zaGFkb3c6IGluc2V0IDMwZW0gMzBlbSByZ2JhKDAsIDAsIDAsIDAuMzUpO1xuICAgIC8vYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLCAwLCAwLCAwLjM1KVxufVxuXG4vLyBGT05UXG4kZm9udDogXCJSb2JvdG9cIixcbnNhbnMtc2VyaWY7XG4vLyBDT0xPUlNcbiR3aGl0ZTogI2ZmZjtcbiRibGFjazogIzIxMjEyOTtcbiRncmF5OiAjOWI5YjliO1xuJGhlYXJ0OiAjYzI1NjdmO1xuJGJ1dHRvbjogIzE1NDM2MDtcbnBhZ2luYXRpb24tY29udHJvbHM6Om5nLWRlZXAgLm5neC1wYWdpbmF0aW9uIC5jdXJyZW50IHtcbiAgICBiYWNrZ3JvdW5kOiAkYnV0dG9uO1xuICAgIGJvcmRlci1yYWRpdXM6IDYwcHg7XG59XG5cbiN0ZXh0bG9nbyB7XG4gICAgZm9udC1mYW1pbHk6IFwicHJveGltYV9ub3ZhX3JncmVndWxhclwiO1xuICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gICAgY29sb3I6ICR3aGl0ZTtcbiAgICBmb250LXNpemU6IG1lZGl1bTtcbn1cblxuI2NvZXVyIHtcbiAgICBhIHtcbiAgICAgICAgY29sb3I6ICRoZWFydDtcbiAgICB9XG59XG5cbi5saW5lQ2FyZCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI1NSwgMjU1LCAyNTUpO1xufVxuXG4jYnRuIHtcbiAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbiAgICBib3JkZXI6IG5vbmU7XG59XG5cbi5idG4ge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICRidXR0b247XG59XG5cbmEge1xuICAgIGNvbG9yOiAkYnV0dG9uO1xufVxuXG5pbWcge1xuICAgIG1heC13aWR0aDogMTAwJTtcbn1cblxuI3RpdGxlUmVjaXBlIHtcbiAgICBkaXNwbGF5OiBpbmhlcml0O1xuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xuICAgIG1hcmdpbi1yaWdodDogYXV0bztcbiAgICAvL2Rpc3BsYXk6IGZsZXg7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGJvdHRvbTogOTdweDtcbiAgICBsZWZ0OiAyNHB4O1xuICAgIHJpZ2h0OiAyNHB4O1xuICAgIGJvcmRlci1ib3R0b20tY29sb3I6IHdoaXRlO1xuICAgIGJvcmRlci1ib3R0b20tc3R5bGU6IG91dHNldDtcbn1cblxuaDMge1xuICAgIGhlaWdodDogMTAwcHg7XG4gICAgdmVydGljYWwtYWxpZ246IG1pZGRsZTtcbiAgICBkaXNwbGF5OiB0YWJsZS1jZWxsO1xuICAgIGZvbnQtZmFtaWx5OiBcIlBlYWNoZXNhbmRDcmVhbVJlZ3VsYXJXMDBcIjtcbiAgICBmb250LXNpemU6IDYwcHg7XG4gICAgY29sb3I6ICR3aGl0ZTtcbiAgICBmb250OiBub3JtYWwgbm9ybWFsIGJvbGQgMjhweC8zNXB4IGNvb2tpZSwgY3Vyc2l2ZTtcbn1cblxucCB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG5pIHtcbiAgICBkaXNwbGF5OiBpbmxpbmU7XG59XG5cbi5mb3JtLWNvbnRyb2wge1xuICAgIHdpZHRoOiBpbml0aWFsO1xufVxuXG5pbnB1dCB7XG4gICAgZm9udC1zaXplOiAyMCBweDtcbn1cblxuLnJvdyB7XG4gICAgbWFyZ2luLWxlZnQ6IGluaGVyaXQ7XG4gICAgbWFyZ2luLXJpZ2h0OiBpbmhlcml0O1xufVxuXG4uY2FyZCB7XG4gICAgaGVpZ2h0OiA0NTBweDtcbiAgICBtaW4taGVpZ2h0OiA0NTBweDtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgYmFja2dyb3VuZDogJHdoaXRlO1xuICAgIG1heC13aWR0aDogNTAwcHg7XG4gICAgbWFyZ2luOiAyMHB4IGF1dG87XG4gICAgYm94LXNoYWRvdzogMHB4IDBweCAzMHB4IDJweCAjMDAwO1xuICAgIC5oZWFkZXIsXG4gICAgI3Bob3RvIHtcbiAgICAgICAgbWluLWhlaWdodDogMTAwJTtcbiAgICAgICAgLmljb24gYSAuZmEtaGVhcnQtbyxcbiAgICAgICAgLmZhLWhlYXJ0IHtcbiAgICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgICAgIGxlZnQ6IDg1JTtcbiAgICAgICAgICAgIGJvdHRvbTogMzAuNyU7XG4gICAgICAgICAgICBiYWNrZ3JvdW5kOiAkaGVhcnQ7XG4gICAgICAgICAgICBjb2xvcjogJHdoaXRlO1xuICAgICAgICAgICAgZm9udC1zaXplOiAxLjNlbTtcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgICAgICAgICAgcGFkZGluZzogMTVweDtcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICAgICAgICAgIGJveC1zaGFkb3c6IDBweCA1cHggMzBweCAxcHggJGhlYXJ0O1xuICAgICAgICB9XG4gICAgfVxuICAgIC50ZXh0IHtcbiAgICAgICAgLmZvb2Qge1xuICAgICAgICAgICAgY29sb3I6ICRibGFjaztcbiAgICAgICAgICAgIHRleHQtYWxpZ246IGxlZnQ7XG4gICAgICAgICAgICBmb250LXdlaWdodDogbm9ybWFsO1xuICAgICAgICAgICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgICAgICAgICAgIC8vbGV0dGVyLXNwYWNpbmc6IDAuMWVtO1xuICAgICAgICAgICAgbWFyZ2luOiA1cHggMzBweDtcbiAgICAgICAgfVxuICAgICAgICAuZmEtY2xvY2stbyxcbiAgICAgICAgLmZhLXVzZXJzLFxuICAgICAgICAjY29ldXIsXG4gICAgICAgICN2dWUge1xuICAgICAgICAgICAgY29sb3I6ICRncmF5O1xuICAgICAgICAgICAgbWFyZ2luOiAwIDEwcHg7XG4gICAgICAgIH1cbiAgICB9XG4gICAgYS5idG4ge1xuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgICAgYmFja2dyb3VuZDogJGJ1dHRvbjtcbiAgICAgICAgY29sb3I6ICR3aGl0ZTtcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICAgICAgICBsZXR0ZXItc3BhY2luZzogMC4xZW07XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgcGFkZGluZzogMTBweDtcbiAgICAgICAgdHJhbnNpdGlvbjogMjUwbXM7XG4gICAgICAgICY6aG92ZXIge1xuICAgICAgICAgICAgYmFja2dyb3VuZDogJGhlYXJ0O1xuICAgICAgICAgICAgdHJhbnNpdGlvbjogMjUwbXM7XG4gICAgICAgIH1cbiAgICB9XG59XG5cbi50ZXh0LWNlbnRlciB7XG4gICAgbWFyZ2luLWJvdHRvbTogMWVtO1xufVxuXG4uZm9ybS1jb250cm9sIHtcbiAgICBkaXNwbGF5OiBpbmxpbmU7XG59XG5cbi8vYnVsbGUgaW5mb3Ncbi5waWN0by1pdGVtIHtcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gICAgLypsZXMgLnBpY3RvLWl0ZW0gZGV2aWVubmVudCByw6lmw6lyZW50cyovXG4gICAgY3Vyc29yOiBoZWxwO1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbn1cblxuXG4vKiBvbiBnw6luw6hyZSB1biDDqWzDqW1lbnQgOmFmdGVyIGxvcnMgZHUgc3Vydm9sIGV0IGR1IGZvY3VzIDoqL1xuXG4ucGljdG8taXRlbTpob3ZlcjphZnRlcixcbi5waWN0by1pdGVtOmZvY3VzOmFmdGVyIHtcbiAgICBjb250ZW50OiBhdHRyKGFyaWEtbGFiZWwpO1xuICAgIC8qIG9uIGFmZmljaGUgYXJpYS1sYWJlbCAqL1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IC0yLjRlbTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgIC8qIG9uIGNlbnRyZSBob3Jpem9udGFsZW1lbnQgICovXG4gICAgei1pbmRleDogMTtcbiAgICAvKiBwb3VyIHMnYWZmaWNoZXIgYXUgZGVzc3VzIGRlcyDDqWzDqW1lbnRzIGVuIHBvc2l0aW9uIHJlbGF0aXZlICovXG4gICAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgICAvKiBvbiBpbnRlcmRpdCBsZSByZXRvdXIgw6AgbGEgbGlnbmUqL1xuICAgIHBhZGRpbmc6IDVweCAxNHB4O1xuICAgIGJhY2tncm91bmQ6ICM0MTMyMTk7XG4gICAgY29sb3I6ICNmZmY7XG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgIGZvbnQtc2l6ZTogMS4ycmVtO1xufVxuXG5cbi8qIG9uIGfDqW7DqHJlIHVuIHNlY29uZCDDqWzDqW1lbnQgZW4gOmJlZm9yZSBwb3VyIGxhIGZsw6hjaGUgKi9cblxuW2FyaWEtbGFiZWxdOmhvdmVyOmJlZm9yZSxcblthcmlhLWxhYmVsXTpmb2N1czpiZWZvcmUge1xuICAgIGNvbnRlbnQ6IFwi4pa8XCI7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIHRvcDogLTFlbTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpO1xuICAgIC8qIG9uIGNlbnRyZSBob3Jpem9udGFsZW1lbnQgICovXG4gICAgZm9udC1zaXplOiAyMHB4O1xuICAgIGNvbG9yOiAjNDEzMjE5O1xufVxuXG5cbi8qIHBhcyBkZSBjb250b3VyIGR1cmFudCBsZSA6Zm9jdXMgKi9cblxuW2FyaWEtbGFiZWxdOmZvY3VzIHtcbiAgICBvdXRsaW5lOiBub25lO1xufSJdfQ== */"]
     });
     /*@__PURE__*/
 
@@ -12458,11 +12963,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(RefreshComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this59 = this;
+          var _this64 = this;
 
           this.activatedRoute.queryParams.subscribe(function (params) {
             if (params.url) {
-              _this59.route.navigate([params.url]);
+              _this64.route.navigate([params.url]);
             }
           });
         }
@@ -12577,11 +13082,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r295 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r296 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r295.errorMessage);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r296.errorMessage);
       }
     }
 
@@ -12599,11 +13104,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r296 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r297 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r296.successMessage);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r297.successMessage);
       }
     }
 
@@ -12638,22 +13143,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "RequestResetUser",
         value: function RequestResetUser(form) {
-          var _this60 = this;
+          var _this65 = this;
 
           if (form.valid) {
             this.IsvalidForm = true;
             this.authService.requestReset(this.RequestResetForm.value).subscribe(function (data) {
-              _this60.RequestResetForm.reset();
+              _this65.RequestResetForm.reset();
 
-              _this60.successMessage = 'Un email vous a été envoyé pour changer votre mot de passe.';
+              _this65.successMessage = 'Un email vous a été envoyé pour changer votre mot de passe.';
               setTimeout(function () {
-                _this60.successMessage = null;
+                _this65.successMessage = null;
 
-                _this60.router.navigate(['login']);
+                _this65.router.navigate(['login']);
               }, 3000);
             }, function (err) {
               if (err.error.message) {
-                _this60.errorMessage = err.error.message;
+                _this65.errorMessage = err.error.message;
               }
             });
           } else {
@@ -12869,11 +13374,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r301 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r302 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r301.errorMessage);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r302.errorMessage);
       }
     }
 
@@ -12891,11 +13396,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r302 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
+        var ctx_r303 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r302.successMessage);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx_r303.successMessage);
       }
     }
 
@@ -12931,7 +13436,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function ResponseResetComponent_div_3_Template(rf, ctx) {
       if (rf & 1) {
-        var _r307 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+        var _r308 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 2);
 
@@ -12956,11 +13461,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "form", 11);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function ResponseResetComponent_div_3_Template_form_ngSubmit_9_listener($event) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r307);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r308);
 
-          var ctx_r306 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+          var ctx_r307 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
-          return ctx_r306.ResetPassword(ctx_r306.ResponseResetForm);
+          return ctx_r307.ResetPassword(ctx_r307.ResponseResetForm);
         });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 12);
@@ -13009,31 +13514,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var ctx_r300 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+        var ctx_r301 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r300.errorMessage);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r301.errorMessage);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r300.successMessage);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r301.successMessage);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx_r300.ResponseResetForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx_r301.ResponseResetForm);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r300.ResponseResetForm.get("newPassword").valid && !ctx_r300.IsResetFormValid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r301.ResponseResetForm.get("newPassword").valid && !ctx_r301.IsResetFormValid);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r300.ResponseResetForm.get("confirmPassword").valid && !ctx_r300.IsResetFormValid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx_r301.ResponseResetForm.get("confirmPassword").valid && !ctx_r301.IsResetFormValid);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r300.ResponseResetForm.get("confirmPassword").valid && ctx_r300.ResponseResetForm.get("confirmPassword").value != ctx_r300.ResponseResetForm.get("newPassword").value && !ctx_r300.IsResetFormValid);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r301.ResponseResetForm.get("confirmPassword").valid && ctx_r301.ResponseResetForm.get("confirmPassword").value != ctx_r301.ResponseResetForm.get("newPassword").value && !ctx_r301.IsResetFormValid);
       }
     }
 
@@ -13041,7 +13546,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*#__PURE__*/
     function () {
       function ResponseResetComponent(authService, router, route, fb) {
-        var _this61 = this;
+        var _this66 = this;
 
         _classCallCheck(this, ResponseResetComponent);
 
@@ -13052,9 +13557,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.IsResetFormValid = true;
         this.CurrentState = 'Wait';
         this.route.params.subscribe(function (params) {
-          _this61.resetToken = params.token;
+          _this66.resetToken = params.token;
 
-          _this61.VerifyToken();
+          _this66.VerifyToken();
         });
       }
 
@@ -13066,14 +13571,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "VerifyToken",
         value: function VerifyToken() {
-          var _this62 = this;
+          var _this67 = this;
 
           this.authService.ValidPasswordToken({
             resettoken: this.resetToken
           }).subscribe(function (data) {
-            _this62.CurrentState = 'Verified';
+            _this67.CurrentState = 'Verified';
           }, function (err) {
-            _this62.CurrentState = 'NotVerified';
+            _this67.CurrentState = 'NotVerified';
           });
         }
       }, {
@@ -13106,22 +13611,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ResetPassword",
         value: function ResetPassword(form) {
-          var _this63 = this;
+          var _this68 = this;
 
           if (form.valid) {
             this.IsResetFormValid = true;
             this.authService.newPassword(this.ResponseResetForm.value).subscribe(function (data) {
-              _this63.ResponseResetForm.reset();
+              _this68.ResponseResetForm.reset();
 
-              _this63.successMessage = data.message;
+              _this68.successMessage = data.message;
               setTimeout(function () {
-                _this63.successMessage = null;
+                _this68.successMessage = null;
 
-                _this63.router.navigate(['login']);
+                _this68.router.navigate(['login']);
               }, 3000);
             }, function (err) {
               if (err.error.message) {
-                _this63.errorMessage = err.error.message;
+                _this68.errorMessage = err.error.message;
               }
             });
           } else {
@@ -13279,7 +13784,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "login",
         value: function login() {
-          var _this64 = this;
+          var _this69 = this;
 
           var formValue = this.loginForm.value;
           this.credentials.pseudo = formValue.pseudo;
@@ -13288,12 +13793,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             if (res.error === 'Mot de passe et/ou pseudo incorrect') {
               alert(res.error);
             } else {
-              if (_this64.auth.emailConfirmed()) {
-                _this64.router.navigateByUrl('/');
+              if (_this69.auth.emailConfirmed()) {
+                _this69.router.navigateByUrl('/');
 
                 alert('Bienvenue sur Marine\'s Recipe');
               } else {
-                _this64.auth.logout();
+                _this69.auth.logout();
 
                 window.location.reload();
                 alert('Vous devez vérifier votre adresse mail avant de pouvoir vous connecter ! :)');
@@ -13655,10 +14160,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "deleteUnite",
         value: function deleteUnite(idUnite) {
-          var _this65 = this;
+          var _this70 = this;
 
           this.unitesService.deleteUnite(idUnite).subscribe(function (res) {
-            _this65.router.navigate(['/unite'], {
+            _this70.router.navigate(['/unite'], {
               queryParams: {
                 refresh: new Date().getTime()
               }
@@ -13995,7 +14500,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "updatePassword",
         value: function updatePassword() {
-          var _this66 = this;
+          var _this71 = this;
 
           var formValue = this.updatePasswordForm.value;
           this.credentials.mdp = formValue.mdp;
@@ -14013,7 +14518,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               alert('L\'ancien mot de passe n\'est pas correct.');
               return;
             } else {
-              _this66.router.navigateByUrl('/profile');
+              _this71.router.navigateByUrl('/profile');
             }
           }, function (err) {
             console.log(err);
@@ -14449,12 +14954,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "register",
         value: function register(user) {
-          var _this67 = this;
+          var _this72 = this;
 
           var base = this.http.post('/server/register', user);
           var request = base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             if (data.token) {
-              _this67.saveToken(data.token);
+              _this72.saveToken(data.token);
             }
 
             return data;
@@ -14464,12 +14969,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "login",
         value: function login(user) {
-          var _this68 = this;
+          var _this73 = this;
 
           var base = this.http.post('/server/login', user);
           var request = base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             if (data.token) {
-              _this68.saveToken(data.token);
+              _this73.saveToken(data.token);
             }
 
             return data;
@@ -14804,7 +15309,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getCommentaireRecipe",
         value: function getCommentaireRecipe(id) {
-          var _this69 = this;
+          var _this74 = this;
 
           var options = {
             weekday: 'long',
@@ -14816,7 +15321,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           return this.http.get("/server/commentaires/recipe/".concat(id)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this69.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
+              _this74.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
@@ -14825,7 +15330,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var d = new Date(element.dateCommentaire);
               element.dateCommentaire = d.toLocaleString('FR-fr', options);
 
-              _this69.auth.getUser(element.ecritPar).subscribe(function (data) {
+              _this74.auth.getUser(element.ecritPar).subscribe(function (data) {
                 element.admin = data.admin;
               });
 
@@ -14833,7 +15338,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var bool = true;
 
               while (bool) {
-                _this69.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
+                _this74.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
                   element.children = commentaire;
                 });
 
@@ -14850,7 +15355,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getReponseCommentaireRecipe",
         value: function getReponseCommentaireRecipe(id, idCommentaire) {
-          var _this70 = this;
+          var _this75 = this;
 
           var options = {
             weekday: 'long',
@@ -14862,7 +15367,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           return this.http.get("/server/commentaires/recipe/".concat(id, "/reponse/").concat(idCommentaire)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (commentaire) {
             commentaire.forEach(function (element) {
-              _this70.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
+              _this75.http.get("/server/image/commentaire/".concat(element.idCommentaire)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
@@ -14871,11 +15376,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               var d = new Date(element.dateCommentaire);
               element.dateCommentaire = d.toLocaleString('FR-fr', options);
 
-              _this70.auth.getUser(element.ecritPar).subscribe(function (data) {
+              _this75.auth.getUser(element.ecritPar).subscribe(function (data) {
                 element.admin = data.admin;
               });
 
-              _this70.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
+              _this75.getReponseCommentaireRecipe(id, element.idCommentaire).subscribe(function (commentaire) {
                 element.children = commentaire;
               });
             });
@@ -15008,19 +15513,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFavoris",
         value: function getFavoris() {
-          var _this71 = this;
+          var _this76 = this;
 
           var pseudo = this.auth.getUserDetails().pseudo;
           var base = this.http.get("/server/favorites/recipe/".concat(pseudo));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this71.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this76.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this71.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this76.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
@@ -15032,19 +15537,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getFavorisByCategory",
         value: function getFavorisByCategory(idCategorie) {
-          var _this72 = this;
+          var _this77 = this;
 
           var pseudo = this.auth.getUserDetails().pseudo;
           var base = this.http.get("/server/favorites/recipe/".concat(pseudo, "/").concat(idCategorie));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this72.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this77.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this72.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this77.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
@@ -15576,18 +16081,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(RecettesService, [{
         key: "getAllRecipes",
         value: function getAllRecipes() {
-          var _this73 = this;
+          var _this78 = this;
 
           var base = this.http.get("/server/recipe/allRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this73.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this78.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this73.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this78.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -15597,12 +16102,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllRecipesAndIngredients",
         value: function getAllRecipesAndIngredients() {
-          var _this74 = this;
+          var _this79 = this;
 
           var base = this.http.get("/server/recipe/allRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this74.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this79.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
@@ -15610,13 +16115,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               element.ingredients = [];
 
-              _this74.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this79.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
               element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
 
-              _this74.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this79.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -15626,24 +16131,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRecipeById",
         value: function getRecipeById(id) {
-          return this.http.get('/server/recipe/get/' + id);
+          var _this80 = this;
+
+          return this.http.get('/server/recipe/get/' + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
+            _this80.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              var _a;
+
+              element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
+            });
+
+            _this80.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              element.categories = data;
+            });
+
+            return element;
+          }));
         }
       }, {
         key: "getLatestReceipes",
         value: function getLatestReceipes() {
-          var _this75 = this;
+          var _this81 = this;
 
           var base = this.http.get("/server/recipe/latestRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this75.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this81.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
                 element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
               });
 
-              _this75.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this81.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -15653,19 +16172,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getMostPopularRecipes",
         value: function getMostPopularRecipes() {
-          var _this76 = this;
+          var _this82 = this;
 
           var base = this.http.get("/server/recipe/mostPopularRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this76.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this82.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
                 element.globalTime = Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addHours"])(Object(_utils_Utils__WEBPACK_IMPORTED_MODULE_2__["addTimes"])(element.tempsPreparation, element.tempsCuisson));
               });
 
-              _this76.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this82.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -15683,18 +16202,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRecipeByCategory",
         value: function getRecipeByCategory(idCategorie) {
-          var _this77 = this;
+          var _this83 = this;
 
           var base = this.http.get("/server/recipe/category/".concat(idCategorie));
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this77.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this83.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this77.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
+              _this83.ingredientService.getIngredientsByIdRecette(element.idRecette).subscribe(function (data) {
                 element.ingredients = data;
               });
 
@@ -15767,6 +16286,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
+        key: "updateDescription",
+        value: function updateDescription(recette) {
+          return this.http.put("/server/recipe/description/update", recette).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
+            return data;
+          }));
+        }
+      }, {
         key: "updatePart",
         value: function updatePart(recette) {
           return this.http.put("/server/recipe/part/update", recette).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
@@ -15815,18 +16341,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getAllRecipesForMenu",
         value: function getAllRecipesForMenu() {
-          var _this78 = this;
+          var _this84 = this;
 
           var base = this.http.get("/server/menu/allRecipes");
           return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
             data.forEach(function (element) {
-              _this78.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
+              _this84.http.get("/server/image/".concat(element.idRecette)).subscribe(function (data) {
                 var _a;
 
                 element.lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
               });
 
-              _this78.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
+              _this84.categoryService.getCategoryByRecette(element.idRecette).subscribe(function (data) {
                 element.categories = data;
               });
             });
@@ -15836,16 +16362,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getPetitDej",
         value: function getPetitDej() {
-          var _this79 = this;
+          var _this85 = this;
 
           return this.http.get('/server/menu/petitDej').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this79.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
+            _this85.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
               var _a;
 
               element[0].lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
             });
 
-            _this79.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
+            _this85.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
               element[0].categories = data;
             });
 
@@ -15855,16 +16381,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getRepas",
         value: function getRepas() {
-          var _this80 = this;
+          var _this86 = this;
 
           return this.http.get('/server/menu/repas').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this80.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
+            _this86.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
               var _a;
 
               element[0].lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
             });
 
-            _this80.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
+            _this86.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
               element[0].categories = data;
             });
 
@@ -15874,16 +16400,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getDouceur",
         value: function getDouceur() {
-          var _this81 = this;
+          var _this87 = this;
 
           return this.http.get('/server/menu/douceur').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
-            _this81.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
+            _this87.http.get("/server/image/".concat(element[0].idRecette)).subscribe(function (data) {
               var _a;
 
               element[0].lienImage = (_a = data[0]) === null || _a === void 0 ? void 0 : _a.lienImage;
             });
 
-            _this81.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
+            _this87.categoryService.getCategoryByRecette(element[0].idRecette).subscribe(function (data) {
               element[0].categories = data;
             });
 
@@ -15910,6 +16436,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function updateDouceur(douceur) {
           return this.http.post('/server/menu/douceur/update', douceur).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (element) {
             return element;
+          }));
+        }
+      }, {
+        key: "getListRecipes",
+        value: function getListRecipes() {
+          var base = this.http.get("/server/recipeList/".concat(this.auth.getUserDetails().pseudo));
+          return base.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (data) {
+            return data;
+          }));
+        }
+      }, {
+        key: "addRecipeToList",
+        value: function addRecipeToList(recipe) {
+          return this.http.post("/server/recipeList/add", recipe).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (res) {
+            return res;
+          }));
+        }
+      }, {
+        key: "deleteRecipeOfList",
+        value: function deleteRecipeOfList(recipe) {
+          return this.http.post("/server/recipeList/delete", recipe).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (res) {
+            return res;
+          }));
+        }
+      }, {
+        key: "deleteAllRecipeOfList",
+        value: function deleteAllRecipeOfList() {
+          return this.http.post("/server/recipeList/delete/all", this.auth.getUserDetails().pseudo).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (res) {
+            return res;
+          }));
+        }
+      }, {
+        key: "changeStateOfRecipe",
+        value: function changeStateOfRecipe(recipe) {
+          recipe.complet = !recipe.complet;
+          return this.http.post("/server/recipeList/update", recipe).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(function (res) {
+            return res;
           }));
         }
       }]);
