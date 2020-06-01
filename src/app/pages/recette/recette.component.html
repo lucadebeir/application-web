@@ -50,7 +50,12 @@
             <p id="btn-p" *ngIf="isFavori">
                 <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="deleteFavoris()">♥ Supprimer la recettes de mes favoris</button>
             </p>
-
+            <p id="btn-p" *ngIf="!isInMenu">
+                <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-warning" (click)="addToMenu()">Ajouter la recettes au menu de la semaine</button>
+            </p>
+            <p id="btn-p" *ngIf="isInMenu">
+                <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-warning" (click)="deleteToMenu()">Supprimer la recettes du menu de la semaine</button>
+            </p>
 
 
         </div>
@@ -83,7 +88,12 @@
             <p>
 
                 <li *ngFor="let ingredient of ingredients" class="card-text">
-                    {{ingredient.qte}} {{ingredient.libelleUnite}} {{ingredient.nomIngredient}}
+                    <span *ngIf="ingredient.updateQte != null">
+                        {{ingredient.updateQte}} {{ingredient.libelleUnite}} {{ingredient.nomIngredient}}
+                    </span>
+                    <span *ngIf="ingredient.updateQte == null">
+                        {{ingredient.qte}} {{ingredient.libelleUnite}} {{ingredient.nomIngredient}}
+                    </span>
                 </li>
 
             </p>

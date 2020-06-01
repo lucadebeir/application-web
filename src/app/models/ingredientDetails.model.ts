@@ -6,4 +6,5 @@ export interface IngredientDetails {
     libelleUnite?: string;
     idUnite?: number;
     disabled?: boolean;
+    updateQte?: number;
 }

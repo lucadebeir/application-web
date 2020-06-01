@@ -336,6 +336,13 @@ export class RecettesService {
         }));
     }
 
+    public getListRecipesOfAdmin(): Observable<ListRecipe[]> {
+        const base = this.http.get(`/server/recipeList/marine`);
+        return base.pipe(map((data: ListRecipe[]) => {
+            return data;
+        }));
+    }
+
     public addRecipeToList(recipe: ListRecipe): Observable<any> {
         return this.http.post(`/server/recipeList/add`, recipe)
             .pipe(map((res) => {

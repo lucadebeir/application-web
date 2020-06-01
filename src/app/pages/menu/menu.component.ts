@@ -22,12 +22,19 @@ export class MenuComponent implements OnInit {
     complet: false
   };
 
+  public listAdmin: ListRecipe[];
+  public menuAdmin = false;
+
   constructor(private recetteService: RecettesService, private auth: AuthentificationService) {
     this.getInitData();
 
     if (this.auth.isLoggedIn()) {
       this.newRecetteList.pseudoUser = this.auth.getUserDetails().pseudo;
     }
+
+    this.recetteService.getListRecipesOfAdmin().subscribe(res => {
+      this.listAdmin = res;
+    });
   }
 
   ngOnInit(): void {
@@ -90,5 +97,9 @@ export class MenuComponent implements OnInit {
       this.newRecetteList.nomRecette = '';
       this.newRecetteList.idRecette = null;
     });
+  }
+
+  changeMenu() {
+    this.menuAdmin = !this.menuAdmin;
   }
 }

@@ -7,6 +7,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { addHours, roundDecimal } from '../../utils/Utils';
+import { ListRecipe } from 'src/app/models/listRecipe.model';
 
 @Component({
   selector: 'app-recette',
@@ -51,24 +52,36 @@ export class RecetteComponent implements OnInit {
 
   public nbrePartInitial: number;
   public ingredientQteInitial: IngredientDetails[];
+  public recipeList: ListRecipe = {
+    idRecette: parseInt(this.route.snapshot.paramMap.get('id'), 10),
+    nomRecette: '',
+    pseudoUser: '',
+    idRecipeList: null,
+    complet: false
+  };
 
   public element: any;
 
   public isFavori = false;
+  public isInMenu = false;
 
   public latestRecipes: RecipeDetails[];
+
+  public allRecipeList: ListRecipe[];
 
   constructor(public auth: AuthentificationService, private recetteService: RecettesService,
               private router: Router, private route: ActivatedRoute, private imagesService: ImagesService,
               private commentairesService: CommentairesService, private ingredientsService: IngredientsService,
               private favorisService: FavorisService, private unitesService: UnitesService,
               private shoppingListService: ShoppingListService) {
+
     this.recetteService.getRecipeById(parseInt(this.route.snapshot.paramMap.get('id'), 10)).subscribe(
       recette => {
         this.recette = recette;
         this.recette.tempsCuisson = addHours(this.recette.tempsCuisson);
         this.recette.tempsPreparation = addHours(this.recette.tempsPreparation);
         this.nbrePartInitial = this.recette.nbrePart;
+        this.recipeList.nomRecette = recette.nomRecette;
       }
     );
 
@@ -104,6 +117,17 @@ export class RecetteComponent implements OnInit {
       }
     );
 
+    this.recetteService.getListRecipes().subscribe(data => {
+      data.forEach(element => {
+        console.log(element);
+        if (element.idRecette === this.recipeList.idRecette) {
+          this.isInMenu = true;
+          this.recipeList = element;
+        }
+      });
+      this.allRecipeList = data;
+    });
+
     if (this.auth.isLoggedIn()) {
       this.favorisService.getFavoris().subscribe(data => {
         data.forEach(element => {
@@ -116,6 +140,7 @@ export class RecetteComponent implements OnInit {
       this.newListeCourses.pseudo = this.auth.getUserDetails().pseudo;
       this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo;
       this.newResponse.ecritPar = this.auth.getUserDetails().pseudo;
+      this.recipeList.pseudoUser = this.auth.getUserDetails().pseudo;
     }
   }
 
@@ -123,7 +148,6 @@ export class RecetteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   updateNbView(recette: any) {
@@ -182,6 +206,18 @@ export class RecetteComponent implements OnInit {
     this.favorisService.addFavoris(this.newFavori).subscribe();
     this.isFavori = true;
     window.location.reload();
+  }
+
+  addToMenu() {
+    this.recetteService.addRecipeToList(this.recipeList).subscribe();
+    window.location.reload();
+    alert('Vous avez bien ajouté cette recette à votre menu de la semaine !');
+  }
+
+  deleteToMenu() {
+    this.recetteService.deleteRecipeOfList(this.recipeList).subscribe();
+    window.location.reload();
+    alert('Vous avez bien supprimé cette recette de votre menu de la semaine !');
   }
 
   deleteFavoris() {
@@ -261,21 +297,21 @@ export class RecetteComponent implements OnInit {
 
   onProportionChange(searchValue: string): void {
     this.recette.ingredients.forEach(element => {
-      element.qte = (element.qte * parseInt(searchValue, 10)) / this.recette.nbrePart;
+      element.updateQte = (element.qte * parseInt(searchValue, 10)) / this.nbrePartInitial;
     });
     this.recette.nbrePart = parseInt(searchValue, 10);
   }
 
   onProportionLess(value: number): void {
     this.recette.ingredients.forEach(element => {
-      element.qte = roundDecimal((element.qte * value) / this.recette.nbrePart);
+      element.updateQte = roundDecimal((element.qte * value) / this.nbrePartInitial);
     });
     this.recette.nbrePart = this.recette.nbrePart - 1;
   }
 
   onProportionMore(value: number): void {
     this.recette.ingredients.forEach(element => {
-      element.qte = roundDecimal((element.qte * value) / this.recette.nbrePart);
+      element.updateQte = roundDecimal((element.qte * value) / this.nbrePartInitial);
     });
     this.recette.nbrePart = this.recette.nbrePart + 1;
   }
