@@ -4,8 +4,7 @@
     </li>
 
     <li class="nav-item" *ngFor="let categ of categories">
-        <a class="nav-link" routerLink="/allRecipes"
-            (click)="getRecipeByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
+        <a class="nav-link" routerLink="/allRecipes" (click)="getRecipeByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
     </li>
     <!--<li>
         <form class="form-inline my-2 my-lg-0">
@@ -21,8 +20,7 @@
     <li>
         <form class="form-inline" [formGroup]="researchForm" (ngSubmit)="research()">
             <div class="col text-center">
-                <input class="form-control" type="search" placeholder="Recette, ingrédient.." aria-label="Search"
-                    formControlName="filter" (click)="ngOnChanges()">
+                <input class="form-control" type="search" placeholder="Recette, ingrédient.." aria-label="Search" formControlName="filter" (click)="ngOnChanges()">
             </div>
             <div class="col text-center">
                 <button id="validateButton" type="submit" class="btn btn-primary">Rechercher</button>
@@ -34,15 +32,11 @@
 <br>
 
 <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12 p-3"
-        *ngFor="let recette of allRecipe | paginate: { id: 'listing_pagination', itemsPerPage:12, currentPage: currentPage}">
+    <div class="col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of allRecipe | paginate: { id: 'listing_pagination', itemsPerPage:12, currentPage: currentPage}">
         <article class="card wrap">
-            <div id="photo" [ngStyle]="{'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'}"
-                (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">
+            <div id="photo" [ngStyle]="{'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'}" (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">
             </div>
             <div>
-                <a>
-                </a>
                 <div id="titleRecipe">
                     <h3 class="food">
                         {{recette.nomRecette}}
@@ -62,13 +56,9 @@
                                 id="vue"> 👁</i></a>
                     </div>
                     <div id="coeur" class="logo">
-                        <a *ngIf="this.auth.isLoggedIn() && !this.favoris.includes(recette.idRecette)" id="btn"
-                            (click)="addFavoris(recette?.idRecette)" class="picto-item"
-                            aria-label="Ajouter aux favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
+                        <a *ngIf="this.auth.isLoggedIn() && !this.favoris.includes(recette.idRecette)" id="btn" (click)="addFavoris(recette?.idRecette)" class="picto-item" aria-label="Ajouter aux favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
                                 class="fa fa-heart-o"></i></a>
-                        <a *ngIf="this.auth.isLoggedIn() && this.favoris.includes(recette.idRecette)" id="btn"
-                            (click)="deleteFavoris(recette.idRecette)" class="picto-item"
-                            aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
+                        <a *ngIf="this.auth.isLoggedIn() && this.favoris.includes(recette.idRecette)" id="btn" (click)="deleteFavoris(recette.idRecette)" class="picto-item" aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
                                 class="class= fa fa-heart"></i></a>
                     </div>
                 </div>
@@ -77,6 +67,5 @@
     </div>
 </div>
 <div id="paginationRecette" #scrollContainer>
-    <pagination-controls id='listing_pagination' (pageChange)="onPageChange($event)" previousLabel="Précédent"
-        nextLabel="Suivant"></pagination-controls>
+    <pagination-controls id='listing_pagination' (pageChange)="onPageChange($event)" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
 </div>

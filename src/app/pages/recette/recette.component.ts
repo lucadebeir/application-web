@@ -117,23 +117,22 @@ export class RecetteComponent implements OnInit {
       }
     );
 
-    this.recetteService.getListRecipes().subscribe(data => {
-      data.forEach(element => {
-        console.log(element);
-        if (element.idRecette === this.recipeList.idRecette) {
-          this.isInMenu = true;
-          this.recipeList = element;
-        }
-      });
-      this.allRecipeList = data;
-    });
-
     if (this.auth.isLoggedIn()) {
       this.favorisService.getFavoris().subscribe(data => {
         data.forEach(element => {
           if (element.idRecette === parseInt(this.route.snapshot.paramMap.get('id'), 10)) {
             this.isFavori = true;
           }
+        });
+        this.recetteService.getListRecipes().subscribe(data => {
+          data.forEach(element => {
+            console.log(element);
+            if (element.idRecette === this.recipeList.idRecette) {
+              this.isInMenu = true;
+              this.recipeList = element;
+            }
+          });
+          this.allRecipeList = data;
         });
       });
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
