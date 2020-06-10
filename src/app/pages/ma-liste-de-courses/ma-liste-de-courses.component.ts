@@ -111,7 +111,7 @@ export class MaListeDeCoursesComponent implements OnInit {
         this.ingredientToAdd.idIngredient = result.idIngredient;
         this.shoppingListService.addIngredientShoppingList(this.ingredientToAdd);
         this.router.navigate(['/refresh'], {
-          queryParams: {url: 'shoppingList'}
+         queryParams: {url: 'shoppingList'}
         });
       });
   }

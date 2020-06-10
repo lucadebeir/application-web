@@ -113,12 +113,14 @@
     </article>
 
     <article>
+        <div *ngIf="recette.astuce" class="byline">
+            <h2>Astuces</h2>
 
-        <h2>Astuces</h2>
+            <pre>{{recette?.astuce}}</pre>
 
-        <pre>{{recette?.astuce}}</pre>
-        <div class="byline" *ngIf="recette?.astuce">
+
             <span>By</span> Marine
+
         </div>
         <div id="partage">
 
