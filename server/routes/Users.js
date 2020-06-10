@@ -51,20 +51,20 @@ const smtpTransport = nodemailer.createTransport({
 var rand, mailOptions, host, link;
 
 //envoi mail aux abonnes quand nouvelle recette
-users.get('/newRecipe/:pseudo/:idRecette', function (req, res) {
+users.get('/newRecipe/:pseudo/:idRecette', function(req, res) {
     host = req.get('host');
     link = "http://marinesrecipes.fr/recipe/" + req.params.idRecette;
     User.findOne({
-        where: {
-            pseudo: req.sanitize(req.params.pseudo)
-        }
-    })
+            where: {
+                pseudo: req.sanitize(req.params.pseudo)
+            }
+        })
         .then(user => {
             Recipe.findOne({
-                where: {
-                    idRecette: req.sanitize(req.params.idRecette)
-                }
-            })
+                    where: {
+                        idRecette: req.sanitize(req.params.idRecette)
+                    }
+                })
                 .then(recette => {
                     if (user && recette) {
                         mailOptions = {
@@ -78,6 +78,8 @@ users.get('/newRecipe/:pseudo/:idRecette', function (req, res) {
                                 "Une nouvelle recette est disponible sur Marine's recipes : " +
                                 "<br>" +
                                 "<h3>" + recette.nomRecette + "</h3>" +
+                                "<br>" +
+                                recette.mot +
                                 "<a href=" + link + " class='btn btn-primary'>Découvrir la recette </a>" +
                                 "<br>" +
                                 "Bonne journée," +
@@ -100,11 +102,11 @@ users.get('/newRecipe/:pseudo/:idRecette', function (req, res) {
 });
 
 //Confirmation du mail
-users.get('/verify', function (req, res) {
+users.get('/verify', function(req, res) {
     if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
         if (req.query.id == rand) {
             User.update({ emailConfirmed: true }, { where: { pseudo: req.query.pseudo } })
-            //res.end("<h1>Email " + mailOptions.to + " is been Successfully verified");
+                //res.end("<h1>Email " + mailOptions.to + " is been Successfully verified");
             res.redirect("http://" + req.get('host') + "/login")
         } else {
             res.end("<h1>Bad Request</h1>");
@@ -128,10 +130,10 @@ users.post('/register', (req, res) => { //req = info user
     }
 
     User.findOne({ //un peu comme ma requete SQL
-        where: {
-            pseudo: req.sanitize(req.body.pseudo)
-        }
-    })
+            where: {
+                pseudo: req.sanitize(req.body.pseudo)
+            }
+        })
         .then(user => {
             if (!user) {
                 if (req.sanitize(req.body.mdp) === req.sanitize(req.body.mdp2)) {
@@ -184,10 +186,10 @@ users.post('/register', (req, res) => { //req = info user
 //Connexion
 users.post('/login', (req, res) => {
     User.findOne({
-        where: {
-            pseudo: req.sanitize(req.body.pseudo)
-        }
-    })
+            where: {
+                pseudo: req.sanitize(req.body.pseudo)
+            }
+        })
         .then(user => {
             if (!user) {
                 res.json({ error: "Mot de passe et/ou pseudo incorrect" })
@@ -212,10 +214,10 @@ users.get('/profile', (req, res) => {
     var decoded = jwt.verify(req.sanitize(req.headers['authorization']), process.env.SECRET_KEY)
 
     User.findOne({
-        where: {
-            pseudo: decoded.pseudo
-        }
-    })
+            where: {
+                pseudo: decoded.pseudo
+            }
+        })
         .then(user => {
             if (user) {
                 res.json(user)
@@ -231,10 +233,10 @@ users.get('/profile', (req, res) => {
 //Tous les abonnés (get pour recuperer)
 users.get('/abonneNews', (req, res) => {
     User.findAll({
-        where: {
-            abonneNews: true
-        }
-    })
+            where: {
+                abonneNews: true
+            }
+        })
         .then(user => {
             if (user) {
                 res.json(user)
@@ -257,10 +259,10 @@ users.put('/update-password/:pseudo', (req, res) => {
     }
 
     User.findOne({
-        where: {
-            pseudo: req.sanitize(req.params.pseudo)
-        }
-    })
+            where: {
+                pseudo: req.sanitize(req.params.pseudo)
+            }
+        })
         .then(user => {
             if (!req.sanitize(req.body.newmdp) || !req.sanitize(req.body.mdp) || !req.sanitize(req.body.mdp2)) {
                 res.status(400)
@@ -276,8 +278,8 @@ users.put('/update-password/:pseudo', (req, res) => {
                             .error(err => handleError(err))
                     } else {
                         res.json({ error: "Les deux mots de passe ne sont pas identiques." })
-                        /*json permet de renvoyer uniquement ce qu'il y a entre {}
-                                           alors que si on met send on recuperera toute la requete http*/
+                            /*json permet de renvoyer uniquement ce qu'il y a entre {}
+                                               alors que si on met send on recuperera toute la requete http*/
                     }
 
                 } else {
@@ -300,9 +302,9 @@ users.put('/mon-profile/:pseudo', (req, res) => {
     })
 
     User.update({
-        email: req.sanitize(req.body.email),
-        abonneNews: req.sanitize(req.body.abonneNews),
-    }, { where: { pseudo: req.sanitize(req.params.pseudo) } })
+            email: req.sanitize(req.body.email),
+            abonneNews: req.sanitize(req.body.abonneNews),
+        }, { where: { pseudo: req.sanitize(req.params.pseudo) } })
         .then(() => {
             res.json({ success: 'Informations personnelles modifiées avec succès !' })
         })
@@ -312,10 +314,10 @@ users.put('/mon-profile/:pseudo', (req, res) => {
 //supprimer compte
 users.delete('/delete-profile/:pseudo', (req, res) => {
     User.destroy({
-        where: {
-            pseudo: req.sanitize(req.params.pseudo)
-        }
-    })
+            where: {
+                pseudo: req.sanitize(req.params.pseudo)
+            }
+        })
         .then(() => {
             res.send('User deleted!')
         })
@@ -325,7 +327,7 @@ users.delete('/delete-profile/:pseudo', (req, res) => {
 })
 
 //envoie mail pour changement de mdp
-users.post('/req-reset-password', async (req, res) => {
+users.post('/req-reset-password', async(req, res) => {
     if (!req.body.email) {
         return res
             .status(500)
@@ -367,7 +369,7 @@ users.post('/req-reset-password', async (req, res) => {
 })
 
 //vérification du token pour changement de mdp
-users.post('/valid-password-token', async function (req, res) {
+users.post('/valid-password-token', async function(req, res) {
     if (!req.body.resettoken) {
         return res
             .status(500)
@@ -391,7 +393,7 @@ users.post('/valid-password-token', async function (req, res) {
 })
 
 //changement de mdp après envoie du mail
-users.post('/new-password', async function (req, res) {
+users.post('/new-password', async function(req, res) {
     passwordResetToken.findOne({
         where: { resettoken: req.body.resettoken }
     }).then((userToken) => {
@@ -413,16 +415,16 @@ users.post('/new-password', async function (req, res) {
             }
             const hash = bcrypt.hashSync(req.body.newPassword, 10)
             User.update({ mdp: hash }, { where: { pseudo: userEmail.pseudo } }).then(() => {
-                passwordResetToken.destroy({
-                    where: {
-                        userId: userToken.userId,
-                        resettoken: userToken.resettoken
-                    }
-                });
-                return res
-                    .status(201)
-                    .json({ message: 'Mot de passe changé avec succès' });
-            })
+                    passwordResetToken.destroy({
+                        where: {
+                            userId: userToken.userId,
+                            resettoken: userToken.resettoken
+                        }
+                    });
+                    return res
+                        .status(201)
+                        .json({ message: 'Mot de passe changé avec succès' });
+                })
                 .catch(err => {
                     res.send('error: ' + err)
                 })
@@ -471,10 +473,10 @@ users.get('/contact/send', (req, res) => {
 //renvoie user avec son pseudo
 users.get('/user/:pseudo', (req, res) => {
     User.findOne({
-        where: {
-            pseudo: req.sanitize(req.params.pseudo)
-        }
-    })
+            where: {
+                pseudo: req.sanitize(req.params.pseudo)
+            }
+        })
         .then(user => {
             if (user) {
                 res.json(user)
