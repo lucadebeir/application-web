@@ -961,10 +961,11 @@
     
     //présentation fonctionnalités
     .welcome-clip {
-        height: 571.64px;
+        //height: 571.64px;
         background-color: #cea0af;
         display: flex;
         justify-content: space-between;
+        padding: 1em;
     }
     
     #listeCourses {
@@ -976,11 +977,12 @@
         align-items: flex-start;
         justify-content: center;
         flex-direction: column;
-        padding: 0px 100px;
+        padding: 0px 50px;
     }
     
     .special-text {
         color: white;
+        padding-top: 2em;
     }
     
     .list-text {
@@ -988,26 +990,61 @@
     }
     
     .girl {
-        padding-top: 6em;
-        padding-left: 1px;
-        padding-right: 5em;
-        padding-bottom: 5em;
-    }
-    
-    .outer-line.line-left {
-        width: 10%;
-    }
-    
-    .outer-line {
-        border: 1px solid #00000029;
-        height: 0px;
-    }
-    
-    .outer-line.line-right {
-        width: 50%;
+        padding-top: 3em;
+        //width: 65%;
+        padding-bottom: 2em;
+        margin: auto;
     }
     
     .new-divider {
         position: relative;
         text-align: left;
+        display: flex;
+        align-items: center;
+        margin-bottom: 1em;
+    }
+    
+    .hmp2-section7 .hmp2-section7-row .new-divider span.outer-line {
+        border: 1px solid #ffffff29;
+    }
+    
+    .new-divider span.outer-line.line-left {
+        width: 3em;
+    }
+    
+    .new-divider span.outer-line {
+        border: 1px solid #00000029;
+        height: 0px;
+    }
+    
+    .new-divider span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .new-divider span.fa {
+        // color: #ECBD90;
+        margin: 0px 10px;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .new-divider span {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .fa {
+        display: inline-block;
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        text-rendering: auto;
+    }
+    
+    .new-divider span.outer-line.line-right {
+        width: 12em;
+    }
+    
+    h4 {
+        font-size: 1rem;
     }
