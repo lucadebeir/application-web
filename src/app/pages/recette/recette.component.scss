@@ -1,6 +1,7 @@
 .blog-button-color {
     color: #deb940;
 }
+
 .blog-text-color {
     margin-top: 2em;
     text-align: center;
@@ -41,7 +42,6 @@ p#timer {
 }
 
 @import url(https://fonts.googleapis.com/css?family=Oswald|Nunito:400,700);
-
 #hamburger-juicy {
     text-align: center;
 }
@@ -49,6 +49,7 @@ p#timer {
 #no-hamburger-juicy {
     text-align: initial;
 }
+
 
 /* Layout */
 
@@ -63,7 +64,7 @@ html {
     max-width: 600px;
     padding: 1rem;
     margin: 5rem auto 2rem;
-    > article {
+    >article {
         margin: 0 0 10rem 0;
     }
     margin-bottom: 0;
@@ -83,6 +84,7 @@ html {
 #titreRecette {
     justify-content: space-evenly;
 }
+
 
 /* Header */
 
@@ -199,7 +201,7 @@ input.recipe-ingredients__qt-counter__value {
 
 .title-area {
     order: 2;
-    > p {
+    >p {
         color: red;
     }
 }
@@ -209,22 +211,23 @@ input.recipe-ingredients__qt-counter__value {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
-    > span {
+    >span {
         color: #999;
     }
 }
 
+
 /* Nav */
 
 .toc {
-    > ul {
+    >ul {
         list-style: none;
         padding: 0;
         line-height: 1.6;
-        > li {
+        >li {
             display: inline-block;
             counter-increment: nav;
-            > a {
+            >a {
                 text-decoration: none;
                 color: #333;
                 text-transform: uppercase;
@@ -252,6 +255,7 @@ input.recipe-ingredients__qt-counter__value {
         }
     }
 }
+
 
 /* Type */
 
@@ -361,8 +365,7 @@ a {
 }
 
 .v-btn:not(.v-btn--depressed):not(.v-btn--flat):active {
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
-        0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .avatar {
@@ -394,12 +397,12 @@ a {
     text-decoration: none;
 }
 
-.v-card > :first-child:not(.v-btn):not(.v-chip) {
+.v-card> :first-child:not(.v-btn):not(.v-chip) {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit;
 }
 
-.v-card > :last-child:not(.v-btn):not(.v-chip) {
+.v-card> :last-child:not(.v-btn):not(.v-chip) {
     border-bottom-left-radius: inherit;
     border-bottom-right-radius: inherit;
 }
@@ -617,8 +620,7 @@ button {
 }
 
 //////////////////////////////////////////////////////
-
-.comment-list > .comment:first-child > article {
+.comment-list>.comment:first-child>article {
     border-top: none;
 }
 
@@ -709,46 +711,56 @@ body {
     background-color: #e5e5e5;
     font-family: "Raleway", sans-serif;
 }
+
 .main-section {
     width: 50%;
     margin: 0 auto;
 }
+
 .content {
     padding: 20px;
     background-color: #fff;
 }
+
 .user-img {
     width: 10%;
     float: left;
     margin-right: 20px;
 }
+
 .user-img img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     margin-top: -10px;
 }
+
 .user-detail p {
     font-size: 17px;
     font-weight: 600;
     letter-spacing: 1.5px;
     margin: 15px 0px 10px 0px;
 }
+
 .user-detail span {
     color: #a2a2a2;
 }
+
 .comment-content {
     margin-top: 10px;
     display: table;
     width: 100%;
 }
+
 .comment-box {
     margin-top: 30px;
 }
+
 .count-btn,
 .enter-btn {
     float: left;
 }
+
 .btn {
     border: none;
     border: 1px solid #c2c2c2;
@@ -765,22 +777,27 @@ body {
 .btn:hover {
     border: 1px solid #000;
 }
+
 .comment-btn {
     margin-top: 30px;
 }
+
 .comment-btn input {
     width: 80%;
     padding: 10px;
 }
+
 .add-comment {
     padding: 20px;
     background-color: #f5f5f5;
     border-top: 1px solid #d2d2d2;
     display: none;
 }
+
 .add-comment-img {
     width: 10%;
 }
+
 .box .add-comment-img img {
     margin-right: 10px;
     width: 100%;
@@ -788,12 +805,14 @@ body {
     height: 100%;
     border-radius: 50%;
 }
+
 .add-comment-text textarea {
     width: 80%;
     font-family: "Barlow Condensed", sans-serif;
     padding: 10px;
     font-size: 20px;
 }
+
 .post-comment-btn {
     background-color: #5cb85c;
     padding: 8px;
@@ -802,6 +821,7 @@ body {
     border-radius: 3px;
     margin: 10px 5px 0px 75px;
 }
+
 .cancel-btn {
     background-color: #fff;
     padding: 8px;
@@ -809,19 +829,23 @@ body {
     border: 1px solid #d2d2d2;
     border-radius: 3px;
 }
+
 .cancel-btn:hover {
     border: 1px solid #000;
     cursor: pointer;
 }
+
 .example img {
     border-radius: 50%;
     margin-top: 20px;
     width: 60px;
 }
+
 .comment-img img {
     float: right;
     margin-right: 20px;
 }
+
 .comment p {
     margin-top: 30px;
     display: inline-block;
@@ -880,17 +904,19 @@ time {
     z-index: -1;
 }
 
-/////POST RECENT
+.fa-lg {
+    font-size: inherit;
+    vertical-align: inherit;
+}
 
+/////POST RECENT
 #recentPost {
     margin: auto;
-
     //CSS CARD
     h2 {
         width: 568px;
         margin: 5rem auto 2rem;
     }
-
     .marketing .col-lg-4 {
         margin-bottom: 1.5rem;
         text-align: center;
@@ -902,11 +928,9 @@ time {
         margin-right: 0.75rem;
         margin-left: 0.75rem;
     }
-
     .lead {
         font-size: 1.55em;
     }
-
     .marketing .col-lg-4 {
         margin-bottom: 1.5rem;
         text-align: center;
@@ -918,14 +942,12 @@ time {
             max-width: 33.333333%;
         }
     }
-    
     .col-lg-4 {
         position: relative;
         width: 100%;
         padding-right: 15px;
         padding-left: 15px;
     }
-
     .centre {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -934,7 +956,6 @@ time {
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
     }
-    
     .centre {
         float: left;
         width: 100%;
@@ -943,44 +964,35 @@ time {
         overflow: hidden;
         text-overflow: ellipsis;
     }
-
     //EFFET BUTTON
-
     .btn-effect {
         overflow: hidden;
         display: inline-block;
         position: relative;
     }
-
     .btn-effect span {
         display: block;
         transition: all 0.2s ease;
     }
-
     .btn-effect span:first-child {
         transform: translate(0);
     }
-
     .btn-effect span:last-child {
         transform: translateY(200%) translateX(-50%);
         position: absolute;
         left: 50%;
     }
-
     .btn-effect:hover span:first-child {
         transform: translateY(-200%);
     }
-
     .btn-effect:hover span:last-child {
         transform: translateY(-100%) translateX(-50%);
     }
-
     .btn-effect .icon {
         font-size: 1rem;
         display: inline-block;
         vertical-align: middle;
     }
-
     //CSS BUTTON
     .btn.btn-primary {
         color: #eeeeee;
@@ -994,38 +1006,31 @@ time {
         margin-top: 1em;
         padding: inherit;
     }
-
     a:not([href]) {
         color: inherit;
         text-decoration: none;
     }
-
     ///IMAGE SIZE
     #cardTitle {
         margin-bottom: 0.5em;
     }
-
     #imgSize {
         width: auto;
         display: inline-table;
         height: 350px;
     }
-
     img {
         display: block;
         margin: 0 auto;
     }
-
     #imgCard {
         width: 250px;
     }
-
     .box {
         display: table-cell;
         vertical-align: middle;
         text-align: center;
     }
-
     .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -1034,29 +1039,23 @@ time {
         -ms-user-select: none;
         user-select: none;
     }
-
     @media (min-width: 768px) {
         .bd-placeholder-img-lg {
             font-size: 3.5rem;
         }
     }
-
     ///////CATEGORIES
-
     .post-categories {
         padding-left: 0;
         list-style: none;
         margin-bottom: 1.5rem;
     }
-
     .post-categories li {
         display: inline-block;
     }
-
     .post-categories li:not(:last-child) {
         margin-right: 0.5rem;
     }
-
     .post-categories:before {
         vertical-align: middle;
         display: inline-block;
@@ -1066,25 +1065,20 @@ time {
         height: 1px;
         background: #eceeef;
     }
-
     .post-categories li:not(:last-child):after {
         content: ",";
     }
-
     .post-categories2 {
         padding-left: 0;
         list-style: none;
         margin-bottom: 1.5rem;
     }
-
     .post-categories2 li {
         display: inline-block;
     }
-
     .post-categories2 li:not(:last-child) {
         margin-right: 0.5rem;
     }
-
     .post-categories2:before {
         vertical-align: middle;
         display: inline-block;
@@ -1094,11 +1088,9 @@ time {
         height: 1px;
         background: #6c757d !important;
     }
-
     .post-categories2 li:not(:last-child):after {
         content: ",";
     }
-
     //CENTRER DIV
     .marketing {
         margin: auto;
