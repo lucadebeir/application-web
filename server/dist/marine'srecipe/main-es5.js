@@ -2449,7 +2449,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "h4");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, " Marre de ne plus savoir ce que tu avais pr\xE9vu cette semaine ? Avec cette fonctionnalit\xE9, retrouve toutes tes recettes au m\xEAme endroit! Si c'est une recette du site, tu y aura acc\xE8s directement en cliquant dessus! Et si tu manque d'id\xE9es pour cette semaine, tu peux voir le menu de Marine!");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, " Marre de ne plus savoir ce que tu avais pr\xE9vu cette semaine ? Avec cette fonctionnalit\xE9, retrouve toutes tes recettes au m\xEAme endroit! Si c'est une recette du site, tu y auras acc\xE8s directement en cliquant dessus! Et si tu manques d'id\xE9es pour cette semaine, tu peux voir le menu de Marine!");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 

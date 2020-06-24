@@ -1229,7 +1229,7 @@ AccueilComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineC
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](55, "h4");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, " Marre de ne plus savoir ce que tu avais pr\u00E9vu cette semaine ? Avec cette fonctionnalit\u00E9, retrouve toutes tes recettes au m\u00EAme endroit! Si c'est une recette du site, tu y aura acc\u00E8s directement en cliquant dessus! Et si tu manque d'id\u00E9es pour cette semaine, tu peux voir le menu de Marine!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](56, " Marre de ne plus savoir ce que tu avais pr\u00E9vu cette semaine ? Avec cette fonctionnalit\u00E9, retrouve toutes tes recettes au m\u00EAme endroit! Si c'est une recette du site, tu y auras acc\u00E8s directement en cliquant dessus! Et si tu manques d'id\u00E9es pour cette semaine, tu peux voir le menu de Marine!");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](57, "div", 36);
