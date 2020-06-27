@@ -195,7 +195,7 @@ p {
 .part--grid {
     padding-bottom: 0;
     background: #F0F0F0;
-    display: grid;
+    //display: grid;
     grid-template-columns: 1fr;
     padding: 10vw;
     position: relative;
@@ -222,7 +222,7 @@ p {
     margin-bottom: 10vw;
     position: relative;
     margin-left: -5vw;
-    height: 60vw;
+    //height: 60vw;
     //width: 90vw;
 }
 
@@ -238,7 +238,7 @@ p {
 
 .section--content-grid .part--grid {
     background: #F0F0F0;
-    display: grid;
+    //display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10vw;
     position: relative;
@@ -280,7 +280,7 @@ p {
 
 #lucaTexte {
     padding-left: 0;
-    padding-right: 10em;
+    //padding-right: 10em;
 }
 
 @media only screen and (min-width: 960px) {
@@ -291,7 +291,7 @@ p {
 
 .section--content-grid .part--grid .panel {
     margin-bottom: 96px;
-    padding-right: 5vw;
+    //padding-right: 5vw;
 }
 
 .panel {
@@ -327,7 +327,7 @@ p {
 
 .section--content-grid .part--grid .panel {
     margin-bottom: 96px;
-    padding-right: 5vw;
+    //padding-right: 5vw;
 }
 
 .panel {
@@ -337,7 +337,7 @@ p {
 }
 
 .image-1 {
-    height: 40vw;
+    //height: 40vw;
     margin-top: -14vw;
     margin-left: -5vw;
 }
@@ -348,4 +348,11 @@ p {
 
 #ombreLuca {
     box-shadow: -20px 20px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.culture-grid {
+    margin-left: 1em;
+    flex-wrap: wrap-reverse;
+    padding-bottom: 6em;
+    background: #F0F0F0;
 }
