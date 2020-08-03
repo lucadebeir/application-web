@@ -57,7 +57,7 @@ recipeList.post('/delete/all', (req, res) => {
     console.log(req.body)
     RecipeList.destroy({
             where: {
-                idRecipeList: req.body.pseudoUser
+                pseudoUser: req.body.pseudoUser
             },
             truncate: true
         })
