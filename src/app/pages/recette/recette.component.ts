@@ -82,7 +82,6 @@ export class RecetteComponent implements OnInit {
         this.recette.tempsPreparation = addHours(this.recette.tempsPreparation);
         this.nbrePartInitial = this.recette.nbrePart;
         this.recipeList.nomRecette = recette.nomRecette;
-       
       }
     );
 

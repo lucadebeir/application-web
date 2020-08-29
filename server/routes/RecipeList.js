@@ -4,6 +4,7 @@ const cors = require("cors")
 const db = require("../database/db.js")
 const sequelize = require("sequelize")
 const RecipeList = require("../models/RecipeList")
+const Recipe = require("../models/Recipe")
 recipeList.use(cors())
 
 //récupérer le recipeList du moment
@@ -18,6 +19,30 @@ recipeList.get('/:pseudo', (req, res) => {
                 res.json(recipeList)
             } else {
                 res.send("Pas de recettes disponibles dans la liste")
+            }
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+recipeList.put('/update-nbView/:idRecette', (req, res) => {
+    Recipe.findOne({
+            where: {
+                idRecette: req.params.idRecette
+            }
+        })
+        .then(recipe => {
+            if (recipe) {
+                Recipe.update({ nbVues: recipe.nbVues + 1 }, { where: { idRecette: recipe.idRecette } })
+                    .then(() => {
+                        res.json({ success: 'Nombre de vues incrémenté !' })
+                    })
+                    .error(err =>
+                        res.json({ error: err })
+                    )
+            } else {
+                res.send("Mauvais identifiant")
             }
         })
         .catch(err => {

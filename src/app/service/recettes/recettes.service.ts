@@ -140,6 +140,10 @@ export class RecettesService {
         return this.http.put<any>(`/server/recipe/update-nbView/${recette.idRecette}`, recette);
     }
 
+    public updateNbViewMenu(recette: RecipeDetails): Observable<any> {
+        return this.http.put<any>(`/server/recipeList/update-nbView/${recette.idRecette}`, recette);
+    }
+
     public updateRecipeIng(recette: RecipeDetails, ingredient: IngredientDetails): Observable<any> {
         return this.http.put(`/server/recipe/${recette.idRecette}/ingredient/update`, ingredient)
             .pipe(map((res) => {
@@ -332,6 +336,7 @@ export class RecettesService {
     public getListRecipes(): Observable<ListRecipe[]> {
         const base = this.http.get(`/server/recipeList/${this.auth.getUserDetails().pseudo}`);
         return base.pipe(map((data: ListRecipe[]) => {
+            console.log(data);
             return data;
         }));
     }

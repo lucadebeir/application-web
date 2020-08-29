@@ -21,8 +21,8 @@
           >
         </datalist>
                 <div class="input-buttons col-xs-4 col-sm-3">
-                    <a class="clear-text" (click)="deleteAllRecipeOfList()"><i class="fa fa-trash-o fa-2x"></i
-          ></a>
+                    <a class="clear-text" (click)="deleteAllRecipeOfList()"><a class="picto-item" aria-label="Tout supprimer"><i class="fa fa-trash-o fa-2x"></i></a>
+                    </a>
                     <a class="add-todo" (click)="addRecipeToList()"><i class="fa fa-plus fa-2x"></i
           ></a>
                 </div>
@@ -40,7 +40,7 @@
                 <!-- Start to-do list -->
                 <ul class="todo-list col-xs-12">
                     <li *ngFor="let recette of list" [class.complete]="recette.complet" class="todo">
-                        <a *ngIf="recette.idRecette" href="/recipe/{{ recette.idRecette }}">{{ recette.nomRecette }}</a
+                        <a style="color:#007bff" *ngIf="recette.idRecette" (click)="updateNbView(recette)">{{ recette.nomRecette }}</a
             >
             <a *ngIf="!recette.idRecette">{{ recette.nomRecette }}</a>
                         <span>
@@ -86,7 +86,7 @@
                 <!-- Start to-do list -->
                 <ul class="todo-list col-xs-12">
                     <li *ngFor="let recette of listAdmin" [class.complete]="recette.complet" class="todo">
-                        <a *ngIf="recette.idRecette" href="/recipe/{{ recette.idRecette }}">{{ recette.nomRecette }}</a
+                        <a style="color:#007bff" *ngIf="recette.idRecette" (click)="updateNbView(recette)">{{ recette.nomRecette }}</a
             >
             <a *ngIf="!recette.idRecette">{{ recette.nomRecette }}</a>
                     </li>

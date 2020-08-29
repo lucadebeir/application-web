@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ListRecipe } from 'src/app/models/listRecipe.model';
 import { RecettesService, AuthentificationService } from 'src/app/service';
 import { RecipeDetails } from 'src/app/models';
-import { ThrowStmt } from '@angular/compiler';
-import { element } from 'protractor';
-
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -25,7 +24,7 @@ export class MenuComponent implements OnInit {
   public listAdmin: ListRecipe[];
   public menuAdmin = false;
 
-  constructor(private recetteService: RecettesService, private auth: AuthentificationService) {
+  constructor(private recetteService: RecettesService, private auth: AuthentificationService, private router: Router) {
     this.getInitData();
 
     if (this.auth.isLoggedIn()) {
@@ -56,6 +55,7 @@ export class MenuComponent implements OnInit {
   getInitData(): void {
     this.recetteService.getListRecipes().subscribe(data => {
       this.list = data;
+      console.log(data);
     });
 
     this.allRecipe = [];
@@ -101,5 +101,20 @@ export class MenuComponent implements OnInit {
 
   changeMenu() {
     this.menuAdmin = !this.menuAdmin;
+  }
+
+  updateNbView(recette: any) {
+    this.recetteService.updateNbViewMenu(recette).subscribe(
+      (res) => {
+        this.router.navigate(['/recipe', recette.idRecette]).then(() => {
+          window.location.reload();
+        });
+      }, err => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 402) {
+            console.log('Cette recette n\'existe pas !');
+          }
+        }
+      });
   }
 }
