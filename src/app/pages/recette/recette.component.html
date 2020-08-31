@@ -6,7 +6,11 @@
 
         <div class="title-area">
 
-            <h1>{{recette?.nomRecette}}</h1>
+            <h1>{{recette?.nomRecette}}
+                <a *ngIf="this.auth.isLoggedIn() && !isInMenu" style="font-size: inherit; margin-left: 1em;" id="btn" (click)="addToMenu()" class="picto-item" aria-label="Ajouter la recettes au menu de la semaine"> <i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
+                <a *ngIf="this.auth.isLoggedIn() && isInMenu" style="font-size: inherit; margin-left: 1em;" id="btn" (click)="deleteToMenu()" class="picto-item" aria-label="Supprimer la recettes au menu de la semaine"> <i class="fa fa-bookmark" aria-hidden="true"></i></a>
+
+            </h1>
             <p id="timer">{{recette?.nbVues}} 👁
 
                 <a *ngIf="this.auth.isLoggedIn() &&!isFavori" id="btn" (click)="addFavoris()" class="picto-item" aria-label="Ajouter aux favoris"><i id="textlogo"> {{recette?.nbFavoris}} </i><i
@@ -15,7 +19,8 @@
                 <a *ngIf="this.auth.isLoggedIn() && isFavori" id="btn" (click)="deleteFavoris()" class="picto-item" aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
                             class="class= fa fa-heart"></i></a>
 
-                <!--si je suis pas connecté afficher un petit coeur rouge-->
+
+
 
                 <a *ngIf="!this.auth.isLoggedIn()" id="btn"><i id="textlogo">{{recette?.nbFavoris}} </i><i
                     class="class= fa fa-heart"></i></a>
@@ -52,14 +57,6 @@
 
                 </div>
 
-                <p id="btn-p" *ngIf="!isInMenu">
-                    <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-warning" (click)="addToMenu()">Ajouter la recettes au menu de la semaine</button>
-                </p>
-                <p id="btn-p" *ngIf="isInMenu">
-                    <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-warning" (click)="deleteToMenu()">Supprimer la recettes du menu de la semaine</button>
-                </p>
-
-
         </div>
 
     </div>
@@ -83,15 +80,7 @@
 
         </h2>
 
-        <!--brouillon
-         <a *ngIf="this.auth.isLoggedIn() &&!isFavori" id="btn" (click)="addFavoris()" class="picto-item" aria-label="Ajouter aux favoris"><i id="textlogo"> {{recette?.nbFavoris}} </i><i
-                        class="fa fa-heart-o"></i></a>
 
-                <a *ngIf="this.auth.isLoggedIn() && isFavori" id="btn" (click)="deleteFavoris()" class="picto-item" aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
-                            class="class= fa fa-heart"></i></a>
-
-                            <p id="btn-p"> <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-info" (click)="addListeCourses()">Ajouter les ingrédients à ma liste de course</button></p>
--->
 
         <p id="nbrePart">Nombre de {{recette?.libellePart}}</p>
 
@@ -141,7 +130,7 @@
         </div>
         <div id="partage">
 
-            <p> <i class="fa fa-lg fa-instagram"></i> Partagez moi votre résultat 😍 Mentionnez <a href="https://www.instagram.com/marineteroitin/?hl=fr">@marineteroitin</a> ou taguez <a href="https://www.instagram.com/explore/tags/marinesrecipes/?hl=fr"> #marinesrecipes</a>!
+            <p> <i class="fa fa-lg fa-instagram" style="color:#053477"></i> Partagez moi votre résultat 😍 Mentionnez <a href="https://www.instagram.com/marineteroitin/?hl=fr">@marineteroitin</a> ou taguez <a href="https://www.instagram.com/explore/tags/marinesrecipes/?hl=fr"> #marinesrecipes</a>!
             </p>
         </div>
 
@@ -170,7 +159,6 @@
             </div>
 
 
-            <!---->
         </div>
 
         <div *ngIf="commentaires" id="comments" class="post-comments elevation-2">
