@@ -7,25 +7,32 @@
         <div class="title-area">
 
             <h1>{{recette?.nomRecette}}</h1>
-            <p id="timer">{{recette?.nbVues}} 👁 {{recette?.nbFavoris}} <svg class="bi bi-heart-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="red" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                        clip-rule="evenodd" />
-                </svg>
-            </p>
-            <h2></h2>
+            <p id="timer">{{recette?.nbVues}} 👁
 
-            <div id="timer" class="wprm-recipe-servings-container wprm-recipe-block-container wprm-recipe-block-container-separate wprm-block-text-normal">
-                <div id="logoRecette">
-                    <img *ngIf="recette?.tempsPreparation != null" src="../../../assets/img/preparation.png" width="50em" height="50em"> {{recette?.tempsPreparation}}
-                </div>
+                <a *ngIf="this.auth.isLoggedIn() &&!isFavori" id="btn" (click)="addFavoris()" class="picto-item" aria-label="Ajouter aux favoris"><i id="textlogo"> {{recette?.nbFavoris}} </i><i
+                        class="fa fa-heart-o"></i></a>
 
-                <div id="logoRecette">
-                    <img *ngIf="recette?.tempsCuisson != null" src="../../../assets/img/cuisson.png" width="50em" height="50em"> {{recette?.tempsCuisson}}
-                </div>
+                <a *ngIf="this.auth.isLoggedIn() && isFavori" id="btn" (click)="deleteFavoris()" class="picto-item" aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
+                            class="class= fa fa-heart"></i></a>
 
-                <div id="logoRecette">
-                    <span id="part" class="wprm-recipe-icon wprm-recipe-servings-icon"><svg
+                <!--si je suis pas connecté afficher un petit coeur rouge-->
+
+                <a *ngIf="!this.auth.isLoggedIn()" id="btn"><i id="textlogo">{{recette?.nbFavoris}} </i><i
+                    class="class= fa fa-heart"></i></a>
+
+                <h2></h2>
+
+                <div id="timer" class="wprm-recipe-servings-container wprm-recipe-block-container wprm-recipe-block-container-separate wprm-block-text-normal">
+                    <div id="logoRecette">
+                        <img *ngIf="recette?.tempsPreparation != null" src="../../../assets/img/preparation.png" width="50em" height="50em"> {{recette?.tempsPreparation}}
+                    </div>
+
+                    <div id="logoRecette">
+                        <img *ngIf="recette?.tempsCuisson != null" src="../../../assets/img/cuisson.png" width="50em" height="50em"> {{recette?.tempsCuisson}}
+                    </div>
+
+                    <div id="logoRecette">
+                        <span id="part" class="wprm-recipe-icon wprm-recipe-servings-icon"><svg
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
                             y="0px" width="32px" height="32px" viewBox="0 0 24 24">
                             <g>
@@ -37,25 +44,20 @@
                                 </path>
                             </g>
                         </svg>
-                    </span>{{recette?.nbrePart}} {{recette?.libellePart}}
-                    <span class="wprm-recipe-servings-unit wprm-recipe-details-unit wprm-block-text-normal">
+                </span>{{recette?.nbrePart}} {{recette?.libellePart}}
+                        <span class="wprm-recipe-servings-unit wprm-recipe-details-unit wprm-block-text-normal">
                     </span>
+                    </div>
+
+
                 </div>
 
-
-            </div>
-            <p id="btn-p" *ngIf="!isFavori">
-                <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="addFavoris()">♥ Ajouter la recettes à mes favoris</button>
-            </p>
-            <p id="btn-p" *ngIf="isFavori">
-                <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-danger" (click)="deleteFavoris()">♥ Supprimer la recettes de mes favoris</button>
-            </p>
-            <p id="btn-p" *ngIf="!isInMenu">
-                <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-warning" (click)="addToMenu()">Ajouter la recettes au menu de la semaine</button>
-            </p>
-            <p id="btn-p" *ngIf="isInMenu">
-                <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-warning" (click)="deleteToMenu()">Supprimer la recettes du menu de la semaine</button>
-            </p>
+                <p id="btn-p" *ngIf="!isInMenu">
+                    <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-warning" (click)="addToMenu()">Ajouter la recettes au menu de la semaine</button>
+                </p>
+                <p id="btn-p" *ngIf="isInMenu">
+                    <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-warning" (click)="deleteToMenu()">Supprimer la recettes du menu de la semaine</button>
+                </p>
 
 
         </div>
@@ -74,7 +76,22 @@
 
     <article id="hamburger-juicy">
 
-        <h2 id="no-hamburger-juicy">Ingrédients</h2>
+        <h2 id="no-hamburger-juicy">Ingrédients
+            <a *ngIf="this.auth.isLoggedIn()" id="btn" (click)="addListeCourses()" class="picto-item" aria-label="Ajouter les ingrédients à ma liste de course" style="float: right; font-size: inherit;">
+                <span class="fa fa-shopping-cart" style="color: #cea0af"></span>
+            </a>
+
+        </h2>
+
+        <!--brouillon
+         <a *ngIf="this.auth.isLoggedIn() &&!isFavori" id="btn" (click)="addFavoris()" class="picto-item" aria-label="Ajouter aux favoris"><i id="textlogo"> {{recette?.nbFavoris}} </i><i
+                        class="fa fa-heart-o"></i></a>
+
+                <a *ngIf="this.auth.isLoggedIn() && isFavori" id="btn" (click)="deleteFavoris()" class="picto-item" aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
+                            class="class= fa fa-heart"></i></a>
+
+                            <p id="btn-p"> <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-info" (click)="addListeCourses()">Ajouter les ingrédients à ma liste de course</button></p>
+-->
 
         <p id="nbrePart">Nombre de {{recette?.libellePart}}</p>
 
@@ -97,7 +114,7 @@
                 </li>
 
             </p>
-            <p id="btn-p"> <button *ngIf="this.auth.isLoggedIn()" id="btn" type="button" class="btn btn-outline-info" (click)="addListeCourses()">Ajouter les ingrédients à ma liste de course</button></p>
+
         </div>
 
 

@@ -14,8 +14,10 @@ shoppingList.post('/add', (req, res) => {
 
         const listeCourseData = {
             pseudo: req.body.pseudo,
-            idIngredient: req.body.listIngredients[i].idIngredient
+            idIngredient: req.body.listIngredients[i].idIngredient,
+            nomIngredient: req.body.listIngredients[i].nomIngredient
         }
+
         ListeCourse.findOne({
                 where: {
                     pseudo: req.body.pseudo,

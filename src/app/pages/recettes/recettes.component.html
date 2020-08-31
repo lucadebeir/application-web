@@ -60,6 +60,7 @@
                                 class="fa fa-heart-o"></i></a>
                         <a *ngIf="this.auth.isLoggedIn() && this.favoris.includes(recette.idRecette)" id="btn" (click)="deleteFavoris(recette.idRecette)" class="picto-item" aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
                                 class="class= fa fa-heart"></i></a>
+                        <!--si je suis pas connectée afficher le nb de favoris avec un petit coeur rose rempli-->
                     </div>
                 </div>
             </div>
