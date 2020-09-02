@@ -226,8 +226,10 @@ export class AjoutRecetteComponent implements OnInit {
     this.recipe.astuce = formValue.astuce;
     this.recipe.mot = formValue.mot;
     this.imagesService.addImage(formData).subscribe(res => {
+      console.log(res[0]);
       this.recipe.idImage = res[0];
       this.recetteService.createRecipe(this.recipe).subscribe(res => {
+        console.log(res[0]);
         this.recipe.idRecette = res[0]; // je récupère l'id de la recette que je viens de créer
         this.recetteService.addIngredientsAndCategoryToNewRecipe(this.recipe).subscribe(res => {
           this.listAbonneNews$ = this.auth.getAbonneNews();

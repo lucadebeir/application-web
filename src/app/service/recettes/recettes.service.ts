@@ -154,6 +154,7 @@ export class RecettesService {
     public createRecipe(recipe: CreateRecipe): Observable<any> {
         const res = this.http.post('/server/recipe/add-recipe', recipe);
         return res.pipe(map((res) => {
+            console.log(res);
             return res;
         }));
     }
