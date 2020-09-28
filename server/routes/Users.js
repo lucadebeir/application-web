@@ -39,7 +39,7 @@ const smtpTransport = nodemailer.createTransport({
         type: 'OAuth2',
         user: 'marinesrecipes@gmail.com',
         clientId: '680726405067-3gam69kea82fcsu8al0ff3kuqcaengtl.apps.googleusercontent.com',
-        clientSecret: 'TGmXKDruFmLuwgVlyZtQ7S7O',
+        clientSecret: 'qiusRaX7DaloMdhQMiAB0lwD',
         refreshToken: '1//04BWvnOqpAFjgCgYIARAAGAQSNwF-L9IrXjtjL9QBYGwV5XEf1wECPN7rc_2jz17s8bBRPeJlxrv7YS4UxiJxHHyXbcVhYj0misA',
         accessToken: accessToken
 
