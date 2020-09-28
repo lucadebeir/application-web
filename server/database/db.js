@@ -1,4 +1,4 @@
-/*const Sequelize = require("sequelize")
+const Sequelize = require("sequelize")
 const db = {}
 const sequelize = new Sequelize("marinesrecipes_bd", "201428", "Luka-12021996", {
     host: "mysql-marinesrecipes.alwaysdata.net",
@@ -16,8 +16,9 @@ const sequelize = new Sequelize("marinesrecipes_bd", "201428", "Luka-12021996", 
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 
-module.exports = db*/
+module.exports = db
 
+/*
 //local
 const Sequelize = require("sequelize")
 const db = {}
@@ -38,4 +39,4 @@ const sequelize = new Sequelize("marine'srecipes", "root", "root", {
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 
-module.exports = db
+module.exports = db*/
