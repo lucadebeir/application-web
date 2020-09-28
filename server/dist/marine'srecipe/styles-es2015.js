@@ -414,9 +414,9 @@ module.exports = function (list, options) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/lucadebeir/Documents/GitHub/projet-web/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-__webpack_require__(/*! /Users/lucadebeir/Documents/GitHub/projet-web/node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css */"./node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css");
-module.exports = __webpack_require__(/*! /Users/lucadebeir/Documents/GitHub/projet-web/node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css */"./node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css");
+__webpack_require__(/*! /Users/lucadebeir/Dev/projet-web/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! /Users/lucadebeir/Dev/projet-web/node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css */"./node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css");
+module.exports = __webpack_require__(/*! /Users/lucadebeir/Dev/projet-web/node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css */"./node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css");
 
 
 /***/ })
