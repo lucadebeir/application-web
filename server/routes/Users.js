@@ -16,7 +16,7 @@ const oauth2Client = new OAuth2(
     "https://developers.google.com/oauthplayground" // Redirect URL
 )
 oauth2Client.setCredentials({
-    refresh_token: '1//04BWvnOqpAFjgCgYIARAAGAQSNwF-L9IrXjtjL9QBYGwV5XEf1wECPN7rc_2jz17s8bBRPeJlxrv7YS4UxiJxHHyXbcVhYj0misA'
+    refresh_token: "Your Refresh Token Here"
 });
 const accessToken = oauth2Client.getAccessToken()
 process.env.SECRET_KEY = 'secret'
@@ -40,7 +40,7 @@ const smtpTransport = nodemailer.createTransport({
         user: 'marinesrecipes@gmail.com',
         clientId: '680726405067-3gam69kea82fcsu8al0ff3kuqcaengtl.apps.googleusercontent.com',
         clientSecret: 'qiusRaX7DaloMdhQMiAB0lwD',
-        refreshToken: '1//04BWvnOqpAFjgCgYIARAAGAQSNwF-L9IrXjtjL9QBYGwV5XEf1wECPN7rc_2jz17s8bBRPeJlxrv7YS4UxiJxHHyXbcVhYj0misA',
+        refreshToken: '1//04pWeER_VOvN4CgYIARAAGAQSNwF-L9Ir2Oa64ZVrBw5LQCqO-Vbj90ow7m7EhXSm6Bk1XtSyyeoaO76viFcm3vdbp2aWIe7SCQM',
         accessToken: accessToken
 
         /*user: process.env.USER_MAIL,
@@ -359,14 +359,9 @@ users.post('/req-reset-password', async(req, res) => {
                     "Si vous n'avez pas demandé à changer votre mot de passe, ignorer cet email et votre mot de passe restera inchangé.\nBonne journée ! \n Marine."
             }
             smtpTransport.sendMail(mailOptions, (error, response) => {
-                console.log(mailOptions)
-                console.log(error)
-                if (error) {
-                    res.end("error");
-                } else {
-                    res.end("sent");
-                }
-            })
+                error ? console.log(error) : console.log(response);
+                smtpTransport.close();
+           });
         })
 })
 
