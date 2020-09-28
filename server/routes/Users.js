@@ -12,7 +12,7 @@ const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
     '680726405067-3gam69kea82fcsu8al0ff3kuqcaengtl.apps.googleusercontent.com',
-    'TGmXKDruFmLuwgVlyZtQ7S7O', // Client Secret
+    'qiusRaX7DaloMdhQMiAB0lwD', // Client Secret
     "https://developers.google.com/oauthplayground" // Redirect URL
 )
 oauth2Client.setCredentials({
@@ -349,7 +349,7 @@ users.post('/req-reset-password', async(req, res) => {
     }
     passwordResetToken.create(resettoken)
         .then(() => {
-            res.status(200).json({ message: 'Mot de passe modifié avec succès' });
+            //res.status(200).json({ message: 'Mot de passe modifié avec succès' });
             mailOptions = {
                 to: user.email,
                 subject: "Mot de passe oublié sur Marine's recipes",
@@ -359,6 +359,8 @@ users.post('/req-reset-password', async(req, res) => {
                     "Si vous n'avez pas demandé à changer votre mot de passe, ignorer cet email et votre mot de passe restera inchangé.\nBonne journée ! \n Marine."
             }
             smtpTransport.sendMail(mailOptions, (error, response) => {
+                console.log(mailOptions)
+                console.log(error)
                 if (error) {
                     res.end("error");
                 } else {
