@@ -73,6 +73,7 @@
                     <a class="dropdown-item" routerLink="/shoppingList">Ma liste de course</a>
                     <a class="dropdown-item" routerLink="/comment">Mes commentaires</a>
                     <a class="dropdown-item" *ngIf="auth.isAdmin()" routerLink="/handleRecipes">Gerer les recettes</a>
+                    <a class="dropdown-item" *ngIf="auth.isAdmin()" routerLink="/statistiques">Statistiques</a>
                     <a class="dropdown-item" routerLink="" (click)="auth.logout()">Deconnexion</a>
                 </div>
             </li>

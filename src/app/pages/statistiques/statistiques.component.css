@@ -1,0 +1,1352 @@
+*,
+:after,
+:before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+body,
+html {
+    margin: 0
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    -webkit-transition: background 500ms ease-in;
+    -o-transition: background 500ms ease-in;
+    transition: background 500ms ease-in;
+    overflow-x: hidden
+}
+
+body.color-a {
+    background-color: #ffffff
+}
+
+body.color-a .header {
+    background-color: #002fff
+}
+
+body.color-a .group-article>article {
+    border-bottom-color: #002fff
+}
+
+body.color-a .group-article>.group-header:after {
+    background-color: #002fff
+}
+
+body.color-a .group-article>.group-header:before {
+    background-color: #002fff
+}
+
+body.color-a .group-article>.group-header h1 {
+    color: #001366
+}
+
+body.color-a .group-article .tags .tag-item {
+    background-color: #001366
+}
+
+body.color-a .c-hamburger--htla.is-active {
+    color: #002fff
+}
+
+body.color-a .c-hamburger--htla.is-active span {
+    background-color: #002fff
+}
+
+body.color-a .c-hamburger--htla.is-active span:after,
+body.color-a .c-hamburger--htla.is-active span:before {
+    background-color: #002fff
+}
+
+body.color-a .section .section-header {
+    color: #002fff
+}
+
+body.color-a table.log-table tbody tr td:first-child,
+body.color-a table.log-table tbody tr th:first-child,
+body.color-a table.log-table tfoot tr td:first-child,
+body.color-a table.log-table tfoot tr th:first-child,
+body.color-a table.log-table thead tr td:first-child,
+body.color-a table.log-table thead tr th:first-child {
+    border-right-color: #002fff
+}
+
+body.color-a table.log-table tbody tr td:last-child,
+body.color-a table.log-table tbody tr th:last-child,
+body.color-a table.log-table tfoot tr td:last-child,
+body.color-a table.log-table tfoot tr th:last-child,
+body.color-a table.log-table thead tr td:last-child,
+body.color-a table.log-table thead tr th:last-child {
+    border-left-color: #002fff
+}
+
+body .header nav ul li a[data-color=color-a].active,
+body .header nav ul li a[data-color=color-a]:hover {
+    color: #002fff
+}
+
+body .header nav ul li a[data-color=color-a].active:before,
+body .header nav ul li a[data-color=color-a]:hover:before {
+    background-color: rgba(0, 47, 255, 0.3)
+}
+
+body.color-b {
+    background-color: #ffffff
+}
+
+body.color-b .header {
+    background-color: #7b00ff
+}
+
+body.color-b .group-article>article {
+    border-bottom-color: #7b00ff
+}
+
+body.color-b .group-article>.group-header:after {
+    background-color: #7b00ff
+}
+
+body.color-b .group-article>.group-header:before {
+    background-color: #7b00ff
+}
+
+body.color-b .group-article>.group-header h1 {
+    color: #310066
+}
+
+body.color-b .group-article .tags .tag-item {
+    background-color: #310066
+}
+
+body.color-b .c-hamburger--htla.is-active {
+    color: #7b00ff
+}
+
+body.color-b .c-hamburger--htla.is-active span {
+    background-color: #7b00ff
+}
+
+body.color-b .c-hamburger--htla.is-active span:after,
+body.color-b .c-hamburger--htla.is-active span:before {
+    background-color: #7b00ff
+}
+
+body.color-b .section .section-header {
+    color: #7b00ff
+}
+
+body.color-b table.log-table tbody tr td:first-child,
+body.color-b table.log-table tbody tr th:first-child,
+body.color-b table.log-table tfoot tr td:first-child,
+body.color-b table.log-table tfoot tr th:first-child,
+body.color-b table.log-table thead tr td:first-child,
+body.color-b table.log-table thead tr th:first-child {
+    border-right-color: #7b00ff
+}
+
+body.color-b table.log-table tbody tr td:last-child,
+body.color-b table.log-table tbody tr th:last-child,
+body.color-b table.log-table tfoot tr td:last-child,
+body.color-b table.log-table tfoot tr th:last-child,
+body.color-b table.log-table thead tr td:last-child,
+body.color-b table.log-table thead tr th:last-child {
+    border-left-color: #7b00ff
+}
+
+body .header nav ul li a[data-color=color-b].active,
+body .header nav ul li a[data-color=color-b]:hover {
+    color: #7b00ff
+}
+
+body .header nav ul li a[data-color=color-b].active:before,
+body .header nav ul li a[data-color=color-b]:hover:before {
+    background-color: rgba(123, 0, 255, 0.3)
+}
+
+body.color-c {
+    background-color: #ffffff
+}
+
+body.color-c .header {
+    background-color: #ff0044
+}
+
+body.color-c .group-article>article {
+    border-bottom-color: #ff0044
+}
+
+body.color-c .group-article>.group-header:after {
+    background-color: #ff0044
+}
+
+body.color-c .group-article>.group-header:before {
+    background-color: #ff0044
+}
+
+body.color-c .group-article>.group-header h1 {
+    color: #66001b
+}
+
+body.color-c .group-article .tags .tag-item {
+    background-color: #66001b
+}
+
+body.color-c .c-hamburger--htla.is-active {
+    color: #ff0044
+}
+
+body.color-c .c-hamburger--htla.is-active span {
+    background-color: #ff0044
+}
+
+body.color-c .c-hamburger--htla.is-active span:after,
+body.color-c .c-hamburger--htla.is-active span:before {
+    background-color: #ff0044
+}
+
+body.color-c .section .section-header {
+    color: #ff0044
+}
+
+body.color-c table.log-table tbody tr td:first-child,
+body.color-c table.log-table tbody tr th:first-child,
+body.color-c table.log-table tfoot tr td:first-child,
+body.color-c table.log-table tfoot tr th:first-child,
+body.color-c table.log-table thead tr td:first-child,
+body.color-c table.log-table thead tr th:first-child {
+    border-right-color: #ff0044
+}
+
+body.color-c table.log-table tbody tr td:last-child,
+body.color-c table.log-table tbody tr th:last-child,
+body.color-c table.log-table tfoot tr td:last-child,
+body.color-c table.log-table tfoot tr th:last-child,
+body.color-c table.log-table thead tr td:last-child,
+body.color-c table.log-table thead tr th:last-child {
+    border-left-color: #ff0044
+}
+
+body .header nav ul li a[data-color=color-c].active,
+body .header nav ul li a[data-color=color-c]:hover {
+    color: #ff0044
+}
+
+body .header nav ul li a[data-color=color-c].active:before,
+body .header nav ul li a[data-color=color-c]:hover:before {
+    background-color: rgba(255, 0, 68, 0.3)
+}
+
+body.color-d {
+    background-color: #ffffff
+}
+
+body.color-d .header {
+    background-color: #ff5500
+}
+
+body.color-d .group-article>article {
+    border-bottom-color: #ff5500
+}
+
+body.color-d .group-article>.group-header:after {
+    background-color: #ff5500
+}
+
+body.color-d .group-article>.group-header:before {
+    background-color: #ff5500
+}
+
+body.color-d .group-article>.group-header h1 {
+    color: #662200
+}
+
+body.color-d .group-article .tags .tag-item {
+    background-color: #662200
+}
+
+body.color-d .c-hamburger--htla.is-active {
+    color: #ff5500
+}
+
+body.color-d .c-hamburger--htla.is-active span {
+    background-color: #ff5500
+}
+
+body.color-d .c-hamburger--htla.is-active span:after,
+body.color-d .c-hamburger--htla.is-active span:before {
+    background-color: #ff5500
+}
+
+body.color-d .section .section-header {
+    color: #ff5500
+}
+
+body.color-d table.log-table tbody tr td:first-child,
+body.color-d table.log-table tbody tr th:first-child,
+body.color-d table.log-table tfoot tr td:first-child,
+body.color-d table.log-table tfoot tr th:first-child,
+body.color-d table.log-table thead tr td:first-child,
+body.color-d table.log-table thead tr th:first-child {
+    border-right-color: #ff5500
+}
+
+body.color-d table.log-table tbody tr td:last-child,
+body.color-d table.log-table tbody tr th:last-child,
+body.color-d table.log-table tfoot tr td:last-child,
+body.color-d table.log-table tfoot tr th:last-child,
+body.color-d table.log-table thead tr td:last-child,
+body.color-d table.log-table thead tr th:last-child {
+    border-left-color: #ff5500
+}
+
+body .header nav ul li a[data-color=color-d].active,
+body .header nav ul li a[data-color=color-d]:hover {
+    color: #ff5500
+}
+
+body .header nav ul li a[data-color=color-d].active:before,
+body .header nav ul li a[data-color=color-d]:hover:before {
+    background-color: rgba(255, 85, 0, 0.3)
+}
+
+body.color-e {
+    background-color: #ffffff
+}
+
+body.color-e .header {
+    background-color: #4eff00
+}
+
+body.color-e .group-article>article {
+    border-bottom-color: #4eff00
+}
+
+body.color-e .group-article>.group-header:after {
+    background-color: #4eff00
+}
+
+body.color-e .group-article>.group-header:before {
+    background-color: #4eff00
+}
+
+body.color-e .group-article>.group-header h1 {
+    color: #1f6600
+}
+
+body.color-e .group-article .tags .tag-item {
+    background-color: #1f6600
+}
+
+body.color-e .c-hamburger--htla.is-active {
+    color: #4eff00
+}
+
+body.color-e .c-hamburger--htla.is-active span {
+    background-color: #4eff00
+}
+
+body.color-e .c-hamburger--htla.is-active span:after,
+body.color-e .c-hamburger--htla.is-active span:before {
+    background-color: #4eff00
+}
+
+body.color-e .section .section-header {
+    color: #4eff00
+}
+
+body.color-e table.log-table tbody tr td:first-child,
+body.color-e table.log-table tbody tr th:first-child,
+body.color-e table.log-table tfoot tr td:first-child,
+body.color-e table.log-table tfoot tr th:first-child,
+body.color-e table.log-table thead tr td:first-child,
+body.color-e table.log-table thead tr th:first-child {
+    border-right-color: #4eff00
+}
+
+body.color-e table.log-table tbody tr td:last-child,
+body.color-e table.log-table tbody tr th:last-child,
+body.color-e table.log-table tfoot tr td:last-child,
+body.color-e table.log-table tfoot tr th:last-child,
+body.color-e table.log-table thead tr td:last-child,
+body.color-e table.log-table thead tr th:last-child {
+    border-left-color: #4eff00
+}
+
+body .header nav ul li a[data-color=color-e].active,
+body .header nav ul li a[data-color=color-e]:hover {
+    color: #4eff00
+}
+
+body .header nav ul li a[data-color=color-e].active:before,
+body .header nav ul li a[data-color=color-e]:hover:before {
+    background-color: rgba(78, 255, 0, 0.3)
+}
+
+body.color-f {
+    background-color: #ffffff
+}
+
+body.color-f .header {
+    background-color: #00ff80
+}
+
+body.color-f .group-article>article {
+    border-bottom-color: #00ff80
+}
+
+body.color-f .group-article>.group-header:after {
+    background-color: #00ff80
+}
+
+body.color-f .group-article>.group-header:before {
+    background-color: #00ff80
+}
+
+body.color-f .group-article>.group-header h1 {
+    color: #006633
+}
+
+body.color-f .group-article .tags .tag-item {
+    background-color: #006633
+}
+
+body.color-f .c-hamburger--htla.is-active {
+    color: #00ff80
+}
+
+body.color-f .c-hamburger--htla.is-active span {
+    background-color: #00ff80
+}
+
+body.color-f .c-hamburger--htla.is-active span:after,
+body.color-f .c-hamburger--htla.is-active span:before {
+    background-color: #00ff80
+}
+
+body.color-f .section .section-header {
+    color: #00ff80
+}
+
+body.color-f table.log-table tbody tr td:first-child,
+body.color-f table.log-table tbody tr th:first-child,
+body.color-f table.log-table tfoot tr td:first-child,
+body.color-f table.log-table tfoot tr th:first-child,
+body.color-f table.log-table thead tr td:first-child,
+body.color-f table.log-table thead tr th:first-child {
+    border-right-color: #00ff80
+}
+
+body.color-f table.log-table tbody tr td:last-child,
+body.color-f table.log-table tbody tr th:last-child,
+body.color-f table.log-table tfoot tr td:last-child,
+body.color-f table.log-table tfoot tr th:last-child,
+body.color-f table.log-table thead tr td:last-child,
+body.color-f table.log-table thead tr th:last-child {
+    border-left-color: #00ff80
+}
+
+body .header nav ul li a[data-color=color-f].active,
+body .header nav ul li a[data-color=color-f]:hover {
+    color: #00ff80
+}
+
+body .header nav ul li a[data-color=color-f].active:before,
+body .header nav ul li a[data-color=color-f]:hover:before {
+    background-color: rgba(0, 255, 128, 0.3)
+}
+
+body.color-g {
+    background-color: #ffffff
+}
+
+body.color-g .header {
+    background-color: #00ffee
+}
+
+body.color-g .group-article>article {
+    border-bottom-color: #00ffee
+}
+
+body.color-g .group-article>.group-header:after {
+    background-color: #00ffee
+}
+
+body.color-g .group-article>.group-header:before {
+    background-color: #00ffee
+}
+
+body.color-g .group-article>.group-header h1 {
+    color: #00665f
+}
+
+body.color-g .group-article .tags .tag-item {
+    background-color: #00665f
+}
+
+body.color-g .c-hamburger--htla.is-active {
+    color: #00ffee
+}
+
+body.color-g .c-hamburger--htla.is-active span {
+    background-color: #00ffee
+}
+
+body.color-g .c-hamburger--htla.is-active span:after,
+body.color-g .c-hamburger--htla.is-active span:before {
+    background-color: #00ffee
+}
+
+body.color-g .section .section-header {
+    color: #00ffee
+}
+
+body.color-g table.log-table tbody tr td:first-child,
+body.color-g table.log-table tbody tr th:first-child,
+body.color-g table.log-table tfoot tr td:first-child,
+body.color-g table.log-table tfoot tr th:first-child,
+body.color-g table.log-table thead tr td:first-child,
+body.color-g table.log-table thead tr th:first-child {
+    border-right-color: #00ffee
+}
+
+body.color-g table.log-table tbody tr td:last-child,
+body.color-g table.log-table tbody tr th:last-child,
+body.color-g table.log-table tfoot tr td:last-child,
+body.color-g table.log-table tfoot tr th:last-child,
+body.color-g table.log-table thead tr td:last-child,
+body.color-g table.log-table thead tr th:last-child {
+    border-left-color: #00ffee
+}
+
+body .header nav ul li a[data-color=color-g].active,
+body .header nav ul li a[data-color=color-g]:hover {
+    color: #00ffee
+}
+
+body .header nav ul li a[data-color=color-g].active:before,
+body .header nav ul li a[data-color=color-g]:hover:before {
+    background-color: rgba(0, 255, 238, 0.3)
+}
+
+body.color-h {
+    background-color: #ffffff
+}
+
+body.color-h .header {
+    background-color: #ff009a
+}
+
+body.color-h .group-article>article {
+    border-bottom-color: #ff009a
+}
+
+body.color-h .group-article>.group-header:after {
+    background-color: #ff009a
+}
+
+body.color-h .group-article>.group-header:before {
+    background-color: #ff009a
+}
+
+body.color-h .group-article>.group-header h1 {
+    color: #66003d
+}
+
+body.color-h .group-article .tags .tag-item {
+    background-color: #66003d
+}
+
+body.color-h .c-hamburger--htla.is-active {
+    color: #ff009a
+}
+
+body.color-h .c-hamburger--htla.is-active span {
+    background-color: #ff009a
+}
+
+body.color-h .c-hamburger--htla.is-active span:after,
+body.color-h .c-hamburger--htla.is-active span:before {
+    background-color: #ff009a
+}
+
+body.color-h .section .section-header {
+    color: #ff009a
+}
+
+body.color-h table.log-table tbody tr td:first-child,
+body.color-h table.log-table tbody tr th:first-child,
+body.color-h table.log-table tfoot tr td:first-child,
+body.color-h table.log-table tfoot tr th:first-child,
+body.color-h table.log-table thead tr td:first-child,
+body.color-h table.log-table thead tr th:first-child {
+    border-right-color: #ff009a
+}
+
+body.color-h table.log-table tbody tr td:last-child,
+body.color-h table.log-table tbody tr th:last-child,
+body.color-h table.log-table tfoot tr td:last-child,
+body.color-h table.log-table tfoot tr th:last-child,
+body.color-h table.log-table thead tr td:last-child,
+body.color-h table.log-table thead tr th:last-child {
+    border-left-color: #ff009a
+}
+
+body .header nav ul li a[data-color=color-h].active,
+body .header nav ul li a[data-color=color-h]:hover {
+    color: #ff009a
+}
+
+body .header nav ul li a[data-color=color-h].active:before,
+body .header nav ul li a[data-color=color-h]:hover:before {
+    background-color: rgba(255, 0, 154, 0.3)
+}
+
+#hammerElement {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 60px
+}
+
+.text-purple {
+    color: purple
+}
+
+.text-pink {
+    color: pink
+}
+
+.text-yellow {
+    color: yellow
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    -webkit-transition: background 500ms ease-in;
+    -o-transition: background 500ms ease-in;
+    transition: background 500ms ease-in;
+    -webkit-box-shadow: 0 0 65px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 65px rgba(0, 0, 0, 0.1);
+    background-color: #141414;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.header .brand-name {
+    color: #ffffff;
+    font-size: 2rem;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    text-align: center
+}
+
+.header label {
+    z-index: 20
+}
+
+.header nav {
+    width: 60px
+}
+
+.header nav ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-transition: left 300ms ease-in-out;
+    -o-transition: left 300ms ease-in-out;
+    transition: left 300ms ease-in-out
+}
+
+.header nav ul li {
+    list-style-type: none;
+    text-align: center
+}
+
+.header nav ul li.legal {
+    font-size: .7rem
+}
+
+.header nav ul li.legal a {
+    font-size: .7rem;
+    padding: 0;
+    font-weight: 600
+}
+
+.header nav ul li a {
+    display: inline-block;
+    text-align: center;
+    color: #141414;
+    font-size: 2rem;
+    padding: 15px;
+    text-decoration: none;
+    position: relative;
+    -webkit-transition: all 500ms ease-out;
+    -o-transition: all 500ms ease-out;
+    transition: all 500ms ease-out
+}
+
+.header nav ul li a.active,
+.header nav ul li a:hover {
+    color: #141414
+}
+
+.header nav ul li a.active:before,
+.header nav ul li a:hover:before {
+    background-color: #141414;
+    -webkit-transform: translate(-40%, 38px);
+    -ms-transform: translate(-40%, 38px);
+    transform: translate(-40%, 38px);
+    -webkit-transform-origin: right;
+    -ms-transform-origin: right;
+    transform-origin: right
+}
+
+.header nav ul li a:before {
+    content: "";
+    display: block;
+    height: 12px;
+    width: 50px;
+    background-color: transparent;
+    -webkit-transform: translate(-200%, 38px);
+    -ms-transform: translate(-200%, 38px);
+    transform: translate(-200%, 38px);
+    -webkit-transform-origin: left;
+    -ms-transform-origin: left;
+    transform-origin: left;
+    -webkit-transition: all 100ms ease-out;
+    -o-transition: all 100ms ease-out;
+    transition: all 100ms ease-out
+}
+
+.header input {
+    display: none
+}
+
+.header input:not(:checked)+ul {
+    left: -100vw
+}
+
+.header input:checked+ul {
+    left: 0
+}
+
+.c-hamburger {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: none;
+    border: none;
+    cursor: pointer;
+    -webkit-transition: background 0.3s;
+    -o-transition: background 0.3s;
+    transition: background 0.3s;
+    padding-left: 60px;
+    line-height: 64px;
+    color: #ffffff;
+    font-size: 0rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200
+}
+
+.c-hamburger:focus {
+    outline: none
+}
+
+.c-hamburger span {
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    left: 50%;
+    height: 4px;
+    background: #ffffff;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    font-size: 1.8rem
+}
+
+.c-hamburger span:after,
+.c-hamburger span:before {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #ffffff;
+    content: ""
+}
+
+.c-hamburger span:before {
+    top: -10px
+}
+
+.c-hamburger span:after {
+    bottom: -10px
+}
+
+.c-hamburger--htla {}
+
+.c-hamburger--htla span {
+    -webkit-transition: -webkit-transform 0.3s;
+    transition: -webkit-transform 0.3s;
+    -o-transition: transform 0.3s;
+    transition: transform 0.3s;
+    transition: transform 0.3s, -webkit-transform 0.3s
+}
+
+.c-hamburger--htla span:before {
+    -webkit-transform-origin: top right;
+    -ms-transform-origin: top right;
+    transform-origin: top right;
+    -webkit-transition: width 0.3s, top 0.3s, -webkit-transform 0.3s;
+    transition: width 0.3s, top 0.3s, -webkit-transform 0.3s;
+    -o-transition: transform 0.3s, width 0.3s, top 0.3s;
+    transition: transform 0.3s, width 0.3s, top 0.3s;
+    transition: transform 0.3s, width 0.3s, top 0.3s, -webkit-transform 0.3s
+}
+
+.c-hamburger--htla span:after {
+    -webkit-transform-origin: bottom right;
+    -ms-transform-origin: bottom right;
+    transform-origin: bottom right;
+    -webkit-transition: width 0.3s, bottom 0.3s, -webkit-transform 0.3s;
+    transition: width 0.3s, bottom 0.3s, -webkit-transform 0.3s;
+    -o-transition: transform 0.3s, width 0.3s, bottom 0.3s;
+    transition: transform 0.3s, width 0.3s, bottom 0.3s;
+    transition: transform 0.3s, width 0.3s, bottom 0.3s, -webkit-transform 0.3s
+}
+
+.c-hamburger--htla.is-active {
+    color: #7b00ff
+}
+
+.c-hamburger--htla.is-active span {
+    -webkit-transform: translateX(-50%) rotate(180deg);
+    -ms-transform: translateX(-50%) rotate(180deg);
+    transform: translateX(-50%) rotate(180deg);
+    background-color: #7b00ff
+}
+
+.c-hamburger--htla.is-active span:after,
+.c-hamburger--htla.is-active span:before {
+    background-color: #7b00ff;
+    width: 50%
+}
+
+.c-hamburger--htla.is-active span:before {
+    top: 0;
+    -webkit-transform: translateX(20px) translateY(2px) rotate(45deg);
+    -ms-transform: translateX(20px) translateY(2px) rotate(45deg);
+    transform: translateX(20px) translateY(2px) rotate(45deg)
+}
+
+.c-hamburger--htla.is-active span:after {
+    bottom: 0;
+    -webkit-transform: translateX(20px) translateY(-2px) rotate(-45deg);
+    -ms-transform: translateX(20px) translateY(-2px) rotate(-45deg);
+    transform: translateX(20px) translateY(-2px) rotate(-45deg)
+}
+
+.container-section {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+}
+
+.section {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    width: 100vw;
+    padding: 30px
+}
+
+.section .section-header {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 1.5rem
+}
+
+.group-article {
+    margin-bottom: 60px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap
+}
+
+.group-article>.group-header {
+    -webkit-flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    font-size: 2rem;
+    color: #141414;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 30px 0;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.group-article>.group-header h1 {
+    margin: 0 30px;
+    font-size: 1.7rem
+}
+
+.group-article>.group-header:after,
+.group-article>.group-header:before {
+    content: "";
+    width: 20%;
+    height: 1px;
+    background-color: #141414;
+    margin-top: 10px
+}
+
+.group-article>.group-header:first-child {
+    margin-top: 0
+}
+
+.group-article>article {
+    background-color: #ffffff;
+    -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 0 25px 15px 25px;
+    border-bottom: solid 8px transparent;
+    margin: 30px 0;
+    cursor: pointer;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+}
+
+.group-article>article .titre {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #141414;
+    margin-top: -18px;
+    margin-bottom: 5px
+}
+
+.group-article>article pre {
+    margin: 0;
+    white-space: normal
+}
+
+.group-article>article .tags {
+    margin-bottom: 5px
+}
+
+.group-article>article .tags .tag-item {
+    background-color: #001b4a;
+    font-size: 0.6rem;
+    padding: 1px 4px 2px 4px;
+    border-radius: 4px;
+    color: white;
+    white-space: nowrap
+}
+
+.group-article>article .tags .tag-item:before {
+    content: "#";
+    display: inline-block
+}
+
+.group-article>article p.descript {
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300
+}
+
+.group-article>article a.link {
+    font-size: 10px;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    font-style: italic
+}
+
+.group-article>article a.link:before {
+    content: attr(href);
+    display: inline-block;
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis
+}
+
+.search-container {
+    margin-top: 60px
+}
+
+@media screen and (max-height:568px) {
+    .header nav ul {
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start
+    }
+    .header nav ul li a {
+        font-size: 1.6rem;
+        padding: 5px
+    }
+}
+
+@media screen and (min-width:630px) {
+    body.menu-is-active .section {
+        padding-left: 32vw
+    }
+    .group-article {
+        -webkit-box-pack: space-evenly;
+        -webkit-justify-content: space-evenly;
+        -ms-flex-pack: space-evenly;
+        justify-content: space-evenly
+    }
+    .group-article>article {
+        width: 280px
+    }
+    .c-hamburger {
+        font-size: 1.4rem
+    }
+    .c-hamburger--htla.is-active {
+        color: #fff!important
+    }
+    .c-hamburger--htla.is-active span,
+    .c-hamburger--htla.is-active span:after,
+    .c-hamburger--htla.is-active span:before {
+        background-color: #fff!important
+    }
+    .header {
+        padding-right: 60px
+    }
+    .header nav {
+        width: 380px;
+        position: absolute;
+        top: 0;
+        left: 0
+    }
+    .header nav ul {
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+        width: 400px;
+        margin-top: 60px;
+        padding: 10px 30px;
+        overflow: auto;
+        -webkit-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.09);
+        box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.09)
+    }
+    .header nav ul li {
+        text-align: left
+    }
+}
+
+ul.log-list {
+    font-family: 'Roboto', sans-serif
+}
+
+ul.log-list li {
+    font-size: .8rem;
+    margin-bottom: 10px
+}
+
+table.log-table {
+    border-collapse: collapse
+}
+
+table.log-table tfoot tr th,
+table.log-table thead tr th {
+    text-align: center
+}
+
+table.log-table tbody tr td {
+    font-family: 'Roboto', sans-serif;
+    font-size: .8rem;
+    text-align: left;
+    padding: 5px 15px
+}
+
+table.log-table tbody tr td:first-child,
+table.log-table tbody tr th:first-child,
+table.log-table tfoot tr td:first-child,
+table.log-table tfoot tr th:first-child,
+table.log-table thead tr td:first-child,
+table.log-table thead tr th:first-child {
+    border-right: solid 1px black
+}
+
+table.log-table tbody tr td:last-child,
+table.log-table tbody tr th:last-child,
+table.log-table tfoot tr td:last-child,
+table.log-table tfoot tr th:last-child,
+table.log-table thead tr td:last-child,
+table.log-table thead tr th:last-child {
+    border-left: solid 1px black
+}
+
+
+/*MAJ*/
+
+.header {
+    z-index: 99;
+}
+
+.group-article>article {
+    position: relative;
+    border: none !important;
+    border-radius: 8px 8px 0 0;
+    padding-bottom: 58px;
+}
+
+.group-article>article a.link {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #faf5ff;
+    padding: 15px;
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.group-article>article a.link:before {
+    width: auto;
+}
+
+.group-article>article a.link:after {
+    font-family: 'mobirise' !important;
+    content: "link";
+    display: inline-block;
+    font-size: .9rem;
+    font-weight: 800;
+    color: #7b00ff;
+}
+
+
+/*bulle colorée avec icon blanc*/
+
+
+/*.group-article>article a.link:after{
+    font-family: 'mobirise' !important;
+    content: "\e946";
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-left: 15px;
+    background: #7b00ff;
+    width: 30px;
+    height: 28px;
+    padding-top: 4px;
+    padding-right: 3px;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+}*/
+
+
+/*Animation carte*/
+
+.group-article>article::before {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #7b00ff;
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+    transform: translateY(8px) scale(1);
+    /*transition: transform 400ms cubic-bezier(.69,.11,.17,1);*/
+}
+
+.group-article>article::before {
+    z-index: -1;
+    /*A tester*/
+}
+
+.group-article>article.active::before {
+    animation: bounce-card 300ms ease-in-out;
+    animation-fill-mode: both;
+}
+
+@keyframes bounce-card {
+    0% {
+        transform: translateY(8px);
+    }
+    20% {
+        transform: translateY(0px);
+    }
+    40% {
+        transform: translateY(55px);
+    }
+    60% {
+        transform: translateY(30px);
+    }
+    100% {
+        transform: translateY(40px);
+    }
+}
+
+
+/*Animation carte fin*/
+
+
+/*Animation icon d'actions*/
+
+.action-link-list {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.group-article>article .action-link {
+    text-decoration: none;
+    color: #fff;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(0px);
+    transition: opacity 1s ease;
+}
+
+.group-article>article.active .action-link {
+    pointer-events: auto;
+    opacity: 1;
+    animation: bounce-icon 300ms ease-in-out;
+    animation-fill-mode: both;
+    animation-delay: 130ms;
+    background: transparent;
+    width: 30px;
+    height: 28px;
+    padding-top: 4px;
+    border-radius: 50%;
+    color: #fff;
+    text-align: center;
+    transition: all 300ms ease-in-out;
+}
+
+.group-article>article.active .action-link:nth-child(2) {
+    animation-delay: 230ms;
+}
+
+.group-article>article.active .action-link:nth-child(3) {
+    animation-delay: 330ms;
+}
+
+.group-article>article.active .action-link:nth-child(4) {
+    animation-delay: 430ms;
+}
+
+.group-article>article.active .action-link:nth-child(5) {
+    animation-delay: 530ms;
+}
+
+.group-article>article.active .action-link:hover {
+    background: #fff;
+    color: #7b00ff;
+}
+
+@keyframes bounce-icon {
+    0% {
+        transform: translateY(0px);
+    }
+    20% {
+        transform: translateY(-10px);
+    }
+    40% {
+        transform: translateY(35px);
+    }
+    60% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(34px);
+    }
+}
+
+
+/*Animation icon d'actions*/

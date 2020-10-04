@@ -41,6 +41,7 @@ var Commentaire = require("./routes/Commentaires")
 var ClasserDans = require("./routes/ClasserDans")
 var Categorie = require("./routes/Categories")
 var RecipeList = require("./routes/RecipeList")
+var Statistique = require('./routes/Statistiques')
 
 app.use("/server", Users)
 app.use("/server/recipe", Recipes)
@@ -55,6 +56,7 @@ app.use("/server/commentaires", Commentaire)
 app.use("/server", ClasserDans)
 app.use("/server/category", Categorie)
 app.use("/server/recipeList", RecipeList)
+app.use("/server/statistique", Statistique)
 
 //Serve only the static files form the dist directory
 app.use(express.static(__dirname + '/dist/marine\'srecipe'))

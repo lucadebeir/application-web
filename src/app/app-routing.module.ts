@@ -25,6 +25,7 @@ import { RefreshComponent } from './pages/refresh/refresh.component';
 import { MentionsLegalesComponent } from './pages/mentions-legales/mentions-legales.component';
 import { GererLeMenuComponent } from './pages/gerer-le-menu/gerer-le-menu.component';
 import { MenuComponent } from './pages/menu/menu.component';
+import { StatistiquesComponent } from './pages/statistiques/statistiques.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'rules', component: MentionsLegalesComponent },
   { path: 'handleMenu', component: GererLeMenuComponent },
   { path: 'menu', component: MenuComponent},
+  { path: 'statistiques', component: StatistiquesComponent },
   { path: '**', redirectTo: '' }
 ];
 
