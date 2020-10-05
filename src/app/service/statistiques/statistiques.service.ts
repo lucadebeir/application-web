@@ -10,8 +10,9 @@ export class StatistiquesService {
   constructor(private http: HttpClient) { }
 
   public getNbVuesTot(): any {
-    return this.http.get<any>(`/server/statistiques/nbVuesTot`)
-      .pipe(map((data:number ) => {
+    return this.http.get<any>(`/server/statistique/nbVuesTot`)
+      .pipe(map((data:any) => {
+        console.log(data)
         return data;
         
       }));

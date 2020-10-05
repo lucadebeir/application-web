@@ -9,16 +9,17 @@ import { StatistiquesService } from 'src/app/service/statistiques/statistiques.s
 })
 export class StatistiquesComponent implements OnInit {
 
-  public nbVuesTot : number;
+  public nbVuesTot: any;
 
   constructor(private statService: StatistiquesService) { }
 
   ngOnInit(): void {
 
     this.statService.getNbVuesTot().subscribe(
-      nbVuesTot => {
+      data => {
 
-        this.nbVuesTot = nbVuesTot;
+        console.log(data[0].nbVuesTot)
+        this.nbVuesTot = data[0].nbVuesTot; //data[0] car donnée récupérée sous format json
       
       }
     );
