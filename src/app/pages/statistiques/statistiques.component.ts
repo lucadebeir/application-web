@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StatistiquesService } from 'src/app/service/statistiques/statistiques.service';
+import { AnyNaptrRecord } from 'dns';
+import { UserProfile } from 'src/app/models/user.model';
 
 
 @Component({
@@ -10,6 +12,10 @@ import { StatistiquesService } from 'src/app/service/statistiques/statistiques.s
 export class StatistiquesComponent implements OnInit {
 
   public nbVuesTot: any;
+  public nbCommentairesTot: any;
+  public nbUsers: any;
+  public nbAbonnes: AnyNaptrRecord;
+  public users: UserProfile[];
 
   constructor(private statService: StatistiquesService) { }
 
@@ -18,12 +24,39 @@ export class StatistiquesComponent implements OnInit {
     this.statService.getNbVuesTot().subscribe(
       data => {
 
-        console.log(data[0].nbVuesTot)
         this.nbVuesTot = data[0].nbVuesTot; //data[0] car donnée récupérée sous format json
       
       }
     );
+
+    this.statService.getNbCommentairesTot().subscribe(
+      data => {
+        this.nbCommentairesTot = data[0].nbCommentairesTot;
+      }
+    );
+
+
+    this.statService.getNbUsers().subscribe(
+      data => {
+        this.nbUsers = data[0].nbUsers;
+      }
+    );
+
+    this.statService.getNbAbonnes().subscribe(
+      data => {
+        this.nbAbonnes = data[0].nbAbonnes;
+      }
+    );
+
+    this.statService.getUsers().subscribe(
+      data => {
+        this.users = data
+      }
+    );
   }
+
+
+
 
  
 

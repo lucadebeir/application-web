@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, tap, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ContactDetail } from '../pages/contact/contact.component';
+import { UserProfile } from '../models/user.model';
 
 // login
 export interface UserDetails {
@@ -44,14 +45,6 @@ export interface UserMdp {
     newmdp: string;
     mdp2: string;
     error: string;
-    success: string;
-}
-
-// modif profile
-export interface UserProfile {
-    pseudo: string;
-    email: string;
-    abonneNews: boolean;
     success: string;
 }
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthentificationService, UserProfile } from '../../service';
+import { AuthentificationService } from '../../service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { __param } from 'tslib';
+import { UserProfile } from 'src/app/models/user.model';
 @Component({
   selector: 'app-mon-profile',
   templateUrl: './mon-profile.component.html',

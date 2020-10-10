@@ -26,7 +26,7 @@
                         <h2 class="titre">Nombre de commentaires total</h2>
                         <p class="tags">
                             <span class="tag-item">statistiques</span> </p>
-                        <p class="descript">hhhhhh</p>
+                        <p class="descript">{{nbCommentairesTot}}</p>
                         <a href="https://fr.statista.com/" class="link" target="_blank"></a>
                         <div class="action-link-list">
                             <a href="#" class="action-link">C</a>
@@ -39,9 +39,9 @@
                         <h2 class="titre">Nombre de personnes inscrites</h2>
                         <p class="tags">
                             <span class="tag-item">statistiques</span> </p>
-                        <p class="descript">Des statistiques sur le web</p>
+                        <p class="descript">{{nbUsers}}</p>
 
-                        <a class="link" target="_blank">dont ???? abbonés newsletters!</a>
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
                         <div class="action-link-list">
 
                             <a href="#" class="action-link">C</a>
@@ -50,6 +50,158 @@
                             <a href="#" class="action-link">E</a>
                         </div>
                     </article>
+
+                    <article>
+                        <h2 class="titre">Recettes consultées aujourd'hui</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript">nom nb vues</p>
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+                    <article>
+                        <h2 class="titre">Recettes commentées aujourd'hui</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript">nom recette</p>
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+                    <article>
+                        <h2 class="titre">Users</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript" *ngFor="let user of users ">{{user.pseudo}}
+                            <span *ngIf="user.abonneNews == 1"> <i class="fa fa-lg fa-envelope"></i> </span>
+                        </p>
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h2 class="titre">Statistiques du mois : recettes</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript">lààààààààààà
+                        </p>
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h2 class="titre">Source trafic par appareil</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript">lààààààààààààà
+                        </p>
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h2 class="titre">Statistiques du mois : users</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript">lààààààààààà
+                        </p>
+
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h2 class="titre">Recettes les plus consultées du mois</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript"> lààààààààààààà
+                        </p>
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h2 class="titre">Recettes les plus consultées du mois précédent</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript">lààààààààààà
+                        </p>
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h2 class="titre">Les meilleures recettes</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript">lààààààààààà
+                        </p>
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+
                 </section>
             </section>
         </div>
