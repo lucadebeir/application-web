@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { StatistiquesService } from 'src/app/service/statistiques/statistiques.service';
-import { AnyNaptrRecord } from 'dns';
 import { UserProfile } from 'src/app/models/user.model';
 
 
@@ -14,7 +13,7 @@ export class StatistiquesComponent implements OnInit {
   public nbVuesTot: any;
   public nbCommentairesTot: any;
   public nbUsers: any;
-  public nbAbonnes: AnyNaptrRecord;
+  public nbAbonnes: any;
   public users: UserProfile[];
 
   constructor(private statService: StatistiquesService) { }
