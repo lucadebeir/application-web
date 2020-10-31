@@ -1,7 +1,9 @@
-export function roundDecimal(nombre, precision){
+//on met ici les fonctions qui vont servir à plusieurs endroits
+
+export function roundDecimal(nombre, precision) {
     var precision = precision || 2;
     var tmp = Math.pow(10, precision);
-    return Math.round( nombre*tmp )/tmp;
+    return Math.round(nombre * tmp) / tmp;
 }
 
 export function addTimes(startTime, endTime) {

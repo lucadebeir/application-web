@@ -7,8 +7,9 @@
         <div class="title-area">
 
             <h1>{{recette?.nomRecette}}
-                <a *ngIf="this.auth.isLoggedIn() && !isInMenu" style="font-size: inherit; margin-left: 1em;" id="btn" (click)="addToMenu()" class="picto-item" aria-label="Ajouter la recettes au menu de la semaine"> <i class="fa fa-bookmark-o" aria-hidden="true"></i></a>
-                <a *ngIf="this.auth.isLoggedIn() && isInMenu" style="font-size: inherit; margin-left: 1em;" id="btn" (click)="deleteToMenu()" class="picto-item" aria-label="Supprimer la recettes au menu de la semaine"> <i class="fa fa-bookmark" aria-hidden="true"></i></a>
+                <a id="vege" *ngIf="checkVege(recette?.categories)"><img src="../../../assets/img/logoVegetarien.png" width="50em" height="50em" style="vertical-align: text-top;"></a>
+                <a *ngIf="this.auth.isLoggedIn() && !isInMenu" style="font-size: inherit; margin-left: 1em;" id="btn" (click)="addToMenu()" class="picto-item" aria-label="Ajouter la recettes au menu de la semaine"> <i class="fa fa-bookmark-o" style="vertical-align: text-top;" aria-hidden="true"></i></a>
+                <a *ngIf="this.auth.isLoggedIn() && isInMenu" style="font-size: inherit; margin-left: 1em;" id="btn" (click)="deleteToMenu()" class="picto-item" aria-label="Supprimer la recettes au menu de la semaine"> <i class="fa fa-bookmark" style="vertical-align: text-top;" aria-hidden="true"></i></a>
 
             </h1>
             <p id="timer">{{recette?.nbVues}} 👁

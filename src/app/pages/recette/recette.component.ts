@@ -65,6 +65,7 @@ export class RecetteComponent implements OnInit {
   public isFavori = false;
   public isInMenu = false;
 
+
   public latestRecipes: RecipeDetails[];
 
   public allRecipeList: ListRecipe[];
@@ -82,6 +83,8 @@ export class RecetteComponent implements OnInit {
         this.recette.tempsPreparation = addHours(this.recette.tempsPreparation);
         this.nbrePartInitial = this.recette.nbrePart;
         this.recipeList.nomRecette = recette.nomRecette;
+        console.log(recette.categories);
+        
       }
     );
 
@@ -313,6 +316,16 @@ export class RecetteComponent implements OnInit {
       element.updateQte = roundDecimal((element.qte * value) / this.nbrePartInitial);
     });
     this.recette.nbrePart = this.recette.nbrePart + 1;
+  }
+
+  checkVege(array: any): boolean {
+    let check: boolean = false;
+    array.forEach(element => {
+      if(element?.libelleCategorie === 'Végétariennes') {
+        check = true;
+      }
+    });
+    return check;
   }
 
 }
