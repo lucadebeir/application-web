@@ -40,6 +40,7 @@
                 <div id="titleRecipe">
                     <h3 class="food">
                         {{recette.nomRecette}}
+                        <a id="vege" *ngIf="checkVege(recette?.categories)"><img src="../../../assets/img/logoVegetarien.png" width="20em" height="20em"></a>
                     </h3>
                 </div>
                 <div id="logoRecette">

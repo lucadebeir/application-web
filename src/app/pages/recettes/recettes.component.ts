@@ -267,6 +267,16 @@ export class RecettesComponent implements OnInit, OnChanges {
       });
     }); /* rafraichit la page */
   }
+
+  checkVege(array: any): boolean {
+    let check: boolean = false;
+    array.forEach(element => {
+      if(element?.libelleCategorie === 'Végétariennes') {
+        check = true;
+      }
+    });
+    return check;
+  }
 }
 
 export interface HashTable<T> {

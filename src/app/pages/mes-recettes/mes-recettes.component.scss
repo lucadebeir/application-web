@@ -13,7 +13,8 @@
     text-align: center;
 }
 
-.mt-5, .my-5 {
+.mt-5,
+.my-5 {
     margin-top: 3rem!important;
 }
 
@@ -36,7 +37,6 @@
     //background-color: rgba(0, 0, 0, 0.35)
 }
 
-
 #photo {
     background-size: cover;
     background-position: center;
@@ -53,7 +53,6 @@ $black: #212129;
 $gray: #9B9B9B;
 $heart: #C2567F;
 $button: #154360;
-
 pagination-controls::ng-deep .ngx-pagination .current {
     background: $button;
     border-radius: 60px;
@@ -75,7 +74,6 @@ a {
         color: $heart;
     }
 }
-
 
 #titleRecipe {
     display: inherit;
@@ -110,7 +108,7 @@ h3 {
     font-family: "PeachesandCreamRegularW00";
     font-size: 60px;
     color: $white;
-    font: normal normal bold 28px/35px cookie,cursive;
+    font: normal normal bold 28px/35px cookie, cursive;
 }
 
 i {
@@ -124,7 +122,7 @@ i {
 }
 
 .card {
-    height: 450px; 
+    height: 450px;
     min-height: 450px;
     position: relative;
     background: $white;
@@ -188,4 +186,9 @@ i {
 .form-control {
     display: inline;
     max-width: initial;
+}
+
+#vege {
+    font-size: inherit;
+    margin-left: 0.5em;
 }

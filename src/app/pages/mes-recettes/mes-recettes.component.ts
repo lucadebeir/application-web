@@ -186,4 +186,14 @@ export class MesRecettesComponent implements OnInit, OnChanges {
       }); /* rafraichit la page */
   }
 
+  checkVege(array: any): boolean {
+    let check: boolean = false;
+    array.forEach(element => {
+      if(element.libelleCategorie === 'Végétariennes') {
+        check = true;
+      }
+    });
+    return check;
+  }
+
 }
