@@ -1,12 +1,22 @@
 <ul id="menu" class="nav justify-content-center">
-    <li class="nav justify-content-center">
-        <a class="nav-link active" routerLink="/allRecipes" (click)="getAllRecipes()">Toutes les recettes</a>
-    </li>
+  <li class="nav justify-content-center">
+    <a
+      class="nav-link active"
+      routerLink="/allRecipes"
+      (click)="getAllRecipes()"
+      >Toutes les recettes</a
+    >
+  </li>
 
-    <li class="nav-item" *ngFor="let categ of categories">
-        <a class="nav-link" routerLink="/allRecipes" (click)="getRecipeByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
-    </li>
-    <!--<li>
+  <li class="nav-item" *ngFor="let categ of categories">
+    <a
+      class="nav-link"
+      routerLink="/allRecipes"
+      (click)="getRecipeByCategory(categ.idCategorie)"
+      >{{ categ.libelleCategorie }}</a
+    >
+  </li>
+  <!--<li>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Recette.." aria-label="Search"
                 [formControl]="filter">
@@ -14,62 +24,132 @@
     </li>-->
 </ul>
 
-<br>
+<br />
 
 <ul class="nav justify-content-center">
-    <li>
-        <form class="form-inline" [formGroup]="researchForm" (ngSubmit)="research()">
-            <div class="col text-center">
-                <input class="form-control" type="search" placeholder="Recette, ingrédient.." aria-label="Search" formControlName="filter" (click)="ngOnChanges()">
-            </div>
-            <div class="col text-center">
-                <button id="validateButton" type="submit" class="btn btn-primary">Rechercher</button>
-            </div>
-        </form>
-    </li>
+  <li>
+    <form
+      class="form-inline"
+      [formGroup]="researchForm"
+      (ngSubmit)="research()"
+    >
+      <div class="col text-center">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Recette, ingrédient.."
+          aria-label="Search"
+          formControlName="filter"
+          (click)="ngOnChanges()"
+        />
+      </div>
+      <div class="col text-center">
+        <button id="validateButton" type="submit" class="btn btn-primary">
+          Rechercher
+        </button>
+      </div>
+    </form>
+  </li>
 </ul>
 
-<br>
+<br />
 
 <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of allRecipe | paginate: { id: 'listing_pagination', itemsPerPage:12, currentPage: currentPage}">
-        <article class="card wrap">
-            <div id="photo" [ngStyle]="{'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'}" (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">
-            </div>
-            <div>
-                <div id="titleRecipe">
-                    <h3 class="food">
-                        {{recette.nomRecette}}
-                        <a id="vege" *ngIf="checkVege(recette?.categories)"><img src="../../../assets/img/logoVegetarien.png" width="20em" height="20em"></a>
-                    </h3>
-                </div>
-                <div id="logoRecette">
-                    <div class="logo">
-                        <i class="fa fa-clock-o"></i><a class="picto-item" aria-label="Temps de préparation"><i
-                                id="textlogo">{{recette.globalTime}}</i></a>
-                    </div>
-                    <div class="logo">
-                        <i class="fa fa-users"></i><a class="picto-item" aria-label="Nombre de parts"><i
-                                id="textlogo">{{recette.nbrePart}} {{recette.libellePart}}</i></a>
-                    </div>
-                    <div class="logo">
-                        <a class="picto-item" aria-label="Nombre de vues"><i id="textlogo">{{recette?.nbVues}}</i><i
-                                id="vue"> 👁</i></a>
-                    </div>
-                    <div id="coeur" class="logo">
-                        <a *ngIf="this.auth.isLoggedIn() && !this.favoris.includes(recette.idRecette)" id="btn" (click)="addFavoris(recette?.idRecette)" class="picto-item" aria-label="Ajouter aux favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
-                                class="fa fa-heart-o"></i></a>
-                        <a *ngIf="this.auth.isLoggedIn() && this.favoris.includes(recette.idRecette)" id="btn" (click)="deleteFavoris(recette.idRecette)" class="picto-item" aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
-                                class="class= fa fa-heart"></i></a>
-                        <!--si je suis pas connectée afficher le nb de favoris avec un petit coeur rose rempli-->
-                        <a *ngIf="!this.auth.isLoggedIn()" id="btn"><i id="textlogo">{{recette?.nbFavoris}} </i><i
-                            class="class= fa fa-heart"></i></a>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </div>
+  <div
+    class="col-lg-4 col-md-6 col-sm-12 p-3"
+    *ngFor="
+      let recette of allRecipe
+        | paginate
+          : {
+              id: 'listing_pagination',
+              itemsPerPage: 12,
+              currentPage: currentPage
+            }
+    "
+  >
+    <article class="card wrap">
+      <div
+        id="photo"
+        [ngStyle]="{
+          'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'
+        }"
+        (click)="updateNbView(recette)"
+        [routerLink]="['/recipe', recette.idRecette]"
+      ></div>
+      <div>
+        <div id="titleRecipe">
+          <h3 class="food">
+            {{ recette.nomRecette }}
+            <a id="vege" *ngIf="recette.vege"
+              ><img
+                src="../../../assets/img/logoVegetarien.png"
+                width="20em"
+                height="20em"
+            /></a>
+          </h3>
+        </div>
+        <div id="logoRecette">
+          <div class="logo">
+            <i class="fa fa-clock-o"></i
+            ><a class="picto-item" aria-label="Temps de préparation"
+              ><i id="textlogo">{{ recette.globalTime }}</i></a
+            >
+          </div>
+          <div class="logo">
+            <i class="fa fa-users"></i
+            ><a class="picto-item" aria-label="Nombre de parts"
+              ><i id="textlogo"
+                >{{ recette.nbrePart }} {{ recette.libellePart }}</i
+              ></a
+            >
+          </div>
+          <div class="logo">
+            <a class="picto-item" aria-label="Nombre de vues"
+              ><i id="textlogo">{{ recette?.nbVues }}</i
+              ><i id="vue"> 👁</i></a
+            >
+          </div>
+          <div id="coeur" class="logo">
+            <a
+              *ngIf="
+                this.auth.isLoggedIn() &&
+                !this.favoris.includes(recette.idRecette)
+              "
+              id="btn"
+              (click)="addFavoris(recette?.idRecette)"
+              class="picto-item"
+              aria-label="Ajouter aux favoris"
+              ><i id="textlogo">{{ recette?.nbFavoris }} </i
+              ><i class="fa fa-heart-o"></i
+            ></a>
+            <a
+              *ngIf="
+                this.auth.isLoggedIn() &&
+                this.favoris.includes(recette.idRecette)
+              "
+              id="btn"
+              (click)="deleteFavoris(recette.idRecette)"
+              class="picto-item"
+              aria-label="Supprimer des favoris"
+              ><i id="textlogo">{{ recette?.nbFavoris }} </i
+              ><i class="class= fa fa-heart"></i
+            ></a>
+            <!--si je suis pas connectée afficher le nb de favoris avec un petit coeur rose rempli-->
+            <a *ngIf="!this.auth.isLoggedIn()" id="btn"
+              ><i id="textlogo">{{ recette?.nbFavoris }} </i
+              ><i class="class= fa fa-heart"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
 </div>
 <div id="paginationRecette" #scrollContainer>
-    <pagination-controls id='listing_pagination' (pageChange)="onPageChange($event)" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
+  <pagination-controls
+    id="listing_pagination"
+    (pageChange)="onPageChange($event)"
+    previousLabel="Précédent"
+    nextLabel="Suivant"
+  ></pagination-controls>
 </div>

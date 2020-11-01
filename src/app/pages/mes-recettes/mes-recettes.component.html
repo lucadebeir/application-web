@@ -1,74 +1,135 @@
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link
+  href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  rel="stylesheet"
+  integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+  crossorigin="anonymous"
+/>
 <!--lien pour avoir le petit logo de poubelle-->
 
 <div id="titre" class="mt-5">
-    <h1>Mes recettes ♥</h1>
+  <h1>Mes recettes ♥</h1>
 </div>
 
 <ul id="menu" class="nav justify-content-center">
-    <li class="nav-item">
-        <a class="nav-link active" routerLink="/favorites" (click)="getFavoris()">Tous mes favoris</a>
-    </li>
-    <li class="nav-item" *ngFor="let categ of categories">
-        <a class="nav-link" routerLink="/favorites" (click)="getFavorisByCategory(categ.idCategorie)">{{categ.libelleCategorie}}</a>
-    </li>
+  <li class="nav-item">
+    <a class="nav-link active" routerLink="/favorites" (click)="getFavoris()"
+      >Tous mes favoris</a
+    >
+  </li>
+  <li class="nav-item" *ngFor="let categ of categories">
+    <a
+      class="nav-link"
+      routerLink="/favorites"
+      (click)="getFavorisByCategory(categ.idCategorie)"
+      >{{ categ.libelleCategorie }}</a
+    >
+  </li>
 </ul>
 
-<br>
+<br />
 
 <ul class="nav justify-content-center">
-    <li>
-        <form class="form-inline" [formGroup]="researchForm" (ngSubmit)="research()">
-            <div class="col text-center">
-                <input class="form-control" type="search" placeholder="Recette, ingrédient.." aria-label="Search" formControlName="filter" (click)="ngOnChanges()">
-            </div>
+  <li>
+    <form
+      class="form-inline"
+      [formGroup]="researchForm"
+      (ngSubmit)="research()"
+    >
+      <div class="col text-center">
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Recette, ingrédient.."
+          aria-label="Search"
+          formControlName="filter"
+          (click)="ngOnChanges()"
+        />
+      </div>
 
-            <div class="col text-center">
-                <button id="validateButton" type="submit" class="btn btn-primary">Rechercher</button>
-            </div>
-        </form>
-    </li>
+      <div class="col text-center">
+        <button id="validateButton" type="submit" class="btn btn-primary">
+          Rechercher
+        </button>
+      </div>
+    </form>
+  </li>
 </ul>
 
-<br>
+<br />
 
 <div class="row">
-    <div class="col-lg-4 col-md-6 col-sm-12 p-3" *ngFor="let recette of allRecipe | paginate: { id: 'listing_pagination', itemsPerPage:12, currentPage: page}">
-        <article class="card wrap">
-            <div id="photo" [ngStyle]="{'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'}" (click)="updateNbView(recette)" [routerLink]="['/recipe', recette.idRecette]">
-            </div>
-            <div>
-                <a>
-                </a>
-                <div id="titleRecipe">
-                    <h3 class="food">
-                        {{recette.nomRecette}}
-                        <a id="vege" *ngIf="checkVege(recette.categories)"><img src="../../../assets/img/logoVegetarien.png" width="20em" height="20em"></a>
-                    </h3>
-
-                </div>
-                <div id="logoRecette">
-                    <div class="logo">
-                        <i class="fa fa-clock-o"></i><a class="picto-item" aria-label="Temps de préparation"><i
-                                id="textlogo">{{recette.globalTime}}</i></a>
-                    </div>
-                    <div class="logo">
-                        <i class="fa fa-users"></i><a class="picto-item" aria-label="Nombre de parts"><i
-                                id="textlogo">{{recette.nbrePart}} {{recette.libellePart}}</i></a>
-                    </div>
-                    <div class="logo">
-                        <a class="picto-item" aria-label="Nombre de vues"><i id="textlogo">{{recette?.nbVues}}</i><i
-                                id="vue"> 👁</i></a>
-                    </div>
-                    <div id="coeur" class="logo">
-                        <a *ngIf="this.auth.isLoggedIn()" id="btn" (click)="deleteFavoris(recette.idRecette)" class="picto-item" aria-label="Supprimer des favoris"><i id="textlogo">{{recette?.nbFavoris}} </i><i
-                                class="class= fa fa-heart"></i></a>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </div>
+  <div
+    class="col-lg-4 col-md-6 col-sm-12 p-3"
+    *ngFor="
+      let recette of allRecipe
+        | paginate
+          : { id: 'listing_pagination', itemsPerPage: 12, currentPage: page }
+    "
+  >
+    <article class="card wrap">
+      <div
+        id="photo"
+        [ngStyle]="{
+          'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'
+        }"
+        (click)="updateNbView(recette)"
+        [routerLink]="['/recipe', recette.idRecette]"
+      ></div>
+      <div>
+        <a> </a>
+        <div id="titleRecipe">
+          <h3 class="food">
+            {{ recette.nomRecette }}
+            <a id="vege" *ngIf="recette.vege"
+              ><img
+                src="../../../assets/img/logoVegetarien.png"
+                width="20em"
+                height="20em"
+            /></a>
+          </h3>
+        </div>
+        <div id="logoRecette">
+          <div class="logo">
+            <i class="fa fa-clock-o"></i
+            ><a class="picto-item" aria-label="Temps de préparation"
+              ><i id="textlogo">{{ recette.globalTime }}</i></a
+            >
+          </div>
+          <div class="logo">
+            <i class="fa fa-users"></i
+            ><a class="picto-item" aria-label="Nombre de parts"
+              ><i id="textlogo"
+                >{{ recette.nbrePart }} {{ recette.libellePart }}</i
+              ></a
+            >
+          </div>
+          <div class="logo">
+            <a class="picto-item" aria-label="Nombre de vues"
+              ><i id="textlogo">{{ recette?.nbVues }}</i
+              ><i id="vue"> 👁</i></a
+            >
+          </div>
+          <div id="coeur" class="logo">
+            <a
+              *ngIf="this.auth.isLoggedIn()"
+              id="btn"
+              (click)="deleteFavoris(recette.idRecette)"
+              class="picto-item"
+              aria-label="Supprimer des favoris"
+              ><i id="textlogo">{{ recette?.nbFavoris }} </i
+              ><i class="class= fa fa-heart"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
 </div>
 <div id="paginationRecette">
-    <pagination-controls id='listing_pagination' (pageChange)="page = $event" previousLabel="Précédent" nextLabel="Suivant"></pagination-controls>
+  <pagination-controls
+    id="listing_pagination"
+    (pageChange)="page = $event"
+    previousLabel="Précédent"
+    nextLabel="Suivant"
+  ></pagination-controls>
 </div>
