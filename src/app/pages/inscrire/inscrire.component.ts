@@ -94,6 +94,9 @@ export class InscrireComponent implements OnInit {
         } else {
           this.auth.logout();
           this.notificationInscription(this.credentials.pseudo)
+          if(this.credentials.abonneNews){
+            this.notificationAbonne(this.credentials.pseudo)
+          }
           alert('Vous pouvez maintenant aller dans votre boîte mail pour confirmer votre adresse mail. Pensez à vérifier dans vos spams !');
           setTimeout(() => this.router.navigate(['login'])
           , 5);
@@ -112,7 +115,17 @@ export class InscrireComponent implements OnInit {
       idRecette: null,
       type: 'user',
     }
-    this.notifService.notifInscription(notif).subscribe();
+    this.notifService.addNotification(notif).subscribe();
+  }
+
+  //notification abonné
+  notificationAbonne(pseudo){
+    let notif: Notification = {
+      pseudo: pseudo,
+      idRecette: null,
+      type: 'abonne',
+    }
+    this.notifService.addNotification(notif).subscribe();
   }
 
 

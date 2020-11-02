@@ -11,7 +11,7 @@ export class NotificationService {
 
   constructor(private http: HttpClient) { }
 
-  public notifInscription(notif: Notification): Observable<any> {
+  public addNotification(notif: Notification): Observable<any> {
     return this.http.post(`/server/notifications/add`, notif)
       .pipe(map((data: any) => {
         return data;
