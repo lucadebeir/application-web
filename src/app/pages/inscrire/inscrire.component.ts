@@ -101,4 +101,6 @@ export class InscrireComponent implements OnInit {
     );
   }
 
+  
+
 }
