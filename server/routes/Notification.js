@@ -26,15 +26,16 @@ notification.get('/allNotifs', (req, res) => {
 
 //ajouter une notification
 notification.post('/add', (req, res) => {
+    console.log(req)
     const notification = {
         type: req.body.type,
-        dateNotification: new Date(),
         pseudo: req.body.pseudo,
         idRecette: req.body.idRecette
     }
-
+    console.log(notification)
     Notification.create(notification)
         .then(resultats => {
+            console.log(resultats)
             res.json(resultats)
         })
         .catch(err => {

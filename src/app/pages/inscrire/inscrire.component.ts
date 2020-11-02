@@ -3,6 +3,8 @@ import { AuthentificationService, TokenPayload } from '../../service';
 import { Router } from '@angular/router';
 import { Validators, FormGroup, FormBuilder, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Notification } from 'src/app/models';
+import { NotificationService } from 'src/app/service/notifications/notification.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -36,7 +38,7 @@ export class InscrireComponent implements OnInit {
   mdpForm: FormGroup;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private auth: AuthentificationService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private auth: AuthentificationService, private router: Router, private formBuilder: FormBuilder, private notifService: NotificationService) {
     this.mdpForm = this.formBuilder.group({
       password: ['', [Validators.required]],
       confirmPassword: ['']
@@ -66,7 +68,8 @@ export class InscrireComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true };
   }
 
-  register() {
+  //inscription
+  register() { 
 
     const mdpFormValue = this.mdpForm.value;
     const formValue = this.userForm.value;
@@ -90,6 +93,7 @@ export class InscrireComponent implements OnInit {
           return;
         } else {
           this.auth.logout();
+          this.notificationInscription(this.credentials.pseudo)
           alert('Vous pouvez maintenant aller dans votre boîte mail pour confirmer votre adresse mail. Pensez à vérifier dans vos spams !');
           setTimeout(() => this.router.navigate(['login'])
           , 5);
@@ -101,6 +105,15 @@ export class InscrireComponent implements OnInit {
     );
   }
 
-  
+  //notification inscription
+  notificationInscription(pseudo){
+    let notif: Notification = {
+      pseudo: pseudo,
+      idRecette: null,
+      type: 'user',
+    }
+    this.notifService.notifInscription(notif).subscribe();
+  }
+
 
 }

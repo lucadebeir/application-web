@@ -10,3 +10,4 @@ export * from './menu.model';
 export * from './quantiteDetails.model';
 export * from './recipeDetails.model';
 export * from './uniteDetails.model';
+export * from './notif.model';
