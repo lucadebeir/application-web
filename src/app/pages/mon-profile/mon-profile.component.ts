@@ -64,6 +64,8 @@ notificationAbonne(pseudo){
   }
   this.notifService.addNotification(notif).subscribe();
 }
+
+
   deleteProfile(pseudo: any) {
     this.auth.logout();
     this.auth.deleteProfile(pseudo)

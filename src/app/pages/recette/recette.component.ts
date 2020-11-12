@@ -23,6 +23,8 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs";
 import { addHours, roundDecimal } from "../../utils/Utils";
 import { ListRecipe } from "src/app/models/listRecipe.model";
+import { Notification } from "src/app/models";
+import { NotificationService } from "src/app/service/notifications/notification.service";
 
 @Component({
   selector: "app-recette",
@@ -83,6 +85,12 @@ export class RecetteComponent implements OnInit {
 
   public allRecipeList: ListRecipe[];
 
+  public notif: Notification = {
+    pseudo: "",
+    idRecette: parseInt(this.route.snapshot.paramMap.get("id"), 10),
+    type: "commentaire"
+  };
+
   constructor(
     public auth: AuthentificationService,
     private recetteService: RecettesService,
@@ -93,7 +101,8 @@ export class RecetteComponent implements OnInit {
     private ingredientsService: IngredientsService,
     private favorisService: FavorisService,
     private unitesService: UnitesService,
-    private shoppingListService: ShoppingListService
+    private shoppingListService: ShoppingListService,
+    private notifService: NotificationService
   ) {
     this.recetteService
       .getRecipeById(parseInt(this.route.snapshot.paramMap.get("id"), 10))
@@ -167,6 +176,7 @@ export class RecetteComponent implements OnInit {
       this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo;
       this.newResponse.ecritPar = this.auth.getUserDetails().pseudo;
       this.recipeList.pseudoUser = this.auth.getUserDetails().pseudo;
+      this.notif.pseudo = this.auth.getUserDetails().pseudo
     }
   }
 
@@ -302,6 +312,7 @@ export class RecetteComponent implements OnInit {
     } else {
       this.newCommentaire.message = message;
       this.commentairesService.addCommentaire(this.newCommentaire).subscribe();
+      this.notificationCommentaire(this.auth.getUserDetails().pseudo, this.recette.idRecette);
       window.location.reload();
     }
 
@@ -360,4 +371,14 @@ export class RecetteComponent implements OnInit {
     });
     this.recette.nbrePart = this.recette.nbrePart + 1;
   }
+
+    //notification commentaire
+    notificationCommentaire(pseudo,idRecette) {
+      let notif: Notification = {
+        pseudo: pseudo,
+        idRecette: idRecette,
+        type: "commentaire",
+      };
+      this.notifService.addNotification(notif).subscribe();
+    }
 }
