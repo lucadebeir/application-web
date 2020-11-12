@@ -284,6 +284,7 @@ export class RecettesComponent implements OnInit, OnChanges {
 
   addFavoris(id: number) {
     this.newFavori.idRecette = id;
+    this.notificationFavori(this.auth.getUserDetails().pseudo,id);
     this.favorisService.addFavoris(this.newFavori).subscribe((res) => {
       this.getFavoris();
       this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
@@ -327,6 +328,16 @@ export class RecettesComponent implements OnInit, OnChanges {
     };
     this.notifService.addNotification(notif).subscribe();
   }
+
+    //notification favori
+    notificationFavori(pseudo,idRecette) {
+      let notif: Notification = {
+        pseudo: pseudo,
+        idRecette: idRecette,
+        type: "favori",
+      };
+      this.notifService.addNotification(notif).subscribe();
+    }
 }
 
 export interface HashTable<T> {

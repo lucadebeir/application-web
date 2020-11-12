@@ -341,6 +341,7 @@ export class RecetteComponent implements OnInit {
       this.newResponse.message = event.target.message.value;
       this.newResponse.parent = idCommentaire;
       this.commentairesService.addCommentaire(this.newResponse).subscribe();
+      this.notificationCommentaire(this.auth.getUserDetails().pseudo, this.recette.idRecette);
       window.location.reload();
     }
     // window.location.reload()
