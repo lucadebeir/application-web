@@ -4,6 +4,9 @@ import { RecettesService, AuthentificationService } from 'src/app/service';
 import { RecipeDetails } from 'src/app/models';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Notification } from "src/app/models";
+import { NotificationService } from "src/app/service/notifications/notification.service";
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -24,7 +27,7 @@ export class MenuComponent implements OnInit {
   public listAdmin: ListRecipe[];
   public menuAdmin = false;
 
-  constructor(private recetteService: RecettesService, private auth: AuthentificationService, private router: Router) {
+  constructor(private recetteService: RecettesService, private auth: AuthentificationService, private router: Router,private notifService: NotificationService) {
     this.getInitData();
 
     if (this.auth.isLoggedIn()) {
@@ -106,6 +109,7 @@ export class MenuComponent implements OnInit {
   updateNbView(recette: any) {
     this.recetteService.updateNbViewMenu(recette).subscribe(
       (res) => {
+        this.notificationVue(recette.idRecette);
         this.router.navigate(['/recipe', recette.idRecette]).then(() => {
           window.location.reload();
         });
@@ -116,5 +120,14 @@ export class MenuComponent implements OnInit {
           }
         }
       });
+  }
+   //notification vue
+   notificationVue(idRecette) {
+    let notif: Notification = {
+      pseudo: null,
+      idRecette: idRecette,
+      type: "vue",
+    };
+    this.notifService.addNotification(notif).subscribe();
   }
 }

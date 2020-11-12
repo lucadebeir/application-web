@@ -12,6 +12,8 @@ import { RecipeDetails, CategoryDetails } from "../../models";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { HashTable } from "../recettes/recettes.component";
+import { Notification } from "src/app/models";
+import { NotificationService } from "src/app/service/notifications/notification.service";
 
 @Component({
   selector: "app-mes-recettes",
@@ -42,7 +44,8 @@ export class MesRecettesComponent implements OnInit, OnChanges {
     private formBuilder: FormBuilder,
     public auth: AuthentificationService,
     private favorisService: FavorisService,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private notifService: NotificationService
   ) {
     // pour la recherche dynamique
     this.recettes$ = this.favorisService.getFavoris();
@@ -195,6 +198,7 @@ export class MesRecettesComponent implements OnInit, OnChanges {
   updateNbView(recette: any) {
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
+        this.notificationVue(recette.idRecette);
         this.router.navigate(["/recipe", recette.idRecette]).then(() => {
           window.location.reload();
         });
@@ -223,5 +227,14 @@ export class MesRecettesComponent implements OnInit, OnChanges {
     this.favorisService.getFavoris().subscribe((data) => {
       this.allRecipe = data;
     }); /* rafraichit la page */
+  }
+   //notification vue
+   notificationVue(idRecette) {
+    let notif: Notification = {
+      pseudo: null,
+      idRecette: idRecette,
+      type: "vue",
+    };
+    this.notifService.addNotification(notif).subscribe();
   }
 }

@@ -1,58 +1,58 @@
 <section class="contact " id="contact">
-<article id="burger-fourth" >
+    <article id="burger-fourth">
 
-    <h2 class="text-center" id="titre">Mes commentaires</h2>
+        <h2 class="text-center" id="titre">Mes commentaires</h2>
 
-    <div class="comment-container theme--light">
-        <div class="comments">
-            <div class="card v-card v-sheet theme--light elevation-2" *ngFor="let commentaire of commentaires">
-                <div class="header">
-                    <div *ngIf="!auth.isAdmin()" class="v-avatar avatar" style="height: 50px; width: 50px;"><img src="../../../assets/img/avatar.png"></div>
-                    <div *ngIf="auth.isAdmin()" class="v-avatar avatar" style="height: 2.5em; width: 3.5em;"><img src="../../../assets/img/logo.jpeg"></div>
-                    <span class="displayName title"><a routerLink="/recipe/{{commentaire.concerne}}">{{commentaire.nomRecette}}</a></span> <span class="displayName caption">{{commentaire.dateCommentaire}}</span></div>
-                <!---->
-                <div class="wrapper comment">
-                    <p>{{commentaire.message}}
-                    </p>
-                </div>
-                <div class="actions">
-                    <!--<button id="btn" class="btn btn-sm btn-danger" (click)="deleteCommentaire(commentaire.idCommentaire)"><i class=" fa fa-trash "></i></button> mettre un bouton modifier
-                   -->
+        <div class="comment-container theme--light">
+            <div class="comments">
+                <div class="card v-card v-sheet theme--light elevation-2" *ngFor="let commentaire of commentaires">
+                    <div class="header">
+                        <div *ngIf="!auth.isAdmin()" class="v-avatar avatar" style="height: 50px; width: 50px;"><img src="../../../assets/img/avatar.png"></div>
+                        <div *ngIf="auth.isAdmin()" class="v-avatar avatar" style="height: 2.5em; width: 3.5em;"><img src="../../../assets/img/logo.jpeg"></div>
+                        <span class="displayName title"><a (click)="updateNbView(commentaire)">{{commentaire.nomRecette}}</a></span> <span class="displayName caption">{{commentaire.dateCommentaire}}</span></div>
                     <!---->
-                    <!---->
-                    <button class="btn btn-warning" (click)="open(content)"><i class="fa fa-pencil"></i></button>
-                    <button id="poubelle" type="submit" class="btn btn-sm btn-danger" (click)="deleteCommentaire(commentaire.idCommentaire)"><i class="fa fa-trash"></i></button>
-
-                </div>
-                <div class="v-dialog__container" style="display: block;"></div>
-                <ng-template #content let-modal class="modal">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Modification du commentaire</h4>
+                    <div class="wrapper comment">
+                        <p>{{commentaire.message}}
+                        </p>
                     </div>
-                    <div class="modal-body">
-                        <textarea #message="ngModel" [(ngModel)]="commentaire.message" [ngModelOptions]="{standalone: true}">
+                    <div class="actions">
+                        <!--<button id="btn" class="btn btn-sm btn-danger" (click)="deleteCommentaire(commentaire.idCommentaire)"><i class=" fa fa-trash "></i></button> mettre un bouton modifier
+                   -->
+                        <!---->
+                        <!---->
+                        <button class="btn btn-warning" (click)="open(content)"><i class="fa fa-pencil"></i></button>
+                        <button id="poubelle" type="submit" class="btn btn-sm btn-danger" (click)="deleteCommentaire(commentaire.idCommentaire)"><i class="fa fa-trash"></i></button>
+
+                    </div>
+                    <div class="v-dialog__container" style="display: block;"></div>
+                    <ng-template #content let-modal class="modal">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Modification du commentaire</h4>
+                        </div>
+                        <div class="modal-body">
+                            <textarea #message="ngModel" [(ngModel)]="commentaire.message" [ngModelOptions]="{standalone: true}">
                                         {{commentaire.message}}
                                     </textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-warning" (click)="modal.close(commentaire)">Modifier</button>
-                    </div>
-                </ng-template>
-            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-warning" (click)="modal.close(commentaire)">Modifier</button>
+                        </div>
+                    </ng-template>
+                </div>
 
 
-
-            <!---->
-            <div class="answers">
 
                 <!---->
+                <div class="answers">
+
+                    <!---->
+                </div>
             </div>
-        </div>
-        <div>
+            <div>
+
+            </div>
 
         </div>
 
-    </div>
-
-</article>
+    </article>
 </section>

@@ -4,6 +4,8 @@ import { RecipeDetails, Menu, CategoryDetails } from '../../models';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { Notification } from "src/app/models";
+import { NotificationService } from "src/app/service/notifications/notification.service";
 
 @Component({
   selector: 'app-accueil',
@@ -70,7 +72,7 @@ export class AccueilComponent implements OnInit {
     // autoHeight: true
   };
 
-  constructor(private recetteService: RecettesService, private router: Router, private categoriesService: CategoriesService) {
+  constructor(private recetteService: RecettesService, private router: Router, private categoriesService: CategoriesService,private notifService: NotificationService) {
     this.getMostPopularRecipes();
     this.getLatestReceipes();
 
@@ -156,6 +158,7 @@ export class AccueilComponent implements OnInit {
   updateNbView(recette: any) {
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
+        this.notificationVue(recette.idRecette);
         this.router.navigate(['/recipe', recette.idRecette]).then(() => {
           window.location.reload();
         });
@@ -167,5 +170,15 @@ export class AccueilComponent implements OnInit {
         }
       });
   }
+
+    //notification vue
+    notificationVue(idRecette) {
+      let notif: Notification = {
+        pseudo: null,
+        idRecette: idRecette,
+        type: "vue",
+      };
+      this.notifService.addNotification(notif).subscribe();
+    }
 
 }

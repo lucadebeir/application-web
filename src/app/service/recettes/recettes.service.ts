@@ -10,6 +10,7 @@ import {
   IngredientDetails,
   RecipeDetails,
   Menu,
+  CommentaireDetails,
 } from "../../models";
 import { CategoriesService } from "../categories/categories.service";
 import { IngredientsService } from "../ingredients/ingredients.service";
