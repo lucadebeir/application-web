@@ -1,33 +1,53 @@
 <section class="contact pt-100 pb-100" id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 mt-5 mx-auto">
-                <form [formGroup]="loginForm" (ngSubmit)="login()" class="contact-form">
-                    <h1 id="lien" class="h3 mb-3 font-weight-normal">Se connecter</h1>
-                    <hr>
-                    <div class="form-group">
-                        <label>Pseudo</label>
-                        <input type="text" class="form-control" required name="pseudo" placeholder="pseudo" formControlName="pseudo">
-                    </div>
-                    <hr>
-                    <div class="form-group">
-                        <label>Mot de passe</label>
-                        <input type="password" class="form-control" required name="mdp" placeholder="****" formControlName="mdp">
-                    </div>
-                    <hr>
-    
-                    <input class="btn btn-lg btn-primary" type="submit" value = "Se connecter">
-                </form>
-                <hr>
-                <div id="lien">
-                    <a href="request-reset-password">Mot de passe oublié</a>
-                </div>
-                <hr>
-                <div id="lien">
-                  
-                    <button type="button" id="btnemail" (click)="clicSurBouton()">Je n'ai pas reçu de mail pour la confirmation de mon adresse mail</button>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mt-5 mx-auto">
+        <alert></alert>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="contact-form">
+          <h1 id="lien" class="h3 mb-3 font-weight-normal">Se connecter</h1>
+          <hr />
+          <div class="form-group">
+            <label>Pseudo</label>
+            <input
+              type="text"
+              class="form-control"
+              required
+              name="pseudo"
+              placeholder="pseudo"
+              formControlName="pseudo"
+            />
+          </div>
+          <hr />
+          <div class="form-group">
+            <label>Mot de passe</label>
+            <input
+              type="password"
+              class="form-control"
+              required
+              name="mdp"
+              placeholder="****"
+              formControlName="mdp"
+            />
+          </div>
+          <hr />
+
+          <input
+            class="btn btn-lg btn-primary"
+            type="submit"
+            value="Se connecter"
+          />
+        </form>
+        <hr />
+        <div id="lien">
+          <a href="request-reset-password">Mot de passe oublié</a>
         </div>
+        <hr />
+        <div id="lien">
+          <button type="button" id="btnemail" (click)="clicSurBouton()">
+            Je n'ai pas reçu de mail pour la confirmation de mon adresse mail
+          </button>
+        </div>
+      </div>
     </div>
+  </div>
 </section>

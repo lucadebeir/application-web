@@ -1,0 +1,13 @@
+.container-fluid {
+  background-image: url("../../../assets/img/Mdp.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  z-index: 2;
+  min-height: 40em;
+}
+
+.card-title {
+  margin-bottom: 3em;
+}

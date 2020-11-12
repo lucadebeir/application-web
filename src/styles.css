@@ -1,6 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
 
 .view-tenth {
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.toast-container {
+  background-image: linear-gradient(purple, red) !important;
+  border-radius: 22px !important;
+  box-shadow: -5px 8px 16px 0px rgba(0, 0, 0, 0.3) !important;
+  margin-bottom: 2px !important;
+}
+
+.toast-container .toast {
+  margin: 2px !important;
+  box-shadow: none !important;
+  border-radius: 20px !important;
+  background-color: #fff !important;
+}
+
+.toast-success {
+  background-image: yellow !important;
+}
+
+.toast-success::after {
+  content: "\f00c" !important;
+  font-family: "FontAwesome" !important;
+  position: absolute !important;
+  top: 14px !important;
+  left: 15px !important;
+  color: #333 !important;
+  font-size: 1.5em !important;
+}
+
+.toast-title {
+  color: purple !important;
+  font-size: 16px !important;
+}
+
+.toast-message {
+  color: #8f8f8f !important;
 }
