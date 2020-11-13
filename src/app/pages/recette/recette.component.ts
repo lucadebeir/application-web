@@ -88,7 +88,7 @@ export class RecetteComponent implements OnInit {
   public notif: Notification = {
     pseudo: "",
     idRecette: parseInt(this.route.snapshot.paramMap.get("id"), 10),
-    type: "commentaire"
+    type: "commentaire",
   };
 
   constructor(
@@ -176,7 +176,7 @@ export class RecetteComponent implements OnInit {
       this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo;
       this.newResponse.ecritPar = this.auth.getUserDetails().pseudo;
       this.recipeList.pseudoUser = this.auth.getUserDetails().pseudo;
-      this.notif.pseudo = this.auth.getUserDetails().pseudo
+      this.notif.pseudo = this.auth.getUserDetails().pseudo;
     }
   }
 
@@ -243,6 +243,10 @@ export class RecetteComponent implements OnInit {
   addFavoris() {
     this.favorisService.addFavoris(this.newFavori).subscribe();
     this.isFavori = true;
+    this.notificationFavori(
+      this.auth.getUserDetails().pseudo,
+      this.newFavori.idRecette
+    );
     window.location.reload();
   }
 
@@ -312,7 +316,10 @@ export class RecetteComponent implements OnInit {
     } else {
       this.newCommentaire.message = message;
       this.commentairesService.addCommentaire(this.newCommentaire).subscribe();
-      this.notificationCommentaire(this.auth.getUserDetails().pseudo, this.recette.idRecette);
+      this.notificationCommentaire(
+        this.auth.getUserDetails().pseudo,
+        this.recette.idRecette
+      );
       window.location.reload();
     }
 
@@ -341,7 +348,10 @@ export class RecetteComponent implements OnInit {
       this.newResponse.message = event.target.message.value;
       this.newResponse.parent = idCommentaire;
       this.commentairesService.addCommentaire(this.newResponse).subscribe();
-      this.notificationCommentaire(this.auth.getUserDetails().pseudo, this.recette.idRecette);
+      this.notificationCommentaire(
+        this.auth.getUserDetails().pseudo,
+        this.recette.idRecette
+      );
       window.location.reload();
     }
     // window.location.reload()
@@ -373,13 +383,23 @@ export class RecetteComponent implements OnInit {
     this.recette.nbrePart = this.recette.nbrePart + 1;
   }
 
-    //notification commentaire
-    notificationCommentaire(pseudo,idRecette) {
-      let notif: Notification = {
-        pseudo: pseudo,
-        idRecette: idRecette,
-        type: "commentaire",
-      };
-      this.notifService.addNotification(notif).subscribe();
-    }
+  //notification commentaire
+  notificationCommentaire(pseudo, idRecette) {
+    let notif: Notification = {
+      pseudo: pseudo,
+      idRecette: idRecette,
+      type: "commentaire",
+    };
+    this.notifService.addNotification(notif).subscribe();
+  }
+
+  //notification favori
+  notificationFavori(pseudo, idRecette) {
+    let notif: Notification = {
+      pseudo: pseudo,
+      idRecette: idRecette,
+      type: "favori",
+    };
+    this.notifService.addNotification(notif).subscribe();
+  }
 }

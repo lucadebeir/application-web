@@ -35,19 +35,47 @@ export class StatistiquesComponent implements OnInit {
             .subscribe((recipe) => {
               this.showInfo(
                 "Une nouvelle vue sur la recette " + recipe.nomRecette,
-                element.idNotification
+                element.idNotification,
+                "view-class"
               );
             });
         } else if (element.type === "user") {
-          this.showSuccess(
+          this.showInfo(
             "Un nouvel abonné : " + element.pseudo,
-            element.idNotification
+            element.idNotification,
+            "user-class"
           );
         } else if (element.type === "abonne") {
-          this.showSuccess(
+          this.showInfo(
             "Un nouvel inscrit : " + element.pseudo,
-            element.idNotification
+            element.idNotification,
+            "toast-success"
           );
+        } else if (element.type === "commentaire") {
+          this.recetteService
+            .getRecipeById(element.idRecette)
+            .subscribe((recipe) => {
+              this.showInfo(
+                "Un nouveau commentaire sur la recette '" +
+                  recipe.nomRecette +
+                  "' de la part de " +
+                  element.pseudo,
+                element.idNotification,
+                "toast-info"
+              );
+            });
+        } else if (element.type === "favori") {
+          this.recetteService
+            .getRecipeById(element.idRecette)
+            .subscribe((recipe) => {
+              this.showInfo(
+                element.pseudo +
+                  " a rajouté une nouvelle recette dans ses favoris : " +
+                  recipe.nomRecette,
+                element.idNotification,
+                "toast-error"
+              );
+            });
         }
       });
     });
@@ -75,16 +103,20 @@ export class StatistiquesComponent implements OnInit {
     });
   }
 
-  showInfo(text, id) {
+  showInfo(text, id, css) {
     this.toastr
-      .info(text)
+      .show(text, null, {
+        toastClass: css + " ngx-toastr",
+      })
       .onTap.pipe(take(1))
       .subscribe(() => this.cleanNotif(id));
   }
 
   showSuccess(text, id) {
     this.toastr
-      .success(text)
+      .show(text, null, {
+        toastClass: "toast-success ngx-toastr",
+      })
       .onTap.pipe(take(1))
       .subscribe(() => this.cleanNotif(id));
   }

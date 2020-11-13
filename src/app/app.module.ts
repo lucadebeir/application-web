@@ -48,6 +48,7 @@ import { MenuComponent } from "./pages/menu/menu.component";
 import { StatistiquesComponent } from "./pages/statistiques/statistiques.component";
 import { AlertModule } from "./_alert";
 import { ToastrModule } from "ngx-toastr";
+import { CustomToastrComponent } from "./pages/custom-toastr/custom-toastr.component";
 
 @NgModule({
   declarations: [
@@ -85,16 +86,17 @@ import { ToastrModule } from "ngx-toastr";
     OwlModule,
     NgxPaginationModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     NgbModule,
     NgMultiSelectDropDownModule.forRoot(),
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
       disableTimeOut: true,
+      positionClass: "toast-top-left",
     }),
   ],
   providers: [

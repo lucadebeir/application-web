@@ -5,39 +5,41 @@
   -webkit-touch-callout: none;
 }
 
-.toast-container {
-  background-image: linear-gradient(purple, red) !important;
-  border-radius: 22px !important;
-  box-shadow: -5px 8px 16px 0px rgba(0, 0, 0, 0.3) !important;
-  margin-bottom: 2px !important;
+@import "~ngx-toastr/toastr.css";
+
+.toast {
+  font-size: initial !important;
+  border: initial !important;
+  backdrop-filter: blur(0) !important;
 }
 
-.toast-container .toast {
-  margin: 2px !important;
-  box-shadow: none !important;
-  border-radius: 20px !important;
-  background-color: #fff !important;
-}
-
+/*abonne*/
 .toast-success {
-  background-image: yellow !important;
+  background-image: url("../src/assets/iconrs/envelope.png") !important;
+  background-color: #aed6f1 !important;
+  color: black !important;
 }
-
-.toast-success::after {
-  content: "\f00c" !important;
-  font-family: "FontAwesome" !important;
-  position: absolute !important;
-  top: 14px !important;
-  left: 15px !important;
-  color: #333 !important;
-  font-size: 1.5em !important;
+/*favori*/
+.toast-error {
+  background-image: url("../src/assets/iconrs/heart.png") !important;
+  background-color: #d1f2eb !important;
+  color: black !important;
 }
-
-.toast-title {
-  color: purple !important;
-  font-size: 16px !important;
+/*commentaire*/
+.toast-info {
+  background-image: url("../src/assets/iconrs/commentary.png") !important;
+  background-color: #d7bde2 !important;
+  color: black !important;
 }
-
-.toast-message {
-  color: #8f8f8f !important;
+/*user*/
+.user-class {
+  background-image: url("../src/assets/iconrs/user.png") !important;
+  background-color: #a9cce3 !important;
+  color: black !important;
+}
+/*vue*/
+.view-class {
+  background-image: url("../src/assets/iconrs/view.png") !important;
+  background-color: #d2b4de !important;
+  color: black !important;
 }

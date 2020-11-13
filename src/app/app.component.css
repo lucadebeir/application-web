@@ -178,21 +178,3 @@ a:active {
 }
 
 /* Notifs */
-
-#toast-container > .toast {
-  background-image: none !important;
-}
-
-#toast-container > .toast:before {
-  position: fixed;
-  font-family: FontAwesome;
-  font-size: 24px;
-  line-height: 18px;
-  float: left;
-  color: #fff;
-  padding-right: 0.5em;
-  margin: auto 0.5em auto -1.5em;
-}
-#toast-container > .toast-success:before {
-  content: "\f003";
-}
