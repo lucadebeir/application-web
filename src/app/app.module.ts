@@ -48,7 +48,7 @@ import { MenuComponent } from "./pages/menu/menu.component";
 import { StatistiquesComponent } from "./pages/statistiques/statistiques.component";
 import { AlertModule } from "./_alert";
 import { ToastrModule } from "ngx-toastr";
-import { CustomToastrComponent } from "./pages/custom-toastr/custom-toastr.component";
+import { BsDropdownModule } from "ngx-bootstrap/dropdown";
 
 @NgModule({
   declarations: [
@@ -80,6 +80,7 @@ import { CustomToastrComponent } from "./pages/custom-toastr/custom-toastr.compo
     StatistiquesComponent,
   ],
   imports: [
+    BsDropdownModule.forRoot(),
     AlertModule,
     MaterialModule,
     CarouselModule,
