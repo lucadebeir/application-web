@@ -570,7 +570,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/_alert/index.ts ***!
     \*********************************/
 
-  /*! exports provided: AlertService, Alert, AlertType, AlertModule */
+  /*! exports provided: AlertModule, AlertService, Alert, AlertType */
 
   /***/
   function srcApp_alertIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -1305,15 +1305,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             this.notifs.forEach(function (element) {
               if (element.type === "vue") {
                 _this6.recetteService.getRecipeById(element.idRecette).subscribe(function (recipe) {
-                  _this6.showInfo("Une nouvelle vue sur la recette " + recipe.nomRecette, element.idNotification, "view-class");
+                  _this6.showInfo("La recette: " + recipe.nomRecette + " a été consulté", element.idNotification, "view-class");
                 });
               } else if (element.type === "user") {
-                _this6.showInfo("Un nouvel abonné : " + element.pseudo, element.idNotification, "user-class");
+                _this6.showInfo(element.pseudo + " vient de s'inscrire.", element.idNotification, "user-class");
               } else if (element.type === "abonne") {
-                _this6.showInfo("Un nouvel inscrit : " + element.pseudo, element.idNotification, "toast-success");
+                _this6.showInfo(element.pseudo + " est maintenant abonné à la newsletter.", element.idNotification, "toast-success");
               } else if (element.type === "commentaire") {
                 _this6.recetteService.getRecipeById(element.idRecette).subscribe(function (recipe) {
-                  _this6.showInfo("Un nouveau commentaire sur la recette '" + recipe.nomRecette + "' de la part de " + element.pseudo, element.idNotification, "toast-info");
+                  _this6.showInfo(element.pseudo + " a commenté la recette: " + recipe.nomRecette, element.idNotification, "toast-info");
                 });
               } else if (element.type === "favori") {
                 _this6.recetteService.getRecipeById(element.idRecette).subscribe(function (recipe) {

@@ -279,7 +279,7 @@ AlertService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInje
 /*!*********************************!*\
   !*** ./src/app/_alert/index.ts ***!
   \*********************************/
-/*! exports provided: AlertService, Alert, AlertType, AlertModule */
+/*! exports provided: AlertModule, AlertService, Alert, AlertType */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -582,23 +582,20 @@ class AppComponent {
                     this.recetteService
                         .getRecipeById(element.idRecette)
                         .subscribe((recipe) => {
-                        this.showInfo("Une nouvelle vue sur la recette " + recipe.nomRecette, element.idNotification, "view-class");
+                        this.showInfo("La recette: " + recipe.nomRecette + " a été consulté", element.idNotification, "view-class");
                     });
                 }
                 else if (element.type === "user") {
-                    this.showInfo("Un nouvel abonné : " + element.pseudo, element.idNotification, "user-class");
+                    this.showInfo(element.pseudo + " vient de s'inscrire.", element.idNotification, "user-class");
                 }
                 else if (element.type === "abonne") {
-                    this.showInfo("Un nouvel inscrit : " + element.pseudo, element.idNotification, "toast-success");
+                    this.showInfo(element.pseudo + " est maintenant abonné à la newsletter.", element.idNotification, "toast-success");
                 }
                 else if (element.type === "commentaire") {
                     this.recetteService
                         .getRecipeById(element.idRecette)
                         .subscribe((recipe) => {
-                        this.showInfo("Un nouveau commentaire sur la recette '" +
-                            recipe.nomRecette +
-                            "' de la part de " +
-                            element.pseudo, element.idNotification, "toast-info");
+                        this.showInfo(element.pseudo + " a commenté la recette: " + recipe.nomRecette, element.idNotification, "toast-info");
                     });
                 }
                 else if (element.type === "favori") {
