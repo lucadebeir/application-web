@@ -1,45 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 
 .view-tenth {
-  -webkit-user-select: none;
-  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 
 @import "~ngx-toastr/toastr.css";
-
 .toast {
-  font-size: initial !important;
-  border: initial !important;
-  backdrop-filter: blur(0) !important;
+    font-size: initial !important;
+    border: initial !important;
+    backdrop-filter: blur(0) !important;
 }
+
 
 /*abonne*/
+
 .toast-success {
-  background-image: url("../src/assets/iconrs/envelope.png") !important;
-  background-color: #aed6f1 !important;
-  color: black !important;
+    background-image: url("../src/assets/iconrs/envelope.png") !important;
+    background-color: #f3f3f3!important;
+    color: black!important;
 }
+
+
 /*favori*/
+
 .toast-error {
-  background-image: url("../src/assets/iconrs/heart.png") !important;
-  background-color: #d1f2eb !important;
-  color: black !important;
+    background-image: url("../src/assets/iconrs/heart.png") !important;
+    background-color: #f74464!important;
+    color: white !important;
 }
+
+
 /*commentaire*/
+
 .toast-info {
-  background-image: url("../src/assets/iconrs/commentary.png") !important;
-  background-color: #d7bde2 !important;
-  color: black !important;
+    background-image: url("../src/assets/iconrs/commentary.png") !important;
+    background-color: #c4c4c4!important;
+    color: black !important;
 }
+
+
 /*user*/
+
 .user-class {
-  background-image: url("../src/assets/iconrs/user.png") !important;
-  background-color: #a9cce3 !important;
-  color: black !important;
+    background-image: url("../src/assets/iconrs/user.png") !important;
+    background-color: #6a7285 !important;
+    color: white !important;
 }
+
+
 /*vue*/
+
 .view-class {
-  background-image: url("../src/assets/iconrs/view.png") !important;
-  background-color: #d2b4de !important;
-  color: black !important;
+    background-image: url("../src/assets/iconrs/view.png") !important;
+    background-color: #374258 !important;
+    color: white!important;
 }

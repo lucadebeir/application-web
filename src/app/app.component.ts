@@ -59,13 +59,13 @@ export class AppComponent {
             });
         } else if (element.type === "user") {
           this.showInfo(
-           element.pseudo + " est maintenant abonné à la newsletter.",
+           element.pseudo + " vient de s'inscrire.",
             element.idNotification,
             "user-class"
           );
         } else if (element.type === "abonne") {
           this.showInfo(
-            element.pseudo + " vient de s'inscrire.",
+            element.pseudo + " est maintenant abonné à la newsletter.",
             element.idNotification,
             "toast-success"
           );
