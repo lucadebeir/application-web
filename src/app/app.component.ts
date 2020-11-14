@@ -52,20 +52,20 @@ export class AppComponent {
             .getRecipeById(element.idRecette)
             .subscribe((recipe) => {
               this.showInfo(
-                "Une nouvelle vue sur la recette " + recipe.nomRecette,
+                "La recette: "+recipe.nomRecette + " a été consulté",
                 element.idNotification,
                 "view-class"
               );
             });
         } else if (element.type === "user") {
           this.showInfo(
-            "Un nouvel abonné : " + element.pseudo,
+           element.pseudo + " est maintenant abonné à la newsletter.",
             element.idNotification,
             "user-class"
           );
         } else if (element.type === "abonne") {
           this.showInfo(
-            "Un nouvel inscrit : " + element.pseudo,
+            element.pseudo + " vient de s'inscrire.",
             element.idNotification,
             "toast-success"
           );
@@ -74,10 +74,8 @@ export class AppComponent {
             .getRecipeById(element.idRecette)
             .subscribe((recipe) => {
               this.showInfo(
-                "Un nouveau commentaire sur la recette '" +
-                  recipe.nomRecette +
-                  "' de la part de " +
-                  element.pseudo,
+             
+                  element.pseudo + " a commenté la recette: " +    recipe.nomRecette ,
                 element.idNotification,
                 "toast-info"
               );
