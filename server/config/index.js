@@ -4,6 +4,7 @@ const serviceKey = path.join(
   __dirname,
   "./molten-calling-270223-7d6d4b3665fa.json"
 );
+
 const { Storage } = Cloud;
 const storage = new Storage({
   keyFilename: serviceKey,

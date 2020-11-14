@@ -833,9 +833,6 @@ body .header nav ul li a[data-color="color-h"]:hover:before {
   bottom: -10px;
 }
 
-.c-hamburger--htla {
-}
-
 .c-hamburger--htla span {
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
