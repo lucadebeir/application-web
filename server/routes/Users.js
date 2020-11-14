@@ -13,9 +13,9 @@ users.use(cors());
 const { google } = require("googleapis");
 const OAuth2 = google.auth.OAuth2;
 const oauth2Client = new OAuth2(
-  "680726405067-3gam69kea82fcsu8al0ff3kuqcaengtl.apps.googleusercontent.com",
-  "qiusRaX7DaloMdhQMiAB0lwD", // Client Secret
-  "https://developers.google.com/oauthplayground" // Redirect URL
+  process.env.AUTH_CLIENT,
+  process.env.AUTH_CLIENT_PASSWORD, // Client Secret
+  process.env.AUTH_URL // Redirect URL
 );
 oauth2Client.setCredentials({
   refresh_token: "Your Refresh Token Here",
@@ -39,12 +39,10 @@ const smtpTransport = nodemailer.createTransport({
   },
   auth: {
     type: "OAuth2",
-    user: "marinesrecipes@gmail.com",
-    clientId:
-      "680726405067-3gam69kea82fcsu8al0ff3kuqcaengtl.apps.googleusercontent.com",
-    clientSecret: "qiusRaX7DaloMdhQMiAB0lwD",
-    refreshToken:
-      "1//04pWeER_VOvN4CgYIARAAGAQSNwF-L9Ir2Oa64ZVrBw5LQCqO-Vbj90ow7m7EhXSm6Bk1XtSyyeoaO76viFcm3vdbp2aWIe7SCQM",
+    user: process.env.AUTH_USER,
+    clientId: process.env.AUTH_CLIENT_ID,
+    clientSecret: process.env.AUTH_CLIENT_PASSWORD,
+    refreshToken: process.env.AUTH_REFRESH_TOKEN,
     accessToken: accessToken,
 
     /*user: process.env.USER_MAIL,

@@ -1,8 +1,7 @@
-const util = require('util')
-const gc = require('../config/')
-const bucket = gc.bucket('recipes-of-marine')
-
-const { format } = util
+const util = require("util");
+const gc = require("../config/");
+const bucket = gc.bucket("recipes-of-marine");
+const { format } = util;
 
 /**
  *
@@ -13,29 +12,30 @@ const { format } = util
  *   "originalname" and "buffer" as keys
  */
 
-const uploadImage = (file) => new Promise((resolve, reject) => {
-    console.log(file)
-    const { originalname, buffer } = file
+const uploadImage = (file) =>
+  new Promise((resolve, reject) => {
+    console.log(file);
+    const { originalname, buffer } = file;
 
-    const blob = bucket.file(originalname)
+    const blob = bucket.file(originalname);
     const blobStream = blob.createWriteStream({
-        metadata: {
-            contentType: file.mimetype
-        },
-        resumable: false
-    })
+      metadata: {
+        contentType: file.mimetype,
+      },
+      resumable: false,
+    });
 
-    blobStream.on('finish', () => {
-            const publicUrl = format(
-                `https://storage.googleapis.com/${bucket.name}/${blob.name}`
-            )
-            resolve(publicUrl)
-        })
-        .on('error', () => {
-            reject(`Unable to upload image, something went wrong`)
-        })
-        .end(buffer)
+    blobStream
+      .on("finish", () => {
+        const publicUrl = format(
+          `https://storage.googleapis.com/${bucket.name}/${blob.name}`
+        );
+        resolve(publicUrl);
+      })
+      .on("error", () => {
+        reject(`Unable to upload image, something went wrong`);
+      })
+      .end(buffer);
+  });
 
-})
-
-module.exports = uploadImage
+module.exports = uploadImage;

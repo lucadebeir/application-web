@@ -1,13 +1,14 @@
-//bd du site
+require("dotenv").config();
 
+//bd du site
 const Sequelize = require("sequelize");
 const db = {};
 const sequelize = new Sequelize(
-  "marinesrecipes_bd",
-  "201428",
-  "Luka-12021996",
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
   {
-    host: "mysql-marinesrecipes.alwaysdata.net",
+    host: process.env.DB_HOST,
     dialect: "mysql",
     operatorsAliases: false,
 
@@ -19,7 +20,7 @@ const sequelize = new Sequelize(
     },
   }
 );
-
+console.log(sequelize);
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
@@ -27,24 +28,23 @@ module.exports = db;
 
 /*
 //local
-const Sequelize = require("sequelize")
-const db = {}
+const Sequelize = require("sequelize");
+const db = {};
 const sequelize = new Sequelize("marine'srecipes", "root", "root", {
-    host: "localhost",
-    port: 8889,
-    dialect: "mysql",
-    operatorsAliases: false,
+  host: "localhost",
+  port: 8889,
+  dialect: "mysql",
+  operatorsAliases: false,
 
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-    }
-})
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000,
+  },
+});
 
-db.sequelize = sequelize
-db.Sequelize = Sequelize
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
 
-module.exports = db
-*/
+module.exports = db;*/
