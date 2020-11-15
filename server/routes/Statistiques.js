@@ -71,4 +71,48 @@ statistique.get('/users', (req, res) => {
         })
 })
 
+
+//Récupérer les 20 recettes les + vues du site
+statistique.get('/bestRecipes', (req, res) => {
+    let query = db.sequelize.query("SELECT * FROM recettes ORDER BY nbVues DESC limit 20", {
+        type: sequelize.QueryTypes.SELECT
+    })
+    query.then(resultats => {
+            res.json(resultats)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+
+})
+
+
+
+//Récupérer les 20 recettes les - vues du site
+statistique.get('/worstRecipes', (req, res) => {
+    let query = db.sequelize.query("SELECT * FROM recettes ORDER BY nbVues limit 20", {
+        type: sequelize.QueryTypes.SELECT
+    })
+    query.then(resultats => {
+            res.json(resultats)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+//Récuper les 20 recettes les plus vues du mois
+statistique.get('/bestMonthlyRecipes', (req, res) => {
+    let query = db.sequelize.query("select recettes.nomRecette, count(*) as nbVues from notifications left join recettes on recettes.idRecette = notifications.idRecette where notifications.type='vue' group by notifications.idRecette order by count(*) desc limit 20", {
+        type: sequelize.QueryTypes.SELECT
+    })
+    query.then(resultats => {
+            res.json(resultats)
+        })
+        .catch(err => {
+            res.send('error: ' + err)
+        })
+})
+
+
 module.exports = statistique

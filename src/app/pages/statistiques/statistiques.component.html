@@ -126,7 +126,8 @@
                         <h2 class="titre">Recettes les plus consultées du mois</h2>
                         <p class="tags">
                             <span class="tag-item">statistiques</span> </p>
-                        <p class="descript"> lààààààààààààà
+                        <p class="descript" *ngFor="let recette of bestMonthlyRecipes ">{{recette.nomRecette}} + {{ recette.nbVues}}👁
+
                         </p>
 
                         <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
@@ -144,7 +145,26 @@
                         <h2 class="titre">Les meilleures recettes</h2>
                         <p class="tags">
                             <span class="tag-item">statistiques</span> </p>
-                        <p class="descript">lààààààààààà
+                        <p class="descript" *ngFor="let recette of bestRecipes ">{{recette.nomRecette}} 👁{{ recette.nbVues}}
+
+                        </p>
+
+
+                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
+                        <div class="action-link-list">
+
+                            <a href="#" class="action-link">C</a>
+                            <a href="#" class="action-link">O</a>
+                            <a href="#" class="action-link">D</a>
+                            <a href="#" class="action-link">E</a>
+                        </div>
+                    </article>
+
+                    <article>
+                        <h2 class="titre">Les recettes à promouvoir</h2>
+                        <p class="tags">
+                            <span class="tag-item">statistiques</span> </p>
+                        <p class="descript" *ngFor="let recette of worstRecipes ">{{recette.nomRecette}} 👁 {{ recette.nbVues}}
                         </p>
 
                         <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>

@@ -44,5 +44,24 @@ export class StatistiquesService {
       return data;
     }));
   }
+
+  public getBestRecipes(): any{
+    return this.http.get<any>(`/server/statistique/bestRecipes`)
+    .pipe(map((data:any) => {
+      return data;
+    }));
+  }
+  public getWorstRecipes(): any{
+    return this.http.get<any>(`/server/statistique/worstRecipes`)
+    .pipe(map((data:any) => {
+      return data;
+    }));
+  }
+  public getBestMonthlyRecipes(): any{
+    return this.http.get<any>(`/server/statistique/bestMonthlyRecipes`)
+    .pipe(map((data:any) => {
+      return data;
+    }));
+  }
 }
 

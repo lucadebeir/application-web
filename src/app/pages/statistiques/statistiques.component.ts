@@ -19,6 +19,12 @@ export class StatistiquesComponent implements OnInit {
   public nbAbonnes: any;
   public users: UserProfile[];
   public notifs: Notification[];
+  public bestRecipes: RecettesService[];
+  public worstRecipes: RecettesService[];
+  public bestMonthlyRecipes: {
+    nomRecette: number;
+    nbVues: number;
+  }[];
 
   constructor(
     private statService: StatistiquesService,
@@ -101,6 +107,20 @@ export class StatistiquesComponent implements OnInit {
     this.statService.getUsers().subscribe((data) => {
       this.users = data;
     });
+
+    this.statService.getBestRecipes().subscribe((data) => {
+      this.bestRecipes = data;
+    });
+
+    this.statService.getWorstRecipes().subscribe((data) => {
+      this.worstRecipes = data;
+    });
+
+    this.statService.getBestMonthlyRecipes().subscribe((data) => {
+      console.log(data)
+      this.bestMonthlyRecipes = data;
+    });
+
   }
 
   showInfo(text, id, css) {
