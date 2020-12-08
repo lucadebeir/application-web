@@ -5,6 +5,8 @@ const serviceKey = path.join(
   "./molten-calling-270223-7d6d4b3665fa.json"
 );
 
+console.log(require("./molten-calling-270223-7d6d4b3665fa"));
+
 const { Storage } = Cloud;
 const storage = new Storage({
   keyFilename: serviceKey,

@@ -30,28 +30,16 @@
 
 <ul class="nav justify-content-center">
   <li>
-    <form
-      class="form-inline"
-      [formGroup]="researchForm"
-      (ngSubmit)="research()"
-    >
-      <div class="col text-center">
-        <input
-          class="form-control"
-          type="search"
-          placeholder="Recette, ingrédient.."
-          aria-label="Search"
-          formControlName="filter"
-          (click)="ngOnChanges()"
-        />
-      </div>
-
-      <div class="col text-center">
-        <button id="validateButton" type="submit" class="btn btn-primary">
-          Rechercher
-        </button>
-      </div>
-    </form>
+    <div class="col text-center">
+      <input
+        class="form-control"
+        type="search"
+        placeholder="Recette, ingrédient.."
+        aria-label="Search"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchTermChange()"
+      />
+    </div>
   </li>
 </ul>
 
@@ -61,7 +49,8 @@
   <div
     class="col-lg-4 col-md-6 col-sm-12 p-3"
     *ngFor="
-      let recette of allRecipe
+      let recette of recettes$
+        | async
         | paginate
           : { id: 'listing_pagination', itemsPerPage: 12, currentPage: page }
     "

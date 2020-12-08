@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+/*
 //bd du site
 const Sequelize = require("sequelize");
 const db = {};
@@ -20,17 +20,15 @@ const sequelize = new Sequelize(
     },
   }
 );
-console.log(sequelize);
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+module.exports = db;*/
 
-/*
 //local
 const Sequelize = require("sequelize");
 const db = {};
-const sequelize = new Sequelize("marine'srecipes", "root", "root", {
+const sequelize = new Sequelize("marinesrecipes_bd", "root", "root", {
   host: "localhost",
   port: 8889,
   dialect: "mysql",
@@ -47,4 +45,4 @@ const sequelize = new Sequelize("marine'srecipes", "root", "root", {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;*/
+module.exports = db;

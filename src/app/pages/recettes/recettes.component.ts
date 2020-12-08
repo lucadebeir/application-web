@@ -20,18 +20,14 @@ import { NotificationService } from "src/app/service/notifications/notification.
   templateUrl: "./recettes.component.html",
   styleUrls: ["./recettes.component.scss"],
 })
-export class RecettesComponent implements OnInit, OnChanges {
+export class RecettesComponent implements OnInit {
   page = 1;
 
   public actualCategory: number = null;
   public recipeByCategory: HashTable<RecipeDetails[]> = {};
   public recipeCategory: RecipeDetails[] = [];
 
-  public recettes$: Observable<RecipeDetails[]>;
   public categories: CategoryDetails[];
-  public filteredRecipe$: Observable<RecipeDetails[]>;
-  public filter: FormControl;
-  public filter$: Observable<string>;
 
   public newFavori: FavorisDetails = {
     pseudo: "",
@@ -39,54 +35,33 @@ export class RecettesComponent implements OnInit, OnChanges {
   };
   public favoris: number[] = [];
 
-  public researchForm: FormGroup;
-
   public allRecipe: RecipeDetails[];
-  public allRecipe2: RecipeDetails[];
   currentPage: number;
+
+  //recherche dynamique
+  searchTerm = "";
+  public recettes$: Observable<
+    RecipeDetails[]
+  > = this.recetteService.getSearchResults();
 
   constructor(
     private recetteService: RecettesService,
     private router: Router,
     public auth: AuthentificationService,
-    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private imagesService: ImagesService,
     private categoriesService: CategoriesService,
     private favorisService: FavorisService,
     private notifService: NotificationService
   ) {
-    // pour la recherche dynamique
-    this.recettes$ = this.recetteService.getAllRecipesAndIngredients();
-
     if (this.route.snapshot.paramMap.get("id")) {
       this.getRecipeByCategory(this.route.snapshot.paramMap.get("id"));
     } else {
       this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
         this.allRecipe = data;
-        this.allRecipe2 = data;
+        this.recetteService.search(this.searchTerm, data).subscribe();
       });
     }
-
-    this.filter = new FormControl("");
-    this.filter$ = this.filter.valueChanges.pipe(startWith(""));
-    // tslint:disable-next-line: deprecation
-    this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$).pipe(
-      map(([recipes, filterString]) => {
-        return recipes.filter(
-          (recipe) =>
-            recipe.ingredients.filter(
-              (ingredient) =>
-                ingredient.nomIngredient
-                  .toLowerCase()
-                  .indexOf(filterString.toLowerCase()) !== -1
-            ) &&
-            recipe.nomRecette
-              .toLowerCase()
-              .indexOf(filterString.toLowerCase()) !== -1
-        );
-      })
-    );
 
     if (this.auth.isLoggedIn()) {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
@@ -106,17 +81,14 @@ export class RecettesComponent implements OnInit, OnChanges {
             });
         });
       });
-    this.initResearchForm();
     this.currentPage = 1;
   }
 
   // dans ngOnInit on récupère les données à afficher au lancement de la page
   ngOnInit(): void {}
 
-  ngOnChanges() {
-    this.allRecipe = this.allRecipe2;
-    this.initResearchForm();
-    document.body.scrollTop = 0;
+  onSearchTermChange(): void {
+    this.recetteService.search(this.searchTerm, this.allRecipe).subscribe();
   }
 
   onPageChange(page: number) {
@@ -124,99 +96,13 @@ export class RecettesComponent implements OnInit, OnChanges {
     window.scrollTo(0, 0);
   }
 
-  initResearchForm() {
-    this.researchForm = this.formBuilder.group({
-      filter: [""],
-    });
-  }
-
-  research() {
-    const formValue = this.researchForm.value;
-
-    if (this.actualCategory != null) {
-      if (formValue.filter !== "") {
-        const researchResult: RecipeDetails[] = [];
-        this.recipeByCategory[this.actualCategory].forEach((recipe) => {
-          if (
-            recipe.nomRecette
-              .toLowerCase()
-              .indexOf(formValue.filter.toLowerCase()) !== -1
-          ) {
-            if (!researchResult.includes(recipe)) {
-              researchResult.push(recipe);
-            }
-          }
-          recipe.ingredients.forEach((ingredient) => {
-            if (
-              ingredient.nomIngredient
-                .toLowerCase()
-                .indexOf(formValue.filter.toLowerCase()) !== -1
-            ) {
-              if (!researchResult.includes(recipe)) {
-                researchResult.push(recipe);
-              }
-            }
-          });
-        });
-        this.allRecipe = researchResult;
-      } else {
-        this.allRecipe = this.allRecipe2;
-      }
-    } else {
-      if (formValue.filter !== "") {
-        const researchResult: RecipeDetails[] = [];
-
-        this.allRecipe2.forEach((recipe) => {
-          if (
-            recipe.nomRecette
-              .toLowerCase()
-              .indexOf(formValue.filter.toLowerCase()) !== -1
-          ) {
-            if (!researchResult.includes(recipe)) {
-              researchResult.push(recipe);
-            }
-          }
-          recipe.ingredients.forEach((ingredient) => {
-            if (
-              ingredient.nomIngredient
-                .toLowerCase()
-                .indexOf(formValue.filter.toLowerCase()) !== -1
-            ) {
-              if (!researchResult.includes(recipe)) {
-                researchResult.push(recipe);
-              }
-            }
-          });
-        });
-        this.allRecipe = researchResult;
-      } else {
-        this.allRecipe = this.allRecipe2;
-      }
-    }
-  }
-
   getAllRecipes() {
     this.actualCategory = null;
 
-    this.recettes$ = this.recetteService.getAllRecipesAndIngredients();
-
     this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
       this.allRecipe = data;
+      this.recetteService.search(this.searchTerm, data).subscribe();
     });
-
-    this.filter = new FormControl("");
-    this.filter$ = this.filter.valueChanges.pipe(startWith(""));
-    // tslint:disable-next-line: deprecation
-    this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$).pipe(
-      map(([recipes, filterString]) =>
-        recipes.filter(
-          (recipe) =>
-            recipe.nomRecette
-              .toLowerCase()
-              .indexOf(filterString.toLowerCase()) !== -1
-        )
-      )
-    );
   }
 
   getImageByIdRecipe(id: number): any {
@@ -243,25 +129,11 @@ export class RecettesComponent implements OnInit, OnChanges {
   getRecipeByCategory(idCategorie: any) {
     this.actualCategory = idCategorie;
 
-    this.recettes$ = this.recetteService.getRecipeByCategory(idCategorie);
-
     this.recetteService.getRecipeByCategory(idCategorie).subscribe((data) => {
+      console.log(data);
       this.allRecipe = data;
+      this.recetteService.search(this.searchTerm, data).subscribe();
     });
-
-    this.filter = new FormControl("");
-    this.filter$ = this.filter.valueChanges.pipe(startWith(""));
-    // tslint:disable-next-line: deprecation
-    this.filteredRecipe$ = combineLatest(this.recettes$, this.filter$).pipe(
-      map(([recipes, filterString]) =>
-        recipes.filter(
-          (recipe) =>
-            recipe.nomRecette
-              .toLowerCase()
-              .indexOf(filterString.toLowerCase()) !== -1
-        )
-      )
-    );
   }
 
   updateNbView(recette: any) {
@@ -284,11 +156,12 @@ export class RecettesComponent implements OnInit, OnChanges {
 
   addFavoris(id: number) {
     this.newFavori.idRecette = id;
-    this.notificationFavori(this.auth.getUserDetails().pseudo,id);
+    this.notificationFavori(this.auth.getUserDetails().pseudo, id);
     this.favorisService.addFavoris(this.newFavori).subscribe((res) => {
       this.getFavoris();
       this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
         this.allRecipe = data;
+        this.recetteService.search(this.searchTerm, data).subscribe();
       });
     });
   }
@@ -316,11 +189,12 @@ export class RecettesComponent implements OnInit, OnChanges {
       this.getFavoris();
       this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
         this.allRecipe = data;
+        this.recetteService.search(this.searchTerm, data).subscribe();
       });
     }); /* rafraichit la page */
   }
-   //notification vue
-   notificationVue(idRecette) {
+  //notification vue
+  notificationVue(idRecette) {
     let notif: Notification = {
       pseudo: null,
       idRecette: idRecette,
@@ -329,15 +203,15 @@ export class RecettesComponent implements OnInit, OnChanges {
     this.notifService.addNotification(notif).subscribe();
   }
 
-    //notification favori
-    notificationFavori(pseudo,idRecette) {
-      let notif: Notification = {
-        pseudo: pseudo,
-        idRecette: idRecette,
-        type: "favori",
-      };
-      this.notifService.addNotification(notif).subscribe();
-    }
+  //notification favori
+  notificationFavori(pseudo, idRecette) {
+    let notif: Notification = {
+      pseudo: pseudo,
+      idRecette: idRecette,
+      type: "favori",
+    };
+    this.notifService.addNotification(notif).subscribe();
+  }
 }
 
 export interface HashTable<T> {

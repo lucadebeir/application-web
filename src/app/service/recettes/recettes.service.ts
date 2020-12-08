@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, of, ReplaySubject, Subject } from "rxjs";
 import { map, tap } from "rxjs/operators";
 import { AuthentificationService } from "../authentification.service";
 import { addTimes, addHours } from "../../utils/Utils";
@@ -30,6 +30,7 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -56,6 +57,7 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -82,6 +84,7 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -116,6 +119,7 @@ export class RecettesService {
   public getRecipeById(id: any): Observable<any> {
     return this.http.get<any>("/server/recipe/get/" + id).pipe(
       map((element: RecipeDetails) => {
+        element.nomRecette = decodeURIComponent(element.nomRecette);
         this.http
           .get(`/server/image/${element.idRecette}`)
           .subscribe((data: any) => {
@@ -141,6 +145,7 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -170,6 +175,7 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -206,11 +212,13 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
+          element.ingredients = [];
           this.ingredientService
             .getIngredientsByIdRecette(element.idRecette)
             .subscribe((data) => {
@@ -253,6 +261,7 @@ export class RecettesService {
   }
 
   public createRecipe(recipe: CreateRecipe): Observable<any> {
+    recipe.nomRecette = encodeURIComponent(recipe.nomRecette);
     const res = this.http.post("/server/recipe/add-recipe", recipe);
     return res.pipe(
       map((res) => {
@@ -297,6 +306,7 @@ export class RecettesService {
   }
 
   public updateRecipeName(recette: RecipeDetails): Observable<any> {
+    recette.nomRecette = encodeURIComponent(recette.nomRecette);
     return this.http.put(`/server/recipe/name/update`, recette).pipe(
       map((data: RecipeDetails) => {
         return data;
@@ -402,6 +412,7 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -426,6 +437,7 @@ export class RecettesService {
   public getPetitDej(): Observable<any> {
     return this.http.get<any>("/server/menu/petitDej").pipe(
       map((element: any) => {
+        element.nomRecette = decodeURIComponent(element.nomRecette);
         this.http
           .get(`/server/image/${element[0].idRecette}`)
           .subscribe((data: any) => {
@@ -449,6 +461,7 @@ export class RecettesService {
   public getRepas(): Observable<any> {
     return this.http.get<any>("/server/menu/repas").pipe(
       map((element: any) => {
+        element.nomRecette = decodeURIComponent(element.nomRecette);
         this.http
           .get(`/server/image/${element[0].idRecette}`)
           .subscribe((data: any) => {
@@ -472,6 +485,7 @@ export class RecettesService {
   public getDouceur(): Observable<any> {
     return this.http.get<any>("/server/menu/douceur").pipe(
       map((element: any) => {
+        element.nomRecette = decodeURIComponent(element.nomRecette);
         this.http
           .get(`/server/image/${element[0].idRecette}`)
           .subscribe((data: any) => {
@@ -523,6 +537,10 @@ export class RecettesService {
     );
     return base.pipe(
       map((data: ListRecipe[]) => {
+        data.forEach(
+          (element) =>
+            (element.nomRecette = decodeURIComponent(element.nomRecette))
+        );
         console.log(data);
         return data;
       })
@@ -533,6 +551,10 @@ export class RecettesService {
     const base = this.http.get(`/server/recipeList/marine`);
     return base.pipe(
       map((data: ListRecipe[]) => {
+        data.forEach(
+          (element) =>
+            (element.nomRecette = decodeURIComponent(element.nomRecette))
+        );
         return data;
       })
     );
@@ -564,6 +586,7 @@ export class RecettesService {
       );
   }
 
+  //pour la recherche dynamique
   public changeStateOfRecipe(recipe: ListRecipe): Observable<any> {
     recipe.complet = !recipe.complet;
     return this.http.post(`/server/recipeList/update`, recipe).pipe(
@@ -571,5 +594,51 @@ export class RecettesService {
         return res;
       })
     );
+  }
+
+  private filteredApps$: Subject<RecipeDetails[]> = new ReplaySubject<
+    RecipeDetails[]
+  >(1);
+
+  getSearchResults(): Observable<RecipeDetails[]> {
+    return this.filteredApps$.asObservable();
+  }
+
+  search(searchTerm: string, recipes: RecipeDetails[]): Observable<void> {
+    return this.fetchApps(recipes).pipe(
+      tap((apps: RecipeDetails[]) => {
+        const researchResult: RecipeDetails[] = [];
+        apps.forEach((recipe) => {
+          if (
+            recipe.nomRecette
+              .toLowerCase()
+              .indexOf(searchTerm.toLowerCase()) !== -1
+          ) {
+            if (!researchResult.includes(recipe)) {
+              researchResult.push(recipe);
+            }
+          }
+          recipe.ingredients.forEach((ingredient) => {
+            if (
+              ingredient.nomIngredient
+                .toLowerCase()
+                .indexOf(searchTerm.toLowerCase()) !== -1
+            ) {
+              if (!researchResult.includes(recipe)) {
+                researchResult.push(recipe);
+              }
+            }
+          });
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  private fetchApps(recipes: RecipeDetails[]): Observable<RecipeDetails[]> {
+    if (recipes) {
+      return of(recipes);
+    }
   }
 }

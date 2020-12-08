@@ -1,39 +1,38 @@
 #menu {
-    margin-top: 2em;
+  margin-top: 2em;
 }
 
 #paginationRecette {
-    padding-top: 4em;
-    margin: auto;
-    margin-bottom: 4em;
-    text-align: center;
+  padding-top: 4em;
+  margin: auto;
+  margin-bottom: 4em;
+  text-align: center;
 }
 
 #logoRecette {
-    display: flex;
-    position: absolute;
-    bottom: 27px;
-    left: 24px;
-    right: 24px;
-    color: white;
-    justify-content: space-between;
-    //background-color: rgba(0, 0, 0, 0.35)
+  display: flex;
+  position: absolute;
+  bottom: 27px;
+  left: 24px;
+  right: 24px;
+  color: white;
+  justify-content: space-between;
+  //background-color: rgba(0, 0, 0, 0.35)
 }
 
 .logo {
-    margin: .5em;
+  margin: 0.5em;
 }
 
 #photo {
-    background-size: cover;
-    background-position: center;
-    box-shadow: inset 30em 30em rgba(0, 0, 0, 0.35);
-    //background-color: rgba(0, 0, 0, 0.35)
+  background-size: cover;
+  background-position: center;
+  box-shadow: inset 30em 30em rgba(0, 0, 0, 0.35);
+  //background-color: rgba(0, 0, 0, 0.35)
 }
 
 // FONT
-$font: "Roboto",
-sans-serif;
+$font: "Roboto", sans-serif;
 // COLORS
 $white: #fff;
 $black: #212129;
@@ -41,209 +40,202 @@ $gray: #9b9b9b;
 $heart: #c2567f;
 $button: #154360;
 pagination-controls::ng-deep .ngx-pagination .current {
-    background: $button;
-    border-radius: 60px;
+  background: $button;
+  border-radius: 60px;
 }
 
 #textlogo {
-    font-family: "proxima_nova_rgregular";
-    text-transform: uppercase;
-    color: $white;
-    font-size: medium;
+  font-family: "proxima_nova_rgregular";
+  text-transform: uppercase;
+  color: $white;
+  font-size: medium;
 }
 
 #coeur {
-    a {
-        color: $heart;
-    }
+  a {
+    color: $heart;
+  }
 }
 
 .lineCard {
-    background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
 }
 
 #btn {
-    background: transparent;
-    border: none;
+  background: transparent;
+  border: none;
 }
 
 .btn {
-    background-color: $button;
+  background-color: $button;
 }
 
 a {
-    color: $button;
+  color: $button;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 #titleRecipe {
-    display: inherit;
-    margin-left: auto;
-    margin-right: auto;
-    //display: flex;
-    position: absolute;
-    bottom: 97px;
-    left: 24px;
-    right: 24px;
-    border-bottom-color: white;
-    border-bottom-style: outset;
+  display: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  //display: flex;
+  position: absolute;
+  bottom: 97px;
+  left: 24px;
+  right: 24px;
+  border-bottom-color: white;
+  border-bottom-style: outset;
 }
 
 h3 {
-    height: 100px;
-    vertical-align: middle;
-    display: table-cell;
-    font-family: "PeachesandCreamRegularW00";
-    font-size: 60px;
-    color: $white;
-    font: normal normal bold 28px/35px cookie, cursive;
+  height: 100px;
+  vertical-align: middle;
+  display: table-cell;
+  font-family: "PeachesandCreamRegularW00";
+  font-size: 60px;
+  color: $white;
+  font: normal normal bold 28px/35px cookie, cursive;
 }
 
 p {
-    text-align: center;
+  text-align: center;
 }
 
 i {
-    display: inline;
+  display: inline;
 }
 
 .form-control {
-    width: initial;
+  width: initial;
 }
 
 input {
-    font-size: 20 px;
+  font-size: 20 px;
 }
 
 .row {
-    margin-left: inherit;
-    margin-right: inherit;
+  margin-left: inherit;
+  margin-right: inherit;
 }
 
 .card {
-    height: 450px;
-    min-height: 450px;
+  height: 450px;
+  min-height: 450px;
+  position: relative;
+  background: $white;
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0px 0px 30px 2px #000;
+  .header,
+  #photo {
+    min-height: 100%;
+    .icon a .fa-heart-o,
+    .fa-heart {
+      position: absolute;
+      left: 85%;
+      bottom: 30.7%;
+      background: $heart;
+      color: $white;
+      font-size: 1.3em;
+      font-weight: bold;
+      padding: 15px;
+      border-radius: 50%;
+      box-shadow: 0px 5px 30px 1px $heart;
+    }
+  }
+  .text {
+    .food {
+      color: $black;
+      text-align: left;
+      font-weight: normal;
+      text-transform: uppercase;
+      //letter-spacing: 0.1em;
+      margin: 5px 30px;
+    }
+    .fa-clock-o,
+    .fa-users,
+    #coeur,
+    #vue {
+      color: $gray;
+      margin: 0 10px;
+    }
+  }
+  a.btn {
+    display: block;
+    background: $button;
+    color: $white;
     position: relative;
-    background: $white;
-    max-width: 500px;
-    margin: 20px auto;
-    box-shadow: 0px 0px 30px 2px #000;
-    .header,
-    #photo {
-        min-height: 100%;
-        .icon a .fa-heart-o,
-        .fa-heart {
-            position: absolute;
-            left: 85%;
-            bottom: 30.7%;
-            background: $heart;
-            color: $white;
-            font-size: 1.3em;
-            font-weight: bold;
-            padding: 15px;
-            border-radius: 50%;
-            box-shadow: 0px 5px 30px 1px $heart;
-        }
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-align: center;
+    padding: 10px;
+    transition: 250ms;
+    &:hover {
+      background: $heart;
+      transition: 250ms;
     }
-    .text {
-        .food {
-            color: $black;
-            text-align: left;
-            font-weight: normal;
-            text-transform: uppercase;
-            //letter-spacing: 0.1em;
-            margin: 5px 30px;
-        }
-        .fa-clock-o,
-        .fa-users,
-        #coeur,
-        #vue {
-            color: $gray;
-            margin: 0 10px;
-        }
-    }
-    a.btn {
-        display: block;
-        background: $button;
-        color: $white;
-        position: relative;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        text-align: center;
-        padding: 10px;
-        transition: 250ms;
-        &:hover {
-            background: $heart;
-            transition: 250ms;
-        }
-    }
-}
-
-.text-center {
-    margin-bottom: 1em;
+  }
 }
 
 .form-control {
-    display: inline;
+  display: inline;
 }
 
 //bulle infos
 .picto-item {
-    position: relative;
-    /*les .picto-item deviennent référents*/
-    cursor: help;
-    border-radius: 50%;
+  position: relative;
+  /*les .picto-item deviennent référents*/
+  cursor: help;
+  border-radius: 50%;
 }
-
 
 /* on génère un élément :after lors du survol et du focus :*/
 
 .picto-item:hover:after,
 .picto-item:focus:after {
-    content: attr(aria-label);
-    /* on affiche aria-label */
-    position: absolute;
-    top: -2.4em;
-    left: 50%;
-    transform: translateX(-50%);
-    /* on centre horizontalement  */
-    z-index: 1;
-    /* pour s'afficher au dessus des éléments en position relative */
-    white-space: normal;
-    /* on interdit le retour à la ligne*/
-    padding: 5px 14px;
-    background: #413219;
-    color: #fff;
-    border-radius: 4px;
-    font-size: 1.2rem;
+  content: attr(aria-label);
+  /* on affiche aria-label */
+  position: absolute;
+  top: -2.4em;
+  left: 50%;
+  transform: translateX(-50%);
+  /* on centre horizontalement  */
+  z-index: 1;
+  /* pour s'afficher au dessus des éléments en position relative */
+  white-space: normal;
+  /* on interdit le retour à la ligne*/
+  padding: 5px 14px;
+  background: #413219;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 1.2rem;
 }
-
 
 /* on génère un second élément en :before pour la flèche */
 
 [aria-label]:hover:before,
 [aria-label]:focus:before {
-    content: "▼";
-    position: absolute;
-    top: -1em;
-    left: 50%;
-    transform: translateX(-50%);
-    /* on centre horizontalement  */
-    font-size: 20px;
-    color: #413219;
+  content: "▼";
+  position: absolute;
+  top: -1em;
+  left: 50%;
+  transform: translateX(-50%);
+  /* on centre horizontalement  */
+  font-size: 20px;
+  color: #413219;
 }
-
 
 /* pas de contour durant le :focus */
 
 [aria-label]:focus {
-    outline: none;
+  outline: none;
 }
 
 #vege {
-    font-size: inherit;
-    margin-left: 0.5em;
+  font-size: inherit;
+  margin-left: 0.5em;
 }

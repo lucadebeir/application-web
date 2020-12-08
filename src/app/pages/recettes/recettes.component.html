@@ -1,20 +1,12 @@
 <ul id="menu" class="nav justify-content-center">
   <li class="nav justify-content-center">
-    <a
-      class="nav-link active"
-      routerLink="/allRecipes"
-      (click)="getAllRecipes()"
-      >Toutes les recettes</a
-    >
+    <a class="nav-link active" (click)="getAllRecipes()">Toutes les recettes</a>
   </li>
 
   <li class="nav-item" *ngFor="let categ of categories">
-    <a
-      class="nav-link"
-      routerLink="/allRecipes"
-      (click)="getRecipeByCategory(categ.idCategorie)"
-      >{{ categ.libelleCategorie }}</a
-    >
+    <a class="nav-link" (click)="getRecipeByCategory(categ.idCategorie)">{{
+      categ.libelleCategorie
+    }}</a>
   </li>
   <!--<li>
         <form class="form-inline my-2 my-lg-0">
@@ -28,27 +20,16 @@
 
 <ul class="nav justify-content-center">
   <li>
-    <form
-      class="form-inline"
-      [formGroup]="researchForm"
-      (ngSubmit)="research()"
-    >
-      <div class="col text-center">
-        <input
-          class="form-control"
-          type="search"
-          placeholder="Recette, ingrédient.."
-          aria-label="Search"
-          formControlName="filter"
-          (click)="ngOnChanges()"
-        />
-      </div>
-      <div class="col text-center">
-        <button id="validateButton" type="submit" class="btn btn-primary">
-          Rechercher
-        </button>
-      </div>
-    </form>
+    <div class="col text-center">
+      <input
+        class="form-control"
+        type="search"
+        placeholder="Recette, ingrédient.."
+        aria-label="Search"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearchTermChange()"
+      />
+    </div>
   </li>
 </ul>
 
@@ -58,7 +39,8 @@
   <div
     class="col-lg-4 col-md-6 col-sm-12 p-3"
     *ngFor="
-      let recette of allRecipe
+      let recette of recettes$
+        | async
         | paginate
           : {
               id: 'listing_pagination',

@@ -68,37 +68,64 @@ users.get("/newRecipe/:pseudo/:idRecette", function (req, res) {
         },
       }).then((recette) => {
         if (user && recette) {
-          mailOptions = {
-            //from: 'marinesrecipes@gmail.com',
-            to: user.email,
-            subject: "Nouvelle recette sur de Marine's recipes",
-            generateTextFromHTML: true,
-            html:
-              "<div class='card text-center'>" +
-              "Bonjour " +
-              user.pseudo +
-              ", " +
-              "<br>" +
-              "Une nouvelle recette est disponible sur Marine's recipes : " +
-              "<br>" +
-              "<h3>" +
-              recette.nomRecette +
-              "</h3>" +
-              "<br>" +
-              recette.mot +
-              "<a href=" +
-              link +
-              " class='btn btn-primary'>Découvrir la recette </a>" +
-              "<br>" +
-              "Bonne journée," +
-              "<br>" +
-              "Marine." +
-              "</div>",
-          };
-          smtpTransport.sendMail(mailOptions, (error, response) => {
-            error ? console.log(error) : console.log(response);
-            smtpTransport.close();
-          });
+          db.sequelize
+            .query(
+              "SELECT images.* FROM images, illustrerRecettes, recettes WHERE recettes.idRecette = illustrerRecettes.idRecette AND illustrerRecettes.idImage = images.idImage AND recettes.idRecette=?",
+              {
+                replacements: [req.params.idRecette],
+                type: sequelize.QueryTypes.SELECT,
+              }
+            )
+            .then((resultats) => {
+              console.log(resultats);
+              mailOptions = {
+                //from: 'marinesrecipes@gmail.com',
+                to: user.email,
+                subject: "Nouvelle recette sur de Marine's recipes",
+                generateTextFromHTML: true,
+                html:
+                  "<div class='card text-center'>" +
+                  "Bonjour " +
+                  user.pseudo +
+                  ", " +
+                  "<br>" +
+                  "<br>" +
+                  "Une nouvelle recette est disponible sur Marine's recipes : " +
+                  "<br>" +
+                  "<h3>" +
+                  recette.nomRecette +
+                  "</h3>" +
+                  "<br>" +
+                  "<br>" +
+                  "<img src='cid:uniq-mailtrap.png'/>" +
+                  "<br>" +
+                  "<br>" +
+                  recette.mot +
+                  "<br>" +
+                  "<br>" +
+                  "<a href=" +
+                  link +
+                  " class='btn btn-primary'>Découvrir la recette </a>" +
+                  "<br>" +
+                  "<br>" +
+                  "Bonne journée," +
+                  "<br>" +
+                  "<br>" +
+                  "Marine." +
+                  "</div>",
+                attachments: [
+                  {
+                    filename: resultats.nameImage,
+                    path: resultats.lienImage,
+                    cid: "uniq-mailtrap.png",
+                  },
+                ],
+              };
+              smtpTransport.sendMail(mailOptions, (error, response) => {
+                error ? console.log(error) : console.log(response);
+                smtpTransport.close();
+              });
+            });
         }
       });
     })
