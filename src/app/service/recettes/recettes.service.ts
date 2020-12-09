@@ -605,6 +605,7 @@ export class RecettesService {
   }
 
   search(searchTerm: string, recipes: RecipeDetails[]): Observable<void> {
+    console.log(recipes);
     return this.fetchApps(recipes).pipe(
       tap((apps: RecipeDetails[]) => {
         const researchResult: RecipeDetails[] = [];

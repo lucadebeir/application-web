@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import {
   RecettesService,
   AuthentificationService,
@@ -401,5 +401,16 @@ export class RecetteComponent implements OnInit {
       type: "favori",
     };
     this.notifService.addNotification(notif).subscribe();
+  }
+
+  //back button
+  @HostListener("window:popstate", ["$event"])
+  onPopState(event) {
+    //localStorage.setItem("backButton", "true");
+    var json = {
+      backButton: true,
+    };
+    localStorage.setItem("backButton", JSON.stringify(json));
+    console.log("Back button pressed");
   }
 }

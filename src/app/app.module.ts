@@ -49,6 +49,13 @@ import { StatistiquesComponent } from "./pages/statistiques/statistiques.compone
 import { AlertModule } from "./_alert";
 import { ToastrModule } from "ngx-toastr";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
+import {
+  MatDialogModule,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from "@angular/material/dialog";
+import { MatButtonModule } from "@angular/material/button";
+import { FilterRecettesComponent } from "./pages/filter-recettes/filter-recettes.component";
 
 @NgModule({
   declarations: [
@@ -78,6 +85,7 @@ import { BsDropdownModule } from "ngx-bootstrap/dropdown";
     GererLeMenuComponent,
     MenuComponent,
     StatistiquesComponent,
+    FilterRecettesComponent,
   ],
   imports: [
     BsDropdownModule.forRoot(),
@@ -99,6 +107,8 @@ import { BsDropdownModule } from "ngx-bootstrap/dropdown";
       disableTimeOut: true,
       positionClass: "toast-top-left",
     }),
+    MatDialogModule,
+    MatButtonModule,
   ],
   providers: [
     AuthGuardService,
@@ -106,7 +116,10 @@ import { BsDropdownModule } from "ngx-bootstrap/dropdown";
     RecettesService,
     AdminAuthService,
     NgxImageCompressService,
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] },
   ],
   bootstrap: [AppComponent],
+  entryComponents: [FilterRecettesComponent],
 })
 export class AppModule {}

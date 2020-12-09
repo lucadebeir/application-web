@@ -1,4 +1,11 @@
-import { Component, OnInit, OnChanges } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  HostListener,
+  OnDestroy,
+  Inject,
+} from "@angular/core";
 import { Observable, combineLatest } from "rxjs";
 import { map, startWith } from "rxjs/operators";
 import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
@@ -14,13 +21,15 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
+import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
+import { FilterRecettesComponent } from "../filter-recettes/filter-recettes.component";
 
 @Component({
   selector: "app-recettes",
   templateUrl: "./recettes.component.html",
   styleUrls: ["./recettes.component.scss"],
 })
-export class RecettesComponent implements OnInit {
+export class RecettesComponent implements OnInit, OnDestroy {
   page = 1;
 
   public actualCategory: number = null;
@@ -38,6 +47,8 @@ export class RecettesComponent implements OnInit {
   public allRecipe: RecipeDetails[];
   currentPage: number;
 
+  check: boolean = true;
+
   //recherche dynamique
   searchTerm = "";
   public recettes$: Observable<
@@ -52,17 +63,9 @@ export class RecettesComponent implements OnInit {
     private imagesService: ImagesService,
     private categoriesService: CategoriesService,
     private favorisService: FavorisService,
-    private notifService: NotificationService
+    private notifService: NotificationService,
+    public matDialog: MatDialog
   ) {
-    if (this.route.snapshot.paramMap.get("id")) {
-      this.getRecipeByCategory(this.route.snapshot.paramMap.get("id"));
-    } else {
-      this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
-        this.allRecipe = data;
-        this.recetteService.search(this.searchTerm, data).subscribe();
-      });
-    }
-
     if (this.auth.isLoggedIn()) {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
       this.getFavoris();
@@ -85,7 +88,73 @@ export class RecettesComponent implements OnInit {
   }
 
   // dans ngOnInit on récupère les données à afficher au lancement de la page
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(JSON.parse(localStorage.getItem("value")));
+    if (JSON.parse(localStorage.getItem("value"))) {
+      if (JSON.parse(localStorage.getItem("backButton")).backButton) {
+        this.currentPage = JSON.parse(localStorage.getItem("value")).current;
+        window.scrollTo(
+          0,
+          JSON.parse(localStorage.getItem("value")).windowScrollY
+        );
+        this.searchTerm = JSON.parse(localStorage.getItem("value")).search;
+        this.allRecipe = JSON.parse(localStorage.getItem("value")).allRecipe;
+        this.actualCategory = JSON.parse(
+          localStorage.getItem("value")
+        ).actualCategory;
+        if (JSON.parse(localStorage.getItem("value")).actualCategory) {
+          this.getRecipeByCategory(
+            JSON.parse(localStorage.getItem("value")).actualCategory,
+            JSON.parse(localStorage.getItem("value")).current,
+            JSON.parse(localStorage.getItem("value")).allRecipe
+          );
+        } else {
+          this.recetteService
+            .getAllRecipesAndIngredients()
+            .subscribe((data) => {
+              this.allRecipe = data;
+              this.recetteService
+                .search(JSON.parse(localStorage.getItem("value")).search, data)
+                .subscribe();
+            });
+        }
+      } else {
+        this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
+          this.allRecipe = data;
+          this.recetteService.search(this.searchTerm, data).subscribe();
+        });
+      }
+    } else {
+      this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
+        this.allRecipe = data;
+        this.recetteService.search(this.searchTerm, data).subscribe();
+      });
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.check) {
+      localStorage.removeItem("value");
+      localStorage.removeItem("backButton");
+    }
+  }
+
+  openModal() {
+    const dialogConfig = new MatDialogConfig();
+    // The user can't close the dialog by clicking outside its body
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "app-filter-recettes";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "600px";
+    // https://material.angular.io/components/dialog/overview
+    const modalDialog = this.matDialog.open(
+      FilterRecettesComponent,
+      dialogConfig
+    );
+    modalDialog.afterClosed().subscribe((result) => {
+      console.log("The dialog was closed");
+    });
+  }
 
   onSearchTermChange(): void {
     this.recetteService.search(this.searchTerm, this.allRecipe).subscribe();
@@ -101,7 +170,9 @@ export class RecettesComponent implements OnInit {
 
     this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
       this.allRecipe = data;
-      this.recetteService.search(this.searchTerm, data).subscribe();
+      setTimeout(() => {
+        this.recetteService.search(this.searchTerm, data).subscribe();
+      }, 1000);
     });
   }
 
@@ -126,23 +197,41 @@ export class RecettesComponent implements OnInit {
     );
   }
 
-  getRecipeByCategory(idCategorie: any) {
+  getRecipeByCategory(idCategorie: any, currentPage: any, recipes?: any) {
     this.actualCategory = idCategorie;
+    this.currentPage = currentPage;
 
-    this.recetteService.getRecipeByCategory(idCategorie).subscribe((data) => {
-      console.log(data);
-      this.allRecipe = data;
-      this.recetteService.search(this.searchTerm, data).subscribe();
-    });
+    if (recipes) {
+      this.recetteService.search(this.searchTerm, recipes).subscribe();
+    } else {
+      this.recetteService.getRecipeByCategory(idCategorie).subscribe((data) => {
+        console.log(data);
+        this.allRecipe = data;
+        setTimeout(() => {
+          this.recetteService.search(this.searchTerm, data).subscribe();
+        }, 1000);
+      });
+    }
   }
 
   updateNbView(recette: any) {
+    this.check = false;
+    var json = {
+      windowScrollY: window.scrollY,
+      current: this.currentPage,
+      actualCategory: this.actualCategory,
+      search: this.searchTerm,
+      allRecipe: this.allRecipe,
+    };
+    localStorage.setItem("value", JSON.stringify(json));
+    var json2 = {
+      backButton: false,
+    };
+    localStorage.setItem("backButton", JSON.stringify(json2));
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
         this.notificationVue(recette.idRecette);
-        this.router.navigate(["/recipe", recette.idRecette]).then(() => {
-          window.location.reload();
-        });
+        this.router.navigate(["/recipe", recette.idRecette]);
       },
       (err) => {
         if (err instanceof HttpErrorResponse) {
@@ -216,4 +305,15 @@ export class RecettesComponent implements OnInit {
 
 export interface HashTable<T> {
   [key: number]: T;
+}
+
+export interface TimeDetails {
+  libelle: string;
+  filter: boolean;
+  libNum: number;
+}
+
+export interface FilterReturn {
+  categories: CategoryDetails[];
+  times: TimeDetails[];
 }
