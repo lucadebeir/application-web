@@ -240,3 +240,40 @@ input {
   font-size: inherit;
   margin-left: 0.5em;
 }
+
+//checked css
+.example-section {
+  display: inline;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+mat-checkbox ::ng-deep.mat-checkbox-inner-container {
+  position: inherit;
+}
+
+::ng-deep mat-panel-title.mat-expansion-panel-header-title {
+  justify-content: center;
+}
+
+::ng-deep.mat-expansion-panel-body {
+  text-align: center;
+}
+
+.mat-checkbox .mat-checkbox-frame {
+  border-color: black;
+  background-color: #dddddd;
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 18px;
+  height: 18px;
+}

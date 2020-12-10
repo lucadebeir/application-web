@@ -54,6 +54,7 @@ import {
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from "@angular/material/dialog";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatButtonModule } from "@angular/material/button";
 import { FilterRecettesComponent } from "./pages/filter-recettes/filter-recettes.component";
 
@@ -103,12 +104,11 @@ import { FilterRecettesComponent } from "./pages/filter-recettes/filter-recettes
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
     ToastrModule.forRoot({
       disableTimeOut: true,
       positionClass: "toast-top-left",
     }),
-    MatDialogModule,
-    MatButtonModule,
   ],
   providers: [
     AuthGuardService,
@@ -116,8 +116,6 @@ import { FilterRecettesComponent } from "./pages/filter-recettes/filter-recettes
     RecettesService,
     AdminAuthService,
     NgxImageCompressService,
-    { provide: MatDialogRef, useValue: {} },
-    { provide: MAT_DIALOG_DATA, useValue: [] },
   ],
   bootstrap: [AppComponent],
   entryComponents: [FilterRecettesComponent],

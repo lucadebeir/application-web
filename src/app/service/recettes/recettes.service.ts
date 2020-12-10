@@ -79,6 +79,42 @@ export class RecettesService {
     );
   }
 
+  public getAllRecipesAndIngredientsDescNbVue(): Observable<RecipeDetails[]> {
+    const base = this.http.get(`/server/recipe/allRecipes/nbVues/desc`);
+    return base.pipe(
+      map((data: RecipeDetails[]) => {
+        data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
+          this.http
+            .get(`/server/image/${element.idRecette}`)
+            .subscribe((data: any) => {
+              element.lienImage = data[0]?.lienImage;
+            });
+          element.ingredients = [];
+          this.ingredientService
+            .getIngredientsByIdRecette(element.idRecette)
+            .subscribe((data) => {
+              element.ingredients = data;
+            });
+          element.globalTime = addHours(
+            addTimes(element.tempsPreparation, element.tempsCuisson)
+          );
+          this.categoryService
+            .getCategoryByRecette(element.idRecette)
+            .subscribe((data: any) => {
+              data.forEach((categ) => {
+                if (categ?.libelleCategorie === "Végétariennes") {
+                  element.vege = true;
+                }
+              });
+              element.categories = data;
+            });
+        });
+        return data;
+      })
+    );
+  }
+
   public getAllRecipesAndIngredients(): Observable<RecipeDetails[]> {
     const base = this.http.get(`/server/recipe/allRecipes`);
     return base.pipe(
@@ -218,6 +254,7 @@ export class RecettesService {
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
+
           element.ingredients = [];
           this.ingredientService
             .getIngredientsByIdRecette(element.idRecette)
@@ -225,8 +262,57 @@ export class RecettesService {
               element.ingredients = data;
             });
           element.globalTime = addHours(
-            addTimes(element.tempsCuisson, element.tempsPreparation)
+            addTimes(element.tempsPreparation, element.tempsCuisson)
           );
+          this.categoryService
+            .getCategoryByRecette(element.idRecette)
+            .subscribe((data: any) => {
+              data.forEach((categ) => {
+                if (categ?.libelleCategorie === "Végétariennes") {
+                  element.vege = true;
+                }
+              });
+              element.categories = data;
+            });
+        });
+        return data;
+      })
+    );
+  }
+
+  public getRecipeByCategoryByNbVues(
+    idCategorie: any
+  ): Observable<RecipeDetails[]> {
+    const base = this.http.get(`/server/recipe/nbVues/category/${idCategorie}`);
+    return base.pipe(
+      map((data: RecipeDetails[]) => {
+        data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
+          this.http
+            .get(`/server/image/${element.idRecette}`)
+            .subscribe((data: any) => {
+              element.lienImage = data[0]?.lienImage;
+            });
+
+          element.ingredients = [];
+          this.ingredientService
+            .getIngredientsByIdRecette(element.idRecette)
+            .subscribe((data) => {
+              element.ingredients = data;
+            });
+          element.globalTime = addHours(
+            addTimes(element.tempsPreparation, element.tempsCuisson)
+          );
+          this.categoryService
+            .getCategoryByRecette(element.idRecette)
+            .subscribe((data: any) => {
+              data.forEach((categ) => {
+                if (categ?.libelleCategorie === "Végétariennes") {
+                  element.vege = true;
+                }
+              });
+              element.categories = data;
+            });
         });
         return data;
       })
@@ -605,7 +691,6 @@ export class RecettesService {
   }
 
   search(searchTerm: string, recipes: RecipeDetails[]): Observable<void> {
-    console.log(recipes);
     return this.fetchApps(recipes).pipe(
       tap((apps: RecipeDetails[]) => {
         const researchResult: RecipeDetails[] = [];

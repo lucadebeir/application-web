@@ -1,14 +1,5 @@
-import {
-  Component,
-  OnInit,
-  OnChanges,
-  HostListener,
-  OnDestroy,
-  Inject,
-} from "@angular/core";
-import { Observable, combineLatest } from "rxjs";
-import { map, startWith } from "rxjs/operators";
-import { FormControl, FormGroup, FormBuilder } from "@angular/forms";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Observable } from "rxjs";
 import {
   RecettesService,
   AuthentificationService,
@@ -23,6 +14,7 @@ import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { FilterRecettesComponent } from "../filter-recettes/filter-recettes.component";
+import { addTimes2 } from "../../utils/Utils";
 
 @Component({
   selector: "app-recettes",
@@ -45,21 +37,54 @@ export class RecettesComponent implements OnInit, OnDestroy {
   public favoris: number[] = [];
 
   public allRecipe: RecipeDetails[];
-  currentPage: number;
+  currentPage: number = JSON.parse(localStorage.getItem("value"))
+    ? JSON.parse(localStorage.getItem("value")).current
+    : 1;
 
   check: boolean = true;
 
   //recherche dynamique
-  searchTerm = "";
+  searchTerm = JSON.parse(localStorage.getItem("value"))
+    ? JSON.parse(localStorage.getItem("value")).search
+    : "";
   public recettes$: Observable<
     RecipeDetails[]
   > = this.recetteService.getSearchResults();
+
+  //modal
+  checked: boolean = JSON.parse(localStorage.getItem("value"))
+    ? JSON.parse(localStorage.getItem("value")).checked
+    : true;
+  recent: boolean = JSON.parse(localStorage.getItem("value"))
+    ? JSON.parse(localStorage.getItem("value")).recent
+    : true;
+  populaire: boolean = JSON.parse(localStorage.getItem("value"))
+    ? JSON.parse(localStorage.getItem("value")).populaire
+    : false;
+  times: TimeDetails[] = JSON.parse(localStorage.getItem("value"))
+    ? JSON.parse(localStorage.getItem("value")).times
+    : [
+        {
+          libelle: "- 15min",
+          filter: false,
+          libNum: 15,
+        },
+        {
+          libelle: "- 30min",
+          filter: false,
+          libNum: 30,
+        },
+        {
+          libelle: "- 45min",
+          filter: false,
+          libNum: 45,
+        },
+      ];
 
   constructor(
     private recetteService: RecettesService,
     private router: Router,
     public auth: AuthentificationService,
-    private route: ActivatedRoute,
     private imagesService: ImagesService,
     private categoriesService: CategoriesService,
     private favorisService: FavorisService,
@@ -70,21 +95,6 @@ export class RecettesComponent implements OnInit, OnDestroy {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
       this.getFavoris();
     }
-
-    this.categoriesService
-      .getAllCategory()
-      .subscribe((categorie: CategoryDetails[]) => {
-        this.categories = categorie;
-        categorie.forEach((data) => {
-          this.recetteService
-            .getRecipeByCategory(data.idCategorie)
-            .subscribe((recipes) => {
-              this.recipeCategory = recipes;
-              this.recipeByCategory[data.idCategorie] = this.recipeCategory;
-            });
-        });
-      });
-    this.currentPage = 1;
   }
 
   // dans ngOnInit on récupère les données à afficher au lancement de la page
@@ -92,44 +102,53 @@ export class RecettesComponent implements OnInit, OnDestroy {
     console.log(JSON.parse(localStorage.getItem("value")));
     if (JSON.parse(localStorage.getItem("value"))) {
       if (JSON.parse(localStorage.getItem("backButton")).backButton) {
-        this.currentPage = JSON.parse(localStorage.getItem("value")).current;
         window.scrollTo(
           0,
           JSON.parse(localStorage.getItem("value")).windowScrollY
         );
-        this.searchTerm = JSON.parse(localStorage.getItem("value")).search;
         this.allRecipe = JSON.parse(localStorage.getItem("value")).allRecipe;
-        this.actualCategory = JSON.parse(
-          localStorage.getItem("value")
-        ).actualCategory;
-        if (JSON.parse(localStorage.getItem("value")).actualCategory) {
-          this.getRecipeByCategory(
-            JSON.parse(localStorage.getItem("value")).actualCategory,
-            JSON.parse(localStorage.getItem("value")).current,
-            JSON.parse(localStorage.getItem("value")).allRecipe
-          );
-        } else {
-          this.recetteService
-            .getAllRecipesAndIngredients()
-            .subscribe((data) => {
-              this.allRecipe = data;
-              this.recetteService
-                .search(JSON.parse(localStorage.getItem("value")).search, data)
-                .subscribe();
-            });
-        }
+        this.categories = JSON.parse(localStorage.getItem("value")).categories;
       } else {
         this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
           this.allRecipe = data;
           this.recetteService.search(this.searchTerm, data).subscribe();
         });
+        this.categoriesService
+          .getAllCategory()
+          .subscribe((categorie: CategoryDetails[]) => {
+            categorie.forEach((data) => {
+              data.checked = false;
+              this.recetteService
+                .getRecipeByCategory(data.idCategorie)
+                .subscribe((recipes) => {
+                  this.recipeCategory = recipes;
+                  this.recipeByCategory[data.idCategorie] = this.recipeCategory;
+                });
+            });
+            this.categories = categorie;
+          });
       }
     } else {
       this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
         this.allRecipe = data;
         this.recetteService.search(this.searchTerm, data).subscribe();
       });
+      this.categoriesService
+        .getAllCategory()
+        .subscribe((categorie: CategoryDetails[]) => {
+          categorie.forEach((data) => {
+            data.checked = false;
+            this.recetteService
+              .getRecipeByCategory(data.idCategorie)
+              .subscribe((recipes) => {
+                this.recipeCategory = recipes;
+                this.recipeByCategory[data.idCategorie] = this.recipeCategory;
+              });
+          });
+          this.categories = categorie;
+        });
     }
+    this.filterRecipes();
   }
 
   ngOnDestroy() {
@@ -141,19 +160,104 @@ export class RecettesComponent implements OnInit, OnDestroy {
 
   openModal() {
     const dialogConfig = new MatDialogConfig();
-    // The user can't close the dialog by clicking outside its body
     dialogConfig.disableClose = true;
-    dialogConfig.id = "app-filter-recettes";
-    dialogConfig.height = "350px";
+    dialogConfig.id = "modal-component";
+    dialogConfig.height = "450px";
     dialogConfig.width = "600px";
-    // https://material.angular.io/components/dialog/overview
+    dialogConfig.data = {
+      populaire: this.populaire,
+      checked: this.checked,
+      times: this.times,
+      categories: this.categories,
+      recent: this.recent,
+    };
     const modalDialog = this.matDialog.open(
       FilterRecettesComponent,
       dialogConfig
     );
     modalDialog.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed");
+      this.categories = result.categories;
+      this.checked = result.checked;
+      this.populaire = result.populaire;
+      this.recent = result.recent;
+      this.times = result.times;
+      this.filterRecipes();
     });
+  }
+
+  filterRecipes() {
+    if (this.populaire) {
+      this.recetteService
+        .getAllRecipesAndIngredientsDescNbVue()
+        .subscribe((data) => {
+          this.allRecipe = data;
+          this.researchFilter(data);
+        });
+    } else {
+      this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
+        this.allRecipe = data;
+        this.researchFilter(data);
+      });
+    }
+  }
+
+  researchFilter(data: RecipeDetails[]) {
+    this.currentPage = JSON.parse(localStorage.getItem("value"))
+      ? JSON.parse(localStorage.getItem("value")).current
+      : 1;
+    let reset: boolean = false;
+    let researchResult: RecipeDetails[] = [];
+    let researchResultFinal: RecipeDetails[] = [];
+
+    if (this.checked) {
+      researchResult = data;
+      reset = true;
+    } else {
+      this.categories.forEach((element) => {
+        if (element.checked) {
+          this.recetteService
+            .getRecipeByCategoryByNbVues(element.idCategorie)
+            .subscribe((recipes) => {
+              recipes.forEach((recipe) => {
+                researchResult.push(recipe);
+              });
+            });
+        }
+      });
+    }
+
+    this.times.forEach((element) => {
+      if (element.filter) {
+        researchResult.forEach((recipe) => {
+          if (
+            addTimes2(
+              recipe.tempsCuisson,
+              recipe.tempsPreparation
+            ).getMinutes() < element.libNum &&
+            addTimes2(
+              recipe.tempsCuisson,
+              recipe.tempsPreparation
+            ).getHours() === 0
+          ) {
+            researchResultFinal.push(recipe);
+          }
+        });
+      }
+    });
+
+    if (researchResultFinal.length == 0) {
+      this.allRecipe = researchResult;
+      setTimeout(() => {
+        this.recetteService.search(this.searchTerm, researchResult).subscribe();
+      }, 2000);
+    } else {
+      this.allRecipe = researchResultFinal;
+      setTimeout(() => {
+        this.recetteService
+          .search(this.searchTerm, researchResultFinal)
+          .subscribe();
+      }, 2000);
+    }
   }
 
   onSearchTermChange(): void {
@@ -197,9 +301,9 @@ export class RecettesComponent implements OnInit, OnDestroy {
     );
   }
 
-  getRecipeByCategory(idCategorie: any, currentPage: any, recipes?: any) {
+  getRecipeByCategory(idCategorie: any, currentPage?: any, recipes?: any) {
     this.actualCategory = idCategorie;
-    this.currentPage = currentPage;
+    this.currentPage = currentPage ? currentPage : 1;
 
     if (recipes) {
       this.recetteService.search(this.searchTerm, recipes).subscribe();
@@ -219,9 +323,13 @@ export class RecettesComponent implements OnInit, OnDestroy {
     var json = {
       windowScrollY: window.scrollY,
       current: this.currentPage,
-      actualCategory: this.actualCategory,
       search: this.searchTerm,
       allRecipe: this.allRecipe,
+      checked: this.checked,
+      populaire: this.populaire,
+      recent: this.recent,
+      categories: this.categories,
+      times: this.times,
     };
     localStorage.setItem("value", JSON.stringify(json));
     var json2 = {

@@ -6,6 +6,7 @@ import { IngredientsService } from "../ingredients/ingredients.service";
 import { map } from "rxjs/operators";
 import { AuthentificationService } from "../authentification.service";
 import { addTimes, addHours } from "../../utils/Utils";
+import { CategoriesService } from "../categories/categories.service";
 
 @Injectable({
   providedIn: "root",
@@ -14,7 +15,8 @@ export class FavorisService {
   constructor(
     private http: HttpClient,
     private ingredientService: IngredientsService,
-    private auth: AuthentificationService
+    private auth: AuthentificationService,
+    private categoryService: CategoriesService
   ) {}
 
   public addFavoris(newFavori: FavorisDetails): Observable<any> {
@@ -29,6 +31,7 @@ export class FavorisService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -43,6 +46,53 @@ export class FavorisService {
           element.globalTime = addHours(
             addTimes(element.tempsPreparation, element.tempsCuisson)
           );
+          this.categoryService
+            .getCategoryByRecette(element.idRecette)
+            .subscribe((data: any) => {
+              data.forEach((categ) => {
+                if (categ?.libelleCategorie === "Végétariennes") {
+                  element.vege = true;
+                }
+              });
+              element.categories = data;
+            });
+        });
+        return data;
+      })
+    );
+  }
+
+  public getFavorisNbVues(): Observable<RecipeDetails[]> {
+    const pseudo = this.auth.getUserDetails().pseudo;
+    const base = this.http.get(`/server/favorites/recipe/nbVues/${pseudo}`);
+    return base.pipe(
+      map((data: RecipeDetails[]) => {
+        data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
+          this.http
+            .get(`/server/image/${element.idRecette}`)
+            .subscribe((data: any) => {
+              element.lienImage = data[0]?.lienImage;
+            });
+          element.ingredients = [];
+          this.ingredientService
+            .getIngredientsByIdRecette(element.idRecette)
+            .subscribe((data) => {
+              element.ingredients = data;
+            });
+          element.globalTime = addHours(
+            addTimes(element.tempsPreparation, element.tempsCuisson)
+          );
+          this.categoryService
+            .getCategoryByRecette(element.idRecette)
+            .subscribe((data: any) => {
+              data.forEach((categ) => {
+                if (categ?.libelleCategorie === "Végétariennes") {
+                  element.vege = true;
+                }
+              });
+              element.categories = data;
+            });
         });
         return data;
       })
@@ -59,6 +109,7 @@ export class FavorisService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -73,6 +124,57 @@ export class FavorisService {
           element.globalTime = addHours(
             addTimes(element.tempsPreparation, element.tempsCuisson)
           );
+          this.categoryService
+            .getCategoryByRecette(element.idRecette)
+            .subscribe((data: any) => {
+              data.forEach((categ) => {
+                if (categ?.libelleCategorie === "Végétariennes") {
+                  element.vege = true;
+                }
+              });
+              element.categories = data;
+            });
+        });
+        return data;
+      })
+    );
+  }
+
+  public getFavorisByCategoryByNbVues(
+    idCategorie: number
+  ): Observable<RecipeDetails[]> {
+    const pseudo = this.auth.getUserDetails().pseudo;
+    const base = this.http.get(
+      `/server/favorites/recipe/nbVues/${pseudo}/${idCategorie}`
+    );
+    return base.pipe(
+      map((data: RecipeDetails[]) => {
+        data.forEach((element) => {
+          element.nomRecette = decodeURIComponent(element.nomRecette);
+          this.http
+            .get(`/server/image/${element.idRecette}`)
+            .subscribe((data: any) => {
+              element.lienImage = data[0]?.lienImage;
+            });
+          element.ingredients = [];
+          this.ingredientService
+            .getIngredientsByIdRecette(element.idRecette)
+            .subscribe((data) => {
+              element.ingredients = data;
+            });
+          element.globalTime = addHours(
+            addTimes(element.tempsPreparation, element.tempsCuisson)
+          );
+          this.categoryService
+            .getCategoryByRecette(element.idRecette)
+            .subscribe((data: any) => {
+              data.forEach((categ) => {
+                if (categ?.libelleCategorie === "Végétariennes") {
+                  element.vege = true;
+                }
+              });
+              element.categories = data;
+            });
         });
         return data;
       })

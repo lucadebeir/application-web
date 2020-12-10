@@ -40,6 +40,23 @@ recipe.get("/allRecipes/asc", (req, res) => {
     });
 });
 
+//Récupérer toutes les recettes dans l'ordre des plus vues
+recipe.get("/allRecipes/nbVues/desc", (req, res) => {
+  Recipe.findAll({
+    order: [["nbVues", "DESC"]],
+  })
+    .then((recipe) => {
+      if (recipe) {
+        res.json(recipe);
+      } else {
+        res.send("Il n'y a pas de recettes");
+      }
+    })
+    .catch((err) => {
+      res.send("error: " + err);
+    });
+});
+
 //Récupérer la recette depuis son identifiant
 recipe.get("/get/:id", (req, res) => {
   Recipe.findOne({
@@ -117,6 +134,24 @@ recipe.get("/mostPopularRecipes", (req, res) => {
 recipe.get("/category/:idCategorie", (req, res) => {
   let query = db.sequelize.query(
     "SELECT recettes.* FROM recettes INNER JOIN categories INNER JOIN classerDans WHERE classerDans.idCategorie = categories.idCategorie AND classerDans.idRecette = recettes.idRecette AND categories.idCategorie = ? ORDER BY recettes.datePublication DESC",
+    {
+      replacements: [req.params.idCategorie],
+      type: sequelize.QueryTypes.SELECT,
+    }
+  );
+  query
+    .then((resultats) => {
+      res.json(resultats);
+    })
+    .catch((err) => {
+      res.send("error: " + err);
+    });
+});
+
+//Récupérer les recettes d'une catégorie selon nbVue
+recipe.get("/nbVues/category/:idCategorie", (req, res) => {
+  let query = db.sequelize.query(
+    "SELECT recettes.* FROM recettes INNER JOIN categories INNER JOIN classerDans WHERE classerDans.idCategorie = categories.idCategorie AND classerDans.idRecette = recettes.idRecette AND categories.idCategorie = ? ORDER BY recettes.nbVues DESC",
     {
       replacements: [req.params.idCategorie],
       type: sequelize.QueryTypes.SELECT,

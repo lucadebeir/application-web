@@ -1,20 +1,90 @@
 <div id="modal-content-wrapper">
   <header id="modal-header">
-    <h1 id="modal-title">Placeholder title</h1>
+    <h1 id="modal-title">Filtrer les recettes</h1>
   </header>
-  <section id="modal-body">
-    <p>Placeholder description</p>
+  <section id="modal-body" style="display: flex;">
+    <div style="margin-right: 4em;">
+      <p>Catégories :</p>
+      <section
+        class="example-section"
+        *ngFor="let categ of modalData.categories"
+      >
+        <mat-checkbox
+          (click)="clickCheckbox('one')"
+          class="example-margin"
+          [(ngModel)]="categ.checked"
+          >{{ categ.libelleCategorie }}</mat-checkbox
+        >
+      </section>
+      <mat-checkbox
+        (click)="clickCheckbox('all')"
+        class="example-margin"
+        [(ngModel)]="modalData.checked"
+      >
+        Toutes les catégories
+      </mat-checkbox>
+    </div>
+
+    <div style="margin-right: 4em;">
+      <p>Temps :</p>
+      <section class="example-section" *ngFor="let time of modalData.times">
+        <mat-checkbox
+          (click)="clickCheckbox()"
+          class="example-margin"
+          [(ngModel)]="time.filter"
+          >{{ time.libelle }}</mat-checkbox
+        >
+      </section>
+    </div>
+
+    <div style="margin-right: 4em;">
+      <p>Popularité :</p>
+      <section class="example-section">
+        <mat-checkbox
+          (click)="clickCheckbox('populaire')"
+          class="example-margin"
+          [(ngModel)]="modalData.populaire"
+          [checked]="modalData.populaire"
+          >Les plus populaires</mat-checkbox
+        >
+
+        <mat-checkbox
+          (click)="clickCheckbox('recent')"
+          class="example-margin"
+          [(ngModel)]="modalData.recent"
+          [checked]="modalData.recent"
+          >Les plus récentes</mat-checkbox
+        >
+      </section>
+    </div>
   </section>
   <footer id="modal-footer">
     <button
       mat-raised-button
       id="modal-action-button"
+      type="button"
+      class="btn btn-success"
       (click)="actionFunction()"
     >
-      Do it
+      Appliquer
     </button>
-    <button mat-raised-button id="modal-cancel-button" (click)="closeModal()">
-      Go back
+    <button
+      mat-raised-button
+      id="modal-action-button"
+      type="button"
+      class="btn btn-primary"
+      (click)="reset()"
+    >
+      Réinitialiser
+    </button>
+    <button
+      mat-raised-button
+      id="modal-cancel-button"
+      type="button"
+      class="btn btn-danger"
+      (click)="closeModal()"
+    >
+      Annuler
     </button>
   </footer>
 </div>

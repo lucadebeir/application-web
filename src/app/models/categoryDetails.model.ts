@@ -1,5 +1,6 @@
 export interface CategoryDetails {
   idCategorie: number;
   libelleCategorie: string;
-  filter: boolean;
+  filter?: boolean;
+  checked?: boolean;
 }
