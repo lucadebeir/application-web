@@ -37,6 +37,7 @@
     "ngx-mat-select-search": "^2.1.2",
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^13.1.0",
+    "node-emoji": "^1.10.0",
     "nodemailer": "^6.4.6",
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemon": "^2.0.2",

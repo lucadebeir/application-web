@@ -200,13 +200,35 @@ export class MesRecettesComponent implements OnInit {
     } else {
       this.categories.forEach((element) => {
         if (element.checked) {
-          this.favorisService
-            .getFavorisByCategoryByNbVues(element.idCategorie)
-            .subscribe((recipes) => {
-              recipes.forEach((recipe) => {
-                researchResult.push(recipe);
+          if (this.populaire) {
+            this.favorisService
+              .getFavorisByCategoryByNbVues(element.idCategorie)
+              .subscribe((recipes) => {
+                recipes.forEach((recipe) => {
+                  if (
+                    researchResult.findIndex(
+                      (item) => item.idRecette === recipe.idRecette
+                    ) === -1
+                  ) {
+                    researchResult.push(recipe);
+                  }
+                });
               });
-            });
+          } else {
+            this.favorisService
+              .getFavorisByCategory(element.idCategorie)
+              .subscribe((recipes) => {
+                recipes.forEach((recipe) => {
+                  if (
+                    researchResult.findIndex(
+                      (item) => item.idRecette === recipe.idRecette
+                    ) === -1
+                  ) {
+                    researchResult.push(recipe);
+                  }
+                });
+              });
+          }
         }
       });
     }

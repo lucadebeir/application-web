@@ -53,6 +53,7 @@
     "ngx-owl-carousel-o": "^3.0.0",
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^13.1.0",
+    "node-emoji": "^1.10.0",
     "nodemailer": "^6.4.11",
     "nodemailer-smtp-transport": "^2.7.4",
     "owl.carousel": "^2.3.4",

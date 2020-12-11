@@ -4,6 +4,7 @@ const cors = require("cors");
 const db = require("../database/db.js");
 const sequelize = require("sequelize");
 const Recipe = require("../models/Recipe");
+var emoji = require("node-emoji");
 recipe.use(cors());
 
 //Récupérer toutes les recettes
@@ -66,6 +67,7 @@ recipe.get("/get/:id", (req, res) => {
   })
     .then((recipe) => {
       if (recipe) {
+        recipe.nomRecette = emoji.emojify(recipe.nomRecette);
         res.json(recipe);
       } else {
         res.send("Mauvais identifiant");
@@ -200,15 +202,15 @@ recipe.post("/add-recipe", (req, res) => {
       "INSERT INTO recettes (idRecette, nomRecette, datePublication, nbFavoris, nbVues, etapes, nbrePart, libellePart, tempsPreparation, tempsCuisson, astuce, mot) VALUES (NULL, ?, ?, 0, 0, ?, ?, ?, ?, ?, ?, ?) ",
       {
         replacements: [
-          req.sanitize(req.body.nomRecette),
+          emoji.unemojify(req.sanitize(req.body.nomRecette)),
           new Date(),
-          req.sanitize(req.body.etapes),
+          emoji.unemojify(req.sanitize(req.body.etapes)),
           req.sanitize(req.body.nbrePart),
           req.sanitize(req.body.libellePart),
           req.sanitize(req.body.tempsPreparation),
           req.sanitize(req.body.tempsCuisson),
-          req.sanitize(req.body.astuce),
-          req.sanitize(req.body.mot),
+          emoji.unemojify(req.sanitize(req.body.astuce)),
+          emoji.unemojify(req.sanitize(req.body.mot)),
         ],
       }
     )
@@ -261,7 +263,7 @@ recipe.post("/addIngredientAndCategorie", (req, res) => {
 //modifier nom recette
 recipe.put("/name/update", (req, res) => {
   Recipe.update(
-    { nomRecette: req.sanitize(req.body.nomRecette) },
+    { nomRecette: emoji.unemojify(req.sanitize(req.body.nomRecette)) },
     { where: { idRecette: req.body.idRecette } }
   )
     .then(() => {
@@ -273,7 +275,7 @@ recipe.put("/name/update", (req, res) => {
 //modifier étapes recette
 recipe.put("/step/update", (req, res) => {
   Recipe.update(
-    { etapes: req.sanitize(req.body.etapes) },
+    { etapes: emoji.unemojify(req.sanitize(req.body.etapes)) },
     { where: { idRecette: req.body.idRecette } }
   )
     .then(() => {

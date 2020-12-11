@@ -9,8 +9,6 @@ import {
   CreateRecipe,
   IngredientDetails,
   RecipeDetails,
-  Menu,
-  CommentaireDetails,
 } from "../../models";
 import { CategoriesService } from "../categories/categories.service";
 import { IngredientsService } from "../ingredients/ingredients.service";
@@ -30,7 +28,10 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = this.decoder(element.nomRecette);
+          element.mot = this.decoder(element.mot);
+          element.astuce = this.decoder(element.astuce);
+          element.etapes = this.decoder(element.etapes);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -57,7 +58,10 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = this.decoder(element.nomRecette);
+          element.mot = this.decoder(element.mot);
+          element.astuce = this.decoder(element.astuce);
+          element.etapes = this.decoder(element.etapes);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -84,7 +88,10 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = this.decoder(element.nomRecette);
+          element.mot = this.decoder(element.mot);
+          element.astuce = this.decoder(element.astuce);
+          element.etapes = this.decoder(element.etapes);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -120,7 +127,10 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = this.decoder(element.nomRecette);
+          element.mot = this.decoder(element.mot);
+          element.astuce = this.decoder(element.astuce);
+          element.etapes = this.decoder(element.etapes);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -155,7 +165,10 @@ export class RecettesService {
   public getRecipeById(id: any): Observable<any> {
     return this.http.get<any>("/server/recipe/get/" + id).pipe(
       map((element: RecipeDetails) => {
-        element.nomRecette = decodeURIComponent(element.nomRecette);
+        element.nomRecette = this.decoder(element.nomRecette);
+        element.mot = this.decoder(element.mot);
+        element.astuce = this.decoder(element.astuce);
+        element.etapes = this.decoder(element.etapes);
         this.http
           .get(`/server/image/${element.idRecette}`)
           .subscribe((data: any) => {
@@ -181,7 +194,10 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = this.decoder(element.nomRecette);
+          element.mot = this.decoder(element.mot);
+          element.astuce = this.decoder(element.astuce);
+          element.etapes = this.decoder(element.etapes);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -211,7 +227,10 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = this.decoder(element.nomRecette);
+          element.mot = this.decoder(element.mot);
+          element.astuce = this.decoder(element.astuce);
+          element.etapes = this.decoder(element.etapes);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -248,7 +267,10 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = this.decoder(element.nomRecette);
+          element.mot = this.decoder(element.mot);
+          element.astuce = this.decoder(element.astuce);
+          element.etapes = this.decoder(element.etapes);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -287,7 +309,10 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = this.decoder(element.nomRecette);
+          element.mot = this.decoder(element.mot);
+          element.astuce = this.decoder(element.astuce);
+          element.etapes = this.decoder(element.etapes);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -347,7 +372,10 @@ export class RecettesService {
   }
 
   public createRecipe(recipe: CreateRecipe): Observable<any> {
-    recipe.nomRecette = encodeURIComponent(recipe.nomRecette);
+    recipe.nomRecette = this.encoder(recipe.nomRecette);
+    recipe.mot = this.encoder(recipe.mot);
+    recipe.astuce = this.encoder(recipe.astuce);
+    recipe.etapes = this.encoder(recipe.etapes);
     const res = this.http.post("/server/recipe/add-recipe", recipe);
     return res.pipe(
       map((res) => {
@@ -392,7 +420,7 @@ export class RecettesService {
   }
 
   public updateRecipeName(recette: RecipeDetails): Observable<any> {
-    recette.nomRecette = encodeURIComponent(recette.nomRecette);
+    recette.nomRecette = this.encoder(recette.nomRecette);
     return this.http.put(`/server/recipe/name/update`, recette).pipe(
       map((data: RecipeDetails) => {
         return data;
@@ -401,6 +429,7 @@ export class RecettesService {
   }
 
   public updateSteps(recette: RecipeDetails): Observable<any> {
+    recette.etapes = this.encoder(recette.etapes);
     return this.http.put(`/server/recipe/step/update`, recette).pipe(
       map((data: RecipeDetails) => {
         return data;
@@ -409,6 +438,7 @@ export class RecettesService {
   }
 
   public updateAstuce(recette: RecipeDetails): Observable<any> {
+    recette.astuce = this.encoder(recette.astuce);
     return this.http.put(`/server/recipe/astuce/update`, recette).pipe(
       map((data: RecipeDetails) => {
         return data;
@@ -417,6 +447,7 @@ export class RecettesService {
   }
 
   public updateDescription(recette: RecipeDetails): Observable<any> {
+    recette.mot = this.encoder(recette.mot);
     return this.http.put(`/server/recipe/description/update`, recette).pipe(
       map((data: RecipeDetails) => {
         return data;
@@ -498,7 +529,10 @@ export class RecettesService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = this.decoder(element.nomRecette);
+          element.mot = this.decoder(element.mot);
+          element.astuce = this.decoder(element.astuce);
+          element.etapes = this.decoder(element.etapes);
           this.http
             .get(`/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -523,7 +557,10 @@ export class RecettesService {
   public getPetitDej(): Observable<any> {
     return this.http.get<any>("/server/menu/petitDej").pipe(
       map((element: any) => {
-        element.nomRecette = decodeURIComponent(element.nomRecette);
+        element.nomRecette = this.decoder(element.nomRecette);
+        element.mot = this.decoder(element.mot);
+        element.astuce = this.decoder(element.astuce);
+        element.etapes = this.decoder(element.etapes);
         this.http
           .get(`/server/image/${element[0].idRecette}`)
           .subscribe((data: any) => {
@@ -547,7 +584,10 @@ export class RecettesService {
   public getRepas(): Observable<any> {
     return this.http.get<any>("/server/menu/repas").pipe(
       map((element: any) => {
-        element.nomRecette = decodeURIComponent(element.nomRecette);
+        element.nomRecette = this.decoder(element.nomRecette);
+        element.mot = this.decoder(element.mot);
+        element.astuce = this.decoder(element.astuce);
+        element.etapes = this.decoder(element.etapes);
         this.http
           .get(`/server/image/${element[0].idRecette}`)
           .subscribe((data: any) => {
@@ -571,7 +611,10 @@ export class RecettesService {
   public getDouceur(): Observable<any> {
     return this.http.get<any>("/server/menu/douceur").pipe(
       map((element: any) => {
-        element.nomRecette = decodeURIComponent(element.nomRecette);
+        element.nomRecette = this.decoder(element.nomRecette);
+        element.mot = this.decoder(element.mot);
+        element.astuce = this.decoder(element.astuce);
+        element.etapes = this.decoder(element.etapes);
         this.http
           .get(`/server/image/${element[0].idRecette}`)
           .subscribe((data: any) => {
@@ -726,5 +769,16 @@ export class RecettesService {
     if (recipes) {
       return of(recipes);
     }
+  }
+
+  //encoder et décoder
+  private encoder(text: any) {
+    let res = encodeURI(text);
+    return encodeURIComponent(res);
+  }
+
+  private decoder(text: any) {
+    let res = decodeURIComponent(text);
+    return decodeURI(res);
   }
 }

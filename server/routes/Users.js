@@ -81,7 +81,7 @@ users.get("/newRecipe/:pseudo/:idRecette", function (req, res) {
               mailOptions = {
                 //from: 'marinesrecipes@gmail.com',
                 to: user.email,
-                subject: "Nouvelle recette sur de Marine's recipes",
+                subject: "Nouvelle recette sur Marine's recipes",
                 generateTextFromHTML: true,
                 html:
                   "<div class='card text-center'>" +

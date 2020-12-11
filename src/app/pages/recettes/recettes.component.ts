@@ -176,6 +176,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
       dialogConfig
     );
     modalDialog.afterClosed().subscribe((result) => {
+      console.log(result);
       this.categories = result.categories;
       this.checked = result.checked;
       this.populaire = result.populaire;
@@ -215,19 +216,42 @@ export class RecettesComponent implements OnInit, OnDestroy {
     } else {
       this.categories.forEach((element) => {
         if (element.checked) {
-          this.recetteService
-            .getRecipeByCategoryByNbVues(element.idCategorie)
-            .subscribe((recipes) => {
-              recipes.forEach((recipe) => {
-                researchResult.push(recipe);
+          if (this.populaire) {
+            this.recetteService
+              .getRecipeByCategoryByNbVues(element.idCategorie)
+              .subscribe((recipes) => {
+                recipes.forEach((recipe) => {
+                  if (
+                    researchResult.findIndex(
+                      (item) => item.idRecette === recipe.idRecette
+                    ) === -1
+                  ) {
+                    researchResult.push(recipe);
+                  }
+                });
               });
-            });
+          } else {
+            this.recetteService
+              .getRecipeByCategory(element.idCategorie)
+              .subscribe((recipes) => {
+                recipes.forEach((recipe) => {
+                  if (
+                    researchResult.findIndex(
+                      (item) => item.idRecette === recipe.idRecette
+                    ) === -1
+                  ) {
+                    researchResult.push(recipe);
+                  }
+                });
+              });
+          }
         }
       });
     }
 
     this.times.forEach((element) => {
       if (element.filter) {
+        console.log("lol");
         researchResult.forEach((recipe) => {
           if (
             addTimes2(
