@@ -1,148 +1,141 @@
 #titre {
-    text-align: center;
-    margin-top: 2em;
+  text-align: center;
+  margin-top: 2em;
 }
 
 #menu {
-    margin-top: 5em;
+  margin-top: 5em;
 }
 
 #paginationRecette {
-    padding-top: 4em;
-    margin: auto;
-    margin-bottom: 4em;
-    text-align: center;
+  padding-top: 4em;
+  margin: auto;
+  margin-bottom: 4em;
+  text-align: center;
 }
 
 pagination-controls::ng-deep .ngx-pagination .current {
-    background: #154360;
-    border-radius: 60px;
+  background: #154360;
+  border-radius: 60px;
 }
 
 .item1 {
-    background: #312450;
+  background: #312450;
 }
 
 .element2 {
-    justify-content: center;
+  justify-content: center;
 }
 
 ul {
-    justify-content: center;
-    list-style: none;
-    padding-inline-start: inherit;
-    text-align: center;
+  justify-content: center;
+  list-style: none;
+  padding-inline-start: inherit;
+  text-align: center;
+  position: relative;
+  li {
     position: relative;
-    li {
-        position: relative;
-        a {
-            line-height: 2;
-            text-transform: uppercase;
-            text-decoration: none;
-            //letter-spacing: 0.4em;
-            color: rgba(#fff, 0.35);
-            display: block;
-            transition: all ease-out 300ms;
-        }
-        &.active a {
-            color: white;
-        }
-        &:not(.active)::after {
-            opacity: 0.2;
-        }
-        &:not(.active):hover a {
-            color: rgba(#fff, 0.75);
-        }
-        &::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 0.2em;
-            background: black;
-            left: 0;
-            bottom: 0;
-            background-image: linear-gradient(to right, #5e42a6, #b74e91);
-        }
+    a {
+      line-height: 2;
+      text-transform: uppercase;
+      text-decoration: none;
+      //letter-spacing: 0.4em;
+      color: rgba(#fff, 0.35);
+      display: block;
+      transition: all ease-out 300ms;
     }
+    &.active a {
+      color: white;
+    }
+    &:not(.active)::after {
+      opacity: 0.2;
+    }
+    &:not(.active):hover a {
+      color: rgba(#fff, 0.75);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 0.2em;
+      background: black;
+      left: 0;
+      bottom: 0;
+      background-image: linear-gradient(to right, #5e42a6, #b74e91);
+    }
+  }
 }
 
 .form-inline {
-    display: inherit;
-    margin-top: 1.5em;
+  display: inherit;
+  margin-top: 1.5em;
 }
 
 @media (min-width: 50px) {
-    .form-inline .form-control {
-        display: inline-block;
-        width: auto;
-        vertical-align: text-top;
-    }
-    .mr-sm-2,
-    .mx-sm-2 {
-        margin-right: 0.5rem !important;
-    }
+  .form-inline .form-control {
+    display: inline-block;
+    width: auto;
+    vertical-align: text-top;
+  }
+  .mr-sm-2,
+  .mx-sm-2 {
+    margin-right: 0.5rem !important;
+  }
 }
 
 input {
-    line-height: 2rem;
-    padding: 0 8px;
-    border-top: none;
-    border-bottom: 1px solid #ccc;
-    border-left: none;
-    border-right: none;
-    background-color: transparent;
-    margin-bottom: 1em;
+  line-height: 2rem;
+  padding: 0 8px;
+  border-top: none;
+  border-bottom: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  background-color: transparent;
+  margin-bottom: 1em;
 }
 
 .container {
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
 @media screen and (min-width: 1150px) {
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        margin-top: none;
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    margin-top: none;
+  }
+  body,
+  .main-inner {
+    display: table;
+    width: 100%;
+    height: 100%;
+  }
+  .item1 {
+    width: 15%;
+    box-sizing: border-box;
+    display: table-cell;
+    height: 100%;
+  }
+  .item2 {
+    width: 70%;
+    box-sizing: border-box;
+    display: table-cell;
+    height: 100%;
+  }
+  .container {
+    margin-right: inherit;
+    margin-left: inherit;
+    //padding-left: inherit;
+  }
+  ul {
+    list-style: none;
+    li {
+      a {
+        line-height: 5em;
+      }
     }
-    body,
-    .main-inner {
-        display: table;
-        width: 100%;
-        height: 100%;
-    }
-    .page-row {
-        //display: table-row;
-        height: 1px;
-    }
-    .page-row-expanded {
-        height: 100%;
-    }
-    .item1 {
-        width: 15%;
-        box-sizing: border-box;
-        display: table-cell;
-        height: 100%;
-    }
-    .item2 {
-        width: 70%;
-        box-sizing: border-box;
-        display: table-cell;
-        height: 100%;
-    }
-    .container {
-        margin-right: inherit;
-        margin-left: inherit;
-        //padding-left: inherit;
-    }
-    ul {
-        list-style: none;
-        li {
-            a {
-                line-height: 5em;
-            }
-        }
-    }
+  }
 }
 
 /////////////////////////////////////////////
@@ -160,202 +153,202 @@ $red: #cd0000;
 
 html,
 body {
-    height: 100%;
-    width: 100%;
-    overflow: auto;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
 }
 
 button {
-    padding: 0 10px !important;
-    margin-left: 1em;
+  padding: 0 10px !important;
+  margin-left: 1em;
 }
 
 h3 {
-    font-size: 1.65em;
-    text-overflow: ellipsis;
-    //white-space: nowrap;
-    overflow: hidden;
+  font-size: 1.65em;
+  text-overflow: ellipsis;
+  //white-space: nowrap;
+  overflow: hidden;
 }
 
 img {
-    height: 200px;
-    width: 200px;
+  height: 200px;
+  width: 200px;
 }
 
 .container {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 h1 {
-    font-size: 1.8em;
-    font-weight: bold;
-    font-style: italic;
-    color: $gray65;
-    margin-top: 25px;
+  font-size: 1.8em;
+  font-weight: bold;
+  font-style: italic;
+  color: $gray65;
+  margin-top: 25px;
 }
 
 .addBtn {
-    font-size: 1.2em;
-    display: block;
-    margin: 0 auto;
-    margin-top: 60px;
-    padding: 3px 8px !important;
+  font-size: 1.2em;
+  display: block;
+  margin: 0 auto;
+  margin-top: 60px;
+  padding: 3px 8px !important;
 }
 
 .addIcon {
-    font-size: 1em;
+  font-size: 1em;
 }
 
 .recipeDiv {
-    margin-top: 40px;
-    &:nth-child(1),
-    &:nth-child(2),
-    &:nth-child(3) {
-        margin-top: 0;
-    }
+  margin-top: 40px;
+  &:nth-child(1),
+  &:nth-child(2),
+  &:nth-child(3) {
+    margin-top: 0;
+  }
 }
 
 .directionsUrlBtn {
-    margin-right: 40px;
+  margin-right: 40px;
 }
 
 .directionsUrlLink:focus {
-    outline: 0;
+  outline: 0;
 }
 
 .controlBtns {
-    display: inline;
+  display: inline;
 }
 
 .editBtn {
-    margin-right: 7.5px;
+  margin-right: 7.5px;
 }
 
 .modal {
-    .editableProperty {
-        border: $dashed-gray65-border;
-        cursor: pointer;
-        &:hover,
-        &:active {
-            border: $dashed-black-border;
-        }
+  .editableProperty {
+    border: $dashed-gray65-border;
+    cursor: pointer;
+    &:hover,
+    &:active {
+      border: $dashed-black-border;
     }
-    .directionsUrlBtnEditingModal {
-        &:hover,
-        &:active {
-            background-color: white;
-            box-shadow: none;
-        }
+  }
+  .directionsUrlBtnEditingModal {
+    &:hover,
+    &:active {
+      background-color: white;
+      box-shadow: none;
     }
-    .userInputDiv {
-        margin-top: 20px;
-        &:first-child {
-            margin-top: 0;
-        }
-        label {
-            margin-left: 5px;
-        }
-        textarea {
-            resize: none;
-            padding: 5px;
-            text-align: center;
-            display: block;
-            margin: 0 auto;
-            border: $dashed-gray65-border;
-            &:hover {
-                border: $dashed-black-border;
-            }
-            &:focus {
-                outline: 0;
-            }
-        }
+  }
+  .userInputDiv {
+    margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
     }
-    .commitBtn .commitIcon {
-        color: $green;
+    label {
+      margin-left: 5px;
     }
-    .cancelBtn .cancelIcon {
-        color: $red;
+    textarea {
+      resize: none;
+      padding: 5px;
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+      border: $dashed-gray65-border;
+      &:hover {
+        border: $dashed-black-border;
+      }
+      &:focus {
+        outline: 0;
+      }
     }
-    .inputTextModal .modal-dialog {
-        width: 42.5%;
-    }
+  }
+  .commitBtn .commitIcon {
+    color: $green;
+  }
+  .cancelBtn .cancelIcon {
+    color: $red;
+  }
+  .inputTextModal .modal-dialog {
+    width: 42.5%;
+  }
 }
 
 @media (max-width: ($lg-width)-1) {
-    .container {
-        width: ($md-width);
+  .container {
+    width: ($md-width);
+  }
+  .recipeDiv {
+    .directionsUrlBtn {
+      margin-right: 15px;
     }
-    .recipeDiv {
-        .directionsUrlBtn {
-            margin-right: 15px;
-        }
-        .editBtn {
-            margin-right: 5px;
-        }
-        .inputTextModal .modal-dialog {
-            width: 50%;
-        }
+    .editBtn {
+      margin-right: 5px;
     }
+    .inputTextModal .modal-dialog {
+      width: 50%;
+    }
+  }
 }
 
 @media (max-width: ($md-width)-1) {
-    .container {
-        width: ($sm-width);
+  .container {
+    width: ($sm-width);
+  }
+  button {
+    margin-left: inherit;
+  }
+  .recipeDiv {
+    .directionsUrlBtn {
+      margin-left: 15px;
+    }
+    .controlBtns {
+      margin-top: 5px;
+      display: block;
+    }
+    .deleteBtn {
+      margin-left: 5px;
+    }
+    .inputTextModal .modal-dialog {
+      width: 67.5%;
+    }
+  }
+  @media (max-width: ($sm-width)-1) {
+    *,
+    ::after,
+    ::before {
+      box-sizing: inherit;
     }
     button {
-        margin-left: inherit;
+      margin-left: inherit;
+    }
+    .container {
+      width: auto;
+    }
+    h1,
+    h2 {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .addBtn {
+      margin-top: 40px;
     }
     .recipeDiv {
-        .directionsUrlBtn {
-            margin-left: 15px;
-        }
-        .controlBtns {
-            margin-top: 5px;
-            display: block;
-        }
-        .deleteBtn {
-            margin-left: 5px;
-        }
-        .inputTextModal .modal-dialog {
-            width: 67.5%;
-        }
+      &:nth-child(3) {
+        margin-top: 40px;
+      }
     }
-    @media (max-width: ($sm-width)-1) {
-        *,
-         ::after,
-         ::before {
-            box-sizing: inherit;
-        }
-        button {
-            margin-left: inherit;
-        }
-        .container {
-            width: auto;
-        }
-        h1,
-        h2 {
-            text-align: center;
-            margin-top: 15px;
-        }
-        .addBtn {
-            margin-top: 40px;
-        }
-        .recipeDiv {
-            &:nth-child(3) {
-                margin-top: 40px;
-            }
-        }
-        .inputTextModal .modal-dialog {
-            width: 70%;
-            margin: 20px auto;
-        }
+    .inputTextModal .modal-dialog {
+      width: 70%;
+      margin: 20px auto;
     }
-    @media (max-width: ($xs-width)-1) {
-        .inputTextModal .modal-dialog {
-            width: 95%;
-        }
-        button {
-            margin-left: inherit;
-        }
+  }
+  @media (max-width: ($xs-width)-1) {
+    .inputTextModal .modal-dialog {
+      width: 95%;
     }
+    button {
+      margin-left: inherit;
+    }
+  }
 }

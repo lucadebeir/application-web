@@ -12,6 +12,8 @@ import { CategoriesService } from "../categories/categories.service";
   providedIn: "root",
 })
 export class FavorisService {
+  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+
   constructor(
     private http: HttpClient,
     private ingredientService: IngredientsService,
@@ -20,20 +22,24 @@ export class FavorisService {
   ) {}
 
   public addFavoris(newFavori: FavorisDetails): Observable<any> {
-    return this.http.post(`/server/favorites/add`, newFavori).pipe((res) => {
-      return res;
-    });
+    return this.http
+      .post(this.baseUrl + `/server/favorites/add`, newFavori)
+      .pipe((res) => {
+        return res;
+      });
   }
 
   public getFavoris(): Observable<RecipeDetails[]> {
     const pseudo = this.auth.getUserDetails().pseudo;
-    const base = this.http.get(`/server/favorites/recipe/${pseudo}`);
+    const base = this.http.get(
+      this.baseUrl + `/server/favorites/recipe/${pseudo}`
+    );
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
           element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -64,13 +70,15 @@ export class FavorisService {
 
   public getFavorisNbVues(): Observable<RecipeDetails[]> {
     const pseudo = this.auth.getUserDetails().pseudo;
-    const base = this.http.get(`/server/favorites/recipe/nbVues/${pseudo}`);
+    const base = this.http.get(
+      this.baseUrl + `/server/favorites/recipe/nbVues/${pseudo}`
+    );
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
           element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -104,14 +112,14 @@ export class FavorisService {
   ): Observable<RecipeDetails[]> {
     const pseudo = this.auth.getUserDetails().pseudo;
     const base = this.http.get(
-      `/server/favorites/recipe/${pseudo}/${idCategorie}`
+      this.baseUrl + `/server/favorites/recipe/${pseudo}/${idCategorie}`
     );
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
           element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -145,14 +153,14 @@ export class FavorisService {
   ): Observable<RecipeDetails[]> {
     const pseudo = this.auth.getUserDetails().pseudo;
     const base = this.http.get(
-      `/server/favorites/recipe/nbVues/${pseudo}/${idCategorie}`
+      this.baseUrl + `/server/favorites/recipe/nbVues/${pseudo}/${idCategorie}`
     );
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
           element.nomRecette = decodeURIComponent(element.nomRecette);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -183,7 +191,7 @@ export class FavorisService {
 
   public deleteFavoris(id: any): Observable<any> {
     const pseudo = this.auth.getUserDetails().pseudo;
-    const url = `/server/favorites/${pseudo}/delete/${id}`;
+    const url = this.baseUrl + `/server/favorites/${pseudo}/delete/${id}`;
     return this.http.delete<any>(url).pipe((res) => {
       return res;
     });

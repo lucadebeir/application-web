@@ -53,6 +53,8 @@ export class AuthentificationService {
   private token: string;
   private error: string;
 
+  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+
   constructor(private http: HttpClient, private router: Router) {}
 
   private saveToken(token: string): void {
@@ -107,7 +109,7 @@ export class AuthentificationService {
   }
 
   public register(user: TokenPayload): Observable<any> {
-    const base = this.http.post("/server/register", user);
+    const base = this.http.post(this.baseUrl + "/server/register", user);
 
     const request = base.pipe(
       map((data: TokenResponse) => {
@@ -121,7 +123,7 @@ export class AuthentificationService {
   }
 
   public login(user: TokenPayload): Observable<any> {
-    const base = this.http.post("/server/login", user);
+    const base = this.http.post(this.baseUrl + "/server/login", user);
     const request = base.pipe(
       map((data: TokenResponse) => {
         // map permet de récupérer des données
@@ -135,7 +137,7 @@ export class AuthentificationService {
   }
 
   public profile(): Observable<any> {
-    return this.http.get("/server/profile", {
+    return this.http.get(this.baseUrl + "/server/profile", {
       headers: { Authorization: `${this.getToken()}` },
     });
   }
@@ -157,7 +159,10 @@ export class AuthentificationService {
   }
 
   public updatePassword(user: UserMdp): Observable<any> {
-    const base = this.http.put(`/server/update-password/${user.pseudo}`, user);
+    const base = this.http.put(
+      this.baseUrl + `/server/update-password/${user.pseudo}`,
+      user
+    );
 
     return base.pipe(
       map((data: Response) => {
@@ -167,7 +172,7 @@ export class AuthentificationService {
   }
 
   public deleteProfile(pseudo: string): Observable<any> {
-    const url = `/server/delete-profile/${pseudo}`;
+    const url = this.baseUrl + `/server/delete-profile/${pseudo}`;
     return this.http.delete<any>(url).pipe(
       tap((_) => console.log(`deleted ${pseudo}`)),
       catchError(this.handleError<any>("deleteProfile"))
@@ -175,7 +180,10 @@ export class AuthentificationService {
   }
 
   public updateProfile(user: UserProfile): Observable<any> {
-    const base = this.http.put(`/server/mon-profile/${user.pseudo}`, user);
+    const base = this.http.put(
+      this.baseUrl + `/server/mon-profile/${user.pseudo}`,
+      user
+    );
 
     return base.pipe(
       tap((_) => console.log(`updated ${user.pseudo}`)),
@@ -184,31 +192,33 @@ export class AuthentificationService {
   }
 
   public getAbonneNews(): any {
-    return this.http.get(`/server/abonneNews`);
+    return this.http.get(this.baseUrl + `/server/abonneNews`);
   }
 
   public getAllEmail(): any {
-    return this.http.get(`/server/users/email`);
+    return this.http.get(this.baseUrl + `/server/users/email`);
   }
 
   public getAllPseudo(): any {
-    return this.http.get(`/server/users/pseudo`);
+    return this.http.get(this.baseUrl + `/server/users/pseudo`);
   }
 
   public sentEmailToNewRecipe(to: any, idRecette: number): any {
-    return this.http.get(`/server/newRecipe/${to.pseudo}/${idRecette}`);
+    return this.http.get(
+      this.baseUrl + `/server/newRecipe/${to.pseudo}/${idRecette}`
+    );
   }
 
   public requestReset(body): Observable<any> {
-    return this.http.post(`/server/req-reset-password`, body);
+    return this.http.post(this.baseUrl + `/server/req-reset-password`, body);
   }
 
   public newPassword(body): Observable<any> {
-    return this.http.post(`/server/new-password`, body);
+    return this.http.post(this.baseUrl + `/server/new-password`, body);
   }
 
   public ValidPasswordToken(body): Observable<any> {
-    return this.http.post(`/server/valid-password-token`, body);
+    return this.http.post(this.baseUrl + `/server/valid-password-token`, body);
   }
 
   public sendEmailContact(infos: ContactDetail): any {
@@ -219,10 +229,10 @@ export class AuthentificationService {
     params = params.append(`subject`, infos.subject);
     params = params.append(`message`, infos.message);
 
-    return this.http.get(`/server/contact/send`, { params });
+    return this.http.get(this.baseUrl + `/server/contact/send`, { params });
   }
 
   public getUser(pseudo: string): any {
-    return this.http.get(`/server/user/${pseudo}`);
+    return this.http.get(this.baseUrl + `/server/user/${pseudo}`);
   }
 }

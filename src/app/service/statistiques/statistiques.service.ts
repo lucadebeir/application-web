@@ -1,67 +1,88 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { map } from "rxjs/operators";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class StatistiquesService {
+  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public getNbVuesTot(): any {
-    return this.http.get<any>(`/server/statistique/nbVuesTot`)
-      .pipe(map((data:any) => {
-        return data;
-        
-      }));
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/nbVuesTot`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
   }
 
   public getNbCommentairesTot(): any {
-    return this.http.get<any>(`/server/statistique/nbCommentairesTot`)
-    .pipe(map((data:any) => {
-      return data;
-    }));
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/nbCommentairesTot`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
   }
 
   public getNbUsers(): any {
-    return this.http.get<any>(`/server/statistique/nbUsers`)
-    .pipe(map((data:any) => {
-      return data;
-    }));
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/nbUsers`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
   }
 
   public getNbAbonnes(): any {
-    return this.http.get<any>(`/server/statistique/nbAbonnes`)
-    .pipe(map((data:any) => {
-      return data;
-    }));
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/nbAbonnes`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
   }
 
-  public getUsers(): any{
-    return this.http.get<any>(`/server/statistique/users`)
-    .pipe(map((data:any) => {
-      return data;
-    }));
+  public getUsers(): any {
+    return this.http.get<any>(this.baseUrl + `/server/statistique/users`).pipe(
+      map((data: any) => {
+        return data;
+      })
+    );
   }
 
-  public getBestRecipes(): any{
-    return this.http.get<any>(`/server/statistique/bestRecipes`)
-    .pipe(map((data:any) => {
-      return data;
-    }));
+  public getBestRecipes(): any {
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/bestRecipes`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
   }
-  public getWorstRecipes(): any{
-    return this.http.get<any>(`/server/statistique/worstRecipes`)
-    .pipe(map((data:any) => {
-      return data;
-    }));
+  public getWorstRecipes(): any {
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/worstRecipes`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
   }
-  public getBestMonthlyRecipes(): any{
-    return this.http.get<any>(`/server/statistique/bestMonthlyRecipes`)
-    .pipe(map((data:any) => {
-      return data;
-    }));
+  public getBestMonthlyRecipes(): any {
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/bestMonthlyRecipes`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
   }
 }
-

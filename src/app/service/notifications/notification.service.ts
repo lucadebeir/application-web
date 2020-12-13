@@ -8,18 +8,22 @@ import { Notification } from "src/app/models";
   providedIn: "root",
 })
 export class NotificationService {
+  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+
   constructor(private http: HttpClient) {}
 
   public addNotification(notif: Notification): Observable<any> {
-    return this.http.post(`/server/notifications/add`, notif).pipe(
-      map((data: any) => {
-        return data;
-      })
-    );
+    return this.http
+      .post(this.baseUrl + `/server/notifications/add`, notif)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
   }
 
   public getAllNotifs(): Observable<Notification[]> {
-    return this.http.get(`/server/notifications/allNotifs`).pipe(
+    return this.http.get(this.baseUrl + `/server/notifications/allNotifs`).pipe(
       map((data: Notification[]) => {
         return data;
       })
@@ -27,19 +31,23 @@ export class NotificationService {
   }
 
   public getEnabledNotifs(): Observable<Notification[]> {
-    return this.http.get(`/server/notifications/notifs/enabled`).pipe(
-      map((data: Notification[]) => {
-        return data;
-      })
-    );
+    return this.http
+      .get(this.baseUrl + `/server/notifications/notifs/enabled`)
+      .pipe(
+        map((data: Notification[]) => {
+          return data;
+        })
+      );
   }
 
   public updateNotif(idNotif): Observable<any> {
-    return this.http.put(`/server/notifications/update/` + idNotif, false).pipe(
-      map((data: any) => {
-        console.log(data);
-        return data;
-      })
-    );
+    return this.http
+      .put(this.baseUrl + `/server/notifications/update/` + idNotif, false)
+      .pipe(
+        map((data: any) => {
+          console.log(data);
+          return data;
+        })
+      );
   }
 }

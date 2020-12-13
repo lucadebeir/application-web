@@ -1,6 +1,11 @@
 {
-    "/server": {
+    "/server2": {
         "target": "http://[::1]:3000",
+        "secure": false,
+        "changeOrigin": true
+    },
+    "/server": {
+        "target": "https://server-nodejs-marine-s-recipes.herokuapp.com/server",
         "secure": false,
         "changeOrigin": true
     }

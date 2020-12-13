@@ -240,7 +240,11 @@ export class MesRecettesComponent implements OnInit {
             addTimes2(
               recipe.tempsCuisson,
               recipe.tempsPreparation
-            ).getMinutes() < element.libNum
+            ).getMinutes() < element.libNum &&
+            addTimes2(
+              recipe.tempsCuisson,
+              recipe.tempsPreparation
+            ).getHours() === 0
           ) {
             researchResultFinal.push(recipe);
           }

@@ -16,6 +16,8 @@ import { ListRecipe } from "src/app/models/listRecipe.model";
 
 @Injectable()
 export class RecettesService {
+  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+
   constructor(
     private http: HttpClient,
     private auth: AuthentificationService,
@@ -24,7 +26,7 @@ export class RecettesService {
   ) {}
 
   public getAllRecipes(): Observable<RecipeDetails[]> {
-    const base = this.http.get(`/server/recipe/allRecipes`);
+    const base = this.http.get(this.baseUrl + `/server/recipe/allRecipes`);
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
@@ -33,7 +35,7 @@ export class RecettesService {
           element.astuce = this.decoder(element.astuce);
           element.etapes = this.decoder(element.etapes);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -54,7 +56,7 @@ export class RecettesService {
   }
 
   public getAllRecipesAsc(): Observable<RecipeDetails[]> {
-    const base = this.http.get(`/server/recipe/allRecipes/asc`);
+    const base = this.http.get(this.baseUrl + `/server/recipe/allRecipes/asc`);
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
@@ -63,7 +65,7 @@ export class RecettesService {
           element.astuce = this.decoder(element.astuce);
           element.etapes = this.decoder(element.etapes);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -84,7 +86,9 @@ export class RecettesService {
   }
 
   public getAllRecipesAndIngredientsDescNbVue(): Observable<RecipeDetails[]> {
-    const base = this.http.get(`/server/recipe/allRecipes/nbVues/desc`);
+    const base = this.http.get(
+      this.baseUrl + `/server/recipe/allRecipes/nbVues/desc`
+    );
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
@@ -93,7 +97,7 @@ export class RecettesService {
           element.astuce = this.decoder(element.astuce);
           element.etapes = this.decoder(element.etapes);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -123,7 +127,7 @@ export class RecettesService {
   }
 
   public getAllRecipesAndIngredients(): Observable<RecipeDetails[]> {
-    const base = this.http.get(`/server/recipe/allRecipes`);
+    const base = this.http.get(this.baseUrl + `/server/recipe/allRecipes`);
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
@@ -132,7 +136,7 @@ export class RecettesService {
           element.astuce = this.decoder(element.astuce);
           element.etapes = this.decoder(element.etapes);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -163,14 +167,14 @@ export class RecettesService {
   }
 
   public getRecipeById(id: any): Observable<any> {
-    return this.http.get<any>("/server/recipe/get/" + id).pipe(
+    return this.http.get<any>(this.baseUrl + "/server/recipe/get/" + id).pipe(
       map((element: RecipeDetails) => {
         element.nomRecette = this.decoder(element.nomRecette);
         element.mot = this.decoder(element.mot);
         element.astuce = this.decoder(element.astuce);
         element.etapes = this.decoder(element.etapes);
         this.http
-          .get(`/server/image/${element.idRecette}`)
+          .get(this.baseUrl + `/server/image/${element.idRecette}`)
           .subscribe((data: any) => {
             element.lienImage = data[0]?.lienImage;
           });
@@ -190,7 +194,7 @@ export class RecettesService {
   }
 
   public getLatestReceipes(): Observable<RecipeDetails[]> {
-    const base = this.http.get(`/server/recipe/latestRecipes`);
+    const base = this.http.get(this.baseUrl + `/server/recipe/latestRecipes`);
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
@@ -199,7 +203,7 @@ export class RecettesService {
           element.astuce = this.decoder(element.astuce);
           element.etapes = this.decoder(element.etapes);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
               element.globalTime = addHours(
@@ -223,7 +227,9 @@ export class RecettesService {
   }
 
   public getMostPopularRecipes(): Observable<RecipeDetails[]> {
-    const base = this.http.get(`/server/recipe/mostPopularRecipes`);
+    const base = this.http.get(
+      this.baseUrl + `/server/recipe/mostPopularRecipes`
+    );
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
@@ -232,7 +238,7 @@ export class RecettesService {
           element.astuce = this.decoder(element.astuce);
           element.etapes = this.decoder(element.etapes);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
               element.globalTime = addHours(
@@ -256,14 +262,16 @@ export class RecettesService {
   }
 
   public deleteRecipe(id: any): Observable<any> {
-    const url = `/server/recipe/delete-recipe/${id}`;
+    const url = this.baseUrl + `/server/recipe/delete-recipe/${id}`;
     return this.http
       .delete<any>(url)
       .pipe(tap((_) => console.log(`deleted ${id}`)));
   }
 
   public getRecipeByCategory(idCategorie: any): Observable<RecipeDetails[]> {
-    const base = this.http.get(`/server/recipe/category/${idCategorie}`);
+    const base = this.http.get(
+      this.baseUrl + `/server/recipe/category/${idCategorie}`
+    );
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
@@ -272,7 +280,7 @@ export class RecettesService {
           element.astuce = this.decoder(element.astuce);
           element.etapes = this.decoder(element.etapes);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -305,7 +313,9 @@ export class RecettesService {
   public getRecipeByCategoryByNbVues(
     idCategorie: any
   ): Observable<RecipeDetails[]> {
-    const base = this.http.get(`/server/recipe/nbVues/category/${idCategorie}`);
+    const base = this.http.get(
+      this.baseUrl + `/server/recipe/nbVues/category/${idCategorie}`
+    );
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
@@ -314,7 +324,7 @@ export class RecettesService {
           element.astuce = this.decoder(element.astuce);
           element.etapes = this.decoder(element.etapes);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -346,14 +356,14 @@ export class RecettesService {
 
   public updateNbView(recette: RecipeDetails): Observable<any> {
     return this.http.put<any>(
-      `/server/recipe/update-nbView/${recette.idRecette}`,
+      this.baseUrl + `/server/recipe/update-nbView/${recette.idRecette}`,
       recette
     );
   }
 
   public updateNbViewMenu(recette: RecipeDetails): Observable<any> {
     return this.http.put<any>(
-      `/server/recipeList/update-nbView/${recette.idRecette}`,
+      this.baseUrl + `/server/recipeList/update-nbView/${recette.idRecette}`,
       recette
     );
   }
@@ -363,7 +373,10 @@ export class RecettesService {
     ingredient: IngredientDetails
   ): Observable<any> {
     return this.http
-      .put(`/server/recipe/${recette.idRecette}/ingredient/update`, ingredient)
+      .put(
+        this.baseUrl + `/server/recipe/${recette.idRecette}/ingredient/update`,
+        ingredient
+      )
       .pipe(
         map((res) => {
           return res;
@@ -376,7 +389,10 @@ export class RecettesService {
     recipe.mot = this.encoder(recipe.mot);
     recipe.astuce = this.encoder(recipe.astuce);
     recipe.etapes = this.encoder(recipe.etapes);
-    const res = this.http.post("/server/recipe/add-recipe", recipe);
+    const res = this.http.post(
+      this.baseUrl + "/server/recipe/add-recipe",
+      recipe
+    );
     return res.pipe(
       map((res) => {
         return res;
@@ -388,7 +404,7 @@ export class RecettesService {
     recipe: CreateRecipe
   ): Observable<any> {
     const res = this.http.post(
-      "/server/recipe/addIngredientAndCategorie",
+      this.baseUrl + "/server/recipe/addIngredientAndCategorie",
       recipe
     );
     return res.pipe(
@@ -403,7 +419,10 @@ export class RecettesService {
     recette: RecipeDetails
   ): Observable<any> {
     return this.http
-      .post(`/server/recipe/${recette.idRecette}/category/add`, categorie)
+      .post(
+        this.baseUrl + `/server/recipe/${recette.idRecette}/category/add`,
+        categorie
+      )
       .pipe(
         map((res) => {
           return res;
@@ -412,70 +431,86 @@ export class RecettesService {
   }
 
   public getCategory(id: any): any {
-    return this.http.get<any>(`/server/recipe/${id}/category`).pipe(
-      map((data: any) => {
-        return data;
-      })
-    );
+    return this.http
+      .get<any>(this.baseUrl + `/server/recipe/${id}/category`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
   }
 
   public updateRecipeName(recette: RecipeDetails): Observable<any> {
     recette.nomRecette = this.encoder(recette.nomRecette);
-    return this.http.put(`/server/recipe/name/update`, recette).pipe(
-      map((data: RecipeDetails) => {
-        return data;
-      })
-    );
+    return this.http
+      .put(this.baseUrl + `/server/recipe/name/update`, recette)
+      .pipe(
+        map((data: RecipeDetails) => {
+          return data;
+        })
+      );
   }
 
   public updateSteps(recette: RecipeDetails): Observable<any> {
     recette.etapes = this.encoder(recette.etapes);
-    return this.http.put(`/server/recipe/step/update`, recette).pipe(
-      map((data: RecipeDetails) => {
-        return data;
-      })
-    );
+    return this.http
+      .put(this.baseUrl + `/server/recipe/step/update`, recette)
+      .pipe(
+        map((data: RecipeDetails) => {
+          return data;
+        })
+      );
   }
 
   public updateAstuce(recette: RecipeDetails): Observable<any> {
     recette.astuce = this.encoder(recette.astuce);
-    return this.http.put(`/server/recipe/astuce/update`, recette).pipe(
-      map((data: RecipeDetails) => {
-        return data;
-      })
-    );
+    return this.http
+      .put(this.baseUrl + `/server/recipe/astuce/update`, recette)
+      .pipe(
+        map((data: RecipeDetails) => {
+          return data;
+        })
+      );
   }
 
   public updateDescription(recette: RecipeDetails): Observable<any> {
     recette.mot = this.encoder(recette.mot);
-    return this.http.put(`/server/recipe/description/update`, recette).pipe(
-      map((data: RecipeDetails) => {
-        return data;
-      })
-    );
+    return this.http
+      .put(this.baseUrl + `/server/recipe/description/update`, recette)
+      .pipe(
+        map((data: RecipeDetails) => {
+          return data;
+        })
+      );
   }
 
   public updatePart(recette: RecipeDetails): Observable<any> {
-    return this.http.put(`/server/recipe/part/update`, recette).pipe(
-      map((data: RecipeDetails) => {
-        return data;
-      })
-    );
+    return this.http
+      .put(this.baseUrl + `/server/recipe/part/update`, recette)
+      .pipe(
+        map((data: RecipeDetails) => {
+          return data;
+        })
+      );
   }
 
   public updateTemps(recette: RecipeDetails): Observable<any> {
-    return this.http.put(`/server/recipe/temps/update`, recette).pipe(
-      map((data: RecipeDetails) => {
-        return data;
-      })
-    );
+    return this.http
+      .put(this.baseUrl + `/server/recipe/temps/update`, recette)
+      .pipe(
+        map((data: RecipeDetails) => {
+          return data;
+        })
+      );
   }
 
   public deleteIngredientRecipe(
     ingredient: IngredientDetails,
     recette: RecipeDetails
   ): Observable<any> {
-    const url = `/server/recipe/${recette.idRecette}/ingredient/${ingredient.idIngredient}/delete`;
+    const url =
+      this.baseUrl +
+      `/server/recipe/${recette.idRecette}/ingredient/${ingredient.idIngredient}/delete`;
     return this.http
       .delete<any>(url)
       .pipe(
@@ -490,7 +525,8 @@ export class RecettesService {
   public addIngredientRecette(newIngredient: IngredientDetails): any {
     this.http
       .post(
-        `/server/recipe/${newIngredient.idRecette}/add/ingredient/${newIngredient.idIngredient}`,
+        this.baseUrl +
+          `/server/recipe/${newIngredient.idRecette}/add/ingredient/${newIngredient.idIngredient}`,
         newIngredient
       )
       .subscribe((res) => {
@@ -504,7 +540,9 @@ export class RecettesService {
     categorie: CategoryDetails,
     recette: RecipeDetails
   ): Observable<any> {
-    const url = `/server/recipe/${recette.idRecette}/category/${categorie.idCategorie}/delete`;
+    const url =
+      this.baseUrl +
+      `/server/recipe/${recette.idRecette}/category/${categorie.idCategorie}/delete`;
     return this.http
       .delete<any>(url)
       .pipe(
@@ -517,7 +555,7 @@ export class RecettesService {
   }
 
   public getMenu(): Observable<any> {
-    return this.http.get<any>("/server/menu/recipe").pipe(
+    return this.http.get<any>(this.baseUrl + "/server/menu/recipe").pipe(
       map((data: any) => {
         return data;
       })
@@ -525,7 +563,7 @@ export class RecettesService {
   }
 
   public getAllRecipesForMenu(): Observable<RecipeDetails[]> {
-    const base = this.http.get(`/server/menu/allRecipes`);
+    const base = this.http.get(this.baseUrl + `/server/menu/allRecipes`);
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
@@ -534,7 +572,7 @@ export class RecettesService {
           element.astuce = this.decoder(element.astuce);
           element.etapes = this.decoder(element.etapes);
           this.http
-            .get(`/server/image/${element.idRecette}`)
+            .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
               element.lienImage = data[0]?.lienImage;
             });
@@ -555,14 +593,14 @@ export class RecettesService {
   }
 
   public getPetitDej(): Observable<any> {
-    return this.http.get<any>("/server/menu/petitDej").pipe(
+    return this.http.get<any>(this.baseUrl + "/server/menu/petitDej").pipe(
       map((element: any) => {
         element.nomRecette = this.decoder(element.nomRecette);
         element.mot = this.decoder(element.mot);
         element.astuce = this.decoder(element.astuce);
         element.etapes = this.decoder(element.etapes);
         this.http
-          .get(`/server/image/${element[0].idRecette}`)
+          .get(this.baseUrl + `/server/image/${element[0].idRecette}`)
           .subscribe((data: any) => {
             element[0].lienImage = data[0]?.lienImage;
           });
@@ -582,14 +620,14 @@ export class RecettesService {
   }
 
   public getRepas(): Observable<any> {
-    return this.http.get<any>("/server/menu/repas").pipe(
+    return this.http.get<any>(this.baseUrl + "/server/menu/repas").pipe(
       map((element: any) => {
         element.nomRecette = this.decoder(element.nomRecette);
         element.mot = this.decoder(element.mot);
         element.astuce = this.decoder(element.astuce);
         element.etapes = this.decoder(element.etapes);
         this.http
-          .get(`/server/image/${element[0].idRecette}`)
+          .get(this.baseUrl + `/server/image/${element[0].idRecette}`)
           .subscribe((data: any) => {
             element[0].lienImage = data[0]?.lienImage;
           });
@@ -609,14 +647,14 @@ export class RecettesService {
   }
 
   public getDouceur(): Observable<any> {
-    return this.http.get<any>("/server/menu/douceur").pipe(
+    return this.http.get<any>(this.baseUrl + "/server/menu/douceur").pipe(
       map((element: any) => {
         element.nomRecette = this.decoder(element.nomRecette);
         element.mot = this.decoder(element.mot);
         element.astuce = this.decoder(element.astuce);
         element.etapes = this.decoder(element.etapes);
         this.http
-          .get(`/server/image/${element[0].idRecette}`)
+          .get(this.baseUrl + `/server/image/${element[0].idRecette}`)
           .subscribe((data: any) => {
             element[0].lienImage = data[0]?.lienImage;
           });
@@ -637,32 +675,38 @@ export class RecettesService {
 
   public updatePetitDej(petitDej: RecipeDetails): Observable<any> {
     console.log(petitDej);
-    return this.http.post<any>("/server/menu/petitDej/update", petitDej).pipe(
-      map((element: any) => {
-        return element;
-      })
-    );
+    return this.http
+      .post<any>(this.baseUrl + "/server/menu/petitDej/update", petitDej)
+      .pipe(
+        map((element: any) => {
+          return element;
+        })
+      );
   }
 
   public updateRepas(repas: RecipeDetails): Observable<any> {
-    return this.http.post<any>("/server/menu/repas/update", repas).pipe(
-      map((element: any) => {
-        return element;
-      })
-    );
+    return this.http
+      .post<any>(this.baseUrl + "/server/menu/repas/update", repas)
+      .pipe(
+        map((element: any) => {
+          return element;
+        })
+      );
   }
 
   public updateDouceur(douceur: RecipeDetails): Observable<any> {
-    return this.http.post<any>("/server/menu/douceur/update", douceur).pipe(
-      map((element: any) => {
-        return element;
-      })
-    );
+    return this.http
+      .post<any>(this.baseUrl + "/server/menu/douceur/update", douceur)
+      .pipe(
+        map((element: any) => {
+          return element;
+        })
+      );
   }
 
   public getListRecipes(): Observable<ListRecipe[]> {
     const base = this.http.get(
-      `/server/recipeList/${this.auth.getUserDetails().pseudo}`
+      this.baseUrl + `/server/recipeList/${this.auth.getUserDetails().pseudo}`
     );
     return base.pipe(
       map((data: ListRecipe[]) => {
@@ -677,7 +721,7 @@ export class RecettesService {
   }
 
   public getListRecipesOfAdmin(): Observable<ListRecipe[]> {
-    const base = this.http.get(`/server/recipeList/marine`);
+    const base = this.http.get(this.baseUrl + `/server/recipeList/marine`);
     return base.pipe(
       map((data: ListRecipe[]) => {
         data.forEach(
@@ -690,7 +734,7 @@ export class RecettesService {
   }
 
   public addRecipeToList(recipe: ListRecipe): Observable<any> {
-    return this.http.post(`/server/recipeList/add`, recipe).pipe(
+    return this.http.post(this.baseUrl + `/server/recipeList/add`, recipe).pipe(
       map((res) => {
         return res;
       })
@@ -698,16 +742,21 @@ export class RecettesService {
   }
 
   public deleteRecipeOfList(recipe: ListRecipe): Observable<any> {
-    return this.http.post(`/server/recipeList/delete`, recipe).pipe(
-      map((res) => {
-        return res;
-      })
-    );
+    return this.http
+      .post(this.baseUrl + `/server/recipeList/delete`, recipe)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
   }
 
   public deleteAllRecipeOfList(): Observable<any> {
     return this.http
-      .post(`/server/recipeList/delete/all`, this.auth.getUserDetails().pseudo)
+      .post(
+        this.baseUrl + `/server/recipeList/delete/all`,
+        this.auth.getUserDetails().pseudo
+      )
       .pipe(
         map((res) => {
           return res;
@@ -718,11 +767,13 @@ export class RecettesService {
   //pour la recherche dynamique
   public changeStateOfRecipe(recipe: ListRecipe): Observable<any> {
     recipe.complet = !recipe.complet;
-    return this.http.post(`/server/recipeList/update`, recipe).pipe(
-      map((res) => {
-        return res;
-      })
-    );
+    return this.http
+      .post(this.baseUrl + `/server/recipeList/update`, recipe)
+      .pipe(
+        map((res) => {
+          return res;
+        })
+      );
   }
 
   private filteredApps$: Subject<RecipeDetails[]> = new ReplaySubject<
