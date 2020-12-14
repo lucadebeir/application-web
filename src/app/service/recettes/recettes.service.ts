@@ -13,10 +13,11 @@ import {
 import { CategoriesService } from "../categories/categories.service";
 import { IngredientsService } from "../ingredients/ingredients.service";
 import { ListRecipe } from "src/app/models/listRecipe.model";
+import { environment } from "../../../environments/environment";
 
 @Injectable()
 export class RecettesService {
-  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+  baseUrl: string = environment.API_URL;
 
   constructor(
     private http: HttpClient,

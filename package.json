@@ -11,6 +11,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-builders/custom-webpack": "^10.0.1",
+    "@angular-builders/dev-server": "^7.3.1",
     "@angular/animations": "^9.0.7",
     "@angular/cdk": "^9.2.0",
     "@angular/common": "~9.0.1",
@@ -40,6 +42,7 @@
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6",
     "express-sanitizer": "^1.0.5",
+    "fs": "^0.0.1-security",
     "gaxios": "^3.2.0",
     "googleapis": "^48.0.0",
     "jquery": "^3.4.1",
@@ -62,22 +65,24 @@
     "owl.carousel": "^2.3.4",
     "path": "^0.12.7",
     "popper.js": "^1.16.1",
+    "process": "^0.11.10",
     "rxjs": "^6.5.4",
     "sanitizer": "^0.1.3",
     "sequelize": "^5.21.5",
     "swagger-ui-express": "^4.1.4",
     "tslib": "^1.10.0",
+    "webpack": "^4.41.2",
     "xoauth2": "^1.2.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.900.2",
+    "@angular-devkit/build-angular": "^0.900.3",
     "@angular/cli": "^9.0.5",
     "@angular/compiler-cli": "^9.0.5",
     "@angular/language-service": "~9.0.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^12.11.1",
+    "@types/node": "^12.12.28",
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
     "codelyzer": "^5.1.2",
@@ -98,7 +103,8 @@
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5",
-    "vue-eslint-parser": "^7.0.0"
+    "vue-eslint-parser": "^7.0.0",
+    "yargs": "^12.0.5"
   },
   "engines": {
     "node": "12.16.1",

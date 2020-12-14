@@ -3,12 +3,13 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Notification } from "src/app/models";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class NotificationService {
-  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+  baseUrl: string = environment.API_URL;
 
   constructor(private http: HttpClient) {}
 

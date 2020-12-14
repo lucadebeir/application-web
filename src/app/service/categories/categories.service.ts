@@ -3,12 +3,13 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { CategoryDetails } from "src/app/models";
 import { map, tap } from "rxjs/operators";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class CategoriesService {
-  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+  baseUrl: string = environment.API_URL;
 
   constructor(private http: HttpClient) {}
 

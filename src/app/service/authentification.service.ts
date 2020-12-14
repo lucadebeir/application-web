@@ -5,6 +5,7 @@ import { map, tap, catchError } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { ContactDetail } from "../pages/contact/contact.component";
 import { UserProfile } from "../models/user.model";
+import { environment } from "../../environments/environment";
 
 // login
 export interface UserDetails {
@@ -53,7 +54,7 @@ export class AuthentificationService {
   private token: string;
   private error: string;
 
-  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+  baseUrl: string = environment.API_URL;
 
   constructor(private http: HttpClient, private router: Router) {}
 

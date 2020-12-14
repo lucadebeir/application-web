@@ -2,12 +2,13 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class ImagesService {
-  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+  baseUrl: string = environment.API_URL;
 
   constructor(private http: HttpClient) {}
 

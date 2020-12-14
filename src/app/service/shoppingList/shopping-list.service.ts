@@ -8,12 +8,13 @@ import {
 import { Observable } from "rxjs";
 import { map, tap } from "rxjs/operators";
 import { AuthentificationService } from "../authentification.service";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class ShoppingListService {
-  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+  baseUrl: string = environment.API_URL;
 
   constructor(
     private http: HttpClient,

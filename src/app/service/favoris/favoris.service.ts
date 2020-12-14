@@ -7,12 +7,13 @@ import { map } from "rxjs/operators";
 import { AuthentificationService } from "../authentification.service";
 import { addTimes, addHours } from "../../utils/Utils";
 import { CategoriesService } from "../categories/categories.service";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class FavorisService {
-  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+  baseUrl: string = environment.API_URL;
 
   constructor(
     private http: HttpClient,

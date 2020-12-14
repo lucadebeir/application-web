@@ -3,12 +3,13 @@ import { HttpClient, HttpParams } from "@angular/common/http";
 import { QuantiteDetails, IngredientDetails } from "src/app/models";
 import { Observable } from "rxjs";
 import { map, tap } from "rxjs/operators";
+import { environment } from "../../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class IngredientsService {
-  baseUrl: string = "https://server-nodejs-marine-s-recipes.herokuapp.com";
+  baseUrl: string = environment.API_URL;
 
   constructor(private http: HttpClient) {}
 
