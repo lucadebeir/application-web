@@ -15,6 +15,8 @@ import { NotificationService } from "src/app/service/notifications/notification.
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { FilterRecettesComponent } from "../filter-recettes/filter-recettes.component";
 import { addTimes2 } from "../../utils/Utils";
+import { ThemePalette } from "@angular/material/core";
+import { ProgressSpinnerMode } from "@angular/material/progress-spinner";
 
 @Component({
   selector: "app-recettes",
@@ -80,6 +82,12 @@ export class RecettesComponent implements OnInit, OnDestroy {
           libNum: 45,
         },
       ];
+
+  isLoading: boolean = true;
+
+  //mat-spinner
+  color: ThemePalette = "primary";
+  mode: ProgressSpinnerMode = "indeterminate";
 
   constructor(
     private recetteService: RecettesService,
@@ -176,6 +184,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
       dialogConfig
     );
     modalDialog.afterClosed().subscribe((result) => {
+      this.isLoading = true;
       console.log(result);
       this.categories = result.categories;
       this.checked = result.checked;
@@ -207,13 +216,10 @@ export class RecettesComponent implements OnInit, OnDestroy {
     this.currentPage = JSON.parse(localStorage.getItem("value"))
       ? JSON.parse(localStorage.getItem("value")).current
       : 1;
-    let reset: boolean = false;
     let researchResult: RecipeDetails[] = [];
-    let researchResultFinal: RecipeDetails[] = [];
 
     if (this.checked) {
       researchResult = data;
-      reset = true;
     } else {
       this.categories.forEach((element) => {
         console.log(element);
@@ -231,6 +237,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
                     researchResult.push(recipe);
                   }
                 });
+                this.researchFilterTime(researchResult);
               });
           } else {
             this.recetteService
@@ -245,16 +252,21 @@ export class RecettesComponent implements OnInit, OnDestroy {
                     researchResult.push(recipe);
                   }
                 });
+                this.researchFilterTime(researchResult);
               });
           }
         }
       });
     }
+  }
+
+  researchFilterTime(data: RecipeDetails[]) {
+    let researchResultFinal: RecipeDetails[] = [];
 
     this.times.forEach((element) => {
       if (element.filter) {
         console.log("lol");
-        researchResult.forEach((recipe) => {
+        data.forEach((recipe) => {
           if (
             addTimes2(
               recipe.tempsCuisson,
@@ -272,9 +284,10 @@ export class RecettesComponent implements OnInit, OnDestroy {
     });
 
     if (researchResultFinal.length == 0) {
-      this.allRecipe = researchResult;
+      this.allRecipe = data;
       setTimeout(() => {
-        this.recetteService.search(this.searchTerm, researchResult).subscribe();
+        this.recetteService.search(this.searchTerm, data).subscribe();
+        this.isLoading = false;
       }, 2000);
     } else {
       this.allRecipe = researchResultFinal;
@@ -282,6 +295,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
         this.recetteService
           .search(this.searchTerm, researchResultFinal)
           .subscribe();
+        this.isLoading = false;
       }, 2000);
     }
   }

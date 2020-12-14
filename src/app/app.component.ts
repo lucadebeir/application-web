@@ -52,14 +52,14 @@ export class AppComponent {
             .getRecipeById(element.idRecette)
             .subscribe((recipe) => {
               this.showInfo(
-                "La recette: "+recipe.nomRecette + " a été consulté",
+                "La recette: " + recipe.nomRecette + " a été consulté",
                 element.idNotification,
                 "view-class"
               );
             });
         } else if (element.type === "user") {
           this.showInfo(
-           element.pseudo + " vient de s'inscrire.",
+            element.pseudo + " vient de s'inscrire.",
             element.idNotification,
             "user-class"
           );
@@ -74,8 +74,7 @@ export class AppComponent {
             .getRecipeById(element.idRecette)
             .subscribe((recipe) => {
               this.showInfo(
-             
-                  element.pseudo + " a commenté la recette: " +    recipe.nomRecette ,
+                element.pseudo + " a commenté la recette: " + recipe.nomRecette,
                 element.idNotification,
                 "toast-info"
               );

@@ -10,8 +10,10 @@ import { NgModule } from "@angular/core";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatGridListModule } from "@angular/material/grid-list";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 const modules = [
+  MatProgressSpinnerModule,
   MatSidenavModule,
   MatListModule,
   MatExpansionModule,

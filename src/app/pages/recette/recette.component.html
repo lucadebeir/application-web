@@ -17,8 +17,6 @@
           style="font-size: inherit; margin-left: 1em;"
           id="btn"
           (click)="addToMenu()"
-          class="picto-item"
-          aria-label="Ajouter la recettes au menu de la semaine"
         >
           <i
             class="fa fa-bookmark-o"
@@ -31,8 +29,6 @@
           style="font-size: inherit; margin-left: 1em;"
           id="btn"
           (click)="deleteToMenu()"
-          class="picto-item"
-          aria-label="Supprimer la recettes au menu de la semaine"
         >
           <i
             class="fa fa-bookmark"
@@ -48,8 +44,6 @@
           *ngIf="this.auth.isLoggedIn() && !isFavori"
           id="btn"
           (click)="addFavoris()"
-          class="picto-item"
-          aria-label="Ajouter aux favoris"
           ><i id="textlogo"> {{ recette?.nbFavoris }} </i
           ><i class="fa fa-heart-o"></i
         ></a>
@@ -58,8 +52,6 @@
           *ngIf="this.auth.isLoggedIn() && isFavori"
           id="btn"
           (click)="deleteFavoris()"
-          class="picto-item"
-          aria-label="Supprimer des favoris"
           ><i id="textlogo">{{ recette?.nbFavoris }} </i
           ><i class="class= fa fa-heart"></i
         ></a>
@@ -147,8 +139,6 @@
         *ngIf="this.auth.isLoggedIn()"
         id="btn"
         (click)="addListeCourses()"
-        class="picto-item"
-        aria-label="Ajouter les ingrédients à ma liste de course"
         style="float: right; font-size: inherit;"
       >
         <span class="fa fa-shopping-cart" style="color: #cea0af;"></span>
@@ -169,6 +159,8 @@
         type="text"
         name=""
         value="{{ recette?.nbrePart }}"
+        #box
+        (keyup.enter)="onEnter(box.value)"
       />
       <div
         class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-plus"

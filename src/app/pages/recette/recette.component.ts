@@ -365,6 +365,15 @@ export class RecetteComponent implements OnInit {
     this.recette.nbrePart = parseInt(searchValue, 10);
   }
 
+  onEnter(value: string) {
+    this.recette.ingredients.forEach((element) => {
+      element.updateQte = roundDecimal(
+        (element.qte * parseFloat(value)) / this.nbrePartInitial
+      );
+    });
+    this.recette.nbrePart = parseFloat(value);
+  }
+
   onProportionLess(value: number): void {
     this.recette.ingredients.forEach((element) => {
       element.updateQte = roundDecimal(

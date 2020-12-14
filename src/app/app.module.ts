@@ -49,13 +49,14 @@ import { StatistiquesComponent } from "./pages/statistiques/statistiques.compone
 import { AlertModule } from "./_alert";
 import { ToastrModule } from "ngx-toastr";
 import { BsDropdownModule } from "ngx-bootstrap/dropdown";
-import {
-  MatDialogModule,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from "@angular/material/dialog";
-import { MatCheckboxModule } from "@angular/material/checkbox";
-import { MatButtonModule } from "@angular/material/button";
+// for HttpClient import:
+import { LoadingBarHttpClientModule } from "@ngx-loading-bar/http-client";
+
+// for Router import:
+import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
+
+// for Core import:
+import { LoadingBarModule } from "@ngx-loading-bar/core";
 import { FilterRecettesComponent } from "./pages/filter-recettes/filter-recettes.component";
 
 @NgModule({
@@ -109,6 +110,14 @@ import { FilterRecettesComponent } from "./pages/filter-recettes/filter-recettes
       disableTimeOut: true,
       positionClass: "toast-top-left",
     }),
+    // for HttpClient use:
+    LoadingBarHttpClientModule,
+
+    // for Router use:
+    LoadingBarRouterModule,
+
+    // for Core use:
+    LoadingBarModule,
   ],
   providers: [
     AuthGuardService,
