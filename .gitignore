@@ -93,3 +93,6 @@ typings/
 
 #Db local
 server/database/db.js
+
+.DS_Store
+src/.DS_Store
