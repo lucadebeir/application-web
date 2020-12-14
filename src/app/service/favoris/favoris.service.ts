@@ -8,6 +8,7 @@ import { AuthentificationService } from "../authentification.service";
 import { addTimes, addHours } from "../../utils/Utils";
 import { CategoriesService } from "../categories/categories.service";
 import { environment } from "../../../environments/environment";
+import { decoder, encoder } from "../../utils/Codage";
 
 @Injectable({
   providedIn: "root",
@@ -38,7 +39,7 @@ export class FavorisService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = decoder(element.nomRecette);
           this.http
             .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -77,7 +78,7 @@ export class FavorisService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = decoder(element.nomRecette);
           this.http
             .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -118,7 +119,7 @@ export class FavorisService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = decoder(element.nomRecette);
           this.http
             .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {
@@ -159,7 +160,7 @@ export class FavorisService {
     return base.pipe(
       map((data: RecipeDetails[]) => {
         data.forEach((element) => {
-          element.nomRecette = decodeURIComponent(element.nomRecette);
+          element.nomRecette = decoder(element.nomRecette);
           this.http
             .get(this.baseUrl + `/server/image/${element.idRecette}`)
             .subscribe((data: any) => {

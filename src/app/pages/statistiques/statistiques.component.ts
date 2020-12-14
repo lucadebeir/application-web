@@ -6,7 +6,7 @@ import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
 import { RecettesService } from "src/app/service";
 import { take } from "rxjs/operators";
-
+import { decoder } from "../../utils/Codage";
 @Component({
   selector: "app-statistiques",
   templateUrl: "./statistiques.component.html",
@@ -40,7 +40,7 @@ export class StatistiquesComponent implements OnInit {
             .getRecipeById(element.idRecette)
             .subscribe((recipe) => {
               this.showInfo(
-                "Une nouvelle vue sur la recette " + recipe.nomRecette,
+                "Une nouvelle vue sur la recette " + decoder(recipe.nomRecette),
                 element.idNotification,
                 "view-class"
               );
@@ -63,7 +63,7 @@ export class StatistiquesComponent implements OnInit {
             .subscribe((recipe) => {
               this.showInfo(
                 "Un nouveau commentaire sur la recette '" +
-                  recipe.nomRecette +
+                  decoder(recipe.nomRecette) +
                   "' de la part de " +
                   element.pseudo,
                 element.idNotification,
@@ -77,7 +77,7 @@ export class StatistiquesComponent implements OnInit {
               this.showInfo(
                 element.pseudo +
                   " a rajouté une nouvelle recette dans ses favoris : " +
-                  recipe.nomRecette,
+                  decoder(recipe.nomRecette),
                 element.idNotification,
                 "toast-error"
               );
@@ -117,10 +117,9 @@ export class StatistiquesComponent implements OnInit {
     });
 
     this.statService.getBestMonthlyRecipes().subscribe((data) => {
-      console.log(data)
+      console.log(data);
       this.bestMonthlyRecipes = data;
     });
-
   }
 
   showInfo(text, id, css) {

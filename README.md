@@ -1,4 +1,4 @@
-# Marine's Recipe
+# Application Web Marine's Recipe
 
 ## How to launch the app with online database
 

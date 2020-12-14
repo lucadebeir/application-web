@@ -3,12 +3,12 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "client": {
+    "marine'srecipe": {
       "projectType": "application",
       "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "marine'srecipes",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

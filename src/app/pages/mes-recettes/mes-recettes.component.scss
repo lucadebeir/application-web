@@ -40,7 +40,7 @@
 #photo {
   background-size: cover;
   background-position: center;
-  box-shadow: inset 30em 30em rgba(0, 0, 0, 0.35);
+  box-shadow: inset 40em 40em rgba(0, 0, 0, 0.35);
   //background-color: rgba(0, 0, 0, 0.35)
 }
 
@@ -121,11 +121,11 @@ i {
 }
 
 .card {
-  height: 450px;
-  min-height: 450px;
+  height: 350px;
+  min-height: 350px;
   position: relative;
   background: $white;
-  max-width: 500px;
+  max-width: 400px;
   margin: 20px auto;
   box-shadow: 0px 0px 30px 2px #000;
   .header,

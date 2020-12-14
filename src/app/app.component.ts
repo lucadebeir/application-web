@@ -5,7 +5,7 @@ import { Notification } from "./models";
 import { RecettesService } from "./service";
 import { AuthentificationService } from "./service/authentification.service";
 import { NotificationService } from "./service/notifications/notification.service";
-
+import { decoder } from "./utils/Codage";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -52,7 +52,7 @@ export class AppComponent {
             .getRecipeById(element.idRecette)
             .subscribe((recipe) => {
               this.showInfo(
-                "La recette: " + recipe.nomRecette + " a été consulté",
+                "La recette: " + decoder(recipe.nomRecette) + " a été consulté",
                 element.idNotification,
                 "view-class"
               );
@@ -74,7 +74,9 @@ export class AppComponent {
             .getRecipeById(element.idRecette)
             .subscribe((recipe) => {
               this.showInfo(
-                element.pseudo + " a commenté la recette: " + recipe.nomRecette,
+                element.pseudo +
+                  " a commenté la recette: " +
+                  decoder(recipe.nomRecette),
                 element.idNotification,
                 "toast-info"
               );
@@ -86,7 +88,7 @@ export class AppComponent {
               this.showInfo(
                 element.pseudo +
                   " a rajouté une nouvelle recette dans ses favoris : " +
-                  recipe.nomRecette,
+                  decoder(recipe.nomRecette),
                 element.idNotification,
                 "toast-error"
               );
