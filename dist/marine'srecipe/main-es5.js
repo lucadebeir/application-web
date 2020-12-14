@@ -574,7 +574,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/_alert/index.ts ***!
     \*********************************/
 
-  /*! exports provided: AlertService, Alert, AlertType, AlertModule */
+  /*! exports provided: AlertService, AlertModule, Alert, AlertType */
 
   /***/
   function srcApp_alertIndexTs(module, __webpack_exports__, __webpack_require__) {
@@ -19560,7 +19560,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     !*** ./src/app/service/index.ts ***!
     \**********************************/
 
-  /*! exports provided: AdminAuthService, AuthGuardService, AuthentificationService, RecettesService, IngredientsService, CategoriesService, UnitesService, CommentairesService, FavorisService, ImagesService, ShoppingListService */
+  /*! exports provided: AuthentificationService, AdminAuthService, AuthGuardService, RecettesService, IngredientsService, CategoriesService, UnitesService, CommentairesService, FavorisService, ImagesService, ShoppingListService */
 
   /***/
   function srcAppServiceIndexTs(module, __webpack_exports__, __webpack_require__) {

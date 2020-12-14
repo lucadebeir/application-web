@@ -279,7 +279,7 @@ AlertService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInje
 /*!*********************************!*\
   !*** ./src/app/_alert/index.ts ***!
   \*********************************/
-/*! exports provided: AlertService, Alert, AlertType, AlertModule */
+/*! exports provided: AlertService, AlertModule, Alert, AlertType */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10208,7 +10208,7 @@ ImagesService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInj
 /*!**********************************!*\
   !*** ./src/app/service/index.ts ***!
   \**********************************/
-/*! exports provided: AdminAuthService, AuthGuardService, AuthentificationService, RecettesService, IngredientsService, CategoriesService, UnitesService, CommentairesService, FavorisService, ImagesService, ShoppingListService */
+/*! exports provided: AuthentificationService, AdminAuthService, AuthGuardService, RecettesService, IngredientsService, CategoriesService, UnitesService, CommentairesService, FavorisService, ImagesService, ShoppingListService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
