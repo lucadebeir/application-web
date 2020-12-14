@@ -220,6 +220,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
 
     if (this.checked) {
       researchResult = data;
+      this.isLoading = false;
     } else {
       this.categories.forEach((element) => {
         console.log(element);
@@ -265,7 +266,6 @@ export class RecettesComponent implements OnInit, OnDestroy {
 
     this.times.forEach((element) => {
       if (element.filter) {
-        console.log("lol");
         data.forEach((recipe) => {
           if (
             addTimes2(
@@ -286,16 +286,16 @@ export class RecettesComponent implements OnInit, OnDestroy {
     if (researchResultFinal.length == 0) {
       this.allRecipe = data;
       setTimeout(() => {
-        this.recetteService.search(this.searchTerm, data).subscribe();
-        this.isLoading = false;
+        this.recetteService
+          .search(this.searchTerm, data)
+          .subscribe(() => (this.isLoading = false));
       }, 2000);
     } else {
       this.allRecipe = researchResultFinal;
       setTimeout(() => {
         this.recetteService
           .search(this.searchTerm, researchResultFinal)
-          .subscribe();
-        this.isLoading = false;
+          .subscribe(() => (this.isLoading = false));
       }, 2000);
     }
   }

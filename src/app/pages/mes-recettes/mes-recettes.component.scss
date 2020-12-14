@@ -219,3 +219,9 @@ input {
   outline: none;
   border-radius: 0;
 }
+
+.mat-spinner {
+  ::ng-deep circle {
+    stroke: #154360;
+  }
+}

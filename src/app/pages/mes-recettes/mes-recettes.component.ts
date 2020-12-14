@@ -32,6 +32,8 @@ export class MesRecettesComponent implements OnInit {
 
   public categories: CategoryDetails[];
 
+  isLoading: boolean = true;
+
   currentPage: number = JSON.parse(localStorage.getItem("value"))
     ? JSON.parse(localStorage.getItem("value")).current
     : 1;
@@ -163,6 +165,7 @@ export class MesRecettesComponent implements OnInit {
       dialogConfig
     );
     modalDialog.afterClosed().subscribe((result) => {
+      this.isLoading = true;
       this.categories = result.categories;
       this.checked = result.checked;
       this.populaire = result.populaire;
@@ -190,13 +193,12 @@ export class MesRecettesComponent implements OnInit {
     this.currentPage = JSON.parse(localStorage.getItem("value"))
       ? JSON.parse(localStorage.getItem("value")).current
       : 1;
-    let reset: boolean = false;
     let researchResult: RecipeDetails[] = [];
     let researchResultFinal: RecipeDetails[] = [];
 
     if (this.checked) {
       researchResult = data;
-      reset = true;
+      this.isLoading = true;
     } else {
       this.categories.forEach((element) => {
         if (element.checked) {
@@ -255,14 +257,16 @@ export class MesRecettesComponent implements OnInit {
     if (researchResultFinal.length == 0) {
       this.allRecipe = researchResult;
       setTimeout(() => {
-        this.recetteService.search(this.searchTerm, researchResult).subscribe();
+        this.recetteService
+          .search(this.searchTerm, researchResult)
+          .subscribe(() => (this.isLoading = false));
       }, 2000);
     } else {
       this.allRecipe = researchResultFinal;
       setTimeout(() => {
         this.recetteService
           .search(this.searchTerm, researchResultFinal)
-          .subscribe();
+          .subscribe(() => (this.isLoading = false));
       }, 2000);
     }
   }

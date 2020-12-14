@@ -1,4 +1,4 @@
-<div style="height: 45em;">
+<div style="min-height: 45em;">
   <div id="titre" class="mt-5">
     <h1 style="font: normal normal bold 38px/35px cookie, cursive;">
       Les recettes de Marine
@@ -46,8 +46,13 @@
 
   <br />
 
-  <div *ngIf="isLoading">
-    <mat-spinner class="example-margin" [color]="color"></mat-spinner>
+  <div *ngIf="isLoading" style="margin-top: 10em;">
+    <mat-spinner
+      style="margin: 0 auto;"
+      mode="indeterminate"
+      class="example-margin"
+      [color]="color"
+    ></mat-spinner>
   </div>
 
   <div *ngIf="!isLoading">
