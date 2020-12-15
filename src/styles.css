@@ -68,3 +68,5 @@ mat-dialog-container#modal-component {
   border-radius: 11px;
   background-color: #154360;
 }
+
+@import "~material-design-icons/iconfont/material-icons.css";

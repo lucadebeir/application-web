@@ -60,20 +60,40 @@
   >
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/">Accueil </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/allRecipes">Recettes</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/aboutMe">À propos</a>
+        <a
+          class="nav-link"
+          routerLink="/"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          >Accueil
+        </a>
       </li>
 
       <li class="nav-item">
         <a
           class="nav-link"
+          routerLink="/allRecipes"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          >Recettes</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          routerLink="/aboutMe"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          >À propos</a
+        >
+      </li>
+
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
           [routerLink]="['/refresh']"
           [queryParams]="{ url: 'contact' }"
           skipLocationChange="true"
@@ -83,6 +103,8 @@
 
       <li
         class="nav-item"
+        data-toggle="collapse"
+        data-target=".navbar-collapse.show"
         *ngIf="auth.isLoggedIn() && auth.isAdmin()"
         style="display: flex;"
       >
@@ -102,6 +124,8 @@
       <li class="nav-item" *ngIf="!auth.isLoggedIn()">
         <a
           class="nav-link"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
           [routerLink]="['/refresh']"
           [queryParams]="{ url: 'login' }"
           skipLocationChange="true"
@@ -112,6 +136,8 @@
       <li class="nav-item" *ngIf="!auth.isLoggedIn()">
         <a
           class="nav-link"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
           [routerLink]="['/refresh']"
           [queryParams]="{ url: 'register' }"
           skipLocationChange="true"
@@ -129,27 +155,69 @@
         >
           {{ auth.getUserDetails()?.pseudo }}
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" routerLink="/profile">Mon profil</a>
-          <a class="dropdown-item" routerLink="/favorites">Mes recettes ♥</a>
-          <a class="dropdown-item" routerLink="/menu">Menu de la semaine</a>
-          <a class="dropdown-item" routerLink="/shoppingList"
-            >Ma liste de course</a
-          >
-          <a class="dropdown-item" routerLink="/comment">Mes commentaires</a>
+        <div
+          class="dropdown-menu"
+          data-toggle="collapse"
+          data-target=".navbar-collapse.show"
+          aria-labelledby="navbarDropdownMenuLink"
+        >
           <a
             class="dropdown-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            routerLink="/profile"
+            >Mon profil</a
+          >
+          <a
+            class="dropdown-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            routerLink="/favorites"
+            >Mes recettes ♥</a
+          >
+          <a
+            class="dropdown-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            routerLink="/menu"
+            >Menu de la semaine</a
+          >
+          <a
+            class="dropdown-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            routerLink="/shoppingList"
+            >Ma liste de course</a
+          >
+          <a
+            class="dropdown-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            routerLink="/comment"
+            >Mes commentaires</a
+          >
+          <a
+            class="dropdown-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
             *ngIf="auth.isAdmin()"
             routerLink="/handleRecipes"
             >Gerer les recettes</a
           >
           <a
             class="dropdown-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
             *ngIf="auth.isAdmin()"
             routerLink="/statistiques"
             >Statistiques</a
           >
-          <a class="dropdown-item" routerLink="" (click)="auth.logout()"
+          <a
+            class="dropdown-item"
+            data-toggle="collapse"
+            data-target=".navbar-collapse.show"
+            routerLink=""
+            (click)="auth.logout()"
             >Deconnexion</a
           >
         </div>

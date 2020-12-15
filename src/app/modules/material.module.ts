@@ -11,8 +11,12 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatButtonModule } from "@angular/material/button";
+import { MatIconModule } from "@angular/material/icon";
 
 const modules = [
+  MatIconModule,
+  MatButtonModule,
   MatProgressSpinnerModule,
   MatSidenavModule,
   MatListModule,

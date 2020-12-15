@@ -2,9 +2,9 @@
   <header id="modal-header">
     <h1 id="modal-title">Filtrer les recettes</h1>
   </header>
-  <section id="modal-body" style="display: flex;">
+  <section id="modal-body" style="display: flex; flex-flow: wrap;">
     <div style="margin-right: 4em;">
-      <p>Catégories :</p>
+      <p style="font-size: larger; font-weight: bold;">Catégories :</p>
       <section
         class="example-section"
         *ngFor="let categ of modalData.categories"
@@ -26,7 +26,7 @@
     </div>
 
     <div style="margin-right: 4em;">
-      <p>Temps :</p>
+      <p style="font-size: larger; font-weight: bold;">Temps :</p>
       <section class="example-section" *ngFor="let time of modalData.times">
         <mat-checkbox
           (click)="clickCheckbox()"
@@ -38,7 +38,7 @@
     </div>
 
     <div style="margin-right: 4em;">
-      <p>Popularité :</p>
+      <p style="font-size: larger; font-weight: bold;">Popularité :</p>
       <section class="example-section">
         <mat-checkbox
           (click)="clickCheckbox('populaire')"
@@ -47,7 +47,8 @@
           [checked]="modalData.populaire"
           >Les plus populaires</mat-checkbox
         >
-
+      </section>
+      <section class="example-section">
         <mat-checkbox
           (click)="clickCheckbox('recent')"
           class="example-margin"
@@ -66,7 +67,7 @@
       class="btn btn-success"
       (click)="actionFunction()"
     >
-      Appliquer
+      <mat-icon>check</mat-icon>
     </button>
     <button
       mat-raised-button
@@ -75,7 +76,7 @@
       class="btn btn-primary"
       (click)="reset()"
     >
-      Réinitialiser
+      <mat-icon>autorenew</mat-icon>
     </button>
     <button
       mat-raised-button
@@ -84,7 +85,7 @@
       class="btn btn-danger"
       (click)="closeModal()"
     >
-      Annuler
+      <mat-icon color="white">close</mat-icon>
     </button>
   </footer>
 </div>

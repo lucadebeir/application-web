@@ -15,10 +15,13 @@
 }
 
 #modal-action-button {
-  margin-right: 30px;
+  margin: 10px;
   color: white;
+  min-width: 0 !important;
 }
 
 #modal-cancel-button {
+  margin: 10px;
   color: white;
+  min-width: 0 !important;
 }
