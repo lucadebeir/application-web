@@ -7867,7 +7867,6 @@ class RecettesComponent {
         const modalDialog = this.matDialog.open(_filter_recettes_filter_recettes_component__WEBPACK_IMPORTED_MODULE_3__["FilterRecettesComponent"], dialogConfig);
         modalDialog.afterClosed().subscribe((result) => {
             this.isLoading = true;
-            console.log(result);
             this.categories = result.categories;
             this.checked = result.checked;
             this.populaire = result.populaire;
@@ -7883,6 +7882,7 @@ class RecettesComponent {
                 .subscribe((data) => {
                 this.allRecipe = data;
                 this.researchFilter(data);
+                console.log(data);
             });
         }
         else {
@@ -7893,18 +7893,15 @@ class RecettesComponent {
         }
     }
     researchFilter(data) {
-        console.log(data);
         this.currentPage = JSON.parse(localStorage.getItem("value"))
             ? JSON.parse(localStorage.getItem("value")).current
             : 1;
         let researchResult = [];
         if (this.checked) {
-            researchResult = data;
-            this.isLoading = false;
+            this.researchFilterTime(data);
         }
         else {
             this.categories.forEach((element) => {
-                console.log(element);
                 if (element.checked) {
                     if (this.populaire) {
                         this.recetteService

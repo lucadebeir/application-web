@@ -185,7 +185,6 @@ export class RecettesComponent implements OnInit, OnDestroy {
     );
     modalDialog.afterClosed().subscribe((result) => {
       this.isLoading = true;
-      console.log(result);
       this.categories = result.categories;
       this.checked = result.checked;
       this.populaire = result.populaire;
@@ -202,6 +201,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
         .subscribe((data) => {
           this.allRecipe = data;
           this.researchFilter(data);
+          console.log(data);
         });
     } else {
       this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
@@ -212,18 +212,15 @@ export class RecettesComponent implements OnInit, OnDestroy {
   }
 
   researchFilter(data: RecipeDetails[]) {
-    console.log(data);
     this.currentPage = JSON.parse(localStorage.getItem("value"))
       ? JSON.parse(localStorage.getItem("value")).current
       : 1;
     let researchResult: RecipeDetails[] = [];
 
     if (this.checked) {
-      researchResult = data;
-      this.isLoading = false;
+      this.researchFilterTime(data);
     } else {
       this.categories.forEach((element) => {
-        console.log(element);
         if (element.checked) {
           if (this.populaire) {
             this.recetteService

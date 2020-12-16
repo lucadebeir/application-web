@@ -15318,7 +15318,6 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var modalDialog = this.matDialog.open(_filter_recettes_filter_recettes_component__WEBPACK_IMPORTED_MODULE_3__["FilterRecettesComponent"], dialogConfig);
           modalDialog.afterClosed().subscribe(function (result) {
             _this74.isLoading = true;
-            console.log(result);
             _this74.categories = result.categories;
             _this74.checked = result.checked;
             _this74.populaire = result.populaire;
@@ -15338,6 +15337,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
               _this75.allRecipe = data;
 
               _this75.researchFilter(data);
+
+              console.log(data);
             });
           } else {
             this.recetteService.getAllRecipesAndIngredients().subscribe(function (data) {
@@ -15352,17 +15353,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function researchFilter(data) {
           var _this76 = this;
 
-          console.log(data);
           this.currentPage = JSON.parse(localStorage.getItem("value")) ? JSON.parse(localStorage.getItem("value")).current : 1;
           var researchResult = [];
 
           if (this.checked) {
-            researchResult = data;
-            this.isLoading = false;
+            this.researchFilterTime(data);
           } else {
             this.categories.forEach(function (element) {
-              console.log(element);
-
               if (element.checked) {
                 if (_this76.populaire) {
                   _this76.recetteService.getRecipeByCategoryByNbVues(element.idCategorie).subscribe(function (recipes) {
