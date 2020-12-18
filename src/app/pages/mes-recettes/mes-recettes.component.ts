@@ -6,10 +6,14 @@ import {
   FavorisService,
   CategoriesService,
 } from "../../service";
-import { RecipeDetails, CategoryDetails } from "../../models";
+import {
+  RecipeDetails,
+  CategoryDetails,
+  HashTable,
+  TimeDetails,
+} from "../../models";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { HashTable, TimeDetails } from "../recettes/recettes.component";
 import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";

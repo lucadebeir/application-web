@@ -7,7 +7,13 @@ import {
   CategoriesService,
   FavorisService,
 } from "../../service";
-import { RecipeDetails, CategoryDetails, FavorisDetails } from "../../models";
+import {
+  RecipeDetails,
+  CategoryDetails,
+  FavorisDetails,
+  TimeDetails,
+  HashTable,
+} from "../../models";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Notification } from "src/app/models";
@@ -446,19 +452,4 @@ export class RecettesComponent implements OnInit, OnDestroy {
     };
     this.notifService.addNotification(notif).subscribe();
   }
-}
-
-export interface HashTable<T> {
-  [key: number]: T;
-}
-
-export interface TimeDetails {
-  libelle: string;
-  filter: boolean;
-  libNum: number;
-}
-
-export interface FilterReturn {
-  categories: CategoryDetails[];
-  times: TimeDetails[];
 }
