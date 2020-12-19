@@ -10,7 +10,7 @@ import { decoder } from "../../utils/Codage";
 @Component({
   selector: "app-statistiques",
   templateUrl: "./statistiques.component.html",
-  styleUrls: ["./statistiques.component.css"],
+  styleUrls: ["./statistiques.component.scss"],
 })
 export class StatistiquesComponent implements OnInit {
   public nbVuesTot: any;

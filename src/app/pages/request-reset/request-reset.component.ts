@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AuthentificationService } from 'src/app/service';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { AuthentificationService } from "src/app/service";
 
 @Component({
-  selector: 'app-request-reset',
-  templateUrl: './request-reset.component.html',
-  styleUrls: ['./request-reset.component.css']
+  selector: "app-request-reset",
+  templateUrl: "./request-reset.component.html",
+  styleUrls: ["./request-reset.component.scss"],
 })
-
 export class RequestResetComponent implements OnInit {
   RequestResetForm: FormGroup;
   forbiddenEmails: any;
@@ -18,34 +17,33 @@ export class RequestResetComponent implements OnInit {
 
   constructor(
     private authService: AuthentificationService,
-    private router: Router,
-   ) {
-
-  }
-
+    private router: Router
+  ) {}
 
   ngOnInit() {
-
     this.RequestResetForm = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmails),
+      email: new FormControl(
+        null,
+        [Validators.required, Validators.email],
+        this.forbiddenEmails
+      ),
     });
   }
-
 
   RequestResetUser(form) {
     if (form.valid) {
       this.IsvalidForm = true;
       this.authService.requestReset(this.RequestResetForm.value).subscribe(
-        data => {
+        (data) => {
           this.RequestResetForm.reset();
-          this.successMessage = 'Un email vous a été envoyé pour changer votre mot de passe.';
+          this.successMessage =
+            "Un email vous a été envoyé pour changer votre mot de passe.";
           setTimeout(() => {
             this.successMessage = null;
-            this.router.navigate(['login']);
+            this.router.navigate(["login"]);
           }, 3000);
         },
-        err => {
-
+        (err) => {
           if (err.error.message) {
             this.errorMessage = err.error.message;
           }

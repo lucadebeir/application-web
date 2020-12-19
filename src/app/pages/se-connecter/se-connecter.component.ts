@@ -7,7 +7,7 @@ import { AlertService } from "src/app/_alert";
 @Component({
   selector: "app-se-connecter",
   templateUrl: "./se-connecter.component.html",
-  styleUrls: ["./se-connecter.component.css"],
+  styleUrls: ["./se-connecter.component.scss"],
 })
 export class SeConnecterComponent implements OnInit {
   options = {
