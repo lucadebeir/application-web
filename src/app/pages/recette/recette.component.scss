@@ -1011,8 +1011,8 @@ time {
   .col-lg-4 {
     position: relative;
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 25px;
+    padding-left: 25px;
   }
   .centre {
     overflow: hidden;
@@ -1166,4 +1166,12 @@ time {
 #vege {
   font-size: inherit;
   margin-left: 0.5em;
+}
+
+.row {
+  display: -webkit-box;
+  flex-wrap: inherit;
+  margin-right: -15px;
+  margin-left: -15px;
+  overflow-x: scroll;
 }

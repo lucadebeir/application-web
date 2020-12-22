@@ -120,7 +120,7 @@ export class RecetteComponent implements OnInit {
     });
 
     this.imagesService
-      .getImage(parseInt(this.route.snapshot.paramMap.get("id"), 10))
+      .getImageByRecipe(parseInt(this.route.snapshot.paramMap.get("id"), 10))
       .subscribe((res) => {
         console.log(res);
         this.image = res;

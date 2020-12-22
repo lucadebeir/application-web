@@ -20,7 +20,7 @@ export class ImagesService {
     );
   }
 
-  public getImage(id: number): any {
+  public getImageByRecipe(id: number): any {
     return this.http.get(this.baseUrl + `/server/image/${id}`).pipe(
       map((data: any) => {
         return data;

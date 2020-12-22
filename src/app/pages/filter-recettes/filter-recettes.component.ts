@@ -16,7 +16,7 @@ export class FilterRecettesComponent implements OnInit {
 
   actionFunction() {
     alert("I am a work in progress");
-    this.closeModal();
+    this.closeModal("ok");
   }
 
   reset() {
@@ -48,7 +48,11 @@ export class FilterRecettesComponent implements OnInit {
     }
   }
 
-  closeModal() {
-    this.dialogRef.close(this.modalData);
+  closeModal(close?) {
+    if (close) {
+      this.dialogRef.close(this.modalData);
+    } else {
+      this.dialogRef.close();
+    }
   }
 }

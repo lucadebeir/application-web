@@ -115,6 +115,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     console.log(JSON.parse(localStorage.getItem("value")));
     if (JSON.parse(localStorage.getItem("value"))) {
+      this.isLoading = false;
       if (JSON.parse(localStorage.getItem("backButton")).backButton) {
         window.scrollTo(
           0,
@@ -190,13 +191,15 @@ export class RecettesComponent implements OnInit, OnDestroy {
       dialogConfig
     );
     modalDialog.afterClosed().subscribe((result) => {
-      this.isLoading = true;
-      this.categories = result.categories;
-      this.checked = result.checked;
-      this.populaire = result.populaire;
-      this.recent = result.recent;
-      this.times = result.times;
-      this.filterRecipes();
+      if (result) {
+        this.isLoading = true;
+        this.categories = result.categories;
+        this.checked = result.checked;
+        this.populaire = result.populaire;
+        this.recent = result.recent;
+        this.times = result.times;
+        this.filterRecipes();
+      }
     });
   }
 
@@ -324,7 +327,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
   }
 
   getImageByIdRecipe(id: number): any {
-    this.imagesService.getImage(id).subscribe((res) => {
+    this.imagesService.getImageByRecipe(id).subscribe((res) => {
       return res.lienImage;
     });
   }
