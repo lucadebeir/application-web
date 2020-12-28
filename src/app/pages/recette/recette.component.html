@@ -118,6 +118,46 @@
           </span>
         </div>
       </div>
+      <share-buttons
+        [theme]="'default'"
+        [include]="[
+          'facebook',
+          'twitter',
+          'linkedin',
+          'pinterest',
+          'reddit',
+          'tumblr',
+          'mix',
+          'viber',
+          'vk',
+          'telegram',
+          'messenger',
+          'whatsapp',
+          'xing',
+          'line',
+          'sms',
+          'email',
+          'print',
+          'copy'
+        ]"
+        [exclude]="[
+          'reddit',
+          'tumblr',
+          'mix',
+          'viber',
+          'vk',
+          'telegram',
+          'xing',
+          'line'
+        ]"
+        [show]="11"
+        [showText]="true"
+        [size]="-2"
+        [url]="url"
+        [title]="recette?.nomRecette"
+        [description]="recette?.mot"
+        [image]="image[0].lienImage"
+      ></share-buttons>
     </div>
   </div>
   <div class="hero-graphic" *ngFor="let img of image">

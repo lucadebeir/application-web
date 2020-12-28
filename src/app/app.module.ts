@@ -59,6 +59,10 @@ import { LoadingBarRouterModule } from "@ngx-loading-bar/router";
 import { LoadingBarModule } from "@ngx-loading-bar/core";
 import { FilterRecettesComponent } from "./pages/filter-recettes/filter-recettes.component";
 
+//share buttons
+import { ShareButtonsModule } from "ngx-sharebuttons/buttons";
+import { ShareIconsModule } from "ngx-sharebuttons/icons";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -118,6 +122,9 @@ import { FilterRecettesComponent } from "./pages/filter-recettes/filter-recettes
 
     // for Core use:
     LoadingBarModule,
+
+    ShareButtonsModule,
+    ShareIconsModule,
   ],
   providers: [
     AuthGuardService,

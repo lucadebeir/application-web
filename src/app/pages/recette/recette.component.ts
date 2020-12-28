@@ -35,6 +35,8 @@ export class RecetteComponent implements OnInit {
   public title;
   public images;
 
+  public url: string;
+
   public image;
   public recette: RecipeDetails;
   public ingredients: Observable<IngredientDetails[]>;
@@ -104,6 +106,10 @@ export class RecetteComponent implements OnInit {
     private shoppingListService: ShoppingListService,
     private notifService: NotificationService
   ) {
+    this.url = "http://marinesrecipes.fr" + this.router.url;
+
+    console.log(this.url);
+
     this.recetteService
       .getRecipeById(parseInt(this.route.snapshot.paramMap.get("id"), 10))
       .subscribe((recette) => {
@@ -124,6 +130,7 @@ export class RecetteComponent implements OnInit {
       .subscribe((res) => {
         console.log(res);
         this.image = res;
+        console.log(this.image[0].lienImage);
       });
 
     this.ingredientsService
