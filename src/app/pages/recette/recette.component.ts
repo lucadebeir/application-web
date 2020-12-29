@@ -25,6 +25,7 @@ import { addHours, roundDecimal } from "../../utils/Utils";
 import { ListRecipe } from "src/app/models/listRecipe.model";
 import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-recette",
@@ -104,13 +105,15 @@ export class RecetteComponent implements OnInit {
     private favorisService: FavorisService,
     private unitesService: UnitesService,
     private shoppingListService: ShoppingListService,
-    private notifService: NotificationService
+    private notifService: NotificationService,
+    private titleService: Title
   ) {
     this.url = "http://marinesrecipes.fr" + this.router.url;
 
     this.recetteService
       .getRecipeById(parseInt(this.route.snapshot.paramMap.get("id"), 10))
       .subscribe((recette) => {
+        this.titleService.setTitle(recette.nomRecette);
         this.recette = recette;
         this.recette.tempsCuisson = addHours(this.recette.tempsCuisson);
         this.recette.tempsPreparation = addHours(this.recette.tempsPreparation);

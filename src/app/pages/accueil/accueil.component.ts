@@ -6,6 +6,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { OwlOptions } from "ngx-owl-carousel-o";
 import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: "app-accueil",
@@ -13,6 +14,8 @@ import { NotificationService } from "src/app/service/notifications/notification.
   styleUrls: ["./accueil.component.scss"],
 })
 export class AccueilComponent implements OnInit {
+  title = "Marine's Recipes";
+
   public condition: boolean = true;
 
   public mostPopularRecipes: RecipeDetails[];
@@ -77,8 +80,10 @@ export class AccueilComponent implements OnInit {
     private recetteService: RecettesService,
     private router: Router,
     private categoriesService: CategoriesService,
-    private notifService: NotificationService
+    private notifService: NotificationService,
+    private titleService: Title
   ) {
+    this.titleService.setTitle(this.title);
     this.getMostPopularRecipes();
     this.getLatestReceipes();
 

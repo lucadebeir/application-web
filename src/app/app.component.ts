@@ -1,11 +1,17 @@
 import { Component, ViewChild } from "@angular/core";
+import { Title } from "@angular/platform-browser";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
-import { take } from "rxjs/operators";
+import { filter, map, take } from "rxjs/operators";
 import { Notification } from "./models";
 import { RecettesService } from "./service";
 import { AuthentificationService } from "./service/authentification.service";
 import { NotificationService } from "./service/notifications/notification.service";
 import { decoder } from "./utils/Codage";
+
+// declare ga as a function to set and sent the events
+declare let gtag: Function;
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -18,9 +24,39 @@ export class AppComponent {
     public auth: AuthentificationService,
     public notifService: NotificationService,
     public recetteService: RecettesService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    public router: Router,
+    private titleService: Title,
+    private activatedRoute: ActivatedRoute
   ) {
     this.loadData();
+
+    // subscribe to router events and send page views to Google Analytics
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        gtag("config", "G-BBQGRC1NTT", {
+          page_path: event.urlAfterRedirects,
+        });
+      }
+    });
+  }
+
+  ngOnInit() {
+    const appTitle = this.titleService.getTitle();
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => {
+          const child = this.activatedRoute.firstChild;
+          if (child.snapshot.data["title"]) {
+            return child.snapshot.data["title"];
+          }
+          return appTitle;
+        })
+      )
+      .subscribe((ttl: string) => {
+        this.titleService.setTitle(ttl);
+      });
   }
 
   loadData() {
