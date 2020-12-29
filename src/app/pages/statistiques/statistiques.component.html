@@ -1,184 +1,261 @@
 <body class="color-b">
+  <div
+    id="hammerElement"
+    style="
+      touch-action: pan-y;
+      user-select: none;
+      -webkit-user-drag: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    "
+  >
+    <div class="container-section construct">
+      <section id="webmarketing" class="section">
+        <section class="group-article">
+          <header class="group-header">
+            <h1 class="titre">Statistiques</h1>
+          </header>
 
-    <div id="hammerElement" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">
-        <div class="container-section construct">
-            <section id="webmarketing" class="section">
+          <article>
+            <h2 class="titre">Nombre de vues total</h2>
+            <p class="tags">
+              <span class="tag-item">bilan</span>
+            </p>
+            <p class="descript">{{ nbVuesTot }}</p>
+            <a
+              href="https://wearesocial.com/fr/"
+              class="link"
+              target="_blank"
+            ></a>
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
+          <article>
+            <h2 class="titre">Nombre de commentaires total</h2>
+            <p class="tags">
+              <span class="tag-item">statistiques</span>
+            </p>
+            <p class="descript">{{ nbCommentairesTot }}</p>
+            <a href="https://fr.statista.com/" class="link" target="_blank"></a>
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
+          <article>
+            <h2 class="titre">Nombre de personnes inscrites</h2>
+            <p class="tags">
+              <span class="tag-item">statistiques</span>
+            </p>
+            <p class="descript">{{ nbUsers }}</p>
 
+            <a class="link" target="_blank">
+              dont {{ nbAbonnes }} abonnés à la newsletter.</a
+            >
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
 
-                <section class="group-article">
-                    <header class="group-header">
-                        <h1 class="titre">Statistiques</h1>
-                    </header>
-                    <article>
-                        <h2 class="titre">Nombre de vues total</h2>
-                        <p class="tags">
-                            <span class="tag-item">bilan</span> </p>
-                        <p class="descript">{{nbVuesTot}}</p>
-                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
-                        <div class="action-link-list">
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
-                    <article>
-                        <h2 class="titre">Nombre de commentaires total</h2>
-                        <p class="tags">
-                            <span class="tag-item">statistiques</span> </p>
-                        <p class="descript">{{nbCommentairesTot}}</p>
-                        <a href="https://fr.statista.com/" class="link" target="_blank"></a>
-                        <div class="action-link-list">
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
-                    <article>
-                        <h2 class="titre">Nombre de personnes inscrites</h2>
-                        <p class="tags">
-                            <span class="tag-item">statistiques</span> </p>
-                        <p class="descript">{{nbUsers}}</p>
+          <article>
+            <h2 class="titre">Users</h2>
+            <p class="tags">
+              <span class="tag-item">statistiques</span>
+            </p>
+            <p class="descript" *ngFor="let user of users">
+              {{ user.pseudo }}
+              <span *ngIf="user.abonneNews == 1">
+                <i class="fa fa-lg fa-envelope"></i>
+              </span>
+            </p>
 
-                        <a class="link" target="_blank"> dont {{nbAbonnes}} abonnés à la newsletter.</a>
-                        <div class="action-link-list">
+            <a
+              href="https://wearesocial.com/fr/"
+              class="link"
+              target="_blank"
+            ></a>
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
 
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
+          <article>
+            <h2 class="titre">Statistiques du mois : recettes</h2>
+            <p class="tags">
+              <span class="tag-item">statistiques</span>
+            </p>
+            <p class="descript">lààààààààààà</p>
 
+            <a
+              href="https://wearesocial.com/fr/"
+              class="link"
+              target="_blank"
+            ></a>
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
 
-                    <article>
-                        <h2 class="titre">Users</h2>
-                        <p class="tags">
-                            <span class="tag-item">statistiques</span> </p>
-                        <p class="descript" *ngFor="let user of users ">{{user.pseudo}}
-                            <span *ngIf="user.abonneNews == 1"> <i class="fa fa-lg fa-envelope"></i> </span>
-                        </p>
+          <article>
+            <h2 class="titre">Source trafic par appareil</h2>
+            <p class="tags">
+              <span class="tag-item">statistiques</span>
+            </p>
+            <p class="descript">lààààààààààààà</p>
 
-                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
-                        <div class="action-link-list">
+            <a
+              href="https://wearesocial.com/fr/"
+              class="link"
+              target="_blank"
+            ></a>
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
 
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
+          <article>
+            <h2 class="titre">Statistiques du mois : users</h2>
+            <p class="tags">
+              <span class="tag-item">statistiques</span>
+            </p>
+            <p class="descript">lààààààààààà</p>
 
-                    <article>
-                        <h2 class="titre">Statistiques du mois : recettes</h2>
-                        <p class="tags">
-                            <span class="tag-item">statistiques</span> </p>
-                        <p class="descript">lààààààààààà
-                        </p>
+            <a
+              href="https://wearesocial.com/fr/"
+              class="link"
+              target="_blank"
+            ></a>
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
 
-                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
-                        <div class="action-link-list">
+          <article>
+            <h2 class="titre">Recettes les plus consultées du mois</h2>
+            <p class="tags">
+              <span class="tag-item">statistiques</span>
+            </p>
+            <p class="descript" *ngFor="let recette of bestMonthlyRecipes">
+              {{ recette.nomRecette }} + {{ recette.nbVues }}👁
+            </p>
 
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
+            <a
+              href="https://wearesocial.com/fr/"
+              class="link"
+              target="_blank"
+            ></a>
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
 
-                    <article>
-                        <h2 class="titre">Source trafic par appareil</h2>
-                        <p class="tags">
-                            <span class="tag-item">statistiques</span> </p>
-                        <p class="descript">lààààààààààààà
-                        </p>
+          <article>
+            <h2 class="titre">Les meilleures recettes</h2>
+            <p class="tags">
+              <span class="tag-item">statistiques</span>
+            </p>
+            <p class="descript" *ngFor="let recette of bestRecipes">
+              {{ recette.nomRecette }} 👁{{ recette.nbVues }}
+            </p>
 
-                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
-                        <div class="action-link-list">
+            <a
+              href="https://wearesocial.com/fr/"
+              class="link"
+              target="_blank"
+            ></a>
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
 
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
+          <article>
+            <h2 class="titre">Les recettes à promouvoir</h2>
+            <p class="tags">
+              <span class="tag-item">statistiques</span>
+            </p>
+            <p class="descript" *ngFor="let recette of worstRecipes">
+              {{ recette.nomRecette }} 👁 {{ recette.nbVues }}
+            </p>
 
-                    <article>
-                        <h2 class="titre">Statistiques du mois : users</h2>
-                        <p class="tags">
-                            <span class="tag-item">statistiques</span> </p>
-                        <p class="descript">lààààààààààà
-                        </p>
-
-
-                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
-                        <div class="action-link-list">
-
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
-
-                    <article>
-                        <h2 class="titre">Recettes les plus consultées du mois</h2>
-                        <p class="tags">
-                            <span class="tag-item">statistiques</span> </p>
-                        <p class="descript" *ngFor="let recette of bestMonthlyRecipes ">{{recette.nomRecette}} + {{ recette.nbVues}}👁
-
-                        </p>
-
-                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
-                        <div class="action-link-list">
-
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
-
-
-                    <article>
-                        <h2 class="titre">Les meilleures recettes</h2>
-                        <p class="tags">
-                            <span class="tag-item">statistiques</span> </p>
-                        <p class="descript" *ngFor="let recette of bestRecipes ">{{recette.nomRecette}} 👁{{ recette.nbVues}}
-
-                        </p>
-
-
-                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
-                        <div class="action-link-list">
-
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
-
-                    <article>
-                        <h2 class="titre">Les recettes à promouvoir</h2>
-                        <p class="tags">
-                            <span class="tag-item">statistiques</span> </p>
-                        <p class="descript" *ngFor="let recette of worstRecipes ">{{recette.nomRecette}} 👁 {{ recette.nbVues}}
-                        </p>
-
-                        <a href="https://wearesocial.com/fr/" class="link" target="_blank"></a>
-                        <div class="action-link-list">
-
-                            <a href="#" class="action-link">C</a>
-                            <a href="#" class="action-link">O</a>
-                            <a href="#" class="action-link">D</a>
-                            <a href="#" class="action-link">E</a>
-                        </div>
-                    </article>
-
-                </section>
-            </section>
-        </div>
+            <a
+              href="https://wearesocial.com/fr/"
+              class="link"
+              target="_blank"
+            ></a>
+            <div class="action-link-list">
+              <a href="#" class="action-link">C</a>
+              <a href="#" class="action-link">O</a>
+              <a href="#" class="action-link">D</a>
+              <a href="#" class="action-link">E</a>
+            </div>
+          </article>
+        </section>
+      </section>
     </div>
+  </div>
+  <div id="chart" *ngIf="chartOptions3">
+    <apx-chart
+      [series]="chartOptions3.series"
+      [chart]="chartOptions3.chart"
+      [dataLabels]="chartOptions3.dataLabels"
+      [plotOptions]="chartOptions3.plotOptions"
+      [yaxis]="chartOptions3.yaxis"
+      [xaxis]="chartOptions3.xaxis"
+      [legend]="chartOptions3.legend"
+      [colors]="chartOptions3.colors"
+      [grid]="chartOptions3.grid"
+    ></apx-chart>
+  </div>
+  <div id="chart" *ngIf="chartOptions">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [dataLabels]="chartOptions.dataLabels"
+      [plotOptions]="chartOptions.plotOptions"
+      [yaxis]="chartOptions.yaxis"
+      [xaxis]="chartOptions.xaxis"
+      [legend]="chartOptions.legend"
+      [colors]="chartOptions.colors"
+      [grid]="chartOptions.grid"
+    ></apx-chart>
+  </div>
+  <div id="chart" *ngIf="chartOptions2">
+    <apx-chart
+      [series]="chartOptions2.series"
+      [chart]="chartOptions2.chart"
+      [dataLabels]="chartOptions2.dataLabels"
+      [plotOptions]="chartOptions2.plotOptions"
+      [yaxis]="chartOptions2.yaxis"
+      [xaxis]="chartOptions2.xaxis"
+      [legend]="chartOptions2.legend"
+      [colors]="chartOptions2.colors"
+      [grid]="chartOptions2.grid"
+    ></apx-chart>
+  </div>
 </body>

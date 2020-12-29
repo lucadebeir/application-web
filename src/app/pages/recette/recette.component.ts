@@ -108,8 +108,6 @@ export class RecetteComponent implements OnInit {
   ) {
     this.url = "http://marinesrecipes.fr" + this.router.url;
 
-    console.log(this.url);
-
     this.recetteService
       .getRecipeById(parseInt(this.route.snapshot.paramMap.get("id"), 10))
       .subscribe((recette) => {

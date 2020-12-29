@@ -63,6 +63,8 @@ import { FilterRecettesComponent } from "./pages/filter-recettes/filter-recettes
 import { ShareButtonsModule } from "ngx-sharebuttons/buttons";
 import { ShareIconsModule } from "ngx-sharebuttons/icons";
 
+//chart module
+import { NgApexchartsModule } from "ng-apexcharts";
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,6 +127,9 @@ import { ShareIconsModule } from "ngx-sharebuttons/icons";
 
     ShareButtonsModule,
     ShareIconsModule,
+
+    //charts
+    NgApexchartsModule,
   ],
   providers: [
     AuthGuardService,

@@ -7,6 +7,39 @@ import { NotificationService } from "src/app/service/notifications/notification.
 import { RecettesService } from "src/app/service";
 import { take } from "rxjs/operators";
 import { decoder } from "../../utils/Codage";
+import {
+  ApexChart,
+  ApexAxisChartSeries,
+  ApexDataLabels,
+  ApexPlotOptions,
+  ApexYAxis,
+  ApexLegend,
+  ApexGrid,
+} from "ng-apexcharts";
+
+type ApexXAxis = {
+  type?: "category" | "datetime" | "numeric";
+  categories?: any;
+  labels?: {
+    style?: {
+      colors?: string | string[];
+      fontSize?: string;
+    };
+  };
+};
+
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  dataLabels: ApexDataLabels;
+  plotOptions: ApexPlotOptions;
+  yaxis: ApexYAxis;
+  xaxis: ApexXAxis;
+  grid: ApexGrid;
+  colors: string[];
+  legend: ApexLegend;
+};
+
 @Component({
   selector: "app-statistiques",
   templateUrl: "./statistiques.component.html",
@@ -25,6 +58,10 @@ export class StatistiquesComponent implements OnInit {
     nomRecette: number;
     nbVues: number;
   }[];
+
+  public chartOptions: Partial<ChartOptions>;
+  public chartOptions2: Partial<ChartOptions>;
+  public chartOptions3: Partial<ChartOptions>;
 
   constructor(
     private statService: StatistiquesService,
@@ -110,15 +147,162 @@ export class StatistiquesComponent implements OnInit {
 
     this.statService.getBestRecipes().subscribe((data) => {
       this.bestRecipes = data;
+      let vues = [];
+      let noms = [];
+      data.forEach((element) => {
+        let nom = [];
+        vues.push(element.nbVues);
+        nom.push(element.nomRecette);
+        noms.push(element.nomRecette);
+      });
+
+      this.chartOptions = {
+        series: [
+          {
+            name: "Nombre de vues",
+            data: vues,
+          },
+        ],
+        chart: {
+          height: 350,
+          type: "bar",
+          events: {
+            click: function (chart, w, e) {
+              // console.log(chart, w, e)
+            },
+          },
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: "45%",
+            distributed: true,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        legend: {
+          show: false,
+        },
+        grid: {
+          show: false,
+        },
+        xaxis: {
+          categories: noms,
+          labels: {
+            style: {
+              fontSize: "10px",
+            },
+          },
+        },
+      };
     });
 
     this.statService.getWorstRecipes().subscribe((data) => {
       this.worstRecipes = data;
+      let vues = [];
+      let noms = [];
+      data.forEach((element) => {
+        let nom = [];
+        vues.push(element.nbVues);
+        nom.push(element.nomRecette);
+        noms.push(element.nomRecette);
+      });
+
+      this.chartOptions2 = {
+        series: [
+          {
+            name: "Nombre de vues",
+            data: vues,
+          },
+        ],
+        chart: {
+          height: 350,
+          type: "bar",
+          events: {
+            click: function (chart, w, e) {
+              // console.log(chart, w, e)
+            },
+          },
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: "45%",
+            distributed: true,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        legend: {
+          show: false,
+        },
+        grid: {
+          show: false,
+        },
+        xaxis: {
+          categories: noms,
+          labels: {
+            style: {
+              fontSize: "10px",
+            },
+          },
+        },
+      };
     });
 
     this.statService.getBestMonthlyRecipes().subscribe((data) => {
       console.log(data);
       this.bestMonthlyRecipes = data;
+      let vues = [];
+      let noms = [];
+      data.forEach((element) => {
+        let nom = [];
+        vues.push(element.nbVues);
+        nom.push(element.nomRecette);
+        noms.push(element.nomRecette);
+      });
+
+      this.chartOptions3 = {
+        series: [
+          {
+            name: "Nombre de vues",
+            data: vues,
+          },
+        ],
+        chart: {
+          height: 350,
+          type: "bar",
+          events: {
+            click: function (chart, w, e) {
+              // console.log(chart, w, e)
+            },
+          },
+        },
+        plotOptions: {
+          bar: {
+            columnWidth: "45%",
+            distributed: true,
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        legend: {
+          show: false,
+        },
+        grid: {
+          show: false,
+        },
+        xaxis: {
+          categories: noms,
+          labels: {
+            style: {
+              fontSize: "10px",
+            },
+          },
+        },
+      };
     });
   }
 

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { environment } from "../../../environments/environment";
+import { decoder, encoder } from "../../utils/Codage";
 
 @Injectable({
   providedIn: "root",
@@ -64,6 +65,9 @@ export class StatistiquesService {
       .get<any>(this.baseUrl + `/server/statistique/bestRecipes`)
       .pipe(
         map((data: any) => {
+          data.forEach((element) => {
+            element.nomRecette = decoder(element.nomRecette);
+          });
           return data;
         })
       );
@@ -73,6 +77,9 @@ export class StatistiquesService {
       .get<any>(this.baseUrl + `/server/statistique/worstRecipes`)
       .pipe(
         map((data: any) => {
+          data.forEach((element) => {
+            element.nomRecette = decoder(element.nomRecette);
+          });
           return data;
         })
       );
@@ -82,6 +89,9 @@ export class StatistiquesService {
       .get<any>(this.baseUrl + `/server/statistique/bestMonthlyRecipes`)
       .pipe(
         map((data: any) => {
+          data.forEach((element) => {
+            element.nomRecette = decoder(element.nomRecette);
+          });
           return data;
         })
       );

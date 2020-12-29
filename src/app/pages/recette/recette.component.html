@@ -1,3 +1,10 @@
+<head>
+  <meta property="og:title" content="recette?.nomRecette" />
+  <meta property="og:description" content="recette?.mot" />
+  <meta property="og:url" content="url" />
+  <meta property="og:image" content="image[0]?.lienImage" />
+</head>
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <header class="site-header">
@@ -118,46 +125,47 @@
           </span>
         </div>
       </div>
-      <share-buttons
-        [theme]="'default'"
-        [include]="[
-          'facebook',
-          'twitter',
-          'linkedin',
-          'pinterest',
-          'reddit',
-          'tumblr',
-          'mix',
-          'viber',
-          'vk',
-          'telegram',
-          'messenger',
-          'whatsapp',
-          'xing',
-          'line',
-          'sms',
-          'email',
-          'print',
-          'copy'
-        ]"
-        [exclude]="[
-          'reddit',
-          'tumblr',
-          'mix',
-          'viber',
-          'vk',
-          'telegram',
-          'xing',
-          'line'
-        ]"
-        [show]="11"
-        [showText]="true"
-        [size]="-2"
-        [url]="url"
-        [title]="recette?.nomRecette"
-        [description]="recette?.mot"
-        [image]="image[0].lienImage"
-      ></share-buttons>
+      <div style="padding: 2em 0;">
+        <share-buttons
+          [theme]="'default'"
+          [include]="[
+            'facebook',
+            'twitter',
+            'linkedin',
+            'pinterest',
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'messenger',
+            'whatsapp',
+            'xing',
+            'line',
+            'sms',
+            'email',
+            'print',
+            'copy'
+          ]"
+          [exclude]="[
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'xing',
+            'line'
+          ]"
+          [show]="11"
+          [size]="-2"
+          [url]="url"
+          [title]="recette?.nomRecette"
+          [description]="recette?.mot"
+          [image]="image[0]?.lienImage"
+        ></share-buttons>
+      </div>
     </div>
   </div>
   <div class="hero-graphic" *ngFor="let img of image">
