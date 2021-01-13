@@ -125,7 +125,7 @@
           </span>
         </div>
       </div>
-      <div style="padding: 2em 0;">
+      <div *ngIf="image" style="padding: 2em 0;">
         <share-buttons
           [theme]="'default'"
           [include]="[
@@ -166,6 +166,46 @@
           [image]="image[0]?.lienImage"
         ></share-buttons>
       </div>
+      <div *ngIf="!image" style="padding: 2em 0;">
+        <share-buttons
+          [theme]="'default'"
+          [include]="[
+            'facebook',
+            'twitter',
+            'linkedin',
+            'pinterest',
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'messenger',
+            'whatsapp',
+            'xing',
+            'line',
+            'sms',
+            'email',
+            'print',
+            'copy'
+          ]"
+          [exclude]="[
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'xing',
+            'line'
+          ]"
+          [show]="11"
+          [size]="-2"
+          [url]="url"
+          [title]="recette?.nomRecette"
+          [description]="recette?.mot"
+        ></share-buttons>
+      </div>
     </div>
   </div>
   <div class="hero-graphic" *ngFor="let img of image">
@@ -198,6 +238,7 @@
     <div class="recipe-ingredients__qt-counter">
       <div
         class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-minus"
+        *ngIf="recette?.nbrePart > 1"
         (click)="onProportionLess(recette?.nbrePart - 1)"
       >
         -
@@ -240,8 +281,8 @@
     <pre>{{ recette?.etapes }}</pre>
   </article>
 
-  <article>
-    <div *ngIf="recette?.astuce" class="byline">
+  <article *ngIf="recette?.astuce != 'null'">
+    <div class="byline">
       <h2>Astuces</h2>
 
       <pre>{{ recette?.astuce }}</pre>

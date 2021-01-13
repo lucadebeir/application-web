@@ -1,4 +1,10 @@
-import { Component, HostListener, OnInit } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import {
   RecettesService,
   AuthentificationService,
@@ -94,6 +100,8 @@ export class RecetteComponent implements OnInit {
     type: "commentaire",
   };
 
+  @ViewChild("box") input: ElementRef;
+
   constructor(
     public auth: AuthentificationService,
     private recetteService: RecettesService,
@@ -119,7 +127,6 @@ export class RecetteComponent implements OnInit {
         this.recette.tempsPreparation = addHours(this.recette.tempsPreparation);
         this.nbrePartInitial = this.recette.nbrePart;
         this.recipeList.nomRecette = recette.nomRecette;
-        console.log(recette.categories);
       });
 
     this.recetteService.getLatestReceipes().subscribe((data) => {
@@ -174,6 +181,7 @@ export class RecetteComponent implements OnInit {
             if (element.idRecette === this.recipeList.idRecette) {
               this.isInMenu = true;
               this.recipeList = element;
+              console.log(this.recipeList);
             }
           });
           this.allRecipeList = data;
@@ -196,7 +204,7 @@ export class RecetteComponent implements OnInit {
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
         this.router.navigate(["/recipe", recette.idRecette]).then(() => {
-          window.location.reload();
+          //window.location.reload();
         });
       },
       (err) => {
@@ -249,33 +257,40 @@ export class RecetteComponent implements OnInit {
   }
 
   addFavoris() {
-    this.favorisService.addFavoris(this.newFavori).subscribe();
-    this.isFavori = true;
+    this.favorisService.addFavoris(this.newFavori).subscribe(() => {
+      (this.isFavori = true), this.recette.nbFavoris++;
+    });
     this.notificationFavori(
       this.auth.getUserDetails().pseudo,
       this.newFavori.idRecette
     );
-    window.location.reload();
   }
 
   addToMenu() {
-    this.recetteService.addRecipeToList(this.recipeList).subscribe();
-    window.location.reload();
+    this.recetteService.addRecipeToList(this.recipeList).subscribe((res) => {
+      this.isInMenu = true;
+      this.recipeList.idRecipeList = res.success[0];
+      console.log(res.success[0]);
+    });
+    //window.location.reload();
     alert("Vous avez bien ajouté cette recette à votre menu de la semaine !");
   }
 
   deleteToMenu() {
-    this.recetteService.deleteRecipeOfList(this.recipeList).subscribe();
-    window.location.reload();
+    this.recetteService
+      .deleteRecipeOfList(this.recipeList)
+      .subscribe(() => (this.isInMenu = false));
     alert(
       "Vous avez bien supprimé cette recette de votre menu de la semaine !"
     );
   }
 
   deleteFavoris() {
-    this.favorisService.deleteFavoris(this.newFavori.idRecette).subscribe();
-    this.isFavori = false;
-    window.location.reload();
+    this.favorisService
+      .deleteFavoris(this.newFavori.idRecette)
+      .subscribe(() => {
+        (this.isFavori = false), this.recette.nbFavoris--;
+      });
   }
 
   addListeCourses() {
@@ -283,7 +298,7 @@ export class RecetteComponent implements OnInit {
     this.shoppingListService.addListeCourses(this.newListeCourses);
 
     this.router.navigate(["/shoppingList"]).then(() => {
-      window.location.reload();
+      //window.location.reload();
     });
   }
   deleteCommentaire(idCommentaire: any) {
@@ -294,14 +309,14 @@ export class RecetteComponent implements OnInit {
             "/recipe/" + parseInt(this.route.snapshot.paramMap.get("id"), 10),
           ])
           .then(() => {
-            window.location.reload();
+            //window.location.reload();
           });
       },
       (err) => {
         console.log(err);
       }
     );
-    window.location.reload(); /* rafraichit la page */
+    //window.location.reload(); /* rafraichit la page */
   }
 
   addCommentaire(message: any) {
@@ -318,7 +333,7 @@ export class RecetteComponent implements OnInit {
             this.commentairesService
               .addImageToCommentaire(this.newCommentaire)
               .subscribe();
-            window.location.reload();
+            //window.location.reload();
           });
       });
     } else {
@@ -328,7 +343,7 @@ export class RecetteComponent implements OnInit {
         this.auth.getUserDetails().pseudo,
         this.recette.idRecette
       );
-      window.location.reload();
+      //window.location.reload();
     }
 
     // window.location.reload()
@@ -349,7 +364,7 @@ export class RecetteComponent implements OnInit {
             this.commentairesService
               .addImageToCommentaire(this.newResponse)
               .subscribe();
-            window.location.reload();
+            //window.location.reload();
           });
       });
     } else {
@@ -360,7 +375,7 @@ export class RecetteComponent implements OnInit {
         this.auth.getUserDetails().pseudo,
         this.recette.idRecette
       );
-      window.location.reload();
+      //window.location.reload();
     }
     // window.location.reload()
   }
@@ -374,12 +389,17 @@ export class RecetteComponent implements OnInit {
   }
 
   onEnter(value: string) {
-    this.recette.ingredients.forEach((element) => {
-      element.updateQte = roundDecimal(
-        (element.qte * parseFloat(value)) / this.nbrePartInitial
-      );
-    });
-    this.recette.nbrePart = parseFloat(value);
+    if (parseInt(value) > 0) {
+      this.recette.ingredients.forEach((element) => {
+        element.updateQte = roundDecimal(
+          (element.qte * parseFloat(value)) / this.nbrePartInitial
+        );
+      });
+      this.recette.nbrePart = parseFloat(value);
+    } else {
+      this.input.nativeElement.value = this.recette.nbrePart.toString();
+    }
+    console.log(this.recette.nbrePart);
   }
 
   onProportionLess(value: number): void {

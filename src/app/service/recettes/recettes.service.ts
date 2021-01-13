@@ -15,6 +15,7 @@ import { IngredientsService } from "../ingredients/ingredients.service";
 import { ListRecipe } from "src/app/models/listRecipe.model";
 import { environment } from "../../../environments/environment";
 import { decoder, encoder } from "../../utils/Codage";
+
 @Injectable()
 export class RecettesService {
   baseUrl: string = environment.API_URL;
@@ -386,7 +387,7 @@ export class RecettesService {
   }
 
   public createRecipe(recipe: CreateRecipe): Observable<any> {
-    recipe.nomRecette = encoder(recipe.nomRecette);
+    recipe.nomRecette = encoder(recipe.nomRecette.trim());
     recipe.mot = encoder(recipe.mot);
     recipe.astuce = encoder(recipe.astuce);
     recipe.etapes = encoder(recipe.etapes);
@@ -442,7 +443,7 @@ export class RecettesService {
   }
 
   public updateRecipeName(recette: RecipeDetails): Observable<any> {
-    recette.nomRecette = encoder(recette.nomRecette);
+    recette.nomRecette = encoder(recette.nomRecette.trim());
     return this.http
       .put(this.baseUrl + `/server/recipe/name/update`, recette)
       .pipe(

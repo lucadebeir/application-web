@@ -150,7 +150,7 @@
             </div>
           </article>
 
-          <article>
+          <!--<article>
             <h2 class="titre">Recettes les plus consultées du mois</h2>
             <p class="tags">
               <span class="tag-item">statistiques</span>
@@ -214,12 +214,13 @@
               <a href="#" class="action-link">D</a>
               <a href="#" class="action-link">E</a>
             </div>
-          </article>
+          </article>-->
         </section>
       </section>
     </div>
   </div>
   <div id="chart" *ngIf="chartOptions3">
+    <h2 class="titre">Recettes les plus consultées du mois</h2>
     <apx-chart
       [series]="chartOptions3.series"
       [chart]="chartOptions3.chart"
@@ -233,6 +234,7 @@
     ></apx-chart>
   </div>
   <div id="chart" *ngIf="chartOptions">
+    <h2 class="titre">Les meilleures recettes</h2>
     <apx-chart
       [series]="chartOptions.series"
       [chart]="chartOptions.chart"
@@ -246,6 +248,7 @@
     ></apx-chart>
   </div>
   <div id="chart" *ngIf="chartOptions2">
+    <h2 class="titre">Les recettes à promouvoir</h2>
     <apx-chart
       [series]="chartOptions2.series"
       [chart]="chartOptions2.chart"

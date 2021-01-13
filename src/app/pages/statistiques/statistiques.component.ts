@@ -191,7 +191,7 @@ export class StatistiquesComponent implements OnInit {
           categories: noms,
           labels: {
             style: {
-              fontSize: "10px",
+              fontSize: "8px",
             },
           },
         },
@@ -244,7 +244,7 @@ export class StatistiquesComponent implements OnInit {
           categories: noms,
           labels: {
             style: {
-              fontSize: "10px",
+              fontSize: "8px",
             },
           },
         },
@@ -298,7 +298,7 @@ export class StatistiquesComponent implements OnInit {
           categories: noms,
           labels: {
             style: {
-              fontSize: "10px",
+              fontSize: "8px",
             },
           },
         },

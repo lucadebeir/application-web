@@ -23,7 +23,7 @@
       <table class="table col-md-8 mx-auto">
         <tr>
           <td>
-            <form>
+            <form *ngIf="!images">
               <div id="image">
                 <input
                   type="file"
@@ -37,6 +37,82 @@
               </div>
               <br />
             </form>
+            <div *ngIf="images">
+              <img
+                src="{{ images.lienImage }}"
+                class="rounded mx-auto d-block"
+                alt="Responsive image"
+                id="resp"
+                style="width: 50%;"
+              />
+              <br />
+              <button
+                class="btn btn-primary"
+                type="submit"
+                data-toggle="modal"
+                data-target="#exampleModal"
+                data-backdrop="false"
+              >
+                Modifier l'image de la recette
+              </button>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">
+                        Modification de l'image de la recette
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                        #closeBtn
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <figcaption class="figure-caption">
+                        <!--bouton modifier photo à faire-->
+                        <div style="text-align: center;">
+                          <form>
+                            <div>
+                              <input
+                                type="file"
+                                name="image"
+                                (change)="selectFile($event)"
+                              />
+                            </div>
+                          </form>
+                        </div>
+                      </figcaption>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-primary"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                id="modal-backdrop"
+                class="modal-backdrop-transparent modal-transition"
+              ></div>
+            </div>
           </td>
         </tr>
       </table>

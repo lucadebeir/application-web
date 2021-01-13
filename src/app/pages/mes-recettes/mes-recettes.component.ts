@@ -90,7 +90,12 @@ export class MesRecettesComponent implements OnInit {
     private categoriesService: CategoriesService,
     private notifService: NotificationService,
     public matDialog: MatDialog
-  ) {}
+  ) {
+    setTimeout(() => {
+      localStorage.removeItem("value");
+      localStorage.removeItem("backButton");
+    }, 1000 * 60 * 60);
+  }
 
   ngOnInit(): void {
     if (JSON.parse(localStorage.getItem("value"))) {
@@ -280,6 +285,9 @@ export class MesRecettesComponent implements OnInit {
 
   onSearchTermChange(): void {
     this.recetteService.search(this.searchTerm, this.allRecipe).subscribe();
+    if (this.searchTerm === "") {
+      this.currentPage = 1;
+    }
   }
 
   getFavoris() {

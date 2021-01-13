@@ -70,6 +70,7 @@ export class IngredientsService {
   }
 
   public updateIngredient(ingredient: IngredientDetails): Observable<any> {
+    ingredient.nomIngredient = ingredient.nomIngredient.trim();
     return this.http
       .put(this.baseUrl + `/server/ingredient/update`, ingredient)
       .pipe(
@@ -80,6 +81,7 @@ export class IngredientsService {
   }
 
   public addIngredient(ingredient: any): any {
+    ingredient.nomIngredient = ingredient.nomIngredient.trim();
     this.http
       .post(this.baseUrl + "/server/ingredient/add", ingredient)
       .subscribe((res) => {

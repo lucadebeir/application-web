@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import {
   RecettesService,
   UserDetails,
@@ -36,6 +36,8 @@ import { NgxImageCompressService } from "ngx-image-compress";
 })
 export class AjoutRecetteComponent implements OnInit {
   images;
+
+  @ViewChild("closeBtn") closeBtn: ElementRef;
 
   recipe: CreateRecipe = {
     idRecette: null,
@@ -131,6 +133,9 @@ export class AjoutRecetteComponent implements OnInit {
   }
 
   selectFile(event: any) {
+    if (this.closeBtn) {
+      this.closeBtn.nativeElement.click();
+    }
     let fileName: any;
     this.file = event.target.files[0];
     fileName = this.file.name;
@@ -172,6 +177,16 @@ export class AjoutRecetteComponent implements OnInit {
         });
 
         this.images = imageFile;
+        const formData = new FormData();
+        formData.append("file", imageFile);
+        this.imagesService.addImage(formData).subscribe((res) => {
+          console.log(res[0]);
+          this.recipe.idImage = res[0];
+          this.imagesService.getImage(res[0]).subscribe((res) => {
+            console.log(res[0]);
+            this.images = res[0];
+          });
+        });
       });
   }
 
@@ -211,8 +226,6 @@ export class AjoutRecetteComponent implements OnInit {
   createRecipe() {
     const formValue = this.recipeForm.value;
     const ingredientFormValue = this.ingredientForm.value;
-    const formData = new FormData();
-    formData.append("file", this.images);
 
     if (
       formValue.etapes === "" &&
@@ -268,25 +281,22 @@ export class AjoutRecetteComponent implements OnInit {
     this.recipe.tempsCuisson = formValue.tempsCuisson;
     this.recipe.astuce = formValue.astuce;
     this.recipe.mot = formValue.mot;
-    this.imagesService.addImage(formData).subscribe((res) => {
+
+    this.recetteService.createRecipe(this.recipe).subscribe((res) => {
       console.log(res[0]);
-      this.recipe.idImage = res[0];
-      this.recetteService.createRecipe(this.recipe).subscribe((res) => {
-        console.log(res[0]);
-        this.recipe.idRecette = res[0]; // je récupère l'id de la recette que je viens de créer
-        this.recetteService
-          .addIngredientsAndCategoryToNewRecipe(this.recipe)
-          .subscribe((res) => {
-            this.listAbonneNews$ = this.auth.getAbonneNews();
-            this.listAbonneNews$.subscribe((res) => {
-              res.forEach((element) => {
-                this.auth
-                  .sentEmailToNewRecipe(element, this.recipe.idRecette)
-                  .subscribe();
-              });
+      this.recipe.idRecette = res[0]; // je récupère l'id de la recette que je viens de créer
+      this.recetteService
+        .addIngredientsAndCategoryToNewRecipe(this.recipe)
+        .subscribe((res) => {
+          this.listAbonneNews$ = this.auth.getAbonneNews();
+          this.listAbonneNews$.subscribe((res) => {
+            res.forEach((element) => {
+              this.auth
+                .sentEmailToNewRecipe(element, this.recipe.idRecette)
+                .subscribe();
             });
           });
-      });
+        });
 
       this.router.navigateByUrl("handleRecipes");
     });

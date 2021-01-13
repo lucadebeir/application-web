@@ -109,6 +109,11 @@ export class RecettesComponent implements OnInit, OnDestroy {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
       this.getFavoris();
     }
+
+    setTimeout(() => {
+      localStorage.removeItem("value");
+      localStorage.removeItem("backButton");
+    }, 1000 * 60 * 60);
   }
 
   // dans ngOnInit on récupère les données à afficher au lancement de la page
@@ -308,6 +313,9 @@ export class RecettesComponent implements OnInit, OnDestroy {
 
   onSearchTermChange(): void {
     this.recetteService.search(this.searchTerm, this.allRecipe).subscribe();
+    if (this.searchTerm === "") {
+      this.currentPage = 1;
+    }
   }
 
   onPageChange(page: number) {

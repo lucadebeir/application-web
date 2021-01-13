@@ -29,6 +29,7 @@ export class UnitesService {
   }
 
   public updateUnite(unite: UniteDetails): Observable<any> {
+    unite.libelleUnite = unite.libelleUnite.trim();
     return this.http.put(this.baseUrl + `/server/unite/update`, unite).pipe(
       map((data: UniteDetails[]) => {
         return data;
@@ -37,6 +38,7 @@ export class UnitesService {
   }
 
   public addUnite(unite: any): any {
+    unite.libelleUnite = unite.libelleUnite.trim();
     this.http
       .post(this.baseUrl + "/server/unite/add", unite)
       .subscribe((res) => {
