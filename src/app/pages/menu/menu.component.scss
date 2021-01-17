@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Zilla+Slab:300,400');
+@import url("https://fonts.googleapis.com/css?family=Fredericka+the+Great|Zilla+Slab:300,400");
 $dark-gray: #455a64;
 $light-gray: #90a4ae;
 $white: #eceff1;
@@ -6,233 +6,231 @@ $red: #ff5252;
 $green: #69f0ae;
 $white-border: 3px solid $white;
 #fond {
-    background-image: url("../../../assets/img/menu.jpg");
-    background-size: cover;
-    background-attachment: fixed;
+  background-image: url("../../../assets/img/menu.jpg");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 #top {
-    padding-top: 2em;
+  padding-top: 2em;
 }
 
 .row {
-    flex-wrap: inherit;
+  flex-wrap: inherit;
 }
 
 .center {
-    text-align: center;
-    margin: 3em;
+  text-align: center;
+  margin: 3em;
 }
 
 ul {
-    width: 100%;
+  width: 100%;
 }
 
 body {
-    background: $dark-gray;
-    color: $white;
-    font: {
-        family: 'Lato', sans-serif;
-        weight: 300;
-    }
+  background: $dark-gray;
+  color: $white;
+  font: {
+    family: "Lato", sans-serif;
+    weight: 300;
+  }
 }
 
 .col-sm-3 {
-    width: 10em;
+  width: 10em;
 }
 
 h1 {
-    font-size: 40px;
-    font-family: 'fredericka the great', cursive;
-    text-align: center;
-    color: white;
-    background: black;
-    border-color: white;
-    border-style: ridge;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1em;
-    display: table;
-    padding: .2em;
-    @media (min-width: 600px) {
-        font-size: 72px;
-    }
+  line-height: initial;
+  font-size: 40px;
+  font-family: "fredericka the great", cursive;
+  text-align: center;
+  color: white;
+  background: black;
+  border-color: white;
+  border-style: ridge;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  display: table;
+  padding: 0.2em;
+  @media (min-width: 600px) {
+    font-size: 52px;
+  }
 }
 
 .container {
-    font-family: 'zilla slab', serif;
-    min-height: 37em;
-    margin: 0 auto;
-    width: 95%;
-    @media (min-width: 600px) {
-        width: 75%;
-    }
-    @media (min-width: 900px) {
-        width: 65%;
-    }
+  font-family: "zilla slab", serif;
+  min-height: 37em;
+  margin: 0 auto;
+  width: 95%;
+  @media (min-width: 600px) {
+    width: 75%;
+  }
+  @media (min-width: 900px) {
+    width: 65%;
+  }
 }
 
 input {
-    background: transparent;
-    border: none {
-        bottom: $white-border;
-    }
-    font-size: 24px;
-    height: 50px;
-    padding-bottom: 15px;
-    &:focus {
-        outline: 0;
-    }
-    @media (min-width: 900px) {
-        font-size: 32px;
-    }
+  background: transparent;
+  border: none {
+    bottom: $white-border;
+  }
+  font-size: 24px;
+  height: 50px;
+  padding-bottom: 15px;
+  &:focus {
+    outline: 0;
+  }
+  @media (min-width: 900px) {
+    font-size: 32px;
+  }
 }
 
 .input-buttons {
-    height: 50px;
-    border-bottom: $white-border;
-    padding: 0;
-    i {
-        padding: 0 12px;
-        color: $white;
-        float: right;
+  height: 50px;
+  border-bottom: $white-border;
+  padding: 0;
+  i {
+    padding: 0 12px;
+    color: $white;
+    float: right;
+  }
+  .fa-plus {
+    border-right: $white-border;
+  }
+  @media (min-width: 600px) {
+    .fa-trash-o:hover {
+      color: $red;
     }
-    .fa-plus {
-        border-right: $white-border;
+    .fa-plus:hover {
+      color: #69f0ae;
     }
-    @media (min-width: 600px) {
-        .fa-trash-o:hover {
-            color: $red;
-        }
-        .fa-plus:hover {
-            color: #69f0ae;
-        }
-    }
+  }
 }
 
 .error {
-    color: $red;
-    display: none;
-    font-size: 16px;
-    margin-top: 20px;
-    text-align: center;
-    .fa-times {
-        color: $white;
-        padding: 5px 15px;
-        float: right;
-        &:hover {
-            color: #fafafa;
-        }
+  color: $red;
+  display: none;
+  font-size: 16px;
+  margin-top: 20px;
+  text-align: center;
+  .fa-times {
+    color: $white;
+    padding: 5px 15px;
+    float: right;
+    &:hover {
+      color: #fafafa;
     }
-    p {
-        margin: 20px 0;
-        @media (min-width: 600px) {
-            font-size: 20px;
-        }
+  }
+  p {
+    margin: 20px 0;
+    @media (min-width: 600px) {
+      font-size: 20px;
     }
+  }
 }
 
 .todo-list {
-    padding: 0;
-    margin: 20px 0 50px;
-    .todo {
-        background: $white;
-        border-bottom: 1px dotted $dark-gray;
-        color: $dark-gray;
-        font-size: 20px;
-        list-style: none;
-        padding: 20px 130px 20px 15px;
-        position: relative;
-        white-space: normal;
-        display: list-item;
-        margin-top: .5em;
-        border-radius: 1em;
-    }
+  padding: 0;
+  margin: 20px 0 50px;
+  .todo {
+    background: $white;
+    border-bottom: 1px dotted $dark-gray;
+    color: $dark-gray;
+    font-size: 20px;
+    list-style: none;
+    padding: 20px 130px 20px 15px;
+    position: relative;
+    white-space: normal;
+    display: list-item;
+    margin-top: 0.5em;
+    border-radius: 1em;
+  }
 }
 
 ::placeholder {
-    color: white;
+  color: white;
 }
 
 span {
-    position: absolute;
-    top: 15px;
-    right: 0;
-    a {
-        color: $dark-gray;
+  position: absolute;
+  top: 15px;
+  right: 0;
+  a {
+    color: $dark-gray;
+  }
+  i {
+    padding: 10px 15px;
+  }
+  .fa-check {
+    border-right: 1px solid $dark-gray;
+    &:hover {
+      color: $green;
     }
-    i {
-        padding: 10px 15px;
-    }
-    .fa-check {
-        border-right: 1px solid $dark-gray;
-        &:hover {
-            color: $green;
-        }
-    }
-    .fa-trash-o:hover {
-        color: $red;
-    }
+  }
+  .fa-trash-o:hover {
+    color: $red;
+  }
 }
 
 .complete {
-    color: $light-gray;
-    text-decoration: line-through;
-    .check {
-        color: $green;
-    }
+  color: $light-gray;
+  text-decoration: line-through;
+  .check {
+    color: $green;
+  }
 }
 
 //bulle infos
 .picto-item {
-    //position: relative;
-    /*les .picto-item deviennent référents*/
-    cursor: help;
-    border-radius: 50%;
+  //position: relative;
+  /*les .picto-item deviennent référents*/
+  cursor: help;
+  border-radius: 50%;
 }
-
 
 /* on génère un élément :after lors du survol et du focus :*/
 
 .picto-item:hover:after,
 .picto-item:focus:after {
-    content: attr(aria-label);
-    /* on affiche aria-label */
-    position: absolute;
-    top: -2.4em;
-    left: 50%;
-    transform: translateX(-50%);
-    /* on centre horizontalement  */
-    z-index: 1;
-    /* pour s'afficher au dessus des éléments en position relative */
-    white-space: normal;
-    /* on interdit le retour à la ligne*/
-    padding: 5px 14px;
-    background: #413219;
-    color: #fff;
-    border-radius: 4px;
-    font-size: 1.2rem;
+  content: attr(aria-label);
+  /* on affiche aria-label */
+  position: absolute;
+  top: -2.4em;
+  left: 50%;
+  transform: translateX(-50%);
+  /* on centre horizontalement  */
+  z-index: 1;
+  /* pour s'afficher au dessus des éléments en position relative */
+  white-space: normal;
+  /* on interdit le retour à la ligne*/
+  padding: 5px 14px;
+  background: #413219;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 1.2rem;
 }
-
 
 /* on génère un second élément en :before pour la flèche */
 
 [aria-label]:hover:before,
 [aria-label]:focus:before {
-    content: "▼";
-    position: absolute;
-    top: -1em;
-    left: 50%;
-    transform: translateX(-50%);
-    /* on centre horizontalement  */
-    font-size: 20px;
-    color: #413219;
+  content: "▼";
+  position: absolute;
+  top: -1em;
+  left: 50%;
+  transform: translateX(-50%);
+  /* on centre horizontalement  */
+  font-size: 20px;
+  color: #413219;
 }
-
 
 /* pas de contour durant le :focus */
 
 [aria-label]:focus {
-    outline: none;
+  outline: none;
 }
