@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { map, tap } from "rxjs/operators";
 import { UniteDetails } from "src/app/models";
-import { Observable } from "rxjs";
+import { Observable, of, ReplaySubject, Subject } from "rxjs";
 import { environment } from "../../../environments/environment";
 
 @Injectable({
@@ -57,5 +57,67 @@ export class UnitesService {
         return data;
       })
     );
+  }
+
+  private filteredApps$: Subject<UniteDetails[]> = new ReplaySubject<
+    UniteDetails[]
+  >(1);
+
+  getSearchResults(): Observable<UniteDetails[]> {
+    return this.filteredApps$.asObservable();
+  }
+
+  search(searchTerm: string, unites: UniteDetails[]): Observable<void> {
+    return this.fetchApps(unites).pipe(
+      tap((apps: UniteDetails[]) => {
+        const researchResult: UniteDetails[] = [];
+        apps.forEach((unite) => {
+          if (
+            unite.libelleUnite
+              .toLowerCase()
+              .indexOf(searchTerm.toLowerCase()) !== -1
+          ) {
+            if (!researchResult.includes(unite)) {
+              researchResult.push(unite);
+            }
+          }
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  delete(unites: UniteDetails[], idUnite: number): Observable<void> {
+    return this.fetchApps(unites).pipe(
+      tap((apps: UniteDetails[]) => {
+        const researchResult: UniteDetails[] = [];
+        apps.forEach((unite) => {
+          if (unite.idUnite !== idUnite) {
+            if (!researchResult.includes(unite)) {
+              researchResult.push(unite);
+            }
+          }
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  add(unites: UniteDetails[], newUnite: UniteDetails): Observable<void> {
+    return this.fetchApps(unites).pipe(
+      tap((apps: UniteDetails[]) => {
+        apps.push(newUnite);
+        this.filteredApps$.next(apps);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  private fetchApps(unites: UniteDetails[]): Observable<UniteDetails[]> {
+    if (unites) {
+      return of(unites);
+    }
   }
 }

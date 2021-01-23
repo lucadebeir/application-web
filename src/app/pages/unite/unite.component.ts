@@ -1,84 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, combineLatest, from } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
-import { RecettesService, UnitesService} from '../../service';
-import { UniteDetails } from '../../models';
-import { Router } from '@angular/router';
-
+import { Component, OnInit } from "@angular/core";
+import { Observable, combineLatest, from } from "rxjs";
+import { map, startWith } from "rxjs/operators";
+import { FormControl } from "@angular/forms";
+import { RecettesService, UnitesService } from "../../service";
+import { UniteDetails } from "../../models";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-unite',
-  templateUrl: './unite.component.html',
-  styleUrls: ['./unite.component.scss']
+  selector: "app-unite",
+  templateUrl: "./unite.component.html",
+  styleUrls: ["./unite.component.scss"],
 })
 export class UniteComponent implements OnInit {
-
-  public unites$: Observable<UniteDetails[]>;
   public unites: UniteDetails[];
 
   public unite: UniteDetails = {
     idUnite: null,
-    libelleUnite: ''
+    libelleUnite: "",
   };
 
-  public filteredUnite$: Observable<UniteDetails[]>;
-  public filter: FormControl;
-  public filter$: Observable<string>;
+  searchTerm: string = "";
+  public unites$: Observable<
+    UniteDetails[]
+  > = this.unitesService.getSearchResults();
 
-  constructor(private recettesService: RecettesService, private router: Router, private unitesService: UnitesService) {
-     // pour la recherche dynamique
-     this.unites$ = this.unitesService.getAllUnite();
-     this.filter = new FormControl('');
-     this.filter$ = this.filter.valueChanges.pipe(startWith(''));
-     // tslint:disable-next-line: deprecation
-     this.filteredUnite$ = combineLatest(this.unites$, this.filter$)
-       .pipe(map(([unites, filterString]) =>
-         unites.filter(unite => unite.libelleUnite.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)));
-  }
+  constructor(private router: Router, private unitesService: UnitesService) {}
 
   ngOnInit(): void {
+    this.loading();
   }
 
-  getAllUnite() {
+  loading() {
+    this.unitesService.getAllUnite().subscribe((res) => {
+      this.unites = res;
+      setTimeout(() => {
+        this.unitesService.search(this.searchTerm, res).subscribe();
+        this.unite.libelleUnite = "";
+      }, 1000);
+    });
+  }
 
-    this.unites$ = this.unitesService.getAllUnite();
-    this.filter = new FormControl('');
-    this.filter$ = this.filter.valueChanges.pipe(startWith(''));
-    // tslint:disable-next-line: deprecation
-    this.filteredUnite$ = combineLatest(this.unites$, this.filter$)
-      .pipe(map(([unites, filterString]) =>
-        unites.filter(unite => unite.libelleUnite.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)));
-
+  onSearchTermChange(): void {
+    this.unitesService.search(this.searchTerm, this.unites).subscribe();
   }
 
   deleteUnite(idUnite: any) {
-    this.unitesService.deleteUnite(idUnite)
-      .subscribe(res => {
-        this.router.navigate(['/unite'], {
-          queryParams: {refresh: new Date().getTime()}
-       });
-        }, (err) => {
-          console.log(err);
-        }
-      );
-    window.location.reload(); /* rafraichit la page */
+    this.unitesService.deleteUnite(idUnite).subscribe((res) => {
+      this.unitesService.delete(this.unites, idUnite).subscribe();
+    });
+    setTimeout(() => {
+      this.loading();
+    }, 500);
   }
 
-
   updateUnite(unite: UniteDetails) {
-    this.unitesService.updateUnite(unite).subscribe((res: any) => {
-        window.location.reload();
-      }, (err: any) => {
-        console.error(err);
-      }
-    );
+    this.unitesService.updateUnite(unite).subscribe();
   }
 
   addUnite() {
     this.unitesService.addUnite(this.unite);
-    window.location.reload();
+    this.unitesService.add(this.unites, this.unite).subscribe();
+    setTimeout(() => {
+      this.loading();
+    }, 500);
   }
-
-
 }

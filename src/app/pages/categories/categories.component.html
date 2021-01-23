@@ -1,67 +1,94 @@
 <main class="page-row page-row-expanded">
-    <div class="main-inner">
-        <div class="item1 container">
-            <div class="element1">
-                <aside id="aside" class="sidebar is-visible">
-                    <div class=”sidebar-content”>
-                        <ul>
-                            <li><a id="nav" href="/handleRecipes">Gérer les recettes</a></li>
-                            <li><a id="nav" href="/ingredient">Ingrédients</a></li>
-                            <li class="active"><a id="nav" href="/category">Catégories</a></li>
-                            <li><a id="nav" href="/unite">Unités</a></li>
-                            <li><a id="nav" href="/handleMenu">Gérer le menu</a></li>
-                            <li><a id="nav" href="/add-recipe">Créer une nouvelle recette</a></li>
-                        </ul>
-                    </div>
-                </aside>
-            </div>
-        </div>
-        <div class="item2 container">
-            <div class="element2">
-                <section class="page">
-                    <div class="container">
-                        <div id="titre">
-                            <h1>Catégories</h1>
-                        </div>
-
-                        <div class='flex-container'>
-
-                            <div id="addCat">
-                                <h6 id="question"> Ajouter une nouvelle catégorie </h6>
-                                <form (submit)="addCategory()">
-                                    <input type="text" class="form-control" name="libelleCategorie" placeholder="nom catégorie" [(ngModel)]="categorie.libelleCategorie">
-                                    <button id="btn" class="btn btn-outline-info " type="submit ">Valider</button>
-
-                                </form>
-                            </div>
-
-                            <div>
-                                <table class="table col-md-12 mx-auto">
-
-                                    <tr *ngFor="let categorie of categories">
-                                        <td>
-                                            <form (submit)="updateCategory(categorie)">
-                                                <div class="form-row align-items-center">
-                                                    <div class="col-auto">
-                                                        <input type="text" class="form-control" name="libelleCategorie" value={{categorie.libelleCategorie}} [(ngModel)]="categorie.libelleCategorie">
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <button id="btn" class="btn btn-sm btn-warning" type="submit"><i class="fa fa-pencil" ></i></button>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <button id="btn" type="submit" class="btn btn-sm btn-danger" (click)="deleteCategory(categorie.idCategorie)"><i class=" fa fa-trash "></i></button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
+  <div class="main-inner">
+    <div class="item1 container">
+      <div class="element1">
+        <aside id="aside" class="sidebar is-visible">
+          <div class="”sidebar-content”">
+            <ul>
+              <li><a id="nav" href="/handleRecipes">Gérer les recettes</a></li>
+              <li><a id="nav" href="/ingredient">Ingrédients</a></li>
+              <li class="active">
+                <a id="nav" href="/category">Catégories</a>
+              </li>
+              <li><a id="nav" href="/unite">Unités</a></li>
+              <li><a id="nav" href="/handleMenu">Gérer le menu</a></li>
+              <li>
+                <a id="nav" href="/add-recipe">Créer une nouvelle recette</a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
     </div>
+    <div class="item2 container">
+      <div class="element2">
+        <section class="page">
+          <div class="container">
+            <div id="titre">
+              <h1>Catégories</h1>
+            </div>
+
+            <div class="flex-container">
+              <div id="addCat">
+                <h3 id="question">Ajouter une nouvelle catégorie</h3>
+                <form (submit)="addCategory()">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="libelleCategorie"
+                    placeholder="nom catégorie"
+                    [(ngModel)]="categorie.libelleCategorie"
+                  />
+                  <button id="btn" class="btn btn-outline-info" type="submit ">
+                    Valider
+                  </button>
+                </form>
+              </div>
+
+              <div>
+                <table class="table col-md-12 mx-auto">
+                  <tr *ngFor="let categorie of categories$ | async">
+                    <td>
+                      <form (submit)="updateCategory(categorie)">
+                        <div class="form-row align-items-center">
+                          <div class="col-auto">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="libelleCategorie"
+                              value="{{ categorie.libelleCategorie }}"
+                              [(ngModel)]="categorie.libelleCategorie"
+                            />
+                          </div>
+                          <div class="col-auto">
+                            <button
+                              id="btn"
+                              class="btn btn-sm btn-warning"
+                              type="submit"
+                            >
+                              <i class="fa fa-pencil"></i>
+                            </button>
+                          </div>
+                          <div class="col-auto">
+                            <button
+                              id="btn"
+                              type="submit"
+                              class="btn btn-sm btn-danger"
+                              (click)="deleteCategory(categorie.idCategorie)"
+                            >
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
 </main>

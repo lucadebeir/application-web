@@ -836,6 +836,23 @@ export class RecettesService {
     );
   }
 
+  delete(recipes: RecipeDetails[], idRecette: number): Observable<void> {
+    return this.fetchApps(recipes).pipe(
+      tap((apps: RecipeDetails[]) => {
+        const researchResult: RecipeDetails[] = [];
+        apps.forEach((recipe) => {
+          if (recipe.idRecette !== idRecette) {
+            if (!researchResult.includes(recipe)) {
+              researchResult.push(recipe);
+            }
+          }
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
   private fetchApps(recipes: RecipeDetails[]): Observable<RecipeDetails[]> {
     if (recipes) {
       return of(recipes);

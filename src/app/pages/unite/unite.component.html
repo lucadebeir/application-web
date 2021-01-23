@@ -1,78 +1,108 @@
 <main class="page-row page-row-expanded">
-    <div class="main-inner">
-        <div class="item1 container">
-            <div class="element1">
-                <aside id="aside" class="sidebar is-visible">
-                    <div class=”sidebar-content”>
-                        <ul>
-                            <li><a id="nav" href="/handleRecipes">Gérer les recettes</a></li>
-                            <li><a id="nav" href="/ingredient">Ingrédients</a></li>
-                            <li><a id="nav" href="/category">Catégories</a></li>
-                            <li class="active"><a id="nav" href="/unite">Unités</a></li>
-                            <li><a id="nav" href="/handleMenu">Gérer le menu</a></li>
-                            <li><a id="nav" href="/add-recipe">Créer une nouvelle recette</a></li>
-                        </ul>
-                    </div>
-                </aside>
-            </div>
-        </div>
-        <div class="item2 container">
-            <div class="element2">
-                <section class="page">
-                    <div class="container">
-                        <div id="titre">
-                            <h1>Unités</h1>
-
-                        </div>
-
-                        <div class='flex-container'>
-
-                            <div id="addUnite">
-                                <h6 id="question "> Ajouter une nouvelle unité </h6>
-                                <form (submit)="addUnite() ">
-                                    <input type="text " class="form-control " name="libelleUnite " placeholder="libelle unité " [(ngModel)]="unite.libelleUnite ">
-
-                                    <button id="btn" class="btn btn-outline-info " type="submit ">Valider</button>
-
-                                </form>
-                            </div>
-
-                            <div>
-                                <form class="form-inline my-2 my-lg-0">
-                                    <input id="rech" class="form-control mr-sm-" type="search" placeholder="Rechercher une unité" aria-label="Search" [formControl]="filter">
-                                </form>
-                                <table class="table col-md-12 mx-auto" *ngFor="let unite of filteredUnite$ | async">
-
-                                    <tr>
-                                        <td>
-
-                                            <form (submit)="updateUnite(unite)">
-                                                <div class="form-row align-items-center">
-                                                    <div class="col-auto">
-                                                        <input id="zone" type="text" class="form-control" name="libelleUnite" value={{unite.libelleUnite}} [(ngModel)]="unite.libelleUnite">
-                                                    </div>
-
-                                                    <div class="col-auto">
-                                                        <button id="btn" type="submit" class="btn btn-sm btn-warning"><i class="fa fa-pencil" ></i></button>
-
-
-                                                    </div>
-                                                    <div class="col-auto">
-
-                                                        <button id="btn" class="btn btn-sm btn-danger" (click)="deleteUnite(unite.idUnite)"><i class=" fa fa-trash "></i></button>
-
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
+  <div class="main-inner">
+    <div class="item1 container">
+      <div class="element1">
+        <aside id="aside" class="sidebar is-visible">
+          <div class="”sidebar-content”">
+            <ul>
+              <li>
+                <a class="nav" href="/handleRecipes">Gérer les recettes</a>
+              </li>
+              <li><a class="nav" href="/ingredient">Ingrédients</a></li>
+              <li><a class="nav" href="/category">Catégories</a></li>
+              <li class="active"><a class="nav" href="/unite">Unités</a></li>
+              <li><a class="nav" href="/handleMenu">Gérer le menu</a></li>
+              <li>
+                <a id="nav" href="/add-recipe">Créer une nouvelle recette</a>
+              </li>
+            </ul>
+          </div>
+        </aside>
+      </div>
     </div>
+    <div class="item2 container">
+      <div class="element2">
+        <section class="page">
+          <div class="container">
+            <div id="titre">
+              <h1>Unités</h1>
+            </div>
+
+            <div class="flex-container">
+              <div id="addUnite">
+                <h3 id="question ">Ajouter une nouvelle unité</h3>
+                <form (submit)="addUnite()">
+                  <input
+                    type="text "
+                    class="form-control"
+                    name="libelleUnite "
+                    placeholder="Libelle unité "
+                    [(ngModel)]="unite.libelleUnite"
+                  />
+
+                  <button class="btn btn-outline-info" type="submit ">
+                    Valider
+                  </button>
+                </form>
+              </div>
+
+              <div>
+                <div class="col text-center has-search">
+                  <span class="fa fa-search form-control-feedback"></span>
+                  <input
+                    class="form-control"
+                    style="box-shadow: none;"
+                    type="search"
+                    placeholder="Rechercher une unité"
+                    aria-label="Search"
+                    [(ngModel)]="searchTerm"
+                    (ngModelChange)="onSearchTermChange()"
+                  />
+                </div>
+                <table
+                  class="table col-md-12 mx-auto"
+                  *ngFor="let unite of unites$ | async"
+                >
+                  <tr>
+                    <td>
+                      <form (submit)="updateUnite(unite)">
+                        <div class="form-row align-items-center">
+                          <div class="col-auto">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="libelleUnite"
+                              value="{{ unite.libelleUnite }}"
+                              [(ngModel)]="unite.libelleUnite"
+                            />
+                          </div>
+
+                          <div class="col-auto">
+                            <button
+                              type="submit"
+                              class="btn btn-sm btn-warning"
+                            >
+                              <i class="fa fa-pencil"></i>
+                            </button>
+                          </div>
+                          <div class="col-auto">
+                            <button
+                              class="btn btn-sm btn-danger"
+                              (click)="deleteUnite(unite.idUnite)"
+                            >
+                              <i class="fa fa-trash"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
 </main>

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { QuantiteDetails, IngredientDetails } from "src/app/models";
-import { Observable } from "rxjs";
+import { Observable, of, ReplaySubject, Subject } from "rxjs";
 import { map, tap } from "rxjs/operators";
 import { environment } from "../../../environments/environment";
 
@@ -104,5 +104,78 @@ export class IngredientsService {
           return data;
         })
       );
+  }
+
+  private filteredApps$: Subject<IngredientDetails[]> = new ReplaySubject<
+    IngredientDetails[]
+  >(1);
+
+  getSearchResults(): Observable<IngredientDetails[]> {
+    return this.filteredApps$.asObservable();
+  }
+
+  search(
+    searchTerm: string,
+    ingredients: IngredientDetails[]
+  ): Observable<void> {
+    return this.fetchApps(ingredients).pipe(
+      tap((apps: IngredientDetails[]) => {
+        const researchResult: IngredientDetails[] = [];
+        apps.forEach((ingredient) => {
+          if (
+            ingredient.nomIngredient
+              .toLowerCase()
+              .indexOf(searchTerm.toLowerCase()) !== -1
+          ) {
+            if (!researchResult.includes(ingredient)) {
+              researchResult.push(ingredient);
+            }
+          }
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  delete(
+    ingredients: IngredientDetails[],
+    idIngredient: number
+  ): Observable<void> {
+    return this.fetchApps(ingredients).pipe(
+      tap((apps: IngredientDetails[]) => {
+        const researchResult: IngredientDetails[] = [];
+        apps.forEach((ingredient) => {
+          if (ingredient.idIngredient !== idIngredient) {
+            if (!researchResult.includes(ingredient)) {
+              researchResult.push(ingredient);
+            }
+          }
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  add(
+    ingredients: IngredientDetails[],
+    newIngredient: IngredientDetails
+  ): Observable<void> {
+    return this.fetchApps(ingredients).pipe(
+      tap((apps: IngredientDetails[]) => {
+        apps.push(newIngredient);
+        this.filteredApps$.next(apps);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  private fetchApps(
+    ingredients: IngredientDetails[]
+  ): Observable<IngredientDetails[]> {
+    if (ingredients) {
+      return of(ingredients);
+    }
   }
 }

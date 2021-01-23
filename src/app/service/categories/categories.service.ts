@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, of, ReplaySubject, Subject } from "rxjs";
 import { CategoryDetails } from "src/app/models";
 import { map, tap } from "rxjs/operators";
 import { environment } from "../../../environments/environment";
@@ -67,5 +67,72 @@ export class CategoriesService {
           return data;
         })
       );
+  }
+
+  private filteredApps$: Subject<CategoryDetails[]> = new ReplaySubject<
+    CategoryDetails[]
+  >(1);
+
+  getSearchResults(): Observable<CategoryDetails[]> {
+    return this.filteredApps$.asObservable();
+  }
+
+  search(searchTerm: string, categories: CategoryDetails[]): Observable<void> {
+    return this.fetchApps(categories).pipe(
+      tap((apps: CategoryDetails[]) => {
+        const researchResult: CategoryDetails[] = [];
+        apps.forEach((categorie) => {
+          if (
+            categorie.libelleCategorie
+              .toLowerCase()
+              .indexOf(searchTerm.toLowerCase()) !== -1 &&
+            !researchResult.includes(categorie)
+          ) {
+            researchResult.push(categorie);
+          }
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  delete(categories: CategoryDetails[], idCategorie: number): Observable<void> {
+    return this.fetchApps(categories).pipe(
+      tap((apps: CategoryDetails[]) => {
+        const researchResult: CategoryDetails[] = [];
+        apps.forEach((categorie) => {
+          if (categorie.idCategorie !== idCategorie) {
+            if (!researchResult.includes(categorie)) {
+              researchResult.push(categorie);
+            }
+          }
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  add(
+    categories: CategoryDetails[],
+    newCategorie: CategoryDetails
+  ): Observable<void> {
+    return this.fetchApps(categories).pipe(
+      tap((apps: CategoryDetails[]) => {
+        apps.push(newCategorie);
+        console.log("ici");
+        this.filteredApps$.next(apps);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  private fetchApps(
+    categories: CategoryDetails[]
+  ): Observable<CategoryDetails[]> {
+    if (categories) {
+      return of(categories);
+    }
   }
 }

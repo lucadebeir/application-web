@@ -1,84 +1,76 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable, combineLatest, from } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { FormControl } from '@angular/forms';
-import { RecettesService, IngredientsService} from '../../service';
-import { IngredientDetails } from '../../models';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Observable, combineLatest, from } from "rxjs";
+import { map, startWith } from "rxjs/operators";
+import { FormControl } from "@angular/forms";
+import { RecettesService, IngredientsService } from "../../service";
+import { IngredientDetails } from "../../models";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-ingredients',
-  templateUrl: './ingredients.component.html',
-  styleUrls: ['./ingredients.component.scss']
+  selector: "app-ingredients",
+  templateUrl: "./ingredients.component.html",
+  styleUrls: ["./ingredients.component.scss"],
 })
 export class IngredientsComponent implements OnInit {
-  public ingredients$: Observable<IngredientDetails[]>;
   public ingredients: IngredientDetails[];
 
   public ingredient: IngredientDetails = {
     idIngredient: null,
-    nomIngredient: '',
+    nomIngredient: "",
     qte: null,
-    libelleUnite: '',
+    libelleUnite: "",
   };
 
-  public filteredIngredient$: Observable<IngredientDetails[]>;
-  public filter: FormControl;
-  public filter$: Observable<string>;
+  searchTerm: string = "";
+  public ingredients$: Observable<
+    IngredientDetails[]
+  > = this.ingredientsService.getSearchResults();
 
-
-  constructor(private recettesService: RecettesService, private router: Router, private ingredientsService: IngredientsService) {
-     // pour la recherche dynamique
-     this.ingredients$ = this.ingredientsService.getAllIngredients();
-     this.filter = new FormControl('');
-     this.filter$ = this.filter.valueChanges.pipe(startWith(''));
-     // tslint:disable-next-line: deprecation
-     this.filteredIngredient$ = combineLatest(this.ingredients$, this.filter$)
-       .pipe(map(([ingredients, filterString]) =>
-         ingredients.filter(ingredient => ingredient.nomIngredient.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)));
-  }
+  constructor(
+    private router: Router,
+    private ingredientsService: IngredientsService
+  ) {}
 
   ngOnInit(): void {
+    this.loading();
   }
 
-  getAllIngredients() {
+  loading() {
+    this.ingredientsService.getAllIngredients().subscribe((res) => {
+      this.ingredients = res;
+      setTimeout(() => {
+        this.ingredientsService.search(this.searchTerm, res).subscribe();
+        this.ingredient.nomIngredient = "";
+      }, 1000);
+    });
+  }
 
-    this.ingredients$ = this.ingredientsService.getAllIngredients();
-    this.filter = new FormControl('');
-    this.filter$ = this.filter.valueChanges.pipe(startWith(''));
-    // tslint:disable-next-line: deprecation
-    this.filteredIngredient$ = combineLatest(this.ingredients$, this.filter$)
-      .pipe(map(([ingredients, filterString]) =>
-        ingredients.filter(ingredient => ingredient.nomIngredient.toLowerCase().indexOf(filterString.toLowerCase()) !== -1)));
-
+  onSearchTermChange(): void {
+    this.ingredientsService
+      .search(this.searchTerm, this.ingredients)
+      .subscribe();
   }
 
   deleteIngredient(idIngredient: any) {
-    this.ingredientsService.deleteIngredient(idIngredient)
-      .subscribe(res => {
-        this.router.navigate(['/ingredient'], {
-          queryParams: {refresh: new Date().getTime()}
-       });
-        }, (err) => {
-          console.log(err);
-        }
-      );
-    window.location.reload(); /* rafraichit la page */
+    this.ingredientsService.deleteIngredient(idIngredient).subscribe((res) => {
+      this.ingredientsService
+        .delete(this.ingredients, idIngredient)
+        .subscribe();
+    });
+    setTimeout(() => {
+      this.loading();
+    }, 500);
   }
 
-
   updateIngredient(ingredient: IngredientDetails) {
-    this.ingredientsService.updateIngredient(ingredient).subscribe((res: any) => {
-        window.location.reload();
-      }, (err: any) => {
-        console.error(err);
-      }
-    );
+    this.ingredientsService.updateIngredient(ingredient).subscribe();
   }
 
   addIngredient() {
     this.ingredientsService.addIngredient(this.ingredient);
-    window.location.reload();
+    this.ingredientsService.add(this.ingredients, this.ingredient).subscribe();
+    setTimeout(() => {
+      this.loading();
+    }, 500);
   }
-
 }
