@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, HostListener, ViewChild } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
@@ -139,5 +139,10 @@ export class AppComponent {
       this.toastr.clear();
     }
     this.loadData();
+  }
+
+  @HostListener("window:onbeforeunload", ["$event"])
+  clearLocalStorage(event) {
+    localStorage.clear();
   }
 }

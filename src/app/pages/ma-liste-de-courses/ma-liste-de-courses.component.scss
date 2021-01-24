@@ -69,8 +69,9 @@ h2 {
 }
 
 ul {
-  margin-top: 25px;
+  margin-top: 15px;
   padding: 0 20px;
+  text-align: initial;
 }
 
 li {
@@ -96,4 +97,32 @@ input {
 input:focus {
   border-bottom: 1px solid #8888ac;
   outline-width: 0;
+}
+
+//searchbar
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #154360;
+  outline: none;
+  border-radius: 0;
+}
+
+.has-search {
+  display: flex;
 }

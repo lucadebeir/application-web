@@ -18,14 +18,10 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ["./ma-liste-de-courses.component.scss"],
 })
 export class MaListeDeCoursesComponent implements OnInit {
-  public ingredients$: Observable<ListCourses[]>;
+  public allShoppingList: ListCourses[];
   public restIngredients$: Observable<ListCourses[]>;
 
   public allIngredient: IngredientDetails[];
-
-  public filteredIngredient$: Observable<ListCourses[]>;
-  public filter: FormControl;
-  public filter$: Observable<string>;
 
   public ingredientToDelete: ListCourses = {
     pseudo: this.auth.getUserDetails().pseudo,
@@ -41,31 +37,31 @@ export class MaListeDeCoursesComponent implements OnInit {
     idIngredientList: null,
   };
 
+  searchTerm: string = "";
+  public ingredients$: Observable<
+    IngredientDetails[]
+  > = this.shoppingListService.getSearchResults();
+
   constructor(
-    private recetteService: RecettesService,
-    private router: Router,
     private auth: AuthentificationService,
     private modalService: NgbModal,
     private shoppingListService: ShoppingListService,
     private ingredientService: IngredientsService
   ) {
-    this.ingredients$ = this.shoppingListService.getListeCourses();
-    this.filter = new FormControl("");
-    this.filter$ = this.filter.valueChanges.pipe(startWith(""));
-    // tslint:disable-next-line: deprecation
-    this.filteredIngredient$ = combineLatest(
-      this.ingredients$,
-      this.filter$
-    ).pipe(
-      map(([ingredients, filterString]) =>
-        ingredients.filter(
-          (ingredient) =>
-            ingredient.nomIngredient
-              .toLowerCase()
-              .indexOf(filterString.toLowerCase()) !== -1
-        )
-      )
-    );
+    this.loading();
+  }
+
+  ngOnInit(): void {}
+
+  loading() {
+    this.shoppingListService.getListeCourses().subscribe((res) => {
+      this.allShoppingList = res;
+      setTimeout(() => {
+        this.shoppingListService.search(this.searchTerm, res).subscribe();
+        this.ingredientToAdd.nomIngredient = "";
+        this.ingredientToAdd.idIngredient = null;
+      }, 1000);
+    });
 
     this.restIngredients$ = this.shoppingListService.getRestListeCourses();
 
@@ -74,61 +70,21 @@ export class MaListeDeCoursesComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  getInitData() {
-    this.ingredients$ = this.shoppingListService.getListeCourses();
-    this.filter = new FormControl("");
-    this.filter$ = this.filter.valueChanges.pipe(startWith(""));
-    // tslint:disable-next-line: deprecation
-    this.filteredIngredient$ = combineLatest(
-      this.ingredients$,
-      this.filter$
-    ).pipe(
-      map(([ingredients, filterString]) =>
-        ingredients.filter(
-          (ingredient) =>
-            ingredient.nomIngredient
-              .toLowerCase()
-              .indexOf(filterString.toLowerCase()) !== -1
-        )
-      )
-    );
-
-    this.restIngredients$ = this.shoppingListService.getRestListeCourses();
-  }
-
-  getListeCourses() {
-    this.ingredients$ = this.shoppingListService.getListeCourses();
-    this.filter = new FormControl("");
-    this.filter$ = this.filter.valueChanges.pipe(startWith(""));
-    // tslint:disable-next-line: deprecation
-    this.filteredIngredient$ = combineLatest(
-      this.ingredients$,
-      this.filter$
-    ).pipe(
-      map(([ingredients, filterString]) =>
-        ingredients.filter(
-          (ingredient) =>
-            ingredient.nomIngredient
-              .toLowerCase()
-              .indexOf(filterString.toLowerCase()) !== -1
-        )
-      )
-    );
+  onSearchTermChange(): void {
+    this.shoppingListService
+      .search(this.searchTerm, this.allShoppingList)
+      .subscribe();
   }
 
   deleteListeCourse(nomIngredient: any) {
-    this.ingredientToDelete.nomIngredient = nomIngredient;
-    this.shoppingListService.deleteListeCourse(nomIngredient).subscribe(
-      () => {
-        this.getInitData();
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-    //window.location.reload(); /* rafraichit la page */
+    this.shoppingListService.deleteListeCourse(nomIngredient).subscribe(() => {
+      this.shoppingListService
+        .delete(this.allShoppingList, nomIngredient)
+        .subscribe();
+    });
+    setTimeout(() => {
+      this.loading();
+    }, 500);
   }
 
   open(content) {
@@ -140,17 +96,17 @@ export class MaListeDeCoursesComponent implements OnInit {
             this.ingredientToAdd.idIngredient = element.idIngredient;
           }
         });
+        this.ingredientToAdd.idIngredient = result.idIngredient;
         this.shoppingListService
           .addIngredientShoppingList(this.ingredientToAdd)
-          .subscribe((res) => {
-            this.getInitData();
-            this.ingredientToAdd.nomIngredient = "";
-            this.ingredientToAdd.idIngredient = null;
-          });
-        this.ingredientToAdd.idIngredient = result.idIngredient;
-        this.shoppingListService.addIngredientShoppingList(
-          this.ingredientToAdd
-        );
+          .subscribe();
+
+        this.shoppingListService
+          .add(this.allShoppingList, this.ingredientToAdd)
+          .subscribe();
+        setTimeout(() => {
+          this.loading();
+        }, 500);
       });
   }
 }

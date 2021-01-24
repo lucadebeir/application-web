@@ -100,6 +100,8 @@ export class RecetteComponent implements OnInit {
     type: "commentaire",
   };
 
+  check: boolean = true;
+
   @ViewChild("box") input: ElementRef;
 
   constructor(
@@ -199,6 +201,13 @@ export class RecetteComponent implements OnInit {
   onClick() {}
 
   ngOnInit(): void {}
+
+  ngOnDestroy() {
+    if (this.check) {
+      localStorage.removeItem("value");
+      localStorage.removeItem("backButton");
+    }
+  }
 
   updateNbView(recette: any) {
     this.recetteService.updateNbView(recette).subscribe(
@@ -443,6 +452,7 @@ export class RecetteComponent implements OnInit {
   //back button
   @HostListener("window:popstate", ["$event"])
   onPopState(event) {
+    this.check = false;
     //localStorage.setItem("backButton", "true");
     var json = {
       backButton: true,

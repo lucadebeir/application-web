@@ -1,72 +1,78 @@
-import { Component, OnInit } from '@angular/core';
-import { ListRecipe } from 'src/app/models/listRecipe.model';
-import { RecettesService, AuthentificationService } from 'src/app/service';
-import { RecipeDetails } from 'src/app/models';
-import { Router } from '@angular/router';
-import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from "@angular/core";
+import { ListRecipe } from "src/app/models/listRecipe.model";
+import { RecettesService, AuthentificationService } from "src/app/service";
+import { RecipeDetails } from "src/app/models";
+import { Router } from "@angular/router";
+import { HttpErrorResponse } from "@angular/common/http";
 import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  selector: "app-menu",
+  templateUrl: "./menu.component.html",
+  styleUrls: ["./menu.component.scss"],
 })
 export class MenuComponent implements OnInit {
-
   public list: ListRecipe[];
   public allRecipe: RecipeDetails[] = [];
   public newRecetteList: ListRecipe = {
-    pseudoUser: '',
-    nomRecette: '',
+    pseudoUser: "",
+    nomRecette: "",
     idRecette: null,
     idRecipeList: null,
-    complet: false
+    complet: false,
   };
 
   public listAdmin: ListRecipe[];
   public menuAdmin = false;
 
-  constructor(private recetteService: RecettesService, private auth: AuthentificationService, private router: Router,private notifService: NotificationService) {
+  constructor(
+    private recetteService: RecettesService,
+    private auth: AuthentificationService,
+    private router: Router,
+    private notifService: NotificationService
+  ) {
     this.getInitData();
 
     if (this.auth.isLoggedIn()) {
       this.newRecetteList.pseudoUser = this.auth.getUserDetails().pseudo;
     }
 
-    this.recetteService.getListRecipesOfAdmin().subscribe(res => {
+    this.recetteService.getListRecipesOfAdmin().subscribe((res) => {
       this.listAdmin = res;
+      console.log(this.listAdmin);
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   addRecipeToList() {
-    this.allRecipe.forEach(element => {
+    this.allRecipe.forEach((element) => {
       if (element.nomRecette === this.newRecetteList.nomRecette) {
         this.newRecetteList.idRecette = element.idRecette;
       }
     });
-    this.recetteService.addRecipeToList(this.newRecetteList).subscribe(res => {
-      this.getInitData();
-      this.newRecetteList.nomRecette = '';
-      this.newRecetteList.idRecette = null;
-    });
+    this.recetteService
+      .addRecipeToList(this.newRecetteList)
+      .subscribe((res) => {
+        this.getInitData();
+        this.newRecetteList.nomRecette = "";
+        this.newRecetteList.idRecette = null;
+      });
   }
 
   getInitData(): void {
-    this.recetteService.getListRecipes().subscribe(data => {
+    this.recetteService.getListRecipes().subscribe((data) => {
       this.list = data;
       console.log(data);
     });
 
     this.allRecipe = [];
 
-    this.recetteService.getAllRecipesAsc().subscribe(data => {
+    this.recetteService.getAllRecipesAsc().subscribe((data) => {
       data.forEach((element: RecipeDetails) => {
         let res = true;
-        this.list.forEach(element2 => {
+        this.list.forEach((element2) => {
           if (element.idRecette === element2.idRecette) {
             res = false;
           }
@@ -79,25 +85,25 @@ export class MenuComponent implements OnInit {
   }
 
   deleteRecipeOfList(recette: ListRecipe) {
-    this.recetteService.deleteRecipeOfList(recette).subscribe(res => {
+    this.recetteService.deleteRecipeOfList(recette).subscribe((res) => {
       this.getInitData();
-      this.newRecetteList.nomRecette = '';
+      this.newRecetteList.nomRecette = "";
       this.newRecetteList.idRecette = null;
     });
   }
 
   deleteAllRecipeOfList() {
-    this.recetteService.deleteAllRecipeOfList().subscribe(res => {
+    this.recetteService.deleteAllRecipeOfList().subscribe((res) => {
       this.getInitData();
-      this.newRecetteList.nomRecette = '';
+      this.newRecetteList.nomRecette = "";
       this.newRecetteList.idRecette = null;
     });
   }
 
   changeStateOfRecipe(recette: ListRecipe) {
-    this.recetteService.changeStateOfRecipe(recette).subscribe(res => {
+    this.recetteService.changeStateOfRecipe(recette).subscribe((res) => {
       this.getInitData();
-      this.newRecetteList.nomRecette = '';
+      this.newRecetteList.nomRecette = "";
       this.newRecetteList.idRecette = null;
     });
   }
@@ -110,19 +116,21 @@ export class MenuComponent implements OnInit {
     this.recetteService.updateNbViewMenu(recette).subscribe(
       (res) => {
         this.notificationVue(recette.idRecette);
-        this.router.navigate(['/recipe', recette.idRecette]).then(() => {
+        this.router.navigate(["/recipe", recette.idRecette]).then(() => {
           window.location.reload();
         });
-      }, err => {
+      },
+      (err) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 402) {
-            console.log('Cette recette n\'existe pas !');
+            console.log("Cette recette n'existe pas !");
           }
         }
-      });
+      }
+    );
   }
-   //notification vue
-   notificationVue(idRecette) {
+  //notification vue
+  notificationVue(idRecette) {
     let notif: Notification = {
       pseudo: null,
       idRecette: idRecette,

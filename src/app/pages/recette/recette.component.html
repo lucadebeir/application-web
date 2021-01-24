@@ -22,8 +22,11 @@
         <a
           *ngIf="this.auth.isLoggedIn() && !isInMenu"
           style="font-size: inherit; margin-left: 1em;"
-          id="btn"
           (click)="addToMenu()"
+          data-toggle="popover"
+          data-placement="bottom"
+          data-trigger="hover"
+          title="Ajouter au menu de la semaine"
         >
           <i
             class="fa fa-bookmark-o"
@@ -34,8 +37,11 @@
         <a
           *ngIf="this.auth.isLoggedIn() && isInMenu"
           style="font-size: inherit; margin-left: 1em;"
-          id="btn"
           (click)="deleteToMenu()"
+          data-toggle="popover"
+          data-placement="bottom"
+          data-trigger="hover"
+          title="Supprimer du menu de la semaine"
         >
           <i
             class="fa fa-bookmark"
@@ -49,21 +55,27 @@
 
         <a
           *ngIf="this.auth.isLoggedIn() && !isFavori"
-          id="btn"
           (click)="addFavoris()"
+          data-toggle="popover"
+          data-placement="bottom"
+          data-trigger="hover"
+          title="Ajouter aux favoris"
           ><i id="textlogo"> {{ recette?.nbFavoris }} </i
           ><i class="fa fa-heart-o"></i
         ></a>
 
         <a
           *ngIf="this.auth.isLoggedIn() && isFavori"
-          id="btn"
           (click)="deleteFavoris()"
+          data-toggle="popover"
+          data-placement="bottom"
+          data-trigger="hover"
+          title="Supprimer des favoris"
           ><i id="textlogo">{{ recette?.nbFavoris }} </i
           ><i class="class= fa fa-heart"></i
         ></a>
 
-        <a *ngIf="!this.auth.isLoggedIn()" id="btn"
+        <a *ngIf="!this.auth.isLoggedIn()"
           ><i id="textlogo">{{ recette?.nbFavoris }} </i
           ><i class="class= fa fa-heart"></i
         ></a>
@@ -228,6 +240,10 @@
         id="btn"
         (click)="addListeCourses()"
         style="float: right; font-size: inherit;"
+        data-toggle="popover"
+        data-placement="bottom"
+        data-trigger="hover"
+        title="Ajouter à la liste de courses"
       >
         <span class="fa fa-shopping-cart" style="color: #cea0af;"></span>
       </a>

@@ -103,7 +103,8 @@ export class RecettesComponent implements OnInit, OnDestroy {
     private categoriesService: CategoriesService,
     private favorisService: FavorisService,
     private notifService: NotificationService,
-    public matDialog: MatDialog
+    public matDialog: MatDialog,
+    private route: ActivatedRoute
   ) {
     if (this.auth.isLoggedIn()) {
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
@@ -118,7 +119,6 @@ export class RecettesComponent implements OnInit, OnDestroy {
 
   // dans ngOnInit on récupère les données à afficher au lancement de la page
   ngOnInit(): void {
-    console.log(JSON.parse(localStorage.getItem("value")));
     if (JSON.parse(localStorage.getItem("value"))) {
       this.isLoading = false;
       if (JSON.parse(localStorage.getItem("backButton")).backButton) {
@@ -157,7 +157,18 @@ export class RecettesComponent implements OnInit, OnDestroy {
         .getAllCategory()
         .subscribe((categorie: CategoryDetails[]) => {
           categorie.forEach((data) => {
-            data.checked = false;
+            if (this.route.snapshot.paramMap.get("id")) {
+              if (
+                data.idCategorie ===
+                parseInt(this.route.snapshot.paramMap.get("id"), 10)
+              ) {
+                data.checked = true;
+              } else {
+                data.checked = false;
+              }
+            } else {
+              data.checked = false;
+            }
             this.recetteService
               .getRecipeByCategory(data.idCategorie)
               .subscribe((recipes) => {
@@ -168,6 +179,8 @@ export class RecettesComponent implements OnInit, OnDestroy {
           this.categories = categorie;
         });
     }
+    //console.log(JSON.parse(localStorage.getItem("value")));
+
     this.filterRecipes();
   }
 
@@ -392,6 +405,9 @@ export class RecettesComponent implements OnInit, OnDestroy {
     localStorage.setItem("backButton", JSON.stringify(json2));
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
+        var snapshot = this.route.snapshot;
+        const params = { ...snapshot.queryParams };
+        delete params.pos;
         this.notificationVue(recette.idRecette);
         this.router.navigate(["/recipe", recette.idRecette]);
       },
