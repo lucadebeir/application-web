@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { CommentaireDetails } from "src/app/models";
-import { Observable } from "rxjs";
+import { Observable, of, ReplaySubject, Subject } from "rxjs";
 import { map, tap } from "rxjs/operators";
 import { AuthentificationService } from "../authentification.service";
 import { environment } from "../../../environments/environment";
@@ -165,5 +165,67 @@ export class CommentairesService {
           return data;
         })
       );
+  }
+
+  private filteredApps$: Subject<CommentaireDetails[]> = new ReplaySubject<
+    CommentaireDetails[]
+  >(1);
+
+  getSearchResults(): Observable<CommentaireDetails[]> {
+    return this.filteredApps$.asObservable();
+  }
+
+  search(commentaires: CommentaireDetails[]): Observable<void> {
+    return this.fetchApps(commentaires).pipe(
+      tap((apps: CommentaireDetails[]) => {
+        const researchResult: CommentaireDetails[] = [];
+        apps.forEach((commentaire) => {
+          researchResult.push(commentaire);
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  delete(
+    commentaires: CommentaireDetails[],
+    idCommentaire: number
+  ): Observable<void> {
+    return this.fetchApps(commentaires).pipe(
+      tap((apps: CommentaireDetails[]) => {
+        const researchResult: CommentaireDetails[] = [];
+        apps.forEach((commentaire) => {
+          if (commentaire.idCommentaire !== idCommentaire) {
+            if (!researchResult.includes(commentaire)) {
+              researchResult.push(commentaire);
+            }
+          }
+        });
+        this.filteredApps$.next(researchResult);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  add(
+    commentaires: CommentaireDetails[],
+    newCommentaire: CommentaireDetails
+  ): Observable<void> {
+    return this.fetchApps(commentaires).pipe(
+      tap((apps: CommentaireDetails[]) => {
+        apps.push(newCommentaire);
+        this.filteredApps$.next(apps);
+      }),
+      map(() => void 0)
+    );
+  }
+
+  private fetchApps(
+    ingredients: CommentaireDetails[]
+  ): Observable<CommentaireDetails[]> {
+    if (ingredients) {
+      return of(ingredients);
+    }
   }
 }

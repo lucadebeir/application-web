@@ -368,12 +368,12 @@
       </div>
     </div>
 
-    <div *ngIf="commentaires" id="comments" class="post-comments elevation-2">
+    <div *ngIf="hasCom" id="comments" class="post-comments elevation-2">
       <div>
         <ol class="comment-list">
           <li
             class="comment even thread-even depth-1 parent"
-            *ngFor="let commentaire of commentaires"
+            *ngFor="let commentaire of commentaires$ | async"
           >
             <article class="comment-body">
               <footer class="comment-meta">
@@ -413,12 +413,12 @@
               <div class="comment-content row">
                 <div class="column1">
                   <div class="row">
-                    <p>{{ commentaire.message }}</p>
                     <div>
                       <img
                         id="imageCommentaire"
                         src="{{ commentaire.lienImage }}"
                       />
+                      <p>{{ commentaire.message }}</p>
                     </div>
                   </div>
                 </div>
@@ -519,12 +519,12 @@
                     <div class="comment-content row">
                       <div class="column1">
                         <div class="row">
-                          <p>{{ children.message }}</p>
                           <div>
                             <img
                               id="imageCommentaire"
                               src="{{ children.lienImage }}"
                             />
+                            <p>{{ children.message }}</p>
                           </div>
                         </div>
                       </div>

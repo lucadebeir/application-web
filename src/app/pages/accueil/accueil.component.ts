@@ -7,6 +7,7 @@ import { OwlOptions } from "ngx-owl-carousel-o";
 import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
 import { Title } from "@angular/platform-browser";
+import { SwiperOptions } from "swiper";
 
 @Component({
   selector: "app-accueil",
@@ -74,6 +75,64 @@ export class AccueilComponent implements OnInit {
     nav: false,
     // autoWidth: true,
     // autoHeight: true
+  };
+
+  myCarouselOptions = {
+    items: 3,
+    dots: true,
+    navigation: true,
+    autoplay: true,
+    loop: true,
+    margin: 10,
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+        autoWidth: false,
+      },
+      768: {
+        items: 2,
+        autoWidth: false,
+      },
+      992: {
+        items: 3,
+        autoWidth: false,
+      },
+      1310: {
+        items: 3,
+        autoWidth: false,
+        margin: 30,
+      },
+    },
+  };
+
+  config: SwiperOptions = {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    // init: false,
+    watchSlidesProgress: true,
+    navigation: true,
+    loop: true,
+    autoplay: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      992: {
+        slidesPerView: 3,
+      },
+      1310: {
+        slidesPerView: 3,
+        spaceBetween: 50,
+      },
+    },
   };
 
   constructor(

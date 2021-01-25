@@ -343,9 +343,7 @@ export class MesRecettesComponent implements OnInit {
   deleteFavoris(idRecette: any) {
     this.favorisService.deleteFavoris(idRecette).subscribe(
       (res) => {
-        this.router.navigate(["/favorites"], {
-          queryParams: { refresh: new Date().getTime() },
-        });
+        this.router.navigate(["/favorites"]);
       },
       (err) => {
         console.log(err);

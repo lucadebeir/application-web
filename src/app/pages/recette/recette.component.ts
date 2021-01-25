@@ -59,7 +59,11 @@ export class RecetteComponent implements OnInit {
     listIngredients: null,
   };
 
+  public hasCom: boolean = false;
   public commentaires: CommentaireDetails[];
+  public commentaires$: Observable<
+    CommentaireDetails[]
+  > = this.commentairesService.getSearchResults();
   public newCommentaire: CommentaireDetails = {
     message: "",
     dateCommentaire: null,
@@ -157,15 +161,7 @@ export class RecetteComponent implements OnInit {
         this.ingredientQteInitial = ingredient;
       });
 
-    this.commentairesService
-      .getCommentaireRecipe(
-        parseInt(this.route.snapshot.paramMap.get("id"), 10)
-      )
-      .subscribe((commentaires) => {
-        if (commentaires[0]) {
-          this.commentaires = commentaires;
-        }
-      });
+    this.loading();
 
     if (this.auth.isLoggedIn()) {
       this.favorisService.getFavoris().subscribe((data) => {
@@ -207,6 +203,26 @@ export class RecetteComponent implements OnInit {
       localStorage.removeItem("value");
       localStorage.removeItem("backButton");
     }
+  }
+
+  loading() {
+    this.commentairesService
+      .getCommentaireRecipe(
+        parseInt(this.route.snapshot.paramMap.get("id"), 10)
+      )
+      .subscribe((commentaires) => {
+        if (commentaires[0]) {
+          this.hasCom = true;
+          this.commentaires = commentaires;
+          console.log(commentaires);
+          setTimeout(() => {
+            this.commentairesService.search(commentaires).subscribe();
+            this.newCommentaire.message = "";
+          }, 1000);
+        } else {
+          this.hasCom = false;
+        }
+      });
   }
 
   updateNbView(recette: any) {
@@ -311,20 +327,13 @@ export class RecetteComponent implements OnInit {
     });
   }
   deleteCommentaire(idCommentaire: any) {
-    this.commentairesService.deleteCommentaire(idCommentaire).subscribe(
-      (res) => {
-        this.router
-          .navigate([
-            "/recipe/" + parseInt(this.route.snapshot.paramMap.get("id"), 10),
-          ])
-          .then(() => {
-            //window.location.reload();
-          });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.commentairesService.deleteCommentaire(idCommentaire).subscribe();
+    this.commentairesService
+      .delete(this.commentaires, idCommentaire)
+      .subscribe();
+    setTimeout(() => {
+      this.loading();
+    }, 500);
     //window.location.reload(); /* rafraichit la page */
   }
 
@@ -344,14 +353,28 @@ export class RecetteComponent implements OnInit {
               .subscribe();
             //window.location.reload();
           });
+        setTimeout(() => {
+          this.loading();
+        }, 500);
       });
     } else {
       this.newCommentaire.message = message;
-      this.commentairesService.addCommentaire(this.newCommentaire).subscribe();
+      this.commentairesService
+        .addCommentaire(this.newCommentaire)
+        .subscribe((res) => {
+          console.log(res);
+          this.commentaires$ = this.commentairesService.getCommentaireRecipe(
+            parseInt(this.route.snapshot.paramMap.get("id"), 10)
+          );
+        });
+      setTimeout(() => {
+        this.loading();
+      }, 500);
       this.notificationCommentaire(
         this.auth.getUserDetails().pseudo,
         this.recette.idRecette
       );
+
       //window.location.reload();
     }
 
@@ -375,11 +398,17 @@ export class RecetteComponent implements OnInit {
               .subscribe();
             //window.location.reload();
           });
+        setTimeout(() => {
+          this.loading();
+        }, 500);
       });
     } else {
       this.newResponse.message = event.target.message.value;
       this.newResponse.parent = idCommentaire;
       this.commentairesService.addCommentaire(this.newResponse).subscribe();
+      setTimeout(() => {
+        this.loading();
+      }, 500);
       this.notificationCommentaire(
         this.auth.getUserDetails().pseudo,
         this.recette.idRecette

@@ -34,7 +34,6 @@ import { ModifierRecetteComponent } from "./pages/modifier-recette/modifier-rece
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RequestResetComponent } from "./pages/request-reset/request-reset.component";
 import { ResponseResetComponent } from "./pages/response-reset/response-reset.component";
-import { RefreshComponent } from "./pages/refresh/refresh.component";
 import { MentionsLegalesComponent } from "./pages/mentions-legales/mentions-legales.component";
 
 import { NgxPaginationModule } from "ngx-pagination";
@@ -65,6 +64,20 @@ import { ShareIconsModule } from "ngx-sharebuttons/icons";
 
 //chart module
 import { NgApexchartsModule } from "ng-apexcharts";
+
+//Carousel
+import { IvyCarouselModule } from "angular-responsive-carousel";
+
+//SWIPER
+import { SwiperModule } from "ngx-swiper-wrapper";
+import { SWIPER_CONFIG } from "ngx-swiper-wrapper";
+import { SwiperConfigInterface } from "ngx-swiper-wrapper";
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: "horizontal",
+  slidesPerView: "auto",
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +101,6 @@ import { NgApexchartsModule } from "ng-apexcharts";
     ModifierRecetteComponent,
     RequestResetComponent,
     ResponseResetComponent,
-    RefreshComponent,
     MentionsLegalesComponent,
     GererLeMenuComponent,
     MenuComponent,
@@ -112,6 +124,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    IvyCarouselModule,
+    SwiperModule,
     ToastrModule.forRoot({
       disableTimeOut: true,
       positionClass: "toast-top-left",
@@ -138,6 +152,10 @@ import { NgApexchartsModule } from "ng-apexcharts";
     AdminAuthService,
     NgxImageCompressService,
     Title,
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG,
+    },
   ],
   bootstrap: [AppComponent],
   entryComponents: [FilterRecettesComponent],

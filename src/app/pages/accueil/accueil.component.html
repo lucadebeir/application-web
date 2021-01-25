@@ -15,6 +15,37 @@
   crossorigin="anonymous"
 ></script>
 <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+  var swiper = new Swiper(".swiper-container", {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    // init: false,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      768: {
+        slidesPerView: 4,
+        spaceBetween: 40,
+      },
+      1024: {
+        slidesPerView: 5,
+        spaceBetween: 50,
+      },
+    },
+  });
+</script>
 
 <main role="main">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -88,51 +119,56 @@
 
   <h4 class="title-trending">Les plus vues</h4>
 
-  <div class="container marketing">
-    <!-- Three columns of text below the carousel -->
-    <div class="row">
-      <div class="col-lg-4" *ngFor="let recette of this.mostPopularRecipes">
-        <div id="imgSize">
-          <div class="box">
-            <img
-              id="imgCard"
-              class="bd-placeholder-img"
-              width="180"
-              height="auto"
-              src="{{ recette.lienImage }}"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-              role="img"
-            />
-          </div>
+  <owl-carousel
+    [options]="myCarouselOptions"
+    [carouselClasses]="['owl-theme', 'sliding']"
+    [items]="this.mostPopularRecipes"
+  >
+    <div class="item" *ngFor="let recette of this.mostPopularRecipes">
+      <div id="imgSize">
+        <div
+          class="box"
+          [ngStyle]="{
+            'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'
+          }"
+        >
+          <img
+            id="imgCard"
+            class="bd-placeholder-img"
+            width="180"
+            height="auto"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+            role="img"
+          />
         </div>
-        <ul class="post-categories2">
-          <li *ngFor="let category of recette.categories">
-            <a rel="category tag">{{ category.libelleCategorie }}</a>
-          </li>
-        </ul>
-        <h2 id="cardTitle">{{ recette.nomRecette }}</h2>
-        <div id="container">
-          <div class="centre">
-            {{ recette.mot }}
-          </div>
-          <!-- centre -->
-        </div>
-        <p>
-          <a
-            (click)="updateNbView(recette)"
-            [routerLink]="['/recipe', recette.idRecette]"
-            class="btn btn-primary btn-effect top"
-          >
-            <span>Voir »</span>
-            <span><i class="fa fa-long-arrow-right"></i></span>
-          </a>
-        </p>
       </div>
-      <!-- /.col-lg-4 -->
+      <ul class="post-categories2">
+        <li *ngFor="let category of recette.categories">
+          <a rel="category tag">{{ category.libelleCategorie }}</a>
+        </li>
+      </ul>
+      <h2 id="cardTitle">{{ recette.nomRecette }}</h2>
+      <div id="container">
+        <div class="centre">
+          {{ recette.mot }}
+        </div>
+        <!-- centre -->
+      </div>
+      <p>
+        <a
+          (click)="updateNbView(recette)"
+          [routerLink]="['/recipe', recette.idRecette]"
+          class="btn btn-primary btn-effect top"
+        >
+          <span>Voir »</span>
+          <span><i class="fa fa-long-arrow-right"></i></span>
+        </a>
+      </p>
     </div>
-    <!-- /.row -->
+  </owl-carousel>
 
+  <div class="container marketing">
     <hr class="featurette-divider" />
 
     <h4 class="title-trending">Suggestions du moment</h4>
@@ -434,6 +470,230 @@
     Pourquoi créer un compte ?
   </h4>
   <div class="container marketing" style="margin-bottom: 2em;">
+    <div class="swiper-container" [swiper]="config">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="display: block;">
+          <div
+            style="
+              border: 2px solid black;
+              border-radius: 3em;
+              margin-bottom: 1em;
+              display: inline-block;
+            "
+          >
+            <div class="box2">
+              <img
+                id="imgCard"
+                class="bd-placeholder-img"
+                style="border-radius: 2em;"
+                width="180"
+                height="auto"
+                src="../../../assets/img/menu.PNG"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+                role="img"
+              />
+            </div>
+            <!-- centre -->
+          </div>
+          <div id="container">
+            <h2>Menu de la semaine</h2>
+            <div>
+              Marre de ne plus savoir ce que tu avais prévu cette semaine ? Avec
+              cette fonctionnalité, retrouve toutes tes recettes au même
+              endroit! Si c'est une recette du site, tu y auras accès
+              directement en cliquant dessus! Et si tu manques d'idées pour
+              cette semaine, tu peux voir le menu de Marine!
+            </div>
+            <!-- /.col-lg-4 -->
+          </div>
+        </div>
+        <div class="swiper-slide" style="display: block;">
+          <div
+            style="
+              border: 2px solid black;
+              border-radius: 3em;
+              margin-bottom: 1em;
+              display: inline-block;
+            "
+          >
+            <div class="box2">
+              <img
+                id="imgCard"
+                class="bd-placeholder-img"
+                style="border-radius: 2em;"
+                width="180"
+                height="auto"
+                src="../../../assets/img/liste_course.PNG"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+                role="img"
+              />
+            </div>
+            <!-- centre -->
+          </div>
+          <div id="container">
+            <h2>Liste de courses</h2>
+            <div>
+              A partir d'une recette, tu peux directement ajouter tous les
+              ingrédients à ta liste de courses, plus besoin de réfléchir! Tu
+              peux supprimer ce dont tu n'as pas besoin et rajouter toi même des
+              ingrédients à la liste.
+            </div>
+            <!-- /.col-lg-4 -->
+          </div>
+        </div>
+        <div class="swiper-slide" style="display: block;">
+          <div
+            style="
+              border: 2px solid black;
+              border-radius: 3em;
+              margin-bottom: 1em;
+              display: inline-block;
+            "
+          >
+            <div class="box2">
+              <img
+                id="imgCard"
+                class="bd-placeholder-img"
+                style="border-radius: 2em;"
+                width="180"
+                height="auto"
+                src="../../../assets/img/mes_recettes.PNG"
+                preserveAspectRatio="xMidYMid slice"
+                focusable="false"
+                role="img"
+              />
+            </div>
+            <!-- centre -->
+          </div>
+          <div id="container">
+            <h2>Mes recettes</h2>
+            <div>
+              Pratique! Retrouve toutes tes recettes préférées du site au même
+              endroit! Pour celà il te suffit de cliquer sur le petit coeur
+              d'une recette lorsque tu es connecté.
+            </div>
+            <!-- /.col-lg-4 -->
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-pagination"></div>
+
+      <!--<div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>-->
+    </div>
+    <!--<div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="col-lg-4">
+            <div
+              style="
+                border: 2px solid black;
+                border-radius: 3em;
+                margin-bottom: 1em;
+                display: inline-block;
+              "
+            >
+              <div class="box2">
+                <img
+                  id="imgCard"
+                  class="bd-placeholder-img"
+                  style="border-radius: 2em;"
+                  width="180"
+                  height="auto"
+                  src="../../../assets/img/menu.PNG"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                  role="img"
+                />
+              </div>
+            </div>
+            <div id="container">
+              <h2>Menu de la semaine</h2>
+              <div>
+                Marre de ne plus savoir ce que tu avais prévu cette semaine ?
+                Avec cette fonctionnalité, retrouve toutes tes recettes au même
+                endroit! Si c'est une recette du site, tu y auras accès
+                directement en cliquant dessus! Et si tu manques d'idées pour
+                cette semaine, tu peux voir le menu de Marine!
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="col-lg-4">
+            <div
+              style="
+                border: 2px solid black;
+                border-radius: 3em;
+                margin-bottom: 1em;
+                display: inline-block;
+              "
+            >
+              <div class="box2">
+                <img
+                  id="imgCard"
+                  class="bd-placeholder-img"
+                  style="border-radius: 2em;"
+                  width="180"
+                  height="auto"
+                  src="../../../assets/img/liste_course.PNG"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                  role="img"
+                />
+              </div>
+            </div>
+            <div id="container">
+              <h2>Liste de courses</h2>
+              <div>
+                A partir d'une recette, tu peux directement ajouter tous les
+                ingrédients à ta liste de courses, plus besoin de réfléchir! Tu
+                peux supprimer ce dont tu n'as pas besoin et rajouter toi même
+                des ingrédients à la liste.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="col-lg-4">
+            <div
+              style="
+                border: 2px solid black;
+                border-radius: 3em;
+                margin-bottom: 1em;
+                display: inline-block;
+              "
+            >
+              <div class="box2">
+                <img
+                  id="imgCard"
+                  class="bd-placeholder-img"
+                  style="border-radius: 2em;"
+                  width="180"
+                  height="auto"
+                  src="../../../assets/img/mes_recettes.PNG"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                  role="img"
+                />
+              </div>
+            </div>
+            <div id="container">
+              <h2>Mes recettes</h2>
+              <div>
+                Pratique! Retrouve toutes tes recettes préférées du site au même
+                endroit! Pour celà il te suffit de cliquer sur le petit coeur
+                d'une recette lorsque tu es connecté.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
     <div class="row">
       <div class="col-lg-4">
         <div
@@ -444,7 +704,7 @@
             display: inline-block;
           "
         >
-          <div class="box">
+          <div class="box2">
             <img
               id="imgCard"
               class="bd-placeholder-img"
@@ -457,7 +717,6 @@
               role="img"
             />
           </div>
-          <!-- centre -->
         </div>
         <div id="container">
           <h2>Menu de la semaine</h2>
@@ -468,7 +727,6 @@
             cliquant dessus! Et si tu manques d'idées pour cette semaine, tu
             peux voir le menu de Marine!
           </div>
-          <!-- /.col-lg-4 -->
         </div>
       </div>
 
@@ -481,7 +739,7 @@
             display: inline-block;
           "
         >
-          <div class="box">
+          <div class="box2">
             <img
               id="imgCard"
               class="bd-placeholder-img"
@@ -494,7 +752,6 @@
               role="img"
             />
           </div>
-          <!-- centre -->
         </div>
         <div id="container">
           <h2>Liste de courses</h2>
@@ -504,7 +761,6 @@
             supprimer ce dont tu n'as pas besoin et rajouter toi même des
             ingrédients à la liste.
           </div>
-          <!-- /.col-lg-4 -->
         </div>
       </div>
 
@@ -517,7 +773,7 @@
             display: inline-block;
           "
         >
-          <div class="box">
+          <div class="box2">
             <img
               id="imgCard"
               class="bd-placeholder-img"
@@ -530,7 +786,6 @@
               role="img"
             />
           </div>
-          <!-- centre -->
         </div>
         <div id="container">
           <h2>Mes recettes</h2>
@@ -539,10 +794,9 @@
             endroit! Pour celà il te suffit de cliquer sur le petit coeur d'une
             recette lorsque tu es connecté.
           </div>
-          <!-- /.col-lg-4 -->
         </div>
       </div>
-    </div>
+    </div>-->
 
     <hr class="featurette-divider" />
   </div>

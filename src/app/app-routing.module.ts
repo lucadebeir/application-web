@@ -21,7 +21,6 @@ import { MesRecettesComponent } from "./pages/mes-recettes/mes-recettes.componen
 import { ModifierRecetteComponent } from "./pages/modifier-recette/modifier-recette.component";
 import { RequestResetComponent } from "./pages/request-reset/request-reset.component";
 import { ResponseResetComponent } from "./pages/response-reset/response-reset.component";
-import { RefreshComponent } from "./pages/refresh/refresh.component";
 import { MentionsLegalesComponent } from "./pages/mentions-legales/mentions-legales.component";
 import { GererLeMenuComponent } from "./pages/gerer-le-menu/gerer-le-menu.component";
 import { MenuComponent } from "./pages/menu/menu.component";
@@ -119,7 +118,6 @@ const routes: Routes = [
   },
   { path: "request-reset-password", component: RequestResetComponent },
   { path: "response-reset-password/:token", component: ResponseResetComponent },
-  { path: "refresh", component: RefreshComponent },
   {
     path: "rules",
     component: MentionsLegalesComponent,

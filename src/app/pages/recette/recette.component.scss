@@ -764,7 +764,7 @@ img {
 }
 
 #imageCommentaire {
-  width: 95%;
+  width: 50%;
 }
 
 .comment-list {
@@ -915,6 +915,10 @@ body {
 .comment p {
   margin-top: 30px;
   display: inline-block;
+  width: 50%;
+  height: auto;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .sub-comment .comment-img {
@@ -1172,6 +1176,5 @@ time {
   display: -webkit-box;
   flex-wrap: inherit;
   margin-right: -15px;
-  margin-left: -15px;
   overflow-x: scroll;
 }

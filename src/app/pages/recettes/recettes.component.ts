@@ -163,6 +163,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
                 parseInt(this.route.snapshot.paramMap.get("id"), 10)
               ) {
                 data.checked = true;
+                this.checked = false;
               } else {
                 data.checked = false;
               }
