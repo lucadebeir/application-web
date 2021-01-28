@@ -52,6 +52,7 @@ export class AjoutRecetteComponent implements OnInit {
     tempsCuisson: null,
     astuce: "",
     mot: "",
+    lienImage: "",
   };
 
   public ingredients: IngredientDetails[];
@@ -185,6 +186,7 @@ export class AjoutRecetteComponent implements OnInit {
           this.imagesService.getImage(res[0]).subscribe((res) => {
             console.log(res[0]);
             this.images = res[0];
+            this.recipe.lienImage = res[0].lienImage;
           });
         });
       });
