@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   name: "production",
-  API_URL: "http://[::1]",
+  API_URL: "https://marine-s-recipes.herokuapp.com",
 };
