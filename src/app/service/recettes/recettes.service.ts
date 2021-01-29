@@ -165,21 +165,21 @@ export class RecettesService {
   public getRecipeById(id: any): Observable<any> {
     return this.http.get<any>(this.baseUrl + "/server/recipe/get/" + id).pipe(
       map((element: RecipeDetails) => {
-        element.nomRecette = decoder(element.nomRecette);
-        element.mot = decoder(element.mot);
-        element.astuce = decoder(element.astuce);
-        element.etapes = decoder(element.etapes);
+        element[0].nomRecette = decoder(element[0].nomRecette);
+        element[0].mot = decoder(element[0].mot);
+        element[0].astuce = decoder(element[0].astuce);
+        element[0].etapes = decoder(element[0].etapes);
         this.categoryService
-          .getCategoryByRecette(element.idRecette)
+          .getCategoryByRecette(element[0].idRecette)
           .subscribe((data: any) => {
             data.forEach((categ) => {
               if (categ?.libelleCategorie === "Végétariennes") {
-                element.vege = true;
+                element[0].vege = true;
               }
             });
-            element.categories = data;
+            element[0].categories = data;
           });
-        return element;
+        return element[0];
       })
     );
   }
