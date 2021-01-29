@@ -46,7 +46,7 @@ menu.get("/allRecipes", (req, res) => {
 menu.get("/petitDej", (req, res) => {
   db.sequelize
     .query(
-      "SELECT recettes.*, images.* FROM menus, recettes, images, illustrerRecettes WHERE menus.idMenu = 1 AND menus.idRecette = recettes.idRecette and illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette"
+      "SELECT recettes.*, images.* FROM menus, recettes, images, illustrerRecettes WHERE menus.idMenu = 1 AND menus.idRecette = recettes.idRecette and illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette"
     )
     .then((menu) => {
       if (menu) {
@@ -64,7 +64,7 @@ menu.get("/petitDej", (req, res) => {
 menu.get("/repas", (req, res) => {
   db.sequelize
     .query(
-      "SELECT recettes.*, images.* FROM menus, recettes, images, illustrerRecettes WHERE menus.idMenu = 2 AND menus.idRecette = recettes.idRecette and illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette"
+      "SELECT recettes.*, images.* FROM menus, recettes, images, illustrerRecettes WHERE menus.idMenu = 2 AND menus.idRecette = recettes.idRecette and illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette"
     )
     .then((menu) => {
       if (menu) {
@@ -82,7 +82,7 @@ menu.get("/repas", (req, res) => {
 menu.get("/douceur", (req, res) => {
   db.sequelize
     .query(
-      "SELECT recettes.*, images.* FROM menus, recettes, images, illustrerRecettes WHERE menus.idMenu = 3 AND menus.idRecette = recettes.idRecette and illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette"
+      "SELECT recettes.*, images.* FROM menus, recettes, images, illustrerRecettes WHERE menus.idMenu = 3 AND menus.idRecette = recettes.idRecette and illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette"
     )
     .then((menu) => {
       if (menu) {

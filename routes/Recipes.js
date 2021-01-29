@@ -25,7 +25,7 @@ var topic = "/topics/all";
 recipe.get("/allRecipes", (req, res) => {
   db.sequelize
     .query(
-      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.datePublication DESC",
+      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.datePublication DESC",
       {
         type: sequelize.QueryTypes.SELECT,
       }
@@ -46,7 +46,7 @@ recipe.get("/allRecipes", (req, res) => {
 recipe.get("/allRecipes/asc", (req, res) => {
   db.sequelize
     .query(
-      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.datePublication ASC",
+      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.datePublication ASC",
       {
         type: sequelize.QueryTypes.SELECT,
       }
@@ -67,7 +67,7 @@ recipe.get("/allRecipes/asc", (req, res) => {
 recipe.get("/allRecipes/nbVues/desc", (req, res) => {
   db.sequelize
     .query(
-      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.nbVues DESC",
+      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.nbVues DESC",
       {
         type: sequelize.QueryTypes.SELECT,
       }
@@ -88,7 +88,7 @@ recipe.get("/allRecipes/nbVues/desc", (req, res) => {
 recipe.get("/get/:id", (req, res) => {
   db.sequelize
     .query(
-      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette and recettes.idRecette = ?",
+      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette and recettes.idRecette = ?",
       {
         replacements: [req.params.id],
         type: sequelize.QueryTypes.SELECT,
@@ -128,7 +128,7 @@ recipe.get("/:id/ingredients", (req, res) => {
 recipe.get("/latestRecipes", (req, res) => {
   db.sequelize
     .query(
-      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.datePublication desc LIMIT 3",
+      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.datePublication desc LIMIT 3",
       {
         replacements: [req.params.id],
         type: sequelize.QueryTypes.SELECT,
@@ -150,7 +150,7 @@ recipe.get("/latestRecipes", (req, res) => {
 recipe.get("/mostPopularRecipes", (req, res) => {
   db.sequelize
     .query(
-      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.nbVues desc LIMIT 12",
+      "select recettes.*, images.* from recettes, images, illustrerRecettes where illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette order by recettes.nbVues desc LIMIT 12",
       {
         replacements: [req.params.id],
         type: sequelize.QueryTypes.SELECT,
@@ -171,7 +171,7 @@ recipe.get("/mostPopularRecipes", (req, res) => {
 //Récupérer les recettes d'une catégorie
 recipe.get("/category/:idCategorie", (req, res) => {
   let query = db.sequelize.query(
-    "SELECT recettes.*, images.* FROM recettes, images, illustrerRecettes INNER JOIN categories INNER JOIN classerDans WHERE illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette and classerDans.idCategorie = categories.idCategorie AND classerDans.idRecette = recettes.idRecette AND categories.idCategorie = ? ORDER BY recettes.datePublication DESC",
+    "SELECT recettes.*, images.* FROM recettes, images, illustrerRecettes INNER JOIN categories INNER JOIN classerDans WHERE illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette and classerDans.idCategorie = categories.idCategorie AND classerDans.idRecette = recettes.idRecette AND categories.idCategorie = ? ORDER BY recettes.datePublication DESC",
     {
       replacements: [req.params.idCategorie],
       type: sequelize.QueryTypes.SELECT,
@@ -189,7 +189,7 @@ recipe.get("/category/:idCategorie", (req, res) => {
 //Récupérer les recettes d'une catégorie selon nbVue
 recipe.get("/nbVues/category/:idCategorie", (req, res) => {
   let query = db.sequelize.query(
-    "SELECT recettes.*, images.* FROM recettes, images, illustrerRecettes INNER JOIN categories INNER JOIN classerDans WHERE illustrerRecettes.idRecette = images.idImage and illustrerRecettes.idRecette = recettes.idRecette and classerDans.idCategorie = categories.idCategorie AND classerDans.idRecette = recettes.idRecette AND categories.idCategorie = ? ORDER BY recettes.nbVues DESC",
+    "SELECT recettes.*, images.* FROM recettes, images, illustrerRecettes INNER JOIN categories INNER JOIN classerDans WHERE illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette and classerDans.idCategorie = categories.idCategorie AND classerDans.idRecette = recettes.idRecette AND categories.idCategorie = ? ORDER BY recettes.nbVues DESC",
     {
       replacements: [req.params.idCategorie],
       type: sequelize.QueryTypes.SELECT,
