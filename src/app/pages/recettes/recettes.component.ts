@@ -3,7 +3,6 @@ import { Observable } from "rxjs";
 import {
   RecettesService,
   AuthentificationService,
-  ImagesService,
   CategoriesService,
   FavorisService,
 } from "../../service";
@@ -12,7 +11,6 @@ import {
   CategoryDetails,
   FavorisDetails,
   TimeDetails,
-  HashTable,
 } from "../../models";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router, ActivatedRoute } from "@angular/router";
@@ -31,10 +29,6 @@ import { ProgressSpinnerMode } from "@angular/material/progress-spinner";
 })
 export class RecettesComponent implements OnInit, OnDestroy {
   page = 1;
-
-  public actualCategory: number = null;
-  public recipeByCategory: HashTable<RecipeDetails[]> = {};
-  public recipeCategory: RecipeDetails[] = [];
 
   public categories: CategoryDetails[];
 
@@ -99,7 +93,6 @@ export class RecettesComponent implements OnInit, OnDestroy {
     private recetteService: RecettesService,
     private router: Router,
     public auth: AuthentificationService,
-    private imagesService: ImagesService,
     private categoriesService: CategoriesService,
     private favorisService: FavorisService,
     private notifService: NotificationService,
@@ -138,12 +131,6 @@ export class RecettesComponent implements OnInit, OnDestroy {
           .subscribe((categorie: CategoryDetails[]) => {
             categorie.forEach((data) => {
               data.checked = false;
-              this.recetteService
-                .getRecipeByCategory(data.idCategorie)
-                .subscribe((recipes) => {
-                  this.recipeCategory = recipes;
-                  this.recipeByCategory[data.idCategorie] = this.recipeCategory;
-                });
             });
             this.categories = categorie;
           });
@@ -170,12 +157,6 @@ export class RecettesComponent implements OnInit, OnDestroy {
             } else {
               data.checked = false;
             }
-            this.recetteService
-              .getRecipeByCategory(data.idCategorie)
-              .subscribe((recipes) => {
-                this.recipeCategory = recipes;
-                this.recipeByCategory[data.idCategorie] = this.recipeCategory;
-              });
           });
           this.categories = categorie;
         });
@@ -310,18 +291,15 @@ export class RecettesComponent implements OnInit, OnDestroy {
 
     if (researchResultFinal.length == 0) {
       this.allRecipe = data;
-      setTimeout(() => {
-        this.recetteService
-          .search(this.searchTerm, data)
-          .subscribe(() => (this.isLoading = false));
-      }, 2000);
+
+      this.recetteService
+        .search(this.searchTerm, data)
+        .subscribe(() => (this.isLoading = false));
     } else {
       this.allRecipe = researchResultFinal;
-      setTimeout(() => {
-        this.recetteService
-          .search(this.searchTerm, researchResultFinal)
-          .subscribe(() => (this.isLoading = false));
-      }, 2000);
+      this.recetteService
+        .search(this.searchTerm, researchResultFinal)
+        .subscribe(() => (this.isLoading = false));
     }
   }
 
@@ -335,55 +313,6 @@ export class RecettesComponent implements OnInit, OnDestroy {
   onPageChange(page: number) {
     this.currentPage = page;
     window.scrollTo(0, 0);
-  }
-
-  getAllRecipes() {
-    this.actualCategory = null;
-
-    this.recetteService.getAllRecipesAndIngredients().subscribe((data) => {
-      this.allRecipe = data;
-      setTimeout(() => {
-        this.recetteService.search(this.searchTerm, data).subscribe();
-      }, 1000);
-    });
-  }
-
-  getImageByIdRecipe(id: number): any {
-    this.imagesService.getImageByRecipe(id).subscribe((res) => {
-      return res.lienImage;
-    });
-  }
-
-  getAllCategory() {
-    this.categoriesService.getAllCategory().subscribe(
-      (categorie: CategoryDetails[]) => {
-        this.categories = categorie;
-      },
-      (err) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 402) {
-            console.log("Il n'y a pas de catégorie.");
-          }
-        }
-      }
-    );
-  }
-
-  getRecipeByCategory(idCategorie: any, currentPage?: any, recipes?: any) {
-    this.actualCategory = idCategorie;
-    this.currentPage = currentPage ? currentPage : 1;
-
-    if (recipes) {
-      this.recetteService.search(this.searchTerm, recipes).subscribe();
-    } else {
-      this.recetteService.getRecipeByCategory(idCategorie).subscribe((data) => {
-        console.log(data);
-        this.allRecipe = data;
-        setTimeout(() => {
-          this.recetteService.search(this.searchTerm, data).subscribe();
-        }, 1000);
-      });
-    }
   }
 
   updateNbView(recette: any) {

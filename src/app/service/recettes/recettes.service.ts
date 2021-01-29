@@ -137,12 +137,6 @@ export class RecettesService {
           element.mot = decoder(element.mot);
           element.astuce = decoder(element.astuce);
           element.etapes = decoder(element.etapes);
-          this.http
-            .get(this.baseUrl + `/server/image/${element.idRecette}`)
-            .subscribe((data: any) => {
-              element.lienImage = data[0]?.lienImage;
-            });
-
           element.ingredients = [];
           this.ingredientService
             .getIngredientsByIdRecette(element.idRecette)
@@ -175,11 +169,6 @@ export class RecettesService {
         element.mot = decoder(element.mot);
         element.astuce = decoder(element.astuce);
         element.etapes = decoder(element.etapes);
-        this.http
-          .get(this.baseUrl + `/server/image/${element.idRecette}`)
-          .subscribe((data: any) => {
-            element.lienImage = data[0]?.lienImage;
-          });
         this.categoryService
           .getCategoryByRecette(element.idRecette)
           .subscribe((data: any) => {
@@ -204,14 +193,9 @@ export class RecettesService {
           element.mot = decoder(element.mot);
           element.astuce = decoder(element.astuce);
           element.etapes = decoder(element.etapes);
-          this.http
-            .get(this.baseUrl + `/server/image/${element.idRecette}`)
-            .subscribe((data: any) => {
-              element.lienImage = data[0]?.lienImage;
-              element.globalTime = addHours(
-                addTimes(element.tempsPreparation, element.tempsCuisson)
-              );
-            });
+          element.globalTime = addHours(
+            addTimes(element.tempsPreparation, element.tempsCuisson)
+          );
           this.categoryService
             .getCategoryByRecette(element.idRecette)
             .subscribe((data: any) => {
@@ -239,14 +223,9 @@ export class RecettesService {
           element.mot = decoder(element.mot);
           element.astuce = decoder(element.astuce);
           element.etapes = decoder(element.etapes);
-          this.http
-            .get(this.baseUrl + `/server/image/${element.idRecette}`)
-            .subscribe((data: any) => {
-              element.lienImage = data[0]?.lienImage;
-              element.globalTime = addHours(
-                addTimes(element.tempsPreparation, element.tempsCuisson)
-              );
-            });
+          element.globalTime = addHours(
+            addTimes(element.tempsPreparation, element.tempsCuisson)
+          );
           this.categoryService
             .getCategoryByRecette(element.idRecette)
             .subscribe((data: any) => {
@@ -281,12 +260,6 @@ export class RecettesService {
           element.mot = decoder(element.mot);
           element.astuce = decoder(element.astuce);
           element.etapes = decoder(element.etapes);
-          this.http
-            .get(this.baseUrl + `/server/image/${element.idRecette}`)
-            .subscribe((data: any) => {
-              element.lienImage = data[0]?.lienImage;
-            });
-
           element.ingredients = [];
           this.ingredientService
             .getIngredientsByIdRecette(element.idRecette)
@@ -325,12 +298,6 @@ export class RecettesService {
           element.mot = decoder(element.mot);
           element.astuce = decoder(element.astuce);
           element.etapes = decoder(element.etapes);
-          this.http
-            .get(this.baseUrl + `/server/image/${element.idRecette}`)
-            .subscribe((data: any) => {
-              element.lienImage = data[0]?.lienImage;
-            });
-
           element.ingredients = [];
           this.ingredientService
             .getIngredientsByIdRecette(element.idRecette)
@@ -601,11 +568,6 @@ export class RecettesService {
         element[0].mot = decoder(element[0].mot);
         element[0].astuce = decoder(element[0].astuce);
         element[0].etapes = decoder(element[0].etapes);
-        this.http
-          .get(this.baseUrl + `/server/image/${element[0].idRecette}`)
-          .subscribe((data: any) => {
-            element[0].lienImage = data[0]?.lienImage;
-          });
         this.categoryService
           .getCategoryByRecette(element[0].idRecette)
           .subscribe((data: any) => {
@@ -628,11 +590,6 @@ export class RecettesService {
         element[0].mot = decoder(element[0].mot);
         element[0].astuce = decoder(element[0].astuce);
         element[0].etapes = decoder(element[0].etapes);
-        this.http
-          .get(this.baseUrl + `/server/image/${element[0].idRecette}`)
-          .subscribe((data: any) => {
-            element[0].lienImage = data[0]?.lienImage;
-          });
         this.categoryService
           .getCategoryByRecette(element[0].idRecette)
           .subscribe((data: any) => {
@@ -655,11 +612,6 @@ export class RecettesService {
         element[0].mot = decoder(element[0].mot);
         element[0].astuce = decoder(element[0].astuce);
         element[0].etapes = decoder(element[0].etapes);
-        this.http
-          .get(this.baseUrl + `/server/image/${element[0].idRecette}`)
-          .subscribe((data: any) => {
-            element[0].lienImage = data[0]?.lienImage;
-          });
         this.categoryService
           .getCategoryByRecette(element[0].idRecette)
           .subscribe((data: any) => {

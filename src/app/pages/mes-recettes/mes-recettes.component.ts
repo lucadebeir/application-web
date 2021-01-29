@@ -6,12 +6,7 @@ import {
   FavorisService,
   CategoriesService,
 } from "../../service";
-import {
-  RecipeDetails,
-  CategoryDetails,
-  HashTable,
-  TimeDetails,
-} from "../../models";
+import { RecipeDetails, CategoryDetails, TimeDetails } from "../../models";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Notification } from "src/app/models";
@@ -27,10 +22,6 @@ import { FilterRecettesComponent } from "../filter-recettes/filter-recettes.comp
 })
 export class MesRecettesComponent implements OnInit {
   page = 1;
-
-  public actualCategory: number = null;
-  public recipeByCategory: HashTable<RecipeDetails[]> = {};
-  public recipeCategory: RecipeDetails[] = [];
 
   public allRecipe: RecipeDetails[];
 
@@ -117,12 +108,6 @@ export class MesRecettesComponent implements OnInit {
           .subscribe((categorie: CategoryDetails[]) => {
             categorie.forEach((data) => {
               data.checked = false;
-              this.favorisService
-                .getFavorisByCategory(data.idCategorie)
-                .subscribe((recipes) => {
-                  this.recipeCategory = recipes;
-                  this.recipeByCategory[data.idCategorie] = this.recipeCategory;
-                });
             });
             this.categories = categorie;
           });
@@ -137,12 +122,6 @@ export class MesRecettesComponent implements OnInit {
         .subscribe((categorie: CategoryDetails[]) => {
           categorie.forEach((data) => {
             data.checked = false;
-            this.favorisService
-              .getFavorisByCategory(data.idCategorie)
-              .subscribe((recipes) => {
-                this.recipeCategory = recipes;
-                this.recipeByCategory[data.idCategorie] = this.recipeCategory;
-              });
           });
           this.categories = categorie;
         });
@@ -268,18 +247,14 @@ export class MesRecettesComponent implements OnInit {
 
     if (researchResultFinal.length == 0) {
       this.allRecipe = researchResult;
-      setTimeout(() => {
-        this.recetteService
-          .search(this.searchTerm, researchResult)
-          .subscribe(() => (this.isLoading = false));
-      }, 2000);
+      this.recetteService
+        .search(this.searchTerm, researchResult)
+        .subscribe(() => (this.isLoading = false));
     } else {
       this.allRecipe = researchResultFinal;
-      setTimeout(() => {
-        this.recetteService
-          .search(this.searchTerm, researchResultFinal)
-          .subscribe(() => (this.isLoading = false));
-      }, 2000);
+      this.recetteService
+        .search(this.searchTerm, researchResultFinal)
+        .subscribe(() => (this.isLoading = false));
     }
   }
 
@@ -288,22 +263,6 @@ export class MesRecettesComponent implements OnInit {
     if (this.searchTerm === "") {
       this.currentPage = 1;
     }
-  }
-
-  getFavoris() {
-    this.favorisService.getFavoris().subscribe((data) => {
-      this.allRecipe = data;
-      this.recetteService.search(this.searchTerm, data).subscribe();
-    });
-  }
-
-  getFavorisByCategory(idCategorie: any) {
-    this.actualCategory = idCategorie;
-
-    this.favorisService.getFavorisByCategory(idCategorie).subscribe((data) => {
-      this.allRecipe = data;
-      this.recetteService.search(this.searchTerm, data).subscribe();
-    });
   }
 
   // voir si on peut la récupérer au lieu de la recopier!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
