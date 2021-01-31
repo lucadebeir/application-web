@@ -1,115 +1,62 @@
 <head>
-  <meta property="og:title" content="recette?.nomRecette" />
-  <meta property="og:description" content="recette?.mot" />
-  <meta property="og:url" content="url" />
-  <meta property="og:image" content="image[0]?.lienImage" />
+    <meta property="og:title" content="recette?.nomRecette" />
+    <meta property="og:description" content="recette?.mot" />
+    <meta property="og:url" content="url" />
+    <meta property="og:image" content="image[0]?.lienImage" />
 </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-<header class="site-header">
-  <div id="titreRecette" class="header-content">
-    <div class="title-area">
-      <h1>
-        {{ recette?.nomRecette }}
-        <a id="vege" *ngIf="recette?.vege"
-          ><img
-            src="../../../assets/img/logoVegetarien.png"
-            width="50em"
-            height="50em"
-            style="vertical-align: text-top;"
-        /></a>
-        <a
-          *ngIf="this.auth.isLoggedIn() && !isInMenu"
-          style="font-size: inherit; margin-left: 1em;"
-          (click)="addToMenu()"
-          data-toggle="popover"
-          data-placement="bottom"
-          data-trigger="hover"
-          title="Ajouter au menu de la semaine"
-        >
-          <i
-            class="fa fa-bookmark-o"
-            style="vertical-align: text-top;"
-            aria-hidden="true"
-          ></i
-        ></a>
-        <a
-          *ngIf="this.auth.isLoggedIn() && isInMenu"
-          style="font-size: inherit; margin-left: 1em;"
-          (click)="deleteToMenu()"
-          data-toggle="popover"
-          data-placement="bottom"
-          data-trigger="hover"
-          title="Supprimer du menu de la semaine"
-        >
-          <i
-            class="fa fa-bookmark"
-            style="vertical-align: text-top;"
-            aria-hidden="true"
-          ></i
-        ></a>
-      </h1>
-      <p id="timer">
-        {{ recette?.nbVues }} 👁
 
-        <a
-          *ngIf="this.auth.isLoggedIn() && !isFavori"
-          (click)="addFavoris()"
-          data-toggle="popover"
-          data-placement="bottom"
-          data-trigger="hover"
-          title="Ajouter aux favoris"
-          ><i id="textlogo"> {{ recette?.nbFavoris }} </i
+<header class="site-header">
+    <div id="titreRecette" class="header-content">
+        <div class="title-area">
+            <h1>
+                {{ recette?.nomRecette }}
+                <a id="vege" *ngIf="recette?.vege"><img src="../../../assets/img/logoVegetarien.png" width="50em" height="50em" style="vertical-align: text-top;" /></a>
+            </h1>
+            <div *ngIf="this.auth.isLoggedIn()">
+                <button *ngIf="!isInMenu" type="button" (click)="addToMenu()" class="btn btn-outline-success">
+                  <i class="fa fa-calendar-plus-o"></i>
+                  Ajouter au menu de la semaine
+                    </button>
+
+                <button *ngIf="isInMenu" type="button" (click)="deleteToMenu()" class="btn btn-success">
+                  <i class="fa fa-calendar-times-o"></i>
+                  Supprimer du menu de la semaine
+                </button>
+            </div>
+
+
+            <p id="timer">
+                {{ recette?.nbVues }} 👁
+
+                <a *ngIf="this.auth.isLoggedIn() && !isFavori" (click)="addFavoris()" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Ajouter aux favoris"><i id="textlogo"> {{ recette?.nbFavoris }} </i
           ><i class="fa fa-heart-o"></i
         ></a>
 
-        <a
-          *ngIf="this.auth.isLoggedIn() && isFavori"
-          (click)="deleteFavoris()"
-          data-toggle="popover"
-          data-placement="bottom"
-          data-trigger="hover"
-          title="Supprimer des favoris"
-          ><i id="textlogo">{{ recette?.nbFavoris }} </i
+                <a *ngIf="this.auth.isLoggedIn() && isFavori" (click)="deleteFavoris()" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Supprimer des favoris"><i id="textlogo">{{ recette?.nbFavoris }} </i
           ><i class="class= fa fa-heart"></i
         ></a>
 
-        <a *ngIf="!this.auth.isLoggedIn()"
-          ><i id="textlogo">{{ recette?.nbFavoris }} </i
+                <a *ngIf="!this.auth.isLoggedIn()"><i id="textlogo">{{ recette?.nbFavoris }} </i
           ><i class="class= fa fa-heart"></i
         ></a>
-      </p>
+            </p>
 
-      <h2></h2>
+            <h2></h2>
 
-      <div
-        id="timer"
-        class="wprm-recipe-servings-container wprm-recipe-block-container wprm-recipe-block-container-separate wprm-block-text-normal"
-      >
-        <div id="logoRecette">
-          <img
-            *ngIf="recette?.tempsPreparation != null"
-            src="../../../assets/img/preparation.png"
-            width="50em"
-            height="50em"
-          />
-          {{ recette?.tempsPreparation }}
-        </div>
+            <div id="timer" class="wprm-recipe-servings-container wprm-recipe-block-container wprm-recipe-block-container-separate wprm-block-text-normal">
+                <div id="logoRecette">
+                    <img *ngIf="recette?.tempsPreparation != null" src="../../../assets/img/preparation.png" width="50em" height="50em" /> {{ recette?.tempsPreparation }}
+                </div>
 
-        <div id="logoRecette">
-          <img
-            *ngIf="recette?.tempsCuisson != null"
-            src="../../../assets/img/cuisson.png"
-            width="50em"
-            height="50em"
-          />
-          {{ recette?.tempsCuisson }}
-        </div>
+                <div id="logoRecette">
+                    <img *ngIf="recette?.tempsCuisson != null" src="../../../assets/img/cuisson.png" width="50em" height="50em" /> {{ recette?.tempsCuisson }}
+                </div>
 
-        <div id="logoRecette">
-          <span id="part" class="wprm-recipe-icon wprm-recipe-servings-icon"
-            ><svg
+                <div id="logoRecette">
+                    <span id="part" class="wprm-recipe-icon wprm-recipe-servings-icon"><svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
               x="0px"
@@ -135,182 +82,147 @@
             class="wprm-recipe-servings-unit wprm-recipe-details-unit wprm-block-text-normal"
           >
           </span>
+                </div>
+            </div>
+            <div *ngIf="image" style="padding: 2em 0;">
+                <share-buttons [theme]="'default'" [include]="[
+            'facebook',
+            'twitter',
+            'linkedin',
+            'pinterest',
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'messenger',
+            'whatsapp',
+            'xing',
+            'line',
+            'sms',
+            'email',
+            'print',
+            'copy'
+          ]" [exclude]="[
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'xing',
+            'line'
+          ]" [show]="11" [size]="-2" [url]="url" [title]="recette?.nomRecette" [description]="recette?.mot" [image]="image[0]?.lienImage"></share-buttons>
+            </div>
+            <div *ngIf="!image" style="padding: 2em 0;">
+                <share-buttons [theme]="'default'" [include]="[
+            'facebook',
+            'twitter',
+            'linkedin',
+            'pinterest',
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'messenger',
+            'whatsapp',
+            'xing',
+            'line',
+            'sms',
+            'email',
+            'print',
+            'copy'
+          ]" [exclude]="[
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'xing',
+            'line'
+          ]" [show]="11" [size]="-2" [url]="url" [title]="recette?.nomRecette" [description]="recette?.mot"></share-buttons>
+            </div>
         </div>
-      </div>
-      <div *ngIf="image" style="padding: 2em 0;">
-        <share-buttons
-          [theme]="'default'"
-          [include]="[
-            'facebook',
-            'twitter',
-            'linkedin',
-            'pinterest',
-            'reddit',
-            'tumblr',
-            'mix',
-            'viber',
-            'vk',
-            'telegram',
-            'messenger',
-            'whatsapp',
-            'xing',
-            'line',
-            'sms',
-            'email',
-            'print',
-            'copy'
-          ]"
-          [exclude]="[
-            'reddit',
-            'tumblr',
-            'mix',
-            'viber',
-            'vk',
-            'telegram',
-            'xing',
-            'line'
-          ]"
-          [show]="11"
-          [size]="-2"
-          [url]="url"
-          [title]="recette?.nomRecette"
-          [description]="recette?.mot"
-          [image]="image[0]?.lienImage"
-        ></share-buttons>
-      </div>
-      <div *ngIf="!image" style="padding: 2em 0;">
-        <share-buttons
-          [theme]="'default'"
-          [include]="[
-            'facebook',
-            'twitter',
-            'linkedin',
-            'pinterest',
-            'reddit',
-            'tumblr',
-            'mix',
-            'viber',
-            'vk',
-            'telegram',
-            'messenger',
-            'whatsapp',
-            'xing',
-            'line',
-            'sms',
-            'email',
-            'print',
-            'copy'
-          ]"
-          [exclude]="[
-            'reddit',
-            'tumblr',
-            'mix',
-            'viber',
-            'vk',
-            'telegram',
-            'xing',
-            'line'
-          ]"
-          [show]="11"
-          [size]="-2"
-          [url]="url"
-          [title]="recette?.nomRecette"
-          [description]="recette?.mot"
-        ></share-buttons>
-      </div>
     </div>
-  </div>
-  <div class="hero-graphic" *ngFor="let img of image">
-    <img
-      id="hero-graphic"
-      src="{{ img.lienImage }}"
-      alt="Photo de la recette"
-    />
+    <div class="hero-graphic" *ngFor="let img of image">
+        <img id="hero-graphic" src="{{ img.lienImage }}" alt="Photo de la recette" />
 
-    <!-- always, right? -->
-  </div>
+        <!-- always, right? -->
+    </div>
 </header>
 
 <main class="main-content">
-  <article id="hamburger-juicy">
-    <h2 id="no-hamburger-juicy">
-      Ingrédients
-      <a
-        *ngIf="this.auth.isLoggedIn()"
-        id="btn"
-        (click)="addListeCourses()"
-        style="float: right; font-size: inherit;"
-        data-toggle="popover"
-        data-placement="bottom"
-        data-trigger="hover"
-        title="Ajouter à la liste de courses"
-      >
-        <span class="fa fa-shopping-cart" style="color: #cea0af;"></span>
-      </a>
-    </h2>
+    <article id="hamburger-juicy">
+        <h2 id="no-hamburger-juicy">
+            Ingrédients
 
-    <p id="nbrePart">Nombre de {{ recette?.libellePart }}</p>
+        </h2>
 
-    <div class="recipe-ingredients__qt-counter">
-      <div
-        class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-minus"
-        *ngIf="recette?.nbrePart > 1"
-        (click)="onProportionLess(recette?.nbrePart - 1)"
-      >
-        -
-      </div>
-      <input
-        class="recipe-ingredients__qt-counter__value title-5"
-        type="text"
-        name=""
-        value="{{ recette?.nbrePart }}"
-        #box
-        (keyup.enter)="onEnter(box.value)"
-      />
-      <div
-        class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-plus"
-        (click)="onProportionMore(recette?.nbrePart + 1)"
-      >
-        +
-      </div>
-    </div>
+        <p id="nbrePart">Nombre de {{ recette?.libellePart }}</p>
 
-    <div id="no-hamburger-juicy">
-      <p>
-        <li *ngFor="let ingredient of ingredients" class="card-text">
-          <span *ngIf="ingredient.updateQte != null">
+        <div class="recipe-ingredients__qt-counter">
+            <div class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-minus" *ngIf="recette?.nbrePart > 1" (click)="onProportionLess(recette?.nbrePart - 1)">
+                -
+            </div>
+            <input class="recipe-ingredients__qt-counter__value title-5" type="text" name="" value="{{ recette?.nbrePart }}" #box (keyup.enter)="onEnter(box.value)" />
+            <div class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-plus" (click)="onProportionMore(recette?.nbrePart + 1)">
+                +
+            </div>
+
+
+
+
+        </div>
+
+        <div *ngIf="this.auth.isLoggedIn()" style="margin: 1em;">
+
+            <button (click)="addListeCourses()" type="button" class="btn btn-outline-secondary">
+              <i class="fa fa-cart-plus" aria-hidden="true"></i>
+              Ajouter à la liste de courses</button>
+        </div>
+
+        <div id="no-hamburger-juicy">
+            <p>
+                <li *ngFor="let ingredient of ingredients" class="card-text">
+                    <span *ngIf="ingredient.updateQte != null">
             {{ ingredient.updateQte }} {{ ingredient.libelleUnite }}
             {{ ingredient.nomIngredient }}
           </span>
-          <span *ngIf="ingredient.updateQte == null">
+                    <span *ngIf="ingredient.updateQte == null">
             {{ ingredient.qte }} {{ ingredient.libelleUnite }}
             {{ ingredient.nomIngredient }}
           </span>
-        </li>
-      </p>
-    </div>
-  </article>
+                </li>
+            </p>
 
-  <article id="burger-fourth">
-    <h2>Préparation</h2>
+        </div>
 
-    <pre>{{ recette?.etapes }}</pre>
-  </article>
 
-  <article *ngIf="recette?.astuce != 'null'">
-    <div class="byline">
-      <h2>Astuces</h2>
 
-      <pre>{{ recette?.astuce }}</pre>
+    </article>
 
-      <span>By</span> Marine
-    </div>
-    <div id="partage">
-      <p>
-        <i class="fa fa-lg fa-instagram" style="color: #053477;"></i> Partagez
-        moi votre résultat 😍 Mentionnez
-        <a href="https://www.instagram.com/marineteroitin/?hl=fr"
-          >@marineteroitin</a
+    <article id="burger-fourth">
+        <h2>Préparation</h2>
+
+        <pre>{{ recette?.etapes }}</pre>
+    </article>
+
+    <article *ngIf="recette?.astuce != 'null'">
+        <div class="byline">
+            <h2>Astuces</h2>
+
+            <pre>{{ recette?.astuce }}</pre>
+
+            <span>By</span> Marine
+        </div>
+        <div id="partage">
+            <p>
+                <i class="fa fa-lg fa-instagram" style="color: #053477;"></i> Partagez moi votre résultat 😍 Mentionnez
+                <a href="https://www.instagram.com/marineteroitin/?hl=fr">@marineteroitin</a
         >
         ou taguez
         <a href="https://www.instagram.com/explore/tags/marinesrecipes/?hl=fr">
@@ -405,64 +317,35 @@
                       {{ commentaire.dateCommentaire }}</time
                     >
                   </a>
-                </div>
-                <!-- .comment-metadata -->
-              </footer>
-              <!-- .comment-meta -->
+        </div>
+        <!-- .comment-metadata -->
+        </footer>
+        <!-- .comment-meta -->
 
-              <div class="comment-content row">
-                <div class="column1">
-                  <div class="row">
+        <div class="comment-content row">
+            <div class="column1">
+                <div class="row">
                     <div>
-                      <img
-                        id="imageCommentaire"
-                        src="{{ commentaire.lienImage }}"
-                      />
-                      <p>{{ commentaire.message }}</p>
+                        <img id="imageCommentaire" src="{{ commentaire.lienImage }}" />
+                        <p>{{ commentaire.message }}</p>
                     </div>
-                  </div>
                 </div>
-                <div class="column2">
-                  <button
-                    id="btnCancel"
-                    *ngIf="auth.isAdmin()"
-                    class="btn btn-sm btn-danger"
-                    (click)="deleteCommentaire(commentaire.idCommentaire)"
-                  >
+            </div>
+            <div class="column2">
+                <button id="btnCancel" *ngIf="auth.isAdmin()" class="btn btn-sm btn-danger" (click)="deleteCommentaire(commentaire.idCommentaire)">
                     <i class="fa fa-trash"></i>
                   </button>
-                </div>
-              </div>
-              <!-- .comment-content -->
+            </div>
+        </div>
+        <!-- .comment-content -->
 
-              <div
-                class="comment-btn"
-                *ngIf="commentaire.children && auth.isLoggedIn()"
-              >
-                <form
-                  class="formCommentaire"
-                  (ngSubmit)="addReponse($event, commentaire.idCommentaire)"
-                >
-                  <textarea
-                    name="message"
-                    type="textarea"
-                    class="text"
-                    rows="3"
-                  ></textarea>
-                  <form>
+        <div class="comment-btn" *ngIf="commentaire.children && auth.isLoggedIn()">
+            <form class="formCommentaire" (ngSubmit)="addReponse($event, commentaire.idCommentaire)">
+                <textarea name="message" type="textarea" class="text" rows="3"></textarea>
+                <form>
                     <div id="image">
-                      <input
-                        type="file"
-                        id="{{ commentaire.idCommentaire }}"
-                        name="file"
-                        class="inputfile"
-                        name="image"
-                        (change)="selectImage($event)"
-                      />
-                      <label
-                        id="positionImage"
-                        for="{{ commentaire.idCommentaire }}"
-                        >Choisir une image</label
+                        <input type="file" id="{{ commentaire.idCommentaire }}" name="file" class="inputfile" name="image" (change)="selectImage($event)" />
+                        <label id="positionImage" for="{{ commentaire.idCommentaire }}">Choisir une image</label
                       >
                     </div>
                     <br />
