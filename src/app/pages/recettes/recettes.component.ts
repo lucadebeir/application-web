@@ -335,6 +335,7 @@ export class RecettesComponent implements OnInit, OnDestroy {
     localStorage.setItem("backButton", JSON.stringify(json2));
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
+        console.log(res);
         var snapshot = this.route.snapshot;
         const params = { ...snapshot.queryParams };
         delete params.pos;

@@ -32,6 +32,7 @@ import { ListRecipe } from "src/app/models/listRecipe.model";
 import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
 import { Title } from "@angular/platform-browser";
+import { NgxImageCompressService } from "ngx-image-compress";
 
 @Component({
   selector: "app-recette",
@@ -41,6 +42,8 @@ import { Title } from "@angular/platform-browser";
 export class RecetteComponent implements OnInit {
   public title;
   public images;
+
+  @ViewChild("closeBtn") closeBtn: ElementRef;
 
   public url: string;
 
@@ -69,6 +72,8 @@ export class RecetteComponent implements OnInit {
     dateCommentaire: null,
     ecritPar: "",
     concerne: parseInt(this.route.snapshot.paramMap.get("id"), 10),
+    idImage: null,
+    lienImage: "",
   };
 
   public newResponse: CommentaireDetails = {
@@ -77,6 +82,8 @@ export class RecetteComponent implements OnInit {
     ecritPar: "",
     concerne: parseInt(this.route.snapshot.paramMap.get("id"), 10),
     parent: null,
+    idImage: null,
+    lienImage: "",
   };
 
   public nbrePartInitial: number;
@@ -106,7 +113,16 @@ export class RecetteComponent implements OnInit {
 
   check: boolean = true;
 
+  response: boolean = false;
+
   @ViewChild("box") input: ElementRef;
+  sizeOfOriginalImage: number;
+  localUrl: any;
+  imgResultAfterCompress: string;
+  localCompressedURl: string;
+  sizeOFCompressedImage: number;
+  file: any;
+  choice: number;
 
   constructor(
     public auth: AuthentificationService,
@@ -120,10 +136,48 @@ export class RecetteComponent implements OnInit {
     private unitesService: UnitesService,
     private shoppingListService: ShoppingListService,
     private notifService: NotificationService,
-    private titleService: Title
+    private titleService: Title,
+    private imageCompress: NgxImageCompressService
   ) {
     this.url = "http://marinesrecipes.fr" + this.router.url;
 
+    this.loading();
+  }
+
+  onClick() {}
+
+  ngOnInit(): void {}
+
+  ngOnDestroy() {
+    if (this.check) {
+      localStorage.removeItem("value");
+      localStorage.removeItem("backButton");
+    }
+  }
+
+  loading() {
+    this.newCommentaire = {
+      message: "",
+      dateCommentaire: null,
+      ecritPar: "",
+      concerne: parseInt(this.route.snapshot.paramMap.get("id"), 10),
+      idImage: null,
+      lienImage: "",
+      response: false,
+      image: false,
+    };
+    this.newResponse = {
+      message: "",
+      dateCommentaire: null,
+      ecritPar: "",
+      concerne: parseInt(this.route.snapshot.paramMap.get("id"), 10),
+      idImage: null,
+      lienImage: "",
+      response: false,
+      image: false,
+    };
+    console.log(this.newCommentaire.lienImage);
+    this.images = null;
     this.recetteService
       .getRecipeById(parseInt(this.route.snapshot.paramMap.get("id"), 10))
       .subscribe((recette) => {
@@ -161,8 +215,6 @@ export class RecetteComponent implements OnInit {
         this.ingredientQteInitial = ingredient;
       });
 
-    this.loading();
-
     if (this.auth.isLoggedIn()) {
       this.favorisService.getFavoris().subscribe((data) => {
         data.forEach((element) => {
@@ -192,20 +244,7 @@ export class RecetteComponent implements OnInit {
       this.recipeList.pseudoUser = this.auth.getUserDetails().pseudo;
       this.notif.pseudo = this.auth.getUserDetails().pseudo;
     }
-  }
 
-  onClick() {}
-
-  ngOnInit(): void {}
-
-  ngOnDestroy() {
-    if (this.check) {
-      localStorage.removeItem("value");
-      localStorage.removeItem("backButton");
-    }
-  }
-
-  loading() {
     this.commentairesService
       .getCommentaireRecipe(
         parseInt(this.route.snapshot.paramMap.get("id"), 10)
@@ -225,11 +264,28 @@ export class RecetteComponent implements OnInit {
       });
   }
 
+  addResponse(id) {
+    console.log(id);
+    this.commentaires$.forEach((commentaires) => {
+      commentaires.forEach((element) => {
+        if (element.idCommentaire === id) {
+          element.response = !element.response;
+        }
+        element.children.forEach((commentaire) => {
+          console.log(commentaire);
+          if (commentaire.idCommentaire === id) {
+            commentaire.response = !commentaire.response;
+          }
+        });
+      });
+    });
+  }
+
   updateNbView(recette: any) {
     this.recetteService.updateNbView(recette).subscribe(
       (res) => {
         this.router.navigate(["/recipe", recette.idRecette]).then(() => {
-          //window.location.reload();
+          this.loading();
         });
       },
       (err) => {
@@ -247,38 +303,6 @@ export class RecetteComponent implements OnInit {
       const file = event.target.files[0];
       this.images = file;
     }
-  }
-
-  getUtiliserIngredientsByIdRecette(id: any): QuantiteDetails[] {
-    this.ingredientsService.getUtiliserIngredientsByIdRecette(id).subscribe(
-      (qtes: QuantiteDetails[]) => {
-        this.qtes = qtes;
-      },
-      (err) => {
-        if (err instanceof HttpResponse) {
-          if (err.status === 402) {
-            console.log("Il n'y a pas d'ingrédients !");
-          }
-        }
-      }
-    );
-    return this.qtes;
-  }
-
-  getUniteByIdUnite(id: any): UniteDetails {
-    this.unitesService.getUniteById(id).subscribe(
-      (unite: UniteDetails) => {
-        this.unite = unite;
-      },
-      (err) => {
-        if (err instanceof HttpResponse) {
-          if (err.status === 402) {
-            console.log("Il n'y a pas d'ingrédients !");
-          }
-        }
-      }
-    );
-    return this.unite;
   }
 
   addFavoris() {
@@ -338,25 +362,21 @@ export class RecetteComponent implements OnInit {
   }
 
   addCommentaire(message: any) {
-    if (this.images) {
-      const formData = new FormData();
-      formData.append("file", this.images);
+    if (this.newCommentaire.image) {
       this.newCommentaire.message = message;
-      this.imagesService.addImage(formData).subscribe((res) => {
-        this.newCommentaire.idImage = res[0];
-        this.commentairesService
-          .addCommentaire(this.newCommentaire)
-          .subscribe((res2) => {
-            this.newCommentaire.idCommentaire = res2.idCommentaire;
-            this.commentairesService
-              .addImageToCommentaire(this.newCommentaire)
-              .subscribe();
-            //window.location.reload();
-          });
-        setTimeout(() => {
-          this.loading();
-        }, 500);
-      });
+      this.commentairesService
+        .addCommentaire(this.newCommentaire)
+        .subscribe((res2) => {
+          this.newCommentaire.idCommentaire = res2.idCommentaire;
+          this.commentairesService
+            .addImageToCommentaire(this.newCommentaire)
+            .subscribe();
+          //window.location.reload();
+        });
+      this.addResponse(this.newCommentaire.idCommentaire);
+      setTimeout(() => {
+        this.loading();
+      }, 500);
     } else {
       this.newCommentaire.message = message;
       this.commentairesService
@@ -367,6 +387,7 @@ export class RecetteComponent implements OnInit {
             parseInt(this.route.snapshot.paramMap.get("id"), 10)
           );
         });
+      this.addResponse(this.newCommentaire.idCommentaire);
       setTimeout(() => {
         this.loading();
       }, 500);
@@ -381,31 +402,114 @@ export class RecetteComponent implements OnInit {
     // window.location.reload()
   }
 
+  selectFile(event: any, response: boolean) {
+    if (this.closeBtn) {
+      this.closeBtn.nativeElement.click();
+    }
+    let fileName: any;
+    this.file = event.target.files[0];
+    fileName = this.file.name;
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.localUrl = event.target.result;
+        this.compressFile(this.localUrl, fileName, response);
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  compressFile(image, fileName, response) {
+    const orientation = -1;
+    this.sizeOfOriginalImage =
+      this.imageCompress.byteCount(image) / (1024 * 1024);
+    console.warn("Size in bytes is now:", this.sizeOfOriginalImage);
+    this.imageCompress
+      .compressFile(image, orientation, 50, 50)
+      .then((result) => {
+        this.imgResultAfterCompress = result;
+        this.localCompressedURl = result;
+        this.sizeOFCompressedImage =
+          this.imageCompress.byteCount(result) / (1024 * 1024);
+        console.warn(
+          "Size in bytes after compression:",
+          this.sizeOFCompressedImage
+        );
+        // create file from byte
+        const imageName = fileName;
+        // call method that creates a blob from dataUri
+        const imageBlob = this.dataURItoBlob(
+          this.imgResultAfterCompress.split(",")[1]
+        );
+        // imageFile created below is the new compressed file which can be send to API in form data
+        const imageFile = new File([imageBlob], imageName, {
+          type: "image/jpeg",
+        });
+
+        //this.images = imageFile;
+        this.choice = response;
+        const formData = new FormData();
+        formData.append("file", imageFile);
+        if (response) {
+          this.imagesService.addImage(formData).subscribe((res) => {
+            console.log(res[0]);
+            this.newResponse.idImage = res[0];
+            this.imagesService.getImage(res[0]).subscribe((res) => {
+              console.log(res[0]);
+              this.images = res[0];
+              this.newResponse.lienImage = res[0].lienImage;
+              this.newResponse.image = true;
+            });
+          });
+        } else {
+          this.imagesService.addImage(formData).subscribe((res) => {
+            console.log(res[0]);
+            this.newCommentaire.idImage = res[0];
+            this.imagesService.getImage(res[0]).subscribe((res) => {
+              console.log(res[0]);
+              this.images = res[0];
+              this.newCommentaire.lienImage = res[0].lienImage;
+              console.log(this.newCommentaire);
+              this.newCommentaire.image = true;
+            });
+          });
+        }
+      });
+  }
+
+  dataURItoBlob(dataURI) {
+    const byteString = window.atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: "image/jpeg" });
+    return blob;
+  }
+
   addReponse(event, idCommentaire) {
-    if (this.images) {
-      const formData = new FormData();
-      formData.append("file", this.images);
+    if (this.newResponse.image) {
       this.newResponse.message = event.target.message.value;
       this.newResponse.parent = idCommentaire;
-      this.imagesService.addImage(formData).subscribe((res) => {
-        this.newResponse.idImage = res[0];
-        this.commentairesService
-          .addCommentaire(this.newResponse)
-          .subscribe((res2) => {
-            this.newResponse.idCommentaire = res2.idCommentaire;
-            this.commentairesService
-              .addImageToCommentaire(this.newResponse)
-              .subscribe();
-            //window.location.reload();
-          });
-        setTimeout(() => {
-          this.loading();
-        }, 500);
-      });
+      this.commentairesService
+        .addCommentaire(this.newResponse)
+        .subscribe((res2) => {
+          this.newResponse.idCommentaire = res2.idCommentaire;
+          this.commentairesService
+            .addImageToCommentaire(this.newResponse)
+            .subscribe();
+          //window.location.reload();
+        });
+      this.addResponse(idCommentaire);
+      setTimeout(() => {
+        this.loading();
+      }, 500);
     } else {
       this.newResponse.message = event.target.message.value;
       this.newResponse.parent = idCommentaire;
       this.commentairesService.addCommentaire(this.newResponse).subscribe();
+      this.addResponse(idCommentaire);
       setTimeout(() => {
         this.loading();
       }, 500);

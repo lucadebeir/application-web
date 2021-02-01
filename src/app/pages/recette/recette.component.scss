@@ -66,7 +66,10 @@
 
 #envoyer {
   float: right;
-  margin-top: 1em;
+  background-color: #006838;
+  color: white;
+  padding: 0.5em;
+  border-radius: 1em;
 }
 
 pre {
@@ -118,7 +121,7 @@ html {
 }
 
 .main-content {
-  max-width: 600px;
+  max-width: 700px;
   padding: 1rem;
   margin: 5rem auto 2rem;
   > article {
@@ -642,7 +645,7 @@ a:hover {
 
 .sign-in-wrapper {
   margin-top: 16px;
-  margin-left: 32px;
+  //margin-left: 32px;
 }
 
 .error-message {
@@ -813,7 +816,7 @@ body {
 }
 
 .comment-content {
-  margin-top: 10px;
+  margin-top: 40px;
   display: table;
   width: 100%;
 }
@@ -832,12 +835,17 @@ body {
   border: 1px solid #c2c2c2;
   padding: 10px 12px;
   border-radius: 3px;
-  //margin-right: 10px;
+  margin: 0 1em;
+  background-color: cornflowerblue;
 }
 
 #btnCancel {
   background-color: red;
   font-size: larger;
+
+  .fa {
+    color: white;
+  }
 }
 
 .btn:hover {
@@ -845,7 +853,8 @@ body {
 }
 
 .comment-btn {
-  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid lightgrey;
 }
 
 .comment-btn input {
@@ -945,7 +954,10 @@ pre {
 }
 
 #envoyerCommentaire {
-  text-align: end;
+  background-color: #006838;
+  color: white;
+  padding: 0.5em;
+  border-radius: 1em;
 }
 
 textarea {
@@ -958,7 +970,17 @@ time {
 }
 
 #image {
-  padding-top: 1em;
+  .fa {
+    color: #006838;
+  }
+}
+
+#imageCom {
+  padding: 0 1em;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 1em;
+  margin: 0 1em;
 }
 
 #imageForm {
