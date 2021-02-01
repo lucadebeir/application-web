@@ -516,9 +516,57 @@ button {
   font: inherit;
   overflow: visible;
   text-transform: none;
-  background-color: transparent;
   border-style: none;
   //color: inherit;
+}
+
+.btn-success {
+  background-color: #006838 !important;
+  color: white !important;
+  .fa {
+    color: white;
+  }
+}
+
+.btn-success:hover {
+  background-color: white !important;
+  color: #006838 !important;
+  border-color: #006838 !important;
+  .fa {
+    color: #006838;
+  }
+}
+
+.btn-outline-success {
+  color: #006838 !important;
+  border-color: #006838 !important;
+  .fa {
+    color: #006838;
+  }
+}
+
+.btn-outline-success:hover {
+  background-color: #006838 !important;
+  color: white !important;
+  .fa {
+    color: white;
+  }
+}
+
+.btn-outline-secondary {
+  color: #998b89 !important;
+  border-color: #998b89 !important;
+  .fa {
+    color: #998b89;
+  }
+}
+
+.btn-outline-secondary:hover {
+  background-color: #998b89 !important;
+  color: white !important;
+  .fa {
+    color: white;
+  }
 }
 
 [type="button"]::-moz-focus-inner,
@@ -836,7 +884,6 @@ body {
   padding: 10px 12px;
   border-radius: 3px;
   margin: 0 1em;
-  background-color: cornflowerblue;
 }
 
 #btnCancel {
