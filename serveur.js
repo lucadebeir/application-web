@@ -21,7 +21,7 @@ const uploadImage = require("./helpers/helpers");
 
 //https
 //var sslRedirect = require("heroku-ssl-redirect").default;
-var forceSSL = require("./middleware/forcessl.js");
+//var forceSSL = require("./middleware/forcessl.js");
 
 //FCM
 /*var FCM = require("fcm-node");
@@ -36,7 +36,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(sslRedirect());
-app.use(forceSSL());
+//app.use(forceSSL());
 
 const dotenv = require("dotenv");
 dotenv.config();
