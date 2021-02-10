@@ -19,6 +19,9 @@ let multerGoogleStorage = require("multer-google-storage");
 const path = require("path");
 const uploadImage = require("./helpers/helpers");
 
+//https
+import sslRedirect from "heroku-ssl-redirect";
+
 //FCM
 /*var FCM = require("fcm-node");
 var serverKey =
@@ -31,6 +34,7 @@ app.use(sanitizer());
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(sslRedirect());
 
 const dotenv = require("dotenv");
 dotenv.config();
