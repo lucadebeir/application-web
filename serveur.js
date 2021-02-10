@@ -20,7 +20,7 @@ const path = require("path");
 const uploadImage = require("./helpers/helpers");
 
 //https
-var sslRedirect = require("heroku-ssl-redirect");
+var sslRedirect = require("heroku-ssl-redirect").default;
 
 //FCM
 /*var FCM = require("fcm-node");
