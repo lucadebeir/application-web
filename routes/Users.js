@@ -138,6 +138,8 @@ users.get("/newRecipe/:pseudo/:idRecette", function (req, res) {
 users.get("/verify", function (req, res) {
   console.log("ici");
   console.log(req.protocol);
+  console.log(req.get("host"));
+  console.log(host);
   if (req.protocol + "://" + req.get("host") == "http://" + host) {
     if (req.query.id == rand) {
       User.update(
