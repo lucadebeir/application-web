@@ -40,7 +40,9 @@ utiliserIngredients.put("/:idRecette/ingredient/update", (req, res) => {
     .then(() => {
       res.json({ success: "Unité modifié !" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //ajouter un ingrédient à une recette

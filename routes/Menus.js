@@ -123,7 +123,9 @@ menu.post("/petitDej/update", (req, res) => {
     .then(() => {
       res.json({ success: "Petit déjeuner du moment modifié !" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 menu.post("/repas/update", (req, res) => {
   db.sequelize
@@ -134,7 +136,9 @@ menu.post("/repas/update", (req, res) => {
     .then(() => {
       res.json({ success: "Repas du moment modifié !" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 menu.post("/douceur/update", (req, res) => {
@@ -146,7 +150,9 @@ menu.post("/douceur/update", (req, res) => {
     .then(() => {
       res.json({ success: "Douceur du moment modifié !" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 module.exports = menu;

@@ -70,10 +70,14 @@ categ.put("/update", (req, res) => {
           .then(() => {
             res.json({ success: "Libellé categorie modifié !" });
           })
-          .error((err) => res.json({ error: err }));
+          .catch((err) => {
+            res.send("error: " + err);
+          });
       }
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //Ajouter catégorie

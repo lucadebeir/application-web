@@ -213,7 +213,9 @@ recipe.put("/update-nbView/:idRecette", (req, res) => {
     .then(() => {
       res.json({ success: "Nombre de vues incrémenté !" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //supprimer recette
@@ -347,7 +349,9 @@ recipe.put("/name/update", (req, res) => {
     .then(() => {
       res.json({ success: "Nom modifié !" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //modifier étapes recette
@@ -359,7 +363,9 @@ recipe.put("/step/update", (req, res) => {
     .then(() => {
       res.json({ success: "Etapes modifié !" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //modifier astuce recette
@@ -372,13 +378,17 @@ recipe.put("/astuce/update", (req, res) => {
       .then(() => {
         res.json({ success: "Astuce modifié !" });
       })
-      .error((err) => res.json({ error: err }));
+      .catch((err) => {
+        res.send("error: " + err);
+      });
   } else {
     Recipe.update({ astuce: "" }, { where: { idRecette: req.body.idRecette } })
       .then(() => {
         res.json({ success: "Astuce modifié !" });
       })
-      .error((err) => res.json({ error: err }));
+      .catch((err) => {
+        res.send("error: " + err);
+      });
   }
 });
 
@@ -392,13 +402,17 @@ recipe.put("/description/update", (req, res) => {
       .then(() => {
         res.json({ success: "Description modifié !" });
       })
-      .error((err) => res.json({ error: err }));
+      .catch((err) => {
+        res.send("error: " + err);
+      });
   } else {
     Recipe.update({ mot: "" }, { where: { idRecette: req.body.idRecette } })
       .then(() => {
         res.json({ success: "Description modifié !" });
       })
-      .error((err) => res.json({ error: err }));
+      .catch((err) => {
+        res.send("error: " + err);
+      });
   }
 });
 
@@ -414,7 +428,9 @@ recipe.put("/temps/update", (req, res) => {
     .then(() => {
       res.json({ success: "Temps préparation et cuisson modifié !" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //modifier part recette
@@ -429,7 +445,9 @@ recipe.put("/part/update", (req, res) => {
     .then(() => {
       res.json({ success: "Nombre et libellé de part modifié !" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 module.exports = recipe;

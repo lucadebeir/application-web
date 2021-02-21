@@ -388,7 +388,9 @@ users.put("/update-password/:pseudo", (req, res) => {
               .then(() => {
                 res.json({ success: "Mot de passe modifié !" });
               })
-              .error((err) => handleError(err));
+              .catch((err) => {
+                res.send("error: " + err);
+              });
           } else {
             res.json({
               error: "Les deux mots de passe ne sont pas identiques.",
@@ -426,7 +428,9 @@ users.put("/mon-profile/:pseudo", (req, res) => {
         success: "Informations personnelles modifiées avec succès !",
       });
     })
-    .error((err) => handleError(err));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //supprimer compte

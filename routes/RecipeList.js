@@ -41,7 +41,9 @@ recipeList.put("/update-nbView/:idRecette", (req, res) => {
           .then(() => {
             res.json({ success: "Nombre de vues incrémenté !" });
           })
-          .error((err) => res.json({ error: err }));
+          .catch((err) => {
+            res.send("error: " + err);
+          });
       } else {
         res.send("Mauvais identifiant");
       }
@@ -68,7 +70,9 @@ recipeList.post("/add", (req, res) => {
     .then((data) => {
       res.json({ success: data });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //suppression d'une recette de la liste
@@ -81,7 +85,9 @@ recipeList.post("/delete", (req, res) => {
     .then(() => {
       res.json({ success: "Recette supprimée à la liste!" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //suppression de toutes les recettes de la liste
@@ -96,7 +102,9 @@ recipeList.post("/delete/all", (req, res) => {
     .then(() => {
       res.json({ success: "Recette supprimée à la liste!" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 //update état d'une recette de la liste
@@ -109,7 +117,9 @@ recipeList.post("/update", (req, res) => {
     .then(() => {
       res.json({ success: "Recette modifiée à la liste!" });
     })
-    .error((err) => res.json({ error: err }));
+    .catch((err) => {
+      res.send("error: " + err);
+    });
 });
 
 module.exports = recipeList;
