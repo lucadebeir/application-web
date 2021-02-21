@@ -217,6 +217,7 @@ users.post("/register", (req, res) => {
               });
               rand = Math.floor(Math.random() * 100 + 54);
               host = req.get("host");
+              console.log(host);
               link =
                 "http://" +
                 req.get("host") +
