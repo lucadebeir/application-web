@@ -140,7 +140,10 @@ users.get("/verify", function (req, res) {
   console.log(req.protocol);
   console.log(req.get("host"));
   console.log(host);
-  if (req.protocol + "://" + req.get("host") == "http://marine-s-recipes") {
+  if (
+    req.protocol + "://" + req.get("host") ==
+    "http://marine-s-recipes.herokuapp.com"
+  ) {
     if (req.query.id == rand) {
       User.update(
         { emailConfirmed: true },
