@@ -136,6 +136,8 @@ users.get("/newRecipe/:pseudo/:idRecette", function (req, res) {
 
 //Confirmation du mail
 users.get("/verify", function (req, res) {
+  console.log("ici");
+  console.log(req.protocol);
   if (req.protocol + "://" + req.get("host") == "http://" + host) {
     if (req.query.id == rand) {
       User.update(
@@ -264,6 +266,7 @@ users.post("/register", (req, res) => {
 
 //Connexion
 users.post("/login", (req, res) => {
+  console.log(req.body);
   User.findOne({
     where: {
       pseudo: req.sanitize(req.body.pseudo),
@@ -282,7 +285,7 @@ users.post("/login", (req, res) => {
           let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
             expiresIn: Math.floor(Date.now() / 1000) + 60 * 60,
           });
-          res.json({ token: token });
+          res.json({ token: token, user: user });
         } else {
           res.json({ error: "Mot de passe et/ou pseudo incorrect" });
         }

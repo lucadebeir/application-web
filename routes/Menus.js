@@ -43,6 +43,24 @@ menu.get("/allRecipes", (req, res) => {
 });
 
 //récupérer le petit dejeuner du moment
+menu.get("/", (req, res) => {
+  db.sequelize
+    .query(
+      "SELECT recettes.*, images.*, menus.idMenu FROM menus, recettes, images, illustrerRecettes WHERE menus.idMenu IN (1, 2, 3) AND menus.idRecette = recettes.idRecette and illustrerRecettes.idImage = images.idImage and illustrerRecettes.idRecette = recettes.idRecette"
+    )
+    .then((menu) => {
+      if (menu) {
+        res.json(menu[0]);
+      } else {
+        res.send("Pas de petit déjeuner disponibles dans le menu");
+      }
+    })
+    .catch((err) => {
+      res.send("error: " + err);
+    });
+});
+
+//récupérer le petit dejeuner du moment
 menu.get("/petitDej", (req, res) => {
   db.sequelize
     .query(

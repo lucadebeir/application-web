@@ -19,10 +19,6 @@ let multerGoogleStorage = require("multer-google-storage");
 const path = require("path");
 const uploadImage = require("./helpers/helpers");
 
-//https
-//var sslRedirect = require("heroku-ssl-redirect").default;
-//var forceSSL = require("./middleware/forcessl.js");
-
 //FCM
 /*var FCM = require("fcm-node");
 var serverKey =
@@ -35,8 +31,6 @@ app.use(sanitizer());
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
-//app.use(sslRedirect());
-//app.use(forceSSL());
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -74,11 +68,19 @@ app.use("/server/recipeList", RecipeList);
 app.use("/server/notifications", Notification);
 app.use("/server/statistique", Statistique);
 
-//Serve only the static files form the dist directory
-app.use(express.static(__dirname + "/dist/marine'srecipe"));
-app.get("/*", function (req, res) {
-  res.sendFile(path.join(__dirname + "/dist/marine'srecipe/index.html"));
-});
+/*app.post("/registrationTokens", (req, res) => {
+  console.log("token ? : " + req.body.token);
+  fcm
+    .subscribeToTopic(req.body.token, topic)
+    .then(function (response) {
+      // See the MessagingTopicManagementResponse reference documentation
+      // for the contents of response.
+      console.log("Successfully subscribed to topic:", response);
+    })
+    .catch(function (error) {
+      console.log("Error subscribing to topic:", error);
+    });
+});*/
 
 //lancement serveur
 app.listen(port, function () {
