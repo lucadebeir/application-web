@@ -114,82 +114,75 @@
                 </div>
             </div>
         </div>
-    </div>
-</body>
-<!--
-<body class="color-b">
-    <div id="hammerElement" style="
-      touch-action: pan-y;
-      user-select: none;
-      -webkit-user-drag: none;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    ">
-        <div class="container-section construct">
-            <section id="webmarketing" class="section">
-                <section class="group-article">
-                    <header class="group-header">
-                        <h1 class="titre">Statistiques</h1>
-                    </header>
-
-                    <article>
-                        <h2 class="titre">Nombre de vues total</h2>
-                        <p class="tags">
-                            <span class="tag-item">{{ nbVuesTot }}</span>
-                        </p>
-
-                    </article>
-                    <article>
-                        <h2 class="titre">Nombre de commentaires total</h2>
-                        <p class="tags">
-                            <span class="tag-item">{{ nbCommentairesTot }}</span>
-                        </p>
 
 
-                    </article>
-                    <article>
-                        <h2 class="titre">Nombre de personnes inscrites</h2>
-                        <p class="tags">
-                            <span class="tag-item">{{ nbUsers }}      dont {{ nbAbonnes }} abonnés à la newsletter.</span>
-                        </p>
+        <!--les 2 graphs battons-->
+        <div class="row">
+            <div class="col-xl-6 col-xxxl-7">
+                <div class="card flex-fill w-100">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Les plus consultés du mois</h5>
+                    </div>
+                    <div class="card-body py-3">
+                        <div class="chart chart-sm">
+                            <apx-chart [series]="chartOptions3.series" [chart]="chartOptions3.chart" [dataLabels]="chartOptions3.dataLabels" [plotOptions]="chartOptions3.plotOptions" [yaxis]="chartOptions3.yaxis" [xaxis]="chartOptions3.xaxis" [legend]="chartOptions3.legend" [colors]="chartOptions3.colors"
+                                [grid]="chartOptions3.grid"></apx-chart>
+                        </div>
 
-                    </article>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-xxxl-7">
+                <div class="card flex-fill w-100">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Les recettes à promouvoir</h5>
+                    </div>
+                    <div class="card-body py-3">
+                        <div class="chart chart-sm">
+                            <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart" [dataLabels]="chartOptions2.dataLabels" [plotOptions]="chartOptions2.plotOptions" [yaxis]="chartOptions2.yaxis" [xaxis]="chartOptions2.xaxis" [legend]="chartOptions2.legend" [colors]="chartOptions2.colors"
+                                [grid]="chartOptions2.grid"></apx-chart>
+                        </div>
 
-                    <article>
-                        <h2 class="titre">Statistiques du mois : recettes</h2>
-                        <p class="tags">
-                            <span class="tag-item">làààà</span>
-                        </p>
-
-                    </article>
-
-                    <article>
-                        <h2 class="titre">Statistiques du mois : users</h2>
-                        <p class="tags">
-                            <span class="tag-item">lààààà</span>
-                        </p>
-
-                    </article>
-
-
-                </section>
-            </section>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div id="chart" *ngIf="chartOptions3">
-        <h2 class="titre">Recettes les plus consultées du mois</h2>
-        <apx-chart [series]="chartOptions3.series" [chart]="chartOptions3.chart" [dataLabels]="chartOptions3.dataLabels" [plotOptions]="chartOptions3.plotOptions" [yaxis]="chartOptions3.yaxis" [xaxis]="chartOptions3.xaxis" [legend]="chartOptions3.legend" [colors]="chartOptions3.colors"
-            [grid]="chartOptions3.grid"></apx-chart>
-    </div>
-    <div id="chart" *ngIf="chartOptions">
-        <h2 class="titre">Les meilleures recettes</h2>
-        <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [dataLabels]="chartOptions.dataLabels" [plotOptions]="chartOptions.plotOptions" [yaxis]="chartOptions.yaxis" [xaxis]="chartOptions.xaxis" [legend]="chartOptions.legend" [colors]="chartOptions.colors"
-            [grid]="chartOptions.grid"></apx-chart>
-    </div>
-    <div id="chart" *ngIf="chartOptions2">
-        <h2 class="titre">Les recettes à promouvoir</h2>
-        <apx-chart [series]="chartOptions2.series" [chart]="chartOptions2.chart" [dataLabels]="chartOptions2.dataLabels" [plotOptions]="chartOptions2.plotOptions" [yaxis]="chartOptions2.yaxis" [xaxis]="chartOptions2.xaxis" [legend]="chartOptions2.legend" [colors]="chartOptions2.colors"
-            [grid]="chartOptions2.grid"></apx-chart>
+        <!--les 2 graphs coubes-->
+        <div class="row">
+            <div class="col-xl-6 col-xxxl-7">
+                <div class="card flex-fill w-100">
+
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Ces 31 derniers jours</h5>
+                    </div>
+
+                    <div class="card-body py-3">
+                        <div class="chart chart-sm">
+                            <apx-chart [series]="chartOptionCV.series" [chart]="chartOptionCV.chart" [dataLabels]="chartOptionCV.dataLabels" [plotOptions]="chartOptionCV.plotOptions" [yaxis]="chartOptionCV.yaxis" [xaxis]="chartOptionCV.xaxis" [legend]="chartOptionCV.legend" [colors]="chartOptionCV.colors"
+                                [grid]="chartOptionCV.grid"></apx-chart>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-xxxl-7">
+                <div class="card flex-fill w-100">
+
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Cette année</h5>
+                    </div>
+
+                    <div class="card-body py-3">
+                        <div class="chart chart-sm">
+
+                            <apx-chart [series]="chartOptionUA.series" [chart]="chartOptionUA.chart" [dataLabels]="chartOptionUA.dataLabels" [plotOptions]="chartOptionUA.plotOptions" [yaxis]="chartOptionUA.yaxis" [xaxis]="chartOptionUA.xaxis" [legend]="chartOptionUA.legend" [colors]="chartOptionUA.colors"
+                                [grid]="chartOptionUA.grid"></apx-chart>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
-
--->
