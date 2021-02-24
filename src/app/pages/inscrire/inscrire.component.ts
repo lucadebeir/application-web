@@ -12,6 +12,7 @@ import {
 import { ErrorStateMatcher } from "@angular/material/core";
 import { Notification } from "src/app/models";
 import { NotificationService } from "src/app/service/notifications/notification.service";
+import { AlertService } from "../../_alert";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -36,6 +37,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ["./inscrire.component.scss"],
 })
 export class InscrireComponent implements OnInit {
+  options = {
+    autoClose: false,
+    keepAfterRouteChange: false,
+  };
+
   credentials: TokenPayload = {
     pseudo: "",
     email: "",
@@ -59,7 +65,8 @@ export class InscrireComponent implements OnInit {
     private auth: AuthentificationService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private notifService: NotificationService
+    private notifService: NotificationService,
+    private alertService: AlertService
   ) {
     this.mdpForm = this.formBuilder.group(
       {
@@ -140,16 +147,17 @@ export class InscrireComponent implements OnInit {
     this.auth.register(this.credentials).subscribe(
       (res) => {
         if (res.error === "L'utilisateur existe déjà") {
-          alert("L'utilisateur existe déjà");
-          return;
+          this.alertService.warn("L'utilisateur existe déjà", this.options);
         } else {
           this.auth.logout();
           this.notificationInscription(this.credentials.pseudo);
           if (this.credentials.abonneNews) {
             this.notificationAbonne(this.credentials.pseudo);
           }
-          alert(
-            "Vous pouvez maintenant aller dans votre boîte mail pour confirmer votre adresse mail. Pensez à vérifier dans vos spams !"
+          this.alertService.warn(
+            "Si tu ne veux pas rater les autres surprises qui arrivent très prochainement, fais glisser mon mail dans ta boîte principale " +
+              "et ajoute moi à tes contacts pour bien les recevoir.",
+            this.options
           );
           setTimeout(() => this.router.navigate(["login"]), 5);
         }
