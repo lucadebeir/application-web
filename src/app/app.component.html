@@ -1,81 +1,47 @@
 <script>
-  //pour que la navbar responsive se referme lorsqu'on sélectionne un ongle
-  $(document).on("click", ".navbar-collapse.show", function (e) {
-    $(this).collapse("hide");
-  });
+    //pour que la navbar responsive se referme lorsqu'on sélectionne un ongle
+    $(document).on("click", ".navbar-collapse.show", function(e) {
+        $(this).collapse("hide");
+    });
 </script>
 <script>
-  $(document).on("click", function (e) {
-    e.preventDefault();
-    var $item = $(".rad-dropmenu-item");
-    if ($item.hasClass("active")) {
-      $item.removeClass("active");
-    }
-  });
+    $(document).on("click", function(e) {
+        e.preventDefault();
+        var $item = $(".rad-dropmenu-item");
+        if ($item.hasClass("active")) {
+            $item.removeClass("active");
+        }
+    });
 
-  $("a.rad-menu-item").on("click", function (e) {
-    var $item = $("ul.rad-dropmenu-item");
-    if (!$item.hasClass("active")) {
-      $item.toggleClass("active");
-    }
-  });
+    $("a.rad-menu-item").on("click", function(e) {
+        var $item = $("ul.rad-dropmenu-item");
+        if (!$item.hasClass("active")) {
+            $item.toggleClass("active");
+        }
+    });
 </script>
 
 <!--script pour les liens de partages sur les réseaux sociaux-->
-<script
-  type="text/javascript"
-  src="https://platform-api.sharethis.com/js/sharethis.js#property=5e8ef1fbc08fd00012f1a697&product=inline-share-buttons"
-  async="async"
-></script>
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=5e8ef1fbc08fd00012f1a697&product=inline-share-buttons" async="async"></script>
 
 <script async="" src="https://connect.facebook.net/en_US/fbevents.js"></script>
 
-<link
-  href="//db.onlinewebfonts.com/c/ca42b7ce0d708ee0817789585c449739?family=PeachesandCreamRegularW00"
-  rel="stylesheet"
-  type="text/css"
-/>
+<link href="//db.onlinewebfonts.com/c/ca42b7ce0d708ee0817789585c449739?family=PeachesandCreamRegularW00" rel="stylesheet" type="text/css" />
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown"
-    aria-expanded="false"
-    aria-label="Toogle navigation"
-  >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toogle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <img
-    src="../assets/img/logo.jpeg"
-    class="rounded float-left"
-    alt="logo"
-    id="logo"
-  />
-  <div
-    class="collapse navbar-collapse justify-content-md-center"
-    id="navbarNavDropdown"
-  >
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          routerLink="/"
-          data-toggle="collapse"
-          data-target=".navbar-collapse.show"
-          >Accueil
+    <img src="../assets/img/logo.jpeg" class="rounded float-left" alt="logo" id="logo" />
+    <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/" data-toggle="collapse" data-target=".navbar-collapse.show">Accueil
         </a>
-      </li>
+            </li>
 
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          routerLink="/allRecipes"
-          data-toggle="collapse"
-          data-target=".navbar-collapse.show"
-          >Recettes</a
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/allRecipes" data-toggle="collapse" data-target=".navbar-collapse.show">Recettes</a
         >
       </li>
 
@@ -108,7 +74,7 @@
         style="display: flex;"
       >
         <a class="nav-link" (click)="showNotif()" skipLocationChange="true"
-          >Notifications</a
+          ><i class="fa fa-bell"></i></a
         >
         <span class="notification">
           <i
@@ -152,18 +118,8 @@
         >
           {{ auth.getUserDetails()?.pseudo }}
         </a>
-        <div
-          class="dropdown-menu"
-          data-toggle="collapse"
-          data-target=".navbar-collapse.show"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
-          <a
-            class="dropdown-item"
-            data-toggle="collapse"
-            data-target=".navbar-collapse.show"
-            routerLink="/profile"
-            >Mon profil</a
+                <div class="dropdown-menu" data-toggle="collapse" data-target=".navbar-collapse.show" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" data-toggle="collapse" data-target=".navbar-collapse.show" routerLink="/profile">Mon profil</a
           >
           <a
             class="dropdown-item"
@@ -222,48 +178,61 @@
       <!--<div class="col">
                 <div ngbDropdown class="d-inline-block">
                   <a id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-bell-o"><span class="rad-menu-badge">49</span></i></a>
-                  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem>Action - 1</button>
-                    <button ngbDropdownItem>Another Action</button>
-                    <button ngbDropdownItem>Something else is here</button>
-                  </div>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem>Action - 1</button>
+                        <button ngbDropdownItem>Another Action</button>
+                        <button ngbDropdownItem>Something else is here</button>
+                    </div>
                 </div>
-              </div>-->
+    </div>-->
     </ul>
-  </div>
+    </div>
 </nav>
 
 <router-outlet></router-outlet>
 
 <!--footer-->
-<!--logo insta-->
-<link
-  rel="stylesheet"
-  href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-  type="text/css"
-/>
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" />
 
 <footer>
-  <div class="dark-line">
-    <h2>Marine's recipes |</h2>
-    <p>"Eat good, feel good" ||</p>
-    <div class="social">
-      <a href="https://pin.it/3m5tTu0"><i class="fa fa-lg fa-pinterest"></i></a>
-      <a id="message" href="https://www.instagram.com/marineteroitin/?hl=fr"
-        ><i class="fa fa-lg fa-instagram"></i
-      ></a>
-      <a routerLink="/contact" id="message"
-        ><i class="fa fa-lg fa-envelope"></i
-      ></a>
+    <div class="dark-line">
+        <div class="flex-container">
+            <div class="flex-item">
+                <h2>
+                    Télécharge l'application
+                </h2>
+                <a href="https://play.google.com/store/apps/details?id=com.lucadebeir.recipeApp">
+                    <img id="playstore" src="../assets/img/google_play.png" />
+
+                </a>
+
+                <p>© Concocté avec ♥ par la Team Marine's recipes
+                </p>
+                <p>
+                    • Tous droits réservés marinesrecipes.fr •
+                </p>
+                <p routerLink="/rules">
+                    Conditions générales d'utilisation
+                </p>
+            </div>
+            <div class="flex-item">
+                <h2>
+                    <a id="hastag" href="https://www.instagram.com/explore/tags/marinesrecipes/"> #marinesrecipes </a>
+
+                </h2>
+
+                <p>"Eat good, feel good"</p>
+
+                <div class="social">
+                    <a href="https://www.facebook.com/groups/260441525501682"><i class="fa fa-lg fa-facebook"></i
+          ></a>
+                    <a id="message" href="https://www.instagram.com/marineteroitin/?hl=fr"><i class="fa fa-lg fa-instagram"></i
+          ></a>
+                    <a routerLink="/contact" id="message"><i class="fa fa-lg fa-envelope"></i
+          ></a>
+                </div>
+            </div>
+        </div>
     </div>
-    <p>
-      <a id="ment" routerLink="/rules">Mentions légales</a>
-    </p>
-    <span class="copyright"
-      ><a
-        >© Concocté avec ♥ par Marine Téroitin & Luca Debeir • Tous droits
-        réservés marinesrecipes.fr
-      </a></span
-    >
-  </div>
 </footer>

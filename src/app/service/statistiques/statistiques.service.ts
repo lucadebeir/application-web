@@ -96,4 +96,46 @@ export class StatistiquesService {
         })
       );
   }
+
+ 
+  public getNbVuesThisMonth() : any{
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/nbVuesThisMonth`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
+  }
+ 
+  public getNbComPerMonth() : any{
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/nbComsThisMonth`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
+  }
+
+  public getNbAbosPerMonth() : any{
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/nbAbosPerMonth`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
+  }
+
+  public getNbUsersPerMonth() : any{
+    return this.http
+      .get<any>(this.baseUrl + `/server/statistique/nbUsersPerMonth`)
+      .pipe(
+        map((data: any) => {
+          return data;
+        })
+      );
+  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { StatistiquesService } from "src/app/service/statistiques/statistiques.service";
 import { UserProfile } from "src/app/models/user.model";
 import { ToastrService } from "ngx-toastr";
@@ -15,6 +15,10 @@ import {
   ApexYAxis,
   ApexLegend,
   ApexGrid,
+  ChartComponent, //2eme graph à partir de là
+  //ApexXAxis,
+  ApexTooltip,
+  ApexStroke
 } from "ng-apexcharts";
 
 type ApexXAxis = {
@@ -33,11 +37,15 @@ export type ChartOptions = {
   chart: ApexChart;
   dataLabels: ApexDataLabels;
   plotOptions: ApexPlotOptions;
-  yaxis: ApexYAxis;
+  yaxis: ApexYAxis; 
   xaxis: ApexXAxis;
   grid: ApexGrid;
   colors: string[];
   legend: ApexLegend;
+  stroke: ApexStroke; //2e type graph
+  tooltip: ApexTooltip;
+
+
 };
 
 @Component({
@@ -59,9 +67,40 @@ export class StatistiquesComponent implements OnInit {
     nbVues: number;
   }[];
 
+
+  public vuesThisMonth : {
+    date: Date;
+    nbVues : number;
+  }[];
+
+  public comThisMonth : {
+    date: Date;
+    nbCom : number;
+  }
+
+  coms = [];
+  date = [];
+
+
+  public abosPerMonth : {
+    month : number;
+    nbAbos : number;
+  }
+
+  abos = [];
+  month = [];
+
+  public usersPerMonth : {
+    month : number;
+    nbUsers : number;
+  }
+
+
   public chartOptions: Partial<ChartOptions>;
   public chartOptions2: Partial<ChartOptions>;
   public chartOptions3: Partial<ChartOptions>;
+  public chartOptionCV : Partial<ChartOptions>;
+  public chartOptionUA : Partial<ChartOptions>;
 
   constructor(
     private statService: StatistiquesService,
@@ -252,7 +291,6 @@ export class StatistiquesComponent implements OnInit {
     });
 
     this.statService.getBestMonthlyRecipes().subscribe((data) => {
-      console.log(data);
       this.bestMonthlyRecipes = data;
       let vues = [];
       let noms = [];
@@ -304,6 +342,126 @@ export class StatistiquesComponent implements OnInit {
         },
       };
     });
+
+
+    
+    
+    this.statService.getNbComPerMonth().subscribe((data2) => {
+      this.comThisMonth = data2;
+      data2.forEach((element2) => {
+        this.coms.push(element2.nbCom);
+        this.date.push(element2.date);
+      });
+    });
+    this.statService.getNbVuesThisMonth().subscribe((data) => {
+      this.vuesThisMonth = data;
+      let vues = [];
+      data.forEach((element) => {
+        vues.push(element.nbVues);
+        if(!this.date.indexOf(element.date)){
+          this.date.push(element.date);
+        }
+        
+      });
+
+      
+      
+
+        
+        //options du graph commentaires / vues    
+       
+        this.chartOptionCV = {
+          series: [
+            {
+              name: "Vues",
+              data: vues
+            },
+            {
+              name: "Commentaires",
+              data:  this.coms
+            }
+          ],
+          chart: {
+            height: 350,
+            type: "area"
+          },
+          dataLabels: {
+            enabled: false
+          },
+          stroke: {
+            curve: "smooth"
+          },
+          xaxis: {
+            type: "category",
+            categories: this.date
+          }
+        
+        }; 
+      });
+     
+    
+      this.statService.getNbAbosPerMonth().subscribe((data) => {
+        this.abosPerMonth = data;
+        data.forEach((element) => {
+          this.abos.push(element.nbAbos);
+          this.month.push(element.month);
+        });
+      });
+      
+      this.statService.getNbUsersPerMonth().subscribe((data) => {
+        this.usersPerMonth = data;
+        let users = [];
+        data.forEach((element) => {
+          users.push(element.nbUsers);
+          if(!this.month.indexOf(element.month)){
+            this.month.push(element.month);
+          }
+        });
+
+      //options du graph users / abonnées
+      this.chartOptionUA = {
+        series: [
+          {
+            name: "Users",
+            data: users
+          },
+          {
+            name: "Abonnés",
+            data: this.abos
+          }
+        ],
+        chart: {
+          height: 350,
+          type: "area"
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: "smooth"
+        },
+        xaxis: {
+          type: "category",
+          categories: this.month
+          /*[
+            "janvier",
+            "février",
+            "mars",
+            "avril",
+            "mai",
+            "juin",
+            "juillet",
+            "août",
+            "septembre",
+            "octobre",
+            "novembre",
+            "décembre"
+          ] */
+        }
+
+      }; 
+    });
+  
   }
 
   showInfo(text, id, css) {
@@ -335,3 +493,4 @@ export class StatistiquesComponent implements OnInit {
     this.notifService.updateNotif(id).subscribe();
   }
 }
+
