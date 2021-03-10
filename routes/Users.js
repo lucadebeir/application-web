@@ -136,10 +136,9 @@ users.get("/newRecipe/:pseudo/:idRecette", function (req, res) {
 
 //Confirmation du mail
 users.get("/verify", function (req, res) {
-  if (
-    req.protocol + "://" + req.get("host") ==
-    "http://marine-s-recipes.herokuapp.com"
-  ) {
+  console.log("ici");
+  console.log(req.protocol);
+  if (req.protocol + "://" + req.get("host") == "http://" + host) {
     if (req.query.id == rand) {
       User.update(
         { emailConfirmed: true },
@@ -239,7 +238,15 @@ users.post("/register", (req, res) => {
                   "\n\n" +
                   "Marine.",
               };
-              smtpTransport.sendMail(mailOptions);
+              smtpTransport.sendMail(mailOptions, (error, response) => {
+                if (error) {
+                  console.log(error);
+                  res.end("error");
+                } else {
+                  console.log("Message sent: " + response.message);
+                  res.end("sent");
+                }
+              });
               res.json({ token: token });
             })
             .catch((err) => {
