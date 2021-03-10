@@ -87,8 +87,12 @@ export class CommentairesService {
               this.getReponseCommentaireRecipe(
                 id,
                 element.idCommentaire
-              ).subscribe((commentaire) => {
-                element.children = commentaire;
+              ).subscribe((commentaires) => {
+                console.log(commentaires);
+                commentaires.forEach((commentaire: CommentaireDetails) => {
+                  commentaire.response = false;
+                });
+                element.children = commentaires;
               });
               if (element2.children) {
                 element2 = element2.children;
@@ -141,8 +145,11 @@ export class CommentairesService {
             this.getReponseCommentaireRecipe(
               id,
               element.idCommentaire
-            ).subscribe((commentaire) => {
-              element.children = commentaire;
+            ).subscribe((commentaires) => {
+              commentaires.forEach((commentaire: CommentaireDetails) => {
+                commentaire.response = false;
+              });
+              commentaire.children = commentaires;
             });
           });
           return commentaire;

@@ -22,7 +22,7 @@
 
 4. To install all the modules necessary for the test to work, type the command : **npm install**
 
-5. And, to start the server with locale database, type the command **npm start** on the folder **application-server** (read the README file of the following git repository : https://github.com/Marine-s-Recipes/application-server.git)
+5. And, to start the server with locale database, type the command **npm start** in a new terminal, on the folder **application-server** (read the README file of the following git repository : https://github.com/Marine-s-Recipes/application-server.git)
 
 6. Finally, type : **npm run start:dev** and navigate to http://localhost:4201/
 

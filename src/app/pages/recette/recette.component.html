@@ -1,62 +1,107 @@
 <head>
-    <meta property="og:title" content="recette?.nomRecette" />
-    <meta property="og:description" content="recette?.mot" />
-    <meta property="og:url" content="url" />
-    <meta property="og:image" content="image[0]?.lienImage" />
+  <meta property="og:title" content="recette?.nomRecette" />
+  <meta property="og:description" content="recette?.mot" />
+  <meta property="og:url" content="url" />
+  <meta property="og:image" content="image[0]?.lienImage" />
 </head>
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-
 <header class="site-header">
-    <div id="titreRecette" class="header-content">
-        <div class="title-area">
-            <h1>
-                {{ recette?.nomRecette }}
-                <a id="vege" *ngIf="recette?.vege"><img src="../../../assets/img/logoVegetarien.png" width="50em" height="50em" style="vertical-align: text-top;" /></a>
-            </h1>
-            <div *ngIf="this.auth.isLoggedIn()">
-                <button *ngIf="!isInMenu" type="button" (click)="addToMenu()" class="btn btn-outline-success">
-                  <i class="fa fa-calendar-plus-o"></i>
-                  Ajouter au menu de la semaine
-                    </button>
+  <div id="titreRecette" class="header-content">
+    <div class="title-area">
+      <h1>
+        {{ recette?.nomRecette }}
+        <a id="vege" *ngIf="recette?.vege"
+          ><img
+            src="../../../assets/img/logoVegetarien.png"
+            width="50em"
+            height="50em"
+            style="vertical-align: text-top;"
+        /></a>
+      </h1>
+      <div *ngIf="this.auth.isLoggedIn()">
+        <button
+          *ngIf="!isInMenu"
+          type="button"
+          (click)="addToMenu()"
+          class="btn btn-outline-success"
+        >
+          <i class="fa fa-calendar-plus-o"></i>
+          Ajouter au menu de la semaine
+        </button>
 
-                <button *ngIf="isInMenu" type="button" (click)="deleteToMenu()" class="btn btn-success">
-                  <i class="fa fa-calendar-times-o"></i>
-                  Supprimer du menu de la semaine
-                </button>
-            </div>
+        <button
+          *ngIf="isInMenu"
+          type="button"
+          (click)="deleteToMenu()"
+          class="btn btn-success"
+        >
+          <i class="fa fa-calendar-times-o"></i>
+          Supprimer du menu de la semaine
+        </button>
+      </div>
 
+      <p id="timer">
+        {{ recette?.nbVues }} 👁
 
-            <p id="timer">
-                {{ recette?.nbVues }} 👁
-
-                <a *ngIf="this.auth.isLoggedIn() && !isFavori" (click)="addFavoris()" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Ajouter aux favoris"><i id="textlogo"> {{ recette?.nbFavoris }} </i
+        <a
+          *ngIf="this.auth.isLoggedIn() && !isFavori"
+          (click)="addFavoris()"
+          data-toggle="popover"
+          data-placement="bottom"
+          data-trigger="hover"
+          title="Ajouter aux favoris"
+          ><i id="textlogo"> {{ recette?.nbFavoris }} </i
           ><i class="fa fa-heart-o"></i
         ></a>
 
-                <a *ngIf="this.auth.isLoggedIn() && isFavori" (click)="deleteFavoris()" data-toggle="popover" data-placement="bottom" data-trigger="hover" title="Supprimer des favoris"><i id="textlogo">{{ recette?.nbFavoris }} </i
+        <a
+          *ngIf="this.auth.isLoggedIn() && isFavori"
+          (click)="deleteFavoris()"
+          data-toggle="popover"
+          data-placement="bottom"
+          data-trigger="hover"
+          title="Supprimer des favoris"
+          ><i id="textlogo">{{ recette?.nbFavoris }} </i
           ><i class="class= fa fa-heart"></i
         ></a>
 
-                <a *ngIf="!this.auth.isLoggedIn()"><i id="textlogo">{{ recette?.nbFavoris }} </i
+        <a *ngIf="!this.auth.isLoggedIn()"
+          ><i id="textlogo">{{ recette?.nbFavoris }} </i
           ><i class="class= fa fa-heart"></i
         ></a>
-            </p>
+      </p>
 
-            <h2></h2>
+      <h2></h2>
 
-            <div id="timer" class="wprm-recipe-servings-container wprm-recipe-block-container wprm-recipe-block-container-separate wprm-block-text-normal">
-                <div id="logoRecette">
-                    <img *ngIf="recette?.tempsPreparation != null" src="../../../assets/img/preparation.png" width="50em" height="50em" /> {{ recette?.tempsPreparation }}
-                </div>
+      <div
+        id="timer"
+        class="wprm-recipe-servings-container wprm-recipe-block-container wprm-recipe-block-container-separate wprm-block-text-normal"
+      >
+        <div id="logoRecette">
+          <img
+            *ngIf="recette?.tempsPreparation != null"
+            src="../../../assets/img/preparation.png"
+            width="50em"
+            height="50em"
+          />
+          {{ recette?.tempsPreparation }}
+        </div>
 
-                <div id="logoRecette">
-                    <img *ngIf="recette?.tempsCuisson != null" src="../../../assets/img/cuisson.png" width="50em" height="50em" /> {{ recette?.tempsCuisson }}
-                </div>
+        <div id="logoRecette">
+          <img
+            *ngIf="recette?.tempsCuisson != null"
+            src="../../../assets/img/cuisson.png"
+            width="50em"
+            height="50em"
+          />
+          {{ recette?.tempsCuisson }}
+        </div>
 
-                <div id="logoRecette">
-                    <span id="part" class="wprm-recipe-icon wprm-recipe-servings-icon"><svg
+        <div id="logoRecette">
+          <span id="part" class="wprm-recipe-icon wprm-recipe-servings-icon"
+            ><svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
               x="0px"
@@ -82,147 +127,181 @@
             class="wprm-recipe-servings-unit wprm-recipe-details-unit wprm-block-text-normal"
           >
           </span>
-                </div>
-            </div>
-            <div *ngIf="image" style="padding: 2em 0;">
-                <share-buttons [theme]="'default'" [include]="[
-            'facebook',
-            'twitter',
-            'linkedin',
-            'pinterest',
-            'reddit',
-            'tumblr',
-            'mix',
-            'viber',
-            'vk',
-            'telegram',
-            'messenger',
-            'whatsapp',
-            'xing',
-            'line',
-            'sms',
-            'email',
-            'print',
-            'copy'
-          ]" [exclude]="[
-            'reddit',
-            'tumblr',
-            'mix',
-            'viber',
-            'vk',
-            'telegram',
-            'xing',
-            'line'
-          ]" [show]="11" [size]="-2" [url]="url" [title]="recette?.nomRecette" [description]="recette?.mot" [image]="image[0]?.lienImage"></share-buttons>
-            </div>
-            <div *ngIf="!image" style="padding: 2em 0;">
-                <share-buttons [theme]="'default'" [include]="[
-            'facebook',
-            'twitter',
-            'linkedin',
-            'pinterest',
-            'reddit',
-            'tumblr',
-            'mix',
-            'viber',
-            'vk',
-            'telegram',
-            'messenger',
-            'whatsapp',
-            'xing',
-            'line',
-            'sms',
-            'email',
-            'print',
-            'copy'
-          ]" [exclude]="[
-            'reddit',
-            'tumblr',
-            'mix',
-            'viber',
-            'vk',
-            'telegram',
-            'xing',
-            'line'
-          ]" [show]="11" [size]="-2" [url]="url" [title]="recette?.nomRecette" [description]="recette?.mot"></share-buttons>
-            </div>
         </div>
+      </div>
+      <div *ngIf="image" style="padding: 2em 0;">
+        <share-buttons
+          [theme]="'default'"
+          [include]="[
+            'facebook',
+            'twitter',
+            'linkedin',
+            'pinterest',
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'messenger',
+            'whatsapp',
+            'xing',
+            'line',
+            'sms',
+            'email',
+            'print',
+            'copy'
+          ]"
+          [exclude]="[
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'xing',
+            'line'
+          ]"
+          [show]="11"
+          [size]="-2"
+          [url]="url"
+          [title]="recette?.nomRecette"
+          [description]="recette?.mot"
+          [image]="image[0]?.lienImage"
+        ></share-buttons>
+      </div>
+      <div *ngIf="!image" style="padding: 2em 0;">
+        <share-buttons
+          [theme]="'default'"
+          [include]="[
+            'facebook',
+            'twitter',
+            'linkedin',
+            'pinterest',
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'messenger',
+            'whatsapp',
+            'xing',
+            'line',
+            'sms',
+            'email',
+            'print',
+            'copy'
+          ]"
+          [exclude]="[
+            'reddit',
+            'tumblr',
+            'mix',
+            'viber',
+            'vk',
+            'telegram',
+            'xing',
+            'line'
+          ]"
+          [show]="11"
+          [size]="-2"
+          [url]="url"
+          [title]="recette?.nomRecette"
+          [description]="recette?.mot"
+        ></share-buttons>
+      </div>
     </div>
-    <div class="hero-graphic" *ngFor="let img of image">
-        <img id="hero-graphic" src="{{ img.lienImage }}" alt="Photo de la recette" />
+  </div>
+  <div class="hero-graphic" *ngFor="let img of image">
+    <img
+      id="hero-graphic"
+      src="{{ img.lienImage }}"
+      alt="Photo de la recette"
+    />
 
-        <!-- always, right? -->
-    </div>
+    <!-- always, right? -->
+  </div>
 </header>
 
 <main class="main-content">
-    <article id="hamburger-juicy">
-        <h2 id="no-hamburger-juicy">
-            Ingrédients
+  <article id="hamburger-juicy">
+    <h2 id="no-hamburger-juicy">
+      Ingrédients
+    </h2>
 
-        </h2>
+    <p id="nbrePart">Nombre de {{ recette?.libellePart }}</p>
 
-        <p id="nbrePart">Nombre de {{ recette?.libellePart }}</p>
+    <div class="recipe-ingredients__qt-counter">
+      <div
+        class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-minus"
+        *ngIf="recette?.nbrePart > 1"
+        (click)="onProportionLess(recette?.nbrePart - 1)"
+      >
+        -
+      </div>
+      <input
+        class="recipe-ingredients__qt-counter__value title-5"
+        type="text"
+        name=""
+        value="{{ recette?.nbrePart }}"
+        #box
+        (keyup.enter)="onEnter(box.value)"
+      />
+      <div
+        class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-plus"
+        (click)="onProportionMore(recette?.nbrePart + 1)"
+      >
+        +
+      </div>
+    </div>
 
-        <div class="recipe-ingredients__qt-counter">
-            <div class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-minus" *ngIf="recette?.nbrePart > 1" (click)="onProportionLess(recette?.nbrePart - 1)">
-                -
-            </div>
-            <input class="recipe-ingredients__qt-counter__value title-5" type="text" name="" value="{{ recette?.nbrePart }}" #box (keyup.enter)="onEnter(box.value)" />
-            <div class="recipe-ingredients__qt-counter__increment recipe-ingredients__qt-counter__increment-plus" (click)="onProportionMore(recette?.nbrePart + 1)">
-                +
-            </div>
+    <div *ngIf="this.auth.isLoggedIn()" style="margin: 1em;">
+      <button
+        (click)="addListeCourses()"
+        type="button"
+        class="btn btn-outline-secondary"
+      >
+        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+        Ajouter à la liste de courses
+      </button>
+    </div>
 
-
-
-
-        </div>
-
-        <div *ngIf="this.auth.isLoggedIn()" style="margin: 1em;">
-
-            <button (click)="addListeCourses()" type="button" class="btn btn-outline-secondary">
-              <i class="fa fa-cart-plus" aria-hidden="true"></i>
-              Ajouter à la liste de courses</button>
-        </div>
-
-        <div id="no-hamburger-juicy">
-            <p>
-                <li *ngFor="let ingredient of ingredients" class="card-text">
-                    <span *ngIf="ingredient.updateQte != null">
+    <div id="no-hamburger-juicy">
+      <p>
+        <li *ngFor="let ingredient of ingredients" class="card-text">
+          <span *ngIf="ingredient.updateQte != null">
             {{ ingredient.updateQte }} {{ ingredient.libelleUnite }}
             {{ ingredient.nomIngredient }}
           </span>
-                    <span *ngIf="ingredient.updateQte == null">
+          <span *ngIf="ingredient.updateQte == null">
             {{ ingredient.qte }} {{ ingredient.libelleUnite }}
             {{ ingredient.nomIngredient }}
           </span>
-                </li>
-            </p>
+        </li>
+      </p>
+    </div>
+  </article>
 
-        </div>
+  <article id="burger-fourth">
+    <h2>Préparation</h2>
 
+    <pre>{{ recette?.etapes }}</pre>
+  </article>
 
+  <article *ngIf="recette?.astuce != 'null'">
+    <div class="byline">
+      <h2>Astuces</h2>
 
-    </article>
+      <pre>{{ recette?.astuce }}</pre>
 
-    <article id="burger-fourth">
-        <h2>Préparation</h2>
-
-        <pre>{{ recette?.etapes }}</pre>
-    </article>
-
-    <article *ngIf="recette?.astuce != 'null'">
-        <div class="byline">
-            <h2>Astuces</h2>
-
-            <pre>{{ recette?.astuce }}</pre>
-
-            <span>By</span> Marine
-        </div>
-        <div id="partage">
-            <p>
-                <i class="fa fa-lg fa-instagram" style="color: #053477;"></i> Partagez moi votre résultat 😍 Mentionnez
-                <a href="https://www.instagram.com/marineteroitin/?hl=fr">@marineteroitin</a
+      <span>By</span> Marine
+    </div>
+    <div id="partage">
+      <p>
+        <i class="fa fa-lg fa-instagram" style="color: #053477;"></i> Partagez
+        moi votre résultat 😍 Mentionnez
+        <a href="https://www.instagram.com/marineteroitin/?hl=fr"
+          >@marineteroitin</a
         >
         ou taguez
         <a href="https://www.instagram.com/explore/tags/marinesrecipes/?hl=fr">
@@ -244,7 +323,27 @@
     >
       <span class="headline">Laisser un commentaire</span>
       <div class="sign-in-wrapper">
-        <div class="caption disclaimer">
+        <div
+          *ngIf="!newCommentaire.image"
+          class="caption disclaimer"
+          style="display: flex; margin-left: 2em;"
+        >
+          <form style="align-self: center;">
+            <div id="imageCom">
+              <input
+                type="file"
+                id="file"
+                name="file"
+                class="inputfile"
+                name="image"
+                (change)="selectFile($event, false)"
+              />
+              <label id="positionImage" for="file" style="font-size: 16px;"
+                >Ajouter la photo de ma réalisation</label
+              >
+            </div>
+            <br />
+          </form>
           <textarea
             class="form-control"
             #message="ngModel"
@@ -256,22 +355,60 @@
             aria-required="true"
             required
           ></textarea>
-          <form>
-            <div id="image">
-              <input
-                type="file"
-                id="file"
-                name="file"
-                class="inputfile"
-                name="image"
-                (change)="selectImage($event)"
-              />
-              <label id="positionImage" for="file" style="font-size: 16px;"
-                >Choisir une image</label
-              >
-            </div>
+        </div>
+        <div
+          *ngIf="newCommentaire.image"
+          class="caption disclaimer"
+          style="display: flex; border-top: 3px solid #eceeef; padding: 2rem 0;"
+        >
+          <div style="width: 80%; align-self: center;">
+            <img
+              src="{{ images.lienImage }}"
+              class="rounded mx-auto d-block"
+              alt="Responsive image"
+              id="resp"
+              style="width: 80%;"
+            />
             <br />
-          </form>
+            <form style="align-self: center;">
+              <div
+                id="image"
+                style="
+                  background-color: #006838;
+                  color: white;
+                  padding: 0.5em;
+                  border-radius: 1em;
+                  text-align-last: center;
+                  margin: 0 2em;
+                "
+              >
+                <input
+                  type="file"
+                  id="file"
+                  name="file"
+                  class="inputfile"
+                  name="image"
+                  (change)="selectFile($event, false)"
+                />
+                <label id="positionImage" for="file" style="font-size: 16px;"
+                  >Modifier ma photo</label
+                >
+              </div>
+              <br />
+            </form>
+          </div>
+
+          <textarea
+            class="form-control"
+            #message="ngModel"
+            [(ngModel)]="newCommentaire.message"
+            [ngModelOptions]="{ standalone: true }"
+            id="exampleFormControlTextarea1"
+            cols="45"
+            rows="8"
+            aria-required="true"
+            required
+          ></textarea>
         </div>
         <p class="error-message"></p>
         <button id="envoyer" (click)="addCommentaire(newCommentaire.message)">
@@ -317,44 +454,228 @@
                       {{ commentaire.dateCommentaire }}</time
                     >
                   </a>
-        </div>
-        <!-- .comment-metadata -->
-        </footer>
-        <!-- .comment-meta -->
-
-        <div class="comment-content row">
-            <div class="column1">
-                <div class="row">
-                    <div>
-                        <img id="imageCommentaire" src="{{ commentaire.lienImage }}" />
-                        <p>{{ commentaire.message }}</p>
-                    </div>
                 </div>
-            </div>
-            <div class="column2">
-                <button id="btnCancel" *ngIf="auth.isAdmin()" class="btn btn-sm btn-danger" (click)="deleteCommentaire(commentaire.idCommentaire)">
-                    <i class="fa fa-trash"></i>
-                  </button>
-            </div>
-        </div>
-        <!-- .comment-content -->
+                <!-- .comment-metadata -->
+              </footer>
+              <!-- .comment-meta -->
 
-        <div class="comment-btn" *ngIf="commentaire.children && auth.isLoggedIn()">
-            <form class="formCommentaire" (ngSubmit)="addReponse($event, commentaire.idCommentaire)">
-                <textarea name="message" type="textarea" class="text" rows="3"></textarea>
-                <form>
-                    <div id="image">
-                        <input type="file" id="{{ commentaire.idCommentaire }}" name="file" class="inputfile" name="image" (change)="selectImage($event)" />
-                        <label id="positionImage" for="{{ commentaire.idCommentaire }}">Choisir une image</label
-                      >
+              <div class="comment-content row">
+                <div class="column1">
+                  <div class="row">
+                    <img
+                      id="imageCommentaire"
+                      src="{{ commentaire.lienImage }}"
+                    />
+                    <p>{{ commentaire.message }}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="column2">
+                <button
+                  id="btnCancel"
+                  *ngIf="auth.isAdmin()"
+                  class="btn btn-sm btn-danger"
+                  (click)="deleteCommentaire(commentaire.idCommentaire)"
+                >
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+              <!-- .comment-content -->
+              <div style="padding-top: 1em; text-align-last: end;">
+                <button
+                  *ngIf="!commentaire.response"
+                  id="envoyerCommentaire"
+                  type="submit"
+                  (click)="addResponse(commentaire.idCommentaire)"
+                >
+                  Répondre
+                </button>
+              </div>
+
+              <div
+                class="comment-btn"
+                *ngIf="
+                  commentaire.children &&
+                  auth.isLoggedIn() &&
+                  commentaire.response
+                "
+                style="text-align-last: end; padding-bottom: 1em;"
+              >
+                <div style="padding-bottom: 1em;">
+                  <button
+                    *ngIf="commentaire.response"
+                    type="submit"
+                    (click)="addResponse(commentaire.idCommentaire)"
+                    style="font-size: x-large;"
+                  >
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                  </button>
+                </div>
+
+                <form
+                  class="formCommentaire"
+                  (ngSubmit)="addReponse($event, commentaire.idCommentaire)"
+                >
+                  <div style="display: flex; margin-left: 2em;">
+                    <div *ngIf="!newResponse.image">
+                      <form style="align-self: center; padding: 0 2em;">
+                        <div id="image">
+                          <input
+                            type="file"
+                            id="{{ commentaire.idCommentaire }}"
+                            name="file"
+                            class="inputfile"
+                            name="image"
+                            (change)="selectFile($event, true)"
+                          />
+                          <label
+                            id="positionImage"
+                            for="{{ commentaire.idCommentaire }}"
+                            ><i
+                              class="fa fa-picture-o"
+                              aria-hidden="true"
+                              style="font-size: x-large;"
+                            ></i
+                          ></label>
+                        </div>
+                        <br />
+                      </form>
                     </div>
-                    <br />
-                  </form>
-                  <div id="envoyerCommentaire">
-                    <button type="submit">Répondre</button>
+
+                    <div
+                      *ngIf="newResponse.image"
+                      style="width: 80%; align-self: center;"
+                    >
+                      <img
+                        src="{{ newResponse.lienImage }}"
+                        class="rounded mx-auto d-block"
+                        alt="Responsive image"
+                        id="resp"
+                        style="width: 80%;"
+                      />
+                      <br />
+                      <form style="align-self: center;">
+                        <div
+                          id="image"
+                          style="
+                            background-color: #006838;
+                            color: white;
+                            padding: 0.5em;
+                            border-radius: 1em;
+                            text-align-last: center;
+                            margin: 0 2em;
+                          "
+                        >
+                          <input
+                            type="file"
+                            id="file"
+                            name="file"
+                            class="inputfile"
+                            name="image"
+                            (change)="selectFile($event, true)"
+                          />
+                          <label
+                            id="positionImage"
+                            for="file"
+                            style="font-size: 16px;"
+                            >Modifier ma photo</label
+                          >
+                        </div>
+                        <br />
+                      </form>
+                    </div>
+                    <textarea
+                      name="message"
+                      type="textarea"
+                      class="text"
+                      rows="3"
+                      style="text-align-last: left;"
+                    ></textarea>
+                  </div>
+
+                  <div style="text-align: end; margin-top: 1em;">
+                    <button id="envoyerCommentaire" type="submit">
+                      Répondre
+                    </button>
                   </div>
                 </form>
               </div>
+              <!--<div
+                *ngIf="
+                  commentaire.children &&
+                  auth.isLoggedIn() &&
+                  newResponse.image &&
+                  commentaire.response
+                "
+                class="caption disclaimer"
+                style="
+                  display: flex;
+                  border-top: 3px solid #eceeef;
+                  padding: 2rem 0;
+                "
+              >
+                <form
+                  class="formCommentaire"
+                  (ngSubmit)="addReponse($event, commentaire.idCommentaire)"
+                >
+                  <div style="width: 80%; align-self: center;">
+                    <img
+                      src="{{ newResponse.lienImage }}"
+                      class="rounded mx-auto d-block"
+                      alt="Responsive image"
+                      id="resp"
+                      style="width: 80%;"
+                    />
+                    <br />
+                    <form style="align-self: center;">
+                      <div
+                        id="image"
+                        style="
+                          background-color: #006838;
+                          color: white;
+                          padding: 0.5em;
+                          border-radius: 1em;
+                          text-align-last: center;
+                          margin: 0 2em;
+                        "
+                      >
+                        <input
+                          type="file"
+                          id="file"
+                          name="file"
+                          class="inputfile"
+                          name="image"
+                          (change)="selectFile($event, true)"
+                        />
+                        <label
+                          id="positionImage"
+                          for="file"
+                          style="font-size: 16px;"
+                          >Modifier ma photo</label
+                        >
+                      </div>
+                      <br />
+                    </form>
+                  </div>
+
+                  <textarea
+                    class="form-control"
+                    #message="ngModel"
+                    [(ngModel)]="newCommentaire.message"
+                    [ngModelOptions]="{ standalone: true }"
+                    id="exampleFormControlTextarea1"
+                    cols="45"
+                    rows="8"
+                    aria-required="true"
+                    required
+                  ></textarea>
+                  <div style="text-align: end; margin-top: 1em;">
+                    <button id="envoyerCommentaire" type="submit">
+                      Répondre
+                    </button>
+                  </div>
+                </form>
+              </div>-->
             </article>
             <!-- .comment-body -->
             <div *ngIf="commentaire.children" id="children">
@@ -402,13 +723,11 @@
                     <div class="comment-content row">
                       <div class="column1">
                         <div class="row">
-                          <div>
-                            <img
-                              id="imageCommentaire"
-                              src="{{ children.lienImage }}"
-                            />
-                            <p>{{ children.message }}</p>
-                          </div>
+                          <img
+                            id="imageCommentaire"
+                            src="{{ children.lienImage }}"
+                          />
+                          <p>{{ children.message }}</p>
                         </div>
                       </div>
 
@@ -427,10 +746,22 @@
 
                     <div class="reply"></div>
                     <!-- #respond -->
-
+                    <!--<button
+                      *ngIf="!children.response"
+                      id="envoyerCommentaire"
+                      type="submit"
+                      (click)="addResponse(children.idCommentaire)"
+                    >
+                      Répondre
+                    </button>
                     <div
                       class="comment-btn"
-                      *ngIf="isLast && auth.isLoggedIn()"
+                      *ngIf="
+                        isLast &&
+                        auth.isLoggedIn() &&
+                        children.response &&
+                        !newResponse.image
+                      "
                     >
                       <form
                         class="formCommentaire"
@@ -438,35 +769,105 @@
                           addReponse($event, commentaire.idCommentaire)
                         "
                       >
-                        <textarea
-                          name="message"
-                          type="textarea"
-                          class="text"
-                          rows="3"
-                        ></textarea>
-                        <form>
-                          <div id="image">
+                        <div style="display: flex; margin-left: 2em;">
+                          <button
+                            *ngIf="children.response"
+                            id="envoyerCommentaire"
+                            type="submit"
+                            (click)="addResponse(children.idCommentaire)"
+                          >
+                            Annuler
+                          </button>
+                          <form>
+                            <div id="image">
+                              <input
+                                type="file"
+                                id="{{ commentaire.idCommentaire }}"
+                                name="file"
+                                class="inputfile"
+                                name="image"
+                                (change)="selectFile($event, true)"
+                              />
+                              <label
+                                id="positionImage"
+                                for="{{ commentaire.idCommentaire }}"
+                                >Choisir une image</label
+                              >
+                            </div>
+                            <br />
+                          </form>
+                          <textarea
+                            name="message"
+                            type="textarea"
+                            class="text"
+                            rows="3"
+                          ></textarea>
+                        </div>
+
+                        <div style="text-align: end; margin-top: 1em;">
+                          <button id="envoyerCommentaire" type="submit">
+                            Répondre
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div
+                      *ngIf="isLast && auth.isLoggedIn() && newResponse.image"
+                      class="caption disclaimer"
+                      style="display: flex;"
+                    >
+                      <div style="width: 80%; align-self: center;">
+                        <img
+                          src="{{ newResponse.lienImage }}"
+                          class="rounded mx-auto d-block"
+                          alt="Responsive image"
+                          id="resp"
+                          style="width: 80%;"
+                        />
+                        <br />
+                        <form style="align-self: center;">
+                          <div
+                            id="image"
+                            style="
+                              background-color: #006838;
+                              color: white;
+                              padding: 0.5em;
+                              border-radius: 1em;
+                              text-align-last: center;
+                              margin: 0 2em;
+                            "
+                          >
                             <input
                               type="file"
-                              id="{{ children.idCommentaire }}"
+                              id="file"
                               name="file"
                               class="inputfile"
                               name="image"
-                              (change)="selectImage($event)"
+                              (change)="selectFile($event, true)"
                             />
                             <label
                               id="positionImage"
-                              for="{{ children.idCommentaire }}"
-                              >Choisir une image</label
+                              for="file"
+                              style="font-size: 16px;"
+                              >Modifier ma photo</label
                             >
                           </div>
                           <br />
                         </form>
-                        <div id="envoyerCommentaire">
-                          <button type="submit">Répondre</button>
-                        </div>
-                      </form>
-                    </div>
+                      </div>
+
+                      <textarea
+                        class="form-control"
+                        #message="ngModel"
+                        [(ngModel)]="newCommentaire.message"
+                        [ngModelOptions]="{ standalone: true }"
+                        id="exampleFormControlTextarea1"
+                        cols="45"
+                        rows="8"
+                        aria-required="true"
+                        required
+                      ></textarea>
+                    </div>-->
                   </article>
                   <!-- .comment-body -->
                 </li>
@@ -519,11 +920,12 @@
         <p>
           <a
             (click)="updateNbView(recette)"
-            [routerLink]="['/recipe', recette.idRecette]"
             class="btn btn-primary btn-effect top"
           >
             <span>Voir »</span>
-            <span><i class="fa fa-long-arrow-right"></i></span>
+            <span
+              ><i class="fa fa-long-arrow-right" style="color: white;"></i
+            ></span>
           </a>
         </p>
       </div>

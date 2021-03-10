@@ -322,4 +322,9 @@ export class MesRecettesComponent implements OnInit {
     };
     this.notifService.addNotification(notif).subscribe();
   }
+
+  onPageChange(page: number) {
+    this.currentPage = page;
+    window.scrollTo(0, 0);
+  }
 }
