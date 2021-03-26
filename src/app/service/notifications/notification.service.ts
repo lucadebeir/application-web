@@ -15,7 +15,7 @@ export class NotificationService {
 
   public addNotification(notif: Notification): Observable<any> {
     return this.http
-      .post(this.baseUrl + `/server/notifications/add`, notif)
+      .put(this.baseUrl + `/server/notifications/add`, notif)
       .pipe(
         map((data: any) => {
           return data;
