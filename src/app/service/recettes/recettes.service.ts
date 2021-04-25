@@ -323,16 +323,9 @@ export class RecettesService {
     );
   }
 
-  public updateNbView(recette: RecipeDetails): Observable<any> {
-    return this.http.put<any>(
-      this.baseUrl + `/server/recipe/update-nbView/${recette.idRecette}`,
-      recette
-    );
-  }
-
   public updateNbView(idRecette: any): Observable<any> {
     return this.http.put<any>(
-      this.baseUrl + `/server/recipe/update-nbView/${idRecette}`
+      this.baseUrl + `/server/recipe/update-nbView/${idRecette}`, null
     );
   }
 
