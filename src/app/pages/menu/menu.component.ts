@@ -112,30 +112,5 @@ export class MenuComponent implements OnInit {
     this.menuAdmin = !this.menuAdmin;
   }
 
-  updateNbView(recette: any) {
-    this.recetteService.updateNbViewMenu(recette).subscribe(
-      (res) => {
-        this.notificationVue(recette.idRecette);
-        this.router.navigate(["/recipe", recette.idRecette]).then(() => {
-          window.location.reload();
-        });
-      },
-      (err) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 402) {
-            console.log("Cette recette n'existe pas !");
-          }
-        }
-      }
-    );
-  }
-  //notification vue
-  notificationVue(idRecette) {
-    let notif: Notification = {
-      pseudo: null,
-      idRecette: idRecette,
-      type: "vue",
-    };
-    this.notifService.addNotification(notif).subscribe();
-  }
+
 }

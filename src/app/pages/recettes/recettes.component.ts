@@ -315,6 +315,8 @@ export class RecettesComponent implements OnInit, OnDestroy {
     window.scrollTo(0, 0);
   }
 
+  //CHANGER CETTE FONCTION ON UPDATE PAS LE NB DE VUES ICI !!!!
+
   updateNbView(recette: any) {
     this.check = false;
     var json = {
@@ -333,22 +335,9 @@ export class RecettesComponent implements OnInit, OnDestroy {
       backButton: false,
     };
     localStorage.setItem("backButton", JSON.stringify(json2));
-    this.recetteService.updateNbView(recette).subscribe(
-      (res) => {
-        var snapshot = this.route.snapshot;
-        const params = { ...snapshot.queryParams };
-        delete params.pos;
-        this.notificationVue(recette.idRecette);
+    
         this.router.navigate(["/recipe", recette.idRecette]);
-      },
-      (err) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 402) {
-            console.log("Cette recette n'existe pas !");
-          }
-        }
-      }
-    );
+     
   }
 
   addFavoris(id: number) {
@@ -389,15 +378,6 @@ export class RecettesComponent implements OnInit, OnDestroy {
         this.recetteService.search(this.searchTerm, data).subscribe();
       });
     }); /* rafraichit la page */
-  }
-  //notification vue
-  notificationVue(idRecette) {
-    let notif: Notification = {
-      pseudo: null,
-      idRecette: idRecette,
-      type: "vue",
-    };
-    this.notifService.addNotification(notif).subscribe();
   }
 
   //notification favori

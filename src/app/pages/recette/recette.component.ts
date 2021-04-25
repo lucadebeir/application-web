@@ -175,11 +175,9 @@ export class RecetteComponent implements OnInit {
         });
         this.recetteService.getListRecipes().subscribe((data) => {
           data.forEach((element) => {
-            console.log(element);
             if (element.idRecette === this.recipeList.idRecette) {
               this.isInMenu = true;
               this.recipeList = element;
-              console.log(this.recipeList);
             }
           });
           this.allRecipeList = data;
@@ -196,7 +194,21 @@ export class RecetteComponent implements OnInit {
 
   onClick() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  
+    this.recetteService.updateNbView(parseInt(this.route.snapshot.paramMap.get("id"), 10)).subscribe(res => console.log(res));
+  
+    //notification vue
+   
+      let notif: Notification = {
+        pseudo: null,
+        idRecette: parseInt(this.route.snapshot.paramMap.get("id"), 10),
+        type: "vue",
+      };
+      this.notifService.addNotification(notif).subscribe();
+  
+  
+  }
 
   ngOnDestroy() {
     if (this.check) {
@@ -225,22 +237,7 @@ export class RecetteComponent implements OnInit {
       });
   }
 
-  updateNbView(recette: any) {
-    this.recetteService.updateNbView(recette).subscribe(
-      (res) => {
-        this.router.navigate(["/recipe", recette.idRecette]).then(() => {
-          //window.location.reload();
-        });
-      },
-      (err) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 402) {
-            console.log("Cette recette n'existe pas !");
-          }
-        }
-      }
-    );
-  }
+ 
 
   selectImage(event) {
     if (event.target.files.length > 0) {
@@ -489,4 +486,10 @@ export class RecetteComponent implements OnInit {
     localStorage.setItem("backButton", JSON.stringify(json));
     console.log("Back button pressed");
   }
+
+
+
+
+
+
 }

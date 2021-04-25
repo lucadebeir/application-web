@@ -84,35 +84,5 @@ export class MesCommentairesComponent implements OnInit {
     );
     window.location.reload(); /* rafraichit la page */
   }
-  updateNbView(commentaire: any) {
-    this.recetteService
-      .getRecipeById(commentaire.concerne)
-      .subscribe((recipe) => {
-        this.recetteService.updateNbView(recipe).subscribe(
-          (res) => {
-            this.notificationVue(recipe.idRecette);
-            console.log("2");
-            this.router.navigate(["/recipe", recipe.idRecette]).then(() => {
-              window.location.reload();
-            });
-          },
-          (err) => {
-            if (err instanceof HttpErrorResponse) {
-              if (err.status === 402) {
-                console.log("Cette recette n'existe pas !");
-              }
-            }
-          }
-        );
-      });
-  }
-  //notification vue
-  notificationVue(idRecette) {
-    let notif: Notification = {
-      pseudo: null,
-      idRecette: idRecette,
-      type: "vue",
-    };
-    this.notifService.addNotification(notif).subscribe();
-  }
+ 
 }

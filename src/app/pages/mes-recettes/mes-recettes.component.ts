@@ -265,7 +265,7 @@ export class MesRecettesComponent implements OnInit {
     }
   }
 
-  // voir si on peut la récupérer au lieu de la recopier!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // REVOIR CETTE FONCTION CAR ON UPDATE PAS ICI LE NB DE VUES!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   updateNbView(recette: any) {
     this.check = false;
     var json = {
@@ -284,19 +284,8 @@ export class MesRecettesComponent implements OnInit {
       backButton: false,
     };
     localStorage.setItem("backButton", JSON.stringify(json2));
-    this.recetteService.updateNbView(recette).subscribe(
-      (res) => {
-        this.notificationVue(recette.idRecette);
-        this.router.navigate(["/recipe", recette.idRecette]);
-      },
-      (err) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 402) {
-            console.log("Cette recette n'existe pas !");
-          }
-        }
-      }
-    );
+   
+    this.router.navigate(["/recipe", recette.idRecette]);
   }
 
   deleteFavoris(idRecette: any) {
@@ -313,13 +302,5 @@ export class MesRecettesComponent implements OnInit {
       this.recetteService.search(this.searchTerm, data).subscribe();
     }); /* rafraichit la page */
   }
-  //notification vue
-  notificationVue(idRecette) {
-    let notif: Notification = {
-      pseudo: null,
-      idRecette: idRecette,
-      type: "vue",
-    };
-    this.notifService.addNotification(notif).subscribe();
-  }
+  
 }
