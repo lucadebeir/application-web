@@ -330,6 +330,13 @@ export class RecettesService {
     );
   }
 
+  public updateNbView(idRecette: any): Observable<any> {
+    return this.http.put<any>(
+      this.baseUrl + `/server/recipe/update-nbView/${idRecette}`
+    );
+  }
+
+  //UTILE ????
   public updateNbViewMenu(recette: RecipeDetails): Observable<any> {
     return this.http.put<any>(
       this.baseUrl + `/server/recipeList/update-nbView/${recette.idRecette}`,

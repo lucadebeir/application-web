@@ -54,7 +54,7 @@
             <h1>{{ recette.nomRecette }}</h1>
             <div class="post-more">
               <a
-                (click)="updateNbView(recette)"
+               
                 [routerLink]="['/recipe', recette.idRecette]"
                 class="btn btn-primary btn-effect"
               >
@@ -126,7 +126,7 @@
       </div>
       <p>
         <a
-          (click)="updateNbView(recette)"
+         
           [routerLink]="['/recipe', recette.idRecette]"
           class="btn btn-primary btn-effect top"
         >
@@ -178,7 +178,7 @@
                       </div>
                       <p class="mb-0">
                         <a
-                          (click)="updateNbView(petitDej)"
+                        
                           [routerLink]="['/recipe', petitDej.idRecette]"
                           class="btn-custom btn-effect"
                           ><span>Voir</span>
@@ -220,7 +220,7 @@
                       </div>
                       <p class="mb-0">
                         <a
-                          (click)="updateNbView(repas)"
+                        
                           [routerLink]="['/recipe', repas.idRecette]"
                           class="btn-custom btn-effect"
                           ><span>Voir</span>
@@ -264,7 +264,7 @@
                       </div>
                       <p class="mb-0">
                         <a
-                          (click)="updateNbView(douceur)"
+                         
                           [routerLink]="['/recipe', douceur.idRecette]"
                           class="btn-custom btn-effect"
                           ><span>Voir</span>
@@ -494,7 +494,7 @@
         <div class="owl-item" style="width: 207.167px;">
           <div
             class="gs-item set-bg"
-            (click)="updateNbView(recette)"
+        
             [routerLink]="['/recipe', recette.idRecette]"
             [ngStyle]="{
               'background-image': 'url(&quot;' + recette.lienImage + '&quot;)'

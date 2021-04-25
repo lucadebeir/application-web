@@ -146,15 +146,6 @@ export class RecetteComponent implements OnInit {
 
   onClick() {}
 
-  ngOnInit(): void {}
-
-  ngOnDestroy() {
-    if (this.check) {
-      localStorage.removeItem("value");
-      localStorage.removeItem("backButton");
-    }
-  }
-
   loading() {
     this.newCommentaire = {
       message: "",
@@ -227,25 +218,15 @@ export class RecetteComponent implements OnInit {
         });
         this.recetteService.getListRecipes().subscribe((data) => {
           data.forEach((element) => {
-            console.log(element);
             if (element.idRecette === this.recipeList.idRecette) {
               this.isInMenu = true;
               this.recipeList = element;
-              console.log(this.recipeList);
             }
           });
           this.allRecipeList = data;
         });
       });
-      this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
-      this.newListeCourses.pseudo = this.auth.getUserDetails().pseudo;
-      this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo;
-      this.newResponse.ecritPar = this.auth.getUserDetails().pseudo;
-      this.recipeList.pseudoUser = this.auth.getUserDetails().pseudo;
-      this.notif.pseudo = this.auth.getUserDetails().pseudo;
-    }
-
-    this.commentairesService
+      this.commentairesService
       .getCommentaireRecipe(
         parseInt(this.route.snapshot.paramMap.get("id"), 10)
       )
@@ -262,41 +243,39 @@ export class RecetteComponent implements OnInit {
           this.hasCom = false;
         }
       });
+      this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
+      this.newListeCourses.pseudo = this.auth.getUserDetails().pseudo;
+      this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo;
+      this.newResponse.ecritPar = this.auth.getUserDetails().pseudo;
+      this.recipeList.pseudoUser = this.auth.getUserDetails().pseudo;
+      this.notif.pseudo = this.auth.getUserDetails().pseudo;
+    }
   }
 
-  addResponse(id) {
-    console.log(id);
-    this.commentaires$.forEach((commentaires) => {
-      commentaires.forEach((element) => {
-        if (element.idCommentaire === id) {
-          element.response = !element.response;
-        }
-        element.children.forEach((commentaire) => {
-          console.log(commentaire);
-          if (commentaire.idCommentaire === id) {
-            commentaire.response = !commentaire.response;
-          }
-        });
-      });
-    });
+  ngOnInit(): void {
+  
+    this.recetteService.updateNbView(parseInt(this.route.snapshot.paramMap.get("id"), 10)).subscribe(res => console.log(res));
+  
+    //notification vue
+   
+      let notif: Notification = {
+        pseudo: null,
+        idRecette: parseInt(this.route.snapshot.paramMap.get("id"), 10),
+        type: "vue",
+      };
+      this.notifService.addNotification(notif).subscribe();
+  
+  
   }
 
-  updateNbView(recette: any) {
-    this.recetteService.updateNbView(recette).subscribe(
-      (res) => {
-        this.router.navigate(["/recipe", recette.idRecette]).then(() => {
-          this.loading();
-        });
-      },
-      (err) => {
-        if (err instanceof HttpErrorResponse) {
-          if (err.status === 402) {
-            console.log("Cette recette n'existe pas !");
-          }
-        }
-      }
-    );
+  ngOnDestroy() {
+    if (this.check) {
+      localStorage.removeItem("value");
+      localStorage.removeItem("backButton");
+    }
   }
+
+ 
 
   selectImage(event) {
     if (event.target.files.length > 0) {
@@ -593,4 +572,10 @@ export class RecetteComponent implements OnInit {
     localStorage.setItem("backButton", JSON.stringify(json));
     console.log("Back button pressed");
   }
+
+
+
+
+
+
 }
