@@ -227,22 +227,22 @@ export class RecetteComponent implements OnInit {
         });
       });
       this.commentairesService
-      .getCommentaireRecipe(
-        parseInt(this.route.snapshot.paramMap.get("id"), 10)
-      )
-      .subscribe((commentaires) => {
-        if (commentaires[0]) {
-          this.hasCom = true;
-          this.commentaires = commentaires;
-          console.log(commentaires);
-          setTimeout(() => {
-            this.commentairesService.search(commentaires).subscribe();
-            this.newCommentaire.message = "";
-          }, 1000);
-        } else {
-          this.hasCom = false;
-        }
-      });
+        .getCommentaireRecipe(
+          parseInt(this.route.snapshot.paramMap.get("id"), 10)
+        )
+        .subscribe((commentaires) => {
+          if (commentaires[0]) {
+            this.hasCom = true;
+            this.commentaires = commentaires;
+            console.log(commentaires);
+            setTimeout(() => {
+              this.commentairesService.search(commentaires).subscribe();
+              this.newCommentaire.message = "";
+            }, 1000);
+          } else {
+            this.hasCom = false;
+          }
+        });
       this.newFavori.pseudo = this.auth.getUserDetails().pseudo;
       this.newListeCourses.pseudo = this.auth.getUserDetails().pseudo;
       this.newCommentaire.ecritPar = this.auth.getUserDetails().pseudo;
@@ -253,19 +253,18 @@ export class RecetteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
-    this.recetteService.updateNbView(parseInt(this.route.snapshot.paramMap.get("id"), 10)).subscribe(res => console.log(res));
-  
+    this.recetteService
+      .updateNbView(parseInt(this.route.snapshot.paramMap.get("id"), 10))
+      .subscribe((res) => console.log(res));
+
     //notification vue
-   
-      let notif: Notification = {
-        pseudo: null,
-        idRecette: parseInt(this.route.snapshot.paramMap.get("id"), 10),
-        type: "vue",
-      };
-      this.notifService.addNotification(notif).subscribe();
-  
-  
+
+    let notif: Notification = {
+      pseudo: null,
+      idRecette: parseInt(this.route.snapshot.paramMap.get("id"), 10),
+      type: "vue",
+    };
+    this.notifService.addNotification(notif).subscribe();
   }
 
   ngOnDestroy() {
@@ -275,7 +274,22 @@ export class RecetteComponent implements OnInit {
     }
   }
 
- 
+  addResponse(id) {
+    console.log(id);
+    this.commentaires$.forEach((commentaires) => {
+      commentaires.forEach((element) => {
+        if (element.idCommentaire === id) {
+          element.response = !element.response;
+        }
+        element.children.forEach((commentaire) => {
+          console.log(commentaire);
+          if (commentaire.idCommentaire === id) {
+            commentaire.response = !commentaire.response;
+          }
+        });
+      });
+    });
+  }
 
   selectImage(event) {
     if (event.target.files.length > 0) {
@@ -572,10 +586,4 @@ export class RecetteComponent implements OnInit {
     localStorage.setItem("backButton", JSON.stringify(json));
     console.log("Back button pressed");
   }
-
-
-
-
-
-
 }

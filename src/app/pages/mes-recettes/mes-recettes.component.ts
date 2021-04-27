@@ -284,7 +284,7 @@ export class MesRecettesComponent implements OnInit {
       backButton: false,
     };
     localStorage.setItem("backButton", JSON.stringify(json2));
-   
+
     this.router.navigate(["/recipe", recette.idRecette]);
   }
 
@@ -302,5 +302,9 @@ export class MesRecettesComponent implements OnInit {
       this.recetteService.search(this.searchTerm, data).subscribe();
     }); /* rafraichit la page */
   }
-  
+
+  onPageChange(page: number) {
+    this.currentPage = page;
+    window.scrollTo(0, 0);
+  }
 }
