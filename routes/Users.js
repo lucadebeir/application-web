@@ -1,7 +1,7 @@
 const express = require("express");
 const users = express.Router();
 const cors = require("cors");
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken"); //pour autentification 
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const Recipe = require("../models/Recipe");

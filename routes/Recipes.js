@@ -206,16 +206,23 @@ recipe.get("/nbVues/category/:idCategorie", (req, res) => {
 
 //incrémenter le nbre de vue
 recipe.put("/update-nbView/:idRecette", (req, res) => {
-  Recipe.update(
-    { nbVues: req.body.nbVues + 1 },
-    { where: { idRecette: req.params.idRecette } }
-  )
-    .then(() => {
-      res.json({ success: "Nombre de vues incrémenté !" });
-    })
-    .catch((err) => {
-      res.send("error: " + err);
-    });
+  Recipe.findOne({
+    where: { idRecette: req.params.idRecette }
+  })
+  .then(recipe => {
+    console.log(recipe)
+    Recipe.update(
+      { nbVues: recipe.nbVues + 1 },
+      { where: { idRecette: req.params.idRecette } }
+    )
+      .then(() => {
+        res.json({ success: "Nombre de vues incrémenté !" });
+      })
+      .catch((err) => {
+        res.send("error: " + err);
+      });
+  })
+  
 });
 
 //supprimer recette
