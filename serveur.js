@@ -68,19 +68,11 @@ app.use("/server/recipeList", RecipeList);
 app.use("/server/notifications", Notification);
 app.use("/server/statistique", Statistique);
 
-/*app.post("/registrationTokens", (req, res) => {
-  console.log("token ? : " + req.body.token);
-  fcm
-    .subscribeToTopic(req.body.token, topic)
-    .then(function (response) {
-      // See the MessagingTopicManagementResponse reference documentation
-      // for the contents of response.
-      console.log("Successfully subscribed to topic:", response);
-    })
-    .catch(function (error) {
-      console.log("Error subscribing to topic:", error);
-    });
-});*/
+//Serve only the static files form the dist directory
+app.use(express.static(__dirname + "/dist/marine'srecipe"));
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname + "/dist/marine'srecipe/index.html"));
+});
 
 //lancement serveur
 app.listen(port, function () {
