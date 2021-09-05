@@ -4,7 +4,8 @@
   "description": "",
   "main": "serveur.js",
   "scripts": {
-    "start": "node serveur.js --proxy-config proxy-conf.json"
+    "start": "node serveur.js --proxy-config proxy-conf.json",
+    "start:dev": "nodemon serveur.js --proxy-config proxy-conf.json"
   },
   "author": "",
   "license": "ISC",

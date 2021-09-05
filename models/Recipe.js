@@ -46,10 +46,6 @@ module.exports = db.sequelize.define(
     mot: {
       type: Sequelize.STRING,
     },
-    categories: {
-      type: Sequelize.ARRAY(Sequelize.INTEGER),
-      defaultValue: [],
-    },
   },
   {
     timestamps: false,
