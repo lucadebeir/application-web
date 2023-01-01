@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-builders/custom-webpack": "^10.0.1",
+    "@angular-builders/custom-webpack": "^15.0.0",
     "@angular-builders/dev-server": "^7.3.1",
     "@angular/animations": "^9.0.7",
     "@angular/cdk": "^9.2.4",
@@ -84,12 +84,12 @@
     "swagger-ui-express": "^4.1.4",
     "swiper": "^6.4.8",
     "tslib": "^1.10.0",
-    "webpack": "^4.41.2",
+    "webpack": "^5.75.0",
     "xoauth2": "^1.2.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.900.7",
+    "@angular-devkit/build-angular": "^15.0.4",
     "@angular/cli": "^9.0.5",
     "@angular/compiler-cli": "^9.0.5",
     "@angular/language-service": "~9.0.1",
